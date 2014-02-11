@@ -1707,6 +1707,10 @@ h1 {
 	padding: 0;
 }
 
+#login {
+	display: none;
+}
+
 #userinfo ul {
 	margin: 0;
 	width: 100%;
@@ -2350,7 +2354,7 @@ article dl {
 
 	#userinfo-options li a:before,
 	#userinfo-options li button:before {
-		content: "Â»" !important;
+		content: "»" !important;
 		padding-right: 5px;
 		font-size: 12px;
 	}
