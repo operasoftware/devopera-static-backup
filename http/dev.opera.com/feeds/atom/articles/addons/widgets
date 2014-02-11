@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Dev.Opera articles</title>
+<link rel="alternate" href="http://dev.opera.com/" />
+<content>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</content>
+<rights>Opera Software ASA</rights>
+<updated>2010-12-22T07:13:46Z</updated>
+<entry>
+<title type="text">Introduction to Widget Handset APIs in WAC 1.0</title>
+<link href="http://dev.opera.com/articles/view/widget-handset-apis-wac" />
+<author>
+<name>Michał Jankowski</name>
+</author>
+<content>This article provides and introduction to the different Widget Handset APIs found in the WAC 1.0 spec, which allow your applications to hook into device features such as camera, accelerometer, address book, and more.</content>
+<id>http://dev.opera.com/articles/view/widget-handset-apis-wac</id>
+<updated>2010-12-22T07:13:46Z</updated>
+</entry>
+<entry>
+<title type="text">Building a spirit level widget using WAC 1.0</title>
+<link href="http://dev.opera.com/articles/view/building-a-widget-with-wac" />
+<author>
+<name>Michał Borek</name>
+</author>
+<content>In this article we show you how to build a W3C Widget that makes use of WAC 1.0 features to access and return information from a device&#39;s accelerometer.</content>
+<id>http://dev.opera.com/articles/view/building-a-widget-with-wac</id>
+<updated>2010-12-22T06:58:54Z</updated>
+</entry>
+<entry>
+<title type="text">How are Opera Mini widgets different?</title>
+<link href="http://dev.opera.com/articles/view/how-are-opera-mini-widgets-different" />
+<author>
+<name>Opera Software</name>
+</author>
+<content>This article details the differences between widgets running on Opera Mini, and widgets running on Opera Mobile (and other similar environments).</content>
+<id>http://dev.opera.com/articles/view/how-are-opera-mini-widgets-different</id>
+<updated>2010-12-07T14:04:59Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Mini widgets authoring guidelines</title>
+<link href="http://dev.opera.com/articles/view/opera-mini-widgets-authoring-guidelines" />
+<author>
+<name>Opera Software</name>
+</author>
+<content>This article is a reference guide detailing all the particulars of developing widgets for Opera Mini, as opposed to developing widgets for other environments.</content>
+<id>http://dev.opera.com/articles/view/opera-mini-widgets-authoring-guidelines</id>
+<updated>2010-12-01T15:20:45Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Mini Widgets: an introductory tutorial</title>
+<link href="http://dev.opera.com/articles/view/opera-mini-widgets-an-introductory-tutorial" />
+<author>
+<name>Daniel Davis</name>
+</author>
+<content>This article shows how to build up a simple Opera Mini widget, step by step.</content>
+<id>http://dev.opera.com/articles/view/opera-mini-widgets-an-introductory-tutorial</id>
+<updated>2010-12-01T15:20:30Z</updated>
+</entry>
+<entry>
+<title type="text">The Opera Widgets Mobile Emulator</title>
+<link href="http://dev.opera.com/articles/view/the-opera-widgets-mobile-emulator" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>Making sure that your widget looks great and works exactly as it should on mobile devices can often be a tedious process. With Opera Mobile 10 for Windows, Linux and Mac we&#39;ve included the Opera Widgets Mobile Emulator - a native application that can be run directly from your desktop machine, meaning developing mobile-optimized widgets has never been easier.</content>
+<id>http://dev.opera.com/articles/view/the-opera-widgets-mobile-emulator</id>
+<updated>2010-07-12T05:15:56Z</updated>
+</entry>
+<entry>
+<title type="text">An HTML5 &lt;audio&gt; radio player</title>
+<link href="http://dev.opera.com/articles/view/html5-audio-radio-player" />
+<author>
+<name>Trygve Lie</name>
+</author>
+<content>In this article Trygve Lie takes you through the basics of the HTML5  element, then uses jQuery and jPlayer to build a cross-browser radio player based on  with a Flash fallback. As a final step, he converts the player into an Opera Widget for added cross-device appeal.</content>
+<id>http://dev.opera.com/articles/view/html5-audio-radio-player</id>
+<updated>2010-07-06T13:46:13Z</updated>
+</entry>
+<entry>
+<title type="text">Icon Creator tutorial</title>
+<link href="http://dev.opera.com/articles/view/icon-creator-tutorial" />
+<author>
+<name>Opera Software</name>
+</author>
+<content>The Icon Creator is a new Opera Widget that makes it really easy to create a professional-looking icon from any motif or other graphic you may want to use. This article provides a simple tutorial showing how to use its different functions.</content>
+<id>http://dev.opera.com/articles/view/icon-creator-tutorial</id>
+<updated>2010-05-05T11:23:13Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Mobile 10 and the Opera Widgets Mobile Emulator on your desktop</title>
+<link href="http://dev.opera.com/articles/view/opera-mobile-10-widgets-mobile-emulator-desktop" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>Making sure that your site looks great and works exactly as it should in mobile browsers can often be a tedious process. With Opera Mobile 10 for Windows, Linux and Mac we offer a native application that can be run directly from your desktop machine. And with the integrated Opera Widgets Mobile Emulator, developing mobile optimized widgets has never been easier.</content>
+<id>http://dev.opera.com/articles/view/opera-mobile-10-widgets-mobile-emulator-desktop</id>
+<updated>2010-04-22T10:59:35Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Widgets Style Guide</title>
+<link href="http://dev.opera.com/articles/view/opera-widgets-style-guide" />
+<author>
+<name>Daniel Davis</name>
+</author>
+<content>This style guide gives useful suggestions for how to design your Opera Widgets, combining creative visual design with usable design.</content>
+<id>http://dev.opera.com/articles/view/opera-widgets-style-guide</id>
+<updated>2010-03-01T23:04:56Z</updated>
+</entry>
+</feed>

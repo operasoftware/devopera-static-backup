@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>An Introduction to Objects: Example Code</title>
+    <style type="text/css">
+        body {
+            font:   16px/1.5 Georgia,Serif;
+        }
+        em {
+            font-style:     italic;
+            font-weight:    bold;
+        }
+        h1,h2 {
+            font:   32px/1.5 Baskerville,Georgia,Serif;
+        }
+        
+        form {
+            width:  300px;
+            margin: 0 auto;
+        }
+            form label, form input {
+                float:  left;
+                clear:  left;
+            }
+            
+            form label {
+                font-weight:    bold;
+            }
+            form input {
+                margin-bottom:  1.5em;
+            }
+    </style>
+</head>
+<body>
+    <form action="triangle_area.html#" id="theForm">
+        <div>
+            <h1>The Area of a Triangle</h1>
+            <p>How Exciting!  I'm excited.  Are you excited?  You should be.  Because triangles are <em>awesome</em>.</p>
+            <h2>Enter Side Lengths:</h2>
+            <label for="sideA">Side A:</label>
+            <input id="sideA" type="text" value="">
+            <label for="sideB">Side B:</label>
+            <input id="sideB" type="text" value="">
+            <label for="sideC">Side C:</label>
+            <input id="sideC" type="text" value="">
+            <input type="button" value="Calculate Area (without Objects)" id="objectless">
+            <input type="button" value="Calculate Area (with Objects)" id="objectfull">
+        </div>
+    </form>
+    
+    <script type="text/javascript">
+    /*
+     *  Common Data-gathering Functionality
+     */
+        function gatherData() {
+            // Returns an array: sideA = 0, sideB = 1, sideC = 2
+            var sides = [ 'sideA', 'sideB', 'sideC' ];
+
+            for ( i=0; i < sides.length; i++ ) {
+                sides[ i ] = document.getElementById( sides[ i ] ) ? parseInt( document.getElementById( sides[ i ] ).value ) : 0;
+            }
+            return sides;
+        }
+    
+    /*
+     *  Without Triangle Objects
+     */
+        function isTriangle( a, b, c ) {
+            // A, B, C can form a triangle iff the sum of any two sides exceeds the third side
+            
+            return ( ( a + b ) > c ) && ( ( a + c ) > b ) && ( ( c + b ) > a );
+        }
+        function getArea( a, b, c ) {
+            // Return the area of a triangle using Heron's formula
+            
+            if ( isTriangle( a, b, c ) ) {
+                var semiperimeter   =   (a + b + c) / 2;
+                var calculation     =   semiperimeter * (semiperimeter - a) * (semiperimeter - b) * (semiperimeter - c);
+                return Math.sqrt( calculation );
+            } else {
+                return false;
+            }
+        }
+         
+        function calculateAreaWithoutExplicitObjects() {
+            var sideData = gatherData();
+
+            // This is a triangle
+            var sideA  =   sideData[ 0 ];
+            var sideB  =   sideData[ 1 ];
+            var sideC  =   sideData[ 2 ];
+
+            var area   =   getArea( sideA, sideB, sideC );
+            
+            if ( area === false ) {
+                alert( "Oh noes!  Your Triangle:\n\nSide A: " + sideA + "\nSide B: " + sideB + "\nSide C: " + sideC + "\n\nis not a triangle!!!!" );
+            } else {
+                alert( "Your Triangle:\n\nSide A: " + sideA + "\nSide B: " + sideB + "\nSide C: " + sideC + "\n\nArea: " + area );
+            }
+        }
+        document.getElementById( 'objectless' ).onclick = calculateAreaWithoutExplicitObjects;
+        
+    /*
+     *  With Triangle Objects
+     */
+        function calculateAreaWithExplicitObjects() {
+            var sideData = gatherData();
+        
+            var triangle = {
+                sideA:      sideData[ 0 ],
+                sideB:      sideData[ 1 ],
+                sideC:      sideData[ 2 ],
+                isValid:    function ( ) {
+                    // A, B, C can form a triangle iff the sum of any two sides exceeds the third side
+                    return  (
+                                ( ( this.sideA + this.sideB ) > this.sideC ) &&
+                                ( ( this.sideA + this.sideC ) > this.sideB ) &&
+                                ( ( this.sideC + this.sideB ) > this.sideA )
+                            );
+                },
+            
+                getArea:    function ( ) {
+                    // Return the area of a triangle using Heron's formula
+                    if ( this.isValid() ) {
+                        var semiperimeter   =   ( this.sideA + this.sideB + this.sideC ) / 2;
+                        var calculation     =   semiperimeter * ( semiperimeter - this.sideA ) * ( semiperimeter - this.sideB ) * ( semiperimeter - this.sideC );
+                        return Math.sqrt( calculation );
+                    } else {
+                        return false
+                    }
+                }
+            };
+        
+            area = triangle.getArea();
+        
+            if ( !triangle.isValid() ) {
+                alert( "Oh noes!  Your Triangle:\n\nSide A: " + triangle.sideA + "\nSide B: " + triangle.sideB + "\nSide C: " + triangle.sideC + "\n\nis not a triangle!!!!" );
+            } else {
+                alert( "Your Triangle:\n\nSide A: " + triangle.sideA + "\nSide B: " + triangle.sideB + "\nSide C: " + triangle.sideC + "\n\nArea: " + area );
+            }
+            
+        }
+        
+        document.getElementById( 'objectfull' ).onclick = calculateAreaWithExplicitObjects;
+    </script>
+</body>
+</html>

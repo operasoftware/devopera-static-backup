@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Timeline</title>
+<style type="text/css">
+/*TABLE*/
+#timeline	{width:800px; overflow:hidden; overflow-x:scroll; position:relative;}
+table	{width:1200px; border-collapse:collapse; table-layout:fixed;}
+
+/*CELLS AND HEADER*/
+td, th	{padding:0; height:22px; border: 1px solid #b4ced8;}
+th		{font:bold 14px "Trebuchet MS", sans-serif; color:#4f6b72; letter-spacing:2px; text-align:center; background:#cae3ed;}
+
+/*BOXES*/
+td div 		{float:left; height:0;}
+td div p	{margin:0; text-align:center; cursor:default; font-size:14px; padding:2px;}
+
+/*BOX GROUPS*/
+.girly{background:#fdd; border:1px solid #e084ad; color:#db6483; -moz-border-radius:10px; border-radius:10px; font-family:Verdana;}
+.blueish{background:#b1c7ef; border:1px solid #8487ad; font-family:Georgia;}
+.elegant{background:#fffdce; border:1px solid #845700; color:#8f5600; -moz-border-radius:3px; border-radius:3px; font-family:Georgia;}
+
+/*INDIVIDUAL BOXES*/
+#one{width:260%;margin-left:50%;}
+#two{width:100%;margin-left:38%;}
+#three{width:150%;margin-left:10%;}
+#four{width:100%;}
+
+</style>
+</head>
+  <body>
+<div id="timeline">
+  <table>
+    <thead>
+      <tr>
+	    <th>1998</th>
+	    <th>1999</th>
+	    <th>2000</th>
+	    <th>2001</th>
+	    <th>2002</th>
+	  </tr>
+    </thead>
+	<tbody>
+      <tr>
+	    <td></td>
+	    <td><div id="one"><p class="girly">This starts in the middle of 1999</p></div></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td><div id="two"><p class="blueish">Second dummy text</p></div></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td><div id="three"><p class="girly">Third one</p></div></td>
+		<td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td><div id="four"><p class="elegant">Fourth</p></div></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+	</tbody>
+  </table>
+</div>
+  </body>
+</html>

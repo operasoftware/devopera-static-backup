@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sitenizi Hızlı Erişim için İyileştirin! - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="tr">
+      <h1>Sitenizi Hızlı Erişim için İyileştirin!</h1>
+      <p class="print author">By metude, Çağlar Yeşilyurt</p>
+
+      <p class="note">The mechanisms to optimize Speed Dial icons covered in this article are only supported in Opera 11.10 to 12.16, and do not work in Opera 15 and later.</p>
+
+<h2>İçindekiler Listesi</h2>
+
+<ul>
+	<li><a href="index.html#intro">Giriş</a></li>
+	<li>
+		<a href="index.html#uselogo">Logo kullanımak</a>
+		<ul>
+		  <li><a href="index.html#html5icons">HTML5&#39;de ikonlar</a></li>
+			<li><a href="index.html#setanicon">Hızlı Erişim ikonu tanımlamak</a></li>
+			<li><a href="index.html#multipleicons">Birden çok ikon kulanmak</a></li>
+	  </ul>
+  </li>
+	<li>
+		<a href="index.html#content">Hızlı Erişim girdiniz için özel içerik sağlamak</a>
+		<ul>
+		  <li><a href="index.html#viewmode"><code>view-mode:minimized</code> kullanmak</a></li>
+			<li><a href="index.html#with-x-purpose">X-Purpose header kullanmak</a></li>
+			<li><a href="index.html#preview-refresh">Düzenli aralıklarla içeriği yeniletmek</a></li>
+	  </ul>
+  </li>
+	
+	
+	<li><a href="index.html#sdpriority">Hızlı Erişim önceliği</a></li>
+	<li><a href="index.html#productsupport">Opera ürün desteği</a></li>
+</ul>
+
+<h2 id="intro">Giriş</h2>
+	
+	<p>11.10 ile birlikte, Opera&#39;nın masaüstü sürümü sitelerin Hızlı Erişim&#39;de nasıl görüntüleneceğini belirlemeye izin veriyor. Varsayılan olarak, Hızlı Erişim web sitenin ekran görüntüsünü kullanıyor. Ama artık site yöneticileri, özel bir ikon, Hızlı Erişim&#39;e özel CSS ya da içerik belirleyebilirler.</p>
+<h2 id="uselogo">Logo kullanmak</h2>
+
+<p>Bu bölümde Hızlı Erişim&#39;e özel bir logo ya da ikon kullanımına bakacağız.</p>
+<h3 id="html5icons">HTML5&#39;de ikonlar</h3>
+	
+	<p>Muhtemelen yer imleri ikonlarını tanıyorsunuzdur. İlk olarak 1999&#39;da Internet Explorer 5&#39;de tanıtılmıştı.</p>
+	<p>HTML4 özelliklerine dahil edilmemesine rağmen, tarayıcı üreticileri sonunda <code>icon</code> değeri için <code>rel</code> tanımına <code>link</code> elementinde <a href="http://www.w3.org/2005/10/howto-favicon">kısayol ikonu desteğini</a> ekledi. Apple, sonraları dokunmatik cihazlarında kullanmak için bunu <a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html"><code style="word-wrap:none">apple-touch-icon</code></a> olarak genişletti. HTML5 özelliklerine göre, <code>icon</code> artık for the <code>rel</code> tanımı için <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">geçerli ve standartlaşmış değer</a> oldu.	</p>
+	<h3 id="setanicon">Hızlı Erişim ikonu tanımlarken</h3>
+	
+	<p>Hızlı Erişim ikonu tanımlamak, kısayol ikonu tanımlamaya çok benzerdir. Sadece sayfanızın <code>head</code> kısmına bir <code>&lt;link&gt;</code> etiketi eklemeniz gerekiyor.</p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;Opera Türkiye&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://logonuzun/konumu/neredeyse.png&quot;&gt;
+&lt;/head&gt;</code></pre>		
+		
+	<p>Hızlı Erişim ikonları:</p>
+	
+	<ul>
+		<li>En az 114 piksel genişlik, 114 piksel yükseliğe sahip olmalı. Bu varsayılan ikon boyutudur ve bundan küçük ikonlar yoksayılacaktır.</li>
+		
+		<li>Formatları PNG, JPEG ya da GIF olmalıdır. SVG resimleri şimdilik desteklenmiyor. Hareketli görsellerin sadece ilk karesi kullanılacaktır.</li>
+	</ul>
+	
+	<p>Varsayılan olarak maksimum ikon boyutu 256 piksel genişlik, 160 piksel yüksekliktir. Bundan büyük ikonlar sığdırılmak için yeniden boyutlandırılacaktır (<a href="../../../../devfiles.myopera.com/articles/4992/icon.html">demo</a>). Kullanıcılar varsayılan genişlik ve yüksekliği opera:config&#39;den değiştirebilirler.</p>
+	
+	<p>Öbür yandan, Opera 11.10  <code>apple-touch-icon</code>, <code>apple-touch-icon-precomposed</code> ve <code>image_src</code> parametreleri için destek verecek.</p>
+
+	<h3 id="multipleicons">Birden çok ikon kullanmak</h3>
+	
+	<p>Ayrıca birden çok ikon tanımlayabilirsiniz. Bu özellik ile kullanıcılarınız sayfayı yer imlerine eklediğinde başka bir ikon alacaklar, Hızlı Erişim&#39;e eklediklerinde başka bir ikon alacaklar.</p>
+	
+<pre><code>&lt;head&gt;
+    &lt;title&gt;My Opera&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/128x128image.png&quot;&gt;
+    &lt;!-- This will be the speed dial icon --&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/200x200image.png&quot;&gt;
+&lt;/head&gt;</code></pre>	
+	<p>Eğer birden çok ikon tanımlarsanız, Hızlı Erişim için büyük olanı seçecektir (<a href="../../../../devfiles.myopera.com/articles/4992/multiple-icons-diff-sizes.html">demo</a>). Eğer iki ikon da aynı boyuttaysa, öncelik ilk bağlantıya verilecektir (<a href="../../../../devfiles.myopera.com/articles/4992/multiple-icons-same-size.html">demo</a>).</p>
+	
+<h2 id="content">Hızlı Erişim girdiniz için özel içerik hazırlamak</h2> 
+
+<p>Hızlı Erişim girdisine özel içerik ve biçimlendirme sağlamak için bir kaç yol var. Bunlar: CSS&#39;de <code>view-mode:minimized</code>, X-Purpose HTTP header ve otomatik yenileme. Bu bölüm hepsini açıklıyor.</p>
+	
+<h3 id="viewmode"><code>view-mode:minimized</code> kullanmak</h3>
+
+<p><img src="../../../../devfiles.myopera.com/articles/4992/view-mode.png" width="542" height="292" alt="The Speed Dial screen in Opera 11.10" /></p>
+<p class="comment">Şekil 1: Opera 11.10 &#39;da Hızlı Erişim ekranı</p>
+
+<p><a href="http://www.w3.org/TR/view-mode/"><code>view-mode</code></a> ortam özelliği için görüntülenme moduna göre özel bir stil tanımlar.  <code>view-mode: minimized</code> kullanarak Hızlı Erişime alternatif stillendirme ya da içerik sağlayabilirsiniz.  <code>view-mode</code> özelliği diğer ortam özellikleri gibi çalışır. <code>device-width</code> gibi. Her ortam sorgusu gibi stillendirme, bir <code>@media</code> bloğu içinde olmalıdır.</p>
+		
+<pre><code>@media screen and (view-mode: minimized) {
+    body {
+        color: #fff;
+        background: #b20000;
+    }
+}</code></pre>	
+<p>Ya da harici bir stil dosyasını bağlantı olarak verip,  <code>(view-mode: minimized)</code>ortam değişkenlerini tanımlayın.</p>
+
+<pre><code>&lt;link rel=stylesheet type=&quot;text/css&quot; href=&quot;minimizedstyles.css&quot; media=&quot;(view-mode:minimized)&quot;&gt;</code></pre>
+<p><a href="../../../../devfiles.myopera.com/articles/4992/view-mode.html">Çalışan <code>view-mode: minimized</code> örneği</a> görün.</p>
+
+<p><code>view-mode: minimized</code>&#39;de Hızlı Erişim&#39;in  <strong>256 piksel genişlik, 160 yüksekliğe</strong> bağlı olduğunu unutmayın.</p>
+
+<h3 id="with-x-purpose">X-Purpose Header kullanmak</h3>
+
+<p>Hızlı Erişim girdinizi farklı URL&#39;de sunmak da mümkün. Bunun nedeni Hızlı Erişim isteklerinin  <code>X-Purpose: preview</code> içermesidir.</p>
+
+<pre><code>GET / HTTP/1.1
+Host: www.bbc.co.uk/news
+X-Purpose: preview
+User-agent: Opera/9.80 (Macintosh; Intel Mac OS X 10.6.6; U; en) Presto/2.8.99 Version/11.10</code></pre>
+<p>Bu headerı tespit ederek başka hangi URL&#39;nin sunulacağı, Hızlı Erişim&#39;e gönderilen dosyaların sınırını ya da farklı bir içeriği göstermekte kullanabilirsiniz. Bunun kullancının Hızlı Erişim girdisinde tıkladığı adresi değiştirmeyeceğini unutmayınız.</p>
+<p>Aşağıdaki örnekte, tüm Hızlı Erişim isteklerini <code>/preview.html</code> adresine yönlendirmek için Apache&#39;nin mod_rewrite&#39;ını kullanıyoruz. (Gerçek dünyada bundan daha özel şeyler yapabilirsiniz)</p>
+<pre><code>RewriteEngine On
+RewriteCond %{HTTP:X-Purpose} ^preview$
+RewriteRule ^(.*) /preview.html</code></pre>
+<p>Ya da aynı adreste farklı içerikler sunmayı sağlamak için sunucu taraflı bir dil kullanmayı tercih edebilirsiniz. Aşağıdaki örnek PHP kullanıyor.</p>
+<pre><code>&lt;?php
+if ($_SERVER[&#39;HTTP_X_PURPOSE&#39;] == &#39;preview&#39;) {
+    // Hızlı Erişim içeriğini gönder
+} else {
+    // Düzenli olarak içerik gönder
+}
+?&gt;</code></pre>
+<h3 id="preview-refresh">Düzenli aralıklarla içeriği yeniletmek</h3>
+
+<p>Hızlı Erişim içeriğinizi daha dinamik yapmak için kulanıcı, siteyi Hızlı Erişim bölmesine yerleştirdiğinde otomatik olarak yenilenmesini sağlayan bir davranış oluşturabilirsiniz. Bunu 2 adımda yapabilirsiniz.</p>
+<ol><li>
+<p><code>meta</code> etiketi kullanmak:</p>
+<pre>&lt;meta http-equiv=&quot;preview-refresh&quot; content=&quot;3600&quot;&gt;</pre></li>
+<li><code>Preview-Refresh</code> tepki için başlık ayarlamak:
+  <pre>Preview-Refresh:3600</pre></li></ol>
+<p>Not: Bu değer saniye cinsinden tanımlıdır. Yukarıdaki parametre, Hızlı Erişim&#39;i her saat yenilenecek.</p>
+
+
+<h2 id="sdpriority">Hızlı Erişim önceliği</h2>
+
+<p>Hızlı erişim ilk olarak önceliği  <code>view-mode: minimized</code> CSS parametresine verir. Eğer bu stil kullanılabilir değilse, tarayıcı ikon için bakacak. Eğer tanımlı ikon da yoksa, ya da ikon dosyası kayıp-hasarlı ise, Hızlı Erişim web sitesinin bir ekran görüntüsünü kullanacaktır.</p>
+
+
+<h2 id="productsupport">Opera ürün desteği</h2>
+<p>Şimdilik bu geliştrimeler sadece Opera Masaüstü kullanıcıları için kullanılabilir.</p>
+
+<h2>Diğer belgeler</h2>
+
+<ul>
+	<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">Links from the WHATWG HTML5 specification</a> (İngilizce)</li>
+	
+	<li><a href="http://www.w3.org/TR/view-mode/">View mode media feature specification</a> (İngilizce)</li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=955492">My Opera</a>.</p>
+  <ul>
+    <li id="comment-80741652">
+      <a href="../../../author/ZAHEK.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bf/04e/8bfaf8f99ebfaab5ff190d4569fd669c15f.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ZAHEK.html">Mağruf Çolakoğlu</a></p>
+      <p class="commentdate">Friday, January 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>bu yazıyı hazırlayalı epey oldu ama ben şimdi yorum bırakayım tekrar. Tebrikler.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/webinista.html" rel="author">Tiffany Brown</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/metude.html" rel="author">metude</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, April 7, 2011
+      </p>
+
+      <p class="author"><strong>Co-authors</strong>
+        <a href="../../../author/greench.html" rel="author">Çağlar Yeşilyurt</a>
+      </p>
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/geli�%259Ftirme.html" rel="tag">geliştirme</a></li>
+        <li><a href="../../tags/html.html" rel="tag">html</a></li>
+        <li><a href="../../tags/hızlı&#32;eri�%259Fim.html" rel="tag">hızlı erişim</a></li>
+        <li><a href="../../tags/icons.html" rel="tag">icons</a></li>
+        <li><a href="../../tags/iyile�%259Ftirme.html" rel="tag">iyileştirme</a></li>
+        <li><a href="../../tags/ortam.html" rel="tag">ortam</a></li>
+        <li><a href="../../tags/view-mode.html" rel="tag">view-mode</a></li>
+        <li><a href="../../tags/x-purpose.html" rel="tag">x-purpose</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-speed-dial-enhancements-zh-cn/index.html">Chinese Simplified</a>,
+        <a href="../opera-speed-dial-enhancements/index.html">English</a>,
+        <a href="../opera-speed-dial-enhancements-de/index.html">German</a>,
+        <a href="../opera-speed-dial-enhancements-id/index.html">Indonesian</a>,
+        <a href="../opera-speed-dial-enhancements-ja/index.html">Japanese</a>,
+        <a href="../opera-speed-dial-enhancements-ru/index.html">Russian</a>,
+        <a href="../opera-speed-dial-enhancements-es/index.html">Spanish</a>,
+        <a href="../opera-speed-dial-enhancements-vi/index.html">Vietnamese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

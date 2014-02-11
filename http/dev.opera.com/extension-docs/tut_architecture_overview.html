@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Architecture Overview - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Architecture Overview</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>Let’s dive deeper into the architecture and technical details of extensions in Opera.</p>
+
+<h2 id="the_nex_format">The NEX Format</h2>
+
+<p>Opera supports the <em>NEX</em> (short for <strong>N</strong>avigator <strong>Ex</strong>tension) file format for extensions. All the files and folders for an extension are packaged into a zip file with a special header and renamed as <em>.nex</em>. The NEX format supports a major portion of Chromium extensions, as well as APIs specific to Opera. The API docs section in the right sidebar gives you a good idea of the APIs Opera currently supports.</p>
+
+<p>The APIs from the Chromium project supported in NEX extensions (like tabs) can be called using <em>chrome.*</em>, whereas the ones specific to Opera (like Speed Dial) will reside under the <em>opr.*</em> object.</p>
+
+<p>It is important to note that Opera will run extensions in Chromium’s CRX format too, as long as the extension uses the <em>chrome.*</em> APIs that Opera supports.</p>
+
+<p>If you would like to see the code of an extension, you can rename the file extension to a <em>.zip</em> format, and then use a file unarchiver program (for example <a href="http://www.7-zip.org/download.html">7zip</a>) to unzip the contents. On Mac, we recommend using the <code>unzip</code> command in Terminal, as Archive Utility produces suboptimal results when dealing with signed files.</p>
+
+<h2 id="types_of_extensions">Types of extensions</h2>
+
+<p>Currently, there are four types of extensions in Opera.</p>
+
+<h3 id="1_extensions_involving_browser_actions_and_page_actions">1. Extensions involving Browser Actions (and Page actions)</h3>
+
+<p>You can use Browser Actions or Page Actions to put UI elements in the browser window. Browser Actions are used to put UI elements in the top right side of the browser <em>next</em> to the address bar. This is different from Page Actions which are used to place a UI element <em>inside</em> the address bar.</p>
+
+<p>Page actions are used to put a UI element specific to just a page or a limited set of pages fitting a certain criteria. If you would like the UI element to be there for all pages, then you should use Browser Actions for that purpose. The UI elements you can use are buttons, badges and popups. To know more on how to create and use these in extensions, please read the article on <a href="tut_browser_actions.html">creating buttons, badges and popups</a>.</p>
+
+<p>Note: There can only be a maximum of 6 extensions installed at a time in the toolbar using browser actions, and only up to 4 which are based on page actions.</p>
+
+<h3 id="2_context_menu_extensions">2. Context Menu extensions</h3>
+
+<p>As the name implies, they are extensions to the context menu of the page. You can bring up the context menu by either right-clicking an element in the page, or by using the appropriate shortcuts using your keyboard (varies according to your platform). We’ve created an article on <a href="tut_context_menus.html">how to create context menu extensions</a>.</p>
+
+<h3 id="3_speed_dial_extensions">3. Speed Dial extensions</h3>
+
+<p>You can also create extensions for the Speed Dial in Opera. Keep in mind that to create Speed Dial extensions, you need to use the <em>opr</em> object, and will only run in an NEX file extension. Go ahead and check out <a href="tut_sd_extensions.html">how to create Speed Dial extensions</a>.</p>
+
+<h3 id="4_extensions_with_no_ui">4. Extensions with no UI</h3>
+
+<p>You can also create extensions which don’t have any UI component. If you are familiar with injected scripts in previous (Presto-based) versions of Opera, or with Greasemonkey scripts, then you get the idea.</p>
+
+<p>An example of this could be an extension which listens to keyboard input, and performs an action (like opening a certain page in a new tab) when a keyboard shortcut is typed by the user. These extensions will work as part of the content script, which will be discussed (along with others parts of an extension) in the next part of this article.</p>
+
+<h2 id="different_parts_of_an_extension">Different parts of an extension</h2>
+
+<h3 id="the_extension_manifest">The Extension manifest</h3>
+
+<p>Every extension <em>must</em> contain a manifest file. The manifest file provides basic information like the name of the extension and the author, as well as some important information like the APIs the extensions wants to access, which is listed in the <em>permissions</em> field. If the extension manifest is not correctly defined, the extension will not run at all. Another important thing to note is the <em>developer</em> field, where you can include the extension author’s name.</p>
+
+<p>To know more about the extension manifest, <a href="manifest.html">read the API doc</a> on it.</p>
+
+<h3 id="the_background_process">The Background Process</h3>
+
+<p>You need a process to run in the background to coordinate some tasks or to maintain a certain state. You have two variants of it - The <em>Background Page</em> or <em>Event Page</em>.</p>
+
+<p>Though you can use an HTML page and put JavaScript inside the <code>&lt;script&gt;</code> tag, it is usually better to just use a <em>.js</em> file and reference that from the manifest file. The browser will automatically generate the corresponding page for it. For example,</p>
+<pre class='prettyprint'>{
+  ...
+    "background": {"scripts": ["background.js"]},
+  ...
+}</pre>
+<p>To specify an event page in the manifest file, you need to define the <em>persistent</em> field as <em>false</em> like so:</p>
+<pre class='prettyprint'>{
+  ...
+  "background":{
+    "scripts": ["eventPage.js"],
+    "persistent": false
+   },
+  ...
+}</pre>
+<p>The background page (or the background script) is essential for the user interface. Any piece of code which requires adding a UI item to the browser needs to be defined here. It is also the one responsible for noticing a change in state and updating or otherwise modifying the UI accordingly.</p>
+
+<p><em>Event pages</em> are exactly like background pages, except that they only loaded when required. This means when the event page isn’t loaded, system memory and resources are not being used, thus giving better performance. Extensions authors are recommended to use event pages wherever they can.</p>
+
+<p>Event pages are loaded when:</p>
+
+<ul>
+<li>The extension is installed, restarted started or updated to a new version.</li>
+
+<li>An event is dispatched which the event page was listening for.</li>
+
+<li>When another part of the extension (like a popup) calls it (for example, using <code>runtime.getBackgroundPage</code>).</li>
+
+<li>When another part of the extension sends a message (using <code>runtime.sendMessage()</code> or using long-lived connections. You can read more on message passing in our <a href="tut_message_passing.html">article</a>).</li>
+</ul>
+
+<p>The primary difference between background pages and event pages is that event pages are intended to handle events only. So you’d register event listeners in the eventpage.js and the browser will optimize the way it stores and runs these events at runtime. Anything not wrapped in event listeners will be handled on load and then only kept around by the engine if the variables and functions are referenced in any way inside any event listeners.</p>
+
+<p>In other words, try to <strong>use an event page whenever feasible, as it will lead to better performance and lesser resource consumption</strong> by the browser.</p>
+
+<h3 id="the_content_script">The Content Script</h3>
+
+<p>If you want to make any change to the web page itself, then you need to use a content script. The content script has access to the DOM of the web page, but access to variables and functions is confined to only itself. For example, content scripts cannot access variables defined in the web page, or even in other content scripts.</p>
+
+<p>The content script does not have <em>direct</em> access to the variables and functions in the background scripts too. The same applies for access to API functions. However, you can use <a href="tut_message_passing.html">message passing</a> to communicate between various parts of the extensions, be it background scripts or popups. So, you could call your functions in the background script and then communicate to the content script to do a certain task involving the host page’s DOM.</p>
+
+<p>More details on it can be found in our <a href="tut_content_scripts.html">article on content scripts</a>.</p>
+
+<h3 id="the_popup_page">The Popup Page</h3>
+
+<p>Sometimes extensions will have a popup which, well, pops up when you click an extension button. This is defined by an HTML page, and needs to be specified in the manifest. Read the <a href="tut_browser_actions.html">buttons, badges and popups</a> article to learn more.</p>
+
+<h3 id="the_options_page">The Options Page</h3>
+
+<p>If your extension needs a place to store user preferences then you should create an options page. If you define an options page then a link will be provided at the <em>extensions management</em> page from where the user can access the page. You need to declare it in the manifest like so:</p>
+<pre class='prettyprint'>{
+  ...
+  "options_page": "options_page.html",
+  ...
+}</pre>
+<p>You can use <em>localStorage</em> as defined in the <a href="http://www.w3.org/TR/webstorage/">Web Storage API</a> to store user preferences for the extension.</p>
+
+<h3 id="icons_and_other_files">Icons and other files</h3>
+
+<p>Your extensions need icons (A 128x128 icon used for the addons page and during installation, a 48x48 one for the extensions management page, a 16x16 one for the favicon for the extension’s pages, and a 19x19 one in case you need to put an icon as a browser or page action). Apart from icons, you might also need other files like images, fonts etc. as well as CSS and JS files for pages like the popup or options pages. All of these can be placed anywhere inside of the extension package.</p>
+
+<h2 id="files_and_folder_structure">Files and Folder Structure</h2>
+
+<p><img alt='Extension folder structure' class='img-polaroid' src='static/images/folderstructure.png' /></p>
+
+<p>The above screenshot represents the folder structure of a typical extension. To make things more organized, you could also put images, fonts and other media in a folder called <em>media</em>, stylsheets in a <em>css</em> folder and JS files in a <em>scripts</em> folder.</p>
+
+<p>You can refer to any of your files in your extensions using relative URLs. For example : <code>&lt;img src=&quot;media/myimage.png&quot; /&gt;</code>. An absolute URL to your extension resource can be used by accessing <code>chrome-extension://&lt;extensionID&gt;/&lt;pathToFile&gt;</code>.</p>
+
+<h2 id="permissions_and_privileges">Permissions and privileges</h2>
+
+<ul>
+<li>
+<p><strong>Permissions are necessary</strong>: Each extension comes with a manifest file which administers access over which browser APIs are allowed to be used, and in which set of domains the extension can run.</p>
+</li>
+
+<li>
+<p><strong>Seperation of privileges</strong>: The content script and the rest of the extension have separate roles and sets of privileges. Only the content script is able to modify the web page, but does not have the privilege to modify the UI layer. The rest of the extension components (background pages, popups etc) can do things on the UI layer, but do not have the privilege to modify the web page.</p>
+</li>
+
+<li>
+<p><strong>Content scripts works in <em>Isolated worlds</em></strong>: Content scripts can modify the web page since it has access to the DOM of the page, but it does not have access to the variables and functions that the web page has. A content script cannot access variables and functions defined by the background processes and vice versa (though they can communicate through message passing). This also means content scripts cannot access the extension APIs - they can only be accessed by background or event pages. Each content script lives in an <em>isolated world</em> - it cannot even access variables or functions defined in other content scripts present in the extension.</p>
+</li>
+
+<li>
+<p><strong>Content security policy</strong>: The content security policy is defined in an extension in the manifest, like so:</p>
+<pre class='prettyprint'>{
+...
+"content_security_policy": "[WRITE YOUR POLICY STRING HERE]"
+...
+}</pre>
+<p>To know more about the syntax and possible values for writing your content security policy, take a look at the <a href="http://www.w3.org/TR/CSP/">specification</a>. By default, the policy string for extensions is supposed to be <code>script-src &#39;self&#39;; object-src &#39;self&#39;</code>.</p>
+
+<p>So if you do not define a policy exclusively in an extension manifest, then this policy is assumed. Under this policy, the following things are important to note:</p>
+</li>
+</ul>
+
+<ol>
+<li>
+<p><strong><code>eval()</code> and associated functions are not allowed</strong>: Things like <code>eval()</code> and others (mentioned below) are disabled as they could be used in cross-site scripting attacks. In other worlds, do not use:</p>
+
+<ul>
+<li>
+<p><code>eval()</code></p>
+</li>
+
+<li>
+<p><code>setTimeout()</code></p>
+</li>
+
+<li>
+<p><code>setInterval()</code></p>
+</li>
+
+<li>
+<p><code>new Function(String)</code></p>
+</li>
+</ul>
+
+<p>You could add the string <code>&#39;unsafe-eval&#39;</code> to your policy string to make the extension use <code>eval()</code> and related functions, but we would <em>very strongly</em> advise you against doing so.</p>
+</li>
+
+<li>
+<p><strong>Inline JavaScript will not run</strong>: Inline JS can also be used as an attack vector for cross-site scripting attacks, so inline JavaScript is disabled under this policy. This means <code>&lt;script&gt;</code> blocks as well as inline event handlers (for example <code>&lt;a onclick=&quot;…&quot;</code>) will not be allowed. So if you have a page (like a popup) and want to have some JavaScript interactivity in it, then it is best to have a seperate JS file and reference it in the HTML page (like <code>&lt;script src=&quot;popup.js&quot;&gt;&lt;/script&gt;</code>). Note: Including <code>&#39;unsafe-inline&#39;</code> in your CSP will have no effect.</p>
+</li>
+
+<li>
+<p><strong>Only locally loaded scripts and resources will load</strong>: Only scripts and objects loaded from the extension package will be allowed to load, so if you have something like:</p>
+
+<p><code>&lt;script src=&quot;http://code.jquery.com/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;</code></p>
+
+<p>This will not load as it’s an externally hosted script. To load the library in the extension, you will need to have it included as part of the package, and reference it like so:</p>
+
+<p><code>&lt;script src=&quot;scripts/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;</code> No external scripts or resources loaded over HTTP are allowed - except in the case of your local server, in which case you could add either <code>http://127.0.0.1</code> or <code>localhost</code> to your whitelist. You could also add the following schemes to the whitelist: <code>chrome-extension</code> and <code>chrome-extension-resource</code>.</p>
+
+<p>Please note that this does not have any effect on the way you do AJAX. You are free to make a call through <code>XMLHttpRequest()</code> to any origin.</p>
+
+<p>Also, if you are familiar with the old version of Opera extensions, then you would be used to declaring permissions for cookie sharing. No such requirement is there for extensions in Opera 15+, so you can do away with it. If you are converting your <em>.oex</em> extension to a <em>.nex</em> based one, then you can remove the requirement for declaring permission for cookie sharing.</p>
+</li>
+</ol>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

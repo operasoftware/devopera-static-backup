@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>XHR 2 Demo: responseType demo</title>
+	<link rel="stylesheet" href="http://devfiles.myopera.com/articles/9482/xhr2.css" media="screen">
+	<style media="screen"></style>
+</head>
+<body>
+
+<nav><a href="../../../dev.opera.com/articles/view/xhr2/index.html">Return to article</a></nav>
+
+
+<h1>XMLHttpRequest 2 Demo: <code>responseType</code> demo</h1>
+
+
+<section id="demo">
+<p>Click the button to trigger the request.</p>
+
+<p>The <code>responseType</code> &#8212; in this case, <code>document</code> &#8212; will be displayed below along with data from the first child of our XML response.</p>
+
+
+<form action="xhr-responsetype.html#">
+	<button type="submit" id="trigger">Make Request</button>
+</form>
+<div id="results"></div>
+
+
+</section>
+
+
+<script>
+function makeRequest(event){
+	event.preventDefault();
+
+	var xhr, onLoadHandler, results;
+
+	results = document.querySelector('#results');
+
+	onLoadHandler = function(event){
+		var xhr = event.target,
+		    firstPerson = xhr.response.firstChild.firstElementChild.firstElementChild.firstChild.data,
+		    resp = document.createTextNode('The first name in our response is: '),
+            hd = document.createElement('p'),
+            b = document.createElement('b'),
+		    fp = document.createTextNode(firstPerson);
+
+        hd.innerHTML = '<code>responseType: '+xhr.responseType+'</code>';
+		b.appendChild(fp);
+		results.appendChild(hd);
+		results.appendChild(resp);
+		results.appendChild(b);
+	}
+
+
+	onLoadStartHandler = function(event){
+	    console.log('started!');
+		var xhr = event.target;
+	}
+
+	xhr = new XMLHttpRequest();
+	xhr.open('GET','xhr-data.xml',true);
+	xhr.responseType = 'document';
+	xhr.addEventListener('load', onLoadHandler, false);
+	xhr.addEventListener('loadstart', onLoadStartHandler, false);
+	xhr.send();
+}
+</script>
+
+<script src="http://devfiles.myopera.com/articles/9482/xhr2.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,161 @@
+<html>
+<head>
+	<title>Dynamic style: Manipulating CSS with JavaScript Examples - Adding and Removing Rules Example </title>
+	<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/621/example_styles.css">
+</head>
+<body>
+	<h1>
+		Dynamic style: Manipulating CSS with JavaScript Examples
+	</h1>
+	<p>Note: Some of the example code shown below is not the full code being executed. To make things as simple as possible I wanted to just show the critical code pertaining to style manipulation, thus the code that deals with browser differences is not shown.  To see the full code one can view the source code.</p>
+	<hr>
+	<div>
+		<h2>Adding and Removing Rules example</h2>
+		<p>
+			This example demonstrates how to add and remove rules from a style element.
+		</p>
+				<div style="clear:both;"></div>
+		<input id="ct" class='button' type='button' value="changeText()" onclick="changeText();" />
+		<input id="rt" class='button' type='button' value="resetText()" onclick="resetText();" />
+		<div class="example">
+			<p>CSS rules of our style sheet.  Numbered starting at zero in cssRules</p>
+			<ol id="e3_rules">
+			</ol>
+			<p>some text in a P tag</p>
+		</div>
+		<div class="code_css">
+			<h4>CSS Code</h4>
+					<pre>
+&lt;style title="e3_style"&gt;
+	.not-applied-class1 {
+		border: 2px solid black;
+	}
+	.not-applied-class2 {
+		font-size: 15px;
+	}
+	.not-applied-class3 {
+		background-color: blue;
+	}
+	.not-applied-class4 {
+		margin: 10px;
+	}
+&lt;/style&gt;
+					</pre>
+					<style title="e3_style">
+						.not-applied-class1 {
+							border: 2px solid black;
+						}
+						.not-applied-class2 {
+							font-size: 15px;
+						}
+						.not-applied-class3 {
+							background-color: blue;
+						}
+						.not-applied-class4 {
+							margin: 10px;
+						}
+					</style>
+				</div>
+				<div class="code_js">
+					<h4>JavaScript Code</h4>
+					<pre>
+var e3_style_on = false;
+function getStyleSheet() {
+	for(var i=0; i&lt;document.styleSheets.length; i++) {
+		var sheet = document.styleSheets[i];
+		if(sheet.title == 'e3_style') {
+			return sheet;
+		}
+	}
+}
+var rule_sheet = getStyleSheet();
+function changeText() {
+	if(!e3_style_on) {
+		rule_sheet.insertRule("p { color: red;}", 2);
+	}
+	e3_style_on = true;
+	showRules();
+}
+function resetText() {
+	if(e3_style_on) {
+		rule_sheet.deleteRule(2);
+	}
+	e3_style_on = false;
+	showRules();
+}
+			</pre>
+			<script>
+				function getStyleSheet() {
+					for(var i=0; i<document.styleSheets.length; i++) {
+						var sheet = document.styleSheets[i];
+						if(sheet.title == 'e3_style') {
+							return sheet;
+						}
+					}
+				}
+				var rule_sheet = getStyleSheet();
+				var e3_style_on = false;
+				function showRules() {
+					var list = document.getElementById('e3_rules');
+					if(list) {
+						list.innerHTML = "";
+						if(rule_sheet.cssRules) {
+							rules = rule_sheet.cssRules;
+						} else {
+							rules = rule_sheet.rules;
+						}
+						for(var i=0; i<rules.length; i++) {
+							var li = document.createElement('li');
+							li.innerHTML=rules[i].cssText;
+							list.appendChild(li);
+						}
+					}
+				}
+				function changeText() {
+					if(!e3_style_on) {
+						if(rule_sheet.cssRules != undefined) {
+							rule_sheet.insertRule("p { color: red;}", 2);
+						} else {
+							rule_sheet.addRule("p", "color: red;", 2);
+						}
+					}
+					e3_style_on = true;
+					showRules();
+				}
+				function resetText() {
+					if(e3_style_on) {
+						if(rule_sheet.cssRules != undefined) {
+							rule_sheet.deleteRule(2);
+						} else {
+							rule_sheet.removeRule(2);
+						}
+					}
+					e3_style_on = false;
+					showRules();
+				}
+			</script>
+		</div>
+
+		<script>
+			showRules();
+		</script>
+		<p class="note">
+			Note: IE does not implement rules according to the standard.
+			<br>
+			Instead of the attribute <code>cssRules</code> it uses <code>rules</code>; IE also uses <code>removeRule</code> instead of <code>deleteRule</code> and 
+			<code>addRule(selector, rule, index)</code> instead of <code>insertRule</code>.
+		</p>
+	</div>
+	<script>
+		function addOnClick(el, func) {
+			if(el.addEventListener) {
+				el.addEventListener('click', func, true);
+			} else {
+				el.attachEvent('onclick', func);
+			}
+		}
+		addOnClick(document.getElementById('ct'), changeText);
+		addOnClick(document.getElementById('rt'), resetText);
+	</script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Widgets Preference Store - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Widgets - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/widgets">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Widgets - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/widgets">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="widgets">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Widgets Preference Store</h1>
+      <p class="print author">By Opera Software</p>
+
+      <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">24th April 2012: Please note</h2>
+
+<p>Starting with Opera 12, Opera Widgets will <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">be turned off for new users and completely removed in a later release</a>. If you&#39;re interested in building addons for Opera, we recommend going with our extensions platform — check out <a href="../../../addons/extensions/index.html">our extensions documentation</a> to get started.</p>
+</div>
+
+
+<h2 class="no-toc">Introduction</h2>
+
+<p>The Opera Widgets Preference Store is where widgets store their settings and other data you want the widget to persist across sessions. Once data is stored in the Opera Widgets Preference Store, the user may close and reopen the widget, and the stored preferences will still be available.</p>
+
+<ol>
+<li><a href="index.html#what">What is the Preference Store?</a></li>
+<li><a href="index.html#using">Using the Preference Store</a></li>
+<li><a href="index.html#storagecapacity">Storage capacity considerations</a></li>
+<li><a href="index.html#resources">Resources</a></li>
+</ol>
+
+<h2 id="what">What is the Preference Store?</h2>
+
+<p>The preference store is a key/value store with both the key and the value being strings. The widget may store data to be reused at a later date, such as a username, settings for the widget, cached data, and so on. The data is stored on the device, for example on its hard drive, and can be read back at any time. This is also the case if the widget is restarted or the device or the widget runner crashes.</p>
+
+<p>The data for a widget is only available to that widget, not to other widgets or Web pages.</p>
+
+<h2 id="using">Using the Preference Store</h2>
+
+<p>You work with the Preference Store using two methods on the <code>widget</code> object: <code>setPreferenceForKey</code> and <code>preferenceForKey</code>. <code>setPreferenceForKey</code> takes two arguments, the value to save and the name of the key. <code>preferenceForKey</code> takes the name of the key to retrieve the value of as an argument. For example:</p>
+
+<pre>
+<code>
+widget.setPreferenceForKey( &#39;gautamc&#39;, &#39;username&#39; );
+//Close and reopen the widget
+var username = widget.preferenceForKey(&#39;username&#39;);
+</code>
+</pre>
+
+<p>The value is stored immediately, so you do not need to reopen the widget to be able to access it. If you store a value for a key that already exists, the old value will be silently overwritten.</p>
+
+<p>Note: The methods are named after the similar methods that exist for Mac OS X Dashboard widgets, in order to promote compatibility.</p>
+
+<h2 id="storagecapacity">Storage capacity considerations</h2>
+
+<p>Some devices have relatively limited storage capacity available for storing widget preference data. If a widget attempts to store data beyond the free space available, the device will free space by deleting preferences for older widgets in order of the time they were last run.</p>
+
+<p>Example: For the sake of argument, assume that the your device has space for just <em>two</em> sets of widget preferences and that newly-installed widgets all store preferences. Say you download the BBC News widget. You then download the 2d ruler the next day, use it, and then use the BBC News widget. If you then download the Earthquake monitor widget on the third day and this widget stores preferences, all the preferences for the 2d ruler would be deleted to make space for the new ones, as it is the widget that was used the longest time ago.</p>
+
+<p>By design, all preferences for a single widget are either fully deleted or left intact. No single preference is deleted to make room for another widget’s preferences. This means that you can be sure that the stored widget preferences are in a consistent state.</p>
+
+<p class="note">Note that while all preferences for a widget will be deleted, this may not be the case for the widget’s cookies and cache.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="../opera-widgets-specification-fourth-ed/index.html">Opera Widgets Specification 1.0, fourth edition</a></li>
+</ul>
+
+<ul class="seriesNav">
+<li><a href="../opera-widgets-sdk/index.html" rel="index">Opera Widgets SDK table of contents</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=233233">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, February 9, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/data.html" rel="tag">data</a></li>
+        <li><a href="../../tags/persist.html" rel="tag">persist</a></li>
+        <li><a href="../../tags/preference.html" rel="tag">preference</a></li>
+        <li><a href="../../tags/store.html" rel="tag">store</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

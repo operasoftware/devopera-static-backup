@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Corey's scrolling site of green</title>
+    <meta name="language" content="en" />
+    <meta charset="utf-8" />
+    <link href="stylesheet.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+    <h1>Corey's scrolling site of green</h1>
+
+    <h2 id="skip"><span>non-functioning links for graphical
+    browser users</span> [<a href="#nav">skip to menu</a>]
+    </h2>
+    
+    <span>{</span><a id="welcome" href="#welcome">Welcome
+    </a><span>}</span>
+    <span>{</span><a id="tabs" href="#tabs">Tab styling
+    </a><span>}</span>
+    <span>{</span><a id="apps" href="#apps">Applications
+    </a><span>}</span>
+      <article>
+
+        <section id="s0">
+          ...
+        </section>
+
+        <section id="s1">
+          ...
+        </section>
+
+        <section id="s2">
+          ...
+        </section>
+      </article>
+      <ul id="nav">
+        <li><a href="#s0">Welcome</a></li>
+        <li><a href="#s1">Tab styling</a></li>
+        <li><a href="#s2">Applications</a></li>
+      </ul>
+    </div>
+</body>
+</html>

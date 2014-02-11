@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Remote debugging with Opera Dragonfly - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Remote debugging with Opera Dragonfly</h1>
+      <p class="print author">By David Storey</p>
+
+      <p class="note">This article is <strong>deprecated</strong>; instead, consult our <a href="http://www.opera.com/dragonfly/documentation/">Opera Dragonfly 1.0 Field Guide</a>, which has a whole section dedicated to <a href="http://www.opera.com/dragonfly/documentation/remote/">remote debugging</a>.</p>
+
+<h2>Introduction</h2>
+
+<p>One of the revolutionary aspects of <a href="http://www.opera.com/dragonfly/">Opera Dragonfly</a> is the remote debug feature.  With the release of Opera Mobile 9.5 beta 1, Opera Dragonfly can be used to debug web pages and applications on a mobile phone, from your regular development machine.  This article will step through the process of remotely debugging mobile devices and introduce some of the features of Opera Dragonfly.</p>
+
+<h2>Setting up remote debugging</h2>
+
+<p>Two items are required for remote debugging; a copy of <a href="http://www.opera.com/browser/">Opera desktop</a> (which includes Opera Dragonfly since version 9.5) and a mobile phone running <a href="http://www.opera.com/mobile/">Opera Mobile</a> (9.7 or better).  If you don’t have a mobile phone, it is possible to test this set up by using a second computer running Opera desktop 9.5+, as Opera Dragonfly supports debugging another instance of the desktop browser. This is ideal for debugging a secondary machine, for example if you want to test on a different operating system.</p>
+<p>Once you have downloaded and installed both versions of Opera, you should open Opera Dragonfly by selecting “Tools &gt; Advanced &gt; Opera Dragonfly” in the Opera menu bar on your computer.  Click on the “Configurations” icon in the lower right hand corner of the Opera Dragonfly window, check the “Remote Debug” check box, and click the “Apply” button (see Figure 1).  Now that Opera Dragonfly is in remote debug mode, the next step is to connect to it using the mobile phone.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/443/settings_remote-debug.png" width="571" height="308" alt="The settings needed to set up remote debugging in Opera Dragonfly" />
+<p class="comment">Figure 1: The settings needed to set up remote debugging in Opera Dragonfly.</p>
+
+<p>Fire up Opera Mobile, and enter <kbd>opera:debug</kbd>  in the URL field.  A page should load allowing you to enter the required information to connect to Opera Dragonfly on your computer.  Here, you should enter the IP address of your computer, and the port number to connect to (the default is 7001); you then press the “Connect” button. </p>
+
+<p>Your IP address can be found on Mac and Linux by typing <kbd>ifconfig</kbd> in a terminal window and looking for the <samp>inet</samp> value of your <samp>active</samp> connection. In my case I’m using a Ethernet connection, so the correct inet value is the one that corresponds to the media value <samp>media: autoselect (100baseTX &lt;full-duplex,flow-control&gt;) status: active</samp>.  If you have multiple connections—such as WiFi, Bluetooth, etc.—there will be multiple inet values, so it is important to specify the correct value (the value you need is highlighted in Figure 2).  On Windows the output is somewhat simpler.  You can find the IP Address by typing <kbd>ipconfig</kbd> on the Windows Command Prompt, and it will be labelled <samp>IP Address</samp>.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/443/ipaddressmac.gif" alt="Finding your computers IP address on Mac or Linux. The IP address you need is the one after the inet string." />
+<p class="comment">Figure 2: Finding your computer’s IP address on Mac or Linux (actual IP addresses blurred out for security reasons).</p>
+
+<p>If all went well you should be presented with a message informing you that you are connected to the specified IP address and port number.  For best results, I’d recommend using Active Sync (if using Windows) or WiFi (if it is available on your mobile model) for the network connection on the mobile device.</p>
+<p>Only one connection is allowed per session—you must disconnect the existing device first if you wish to debug a new device, otherwise Opera Dragonfly will only receive and send requests to the device that was connected first. </p>
+<p>It is important to bear in mind that the connection is not encrypted, so if you are connecting over an open public connection, rather than behind a firewall, make sure you do not transmit any sensitive information, such as credit card numbers. </p>
+<p>Once connected, you can click on the Opera Dragonfly Environment tab (see Figure 3) to see information about the device you are connected to, and the version of Opera Dragonfly that you are running.  In this case it should give the platform that Opera Mobile is running on, which in my case is Symbian.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/443/remote-environment.png" width="510" height="402" alt="The Opera Dragonfly environment tab, showing it is connected to the Symbian OS." />
+<p class="comment">Figure 3: The Opera Dragonfly environment tab, showing it is connected to the Symbian OS.</p>
+
+<h2>Debugging your first mobile page</h2>
+
+<p>Now that your computer and mobile are speaking to each other through the Scope protocol, open a new tab in Opera Mobile, and enter the URL of a page you’d like to debug in the URL field.  Once the page has loaded, it should show up in the drop-down combo box in the Opera Dragonfly user interface.  Once you select this, you are ready to start debugging the page.</p>
+
+<p>With the page selected in Opera Dragonfly, click the DOM tab and select the required (X)HTML file.  You will then see the generated DOM of the page that you are viewing on your mobile phone.  The page can then be debugged in exactly the same way as if it were a page on your computer.</p>
+
+<p>To experiment with debugging the page, I’ll walk you through Opera Dragonfly’s CSS editing feature.  If you try to click on a element, such as the <code>body</code> element, it will scroll the element into view (if it isn’t already) on the mobile, and show the style information on the right hand side panel in Opera Dragonfly.  Now try to edit one of the values.  If there is a <code>background-color</code>, you can click on the value and change it.  Click on the value of the CSS declaration and then enter a new value—<kbd>red</kbd> for example.  Pressing the up or down arrows on the keyboard will cycle through the possible values (as seen in Figure 4).</p>
+
+<img src="../../../../devfiles.myopera.com/articles/443/editingvalue.png" alt="Cycling through CSS values in Opera Dragonfly." />
+<p class="comment">Figure 4: Cycling through CSS values in Opera Dragonfly.</p>
+
+<p>Look at the screen of the mobile while doing this and you will see that the background colour will update in real time.</p>
+
+<p>There may be a short lag if you have a slow network connection between the device and the computer. Now try adjusting another property, such as <code>font-size</code>, and notice how the visuals on screen will change in real time.  This CSS tweaking is very useful for testing what will happen when rules are changed or new rules are added.  Once connected, debugging a remote device works the same way as on your local machine, so you can experiment with the features you already know, or follow the <a href="../introduction-to-opera-dragonfly/index.html">introduction to Opera Dragonfly</a> article on <a href="../../../index.html">Dev.Opera</a>.</p>
+
+<h2>Wrapping up and disconnecting</h2>
+
+<p>Once you have finished debugging your page, you have to disconnect to return both Opera Dragonfly and the device into their regular modes.  In Opera Mobile, you can navigate back to <kbd>opera:debug</kbd>  and click the “Disconnect” button.  If you are finished using the browser, you can also disconnect by closing the application.  To return Opera Dragonfly into local debugging mode, you must open the “Settings” window again, uncheck the “Remote Debug” checkbox and click “Apply”. </p>
+
+<h2>Conclusion</h2>
+
+<p>In this article I’ve stepped through how to set up and connect a remote device to Opera Dragonfly using Opera Mobile, and briefly touched on the CSS editing feature of Opera Dragonfly.  Now you should know how to use Opera Dragonfly to debug the different supported devices, right from your regular development machine.</p> 
+            
+
+      <section id="author-info">
+        <h1><a href="../../../author/dstorey.html" rel="author">David Storey</a></h1>
+        <a href="../../../author/dstorey.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/f3/119/2440dec3e332b16b8b7845262a1d6e9ca6d.png" alt=""/></a>
+        <p>David Storey heads up the Open the Web initiative at Opera.  This small global team is tasked with improving the compatibility of web sites across Opera&#39;s wide range of browsers, as well as promoting web standards, accessibility and best practices, so that the Web will work for all standards-aware browsers, platforms, devices and users.  He is a member of the W3C Mobile Web Best Practices Working Group.<br/><br/>On his blog, Slightly Ajar, he discusses this work, as well as random topics, from travel to music.  <br/><br/>David previously worked for CERN, home of the World Wide Web, before taking up his post at Opera Software.  <br/></p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=242852">My Opera</a>.</p>
+  <ul>
+    <li id="comment-97096032">
+      <a href="../../../author/huangyejia.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d7/e6a/c9f4a3d21cb632b4a7efbdb9d331125bdee.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/huangyejia.html">王佳</a></p>
+      <p class="commentdate">Wednesday, September 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><a href="http://i.creativecommons.org/l/by/3.0/88x31.png" target="_blank">http://i.creativecommons.org/l/by/3.0/88x31.png</a></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/dstorey.html" rel="author">David Storey</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, July 17, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/deprecated.html" rel="tag">deprecated</a></li>
+        <li><a href="../../tags/dragonfly.html" rel="tag">dragonfly</a></li>
+        <li><a href="../../tags/mobile.html" rel="tag">mobile</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

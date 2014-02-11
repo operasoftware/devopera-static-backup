@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="addsvg.xsl" type="text/xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>The United Kingdom</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <h1>Map of the United Kingdom</h1>
+    <p>
+<img src="UK.png" width="271" height="599" alt="Map of the United Kingdom" usemap="#uk-map" />
+
+<map name="uk-map" id="uk-map">
+  <area shape="poly" coords="131,309,166,286,160,277,177,264,152,250,179,189,173,169,124,170,145,140,162,105,187,83,214,6,192,9,161,47,161,79,122,100,123,122,45,131,22,161,11,176,17,202,11,226,38,217,32,241,49,247,45,276,66,293,83,296,80,311,89,327,108,322" href="http://en.wikipedia.org/wiki/Scotland" title="Scotland" alt="Map of Scotland" />
+  <area shape="poly" coords="140,383,145,396,138,402,141,442,152,456,136,470,118,463,100,456,87,460,74,443,108,424,108,409,92,407,100,391,92,379,104,369,117,377,131,373" href="http://en.wikipedia.org/wiki/Wales" title="Wales" alt="Map of Wales" />
+  <area shape="poly" coords="131,309,166,286,160,277,177,264,196,316,226,345,236,391,270,398,270,430,248,460,263,462,262,479,229,498,208,495,189,503,175,499,155,506,142,498,125,518,103,513,85,529,64,522,93,492,99,478,110,469,136,470,152,456,141,442,138,402,145,396,140,383,131,373,137,364,132,346,121,327" href="http://en.wikipedia.org/wiki/England" title="England" alt="Map of England" />
+  <area shape="poly" coords="20,312,23,301,51,287,63,289,84,329,64,353,45,351,38,340,28,350,10,344,1,330,10,314" href="http://en.wikipedia.org/wiki/Northern_Ireland" title="Northern Ireland" alt="Map of Northern Ireland" />
+</map>
+    </p>
+  </body>
+</html>

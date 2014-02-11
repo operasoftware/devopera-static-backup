@@ -1,0 +1,102 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>RGB, HSL, alpha</title>
+<style>
+table { width: 100%; }
+#t1 td, #t1 th { height: 1em; width: 50%; }
+#t2 td, #t2 th { height: 1em; width: 25%; }
+</style>
+</head>
+
+<body>
+<table id="t1">
+<caption>Table 1: Using HSL</caption>
+<tr>
+		<th>HSL: Saturation decrease</th>
+		<th>HSL: Light decrease</th>
+</tr>
+<tr>
+	<td style="background-color: hsl(240, 100%, 50%);" class="hsl-blue" title="hsl(240, 100%, 50%)"> </td>
+	<td style="background-color: hsl(240, 100%, 50%);" class="hsl-blue" title="hsl(240, 100%, 50%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(240, 80%, 50%);" class="hsl-blue1-s" title="hsl(240, 80%, 50%)"> </td>
+	<td style="background-color: hsl(240, 100%, 40%);" class="hsl-blue1-l" title="hsl(240, 100%, 40%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(240, 60%, 50%);" class="hsl-blue2-s" title="hsl(240, 60%, 50%)"> </td>
+	<td style="background-color: hsl(240, 100%, 30%);" class="hsl-blue2-l" title="hsl(240, 100%, 30%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(240, 40%, 50%);" class="hsl-blue3-s" title="hsl(240, 40%, 50%)"> </td>
+	<td style="background-color: hsl(240, 100%, 20%);" class="hsl-blue3-l" title="hsl(240, 100%, 20%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(240, 20%, 50%);" class="hsl-blue4-s" title="hsl(240, 20%, 50%)"> </td>
+	<td style="background-color: hsl(240, 100%, 10%);" class="hsl-blue4-l" title="hsl(240, 100%, 10%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(240, 0%, 50%);" class="hsl-blue5-s" title="hsl(240, 0%, 50%)"> </td>
+	<td style="background-color: hsl(240, 100%, 5%);" class="hsl-blue5-l" title="hsl(240, 100%, 5%)"> </td>
+</tr>
+
+<tr>
+		<th>HSL: Saturation decrease</th>
+		<th>HSL: Light decrease</th>
+</tr>
+<tr>
+	<td style="background-color: hsl(0, 100%, 50%);" class="hsl-red" title="hsl(0, 100%, 50%)"> </td>
+	<td style="background-color: hsl(0, 100%, 50%);" class="hsl-red" title="hsl(0, 100%, 50%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(0, 80%, 50%);" class="hsl-red1-s" title="hsl(0, 80%, 50%)"> </td>
+	<td style="background-color: hsl(0, 100%, 40%);" class="hsl-red1-l" title="hsl(0, 100%, 40%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(0, 60%, 50%);" class="hsl-red2-s" title="hsl(0, 60%, 50%)"> </td>
+	<td style="background-color: hsl(0, 100%, 30%);" class="hsl-red2-l" title="hsl(0, 100%, 30%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(0, 40%, 50%);" class="hsl-red3-s" title="hsl(0, 40%, 50%)"> </td>
+	<td style="background-color: hsl(0, 100%, 20%);" class="hsl-red3-l" title="hsl(0, 100%, 20%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(0, 20%, 50%);" class="hsl-red4-s" title="hsl(0, 20%, 50%)"> </td>
+	<td style="background-color: hsl(0, 100%, 10%);" class="hsl-red4-l" title="hsl(0, 100%, 10%)"> </td>
+</tr>
+<tr>
+	<td style="background-color: hsl(0, 0%, 50%);" class="hsl-red5-s" title="hsl(0, 0%, 50%)"> </td>
+	<td style="background-color: hsl(0, 100%, 5%);" class="hsl-red5-l" title="hsl(0, 100%, 5%)"> </td>
+</tr>
+
+</table>
+
+<table id="t2" style="background-color: #777">
+<caption>Table 2: Alpha transparency in RGBA and HSLA</caption>
+<tr>
+	<th>.01</th>
+	<th>.25</th>
+	<th>.50</th>
+	<th>1</th>
+</tr>
+<tr>
+	<td style="background-color: hsla(30, 100%, 50%, 0.1);" class="orange1" title="hsla(30, 100%, 50%, 0.1)"> </td>
+	<td style="background-color: hsla(30, 100%, 50%, 0.25);" class="orange2" title="hsla(30, 100%, 50%, 0.25)"> </td>
+
+	<td style="background-color: hsla(30, 100%, 50%, 0.5);" class="orange3" title="hsla(30, 100%, 50%, 0.5)"> </td>
+	<td style="background-color: hsla(30, 100%, 50%, 1);" class="orange4" title="hsla(30, 100%, 50%, 1)"> </td>
+</tr>
+<tr>
+	<td style="background-color: rgba(0,255,0,0.1);" class="green1" title="rgba(0,255,0,0.1)"> </td>
+	<td style="background-color: rgba(0,255,0,0.25);" class="green2" title="rgba(0,255,0,0.25)"> </td>
+	<td style="background-color: rgba(0,255,0,0.5);" class="green3" title="rgba(0,255,0,0.5)"> </td>
+	<td style="background-color: rgba(0,255,0,1);" class="green4" title="rgba(0,255,0,1)"> </td>
+</tr>
+
+</table>
+
+
+
+</body>
+</html>

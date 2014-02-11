@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Playing with HTML5 video &amp; getUserMedia support - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Playing with HTML5 video &amp; getUserMedia support</h1>
+      <p class="print author">By Daniel Davis</p>
+
+      <img src="../../../../devfiles.myopera.com/articles/6452/html5-exploding-camera.jpg" width="400" height="300" alt="Use getUserMedia to make your head explode." style="float:right;padding-left: 10px;" />
+
+<p>You may have seen the impressive HTML5 experiment created by Sean Christmann involving a video that explodes at the click of a mouse. If not, we&#39;d recommend that you have a look:</p>
+
+<p><a href="http://www.craftymind.com/2010/04/20/blowing-up-html5-video-and-mapping-it-into-3d-space/">HTML5 exploding video demo</a></p>
+
+<p>At the time, the boundaries of non-plugin video within a desktop browser were being explored and it caused a stir as an example of how video within the browser can be manipulated. The way he achieved the result was clever as he used two instances of the HTML5 canvas: a hidden one for painting and another visible one for manipulating. Sean must have been through a lot of trial and error and the lessons he learned are an interesting read.</p>
+
+<p>Now that we have released a <a href="../getusermedia-access-camera-privacy-ui/index.html">desktop build with getUserMedia support</a> to match our <a href="http://my.opera.com/core/blog/2011/03/23/webcam-orientation-preview">Opera Mobile with camera support</a> for Android, we thought we&#39;d have a go at converting his demo (with his permission) to work with either a webcam or a mobile device&#39;s built-in camera. The result can be seen here:</p>
+
+<p><a href="http://people.opera.com/danield/html5/explode/">HTML5 exploding camera demo (bit.ly/democam)</a></p>
+
+<p>Let&#39;s go through what we did to make the demo work with a camera both on desktop browsers as well as mobile devices.</p>
+
+<h2>Use <code>getUserMedia</code> for the video source</h2>
+
+<p>The original HTML code has a <code>&lt;video&gt;</code> element that uses two <code>&lt;source&gt;</code> elements to <a href="../introduction-html5-video/index.html#codecs">enable two video formats to be available to browsers</a>. For camera use, we removed these <code>&lt;source&gt;</code> elements and replaced them with JavaScript code to use the camera as the video source. Incidentally, although we don&#39;t initially have a video source, we can still use the <code>autoplay</code> attribute so that the camera stream will be displayed without the user having to click anything.</p>
+
+<pre><code>&lt;!-- HTML code --&gt;
+&lt;video id=&quot;sourcevid&quot; autoplay&gt;Put your fallback message here.&lt;/video&gt;</code></pre>
+
+<pre><code>/* JavaScript code */
+window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
+    // Assign the &lt;video&gt; element to a variable
+    var video = document.getElementById(&#39;sourcevid&#39;);
+
+    // Replace the source of the video element with the stream from the camera
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia(&#39;video&#39;, successCallback, errorCallback);
+        // Below is the latest syntax. Using the old syntax for the time being for backwards compatibility.
+        // navigator.getUserMedia({video: true}, successCallback, errorCallback);
+        function successCallback(stream) {
+            video.src = stream;
+        }
+        function errorCallback(error) {
+            console.error(&#39;An error occurred: [CODE &#39; + error.code + &#39;]&#39;);
+            return;
+        }
+    } else {
+        console.log(&#39;Native web camera streaming (getUserMedia) is not supported in this browser.&#39;);
+        return;
+    }
+}, false);</code></pre>
+
+<p>That&#39;s it! In the demo code we added a more readable error message for users without camera support. Credit goes to <a href="http://richt.me/">Rich Tibbett</a> for this code.</p>
+
+<p class="note">Note that we are checking for browser support of the <code>getUserMedia</code> method rather than checking which version of a particular browser the user is using. This is much more trouble-free and future-proof than parsing the user agent and trying to maintain a list of compatible browsers.</p>
+
+<h2>Add touch support</h2>
+
+<p>Although events such as <code>onclick</code> are understood by mobile browsers, using touch events is much more efficient and in this demo, we need as much efficiency as we can get. Firstly, we check to see if touch events are supported:</p>
+
+<pre><code>// Create a boolean variable: true if touch is supported.
+var isTouch = &#39;createTouch&#39; in document;
+</code></pre>
+
+<p>Next, we use this boolean to override the <code>ontouchstart</code> event in touch-enabled devices and <code>onmousedown</code> in other environments. This means we only need to write one listener to fire our main function.</p>
+
+<pre><code>
+var outputcanvas = document.getElementById(&#39;output&#39;);
+var mouse_down = (isTouch ? &#39;ontouchstart&#39; : &#39;onmousedown&#39;);
+
+outputcanvas[mouse_down] = function(event) {
+    dropBomb(event, this);
+};</code></pre>
+
+<p>This is enough to get it to work, but in our demo we will also need the coordinates of the touch event. This is slightly different to getting mouse coordinates and this difference, if you&#39;re not aware, can cause a lot of head-scratching. Well, it did in my case! The cause is multi-touch support which means that each touch event has multiple coordinates, provided by the browser in a <code>touches</code> array. With an <code>if</code> statement such as the following, we can get the coordinates whatever browser we&#39;re dealing with:</p>
+
+<pre><code>// Get the user&#39;s touch/mouse coordinates to explode the canvas
+function dropBomb(event, obj) {
+    event.preventDefault();
+    var posx = 0;
+    var posy = 0;
+    var e = event || window.event;
+    
+    if (e.touches) {
+        posx = event.touches[0].pageX;
+        posy = event.touches[0].pageY;
+    } else if (e.pageX || e.pageY) {
+        posx = e.pageX;
+        posy = e.pageY;
+    } else if (e.clientX || e.clientY) {
+        posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+    var canvasX = posx-obj.offsetLeft;
+    var canvasY = posy-obj.offsetTop;
+    explode(canvasX, canvasY);
+}</code></pre>
+
+<h2>Speed, more speed!</h2>
+
+<p>I was surprised at how fast desktop browsers handled the video manipulation but unlike Sean&#39;s original demo, we&#39;re also targetting mobile devices so we should strive for any performance improvement possible. Fortunately there are a couple of quick ways we can speed things up a bit. Firstly, we look for the most intensive part of the script and in this case, it&#39;s clearly the <code>processFrame()</code> function which is repeated every 33 milliseconds. Within this there is a <code>for</code> loop which loops through an array of tiles, calculating the length of the array with each iteration. Caching the array length at the start of the loop would be more efficient, like so:</p>
+
+<pre><code>// Standard for loop
+for(var i = 0; i &lt; tiles.length; i++){
+    // Execute code
+}
+
+// Faster for loop with array length cached
+for(var i = 0, len = tiles.length; i &lt; len; i++){
+    // Execute code
+}</code></pre>
+
+<p>Any calls to <code>Math</code> methods are also time-consuming so we should to try to optimise these as well. One way is to simply cache the <code>Math</code> object in a global variable but we found this usually only gives a small improvement. A better approach would be to replace certain methods with more efficient versions if possible. In our <code>processFrame()</code> we&#39;re using <code>Math.abs()</code> a few times and there happens to be a faster way to achieve the same result:</p>
+
+<pre><code>// Standard use of Math.abs
+var a = Math.abs(x);
+
+// Faster than Math.abs
+function absolute(x) {
+    return (x &lt; 0 ? -x : x);
+}
+var b = absolute(x);</code></pre>
+
+<p>Finally, if we reference any object properties that are static, it&#39;s worth caching them in variables to get a further speed boost. For example, to adapt to various screen sizes we made the painting area (<code>PAINTRECT</code>) the same size as the browser window using <code>window.innerWidth</code> and <code>window.innerHeight</code>. This is unlikely to change during the demo (unless the user resizes the window) so we decided not to reference the <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code> properties with each call of <code>processFrame()</code>. Instead, we can reference them once outside the recurring function and store them in a variable:</p>
+
+<pre><code>var PAINTX = 0;
+var PAINTY = 0;
+var PAINTWIDTH = window.innerWidth;
+var PAINTHEIGHT = window.innerHeight;
+
+function processFrame() {
+    // Some code
+    draw.clearRect(PAINTX, PAINTY,PAINTWIDTH,PAINTHEIGHT);
+    // Some more code
+}</code></pre>
+
+<p class="note">For performance testing, <a href="http://jsperf.com/">jsPerf</a> is an excellent resource, both for creating your own tests or running pre-made ones.</p>
+
+<h2>Conclusion</h2>
+
+<p>In converting Sean&#39;s demo to using a camera, it turns out it&#39;s very easy to simply replace the video&#39;s source with the camera&#39;s stream. This works well on desktop browsers with <code>getUserMedia</code> support but we went a bit further. The extra work we put in to our example is because in the 18 months since he wrote the original code, browser technology has progressed so that video within mobile web pages is now a reality. To provide the best experience possible for all users, it&#39;s worth making the extra effort to look after users on touch devices and to improve efficiency for lower-powered devices. I&#39;m sure my code can be improved further so please let us know your suggestions and ideas in the comments.</p>
+
+<p class="note">Note: You can find another fantastic camera demo, written by Mike Taylor, at his <a href="http://miketaylr.com/photobooth/">Photobooth page</a>. This makes great use of <code>getUserMedia</code> and <code>&lt;canvas&gt;</code>. Shwetank Dixit has also created a great <a href="http://people.opera.com/shwetankd/demos/warhol/warhol.htm"><code>getUserMedia</code> demo inspired by Andy Warhol</a>! There&#39;s also a <a href="http://people.opera.com/danield/webapps/instant-camera/">Polaroid-style getUserMedia demo</a>.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=1127662">My Opera</a>.</p>
+  <ul>
+    <li id="comment-80925972">
+      <a href="../../../author/thethisorthat.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/42/9b5/554f73f740cbb761479f0149f581ce58fec.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/thethisorthat.html">thethisorthat</a></p>
+      <p class="commentdate">Sunday, January 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Here&#39;s my attempt at implementing getUserMedia <a href="http://html5photobooth.com" target="_blank">http://html5photobooth.com</a>. <br/>I Open Sourced the code if you&#39;re interested how it was put together. Look forward to see improvements and feedback. <a href="https://github.com/davexoxide/HTML5-Photobooth" target="_blank">https://github.com/davexoxide/HTML5-Photobooth</a></section>
+    </li>
+    <li id="comment-91058772">
+      <a href="../../../author/sjoerdvisscher.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ac/298/1087c447ce9f7e9ee110770808a58731c78." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/sjoerdvisscher.html">Sjoerd Visscher</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Why is an abs function written in javascript faster than the built-in Math.abs? That makes no sense! At the very least the built-in Math.abs could itself be implemented in javascript.</section>
+    </li>
+    <li id="comment-96319172">
+      <a href="../../../author/virusgratis2.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9e/9d2/11d6260c6adede2d48b8d19d0c89189fd3a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/virusgratis2.html">virusgratis2</a></p>
+      <p class="commentdate">Wednesday, September 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera not supports audio context of getusermedia.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/tagawa.html" rel="author">Daniel Davis</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, October 19, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/camera.html" rel="tag">camera</a></li>
+        <li><a href="../../tags/device.html" rel="tag">device</a></li>
+        <li><a href="../../tags/efficient.html" rel="tag">efficient</a></li>
+        <li><a href="../../tags/getusermedia.html" rel="tag">getusermedia</a></li>
+        <li><a href="../../tags/html5.html" rel="tag">html5</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/mobile.html" rel="tag">mobile</a></li>
+        <li><a href="../../tags/video.html" rel="tag">video</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Framerate control system for JavaScript - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Framerate control system for JavaScript</h1>
+      <p class="print author">By Javier Degirolmo</p>
+
+      <h2>
+    Table of contents
+</h2>
+<ul>
+    <li><a href="index.html#introduction">Introduction</a></li>
+    <li><a href="index.html#how_it_works">How it works</a></li>
+    <li><a href="index.html#the_framerate_object">Implementing the <code>Framerate</code> object</a></li>
+    <li><a href="index.html#example_code">Example code</a></li>
+    <li><a href="index.html#whats_next">What’s next?</a></li>
+</ul>
+<h2 id="introduction">
+    Introduction
+</h2>
+<p>
+    This article discusses how to create a reliable framerate control system in JavaScript. It is basically a timer with a rate of several cycles per
+    second. It would normally be used in games as a timer to keep the game logic running at a given speed — it is important that the timer is stable, otherwise the game will start running at different speeds and adversely affect gameplay.
+</p>
+<p class="note">
+You can <a href="../../../../devfiles.myopera.com/articles/819/framerate_example.zip">download the example code</a>, which includes both the code for the framerate control system object I’m about to explain as well as the example code I discuss later showing how to use it.
+</p>
+<h2 id="how_it_works">
+    How it works
+</h2>
+<p>
+    There are several ways to make a system that lets us keep up with the
+    pace of a specific timer (which in our case would be running at the speed of the ideal framerate). One method would be to use a counter — the idea is that we call a function every time a timer tick happens, which increases the counter. Then the main loop would check for this counter later and compare it with the value it had the last time it was run. This lets us know how many frames have elapsed since the last iteration.
+</p>
+<p>
+While this method works perfectly, it has an issue: it requires the function that increases the counter to be called constantly enough to keep up with the timer. Calling this function with methods such as <code>setInterval()</code> works in most browsers; if they can’t keep up with the pace of the timer they will start calling the function more often until they manage to reach the timer, which is accurate enough for our purposes. However, it seems that some browsers won’t call the function more often if they’re going too slowly, which breaks our timing system and becomes useless.
+</p>
+
+<p>
+The approach used in this article is different. We obtain the current time in milliseconds using the <code>getTime()</code> function from the <code>Date</code> object and make a note of the current frame, then do the same thing again. We can then determine the amount of frames elapsed between those two times by looking at the two “current frame” values. This method isn’t affected by the speed of the browser. This method has only been tested on Opera, Firefox and Internet Explorer, but it should work on any browser that supports scripting and the <code>Date</code> object.
+</p>
+
+<h2 id="the_framerate_object">
+     Implementing the <code>Framerate</code> object
+</h2>
+<p>
+    Let’s have a look at how we can create this — we’ll store this functionality in a <code>Framerate</code> object. The first thing we’ll do is create an empty object that returns a pointer
+    to itself. This is the object that will be doing all the timing duties.
+</p>
+
+<pre><code>function Framerate()
+{
+  // Return a pointer to itself
+  return this;
+}</code></pre>
+
+<p>
+Once we have the base object, we’ll start making the functions for it. The first function we’re going to make will tell the object the framerate. We’re going to call this function <code>setRate()</code>, and it will receive one parameter: the amount of cycles per second.
+</p>
+
+<pre><code>Framerate.prototype.setRate = function(rate)
+{
+  // Calculate new time difference between frames
+  this.frameLen = 1000 / rate;
+}</code></pre>
+
+<p class="warning">
+    Notice that we’re declaring the function as part of the object prototype. Make sure to declare it outside the <code>object</code> code, or there will be a memory leak every time a new object of this type is created. The same applies to the rest of the functions for this object.
+</p>
+
+<p>
+This function calculates the length of a frame in milliseconds. This value is stored in the object’s <code>frameLen</code> variable and will be used later to determine the amount of frames that have elapsed.
+</p>
+
+<p>
+The next function — <code>reset()</code> — will reset the timer. It sets the time of the last frame that has been checked to the current time. We need to call this function when initializing the object in order to get proper results.
+</p>
+
+<pre><code>Framerate.prototype.reset = function()
+{
+  // Create Date object
+  var d = new Date();
+    
+  // Reset time of the last time to the current one
+  this.prevTime = d.getTime();
+}</code></pre>
+
+<p>
+First, a new <code>Date</code> object is created. By default, <code>Date</code> objects contain the date and time of when they were created, which is what we’re looking for, so we just store the variable value as is. Next we retrieve the current time in milliseconds, calling the <code>getTime()</code> function on that object. This value is stored in the object’s <code>prevTime</code> variable, which holds the time of the last frame that was checked.
+</p>
+
+<p>
+Now that the required functions to set up the timer have been created, it’s time to create the function to retrieve the amount of elapsed frames. This function will return how many frames have elapsed since the last time it was called or <code>reset()</code> was called. It achieves that by comparing the amount of time elapsed since the last time, using the value in <code>frameLen</code> to determine the duration in frames. It also updates the time for the last frame accordingly, getting it ready for the next call. We’re calling this function <code>getFrames()</code>.
+</p>
+
+<pre><code>Framerate.prototype.getFrames = function()
+{
+  // Create Date object
+  var d = new Date();
+    
+  // Get current time, in milliseconds
+  var currTime = d.getTime();
+    
+  // Calculate amount of frames elapsed
+  // Also update time of the last frame if needed
+  var totalFrames = 0;
+  while (this.prevTime + this.frameLen &lt;= currTime)
+  {
+    this.prevTime += this.frameLen;
+    totalFrames++;
+  }
+    
+  // Return amount of frames elapsed
+  return totalFrames;
+}</code></pre>
+
+<p>
+First of all, it uses the same method as <code>reset()</code> to retrieve the current time. Next it sets up a counter to determine how many frames have passed (the initial value of this counter is 0 frames), then it enters a loop. If the time for what would be the next frame is smaller than the current frame, it increases the value of the last frame by one frame, and it also increases the amount of elapsed frames by 1. Once the situation arises that the next frame would be after the current time, we have achieved the value we want — the amount of elapsed frames, so the function stops iterating and returns the value.
+</p>
+
+<p>
+These three functions give us enough to have a reliable timer that can be used to keep track of the framerate in a game. We&#39;d like to encourage you to improve the object, and tell us about your results in the comments.
+</p>
+
+<h2 id="example_code">
+    Example code
+</h2>
+<p>
+Now we will look at some example code showing how to use the <code>Framerate</code> object. It’ll merely show the amount of seconds elapsed on screen, with accuracy within a tenth of a second. We’ll set the framerate at 10 frames per second, and set up a function that will check the frames regularly and update the amount of seconds accordingly. Even if the browser doesn’t call this function fast enough, the amount of seconds will appear at the correct speed (albeit results will appear on screen at a slower rate, skipping some values).
+</p>
+
+<p>
+First we’ll set up our main function to do the initialization. All variables will be stored here in order to prevent global namespace pollution.
+</p>
+
+<pre><code>// Main function
+function TestCode()
+{
+}
+
+// Call main function on load
+TestCode();</code></pre>
+
+<p>
+Now we have to create the <code>Framerate</code> object. We’ll set it to run at a rate of 10 frames per second, as stated earlier. Then we’ll reset the timer so it knows when to start counting. We can achieve that by putting the following code inside the function. We’re storing the pointer to the <code>Framerate</code> object in a variable called <code>f</code>.
+</p>
+
+<pre><code>// Create a Framerate object
+this.f = new Framerate();
+
+// Initialize Framerate object
+this.f.setRate(10);
+this.f.reset();</code></pre>
+
+<p>
+Now we’ll create a <code>&lt;p&gt;</code> element to put in the document, which will show the amount of seconds elapsed. We’re storing the pointer to it in the <code>p_obj</code> variable, and appending the object to the document body.
+</p>
+
+<pre><code>// Create &lt;p&gt; object inside the page
+this.p_obj = document.createElement(&quot;p&quot;);
+this.p_obj.innerHTML = &quot;0.0 seconds&quot;;
+document.body.appendChild(this.p_obj);</code></pre>
+
+<p>
+We’ll start the counter at 0 seconds, so we have to set its initial value accordingly.
+</p>
+
+<pre><code>// Reset seconds counter
+this.seconds = 0;</code></pre>
+
+<p>
+Now we need a function that will be used to update the seconds counter on screen. We’ll be using <code>setInterval()</code> so it is called regularly. Let’s start by making an empty function. We’re going to store a pointer to it in a variable called <code>callback</code>.
+</p>
+
+<pre><code>// This function will be called constantly to update the counter in the
+// &lt;p&gt; object in the page.
+this.callback = function()
+{
+}</code></pre>
+
+<p>
+Now we’ll insert the meat of the code into this function. The first thing we need in order to calculate the amount of seconds elapsed since the last time is to retrieve the amount of frames. In order to do that, we call the <code>getFrames()</code> function from our <code>Framerate</code> object.
+</p>
+
+<pre><code>// Get amount of frames elapsed
+var numFrames = this.f.getFrames();</code></pre>
+
+<p>
+So far so good. Now we need to calculate the amount of seconds to show this time. In order to do that, we increase the <code>seconds</code> counter by the amount of seconds elapsed. Since the timer is running at 10 frames per second, that means that we have to divide the amount of frames by 10 in order to know how many seconds have elapsed. We add this value to the previous amount of seconds to get the new amount of seconds.
+</p>
+
+<pre><code>// Update amount of seconds
+this.seconds += numFrames / 10;</code></pre>
+
+<p>
+Finally, we show the updated amount of seconds on screen by altering the <code>innerHTML</code> property of the <code>&lt;p&gt;</code> element we created before, thereby changing its contents.
+</p>
+
+<pre><code>// Show seconds on screen
+this.p_obj.innerHTML = Math.floor(this.seconds) + &quot;.&quot; +
+                       Math.floor(this.seconds * 10) % 10 +
+                       &quot; seconds&quot;;</code></pre>
+
+<p>
+That is all we need in the updating function. The last thing we need now is to somehow cause this function to be called constantly. I’m going to use the <code>setInterval()</code> function for this. So, after having created our updating function, we only need to put the following inside the main function. Notice that I’m storing <code>this</code> in a variable and referencing the function from there; otherwise the updating function won’t receive a proper value for <code>this</code> and it won’t work.
+</p>
+
+<pre><code>// Call updating function
+var myself = this;
+setInterval(myself.callback, 150);</code></pre>
+
+<p>
+If you did everything correctly, you will see a seconds counter on screen. You can find the completed code in the <a href="../../../../devfiles.myopera.com/articles/819/framerate_example.zip">code download for this article</a>. I&#39;m calling the updating function every 150 milliseconds in order to make the effects of going too slow more obvious. Feel free to modify this value in order to see how the <code>Framerate</code> object behaves. The seconds counter should be counting at the right speed regardless of how often the function is called.
+</p>
+
+<h2 id="whats_next">
+    What’s next?
+</h2>
+
+<p>
+In this article we’ve described a barebones framerate control system. It can certainly be improved on — here are some suggestions that you may want to look into:
+</p>
+
+<ul>
+    <li>Function parameters are not validated. You may want to make sure that the passed parameters are valid, otherwise the code may crash if invalid parameters are passed in.</li>
+    <li>Related to the above point, you may want to make the <code>Framerate</code> object have default values. Trying to use it without explicitly calling <code>setRate()</code> and <code>reset()</code> will yield invalid results.</li>
+    <li>Make a function to retrieve the current rate.</li>
+</ul>
+<p>
+And of course, feel free to experiment and try new ideas to improve the <code>Framerate</code> object.
+</p>
+              
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=453371">My Opera</a>.</p>
+  <ul>
+    <li id="comment-95712322">
+      <a href="../../../author/jayarjo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8e/fa7/fd67da4bb7866896893cef90dc1b785290b." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jayarjo.html">jayarjo</a></p>
+      <p class="commentdate">Saturday, September 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great article! But I have a side question. When you say: &quot;Notice that we’re declaring the function as part of the object prototype. Make sure to declare it outside the object code, or there will be a memory leak every time a new object of this type is created.&quot; - what kind of memory leak do you mean? I&#39;ve never encountered any mentioning of this being a potential memory leak. Could you provide any resource that has a deeper writeup on the matter?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/Sikthehedgehog.html" rel="author">Javier Degirolmo</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, March 10, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/framerate.html" rel="tag">framerate</a></li>
+        <li><a href="../../tags/games.html" rel="tag">games</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/timer.html" rel="tag">timer</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

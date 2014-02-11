@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Advanced Timeline</title>
+<style type="text/css">
+/*TABLE*/
+#timeline	{width:960px; overflow:hidden; overflow-x:scroll; position:relative; border:1px solid #4f6b72; -webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.5); -moz-box-shadow:1px 1px 3px rgba(0,0,0,0.5); box-shadow:1px 1px 3px rgba(0,0,0,0.5); background:#e5d6ca;}
+#main	{width:2470px; margin:10px; height:210px;}
+
+
+/*CONTAINERS AND HEADER*/
+.year	{padding:0; margin-left:-1px; border: 1px solid #000; background:#fff; float:left; height:210px; width:300px;}
+.year:nth-child(even) {background:#f9f6f3;}
+.year:first-child	{border-radius:30px 0 0 30px; -moz-border-radius:30px 0 0 30px;}
+.year:last-child	{border-radius:0 30px 30px 0; -moz-border-radius:0 30px 30px 0;}
+.year:first-child h2{border-radius:29px 0 0 0; -moz-border-radius:26px 0 0 0;}
+.year:last-child h2	{border-radius:0 29px 0 0; -moz-border-radius:0 26px 0 0;}
+
+h2		{font:bold 18px Verdana, sans-serif; color:#fff; text-align:center; background:#291200; margin:0 0 20px 0; padding:10px 0; border: 1px solid #000;}
+.gap	{display:block; margin-right:22px;}
+.gap h2::after	{content:"..."; position:absolute; margin-left:125px; color:#000;}
+.gap h2:after	{content:"..."; position:absolute; margin-left:125px; color:#000;}
+
+/*ELEMENTS*/
+.year div		{float:left; height:0; width:100%; position:relative;}
+.year div p, #legend div	{margin:0; position:relative; z-index:1; text-align:center; cursor:default; border:1px solid #402607; font:18px Georgia, serif; padding:2px;  -moz-border-radius:4px; border-radius:4px;
+-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5),
+inset 0 10px rgba(255,255,255,0.2),
+inset 0 10px 10px rgba(255,255,255,0.25),
+inset 0 -3px 20px rgba(0,0,0,0.3);
+-moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5),
+inset 0 10px rgba(255,255,255,0.2),
+inset 0 10px 20px rgba(255,255,255,0.25),
+inset 0 -3px 30px rgba(0,0,0,0.3);
+box-shadow: 1px 1px 2px rgba(0,0,0,0.5),
+inset 0 10px rgba(255,255,255,0.2),
+inset 0 10px 10px rgba(255,255,255,0.25),
+inset 0 -3px 20px rgba(0,0,0,0.3);
+}
+.year div:hover, .year div:focus	{z-index:2;}
+.education p, #legend .education	{background:#fff5b7; color:#523100;}
+.work p, #legend .work				{background:#deae2d; color:#000;}
+.milestone p, #legend .milestone	{background:#852525; color:#fff; width:25px;}
+.milestone p:first-letter			{font:25px Georgia, serif;}/*SHOULD EQUAL THE WIDTH OF ".milestone"*/
+
+
+/*INDIVIDUAL ELEMENTS*/
+#school p	{width:88%;}
+#college p	{width:365%;}
+#intel p	{width:150%;}
+#clean p	{width:32%;}
+#wendys p	{width:47%;}
+#ihop p		{width:41%;}
+#dq p		{width:41%;}
+#birth:hover p, #birth:focus p	{width:50px;}
+#redc:hover p, #redc:focus p 	{width:140px;}
+#award:hover p, #award:focus p	{width:120px;}
+#stalin:hover p, #stalin:focus p{width:100px;}
+#marry:hover p, #marry:focus p	{width:100px;}
+
+
+/*TIPS*/
+.year div p span	{position:relative; height:0; opacity:0; display:block; overflow:hidden;}
+.year div:hover p span, .year div:focus p span {opacity:1;}
+.year div.one-row:hover p span, .year div.one-row:focus p span {height:1.2em;}
+.year div.two-rows:hover p span, .year div.two-rows:focus p span {height:2.4em;}
+
+
+/*VERTICAL POSITION*/
+.level2 {top:42px;}
+.level3 {top:84px;}
+
+
+/*ANIMATIONS*/
+.year div, .year div p, .year div p span	{
+-webkit-transition: opacity .4s .25s, width .2s, z-index .2s, height .2s;
+-o-transition: opacity .4s .25s, width .2s, height .2s;
+-moz-transition: opacity .4s .25s, width .2s, height .2s;
+transition: opacity .4s .25s, width .2s, height .2s;}
+
+
+/*POSITION*/
+.dtstart[title*="-01-"], .dtstart[title*="-01-"]~p, .dtstart[title*="-01-"]~p~.dtend	{margin-left:4.2%;}
+.dtstart[title*="-02-"], .dtstart[title*="-02-"]~p, .dtstart[title*="-02-"]~p~.dtend	{margin-left:12.5%;}
+.dtstart[title*="-03-"], .dtstart[title*="-03-"]~p, .dtstart[title*="-03-"]~p~.dtend	{margin-left:20.8%;}
+.dtstart[title*="-04-"], .dtstart[title*="-04-"]~p, .dtstart[title*="-04-"]~p~.dtend	{margin-left:29.2%;}
+.dtstart[title*="-05-"], .dtstart[title*="-05-"]~p, .dtstart[title*="-05-"]~p~.dtend	{margin-left:37.5%;}
+.dtstart[title*="-06-"], .dtstart[title*="-06-"]~p, .dtstart[title*="-06-"]~p~.dtend	{margin-left:45.8%;}
+.dtstart[title*="-07-"], .dtstart[title*="-07-"]~p, .dtstart[title*="-07-"]~p~.dtend	{margin-left:54.2%;}
+.dtstart[title*="-08-"], .dtstart[title*="-08-"]~p, .dtstart[title*="-08-"]~p~.dtend	{margin-left:62.5%;}
+.dtstart[title*="-09-"], .dtstart[title*="-09-"]~p, .dtstart[title*="-09-"]~p~.dtend	{margin-left:70.8%;}
+.dtstart[title*="-10-"], .dtstart[title*="-10-"]~p, .dtstart[title*="-10-"]~p~.dtend	{margin-left:79.2%;}
+.dtstart[title*="-11-"], .dtstart[title*="-11-"]~p, .dtstart[title*="-11-"]~p~.dtend	{margin-left:87.5%;}
+.dtstart[title*="-12-"], .dtstart[title*="-12-"]~p, .dtstart[title*="-12-"]~p~.dtend	{margin-left:95.8%;}
+
+
+/*DATES*/
+.dtstart::after, .dtend::after {
+font:bold 10px Verdana, sans-serif; color:#000; background:rgba(255,255,255,0.7); margin:0; padding:0; z-index:1; white-space:nowrap; position:relative; overflow:hidden; border:1px solid #888; -moz-border-radius:2px; border-radius:2px; height:1.2em; width:30px; opacity:0;
+}
+
+.dtstart, .dtend{border-bottom:0; position:absolute; height:0; margin:0; padding:0;}
+.dtend		{margin-top:-1.4em;}
+.vevent:hover .dtend, .vevent:focus .dtend		{position:absolute; height:0; margin:0; padding:0; margin-top:0;}
+.year .dtstart::after	{position:absolute; top:-1.4em;}
+.year .dtend::after	{position:absolute; bottom:-1.4em;}
+
+.education:hover .dtstart::after, .education:focus .dtstart::after {content:"Studied from "attr(title); opacity:1; width:auto;}
+.work:hover .dtstart::after, .work:focus .dtstart::after {content:"Worked from "attr(title); opacity:1; width:auto;}
+.milestone:hover .dtstart::after, .milestone:focus .dtstart::after {content:"Event occured on "attr(title); opacity:1; width:auto;}
+.year div:hover .dtend::after, .year div:focus .dtend::after {content:"to "attr(title); opacity:1; width:auto;}
+
+
+/*DATES FOR IE 8*/
+.dtstart:after, .dtend:after {
+font:bold 10px Verdana, sans-serif; color:#000; background:rgba(255,255,255,0.7); margin:0; padding:0; z-index:1; white-space:nowrap; position:relative; overflow:hidden; border:1px solid #888; -moz-border-radius:2px; border-radius:2px; height:1.2em; width:30px; opacity:0;
+}
+
+.dtstart, .dtend{border-bottom:0; position:absolute; height:0; margin:0; padding:0;}
+.dtend		{margin-top:-1.4em;}
+.vevent:hover .dtend, .vevent:focus .dtend		{position:absolute; height:0; margin:0; padding:0; margin-top:0;}
+.year .dtstart:after	{position:absolute; top:-1.4em;}
+.year .dtend:after	{position:absolute; bottom:-1.4em;}
+
+.education:hover .dtstart:after, .education:focus .dtstart:after {content:"Studied from "attr(title); opacity:1; width:auto;}
+.work:hover .dtstart:after, .work:focus .dtstart:after {content:"Worked from "attr(title); opacity:1; width:auto;}
+.milestone:hover .dtstart:after, .milestone:focus .dtstart:after {content:"Event occured on "attr(title); opacity:1; width:auto;}
+.year div:hover .dtend:after, .year div:focus .dtend:after {content:"to "attr(title); opacity:1; width:auto;}
+
+
+/*LEGEND*/
+#legend		{margin-top:20px;}
+#legend div	{display:inline; margin:0 6px;}
+
+</style>
+
+</head>
+  <body>
+
+<h1>My timeline CV:</h1>
+<div id="timeline">
+	<div id="main">
+	    <div class="year gap">
+			<h2>1986</h2>
+			<div id="birth" class="milestone two-rows vevent" tabindex="1">
+				<abbr class="dtstart value" title="1986-07-18">&nbsp;</abbr>
+				<p class="summary">
+					&#9786;
+					<span>I was born</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year gap">
+			<h2>2001</h2>
+			<div id="school" class="education one-row vevent" tabindex="2">
+				<abbr class="dtstart value" title="2001-08-06">&nbsp;</abbr>
+				<p class="summary">
+					Ohio High School
+					<span>Studied business and economics</span>
+				</p>
+				<abbr class="dtend value" title="2005-07-02">&nbsp;</abbr>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2005</h2>
+			<div id="college" class="education one-row vevent" tabindex="4">
+				<abbr class="dtstart value" title="2005-09-29">&nbsp;</abbr>
+				<p class="summary">
+					State University College
+					<span>graduated with 3.88 GPA, Psychology Major</span>
+				</p>
+				<abbr class="dtend value" title="2009-05-25">&nbsp;</abbr>
+			</div>
+			<div id="clean" class="work level2 two-rows vevent" tabindex="3">
+				<abbr class="dtstart value" title="2005-06-30">&nbsp;</abbr>
+				<p class="summary">
+					House cleaner
+					<span>in a small firm</span>
+				</p>
+				<abbr class="dtend value" title="2005-10-26">&nbsp;</abbr>
+			</div>
+			<div id="redc" class="milestone level2 two-rows vevent" tabindex="5">
+				<abbr class="dtstart value" title="2005-11-25">&nbsp;</abbr>
+				<p class="summary">
+					+
+					<span>Became member of the Red Cross</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2006</h2>
+			<div id="wendys" class="work level2 one-row vevent" tabindex="6">
+				<abbr class="dtstart value" title="2006-04-09">&nbsp;</abbr>
+				<p class="summary">
+					Cashier
+					<span>at Wendy's</span>
+				</p>
+				<abbr class="dtend value" title="2006-09-26">&nbsp;</abbr>
+			</div>
+			<div id="marry" class="milestone level3 one-row vevent" tabindex="7">
+				<abbr class="dtstart value" title="2008-06-24">&nbsp;</abbr>
+				<p class="summary">
+					&#9892;
+					<span>Got married</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2007</h2>
+			<div id="ihop" class="work level2 one-row vevent" tabindex="8">
+				<abbr class="dtstart value" title="2007-05-09">&nbsp;</abbr>
+				<p class="summary">
+					Busser
+					<span>at IHOP</span>
+				</p>
+				<abbr class="dtend value" title="2007-10-03">&nbsp;</abbr>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2008</h2>
+			<div id="dq" class="work level2 one-row vevent" tabindex="9">
+				<abbr class="dtstart value" title="2008-05-07">&nbsp;</abbr>
+				<p class="summary">
+					Ice-cream seller
+					<span>at DQ</span>
+				</p>
+				<abbr class="dtend value" title="2008-10-06">&nbsp;</abbr>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2009</h2>
+			<div id="intel" class="work one-row vevent" tabindex="11">
+				<abbr class="dtstart value" title="2009-06-30">&nbsp;</abbr>
+				<p class="summary">
+					Intel - HR Assistant
+					<span>Production technology division</span>
+				</p>
+				<abbr class="dtend value" title="2010-12-31">&nbsp;</abbr>
+			</div>
+		  
+			<div id="award" class="milestone level2 two-rows vevent" tabindex="10">
+				<abbr class="dtstart value" title="2009-02-04">&nbsp;</abbr>
+				<p class="summary">
+					&#9733;
+					<span>Won an award of some sort</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2010</h2>
+			<div id="stalin" class="milestone level2 two-rows vevent" tabindex="12">
+				<abbr class="dtstart value" title="2010-03-13">&nbsp;</abbr>
+				<p class="summary">
+					&#9773;
+					<span>Stalin is resurrected</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+  <div id="legend">Legend:<div class="milestone">Milestones</div><div class="work">Work experience</div><div class="education">Education</div></div>
+  
+  <p><a href="javascript:void(location.href='http://feeds.technorati.com/events/'+escape(location.href))">Download these events</a> to your calendar.</p>
+  </body>
+</html>

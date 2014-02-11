@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Opacity example</title>
+<link rel="stylesheet" media="all" type="text/css" href="http://devfiles.myopera.com/articles/418/HSLcolour.css" />
+</head>
+
+<body>
+
+<div id="explanation">
+<h1>Opacity example</h2>
+<p>This example has been put together to exhibit Opera's support for CSS 3 opacity. This page is a simple page with 2 <code>&lt;div&gt;</code>s, one absolutely positioned over the other, but given opacity so you can see this one underneath it. The CSS that styles this is as follows:</p>
+
+<pre>body {
+
+font-family:georgia, serif;
+font-size: 80%;
+
+}
+
+#explanation {
+  width: 400px;
+}
+
+#nonsense {
+  position: absolute;
+  left: 150px;
+  top: 50px;
+  background-color: hsl(240, 100%, 50%);
+  Opacity: 0.85;
+  width: 200px;
+  padding: 5px;
+}
+
+#lighter {
+  background-color: hsl(240, 100%, 60%);
+}</pre>
+
+</div>
+
+<div id="nonsense">
+<h1>Transparent block</h1>
+
+<p>Wow - I'm still transparent, and now my background colour is being defined using an HSL colour value too!</p>
+<p id="lighter">This is a second paragraph, in which I easily created a lighter shade by simply increasing the lightness value.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MAMA script identifier tokenization - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>MAMA script identifier tokenization</h1>
+      <p class="print author">By Brian Wilson</p>
+
+      <ul class="seriesNav">
+<li class="prev"><a href="../mama-scripting-syntax/index.html" rel="prev" title="link to the previous article in the series">Previous article&#8212;MAMA: Scripting syntax</a></li>
+<li class="next"><a href="../mama-script-tokenization-dom/index.html" rel="next" alt="link to the next article in the series">Next article&#8212;MAMA: 
+Script tokenization: DOM</a></li>
+<li><a href="../mama/index.html#tableofcontents" rel="index">Table of contents</a></li>
+</ul>
+
+<p><strong>Index:</strong></p>
+<ol>
+    <li><a href="index.html#intro">Introduction</a></li>
+    <li><a href="index.html#how">How it was done</a></li>
+    <li><a href="index.html#probs">Problems encountered</a></li>
+    <li><a href="index.html#js">Identifier keywords: JavaScript/ECMAScript syntax</a></li>
+    <li><a href="index.html#dom">Identifier keywords: DOM</a></li>
+    <li><a href="index.html#therest">&quot;The Rest&quot;&#8212;identifier keywords not in the JavaScript/DOM categories</a></li>
+</ol>
+
+<h2 id="intro">Introduction</h2>
+<p>Throughout much of MAMA&#39;s development history, script content was analyzed 
+   using numerous substring and regular expression checks. There was always a 
+   desire to use a more formal analysis, but an easy and simple solution never 
+   presented itself. After discovering Saarsoo&#39;s markup and CSS study and the 
+   breadth of his results, it was decided that one of the biggest deficits still 
+   outstanding in large-scale Web research was an in-depth analysis of JavaScript. 
+   This was the impetus necessary to finally tackle the formal analysis problem.</p>
+
+<h2 id="how">How it was done</h2>
+<p>I looked at using some stock Perl JavaScript libraries, but it would have taken 
+   too much effort this time around. I did some research on parsing and tokenization 
+   and found that using a tokenizer on script might be the quick and easy way I 
+   needed to pull out useful data. Casting my line around the Web, I came across a 
+   simple, public domain <a href="http://www.cdiggins.com/tokenizer.html">JavaScript 
+   tokenizing script</a> by Christopher Diggins. His tokenizer broke down JavaScript 
+   into a number of categories: comments, 
+   quoted strings, identifiers, numbers, whitespace, and symbols. Of these, the 
+   basic JavaScript and DOM syntax would be covered by the identifiers category. 
+   So, here was a simple script to tokenize JavaScript, less than 100 lines, that 
+   could give MAMA a lot more data than it would need. Bingo&#8212;it was quick work 
+   to hack the code apart, convert it to Perl, and reduce it down to just what was 
+   needed.</p>
+
+<p>The next step was to decide what sort of information we wanted to pull out of 
+   this tokenizer. Out of storage necessity, I wanted to break up these tokens 
+   into groups for easier access. The basic structure of JavaScript as a group of 
+   objects with methods and properties lends itself to this type of categorization, 
+   so it was a natural fit. The compartmentalization of the language into small 
+   groups also easily translated to a database design that made searching for 
+   specific JavaScript and DOM keywords much faster. MAMA would also store these 
+   keywords with their case-sensitivity preserved, which would further aid in 
+   disambiguating their use.</p>
+
+<p>Basic JavaScript syntax was an obvious thing for MAMA to grab. The components 
+   of the basic JavaScript objects were also the right sizes for easy storage. 
+   The DOM, however, was going to be more ambitious&#8212;in its atomic identifier 
+   form, keywords from the DOM are often burdened by property/method name 
+   collisions between multiple diverse objects. The DOM is a <strong>very</strong> 
+   large domain to cover, so in the end I limited the initial set to objects and 
+   keywords that I thought might be the most popular or interesting. All told, 
+   28 categories were selected containing a total of 481 identifier keywords. 
+   For identifiers that were not extracted into these groups, the remainders were 
+   placed into a large group designated &quot;The Rest&quot;.</p>
+
+<p>Once this identifier classification was complete, it made many of MAMA&#39;s original 
+   simple script checks redundant. So, even though the tokenization effort was an 
+   overall net addition of analysis code, a significant amount of code was also 
+   removed from MAMA.</p>
+
+<h2 id="probs">Problems encountered</h2>
+<p>Some basic issues were discovered during this process:</p>
+
+<ul>
+    <li>The fewer characters in a keyword, the less likely it is used for a single 
+        specific purpose. This is especially true for common or ambiguous words like 
+        <code class="svar">all</code>, <code class="svar">class</code> and <code class="svar">id</code></li>
+    <li>Keywords with mixed case stand a higher chance of representing unique usage, 
+        especially camel-case property and method keywords, such as <code class="svar">hasChildNodes</code>
+        and <code class="svar">getElementById</code></li>
+</ul>
+
+<p>MAMA has done well with this initial tokenizer design, but it is still a 
+   first-generation effort that can be improved. For instance, a major bug was 
+   discovered after the analysis phase&#8212;a database field created to store token 
+   identifier chains never stored anything at all. This field would have allowed 
+   better correlation for keywords with ambiguous meaning. For example, the 
+   <code class="svar">open</code> method is used by multiple objects including 
+   Window and XMLHTTPRequest; the lost MAMA field would have allowed a greater 
+   degree of clarity with multiple uses of the same keyword. The next major 
+   MAMA crawl will definitely address this lack and will hopefully go even farther 
+   in its examination of scripting.</p>
+
+<h2 id="js">Identifier keywords: JavaScript/ECMAScript syntax</h2>
+<p><strong>[<a href="../mama-script-tokenization-javascript/index.html">full results of the JavaScript identifier keywords</a>]</strong></p>
+
+<p>The JavaScript section was easy to break down. It has a restricted set of basic 
+   syntax details and a limited number of basic object categorizations. I broke 
+   these down into 13 groups with a total of 187 keywords.</p>
+
+<h2 id="dom">Identifier keywords: DOM</h2>
+<p><strong>[<a href="../mama-script-tokenization-dom/index.html">full coverage of the DOM identifier keywords</a>]</strong></p>
+
+<p>Grouping the DOM together and organizing it into manageable clusters was a 
+   difficult process. The DOM is a large category, with many object areas. There 
+   were two main problems encountered when establishing this section&#8212;keyword 
+   name collision (previously mentioned) and keywords that are too generic. I 
+   picked object categories and keywords that seemed to cover the broadest parts 
+   of the DOM. I also occasionally ignored choosing keywords that had more than 
+   a single use, so that I could judiciously avoid messy ambiguity where possible. 
+   This selection process resulted in 15 groupings having 294 total keywords.</p>
+
+<h2 id="therest">&quot;The Rest&quot;&#8212;identifier keywords not in the JavaScript/DOM categories</h2>
+
+<p><strong>[<a href="../../../../devfiles.myopera.com/articles/608/jsrest-url.htm">full coverage of &quot;The Rest&quot; of the identifier keywords</a>]</strong></p>
+
+<p>After extracting the 481 JavaScript and DOM identifier keywords that had been 
+   selected for special storage, MAMA placed all the remaining identifiers in a 
+   big bucket called &quot;The Rest&quot;. There is overlap here with some of the other 
+   MAMA mechanisms (such as <a href="../../../../devfiles.myopera.com/articles/608/jsfunctionlist-url.htm">script function names are stored in their 
+   declared form elsewhere</a> but are also 
+   stored here when they are invoked). This remainder list is <strong>very</strong> 
+   large. The full table of values with frequency &gt;= 4 has 939,236 entries and a 
+   file size of over 60MB! Luckily for the reader, I bumped the frequency floor of 
+   this table up to 5,000 for this study. The resulting 420K file still has 
+   6,715 items to wade through.</p>
+
+<p>Some prominent entries in the list of &quot;The Rest&quot; suggest ways to improve and 
+   add to the tokenization process in the future. For example, the Image object 
+   was neglected by MAMA&#39;s DOM categorization, but seems very well represented 
+   in this list by the <span class="string">&quot;Image&quot;</span> keyword. Other keywords 
+   like <span class="string">&quot;src&quot;</span>, <span class="string">&quot;width&quot;</span> 
+   and <span class="string">&quot;height&quot;</span> also have very high frequency and 
+   could apply to images, but probably have name collisions with other uses as 
+   well...such as CSS. If the <span class="string">&quot;width&quot;</span> and 
+   <span class="string">&quot;height&quot;</span> keywords are interpreted instead as CSS, 
+   they then become the most popular properties controlled by script. Separating 
+   out the CSS properties into their own DOM keyword group yields the biggest 
+   single keyword cluster yet at over 120 values.</p>
+
+<p>Form control keywords are also significant in this list&#8212;<span class="string">&quot;name&quot;</span> 
+   and <span class="string">&quot;value&quot;</span> are high on the list, but other form 
+   properties are also prominent farther down. Another keyword from JavaScript 
+   syntax that didn&#39;t really belong anywhere else, <span class="string">&quot;this&quot;</span>, 
+   attains very high marks (96,0476 times) in our remainders ranking at number 7. 
+   Clocking in with 407,385 mentions, the keyword <span class="string">&quot;java&quot;</span> 
+   places high, scoring another point in the argument that a large number of Java 
+   instances are dynamically created or manipulated by script.</p>
+
+<p>Our look at script function names and external script file names showed that 
+   the usage frequency tables make it easy to pick out commonly used script 
+   libraries. The repeating patterns with very close frequencies are hard to miss. 
+   This is also true in our list of &quot;The Rest&quot; of the identifier keywords. Google&#39;s 
+   Urchin tracker (prefixed by <span class="string">&quot;_u&quot;</span>) and ad syndication 
+   (prefixed by <span class="string">&quot;google_&quot;</span>) are very prominent in the 
+   list, as are Macromedia function calls (prefixed by <span class="string">&quot;MM_&quot;</span>). 
+   There are numerous other examples easily revealed in the table.</p>
+
+<ul class="seriesNav">
+<li class="prev"><a href="../mama-scripting-syntax/index.html" rel="prev" title="link to the previous article in the series">Previous article&#8212;MAMA: Scripting syntax</a></li>
+<li class="next"><a href="../mama-script-tokenization-dom/index.html" rel="next" alt="link to the next article in the series">Next article&#8212;MAMA: 
+Script tokenization: DOM</a></li>
+<li><a href="../mama/index.html#tableofcontents" rel="index">Table of contents</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=260995">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/blooberry.html" rel="author">Brian Wilson</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, December 19, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/DOM.html" rel="tag">DOM</a></li>
+        <li><a href="../../tags/ecmascript.html" rel="tag">ecmascript</a></li>
+        <li><a href="../../tags/identifier.html" rel="tag">identifier</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/keywords.html" rel="tag">keywords</a></li>
+        <li><a href="../../tags/perl.html" rel="tag">perl</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

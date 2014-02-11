@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Widgets Style Guide - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Widgets - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/widgets">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Widgets - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/widgets">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="widgets">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Widgets Style Guide</h1>
+      <p class="print author">By Daniel Davis, Yenny Otero</p>
+
+      <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">24th April 2012: Please note</h2>
+
+<p>Starting with Opera 12, Opera Widgets will <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">be turned off for new users and completely removed in a later release</a>. If you&#39;re interested in building addons for Opera, we recommend going with our extensions platform — check out <a href="../../../addons/extensions/index.html">our extensions documentation</a> to get started.</p>
+</div>
+
+<h2>Introduction</h2>
+
+<p>Since their inception, Opera widgets have steadily evolved to become more powerful and easier to create. While their structure and concept is essentially unchanged, there are important differences in the widget runtime of Opera 10.20 and above that developers should be aware of. Here we outline some of the key points to help you make the most of this technology by either developing new widgets or updating existing ones.</p>
+
+<h2>Naming your widget</h2>
+
+<p>While there are no length restrictions for the name of your widget, it&#39;s best to use something short and easy to remember. Widget names may be truncated when displayed in the device&#39;s widget manager or operating system&#39;s taskbar. A one or two-word title is recommended, ideally between 12-14 characters in total to avoid truncation on mobile devices. For maximum portability, please avoid using the word &quot;Opera&quot; in the title (unless, of course, it relates specifically to the Opera browser or to the musical form of opera).</p>
+
+<h2>Widget icons</h2>
+
+<p>If you do not provide icons for your widget, the default cogwheel icon will be displayed. To avoid this and help your widget stand from the crowd, we recommend creating your own. Widget icons can appear in a user&#39;s dock or desktop, application menu, taskbar, widget manager and on <a href="http://widgets.opera.com/">widgets.opera.com</a> so at least four sizes of icon are needed: 128x128, 64x64, 32x32, 16x16. The icons should be listed in this order in your config.xml file to ensure the largest, highest-quality icon is given priority when possible. 256x256 and 512x512 sizes are also supported in desktop environments but should be left out if your widget is just for mobile users. For some guidance in creating widget icons, please see our <a href="../custom-opera-widget-icons/index.html">widget icon tutorial</a>.</p>
+
+<h2>Settings</h2>
+
+<p>For better usability, we recommend not having a settings screen but rather making any configurable elements editable if possible. If you do intend to use a single settings button, please try not to use the cogwheel icon as it is used as a default for widgets with no icon. There are some good settings icons to choose from in the <a href="http://openiconlibrary.sourceforge.net/">Open Icon Library</a>, one of which is <a href="http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions//configure-4.png">this spanner icon</a>. Alternatively, if you are combining settings with an information page we suggest <a href="http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/help-about-2.png">this &quot;i&quot; icon</a>.
+
+<p><img src="../../../../devfiles.myopera.com/articles/56/configure-4.png" width="128" height="128" alt="Settings icon" /> <img src="../../../../devfiles.myopera.com/articles/56/help-about-2.png" width="128" height="128" alt="Help/about icon" /></p>
+<p class="comment">Figure 1: These icons from the <a href="http://www.oxygen-icons.org/">Oxygen icon set</a> are available under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike license</a>.</p>
+
+<h2>Control buttons</h2>
+
+<p>And now for some good news! You no longer need to include a close or minimize button or function in your widget. Whether you create a widget in widget mode or application mode, a set of control buttons including close and minimize will be added automatically by the widget runtime or operating system. If you want to include functionality to reduce the size of your widget in addition to minimize, use a button design different to the default minimize icon. In widget mode, you should also be aware of the location of the control buttons if your widget uses transparency and ensure the buttons are displayed close to the widget&#39;s visible area. You may disable the control buttons in widget mode and create their equivalent yourself, but be aware that it may not be possible to reproduce their functionality (e.g. minimize) exactly. Disabling the control buttons is done easily in <code>config.xml</code> by adding the following feature element:</p>
+
+<pre>
+<code>
+&lt;widget&gt;
+  ...
+  &lt;feature name=&quot;http://xmlns.opera.com/wcb&quot; required=&quot;false&quot;&gt;
+    &lt;param name=&quot;widgetcontrolbuttons&quot; value=&quot;false&quot; /&gt;
+  &lt;/feature&gt;
+  ...
+&lt;/widget&gt;</code>
+</pre>
+
+<h2>Widget mode and application mode</h2>
+
+<p>In general, it&#39;s likely that you will find application mode more appropriate for widgets as this makes them resizeable and similar in appearance to native applications. However, there are cases when widget mode is the better choice:</p>
+
+<ul>
+  <li>When the widget is decorative, doesn&#39;t take up too much screen space and requires little interaction, for example a clock or calendar.</li>
+  <li>When the widget has links that will open in the browser.</li>
+</ul>
+
+<p><img src="../../../../devfiles.myopera.com/articles/56/svg-edit.png" width="626" height="476" alt="The SVG Edit widget, built in application mode" /></p>
+<p class="comment">Figure 2: The <a href="http://widgets.opera.com/widget/15321/">SVG Edit</a> widget, built in application mode.</p>
+
+<h2>Widget content</h2>
+
+<p>Because of the large number of widgets to choose from, you need to capture the user&#39;s attention as soon as they start the widget to prevent them from running away and trying something else. Your main screen should contain interesting content and it should be immediately clear to the user what they have to do. The quicker the user can access the heart of your widget, the more likely they are to continue using it and recommend it to others.</p>
+
+<h2>Summary and checklist</h2>
+
+<p>For developers short on time, here&#39;s a handy stick-it-on-your-fridge checklist for easy widget creation:</p>
+
+<ol>
+  <li>Does your widget have the word &quot;Opera&quot; in its title? If so, remove it, unless it relates to Opera.</li>
+  <li>Is your widget icon available in four sizes? If not, create 128x128, 64x64, 32x32 and 16x16 versions.</li>
+  <li>Are you using the cogwheel icon for a settings button? If so, choose an alternative design.</li>
+  <li>Have you made a close or minimize button? If so, remove them and rely on the default control buttons.</li>
+  <li>Does your widget use transparency? If so, ensure the control buttons are close to the visible part of your widget.</li>
+  <li>Would you like your widget to look like a native application? If so, add <code>defaultmode=&quot;application&quot;</code> to the <code>widget</code> element of <code>config.xml</code>.</li>
+  <li>Do users know what to do when they open your widget? If not, make required actions obvious and make content more easily accessible.</li>
+  <li>Is your widget decorative or does it open links in the browser? If so, you should create it it widget mode.</li>
+</ol>
+
+<p>These suggestions and guidelines will hopefully make life a little easier for widget developers. On final thing to note is that loading <code>config.xml</code> in Opera does not start Opera Dragonfly automatically and widget debugging should be done using Opera Dragonfly&#39;s remote debugging feature. As always, we&#39;re very keen to see your new and improved widgets uploaded to <a href="http://widgets.opera.com/">widgets.opera.com</a>.</p>
+
+<ul class="seriesNav">
+<li><a href="../opera-widgets-sdk/index.html" rel="index">Opera Widgets SDK table of contents</a></li>
+</ul></p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=168001">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/tagawa.html" rel="author">Daniel Davis</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, March 1, 2010
+      </p>
+
+      <p class="author"><strong>Co-authors</strong>
+        <a href="../../../author/yennyotero.html" rel="author">Yenny Otero</a>
+      </p>
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/opera&#32;10.50.html" rel="tag">opera 10.50</a></li>
+        <li><a href="../../tags/Style&#32;Guide.html" rel="tag">Style Guide</a></li>
+        <li><a href="../../tags/User&#32;Interface.html" rel="tag">User Interface</a></li>
+        <li><a href="../../tags/widgets.html" rel="tag">widgets</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

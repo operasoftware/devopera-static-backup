@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Widgets and Ajax: connecting to multiple servers - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Widgets and Ajax: connecting to multiple servers</h1>
+      <p class="print author">By Opera Software</p>
+
+      <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">24th April 2012: Please note</h2>
+
+<p>Starting with Opera 12, Opera Widgets will <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">be turned off for new users and completely removed in a later release</a>. If you&#39;re interested in building addons for Opera, we recommend going with our extensions platform — check out <a href="../../../addons/extensions/index.html">our extensions documentation</a> to get started.</p>
+</div>
+
+
+<h2 class="no-toc">Introduction</h2>
+
+<p>Scripts on Web pages cannot connect to any Web server other than the one the page was loaded from. This is known as the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same-origin security policy</a> and is a cornerstone of keeping the Web safe.</p>
+
+<p>Opera Widgets have a more liberal security model, giving widgets the ability to contact multiple servers and opening up many interesting possibilities. This also opens up some additional potential attack vectors, however, but there are ways around them – you can lock your widgets down and prevent information from being sent to random Web sites. This article describes how to do cross-site Ajax requests inside widgets and gives an example of how it can be used.</p>
+
+<ol>
+<li><a href="index.html#sameorigin">The same-origin security policy</a></li>
+<li><a href="index.html#security">The Opera Widgets security model</a></li>
+<li><a href="index.html#crosssite">How to do cross-site AJAX in widgets</a></li>
+<li><a href="index.html#possibilities">Mashup Widgets – doing mashups in the client</a></li>
+<li><a href="index.html#techniques">Other techniques and work</a></li>
+<li><a href="index.html#resources">Resources</a></li>
+</ol>
+
+<h2 id="sameorigin">The same-origin security policy</h2>
+
+<p>Scripts running in Web pages may only download data from the server the page was loaded from. This is known as the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same-origin security policy</a>, and is in place to prohibit <a href="http://en.wikipedia.org/wiki/Cross-site_scripting">malicious scripts</a> from getting or posting potentially sensitive data to other Web sites without the user’s knowledge.</p>
+
+<p>Note that the scripts may have been downloaded from a different server than where the page was downloaded, but the script may still only connect to the server from which the page, the main document, was loaded.</p>
+
+<p>The same-origin security policy of course applies to Ajax applications, which use <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XMLHttpRequest</a> to read and write data from a Web server.</p>
+
+<p>You can easily try an example out to see how the browser enforces this security policy. The following piece of JavaScript code will use <code>XMLHttpRequest</code> to read a Web page from <code>www.opera.com</code>:</p>
+
+<pre>
+<code>
+var xhr = new XMLHttpRequest ();
+xhr.open( &#39;GET&#39;, &#39;http://www.opera.com&#39;, false );
+xhr.send();
+</code>
+</pre>
+
+<a href="../../../../devfiles.myopera.com/articles/404/xhr-test.html">Try this snippet</a> and the browser will execute your script and emit this message in your JavaScript error console:
+
+<pre>
+<code>
+JavaScript URL thread: &quot;javascript:var xhr = new XMLHttpRequest ();xhr.open( &#39;GET&#39;, &#39;http://www.opera.com&#39;, false );xhr.se...&quot;
+Error:
+name: Error
+message: Security violation
+</code>
+</pre>
+
+<p>In this case <code>www.opera.com</code> is off limits to the script, because this document is not loaded from Opera’s <code>www</code> server.</p>
+
+<p>As an additional exercise, re-try the example using the domain name of the server this page was loaded from as an argument to the <code>XMLHttpRequest</code> open method.</p>
+
+<p>In order to work around the same-origin security policy, you can set up a service on your own Web server to proxy data to and from other Web servers. The Web page will then be able to indirectly contact multiple servers. Setting this up requires significant work, in particular to avoid misuse of the proxy by others. Widgets offer a way out of this by using only client-side Web technologies.</p>
+
+<h2 id="security">The Opera Widgets security model</h2>
+
+<p>The Opera Widgets security model allows you to specify to which protocols, hosts, and ports the widget may connect. If no limitations have explicitly been defined, all hosts and ports may be contacted. However, you must enable network access by adding a <code>network</code> attribute with a value of one or both of ‘public’ and ‘private’ to the <code>widget</code> element in the config.xml of your widget. Access restrictions are specified using the <code>access</code> element in the widgets’s <code>config.xml</code> file.</p>
+
+<p>Opera Widgets may thus contact most servers by default. However, accessing file:// urls is not allowed and protocols other than <code>http</code> and <code>https</code> must be explicitly specified to be accessible.</p>
+
+<p>In order to avoid security problems due to the fact that widgets may connect to multiple servers, each widget has a private cookie and document cache. See the following article on the <a href="../opera-widgets-security-model/index.html">widget security model</a> for more details of this.</p>
+
+<p class="note">Opera has submitted the widget specification for standardization at the W3C. It is likely that the security model will be changed as part of this work.</p>
+
+<h2 id="crosssite">How to do cross-site AJAX in widgets</h2>
+
+<p>No magic is needed to do cross-site AJAX in widgets. You just create an <code>XMLHttpRequest</code> object and open a connection to the desired host:</p>
+
+<pre>
+<code>
+var xhr = new XMLHttpRequest ();
+xhr.onreadystatechange = function () {
+    if ( this.readyState == 4 )
+    {
+        switch ( this.status )
+        {
+            case 200:
+                handleData(xhr.responseText);
+                break;
+            case 400:
+              //...
+            //... Handle other cases
+        }
+    }
+}
+xhr.open( &#39;GET&#39;, &#39;http://www.opera.com/&#39;, false );
+xhr.send();
+</code>
+</pre>
+
+<p>In this example a request is sent to Opera. The entire page will be available in the <code>responseText</code> property of the <code>xhr</code> object.</p>
+
+<p>Contacting external servers for data is the cornerstone of many widgets. Examples include getting Web cam images, images from photo galleries, map data, traffic data, weather data, and more. The typical usage is contacting a server with a public XML-based API or scraping Web pages for information.</p>
+
+<h2 id="possibilities">Mashup Widgets – doing mashups in the client </h2>
+
+<a href="http://en.wikipedia.org/wiki/Mashup_(web_application_hybrid)">Mashup web applications</a> combine information from multiple web sites or servers into new, creative web applications.
+
+<p>Traditionally mashup applications are implemented on a Web server connecting to the source servers. Using Opera Widgets, mashup Web applications can be implemented entirely in the client.</p>
+
+<p>Mashups often make use of data from publicly-available XML APIs from Web sites such as Facebook, Flickr, Google Maps, and so on. A good overview of such APIs can be found at the <a href="http://www.programmableweb.com/">ProgrammableWeb</a> Web site.</p>
+
+<h2 id="techniques">Other techniques and work</h2>
+
+<p>The W3C is doing work on standardizing cross-domain access. In the current draft, this is accomplished by sending special headers to allow a Web server to control what other servers the browser may connect to. See the draft on <a href="http://www.w3.org/TR/access-control/">Access Control for Cross-site Requests</a> for more details.</p>
+
+<p>It is possible to lessen the cross-site security restrictions of most browsers by changing their settings. Versions of Internet Explorer up until version 5 allowed the user to define trusted sites or zones. Ajax calls to these sites would then be possible. Mozilla Firefox allows the user to set the <code>document.domain</code> property to a parent domain, allowing the script to access data from different subdomains.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="../opera-widgets-security-model/index.html">Opera Widgets security model</a></li>
+<li><a href="http://www.wikipedia.org">Wikipedia</a> entry on <a href="http://en.wikipedia.org/wiki/Same_origin_policy">Same origin policy</a>.</li>
+<li>Wikipedia entry on <a href="http://en.wikipedia.org/wiki/XMLHttpRequest">XMLHttpRequest</a>.</li>
+<li>Wikipedia entry on <a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross-site scripting</a>.</li>
+<li>Wikipedia entry on <a href="http://en.wikipedia.org/wiki/Mashup_(web_application_hybrid)">Mashups</a>.</li>
+<li><a href="https://developer.mozilla.org/En/Same_origin_policy_for_JavaScript">Mozilla documentation on the same origin policy</a>.</li>
+<li><a href="http://jibbering.com/2002/4/httprequest.html">Using the XML HTTP Request object</a>, tutorial at <a href="http://jibbering.com">jibbering.com</a>.</li>
+<li><a href="http://www.programmableweb.com/">Programmable Web</a></li>
+<li><a href="http://www.w3.org/TR/access-control/">Access Control for Cross-site Requests</a>, <a href="http://www.w3.org">W3C</a> Working Draft.</li>
+</ul>
+
+<ul class="seriesNav">
+<li><a href="../opera-widgets-sdk/index.html" rel="index">Opera Widgets SDK table of contents</a></li>
+</ul>
+      
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=233231">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, February 9, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/ajax.html" rel="tag">ajax</a></li>
+        <li><a href="../../tags/cross.html" rel="tag">cross</a></li>
+        <li><a href="../../tags/domain.html" rel="tag">domain</a></li>
+        <li><a href="../../tags/security.html" rel="tag">security</a></li>
+        <li><a href="../../tags/xhr.html" rel="tag">xhr</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Demo of Content Property</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Divya">
+	<!-- Date: 2009-11-05 -->     
+	<style type="text/css">
+		/* Custom list style of "Book 1", "Book 2", etc */
+		ol.book {
+			counter-reset:bookcount;  /* Initialize Counter */
+			list-style-type:none;
+		}                      
+		ol.book li:before {
+			content: "Book " counter(bookcount) ": ";
+			counter-increment: bookcount; /* Increment Counter, note counter increments before display */
+		}   
+
+		/* Using counters to generate the numbers for a nursery rhyme */
+		ol.rhyme {
+			counter-reset: number -1 nextnumber 0; /* Each counter needs to be reset within the same counter-increment property */  
+			list-style-type:none;		
+		}                               
+
+		ol.rhyme li span:before {
+			content: counter(number) "," counter(nextnumber) " ";
+			counter-increment: number  2 nextnumber 2; /* Each counter needs to be incremented within the same counter-increment property */ 					
+		} 
+
+	  /* Insert Correct Quotes for Multi-Language content */
+		/* Set up the quotes correctly */
+		:lang(en) q { quotes: '“' '”' }
+		:lang(no) q { quotes: "«" "»"}
+
+		/* Insert quotes before and after Q element content */
+		q:before { content: open-quote }
+		q:after  { content: close-quote }
+
+		/* Replace Text with Images */ 	
+		div.logo {
+			content: url("http://devfiles.myopera.com/articles/1181/logo.png"); /* The image that will replace the text */
+		}
+
+		/* Replace an image with the value of title attribute */
+		p a {
+			vertical-align:middle;
+			line-height:16px;
+		}
+		
+		p a[href $=".pdf"]:after {
+			content: url(http://devfiles.myopera.com/articles/1181/icon_pdf.png);
+		}  
+
+		p a[rel = "external"]:after {
+			content:url(http://devfiles.myopera.com/articles/1181/icon_link.png);
+		}  
+		
+		ul.list-style {
+			list-style:none;
+		}                
+		
+		ul.list-style li:before {
+			content:url(http://devfiles.myopera.com/articles/1181/icon_arrow.png);
+			padding-right:5px;
+		}
+		@media print {
+			a:after {
+				 content: " (" attr(href) ")";
+			}
+
+			abbr:after {
+				content: " (" attr(title) ")";
+			}						
+		}	
+	</style>
+</head>
+<body>
+	<h1>Demo of Content Property</h1> 
+	<h2 id="counters">Number the content as you want</h2>
+	<h3>Using a custom counter for a list</h3>
+	<ol class="book">
+		<li>The Fellowship of the Ring</li>
+		<li>The Two Towers</li>
+		<li>Return of the King</li>
+	</ol>
+	<h3>Using counters to display a nursery rhyme</h3>
+	<p>Note, this is not quite accessible, but it is here as an example of what counters are capable of.</p>
+	<ol class="rhyme">  
+		<li><span>Tie my shoe</span></li>
+		<li><span>Shut the door</span></li>
+		<li><span>Pick up sticks</span></li>
+		<li><span>Lay them straight</span></li>
+		<li><span>A big fat hen.</span></li>
+	</ol>  
+	
+	<h2 id="quotes">Insert Correct Quotes for Multi-Language Content</h2>
+	<p lang="en"><q>It’s only work if somebody makes you do it</q></p>
+	<p lang="no"><q>Hvis du forteller meg nok en vits, så skal jeg slå deg til jorden.</q></p>		
+	
+	<h2 id="imagereplacement">Replace Text with Images</h2>
+	<div class="logo"><!--START CLASS logo-->
+		This will be replaced by an image.		
+	</div><!--END CLASS logo--> 
+	<h2 id="icons">Display link icons</h2>
+	<p>You can use this property to display appropriate icons for <a href="http://devfiles.myopera.com/sample.pdf">PDF files</a> or just an <a href="http://www.opera.com/mini/" rel="external">external link</a>.</p>
+	<ul class="list-style">
+		<li>One item.</li>
+		<li>Two items.</li>
+	</ul>	
+	<h3 id="printcss">Printing URLs in Print CSS</h3> 
+	<p>Click on &ldquo;File-&gt;Print Preview&rdquo; to see this demo in Opera.</p>
+	<p><a href="http://en.wikipedia.org/wiki/Wookiee">Wookie</a></p>
+	<h3>Printing <code>abbr</code> expansions</h3>
+	<p><abbr title=" matter/antimatter reactor assembly">MARA</abbr></p>
+</body>
+</html>

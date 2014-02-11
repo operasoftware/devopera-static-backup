@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8">
+  <title>Lesser-known semantics examples</title>
+  
+  <script type="text/javascript">document.createElement('abbr');</script>
+</head>
+
+
+<body>
+
+<h1>Lesser-known semantics examples</h1>
+
+<p>This file contains all of the code examples from the "Lesser known semantic elements" article, so you can see a live example of how all the source code renders in a browser.</p>
+
+<h2 id="address1">Simple address example</h2>
+
+<address> 
+              <span>Mark Norman Francis</span>, 
+              <span class="tel">1-800-555-4865</span>
+            </address>
+
+
+
+<h2 id="address2">Advanced address example</h2>
+
+<footer>
+  <p>
+    &copy; Copyright 2008 
+    <address>
+      <a href="http://devfiles.myopera.com/contact/">Mark Norman Francis</a>
+    </address>
+  </p>
+</footer>
+
+<h2 id="address3">Incorrect address example</h2>
+
+<p> Our company address: </p>
+            <pre><address>
+              Opera Software ASA,
+              Waldemar Thranes gate 98,
+              NO-0175 OSLO,
+              NORWAY
+            </address></pre>
+
+<h2 id="code1">First code example</h2>
+
+<p>It is bad form to use event handlers like <code>onclick</code>
+              directly in the HTML.</p>
+
+<h2 id="code2">Second code example</h2>
+
+<p>It is bad form to use event handlers like 
+              <code class="language-javascript">onclick</code>
+              directly in the HTML.</p>
+
+<h2 id="computer">Computer interaction example</h2>
+
+<p>One common method of determining if a computer is connected
+              to the internet is to use the computer program <code>ping</code>
+              to see if a computer likely to be running is reachable.</p>
+            <pre>
+              <samp class="prompt">kittaghy%</samp> <kbd>ping -o google.com</kbd>
+              <samp>PING google.com (64.233.187.99): 56 data bytes
+              64 bytes from 64.233.187.99: icmp_seq=0 ttl=242 time=108.995 ms
+
+              --- google.com ping statistics ---
+              1 packets transmitted, 1 packets received, 0% packet loss
+              round-trip min/avg/max/stddev = 108.995/108.995/108.995/0.000 ms
+            </samp></pre>
+
+<h2 id="variables">Variables example</h2>
+
+<p>The value of <var>x</var> in 3<var>x</var>+2=14 is 4.</p>
+    
+            <pre><code class="language-perl">
+                my <var>$welcome</var> = "Hello world!";
+            </code></pre>
+
+<h2 id="citations">Citations example</h2>
+
+<p>The saying <q>Everything should be made as simple as possible,
+              but not simpler</q> is often attributed to <cite>Albert
+              Einstein</cite>, but it is actually a paraphrasing of a quote which is much less easy to understand.</p>
+
+<h2 id="abbreviations">Abbreviations example</h2>
+
+<p>Styling is added to 
+              <abbr title="Hypertext Markup Language">HTML</abbr> documents
+              using <abbr title="Cascading Style Sheets">CSS</abbr>.</p>
+
+<h2 id="dfn1">First defining instances example</h2>
+
+<p><dfn><abbr>HTML</abbr></dfn> ("HyperText Markup Language") is 
+              a language to describe the contents of web documents.</p>
+
+<h2 id="dfn2">Second defining instances example</h2>
+
+<p><dfn><abbr title="HyperText Markup Language">HTML</abbr></dfn> ("HyperText Markup Language") is a language to describe the
+              contents of web documents.</p>
+
+<h2 id="dfn3">Third defining instances example</h2>
+
+<p><abbr title="HyperText Markup Language">HTML</abbr> 
+              (<dfn>HyperText Markup Language</dfn>) is a language to 
+              describe the contents of web documents.</p>
+
+<h2 id="supsub">Superscript and subscript example</h2>
+
+<p>The chemical formula for water is H<sub>2</sub>O, and it
+              is also known as hydrogen hydroxide.</p>
+            <p>The famous formula for mass-energy equivalence as derived
+              by Albert Einstein is E=mc<sup>2</sup> — energy 
+              is equal to the mass multiplied by the speed of light 
+              squared.</p>
+
+<h2 id="breaks">Line breaks example</h2>
+
+<p> Our company address: </p>
+            <p><address>
+              Opera Software ASA,<br>Waldemar Thranes gate 98,<br>
+              NO-0175 OSLO,<br>NORWAY
+            </address></p>
+
+<h2 id="insdeloutdateexample">Inserting, deleting and outdated example</h2>
+
+<p>We should only solve problems that actually arise. As
+              <cite><del datetime="2008-03-25 18:26:55 Z"
+                cite="/changes.html#revision-4">Donald Knuth</del><ins
+                  datetime="2008-03-25 18:26:55 Z"
+                  cite="/changes.html#revision-4">C. A. R. Hoare</ins></cite>
+              said: <q>premature optimization is the root of all 
+              evil</q>.</p>
+ 
+ <p><s>The president of the USA is currently George W. Bush</s>.</p>
+
+              </body>
+</html>
+
+

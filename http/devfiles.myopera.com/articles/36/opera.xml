@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//VoiceXML Forum//DTD XHTML+Voice 1.2//EN"
+"http://www.voicexml.org/specs/multimodal/x+v/12/dtd/xhtml+voice12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events">
+<head>
+  <title>Example 2: Pick the best browser</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="pickbrowser">
+    <field name="browser">
+      <prompt>What is the name of the best browser?</prompt>
+      <option value="opera">Opera</option>
+	  <nomatch>Try again.</nomatch>
+	  <filled>Yes, that's a fact. Opera is the best browser, full of wonderful features.</filled>
+   </field>     
+  </form>
+</head>
+<body ev:event="load" ev:handler="#pickbrowser">
+<h1>Example 2: Pick the best browser</h1>
+<p>For the best user experience, we ask you to select your preferred browser.</p>
+<h2>Source code </h2>
+<pre><code><![CDATA[
+<head>
+  <title>Example 2: Pick the best browser</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="pickbrowser">
+    <field name="browser">
+      <prompt>What is the name of the best browser?</prompt>
+      <option value="opera">Opera</option>
+	  <nomatch>Try again.</nomatch>
+	  <filled>Yes, that's a fact. Opera is the best browser, full of wonderful features.</filled>
+   </field>     
+  </form>
+</head>
+<body ev:event="load" ev:handler="#pickbrowser">
+<h1>Example 2: Pick the best browser</h1>
+<p>For the best user experience, we ask you to select your preferred browser.</p>
+]]></code></pre>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera for Devices: Out of Memory System - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in TV - RSS 2.0 Feed" href="../../../feeds/rss/articles/tv">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in TV - Atom 1.0 Feed" href="../../../feeds/atom/articles/tv">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="tv">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera for Devices: Out of Memory System</h1>
+      <p class="print author">By Opera Software</p>
+
+      <p><a href="http://www.opera.com/business/devices/">Opera for Devices</a> provides powerful mechanisms to strictly limit the heap usage of Opera. Memory is an expensive commodity on many devices and different programs may compete for the limited resources with unpredictable consequences. With the Out of Memory (OOM) system it is possible to restrict Opera to a limited amount of memory while ensuring good functionality.</p>
+
+<p> Although this topic is more a concern for customer integrating Opera on their devices rather then for content developers, understanding how memory allocation works on limited memory devices is important to be able to optimize your application and understand which kind of behaviour to expect from Opera when running out of memory.</p>
+
+<h2>Content:</h2>
+
+<ul>
+    <li><a href="index.html#understanding">Understanding out of memory situations</a></li>
+    <li><a href="index.html#system">The Opera OOM system</a></li>
+    <li><a href="index.html#problems">What problems does each mechanism solve?</a></li>
+    <li><a href="index.html#employing">Employing the OOM system</a></li>
+</ul>
+
+<h2 id="understanding">Understanding out of memory situations</h2>
+
+<p>Linux is generally not OOM safe, so it is not possible to rely on <span class="code">malloc()</span>, and so on, to fail when memory runs low. A Linux environment is usually set up so that <span class="code">malloc()</span> never, or seldom, returns NULL. Consequently most Linux applications and libraries do not expect this to happen, and do not handle it well. This only works well on a desktop system that rarely runs out of memory.</p>
+
+<p>In the rare event when a Linux system does get low on memory, the kernel has a sophisticated algorithm which selects and kills the process using too much memory &#x2014; <i>the OOM-killer</i>. The problem is that an application is never told about the low memory condition until it is too late, and the application is killed. To the end user, it will simply appear to crash. On a device with very limited memory, this is undesirable and it is best to avoid this.</p>
+
+<h2 id="system">The Opera OOM system</h2>
+
+<p>To combat problems associated with limited memory, we have implemented a system that ensures that Opera behaves well in low memory situations. It provides two mechanisms that effectively limit Opera heap memory usage.</p>
+
+<h3>Limit by heap size</h3>
+
+<p>The first mechanism captures memory allocations in Opera and force-fails them if they would cause the process heap size to grow beyond the set limit.</p>
+
+<h3>Limit by allocation size</h3>
+
+<p>The second mechanism internally keeps track of the amount of memory that Opera has allocated, and force-fails any allocations that would cause the total to exceed the allowed limit.</p>
+
+<h3>Internal OOM handling</h3>
+
+<p>Internal OOM handling is triggered by a force-failed memory allocation, regardless of which mechanism triggered it. Internal OOM handling frees as much memory as possible and, if necessary, stops page loading. This means that Opera should not cause the heap to increase past the set limit and that Opera should be able to keep the amount of memory allocated below the specified limits.</p>
+
+<p>Opera also sends an OOM notification to the implementation layer, alerting it that Opera is low on memory. How this situation is handled can differ between different Opera Powered products, e.g. a dialog suggesting closing of any unused applications could be shown.</p>
+
+<h2 id="problems">What problems does each mechanism solve?</h2>
+
+<p>The two different mechanisms in the OOM system work quite differently to solve different problems. It is necessary to take in to account the use case for the device to determine how to best configure the OOM system. Typically, it is a good idea to employ both mechanisms, but it is important to understand the effects of them to tune the behavior.</p>
+
+<p>This topic describes a number of issues and how they are affected by the OOM system.</p>
+
+<h3>Memory starvation</h3>
+
+<p>There may be situations where Opera is effectively starved for memory, and internal OOM handling is unable to raise enough memory to browse normal pages, rendering the browser unusable. This problem arises when the Opera heap limit has been reached, but Opera still does not have enough memory.</p>
+
+<h3>What causes this problem?</h3>
+
+<p>There are other parts of the Opera process that are not affected by the OOM system, such as plug-ins and user interface sections. These share Opera&#39;s heap space but Opera does not control them. In some situations, they may be allocating on the heap, filling it up with memory, growing it far above the size allowed to Opera. The more they allocate, the less may be available to Opera. This may lead to Opera starving, as it will never be allowed to increase the heap.</p>
+
+<p>This problem can be alleviated by listening for Opera&#39;s OOM signals and thoroughly clearing any plug-in or user interface memory that currently does not need to be allocated.</p>
+
+<p>Another cause of memory starvation could be that the heap is suffering from severe fragmentation. If this is the case, large allocations cannot be provided without growing the heap, particularly if the heap limit was not initially generous. In extreme cases, the heap may be so badly fragmented that Opera functionality is crippled.</p>
+
+<p>If memory starvation is a significant problem, the solution may be to increase the heap limit and to consider a stricter employment of an allocation limit.</p>
+
+<h3>Heap-limiting and allocation limits</h3>
+
+<p>One notable aspect of heap-limiting Opera is that it will only stop allocations which <i>grow</i> the heap. If the heap has been increased by some other part of the process, Opera is allowed to use the available memory on the heap. In some situations where the heap has been increased a lot, Opera may allocate huge amounts of memory. This may be either good or bad. On the one hand, it will use memory which is available on the heap, which may otherwise lie unused. On the other hand, this memory may only have been temporarily allocated, and using it may prevent it from being reduced when Linux attempts to shrink the heap. This can lead to quite a vicious circle.</p>
+
+<p>To stop this phenomenon, use an allocation limit to prevent the Opera heap from growing too large, even if it thinks it has plenty of room.</p>
+
+<h3>Oversized heap</h3>
+
+<p>One problem with using an allocation limit is that the heap size may grow very large. The allocation limit does not take in to consideration fragmentation effects. If the heap suffers from heavy fragmentation, it may grow to large sizes as Opera continues to allocate memory regardless.</p>
+
+<p>Also, it may be desirable to keep Opera from growing the heap if other parts of the process have temporarily allocated more memory than usual - even at the expense of Opera functionality.</p>
+
+<p>To reduce the effects of this problem, set a stricter heap limit.</p>
+
+<h3>Conclusion</h3>
+
+<p>It may not be perfect for every platform, but you will probably want to employ both mechanisms of the OOM system. The allocation limit should be smaller than the heap limit to allow room for user interface and plug-ins to live on the heap. The exact numbers for your platform can only be attained through careful experimentation.</p>
+
+<h2 id="employing">Employing the OOM system</h2>
+
+<p>It is possible to set environment variables <b>OPERA_HEAP_LIMIT</b> and <b>OPERA_ALLOC_LIMIT</b> in the Linux shell used to launch Opera to control opera OOM limits. These variables are enforced as soon as Opera starts. One example:</p>
+
+<dl>
+<dt>export OPERA_HEAP_LIMIT=8388608</dt>
+<dd>Limit Opera heap size to 8MB</dd>
+<dt>export OPERA_ALLOC_LIMIT=6291456</dt>
+<dd>Limits the amount of memory that Opera is allowed to use on the heap to 6MB</dd>
+</dl>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=1162172">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, November 21, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/tv.html" rel="tag">tv</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-for-devices-out-of-memory-system-ja/index.html">Japanese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

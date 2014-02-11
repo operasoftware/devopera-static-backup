@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Porsche Timeline</title>
+
+
+<style type="text/css">
+/*CONTAINERS*/
+#timelinewrapper {position:relative; overflow:hidden; width:960px; border:8px solid #666; font-family: Arial, Helvetica, sans-serif; font-size: 15pt;}
+#timeline {overflow:auto; margin-top:200px;}/*"padding-top" should equal pic height*/
+
+/*TABLE*/
+#main 	{width:1530px; margin:0; overflow:hidden;}
+
+.period		{float:left; margin-left:-1px; padding:0; width:254px; height:150px; border:1px solid #555;}
+.period:nth-child(odd)	{background:rgba(235,235,235,1);}
+.period:nth-child(even)	{background:rgba(245,245,245,1);}
+h3		{background:#444; margin:0 0 5px 0; padding:5px 0; color:#eee; text-shadow:-1px -1px 1px black; text-align:center;}
+
+/*BOX*/
+.period div 	{float:left; height:0; width:100%;}
+
+.period div p	{position:relative; background:#ccc; color:#333; text-shadow:1px 1px 2px rgba(0,0,0,0.4); height:25px; margin:0; border:1px solid #888; text-align:center; cursor:default; 
+-webkit-box-shadow:
+1px 1px 2px rgba(0,0,0,0.2),
+inset 0 1px rgba(255,255,255,0.3),
+inset 0 -15px 30px rgba(0,0,0,0.3);
+-moz-box-shadow:
+1px 1px 2px rgba(0,0,0,0.2),
+inset 0 1px rgba(255,255,255,0.3),
+inset 0 -15px 30px rgba(0,0,0,0.3);
+box-shadow:
+1px 1px 2px rgba(0,0,0,0.2),
+inset 0 1px rgba(255,255,255,0.3),
+inset 0 -15px 30px rgba(0,0,0,0.3);}
+
+.period div:hover p {background:#ff5959; border:1px solid #333;}
+
+/*BOX CONTENT*/
+.period div img, .period div span {height:200px; position:absolute; top:0; padding:0; text-align:center; overflow:hidden; z-index:911;}/*"height" should equal pic height*/
+
+.period div span::before	{content:"PORSCHE";}
+.period div span:before	{content:"PORSCHE";}/*IE FIX*/
+
+.period div span	{width:960px; left:0; color:#666; background:#eee; font-family: "porsche", sans-serif; line-height:3.3; font-size:60px;}
+.period div:hover span {width:700px; z-index:999; color:#c40000;}
+
+.period div img	{width:0; right:0; outline:none;}
+.period div:hover img {width:260px; z-index:999;}
+
+/*INDIVIDUAL BOXES*/
+#three56{width:60%;}
+#nine14	{width:80%;margin-left:90%;}
+#nine28	{width:180%;margin-left:80%;}
+#nine59	{width:40%;margin-left:60%;}
+#boxster{width:80%;margin-left:60%;}
+#nine11	{width:460%;margin-left:40%}
+#cayenne{width:80%;margin-left:20%;}
+#logo	{width:0;}
+#logo p	{background:#fff;border:0;}
+
+/*VERTICAL POSITION*/
+.level2 {margin-top:35px;}
+.level3 {margin-top:70px;}
+
+/*FONT*/
+@font-face {font-family: "porsche"; src:url(http://devfiles.myopera.com/articles/3162/porsche.ttf) format("truetype");}
+
+/*ANIMATIONS*/
+.period div img,.period div span,.period div,.period div p{-webkit-transition:0.4s; -moz-transition:0.4s; -o-transition:0.4s; transition:0.4s;}
+
+.period:first-child {
+	left:0;
+	position:absolute;
+	width:254px;
+	border-right:2px solid #000;
+	z-index:999;
+	line-height:1.45;
+	overflow:hidden;
+	height:150px;
+	background:#444;
+}
+	
+.gap {
+	margin-left:254px;
+}
+
+</style>
+</head>
+<body>
+<div id="timelinewrapper">
+<div id="timeline">
+	<div id="main">
+	<!-- 
+	
+	The sources and licenses for the images are as follows:
+	
+	http://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-B21019,_Ferdinand_Porsche.jpg
+http://commons.wikimedia.org/wiki/File:Porsche-914.jpg
+http://commons.wikimedia.org/wiki/File:Porsche_356_Coupe_silver.jpg
+http://commons.wikimedia.org/wiki/File:Porsche_Cayenne-2.jpg
+http://commons.wikimedia.org/wiki/File:Porsche_959_silver_at_Auto_Salon_Singen.jpg
+http://commons.wikimedia.org/wiki/File:Porsche_911_GT2.JPG
+	
+	-->
+        <div class="period">
+		  <h3>Class<br />Sport Coupe<br />Cabrio<br />SUVs and other</h3>
+		</div>
+        <div class="period gap">
+		  <h3>1960s</h3>
+		  <div id="nine11">
+		    <p>911</p>
+		    <span></span>
+		    <img src="http://devfiles.myopera.com/articles/3162/911.jpg" alt="porsche-911"/>
+		  </div>
+		  <div id="three56" class="level2">
+		    <p>356</p>
+		      <span></span>
+		      <img src="http://devfiles.myopera.com/articles/3162/356.jpg" alt="porsche-356"/>
+		  </div>
+		  <div id="nine14" class="level2">
+		    <p>914</p>
+		      <span></span>
+		      <img src="http://devfiles.myopera.com/articles/3162/914.jpg" alt="porsche-914"/>
+		  </div>
+		</div>
+        <div class="period">
+		  <h3>1970s</h3>
+		</div>
+        <div class="period">
+		  <h3>1980s</h3>
+		  <div id="nine59" class="level3">
+		    <p>959</p>
+			<span></span>
+			<img src="http://devfiles.myopera.com/articles/3162/959.jpg" alt="porsche-959"/>
+		  </div>
+		</div>
+        <div class="period">
+		  <h3>1990s</h3>
+		  <div id="boxster" class="level2">
+		    <p>Boxster</p>
+			<span></span>
+			<img src="http://devfiles.myopera.com/articles/3162/boxster.jpg" alt="porsche-boxster"/>
+		  </div>
+		</div>
+        <div class="period">
+		  <h3>2000s</h3>
+		  <div id="cayenne" class="level3">
+		    <p>Cayenne</p>
+			<span></span>
+			<img src="http://devfiles.myopera.com/articles/3162/cayenne.jpg" alt="porsche-cayenne"/>
+		  </div>
+		  <div id="logo">
+		    <p></p>
+			<span></span>
+			<img src="http://devfiles.myopera.com/articles/3162/ferdinand-porsche.jpg" alt="ferdinand-porsche"/>
+		  </div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

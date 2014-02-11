@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Accessible HTML5 Video with JavaScripted captions - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Accessible HTML5 Video with JavaScripted captions</h1>
+      <p class="print author">By Bruce Lawson</p>
+
+      <p class="note">NOTE, September 22nd 2011: There is a new and shiny way to add subtitles to HTML5 video using the new <a href="http://developers.whatwg.org/the-iframe-element.html#the-track-element"><code>&lt;track&gt;</code></a> element, but this isn&#39;t yet implemented. The hacky technique discussed below works now, but it isn&#39;t the &quot;right&quot; way to do it.</p>
+
+<h2>Accessibility of video</h2>
+<p>It’s great that <abbr>HTML</abbr>5 allows us to embed video into web pages that can then be displayed directly by browsers, without having to rely on third-party plugins. (For more information on the true power of <abbr>HTML</abbr>5 video, see <a href="../introduction-html5-video/index.html">Introduction to HTML5 video</a>.)</p>
+
+<p>The elephant in the corner regarding all video — whether it be <abbr>HTML</abbr>5 or proprietary — is accessibility. What are conscientious developers to do to provide textual alternatives for those who can’t access the contents of the video? In <abbr>HTML5</abbr> there isn’t an <code>alt</code> attribute on the <code>video</code> element as there is on <code>img</code>, but you can add &quot;fallback content&quot; between the tags like this:</p>
+
+<pre><code>&lt;video&gt;
+Your browser doesn&#39;t support the open Ogg Theora codec. 
+Please &lt;a href=&quot;video.ogg&quot;&gt;download the video&lt;/a&gt; and view offline.
+&lt;/video&gt;</code></pre>
+
+<p>However, the <a href="http://dev.w3.org/html5/spec/video.html#video">spec says</a>:</p>
+<blockquote>&#x2026;this content is not intended to address accessibility
+concerns. To make video content accessible to the blind, deaf, and
+those with other physical or cognitive disabilities, authors are
+expected to provide alternative media streams and/or to embed
+accessibility aids (such as caption or subtitle tracks) into their
+media streams.</blockquote>
+
+<p>In theory, video files should carry their own captions — not
+burned onto the images, but in a textual format in a separate file, packaged in the wrapper along with the actual video. That way, the author of the content,
+who knows it best, writes it once and anyone embedding the video in
+their page gets the captions/transcript for free.</p>
+
+<p>However, in practice, nobody knows how to do that and no browser knows
+how to get at that data or present it to a user. So we need some kind of hack that fills the gap. Here&#39;s a proof of concept I came up with that stores a
+transcript as plain text on the page, wrapped in a <code>&lt;div
+id=&quot;transcript&quot;&gt;</code> element. If a user comes to the page with JavaScript turned off, they simply see a video with browser controls and a heading
+&quot;transcript&quot; following it, with the transcription.</p>
+
+<p>For those with JavaScript enabled, I want to show individual
+lines of the transcript overlaid on top of the video as captions.
+They will still be plain text, so assistive
+technologies can access the captions, as well as being viewable on screen, and these will be synchronised with the video.</p>
+
+<p>Here&#39;s a silly sample video that shows the technique: <a href="http://people.opera.com/brucel/demo/video/accessible-html5-video-captions.html">
+Example captioned video — How to Leverage a Synergy</a>. (You need to be using an <a href="http://www.opera.com/browser/next/">Ogg video-enabled browser</a>.)</p>
+
+<p>This proof-of-concept doesn&#39;t work in Safari. That&#39;s because Safari doesn&#39;t support the open Ogg codec that Opera, Firefox and Chrome support. If you wish to encode the video for Safari too, and use multiple <a href="http://dev.w3.org/html5/spec/video.html#the-source-element"><code>source</code> elements</a> (one for Ogg, one for MP4), the demo will work. Internet Explorer currently does not support the <code>video</code> element.</p>
+
+<p class="note">If you view source, you’ll see that the transcript is marked up semantically into paragraphs, but each <q>blob</q> of content to be overlaid on the video is wrapped in a <code>span</code> because the division of <q>what is displayed when</q> is based not on meaning but on timing and presentational concerns (such as not filling the screen with text).</p>
+
+<p>In order for the script to know when to display each span, I’ve timestamped each one. Rather than add these inside the text, I’m using
+a new feature of <abbr>HTML</abbr>5 that allows any element to have
+<a href="http://dev.w3.org/html5/spec/dom.html#embedding-custom-non-visible-data">
+custom <code>data-</code> attributes</a> to pass data to scripts.
+You can choose any name you like, but they must start with &quot;data-&quot;
+For this example, I’m calling them <code>data-begin</code> and
+<code>data-end</code>, as those match the names in the <a href="http://www.w3.org/TR/2009/CR-ttaf1-dfxp-20090924/#timing-attribute-vocabulary">
+W3C Timed Text specification</a> and <a href="http://www.w3.org/TR/SVG/animate.html#TimingAttributes">SVG/<abbr title="Synchronized Multimedia Integration Language">SMIL</abbr>
+animation specification</a>s.</p><p>I set the <code>data-begin</code> attribute to the time offset (from the start of the video) that I want the <code>span</code> to appear. The <code>data-end</code> attribute is set to the time that the caption should disappear. So</p>
+
+<pre><code>&lt;span data-begin=1 data-end=6&gt;Hi, my name&#39;s Dr Archimedes Einstein&#x2026;&lt;/span&gt;</code></pre>
+<p>causes the caption to appear 1 second from the beginning of the video, and disappear 6 seconds from the beginning of the video (therefore, in view for 5 seconds in total).</p>
+<p>The script then hides the <code>div</code> that houses the plain transcript (I&#39;m using JavaScript to write a CSS rule to set it to
+<code>display:none</code>). It grabs each <code>span</code> (but not the heading) from the hidden <code>div</code> thus:</p>
+
+<pre><code>var nodes = document.querySelectorAll(&#39;#transcript span&#39;);</code></pre>
+
+<p>We need to position these on top of the video at the correct
+time. Overlaying the text is easy; I simply absolutely position
+another <code>div</code> (with an <code>id</code> of <var>captions</var>) over the top of the video. To
+increase the chance of legibility with white text on a light
+background, I will also add some text shadow using CSS:</p>
+
+<pre><code>text-shadow: black 1px 1px 3px;</code></pre>
+
+<p>To determine when to overlay each <code>span</code>, the script uses the
+<code>ontimeupdate</code> event (which the video fires every 250ms
+or so in Opera) to interrogate the video API and find out how long it has
+been playing:</p>
+
+<pre><code>var v = document.querySelector(&#39;video&#39;); 
+var now = v.currentTime;</code></pre>
+
+<p>and then loops around the <code>span</code> elements in the transcript until it finds one with a <code>data-begin</code> and <code>data-end</code> time that encompasses the current time.</p>
+
+<p>In this example, I’m using CSS-generated content to insert
+the timestamps into the non-JavaScript transcript:</p>
+
+<pre><code>#transcript [data-begin]:before 
+  {content: &quot; [&quot; attr(data-begin) &quot;s-&quot; 
+  attr(data-end)&quot;s] &quot;; 
+  font-size:80%;}</code></pre>
+
+<p>and formatting it using <abbr>CSS</abbr> tables. Both of
+these are entirely optional.</p>
+
+<p class="note">As I said above, this is a hack. It requires lots of developer
+work (although to make any kind of captioning file you’ll need to
+transcribe the audio and note the timings, which is in itself a lot of work). </p>
+
+<p>A couple of problems remain with the script. Firstly, if I mark up
+  abbreviations in the transcript with <code>abbr</code>, or foreign
+  languages with <code>span lang=</code>, it won’t make it through
+  to the synchronised captions (although it’s unlikely to matter). I haven’t tried including any WAI-ARIA information such as <code>aria-describedby</code> (and would welcome feedback on how this should work with ARIA).</p>
+
+<p>Also, in production-ready code the user should be given the option of seeing the transcript rather than captions, even if they are running JavaScript &#x2014; perhaps they’re using a mobile phone and don’t want to download the whole video, but want to see the contents as plain text.</p>
+
+
+<p>The code is released with a creative commons license, so please feel free to amend it&#x2014;and please leave a link or <a href="http://www.twitter.com/brucel">tweet me</a> if you do.</p>
+<p>Also see Daniel Davis&#39; <a href="http://people.opera.com/brucel/demo/video/multilingual-synergy.html">multilingual example</a> that allows you to choose between English and Japanese, even while the video is running.</p>
+
+<h2 id="more">Read more</h2>
+<ul>
+<li><a href="http://my.opera.com/core/blog/2010/03/03/everything-you-need-to-know-about-html5-video-and-audio-2">Everything you need to know about HTML5 video and audio</a> (and it really is <em>everything</em>!)</li>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#video"><code>video</code> specification</a></li>
+<li><a href="http://my.opera.com/core/blog/2009/12/31/re-introducing-video">How <code>video</code> is implemented in Opera</a></li>
+</ul>
+<h2 id="more">Acknowledgments</h2>
+<p>Thanks to  <a href="http://www.twitter.com/foolip">Philip J&#xE4;genstedt</a> for coding the JavaScript in the demo, David Storey for invaluable suggestions, and my daughter Marina for standing on her bed to film the video while I commandeered her homework desk.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=370891">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/brucelawson.html" rel="author">Bruce Lawson</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, January 13, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/captions.html" rel="tag">captions</a></li>
+        <li><a href="../../tags/html5.html" rel="tag">html5</a></li>
+        <li><a href="../../tags/multimedia.html" rel="tag">multimedia</a></li>
+        <li><a href="../../tags/open&#32;web.html" rel="tag">open web</a></li>
+        <li><a href="../../tags/opera&#32;10.50.html" rel="tag">opera 10.50</a></li>
+        <li><a href="../../tags/subtitles.&#32;accessibility.html" rel="tag">subtitles. accessibility</a></li>
+        <li><a href="../../tags/video.html" rel="tag">video</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../accessible-html5-video-with-javascripted-captions-fr/index.html">French</a>,
+        <a href="../accessible-html5-video-with-javascripted-captions-ja/index.html">Japanese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>chrome.storage - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>chrome.storage</h1>
+					 
+						<p class="badge badge-info pull-right">Support: Opera 15+</p>
+					
+					
+					
+          <div id="gc-pagecontent">
+        
+        
+        
+        <div id="toc">
+          <h2>Contents</h2>
+
+              <ol>
+                  <li><a href="storage.html#types">Types</a><ol>  <li>    <a href="storage.html#type-StorageChange">StorageChange</a>  </li>  <li>    <a href="storage.html#type-StorageArea">StorageArea</a><ol><li>      <a href="storage.html#StorageArea-methods">Methods</a>      <ol>        <li><a href="storage.html#method-StorageArea-get">get</a></li>        <li><a href="storage.html#method-StorageArea-getBytesInUse">getBytesInUse</a></li>        <li><a href="storage.html#method-StorageArea-set">set</a></li>        <li><a href="storage.html#method-StorageArea-remove">remove</a></li>        <li><a href="storage.html#method-StorageArea-clear">clear</a></li>      </ol>    </li></ol>  </li></ol></li>
+                  <li><a href="storage.html#properties">Properties</a><ol>  <li>    <a href="storage.html#property-sync">sync</a><ol><li>      <a href="storage.html#sync-properties">Properties</a>      <ol>        <li>          <a href="storage.html#property-sync-QUOTA_BYTES">QUOTA_BYTES</a>        </li>        <li>          <a href="storage.html#property-sync-QUOTA_BYTES_PER_ITEM">QUOTA_BYTES_PER_ITEM</a>        </li>        <li>          <a href="storage.html#property-sync-MAX_ITEMS">MAX_ITEMS</a>        </li>        <li>          <a href="storage.html#property-sync-MAX_WRITE_OPERATIONS_PER_HOUR">MAX_WRITE_OPERATIONS_PER_HOUR</a>        </li>        <li>          <a href="storage.html#property-sync-MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE">MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE</a>        </li>      </ol>    </li></ol>  </li>  <li>    <a href="storage.html#property-local">local</a><ol><li>      <a href="storage.html#local-properties">Properties</a>      <ol>        <li>          <a href="storage.html#property-local-QUOTA_BYTES">QUOTA_BYTES</a>        </li>      </ol>    </li></ol>  </li></ol></li>
+                  
+                  <li><a href="storage.html#events">Events</a><ol>  <li><a href="storage.html#event-onChanged">onChanged</a></li></ol></li>
+                  
+          </ol>
+        </div>
+
+<table class="intro">
+  <tr>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  <tr>
+    <td><strong>Description:</strong></td>
+    <td>Use the <code>chrome.storage</code> module
+    to store, retrieve, and track changes to user data.</td>
+  </tr>
+  <tr>
+    <td><strong>Permissions:</strong></td>
+    <td><code>"storage"</code></td>
+  </tr>
+  
+</table>
+
+        <div class="api_reference">
+            <h2 id="types">Types</h2>
+              <div>
+                <h3 id="type-StorageChange">StorageChange</h3>
+                <div>
+                  <dt><code class="type_name">  (    object  )</code></dt>
+                  <h4 id="StorageChange-properties">
+                    Properties of <a href="storage.html#type-StorageChange">StorageChange</a>
+                  </h4>
+                  <dd><dl>      <div>
+                      <a name="property-StorageChange-oldValue"></a>
+                      <dt>
+                        <code class="variable">oldValue</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            any
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The old value of the item, if there was an old value.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-StorageChange-newValue"></a>
+                      <dt>
+                        <code class="variable">newValue</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            any
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The new value of the item, if there is a new value.
+                      </dd>
+                    </div>
+              </dl></dd>
+                </div>
+              </div>
+              <div>
+                <h3 id="type-StorageArea">StorageArea</h3>
+                <div>
+                  <dt><code class="type_name">  (    object  )</code></dt>
+                  <h4 id="StorageArea-methods">
+                    Methods of <a href="storage.html#type-StorageArea">StorageArea</a>
+                  </h4>
+                  <dd><dl>      <div>
+                      <h4 id="method-StorageArea-get">get</h4>
+                      <div class="summary lower"><code>
+                        <span>StorageArea.get</span>(<span class="optional">string or array of string or object <span class="variable">keys</span></span>, <span>function <span class="variable">callback</span></span>)
+                      </code></div>
+                      <div class="description">
+                        <p>
+                          Gets one or more items from storage.
+                        </p>
+                        <h4>Parameters</h4>
+                        <dl>
+                            <div>
+                              <a name="property-get-keys"></a>
+                              <dt>
+                                <code class="variable">keys</code>
+                                <code class="property">
+                                  (
+                                    <span class="optional">optional</span>
+                                    string or 
+                                    array of string or 
+                                    object
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                A single key to get, list of keys to get, or a dictionary specifying default values (see description of the object).  An empty list or object will return an empty result object.  Pass in <code>null</code> to get the entire contents of storage.
+                              </dd>
+                            </div>
+                            <div>
+                              <a name="property-get-callback"></a>
+                              <dt>
+                                <code class="variable">callback</code>
+                                <code class="property">
+                                  (
+                                    
+                                    function
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                Callback with storage items, or on failure (in which case <a href="runtime.html#property-lastError">runtime.lastError</a> will be set).
+                              </dd>
+                            </div>
+                        </dl>
+                          <h4>Callback</h4>
+                          <p>
+                                The <em>callback</em> parameter should specify a function
+                                that looks like this:
+                          </p>
+                          <pre class="prettyprint">function(object items) <span class="subdued">{...}</span>;</pre>
+                          <dl>
+                              <div>
+                                <a name="property-callback-items"></a>
+                                <dt>
+                                  <code class="variable">items</code>
+                                  <code class="property">
+                                    (
+                                      
+                                      object
+                                    )
+                                  </code>
+                                </dt>
+                                <dd>
+                                  Object with items in their key-value mappings.
+                                </dd>
+                              </div>
+                          </dl>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 id="method-StorageArea-getBytesInUse">getBytesInUse</h4>
+                      <div class="summary lower"><code>
+                        <span>StorageArea.getBytesInUse</span>(<span class="optional">string or array of string <span class="variable">keys</span></span>, <span>function <span class="variable">callback</span></span>)
+                      </code></div>
+                      <div class="description">
+                        <p>
+                          Gets the amount of space (in bytes) being used by one or more items.
+                        </p>
+                        <h4>Parameters</h4>
+                        <dl>
+                            <div>
+                              <a name="property-getBytesInUse-keys"></a>
+                              <dt>
+                                <code class="variable">keys</code>
+                                <code class="property">
+                                  (
+                                    <span class="optional">optional</span>
+                                    string or 
+                                    array of string
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                A single key or list of keys to get the total usage for. An empty list will return 0. Pass in <code>null</code> to get the total usage of all of storage.
+                              </dd>
+                            </div>
+                            <div>
+                              <a name="property-getBytesInUse-callback"></a>
+                              <dt>
+                                <code class="variable">callback</code>
+                                <code class="property">
+                                  (
+                                    
+                                    function
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                Callback with the amount of space being used by storage, or on failure (in which case <a href="runtime.html#property-lastError">runtime.lastError</a> will be set).
+                              </dd>
+                            </div>
+                        </dl>
+                          <h4>Callback</h4>
+                          <p>
+                                The <em>callback</em> parameter should specify a function
+                                that looks like this:
+                          </p>
+                          <pre class="prettyprint">function(integer bytesInUse) <span class="subdued">{...}</span>;</pre>
+                          <dl>
+                              <div>
+                                <a name="property-callback-bytesInUse"></a>
+                                <dt>
+                                  <code class="variable">bytesInUse</code>
+                                  <code class="property">
+                                    (
+                                      
+                                      integer
+                                    )
+                                  </code>
+                                </dt>
+                                <dd>
+                                  Amount of space being used in storage, in bytes.
+                                </dd>
+                              </div>
+                          </dl>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 id="method-StorageArea-set">set</h4>
+                      <div class="summary lower"><code>
+                        <span>StorageArea.set</span>(<span>object <span class="variable">items</span></span>, <span class="optional">function <span class="variable">callback</span></span>)
+                      </code></div>
+                      <div class="description">
+                        <p>
+                          Sets multiple items.
+                        </p>
+                        <h4>Parameters</h4>
+                        <dl>
+                            <div>
+                              <a name="property-set-items"></a>
+                              <dt>
+                                <code class="variable">items</code>
+                                <code class="property">
+                                  (
+                                    
+                                    object
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                Object specifying items to augment storage with. Values that cannot be serialized (functions, etc) will be ignored.
+                              </dd>
+                            </div>
+                            <div>
+                              <a name="property-set-callback"></a>
+                              <dt>
+                                <code class="variable">callback</code>
+                                <code class="property">
+                                  (
+                                    <span class="optional">optional</span>
+                                    function
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                Callback on success, or on failure (in which case <a href="runtime.html#property-lastError">runtime.lastError</a> will be set).
+                              </dd>
+                            </div>
+                        </dl>
+                          <h4>Callback</h4>
+                          <p>
+                                If you specify the <em>callback</em> parameter, it should
+                                specify a function that looks like this:
+                          </p>
+                          <pre class="prettyprint">function() <span class="subdued">{...}</span>;</pre>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 id="method-StorageArea-remove">remove</h4>
+                      <div class="summary lower"><code>
+                        <span>StorageArea.remove</span>(<span>string or array of string <span class="variable">keys</span></span>, <span class="optional">function <span class="variable">callback</span></span>)
+                      </code></div>
+                      <div class="description">
+                        <p>
+                          Removes one or more items from storage.
+                        </p>
+                        <h4>Parameters</h4>
+                        <dl>
+                            <div>
+                              <a name="property-remove-keys"></a>
+                              <dt>
+                                <code class="variable">keys</code>
+                                <code class="property">
+                                  (
+                                    
+                                    string or 
+                                    array of string
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                A single key or a list of keys for items to remove.
+                              </dd>
+                            </div>
+                            <div>
+                              <a name="property-remove-callback"></a>
+                              <dt>
+                                <code class="variable">callback</code>
+                                <code class="property">
+                                  (
+                                    <span class="optional">optional</span>
+                                    function
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                Callback on success, or on failure (in which case <a href="runtime.html#property-lastError">runtime.lastError</a> will be set).
+                              </dd>
+                            </div>
+                        </dl>
+                          <h4>Callback</h4>
+                          <p>
+                                If you specify the <em>callback</em> parameter, it should
+                                specify a function that looks like this:
+                          </p>
+                          <pre class="prettyprint">function() <span class="subdued">{...}</span>;</pre>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 id="method-StorageArea-clear">clear</h4>
+                      <div class="summary lower"><code>
+                        <span>StorageArea.clear</span>(<span class="optional">function <span class="variable">callback</span></span>)
+                      </code></div>
+                      <div class="description">
+                        <p>
+                          Removes all items from storage.
+                        </p>
+                        <h4>Parameters</h4>
+                        <dl>
+                            <div>
+                              <a name="property-clear-callback"></a>
+                              <dt>
+                                <code class="variable">callback</code>
+                                <code class="property">
+                                  (
+                                    <span class="optional">optional</span>
+                                    function
+                                  )
+                                </code>
+                              </dt>
+                              <dd>
+                                Callback on success, or on failure (in which case <a href="runtime.html#property-lastError">runtime.lastError</a> will be set).
+                              </dd>
+                            </div>
+                        </dl>
+                          <h4>Callback</h4>
+                          <p>
+                                If you specify the <em>callback</em> parameter, it should
+                                specify a function that looks like this:
+                          </p>
+                          <pre class="prettyprint">function() <span class="subdued">{...}</span>;</pre>
+                      </div>
+                    </div>
+              </dl></dd>
+                </div>
+              </div>
+            <h2 id="properties">Properties</h2>
+              <div>
+                <h3 id="property-sync">sync</h3>
+                <div class="summary"><code>
+                  <span>chrome.storage.sync</span>
+                </code></div>
+                <div>
+                  <dt><code><span class="property">sync</span> <span class="type_name">  (    <a href="storage.html#type-StorageArea">StorageArea</a>  )</span></code></dt>
+              <dd>
+                    Items in the <code>sync</code> storage area are synced using Opera Sync.
+                  </dd>    <h4 id="sync-properties">
+                    Properties of <a href="storage.html#property-sync">sync</a>
+                  </h4>
+                  <dd><dl>      <div>
+                      <a name="property-sync-QUOTA_BYTES"></a>
+                      <dt>
+                        <code class="variable">QUOTA_BYTES</code>
+                        <code class="property">
+                          (
+                            
+                            <code>102,400</code>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The maximum total amount (in bytes) of data that can be stored in sync storage, as measured by the JSON stringification of every value plus every key's length. Updates that would cause this limit to be exceeded fail immediately and set <a href="runtime.html#property-lastError">runtime.lastError</a>.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-sync-QUOTA_BYTES_PER_ITEM"></a>
+                      <dt>
+                        <code class="variable">QUOTA_BYTES_PER_ITEM</code>
+                        <code class="property">
+                          (
+                            
+                            <code>4,096</code>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The maximum size (in bytes) of each individual item in sync storage, as measured by the JSON stringification of its value plus its key length. Updates containing items larger than this limit will fail immediately and set <a href="runtime.html#property-lastError">runtime.lastError</a>.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-sync-MAX_ITEMS"></a>
+                      <dt>
+                        <code class="variable">MAX_ITEMS</code>
+                        <code class="property">
+                          (
+                            
+                            <code>512</code>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The maximum number of items that can be stored in sync storage. Updates that would cause this limit to be exceeded will fail immediately and set <a href="runtime.html#property-lastError">runtime.lastError</a>.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-sync-MAX_WRITE_OPERATIONS_PER_HOUR"></a>
+                      <dt>
+                        <code class="variable">MAX_WRITE_OPERATIONS_PER_HOUR</code>
+                        <code class="property">
+                          (
+                            
+                            <code>1,000</code>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The maximum number of <code>set</code>, <code>remove</code>, or <code>clear</code> operations that can be performed each hour. Updates that would cause this limit to be exceeded fail immediately and set <a href="runtime.html#property-lastError">runtime.lastError</a>.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-sync-MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE"></a>
+                      <dt>
+                        <code class="variable">MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE</code>
+                        <code class="property">
+                          (
+                            
+                            <code>10</code>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The maximum number of <code>set</code>, <code>remove</code>, or <code>clear</code> operations that can be performed each minute, sustained over 10 minutes. Updates that would cause this limit to be exceeded fail immediately and set <a href="runtime.html#property-lastError">runtime.lastError</a>.
+                      </dd>
+                    </div>
+              </dl></dd>
+                </div>
+              </div>
+              <div>
+                <h3 id="property-local">local</h3>
+                <div class="summary"><code>
+                  <span>chrome.storage.local</span>
+                </code></div>
+                <div>
+                  <dt><code><span class="property">local</span> <span class="type_name">  (    <a href="storage.html#type-StorageArea">StorageArea</a>  )</span></code></dt>
+              <dd>
+                    Items in the <code>local</code> storage area are local to each machine.
+                  </dd>    <h4 id="local-properties">
+                    Properties of <a href="storage.html#property-local">local</a>
+                  </h4>
+                  <dd><dl>      <div>
+                      <a name="property-local-QUOTA_BYTES"></a>
+                      <dt>
+                        <code class="variable">QUOTA_BYTES</code>
+                        <code class="property">
+                          (
+                            
+                            <code>5,242,880</code>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        The maximum amount (in bytes) of data that can be stored in local storage, as measured by the JSON stringification of every value plus every key's length. This value will be ignored if the extension has the <code>unlimitedStorage</code> permission. Updates that would cause this limit to be exceeded fail immediately and set <a href="runtime.html#property-lastError">runtime.lastError</a>.
+                      </dd>
+                    </div>
+              </dl></dd>
+                </div>
+              </div>
+            <h2 id="events">Events</h2>
+              <div>
+                <h4 id="event-onChanged">onChanged</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.storage.</span>onChanged<span class="subdued">.addListener</span>(function(<span>object <span class="variable">changes</span></span>, <span>string <span class="variable">areaName</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when one or more items change.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onChanged-changes"></a>  <dt><code>    <span class="variable">changes</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    Object mapping each key that changed to its corresponding <a href="storage.html#type-StorageChange">StorageChange</a> for that item.  </dd></div><div>  <a name="property-onChanged-areaName"></a>  <dt><code>    <span class="variable">areaName</span>    <span class="property">      (                string      )    </span>  </code></dt>  <dd>    The name of the storage area (<code>sync</code> or <code>local</code>) the changes are for.  </dd></div>
+                    </dl>
+                </div>
+              </div>
+        </div>
+          
+      </div>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/trunk/extensions/storage.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

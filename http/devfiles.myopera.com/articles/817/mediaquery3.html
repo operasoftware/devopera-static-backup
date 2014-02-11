@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Mediaqueries demo 2</title>
+<style>
+div.sidebar { width: 10em; float: left; display: block; background: #ddd; font-size: 0.85em; padding: 1em; margin: 0 1em 0 0; }
+div.content { width: 35em; padding: 1em; }
+@media screen and (min-width: 480px) {
+	.content p:before {
+		content: "You are now using the styling designed for screen. ";
+		font-weight: bold;
+	}
+}
+@media handheld, screen and (max-width: 480px), screen and (max-device-width: 480px)  {
+	.content p:before {
+		content: "You are now using the styling designed for handhelds or devices with < 480px screens. ";
+		font-weight: bold;	}
+	div.sidebar, div.content { width: auto; float: none; margin: 0; padding: 0.5em; }
+
+}
+</style>
+</head>
+<body>
+<h1>Popular features in Opera Mini</h1>
+
+<div class="sidebar">
+<h2>The world’s most popular mobile Web browser with over 30 million users</h2>
+<p>Full Web: Opera Mini enables you to take your full Web experience to your phone. Fast: Faster mobile internet as data is compressed before being sent to your phone. Free: Opera Mini is free to download. It is the definitive mobile web browser.</p>
+</div>
+
+<div class="content">
+<h3>Full Web in your palm</h3>
+<p>When visiting a Web page, Opera Mini displays the overview of the page and suggests where to begin your reading.</p>
+<h3>Built for speed</h3>
+<p>Opera Mini is built for speed. Web pages are compressed by up to 90% of its original size for speed, saving your time &amp; money.</p>
+<h3>Sync bookmarks and Speed Dial</h3>
+<p>Opera Mini features Opera Link, which allows you to synchronize your bookmarks and Speed Dial with a computer running Opera 10 or other mobile device running Opera Mini.</p>
+<h3>Save it for later</h3>
+<p>On phones with JSR-75, Opera Mini lets you save pages for offline viewing so you can quickly access and read your desired Web content, even when you’re on a plane, in the subway, or in other places where you can’t get network reception. Depending on your phone, you may need to choose a destination folder for storing pages for offline viewing</p>
+</div>
+
+</body>

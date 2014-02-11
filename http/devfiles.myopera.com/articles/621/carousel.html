@@ -1,0 +1,177 @@
+<html>
+<head>
+	<title>Dynamic style: Manipulating CSS with JavaScript Examples - Theoretical Example </title>
+	<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/621/example_styles.css">
+	<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/621/full_css.css">
+</head>
+<body>
+	<h1>
+		Dynamic style: Manipulating CSS with JavaScript Examples
+	</h1>
+
+	<p>Note: Some of the example code shown below is not the full code being executed. To make things as simple as possible I wanted to just show the critical code pertaining to style manipulation, thus the code that deals with browser differences is not shown. To see the full code one can view the source code.</p>
+	<hr>
+	<div>
+		<script>
+			var text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas sit amet metus. Nunc quam elit, posuere nec, auctor in, rhoncus quis, dui. Aliquam erat volutpat. Ut dignissim, massa sit amet dignissim cursus, quam lacus feugiat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas sit amet metus. Nunc quam elit, posuere nec, auctor in, rhoncus quis, dui. Aliquam erat volutpat. Ut dignissim, massa sit amet dignissim cursus, quam lacus feugiat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas sit amet metus. Nunc quam elit, posuere nec, auctor in, rhoncus quis, dui. Aliquam erat volutpat. Ut dignissim, massa sit amet dignissim cursus, quam lacus feugiat."
+			function getStyleSheetForLarge() {
+				return document.styleSheets[0];
+			}
+			var elarge_sheet = getStyleSheetForLarge();
+			
+			var showingAll = true;
+			
+			function showOnly(type) {
+				removeColor();
+				removeBox();
+				if(!showingAll) {
+					removeRules();
+				}
+				var selector = "";
+				var rule = " { display: none;}";
+				if(type=="CSS") {
+					selector = ".js-art, .html-art";
+				} else if(type=="JS") {
+					selector = ".css-art, .html-art";
+				} else if(type=="HTML") {
+					selector = ".css-art, .js-art";
+				}
+				if(elarge_sheet.cssRules != undefined) {
+					elarge_sheet.insertRule(selector + rule, 0);
+				} else {
+					elarge_sheet.addRule(selector, rule, 0);
+				}
+				showingAll = false;
+				adjustDiv(type);
+			}
+			function removeRules() {
+				if(!showingAll){
+					if(elarge_sheet.cssRules != undefined) {
+						elarge_sheet.deleteRule(0);
+					} else {
+						elarge_sheet.removeRule(0);
+					}
+				}
+				showingAll = true;
+				adjustDiv();
+			}
+			function carousel() {
+				var new_sheet = document.createElement('link');
+				new_sheet.rel="stylesheet";
+				new_sheet.href="carousel.css";
+				document.body.appendChild(new_sheet);
+			}
+			function addEvents() {
+				var lis = document.getElementsByTagName('li');
+				for(var i=0; i<lis.length; i++) {
+					lis[i].addEventListener('click', changeColor(lis[i]), true);
+				}
+			}
+			function removeColor() {
+				var lis = document.getElementsByTagName('li');
+				for(var i=0; i<lis.length; i++) {
+					lis[i].style.color = "black";
+				}
+			}
+			function removeBox() {
+				var box = document.getElementById('box');
+				if(box) {
+					box.parentNode.removeChild(box);
+				}
+			}
+			function changeColor(el) {
+				return function() {
+					removeColor();
+					removeBox();
+					el.style.color = "green";
+					addMainText(el);
+				}
+			}
+			function addMainText(el) {
+				var box = document.createElement('div');
+				box.id = "box";
+				if(el.parentNode.id=="spotlight") {
+					box.innerHTML = "<h4>"+el.innerHTML+"</h4>" + text;
+					var pnode = el.parentNode.parentNode;
+					pnode.parentNode.insertBefore(box, pnode.nextSibling);
+				} else {
+					box.innerHTML = text;
+					el.parentNode.insertBefore(box,el.nextSibling);
+				}
+			}
+			function showOnlyCSS() {
+				showOnly('CSS');
+			}
+			function showOnlyJS() {
+				showOnly('JS');
+			}
+			function showOnlyHTML() {
+				showOnly('HTML');
+			}
+			
+			function adjustDiv(cl) {
+				var spot = document.getElementById('spotlight');
+				var tot = 0;
+				var inc = 230;
+				var lis = spot.getElementsByTagName('li');
+				for(var i=0; i<lis.length; i++) {
+					if(!cl || lis[i].className.match(cl.toLowerCase())) {
+						tot = tot + inc;
+					}
+				}
+				spot.style.width = tot+"px";
+			}
+		</script>
+		<div id="title">Articles of Tech</div>
+		<p>This <em>very simple</em> carousel is created only if you have javascript enabled.  Please turn off javascript to see the static display of the articles</p>
+		<h2>SpotLight Articles</h2>
+		<div id="spotHolder">
+			<ul id="spotlight">
+				<li class="css-art">Fun CSS Article</li>
+				<li class="css-art">Super CSS Article</li>
+				<li class="js-art">Best JavaScript Article</li>
+				<li class="html-art">HTML is Sweet Article</li>
+				<li class="html-art">Funny HTML Article</li>
+				<li class="html-art">HTML !!! Article</li>
+				<li class="css-art">Happy CSS Article</li>
+				<li class="css-art">Slappy CSS Article</li>
+				<li class="js-art">Super Happy JavaScript Article</li>
+				<li class="js-art">Win One JavaScript Article</li>
+				<li class="html-art">HTML for the Sick Article</li>
+				<li class="css-art html-art">HTML and CSS Article</li>
+				<li class="js-script css-art">CSS with JavaScript Article</li>
+				<li class="css-art">KISS CSS Article</li>
+				<li class="js-art">CoffeeScript Article</li>
+				<li class="js-art">Sleep JavaScript Article</li>
+				<li class="js-art">Jump the JavaScript Article</li>
+				<li class="css-art">CSSes Article</li>
+				<li class="html-art">HTMLephant Article</li>
+			</ul>
+			<div style="clear:both;"></div>
+		</div>
+		<div id="button-holder">
+			<input id="ar" class='button' type='button' value="Show All Articles" />
+			<input id="cssr" class='button' type='button' value="Only CSS Articles" />
+			<input id="jsr" class='button' type='button' value="Only JS Articles" />
+			<input id="htmlr" class='button' type='button' value="Only HTML Articles" />
+		</div>
+		<script>
+			carousel();
+			addEvents();
+		</script>
+	</div>
+	<script>
+		function addOnClick(el, func) {
+			if(el.addEventListener) {
+				el.addEventListener('click', func, false);
+			} else {
+				el.attachEvent('onclick', func);
+			}
+		}
+		addOnClick(document.getElementById('ar'), removeRules);
+		addOnClick(document.getElementById('cssr'), showOnlyCSS);
+		addOnClick(document.getElementById('jsr'), showOnlyJS);
+		addOnClick(document.getElementById('htmlr'), showOnlyHTML);
+	</script>
+</body>
+</html>

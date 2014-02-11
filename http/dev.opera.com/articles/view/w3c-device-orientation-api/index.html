@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The W3C device orientation API: detecting orientation and acceleration - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>The W3C device orientation API: detecting orientation and acceleration</h1>
+      <p class="print author">By Shwetank Dixit</p>
+
+      <h2>Introduction</h2>
+
+<p>For a long time, there was talk of native apps having an advantage over web apps on mobile because native apps can utilise native device capabilities, for example the gyroscope and accelerometer. However, now you can do that using normal web pages too, thanks to the <a href="http://dev.w3.org/geo/api/spec-source-orientation.html">W3C Device Orientation specification</a>.</p>
+
+<p>Using device orientation, we can determine the orientation of the device as well as gather information about its movement. This information is valuable in certain types of applications, such as games that require the user to tilt the device in some way.</p>
+
+<p>In this article we&#39;ll look at the basics of how device orientation works, along with some simple examples.</p>
+
+<h2>Our Co-ordinate system</h2>
+
+<p><img src="../../../../devfiles.myopera.com/articles/9472/device-axes.png" alt="explanation of co-ordinate system" /></p>
+<p class="caption">Figure 1: A diagram of the coordinate system used by device orientation.</p>
+
+<p>We need a frame of reference to compare the change in direction and orientation whenever a device is moved. For this purpose, we&#39;ll assume a standard XYZ co-ordinate system. If you get your device and put it flat on a level surface like a table, with the screen facing up, you can imagine the X axis running from side to side (left to right) on the device (cutting the space horizontally into a lower half and an upper half), the Y axis running from bottom to top (cutting the space vertically into a left half and a right half), and the Z axis being a line running from the surface of the screen up to the sky. This axis system is illustrated in Figure 1.</p>
+
+<p>Now that we have the co-ordinate system in place, we can make sense of rotating the device. Device orientation defines three types of rotation, which are as follows:</p>
+
+<ul>
+<li><p><strong>Alpha:</strong> The amount of rotation around the Z axis is known as alpha. To better understand it, consider the example of a set of helicopter blades rotating. They are not going up or down, or moving to the side. They are just rotating along the Z-axis by &#39;alpha&#39; degrees per microsecond. The range is from 0 to 360 degrees.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/9472/device-alpha.png" alt="Device rotated along Z axis" /></p>
+<p class="caption">Figure 2: Device rotated along Z axis.</p>
+</li>
+
+<li>
+<p><strong>Beta:</strong> The amount of rotation around the X-axis is known as beta. For example, when a plane is taking off from the runway, it is going in a straight line but in an upward direction. In that case, it is turning along the X-axis. The range is from -180 to 180 degrees.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/9472/device-beta.png" alt="Device rotated along X axis" /></p>
+<p class="caption">Figure 3: Device rotated along X axis.</p>
+</li>
+
+<li>
+<p><strong>Gamma:</strong> The amount of rotation around the Y-Axis is known as gamma. For example, if a plane is going straight (with wings parallel to the ground), but then wants to make a turn, it rotates with one wing moving towards the ground and the other wing moving further away. The range is from -90 to 90 degrees.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/9472/device-gamma.png" alt="Device rotated along Y axis" /></p>
+<p class="caption">Figure 4: Device rotated along Y axis.</p>
+</li>
+</ul>
+
+<h2>The <code>deviceorientation</code> event</h2>
+
+<p>Device orientation specifies a new event called the <code>deviceorientation</code> event. Using this, we can figure out the tilt of the device in terms of alpha, beta and gamma.</p>
+
+<p>Not all devices (especially laptops) support device orientation, so it is prudent to first check whether the device supports it before going further:</p>
+
+<pre><code>if (window.DeviceOrientationEvent) {
+  // your code
+} else {
+  console.log(&#39;device orientation not supported&#39;);
+  // add fallback code here, as necessary
+}</code></pre>
+
+<p>We can now add an event listener, so that every time the device is rotated, it fires the event and we can process it using a function:</p>
+
+<pre><code>window.addEventListener(&#39;deviceorientation&#39;, capture_orientation, false);</code></pre>
+
+<p>Inside the <code>capture_orientation</code> function, we can now process the rotation of the device:</p>
+
+<pre><code>function capture_orientation (event) {
+ var alpha = event.alpha;
+ var beta = event.beta;
+ var gamma = event.gamma;
+ console.log(&#39;Orientation - Alpha: &#39;+alpha+&#39;, Beta: &#39;+beta+&#39;, Gamma: &#39;+gamma);
+}</code></pre>
+
+<p>From the above function we can see how easy it is to get the alpha. beta and gamma values of the device rotation.</p>
+
+<p>Take a look at our <a href="../../../../devfiles.myopera.com/articles/9472/dodemo.htm">simple device orientation demo page</a>. This demo changes the background color of the page as you move it, as well as showing the alpha, beta and gamma values of the device&#39;s orientation.</p>
+
+<h2>The <code>devicemotion</code> event</h2>
+
+<p>We also have an event to help us determine how fast the device is accelerating: the <code>devicemotion</code> event taps into the device&#39;s accelerometer and determines its acceleration along the X, Y and Z axes.</p>
+
+<p>The first thing, as usual, is to check whether the device supports the <code>devicemotion</code> event:</p>
+
+<pre><code>if (window.DeviceMotionEvent) {
+// proceed with the code
+} else {
+console.log(&#39;This device does not support devicemotion&#39;);
+}</code></pre>
+
+<p>Now we&#39;ll add an event listener like so:</p>
+
+<pre><code>window.addEventListener(&#39;devicemotion&#39;, capture_acceleration, false);</code></pre>
+
+<p>Then we&#39;ll write a function for capturing the acceleration. Keep in mind that we have a way of determining the acceleration of the device with and without the effects of gravity on it. The former is determined using the <code>accelerationIncludingGravity</code> property, and the latter using the <code>acceleration</code> property:</p>
+
+<pre><code>function capture_acceleration (event) {
+  var acceleration_x = event.acceleration.x;
+  var acceleration_y = event.acceleration.y;
+  var acceleration_z = event.acceleration.z;
+
+  var acceleration_g_x = event.accelerationIncludingGravity.x;
+  var acceleration_g_y = event.accelerationIncludingGravity.y;
+  var acceleration_g_z = event.accelerationIncludingGravity.z;
+}</code></pre>
+
+<p>The measurements are in meters per second squared (ms<sup>2</sup>) and — as you can tell from the code above — there are properties available containing the acceleration along the X, Y, and Z axes. </p>
+
+<p>Take a look at our — *ahem* — <a href="../../../../devfiles.myopera.com/articles/9472/laser-sword-demo.htm">&quot;laser-sword&quot; demo</a>, which uses the <code>devicemotion</code> event and some nice swooshy sound clips embedded using HTML5 <code>&lt;audio&gt;</code> elements.</p>
+
+<h2>Use cases and future possibilities</h2>
+
+<p>Using the W3C device orientation spec, we can now have a web application determine the device&#39;s position and acceleration using JavaScript. This opens up a lot of possibilities that until now were not available to web apps.</p>
+
+<p>Device orientation could also be used for gesture recognition. For example, a web-based music player could skip to the next song when the device is shaken at a certain speed, or you could use the same gesture to trigger an &quot;Undo&quot; command. Gestures are also great for games, and for accessibility: you could provide custom navigation gestures for people who find it hard to point and use their fingers on a touch phone.</p>
+
+<h2>Cross browser issues</h2>
+
+<p>Unfortunately, at this time there is a something of a <a href="http://lists.w3.org/Archives/Public/public-geolocation/2012Jun/0000.html">variance in the implementation of <code>device orientation</code></a> within various mobile browsers. We believe Opera Mobile&#39;s implementation is the most inline with the specification, followed by Firefox&#39;s implementation, which only differs in its calculation of <code>alpha</code> (it measures it clockwise instead of anti-clockwise — this can easily be normalized using some simple javascript) but otherwise is the same as Opera. Webkit-based mobile browsers like Mobile Safari and the Native Android browsers each calculate the position of alpha, beta and gamma in their own way. We hope future versions of those browsers release implementations more in line with the specification, so that developers can take advantage of device orientation in their web apps in an easier manner.</p>
+
+<h2>Summary</h2>
+
+<p><code>deviceorientation</code> and <code>devicemotion</code> provide cool new options for creating mobile apps, from games and augmented reality applications to normal applications that need an extra level of polish. The API is very simple, and it&#39;s easy for a developer to understand and start using it, today (cross browser issues not withstanding). Opera Mobile 12 and other major smartphone browsers already have support for it — it&#39;s a very promising technology and you should consider including it in your next project!</p>
+
+<p class="note">Opera&#39;s Rich Tibbett has written a fantastic deviceOrientation example — see his <a href="http://people.opera.com/richt/release/demos/orientation/marinecompass/">Marine Compass demo</a>.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-92577702">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is Opera planing to add orientation and touch APIs to Opera Desktop as well? It is going to make more and more sense. Eg. with windows 8 on tablets.</section>
+    </li>
+    <li id="comment-92579562">
+      <a href="../../../author/SpShut.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e1/f4a/41c47d94592a30be8a82bec69869f38ec8d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/SpShut.html">Spadar Shut</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>In latest Opera Mobile on my Xperia x10 the sword doesn&#39;t move or anything. <br/>Update: Sorry, it  shouldnt move, I see, but the sound plays only on page load, no matter how I shake the phone)</section>
+    </li>
+    <li id="comment-92580142">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@BS-Harou - yes, it should be added to desktop as well.<br/><br/>@Spadar Shut - this is weird - it seems to work fine for me. We are investigating now.</section>
+    </li>
+    <li id="comment-92585242">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Ok - I&#39;ve updated the laser sword example - can anyone who tries it let me know if it works now, and if not, if they are getting errors reported, say in Dragonfly?<br/></section>
+    </li>
+    <li id="comment-92585902">
+      <a href="../../../author/shwetankdixit.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/10/084/9cc10f99a8e6b2107d64ecb31961d571336.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/shwetankdixit.html">Shwetank Dixit</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Spadar: We&#39;ve lowered the acceleration threshold required to play the sound, so it should be easier to now easier to play the sound by moving the device once you hit the &#39;start lightsaber&#39; button.  </section>
+    </li>
+    <li id="comment-92597582">
+      <a href="../../../author/chocimir.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/52/2ec/4b76c3c51a802eb5dfd65d6c9a099f62e77.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chocimir.html">Chocimier</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>There is if (window.devicemotion) { in article and if (window.DeviceMotionEvent){ in demo; is it a mistake or 2 correct ways?</section>
+    </li>
+    <li id="comment-92598852">
+      <a href="../../../author/shwetankdixit.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/10/084/9cc10f99a8e6b2107d64ecb31961d571336.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/shwetankdixit.html">Shwetank Dixit</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chrocimier: Nice catch! Thanks for that. As mentioned in the demo, its window.DeviceMotionEvent. I&#39;ve updated the article to reflect that. </section>
+    </li>
+    <li id="comment-92738672">
+      <a href="../../../author/Swapnil99pro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/524/8595f6063949c4abc7369cac0d44b87a24f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Swapnil99pro.html">Swapnil Rustagi</a></p>
+      <p class="commentdate">Saturday, July 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;The deviceorientation event&quot;<br/><br/>else {<br/>  console.log(&#39;device orientation not supported);&quot;<br/><br/>Shouldn&#39;t it be console.log(&#39;device orientation not supported&#39;) ??? (A &#39; is missing before the end of the bracket).</section>
+    </li>
+    <li id="comment-92739332">
+      <a href="../../../author/shwetankdixit.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/10/084/9cc10f99a8e6b2107d64ecb31961d571336.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/shwetankdixit.html">Shwetank Dixit</a></p>
+      <p class="commentdate">Saturday, July 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@swapnil: Yeah, small typo. Fixed it now :) Thanks.</section>
+    </li>
+    <li id="comment-94123202">
+      <a href="../../../author/toyotabedzrock.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d2/80b/14f74ba72892bdd5872556afc4ef5b7add3.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/toyotabedzrock.html">Jim</a></p>
+      <p class="commentdate">Sunday, August 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>If you enabled orientation on the desktop, like Chrome, html5test would score Opera higher. It is going to be useful for the Intel based tablets running Windows 8.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/shwetankdixit.html" rel="author">Shwetank Dixit</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, July 11, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/accelerometer.html" rel="tag">accelerometer</a></li>
+        <li><a href="../../tags/alpha.html" rel="tag">alpha</a></li>
+        <li><a href="../../tags/beta.html" rel="tag">beta</a></li>
+        <li><a href="../../tags/device&#32;orientation.html" rel="tag">device orientation</a></li>
+        <li><a href="../../tags/devicemotion.html" rel="tag">devicemotion</a></li>
+        <li><a href="../../tags/deviceorientation.html" rel="tag">deviceorientation</a></li>
+        <li><a href="../../tags/gamma.html" rel="tag">gamma</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../api-w3c-polozenia-urzadzenia/index.html">Polish</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

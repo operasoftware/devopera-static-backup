@@ -1,0 +1,244 @@
+/* == all media types == */
+
+/* -- general -- */
+body {
+  /* no serif font best on projectors */
+  font-family: sans-serif;
+  /* foreground color, all elements unhovered */
+  color: #002797;
+} 
+/* titles */
+h1, h2, h3, h4  { 
+  font-weight: normal;
+  color: #ff9900;
+}
+/* hovering */
+p:hover, li:hover, dt:hover, dd:hover, a:link:hover, a:visited:hover, img:hover  {
+  /* foreground color of the active element (over which the mouse pointer is) */
+  color: #000;
+  background-color: #ffe;
+}
+/* links */
+a  {
+  /* remove underline */
+  text-decoration: none;
+}
+a:link  {
+  /* color of not visited links */
+  color: #660033;
+}
+a:visited  {
+  /* color of visited links */
+  color: #660099;
+}
+
+/* -- margins -- */
+h1, p, ul, ol, dl  { 
+  margin: 0;
+}
+h3  {
+  /* no margin on top, but some at the bottom */
+  margin: 0 auto 1em;
+  border: 1px solid #ddf;
+  padding: .2em;
+  background-color: #eef;
+}
+p + p, ul + dl, dl + ul, p + ul, ul + p, p + dl, dl + p  { 
+  margin-top: 1em;
+}
+
+/* -- listings -- */
+ul  { 
+  list-style: none;
+  padding-left: 0;
+}
+dt  { 
+  color: #174354;
+}
+dd  { 
+  margin-left: 8%;
+}
+li + li, dd + dd, dd + dt  {
+  margin-top: 1.5em;
+}
+
+/* -- slides -- */
+div.slide  {
+  /* background image in front of color */
+  background: url( "http://devfiles.myopera.com/articles/539/slide_background.png") #fff no-repeat;
+  /* let each slide fill entire screen */
+  width: 100%;
+  height: 100%;
+  /* slide counter */
+  counter-increment: slide;
+} 
+div.slideContent  {
+  /* space between frame and content */
+  padding: 2%;
+} 
+/* show slide counter */
+h3:after  { 
+  content: counter( slide) " / 3"; /* adjust when finished with writing the presentation */
+  float: right;
+  font-size: 70%;
+  color: #999;
+}
+
+/* -- images -- */
+/* restrict maximum image width (height is not critical) */
+img  { 
+  max-width: 100%;
+}
+/* restrict maximum image width for floating and bottom images */
+img.right, img.left  { 
+  max-width: 45%;
+}
+/* image row */
+p.imgrow  { 
+  text-align: center;
+}
+/* three images per row */
+p.imgrow img.tipr  { 
+  max-width: 30%;
+}
+/* let images float */
+img.right  { 
+  float: right;
+  margin: 0 0 1em 1em;
+}
+img.left  { 
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+
+/* == full-screen and printing == */
+@media projection, print {
+
+  /* -- general -- */
+  html, body {
+    /* no influence of html and body on slides */
+    margin: 0;
+    padding: 0;
+    width: 100%;  
+    height: 100%;
+  } 
+  body {
+    /* adjust by zooming, or inserting another value */
+    font-size: 42px;
+  } 
+  h1, h2  { 
+    text-shadow:.1em .1em .3em #bbb; /* an touch of CSS 3 */
+  } 
+
+  /* -- slides -- */
+  div.slide + div.slide {
+    /* paged display */
+    page-break-before: always;
+  }
+  div.slide  {
+    /* upon overflow, don't show scrollbar (scrolling may be possible anyway) */
+    overflow: hidden;
+  } 
+
+  /* -- presentation framework -- */
+  /* frame and logo */
+  #logo  {
+    /* place over everything */
+    z-index: 2;
+    /* take out of context */
+    position: fixed;
+    /* put logo into bottom right corner */
+    bottom: 0;
+    /* to the right */
+    right: 0;
+    /* image scaling */
+    max-width: 8%;
+    /* spacing */
+    padding-right: .3em;
+    /* font + color */
+    font-size: .7em;
+    color: #000;
+  }
+  #logo img  {
+    width: 100%;
+  }
+
+  /* -- title page -- */
+  #frame + div.slide > div.slideContent {  /* the title page is not the first element */
+    /* table row must be inside table */
+    display: table;
+    /* fill entire screen */
+    width: 100%;
+    height: 99.9%;		/* possibly browser bug; 100% leads to extra page when printed */
+  }
+  #titlePage  {
+    /* table cell must be inside table row */
+    display: table-row;  
+  }
+  #titlePageContent  {
+    /* only able to align vertically inside table row */
+    display: table-cell;
+    /* fill entire screen */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+  }
+  #author  {
+    margin-top: 3em;
+  }
+  #date, #note  {
+    margin-top: 2em;
+  }
+  #note  {
+    /* not displayed in projection mode */
+    display: none;
+  }
+}
+
+
+/* == print-outs == */
+@media print {
+  body {
+    /* adjust by zooming, or inserting another value */
+    font-size: 20px;
+  } 
+}
+@page {
+  margin: 0;
+  padding: 0;
+} 
+
+
+/* == normal viewing mode == */
+@media screen {
+  /* suppress display of bars in non-presentation mode */
+  #frame  { 
+    display: none;
+  }
+  /* show information about projection mode */
+  #note  { 
+    font-size: .8em;
+    color: red;
+  }
+
+  /* show slides in a distinct way */
+  body  { 
+    background-color: #eee;
+  }
+  /* slide */
+  div.slide  { 
+    border: 1px solid #ddf;
+  }
+  div.slide + div.slide  { 
+    margin-top: 1em;
+  }
+  /* don't let floats extend slide boundaries */
+  div.slide:after  { 
+    content: "";
+    display: block;
+    clear: both;
+  }
+}

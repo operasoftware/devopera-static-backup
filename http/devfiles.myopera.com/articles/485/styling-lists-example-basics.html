@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Styling Lists example: basic list choices</title>
+
+<style type="text/css">
+/* a bit of housekeeping - ignore this bit */
+body {
+color: #000;
+background: #efefef;
+font-family: Helvetica, Arial, sans-serif;
+text-align: center;
+}
+#page {
+width: 600px;
+text-align: left;
+margin: 0 auto;
+padding: 2em;
+background: #fff;
+}
+div.ul, div.ol {
+width: 45%;
+float:left;
+}
+.more {
+clear: both;
+}
+h3 {
+font-size: 1em; margin-bottom: 0;
+}
+ul, ol { margin-top: 0.5em;}
+/* the lists */
+
+.no-bullets {
+list-style-type: none;
+}
+
+.disc-bullets {
+list-style-type: disc;
+}
+.square-bullets {
+list-style-type: square;
+}
+.circle-bullets {
+list-style-type: circle;
+}
+
+.decimal {
+list-style-type: decimal;
+}
+.decimal-leading-zero {
+list-style-type: decimal-leading-zero;
+}
+.lower-alpha {
+list-style-type: lower-alpha;
+}
+.upper-alpha {
+list-style-type: upper-alpha;
+}
+.lower-roman {
+list-style-type: lower-roman;
+}
+.upper-roman {
+list-style-type: upper-roman;
+}
+.lower-greek {
+list-style-type: lower-greek;
+}
+.armenian {
+list-style-type: armenian;
+}
+.georgian {
+list-style-type: georgian;
+}
+
+
+</style>
+</head>
+
+<body>
+<div id="page">
+
+	<h1>Basic list choices</h1>
+
+	<div class="ul">
+	<h2>Unordered lists</h2>
+
+	<h3>Disc</h3>
+    <ul class="disc-bullets">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ul>
+
+	<h3>Square</h3>
+    <ul class="square-bullets">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ul>
+
+	<h3>Circle</h3>
+    <ul class="circle-bullets">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ul>
+
+	<h3>None - no bullets</h3>
+    <ul class="no-bullets">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ul>
+
+	</div><!-- // .ul -->
+	<div class="ol">
+
+	<h2>Ordered lists</h2>
+
+	<h3>Decimal</h3>
+	<ol class="decimal">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+	</ol>
+
+	<h3>Decimal with leading zeros</h3>
+	<ol class="decimal-leading-zero">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+	</ol>
+
+	<h3>Lowercase ascii letters</h3>
+	<ol class="lower-alpha">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+	</ol>
+
+	<h3>Uppercase ascii letters</h3>
+	<ol class="upper-alpha">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+	</ol>
+
+	<h3>Lowercase roman numerals</h3>
+	<ol class="lower-roman">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+	</ol>
+
+	<h3>Uppercase roman numerals</h3>
+	<ol class="upper-roman">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+	</ol>
+
+	<h3>Lowercase classic greek</h3>
+	<ol class="lower-greek">
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+	</ol>
+
+	<h3>Traditional armenian</h3>
+	<ol class="armenian">
+	  <li>First item</li>
+	  <li>Second item</li>
+	  <li>Third item</li>
+	</ol>
+
+	<h3>Traditional georgian</h3>
+	<ol class="georgian">
+	  <li>First item</li>
+	  <li>Second item</li>
+	  <li>Third item</li>
+	</ol>
+
+	</div><!-- // .ol -->
+
+	<div class="more">
+		<h2>Reference Rendering</h2>
+		<p>If you are not seeing some of the options above, eg. the Armenian or Georgian numbering, here's a reference rendering:</p>
+		<img src="http://devfiles.myopera.com/articles/485/reference-rendering-02.gif" alt="Screenshot: example rendering of the lists shown above." />
+	</div><!-- // .more -->
+	<div class="more">
+		<h2>Notes</h2>
+		<p>Reference rendering uses the <a href="http://www.code2000.net/">shareware Unicode font, Code 2000</a>.</p>
+		<p>There are more options, some of which have very patchy browser support or require full language support at the operating system level. For the full list of options, see the <a href="../../../dev.opera.com/articles/view/16-html-lists/index.html">HTML Lists article</a>.</p>
+	</div><!-- // .more -->
+	</div><!-- // #page -->
+</body>
+</html>

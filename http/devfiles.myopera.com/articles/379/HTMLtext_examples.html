@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+  <meta charset="utf-8">
+  <title>HTML text examples</title>
+</head>
+
+
+<body>
+
+<h1>HTML text examples</h1>
+
+<p>This file contains all of the code examples from the "Marking up textual content in HTML" article, so you can see a live example of how all the source code renders in a browser.</p>
+
+<h2 id="whitespace">Whitespace example</h2>
+
+<h3>In   the
+                beginning</h3>
+
+<h2 id="headings">Headings example</h2>
+ 
+<h1>Marking up Textual Content in HTML</h1>
+<h2>Introduction</h2>
+<h2>Space—the final frontier</h2>
+<h2>Block level elements</h2>
+<h3>Page section headings</h3>
+<h3>Generic paragraphs</h3>
+<h3>Quoting other sources</h3>
+<h3>Preformatted text</h3>
+<h2>Inline elements</h2>
+<p>[…and so on…]</p>
+              
+   
+ <h2 id="paragraph">Paragraph example</h2>
+   
+<p>This is a very short paragraph. It only has two sentences.</p>
+        
+ <h2 id="cite">Quoting other sources example</h2>
+ 
+<p>HTML 4.01 is the only version of HTML that you should use
+   when creating a new web page, as, according to the 
+   specification:</p>
+   <blockquote cite="http://www.w3.org/TR/html401/">
+   <p>This document obsoletes previous versions of HTML 4.0,
+    although W3C will continue to make those specifications and
+    their DTDs available at the W3C Web site.</p>
+   </blockquote>
+            
+
+<h2 id="preformatted">Preformatted example</h2>     
+     
+     
+<pre><code class="language-perl"># read in the named file in its entirety
+sub slurp {
+  my $filename = shift;
+  my $file     = new FileHandle $filename;
+                
+  if ( defined $file ) {
+    local $/;
+    return &lt;$file&gt;;
+  }
+  return undef;
+};</code></pre>
+        
+<h2 id="q">Inline quote example</h2>
+
+<p>This did not end well for me. Oh well, 
+              <q lang="fr">c'est la vie</q> as the French say.</p>
+              
+ 
+ <h2 id="em">Emphasis example</h2>
+
+ 
+ 
+ <p><em>Please</em> remember to unplug the kettle at night.</p>
+ 
+ <h2 id="italic">Italic examples</h2>
+ 
+ <p>As we sailed into port, we spied the <i>Black Pearl</i> moored at the dock.</p>
+ 
+ <p>Book: <i>Living with a Diminutive Stature</i>, Bruce Lawson, Peachpit Press, published <time pubdate="2011-08-01">1st August 2011</time>, ISBN 999-0-388-99999-6</p>
+ 
+ <p>She really does add that little bit of <i lang="fr">je ne sais quoi</i>.</p>
+ 
+ <h2 id="strong">Strong example</h2>
+              
+ <p>There are a total of twenty different species living inside this enclosure. <strong>Warning: Do not feed them: they will eat your shoes</strong>.</p> 
+ 
+ <h2 id="bold">Bold example</h2>
+ 
+ <p>In this article, Chris Mills will show you how to combine <b>HTML5</b>, <b>CSS3</b>, <b>coloured card</b> and <b>string</b> to create an attractive mobile for your child's bedroom.</p>        
+              
+  <h2 id="emstrong">Emphasis and strong example</h2>             
+              
+ <p><em>Please note: the kettle <strong>must</strong> be 
+              unplugged every evening, otherwise <strong>it will explode -
+              killing us all</strong></em>.</p>
+ 
+ <h2 id="smallprint">Small print</h2>
+
+<p><small>This content is released under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution Share-alike license</a>.</small></p>
+ 
+ <h2 id="time">Telling the time</h2>
+ 
+ <p>I was born on the <time datetime="1978-06-27">27<sup>th</sup> June 1978</time>.</p>
+ <p><time datetime="1978-06-27">June 27 1978 - my birthday</time>.</p>
+ 
+ <p><time datetime="1978-06-27T21:00">9pm on my birthday</time>.</p>
+ 
+ <p><time datetime="21:00">9pm</time>.</p>
+ <p><time datetime="1978-06-27T21:00:00.006-08:00">9pm and 6 milliseconds on my birthday, in Pacific standard time</time>.</p>
+ 
+ <p>Published on <time datetime="2011-07-20" pubdate>July 27<sup>th</sup> 2011</time>.</p>
+ 
+              </body>
+</html>
+
+

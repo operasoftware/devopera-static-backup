@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting to know Voice - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Getting to know Voice</h1>
+      <p class="print author">By Jonny Axelsson</p>
+
+      <p class="note">July 27th 2011: Please note that Voice only works in Opera on Windows 2000/XP, and we no longer officially support it.</p>
+
+<p class="note"><strong>Article update, 4th June 2010</strong>: Updates made to Opera support information, and details about Aural CSS specifications.</p>
+
+<div id="voice">
+<p>From a different world than the traditional browsing world comes a range of techniques that allows a developer to code for speech behaviours much more easily than previously possible. Opera has had support for this since Opera 7.6.</p>
+
+<h3 class="compact">Speech Recognition</h3>
+<p>Understanding natural speech is hard for a machine, sometimes almost impossible. One approach to make this easier is to train the machine to recognize the user&#39;s voice and speech patterns. The user will be told to speak some predetermined texts to make the machine accustomed to the user.</p>
+<p>This is not practical for web pages, so another approach is used instead, namely explicit <span class="glossary-ref">grammars</span> of expected utterances. The grammars have two advantages. The machine has a dramatically higher chance of guessing what the user meant this way. Also by restricting the accepted values it is easier to make a sensible response to the now known possible values.</p>
+
+<h3 class="compact">Text To Speech</h3>
+<p>The machine talks back. It is possible get fairly natural machine generated voices, but this is a trade-off with file size, resource use, and flexibility. The  machine voices typically used for web pages would fool nobody, but they are still  easy to understand. Text To Speech is fairly common by now, but Opera is the only browser offering aural styling using CSS.</p>
+
+<h3>XHTML+Voice</h3>
+<p>The language or profile Opera uses to combine XHTML and Voice is called XHTML+Voice, or X+V for short. More than for normal XHTML pages, X+V design is primarily about interaction design. You create the storyboard for what the user can do and when. You can make simple web page enhancement, or you can craft elaborate Byzantine labyrinths for the user to get lost in, it is all up to you.</p>
+<p>An X+V  web page is a normal XHTML page with additional Voice forms in the head. These voice forms cover both speech recognition and text to speech markup. The interaction is event based, you use XML Events to describe what should be the consequences or <span class="glossary-ref">handlers</span> of different events. An event can for instance be when the page has loaded, the user clicks on a button, or says something the speech recognizer doesn&#39;t understand. The consequence can be a voice monolog or  dialog with the user. This is turn can for instance trigger a script, reformat the page, or throw another event.</p>
+
+<h2>Getting started with X+V</h2>
+<dl>
+
+<dt><a href="../xhtml-voice-in-style/index.html">X+V in Style</a></dt>
+<dd><i class="tagline">After all, it isn&#39;t as much what you say as how you say it.</i> Add styled speech to X+V.</dd>
+
+<dt><a href="../xhtml-voice-in-action/index.html">X+V in Action</a></dt>
+<dd><i class="tagline">Do as I say, not as I do.</i> Use X+V to voice-enable JavaScript</dd>
+
+<dt><a href="../add-voice-interactivity-to-your-site/index.html">How to Add Voice Interactivity to Your Site</a></dt>
+<dd>Practical experience of adding voice to a web site 
+
+</dd><dt>
+<dt><a href="ftp://ftp.software.ibm.com/software/pervasive/info/multimodal/multimodal_faq.pdf">Multimodal FAQ</a> (PDF)</dt>
+<dd><i class="tagline">What is this multimodal anyway?</i> An introduction to X+V in questions and answers form.</dd>
+</dt></dl>
+
+<h2>Getting to know it</h2>
+<p>Even though X+V still is cutting edge, there are places you can go for help and more information.</p>
+<dl><dt><a href="http://my.opera.com/community/forums/forum.dml?id=83">Opera accessibility and voice browsing</a></dt>
+<dd>Welcome to our forum on everything voice-related.</dd>
+
+<dt><a href="http://www.ibm.com/software/pervasive/multimodal/">IBM multimodal site</a></dt><dd>This IBM site has a large collection of documents on voice and multimodal interaction.</dd>
+
+<dt><a href="http://www.w3.org/2002/mmi/">W3C Multimodal Interaction working group</a></dt>
+<dd>The documents here are quite technical, but this is the place where the future standards are defined. It has a <a href="http://lists.w3.org/Archives/Public/www-multimodal/">public mailing list</a>. You might also want to look at the <a href="http://www.w3.org/MarkUp/">HTML</a> and <a href="http://www.w3.org/Voice/">Voice</a> working group pages. Styling speech is done by the <a href="http://www.w3.org/Style/CSS/">CSS</a> working group.</dd>
+</dl>
+
+<h2>Learning to speak</h2>
+<h3>XHTML+Voice</h3>
+<dl>
+<dt><a href="ftp://ftp.software.ibm.com/software/pervasive/info/multimodal/XHTML_voice_programmers_guide.pdf">XHTML+Voice Programmer&#39;s Guide</a> (PDF)</dt><dd>The book of X+V, including a reference for every element added to XHTML.</dd>
+
+<dt><a href="ftp://ftp.software.ibm.com/software/pervasive/info/XV_and_Speech_Considerations.pdf">X+V Speech Considerations</a></dt>
+<dd>The alternatives and trade-offs for text to speech. Why the most natural-sounding voice may not always be the best choice.</dd>
+
+<dt><a href="ftp://ftp.software.ibm.com/software/pervasive/info/multimodal/multimodal_apps_design_issues.pdf">Multimodal Application Design Issues</a> (PDF)</dt>
+<dd>Many good tips for how to design good X+V pages. </dd>
+
+<dt><a href="ftp://ftp.software.ibm.com/software/pervasive/info/Developing_MM_Apps.pdf">Developing Multimodal Applications using XHTML+Voice</a> (PDF)</dt>
+<dd>Much the same topics as the above article, but more code oriented.</dd>
+
+<dt><a href="http://www.w3.org/MarkUp/2004/xmlevents-for-html-authors">XML Events tutorial</a></dt><dd><i class="tagline">How to get what you want when something happens</i>. This tutorial explains how XML Events works. Alternatively you can go directly for the <a href="http://www.w3.org/TR/xml-events/">specification</a></dd></dl>
+
+
+<h3>Speech recognition</h3>
+<p>Speech recognition is assisted by <i class="glossary-ref">grammars</i>.</p>
+<dl>
+<dt><a href="http://www.w3.org/TR/grammar-spec/">Speech Recognition Grammar Specification</a></dt>
+<dd>The language to describe what user utterances are accepted. </dd>
+
+<dt><a href="http://www.w3.org/TR/semantic-interpretation/">Semantic Interpretation for Speech Recognition</a></dt>
+<dd>This let you specify what part of the recognized speech to use, for instance to voice-enable a JavaScript application.</dd>
+</dl>
+
+<h3>VoiceXML, the dialog language</h3>
+<p>Like HTML is the language for web documents, VoiceXML is the language for voice interaction.</p>
+<dl>
+<dt><a href="http://www.voicexml.org/">VoiceXML Forum</a></dt><dd>Industry organization for the promotion of VoiceXML, with some useful information.</dd>
+
+<dt><a href="http://www.w3.org/TR/voicexml20/">VoiceXML 2.0</a></dt><dd>The specification itself.</dd></dl>
+
+<h3>Styling speech</h3>
+
+<dl>
+<dt><a href="http://www.w3.org/TR/css3-speech/">CSS3 Speech Module</a></dt>
+<dd>This specification is incomplete and currently available as a working draft.</dd>
+<dt><a href="http://www.w3.org/TR/REC-CSS2/aural.html">CSS 2 Aural CSS</a></dt><dd>In 1998 CSS2 Aural CSS (ACSS) was specified.CSS2 Aural CSS is intended to be superceded by CSS3 Speech, but since that module is still incomplete (last working draft: 1994), CSS2 Aural CSS is actually more powerful than CSS3 Speech, and still the spec to use for aural CSS.</dd></dl>
+</div>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=164830">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/jax.html" rel="author">Jonny Axelsson</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, October 30, 2006
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

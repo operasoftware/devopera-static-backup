@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A developer’s look at Opera Mini 5 beta 2 - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>A developer’s look at Opera Mini 5 beta 2</h1>
+      <p class="print author">By Chris Mills, Patrick H. Lauke</p>
+
+      <p class="note">DEPRECATED: This article is deprecated, and a newer article with updated information is available at <a href="../opera-mini-5-developers/index.html">A developer’s look at Opera Mini 5</a>. You should read this one if you want updated information.</p>
+
+<h2>Introduction</h2>
+
+<div class="right">
+<img src="../../../../devfiles.myopera.com/articles/817/mini5ui.png" alt="opera mini 5 main ui" />
+</div>
+
+<p>This article introduces Opera Mini 5 Beta 2, our cutting-edge mobile Web browser. Like previous versions, Opera Mini 5 beta 2 works on most modern phones — from top of the range smart phones to feature phones.  In fact, it will run on almost any phone with a <abbr title="Java Virtual Machine">JVM</abbr>, showing regular web pages designed for desktop browsers without any problem, and reducing file sizes to save you time and money. Opera Mini is incredibly popular, being used worldwide by over 30 million users. Read our <a href="http://www.opera.com/smw/">State of the Mobile Web Report</a> for more detailed coverage of the mobile web industry, including a breakdown of Opera usage on mobile in different countries, what sites are popular on mobile, and other analyses.</p>
+
+<p>This article will briefly outline how Opera Mini 5 works and look at the new <abbr title="User Interface">UI</abbr> and features.  Then we’ll have a look at the user agent string and Opera Mini 5’s standards support, and we’ll touch on the optimizations you can make to improve web page compatibility with Opera Mini 5 and mobile web browsers in general.</p>
+
+<p>The table of contents is as follows:</p>
+
+<ul>
+  <li><a href="index.html#serverbased">Server-side rendering</a></li>
+  <li><a href="index.html#features">Opera Mini 5 new features</a></li>
+  <li><a href="index.html#standardssupport">Opera Mini 5 standards support</a></li>
+  <li><a href="index.html#uastring">Identifying Opera Mini 5: The user agent string</a></li>
+  <li><a href="index.html#optimizing">Optimizing for mobile</a></li>
+  <li><a href="index.html#summary">Summary</a></li>
+</ul>
+
+<p class="note">Visit our <a href="http://www.opera.com/mobile/">Opera Mini &amp; Opera Mobile</a> page for details and download instructions.</p>
+
+<h2 id="serverbased">Server-side rendering</h2>
+
+<p>Opera Mini 5 is a thin-client application: when you use it to request a web page <strong><em>(1)</em></strong>, that request is sent off to a server-farm <strong><em>(2)</em></strong>; a proxy server receives the requested web page <strong><em>(3)</em></strong>, renders and reformats it, and then converts it to a light and efficient format developed by Opera called <a href="../opera-binary-markup-language/index.html"><abbr title="Opera Binary Markup Language">OBML</abbr></a> <strong><em>(4)</em></strong>. This is then sent to the Opera Mini client <strong><em>(5)</em></strong>, which displays it on the phone screen <strong><em>(6)</em></strong>.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/817/mini-render.png" alt="how opera mini works" />
+<p class="comment">Figure 1: The Opera Mini request–response workflow.</p>
+
+<p>As most of the complex processing is done on the server, Opera Mini 5 can run on relatively low-spec phones. In addition, the conversion to <abbr title="Opera Binary Markup Language">OBML</abbr> can reduce the file size by up to 90%, meaning that, where bandwidth is at a premium, you can save a lot of time and money.</p>
+
+<p>Note that, as all the processing is done on the server and what is to the client is a snapshot of the web page, some sites that feature heavy Ajax functionality or background scripting may not behave quite like you’d expect. However, most sites will function without a problem — you can find out more about Opera Mini 5’s standards support later on in the article.</p>
+
+<h2 id="features">Opera Mini 5 new features</h2>
+
+<p>Opera Mini 5 has a bold new look and many exciting features, and comes with support for both touch and non-touch screen phones. The new <abbr title="User Interface">UI</abbr> was designed by Opera’s fabulous designers — see Figure 2.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/817/mininewui.png" alt="Opera Mini 5 Speed Dial and tabs" />
+<p class="comment">Figure 2: The Opera Mini 5 UI with Speed Dial and tabs.</p>
+
+<p>As you can see, Opera Mini now features tabs as well as Speed Dial thumbnails. And if you&#39;re already using Opera on your desktop or on another device, you can now keep all your bookmarks, Speed Dials and settings synchronized thanks to <a href="http://www.opera.com/link/">Opera Link</a>.</p>
+
+<p>You can display pages using either regular desktop view, in which you can scroll around the page and zoom in and out, or in Mobile view, where the whole page is reformatted to a single column. The latter tends to work better for devices with narrow screens.</p>
+<h2 id="standardssupport">Opera Mini 5 standards support</h2>
+
+<p>Opera Mini 5 now uses the <a href="http://www.opera.com/docs/specs/presto22/">Opera Presto 2.2</a> rendering engine, bringing its display capabilities in line with <a href="http://www.opera.com/mobile/">Opera Mobile</a> 9.7 beta and <a href="http://www.opera.com/browser/">Opera 10</a> for desktop. This means that you can take advantage of the same standards support on Opera Mini 5 as on its desktop cousin, with a few small exceptions: HTML 5 Forms and Web Fonts are not supported, and the blur effect on text-shadows and SMIL animations are also disabled. The majority of JavaScript functions are available, except those that require asynchronous operations or user interaction once the page has been loaded. Note that plug-ins, such as Adobe Flash, are not supported.</p> 
+
+<p>The vast majority of readers will be familiar with common web standards usage, but we’ll still cover some of the more interesting features supported in Opera Mini 5 beta 2:</p>
+
+<ul>
+  <li><p><strong>CSS 3 Media Queries</strong>. These allow you to dynamically optimize CSS layouts and styling depending on device attributes such as screen width and height. See the <a href="../opera-mini-5-developer-preview/index.html#mediaqueries">Media Queries</a> section for an example.</p></li>
+
+  <li>
+    <p><strong>CSS 3 colors: RGB(A) and HSL(A)</strong>. Opera Mini 5 also now supports the <abbr title="Red Green Blue (Alpha)">RGB(A)</abbr> and <abbr title="Hue Saturation Lightness (Alpha)">HSL(A)</abbr> color models outlined in the <a href="http://www.w3.org/TR/css3-color/">CSS 3 Color Module</a>. You can find more details about these color models in our <a href="../color-in-opera-10-hsl-rgb-and-alpha-transparency/index.html">Color in Opera 10 — HSL, RGB and Alpha Transparency</a> article.</p>
+
+<p>Have a look at our <a href="../../../../devfiles.myopera.com/articles/817/rgba-hsla.html">RGB(A)/HSL(A) example</a> using Opera Mini 5. You’ll see a series of tables with individually-colored cells, to demonstrate the effect of iterative increases to the different channels in the two color models.</p>
+</li>
+
+  <li>
+    <p><strong>CSS 3 Selectors</strong>: Opera Mini has support for all the selectors listed in the <a href="http://www.w3.org/TR/css3-selectors/">CSS 3 Selectors Module</a>. We have created a typical <a href="../../../../devfiles.myopera.com/articles/817/css3selectors.html">zebra-striped playlist table</a> that makes use of the <code>nth-child</code> pseudo-selector and a CSS 3 attribute selector. Have a look at the source code to see what is going on. There are a number of <a href="../zebra-striping-tables-with-css3/index.html">Dev.Opera CSS articles</a> that cover many of these selectors in detail, and you can find a lot more good information on CSS 3 selectors and other features at <a href="http://css3.info">CSS3.info</a>.</p></li>
+  <li><p><strong>SVG</strong>: Opera Mini 5 supports <abbr title="Scalable Vector graphics">SVG</abbr>. You can try it out by loading <a href="../../../../devfiles.myopera.com/articles/817/operaicon6.svgz">this SVG based Opera logo</a> in Opera Mini 5 beta 2.</p></li>
+</ul>
+
+<p class="note">You can find more details about standards support in Opera Presto 2.2 on the <a href="http://www.opera.com/docs/specs/presto22/">Web specifications supported in Opera Presto 2.2</a> page, and additional examples in our recently published <a href="../the-opera-10-experience/index.html">Opera 10 article</a>.</p>
+
+<h2 id="uastring">Identifying Opera Mini 5: The user agent string</h2>
+
+<p>A browser can be recognised by its user agent string.  Opera Mini 5 identifies as <code>Opera 9.8</code>, with <code>Opera Mini/5.x</code> included in the parentheses. Its default user agent string is as follows:</p>
+
+<pre><code>Opera/9.80 (J2ME/MIDP; Opera Mini/5.0.16823/1126; U; en) Presto/2.2.0</code></pre>
+
+<p>It is important to bear in mind that phone manufacturers and mobile carriers often customize their browser’s user agent strings, so sniffing for an exact match to any particular user agent string doesn’t always yield the desired results.  The <code>Opera Mini/5.x</code> portion of the string should always be included, where <code>x</code> is the minor version number. Also note that in general, Opera can be identified by using JavaScript to test for the <code>window.opera</code> object.</p>
+
+<p>We’d like to advise that, where possible, you shouldn’t test for browsers or features and serve different content. Instead, you can make your sites work well across a variety of devices and screen sizes using Web standards and Media Queries. The following section has more details.</p> 
+
+<h2 id="optimizing">Optimizing for mobile</h2>
+
+<p>In this section we will look at specific techniques and tips for optimizing pages for mobile viewing.</p>
+
+<h3 id="mediaqueries">Media Queries</h3>
+
+<p>With all the devices of different shapes and sizes on the market, you can’t guarantee what screen size your web site will be viewed on – so design your layouts to be fluid and robust, and use Web Standards and Media Queries to dynamically optimize for different screen sizes.</p>
+
+<p>Media Queries are a CSS 3 feature that allow you to specify under what conditions a style sheet should be applied. They are applied using the <code>@media</code> at-rule, a media type, and optional expressions that limit the scope of the style sheet. For instance, to limit a style sheet to only apply to a screen which is 480px or less, you could use the following Media Query: </p>
+
+
+<pre><code>@media screen and (max-device-width: 480px) {  
+  // insert CSS rules here
+}</code></pre>
+
+<p>After the <code>@media</code> declaration, you first list the media types that this block of rules applies to. After that you can optionally define a series of expressions which set further condition on when the rules should be applied. In the example we’re limiting the scope of the style rules with <code>max-device-width</code> – this tests the physical width of the screen.  You can also use <code>max-width</code>, which on a desktop browser would test the width of the browser window, but on mobile browsers checks the width of the virtual viewport. A list of supported media features can be found in the <a href="http://www.opera.com/docs/specs/presto22/css/mediaqueries/">Opera Presto 2.2 Media Queries spec</a>.  Media Queries are also supported by recent versions of WebKit and Gecko.</p>
+ 
+<p>Let’s have a look at a <a href="../../../../devfiles.myopera.com/articles/817/mediaquery3.html">Media Queries example</a>, as seen in Figure 3.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/817/mediaqueryexample1.png" alt="media query example on desktop" />
+<p class="comment">Figure 3: Media Query example on desktop.</p>
+
+<pre><code>@media screen and (min-width: 480px) {
+  .content p:before  {
+    content: &quot;You are now using the styling designed for screen. &quot;;
+    font-weight: bold;
+  }
+}</code></pre>
+
+<p>The Media Query works in the same way as described above, but tests for a minimum width, via the <code>min-width</code> media feature. If the condition is met, the rules inside the block are applied.</p>
+
+<pre><code>@media handheld, screen and (max-width: 480px),
+       screen and (max-device-width: 480px)  {
+  .content p:before  {
+    content: &quot;You are now using the styling designed for
+              handhelds or devices with &lt; 480px screens. &quot;;
+    font-weight: bold;
+  }
+
+  div.sidebar, div.content {
+    width: auto;
+    float: none;
+    margin: 0;
+    padding: 0.5em;
+  }
+}</code></pre>
+
+ 
+<p>The second Media Query includes three expressions.  The CSS in this block is applied if any of these expressions are true:</p>
+<ul>
+ 
+<li>The browser identifies itself as a handheld via the <code>handheld</code> media type. Opera Mini and Mobile ignore this unless they are switched to the Mobile View by the user.</li>
+ 
+<li>The browser window width or virtual viewport is 480 pixels or less.</li>
+ 
+<li>The screen width of the device is 480 pixels or less</li>
+ 
+</ul>
+ 
+<p>To see the Media Query in action, view this example on Opera Mini 5, and try it on Opera 10 desktop and reduce the width of the browser window below 480 pixels - see Figure 4.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/817/mediaqueryexample2.png" alt="media query example on Opera Mini 5 and desktop with a small width" />
+<p class="comment">Figure 4: The Media Query example running on Opera Mini 5 beta 2, and on Opera 10 desktop with a narrow window width.</p>
+
+
+
+<h3 id="tips">Other tips and caveats</h3>
+<ul>
+  <li>
+    <p>Mobile devices in general have less memory and CPU speed than their desktop counterparts. Think carefully about how memory-intensive your web applications are, and optimize them as much as possible. Battery life is an important constraint on mobile, so avoid intensive use of JavaScript and especially <abbr title="XmlHttpRequest">XHR</abbr>.</p></li>
+  <li>
+  <p>Make sure your site is usable both via keyboard and mouse. Mobile phones can come with spatial navigation, virtual mouse pointers and touch input, and your web application should work in all these scenarios.</p></li>
+  <li><p>Keep text entry to a minimum, as entering text is far more awkward on mobile than on desktop. For example, where possible, allow your users to select options from a list rather than entering them as free-form text.</p></li>
+  <li>
+  <p>In case you decide to create a separate mobile-specific version of your site, make sure that users can still easily reach the full desktop version and set it as their default via a cookie or profile preference.</p></li>
+  <li><p>As a final point, it is a good idea to test your site in a number of mobile browsers and devices, even if it is just to get some familiarity with the different contexts in which users view your site.</p></li>
+</ul>
+
+<p>You can find more tips on designing for mobile browsers in our <a href="../introduction-to-the-mobile-web/index.html">Introduction to the mobile web</a> article.</p>
+
+
+<h2 id="summary">Summary</h2>
+
+<p>We hope you’ve enjoyed this overview of Opera Mini 5 beta 2. We’ve taken you through its main new features and exciting new web standards support. As always, let us know how you like it!</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=291951">My Opera</a>.</p>
+  <ul>
+    <li id="comment-83805662">
+      <a href="../../../author/miqrogroove.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/67/c7a/0e492d1d0d9f72e1041b11b71e8e7d0dfaf." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/miqrogroove.html">miqrogroove</a></p>
+      <p class="commentdate">Friday, March 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The example query &quot;screen and (min-width: 480px)&quot; is incompatible with Internet Explorer 8.  This makes the feature seem impractical.</section>
+    </li>
+    <li id="comment-83822962">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, March 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@miqrogroove IE8 doesn&#39;t support media queries, but non-supporting browser just silently ignore the media query block, therefore IE8 would still get any default screen styles that you specify outside of media query blocks. This example would not show the generated content inside the media queries, and would not get rid of the float on narrower screen widths, but IE8 does not run on small screen devices, and the main content is still usable.<br/><br/>This is really one of the main points of media queries, although I appreciate the example could be a bit confusing.<br/><br/>You can find a better example at <a href="../love-your-devices-adaptive-web-design-with-media-queries-viewport-and-more/index.html" target="_blank">http://dev.opera.com/articles/view/love-your-devices-adaptive-web-design-with-media-queries-viewport-and-more/</a>.<br/><br/></section>
+    </li>
+    <li id="comment-83872932">
+      <a href="../../../author/miqrogroove.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/67/c7a/0e492d1d0d9f72e1041b11b71e8e7d0dfaf." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/miqrogroove.html">miqrogroove</a></p>
+      <p class="commentdate">Friday, March 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Another example would be a page that isn&#39;t displaying correctly in Opera Mini.  When one uses min-width media to hide styles from Opera Mini, it breaks in IE8.  Thus, a more complex solution is needed where Opera Mini can see the styles, but then max-width media is used to reset all of the unwanted styles back to default values.  I can get this to work, but not in a way that involves the min-width query.</section>
+    </li>
+    <li id="comment-83912672">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Saturday, March 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>hrm, sounds interesting. I don&#39;t think I&#39;m funny understanding what you are saying. The min-width block shouldn&#39;t affect IE8, surely. Can you point me to a test case?</section>
+    </li>
+    <li id="comment-84978542">
+      <a href="../../../author/miqrogroove.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/67/c7a/0e492d1d0d9f72e1041b11b71e8e7d0dfaf." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/miqrogroove.html">miqrogroove</a></p>
+      <p class="commentdate">Friday, March 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Test case pointed: <a href="http://www.miqrogroove.com/blog/2012/dont-use-min-width-media-queries/" target="_blank">http://www.miqrogroove.com/blog/2012/dont-use-min-width-media-queries/</a></section>
+    </li>
+    <li id="comment-87193472">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, April 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@miqrogroove sorry for not getting back to you sooner on this - the last month has been a crazy time of travel and illness.<br/><br/>I have looked into your test cases, and done some tinkering. It looks like the one that performs in Opera Mini seems to do so because Opera Mini doesn&#39;t seem to recognise the table-layout: fixed; if you remove this, and then change the width of the .blocks to 45% or something similar, the layout is basically the same, but it seems to work better in Mini. Can you verify this? <br/><br/>You might also want to look into using viewport, to force mobile browsers to render the page as if it were the same as the device width - adding &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt; should sort this out. I say this because your first two test cases both display like a zoomed out desktop layout in Opera Mobile. <br/><br/>In any case, I&#39;m going to file a bug so that our QA guys can investigate this further. It is an interesting test case, as we have been looking at some strange CSS tables behaviour recently. Thanks!</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, December 2, 2009
+      </p>
+
+      <p class="author"><strong>Co-authors</strong>
+        <a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a>
+      </p>
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css&#32;3.html" rel="tag">css 3</a></li>
+        <li><a href="../../tags/deprecated.html" rel="tag">deprecated</a></li>
+        <li><a href="../../tags/media&#32;queries.html" rel="tag">media queries</a></li>
+        <li><a href="../../tags/mini5b2.html" rel="tag">mini5b2</a></li>
+        <li><a href="../../tags/mobile.html" rel="tag">mobile</a></li>
+        <li><a href="../../tags/Opera&#32;Mini.html" rel="tag">Opera Mini</a></li>
+        <li><a href="../../tags/rgba.html" rel="tag">rgba</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>chrome.bookmarks - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>chrome.bookmarks</h1>
+					 
+						<p class="badge badge-info pull-right">Support: Opera 17+</p>
+					
+					
+					
+    <div id="gc-pagecontent">
+		<div id="toc">
+			<h2>Contents</h2>
+
+			<ol>
+					<li>
+							<a href="bookmarks.html#types">Types</a>
+							<ol>
+									<li>
+											<a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a>
+									</li>
+							</ol>
+					</li>
+					<li>
+							<a href="bookmarks.html#properties">Properties</a>
+							<ol>
+									<li>
+											<a href="bookmarks.html#property-MAX_WRITE_OPERATIONS_PER_HOUR">MAX_WRITE_OPERATIONS_PER_HOUR</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#property-MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE">MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE</a>
+									</li>
+							</ol>
+					</li>
+					<li>
+							<a href="bookmarks.html#methods">Methods</a>
+							<ol>
+									<li>
+											<a href="bookmarks.html#method-get">get</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-getChildren">getChildren</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-getRecent">getRecent</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-getTree">getTree</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-getSubTree">getSubTree</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-search">search</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-create">create</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-move">move</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-update">update</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-remove">remove</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#method-removeTree">removeTree</a>
+									</li>
+							</ol>
+					</li>
+					<li>
+							<a href="bookmarks.html#events">Events</a>
+							<ol>
+									<li>
+											<a href="bookmarks.html#event-onCreated">onCreated</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#event-onRemoved">onRemoved</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#event-onChanged">onChanged</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#event-onMoved">onMoved</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#event-onChildrenReordered">onChildrenReordered</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#event-onImportBegan">onImportBegan</a>
+									</li>
+									<li>
+											<a href="bookmarks.html#event-onImportEnded">onImportEnded</a>
+									</li>
+							</ol>
+					</li>
+					<li>
+							<a href="bookmarks.html#samples">Sample Extensions</a>
+					</li>
+			</ol>
+		</div>
+		<table class="intro" id="intro">
+				<tr>
+						<td class="title">
+								<strong>Description:</strong>
+						</td>
+						<td>
+								Use the <code>chrome.bookmarks</code> API to create, organize, and otherwise manipulate bookmarks.
+						</td>
+				</tr>
+				<tr>
+						<td class="title">
+								<strong>Permissions:</strong>
+						</td>
+						<td>
+								<code class="code">"bookmarks"</code>
+						</td>
+				</tr>
+				<tr>
+					<td><strong>Learn more:</strong></td>
+					<td><a href="tut_bookmarks.html">Working with bookmarks</a></td>
+				</tr>
+		</table>
+		<div class="api_reference">
+				<h2 id="types">
+						Types
+				</h2>
+				<div>
+						<h3 id="type-BookmarkTreeNode">
+								BookmarkTreeNode
+						</h3>
+						<div>
+								<dl>
+										<dd>
+												A node (either a bookmark or a folder) in the bookmark tree. Child nodes are ordered within their parent folder.
+										</dd>
+										<dd>
+												<h4 id="BookmarkTreeNode-properties" class="capitalize">
+														properties of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a>
+												</h4>
+										</dd>
+										<dd>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-BookmarkTreeNode-id"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">id</code> <code class="property">( string )</code>
+																				</dt>
+																				<dd>
+																						The unique identifier for the node. IDs are unique within the current profile, and they remain valid even after the browser is restarted.
+																				</dd>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-BookmarkTreeNode-parentId"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">parentId</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																				</dt>
+																				<dd>
+																						The <code>id</code> of the parent folder. Omitted for the root node.
+																				</dd>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-BookmarkTreeNode-index"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">index</code> <code class="property">( <code class="optional">optional</code> integer )</code>
+																				</dt>
+																				<dd>
+																						The 0-based position of this node within its parent folder.
+																				</dd>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-BookmarkTreeNode-url"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">url</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																				</dt>
+																				<dd>
+																						The URL navigated to when a user clicks the bookmark. Omitted for folders.
+																				</dd>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-BookmarkTreeNode-title"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">title</code> <code class="property">( string )</code>
+																				</dt>
+																				<dd>
+																						The text displayed for the node.
+																				</dd>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-BookmarkTreeNode-dateAdded"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">dateAdded</code> <code class="property">( <code class="optional">optional</code> double )</code>
+																				</dt>
+																				<dd>
+																						When this node was created, in milliseconds since the epoch (<code>new Date(dateAdded)</code>).
+																				</dd>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-BookmarkTreeNode-dateGroupModified"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">dateGroupModified</code> <code class="property">( <code class="optional">optional</code> double )</code>
+																				</dt>
+																				<dd>
+																						When the contents of this folder last changed, in milliseconds since the epoch.
+																				</dd>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-BookmarkTreeNode-children"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">children</code> <code class="property">( <code class="optional">optional</code> array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																				</dt>
+																				<dd>
+																						An ordered list of children of this node.
+																				</dd>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<h2 id="properties">
+						Properties
+				</h2>
+				<div>
+						<h3 id="property-MAX_WRITE_OPERATIONS_PER_HOUR">
+								MAX_WRITE_OPERATIONS_PER_HOUR
+						</h3>
+						<div class="summary">
+								<code>chrome.bookmarks.MAX_WRITE_OPERATIONS_PER_HOUR</code>
+						</div>
+						<div>
+								<dl>
+										<dt>
+												<code class="property">MAX_WRITE_OPERATIONS_PER_HOUR</code> <code class="type_name">( )</code>
+										</dt>
+										<dd>
+												The maximum number of <code>move</code>, <code>update</code>, <code>create</code>, or <code>remove</code> operations that can be performed each hour. Updates that would cause this limit to be exceeded fail.
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h3 id="property-MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE">
+								MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE
+						</h3>
+						<div class="summary">
+								<code>chrome.bookmarks.MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE</code>
+						</div>
+						<div>
+								<dl>
+										<dt>
+												<code class="property">MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE</code> <code class="type_name">( )</code>
+										</dt>
+										<dd>
+												The maximum number of <code>move</code>, <code>update</code>, <code>create</code>, or <code>remove</code> operations that can be performed each minute, sustained over 10 minutes. Updates that would cause this limit to be exceeded fail.
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<h2 id="methods">
+						Methods
+				</h2>
+				<div>
+						<h4 id="method-get">
+								get
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.get</code>(<code>string or array of string <code class="variable">idOrIdList</code></code>, <code>function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Retrieves the specified BookmarkTreeNode(s).
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-get-idOrIdList"></a>
+														<dl>
+																<dt>
+																		<code class="variable">idOrIdList</code> <code class="property">( string or array of string )</code>
+																</dt>
+																<dd>
+																		A single string-valued id, or an array of string-valued ids
+																</dd>
+														</dl>
+												</div>
+												<div>
+														<a name="property-get-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										The <em>callback</em> parameter should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> results) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-results"></a>
+														<dl>
+																<dt>
+																		<code class="variable">results</code> <code class="property">( array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-getChildren">
+								getChildren
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.getChildren</code>(<code>string <code class="variable">id</code></code>, <code>function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Retrieves the children of the specified BookmarkTreeNode id.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-getChildren-id"></a>
+														<dl>
+																<dt>
+																		<code class="variable">id</code> <code class="property">( string )</code>
+																</dt>
+														</dl>
+												</div>
+												<div>
+														<a name="property-getChildren-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										The <em>callback</em> parameter should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> results) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-results"></a>
+														<dl>
+																<dt>
+																		<code class="variable">results</code> <code class="property">( array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-getRecent">
+								getRecent
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.getRecent</code>(<code>integer <code class="variable">numberOfItems</code></code>, <code>function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Retrieves the recently added bookmarks.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-getRecent-numberOfItems"></a>
+														<dl>
+																<dt>
+																		<code class="variable">numberOfItems</code> <code class="property">( integer )</code>
+																</dt>
+																<dd>
+																		The maximum number of items to return.
+																</dd>
+														</dl>
+												</div>
+												<div>
+														<a name="property-getRecent-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										The <em>callback</em> parameter should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> results) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-results"></a>
+														<dl>
+																<dt>
+																		<code class="variable">results</code> <code class="property">( array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-getTree">
+								getTree
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.getTree</code>(<code>function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Retrieves the entire Bookmarks hierarchy.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-getTree-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										The <em>callback</em> parameter should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> results) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-results"></a>
+														<dl>
+																<dt>
+																		<code class="variable">results</code> <code class="property">( array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-getSubTree">
+								getSubTree
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.getSubTree</code>(<code>string <code class="variable">id</code></code>, <code>function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Retrieves part of the Bookmarks hierarchy, starting at the specified node.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-getSubTree-id"></a>
+														<dl>
+																<dt>
+																		<code class="variable">id</code> <code class="property">( string )</code>
+																</dt>
+																<dd>
+																		The ID of the root of the subtree to retrieve.
+																</dd>
+														</dl>
+												</div>
+												<div>
+														<a name="property-getSubTree-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										The <em>callback</em> parameter should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> results) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-results"></a>
+														<dl>
+																<dt>
+																		<code class="variable">results</code> <code class="property">( array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-search">
+								search
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.search</code>(<code>string <code class="variable">query</code></code>, <code>function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Searches for BookmarkTreeNodes matching the given query.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-search-query"></a>
+														<dl>
+																<dt>
+																		<code class="variable">query</code> <code class="property">( string )</code>
+																</dt>
+														</dl>
+												</div>
+												<div>
+														<a name="property-search-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										The <em>callback</em> parameter should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> results) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-results"></a>
+														<dl>
+																<dt>
+																		<code class="variable">results</code> <code class="property">( array of <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-create">
+								create
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.create</code>(<code>object <code class="variable">bookmark</code></code>, <code class="optional">function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Creates a bookmark or folder under the specified parentId. If url is NULL or missing, it will be a folder.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-create-bookmark"></a>
+														<dl>
+																<dt>
+																		<code class="variable">bookmark</code> <code class="property">( object )</code>
+																</dt>
+																<dd>
+																		<dl>
+																				<dd>
+																						<div>
+																								<a name="property-bookmark-parentId"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">parentId</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																										</dt>
+																										<dd>
+																												Defaults to the Other Bookmarks folder.
+																										</dd>
+																								</dl>
+																						</div>
+																						<div>
+																								<a name="property-bookmark-index"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">index</code> <code class="property">( <code class="optional">optional</code> integer )</code>
+																										</dt>
+																								</dl>
+																						</div>
+																						<div>
+																								<a name="property-bookmark-title"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">title</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																										</dt>
+																								</dl>
+																						</div>
+																						<div>
+																								<a name="property-bookmark-url"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">url</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																										</dt>
+																								</dl>
+																						</div>
+																				</dd>
+																		</dl>
+																</dd>
+														</dl>
+												</div>
+												<div>
+														<a name="property-create-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( <code class="optional">optional</code> function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										If you specify the <em>callback</em> parameter, it should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(<a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> result) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-result"></a>
+														<dl>
+																<dt>
+																		<code class="variable">result</code> <code class="property">( <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-move">
+								move
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.move</code>(<code>string <code class="variable">id</code></code>, <code>object <code class="variable">destination</code></code>, <code class="optional">function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Moves the specified BookmarkTreeNode to the provided location.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-move-id"></a>
+														<dl>
+																<dt>
+																		<code class="variable">id</code> <code class="property">( string )</code>
+																</dt>
+														</dl>
+												</div>
+												<div>
+														<a name="property-move-destination"></a>
+														<dl>
+																<dt>
+																		<code class="variable">destination</code> <code class="property">( object )</code>
+																</dt>
+																<dd>
+																		<dl>
+																				<dd>
+																						<div>
+																								<a name="property-destination-parentId"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">parentId</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																										</dt>
+																								</dl>
+																						</div>
+																						<div>
+																								<a name="property-destination-index"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">index</code> <code class="property">( <code class="optional">optional</code> integer )</code>
+																										</dt>
+																								</dl>
+																						</div>
+																				</dd>
+																		</dl>
+																</dd>
+														</dl>
+												</div>
+												<div>
+														<a name="property-move-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( <code class="optional">optional</code> function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										If you specify the <em>callback</em> parameter, it should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(<a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> result) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-result"></a>
+														<dl>
+																<dt>
+																		<code class="variable">result</code> <code class="property">( <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-update">
+								update
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.update</code>(<code>string <code class="variable">id</code></code>, <code>object <code class="variable">changes</code></code>, <code class="optional">function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Updates the properties of a bookmark or folder. Specify only the properties that you want to change; unspecified properties will be left unchanged. <b>Note:</b> Currently, only 'title' and 'url' are supported.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-update-id"></a>
+														<dl>
+																<dt>
+																		<code class="variable">id</code> <code class="property">( string )</code>
+																</dt>
+														</dl>
+												</div>
+												<div>
+														<a name="property-update-changes"></a>
+														<dl>
+																<dt>
+																		<code class="variable">changes</code> <code class="property">( object )</code>
+																</dt>
+																<dd>
+																		<dl>
+																				<dd>
+																						<div>
+																								<a name="property-changes-title"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">title</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																										</dt>
+																								</dl>
+																						</div>
+																						<div>
+																								<a name="property-changes-url"></a>
+																								<dl>
+																										<dt>
+																												<code class="variable">url</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																										</dt>
+																								</dl>
+																						</div>
+																				</dd>
+																		</dl>
+																</dd>
+														</dl>
+												</div>
+												<div>
+														<a name="property-update-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( <code class="optional">optional</code> function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										If you specify the <em>callback</em> parameter, it should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function(<a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> result) <code class="subdued">{...}</code>;
+</pre>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-callback-result"></a>
+														<dl>
+																<dt>
+																		<code class="variable">result</code> <code class="property">( <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-remove">
+								remove
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.remove</code>(<code>string <code class="variable">id</code></code>, <code class="optional">function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Removes a bookmark or an empty bookmark folder.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-remove-id"></a>
+														<dl>
+																<dt>
+																		<code class="variable">id</code> <code class="property">( string )</code>
+																</dt>
+														</dl>
+												</div>
+												<div>
+														<a name="property-remove-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( <code class="optional">optional</code> function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										If you specify the <em>callback</em> parameter, it should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function() <code class="subdued">{...}</code>;
+</pre>
+						</div>
+				</div>
+				<div>
+						<h4 id="method-removeTree">
+								removeTree
+						</h4>
+						<div class="summary uncapitalize">
+								<code>chrome.bookmarks.removeTree</code>(<code>string <code class="variable">id</code></code>, <code class="optional">function <code class="variable">callback</code></code>)
+						</div>
+						<div class="description">
+								<p>
+										Recursively removes a bookmark folder.
+								</p>
+								<h4>
+										Parameters
+								</h4>
+								<dl>
+										<dd>
+												<div>
+														<a name="property-removeTree-id"></a>
+														<dl>
+																<dt>
+																		<code class="variable">id</code> <code class="property">( string )</code>
+																</dt>
+														</dl>
+												</div>
+												<div>
+														<a name="property-removeTree-callback"></a>
+														<dl>
+																<dt>
+																		<code class="variable">callback</code> <code class="property">( <code class="optional">optional</code> function )</code>
+																</dt>
+														</dl>
+												</div>
+										</dd>
+								</dl>
+								<h4>
+										Callback
+								</h4>
+								<p>
+										If you specify the <em>callback</em> parameter, it should specify a function that looks like this:
+								</p>
+								<pre class="prettyprint">
+function() <code class="subdued">{...}</code>;
+</pre>
+						</div>
+				</div>
+				<h2 id="events">
+						Events
+				</h2>
+				<div>
+						<h4 id="event-onCreated">
+								onCreated
+						</h4>
+						<div class="description">
+								<p>
+										Fired when a bookmark or folder is created.
+								</p>
+								<div>
+										<h4 id="event-onCreated-addListener">
+												addListener
+										</h4>
+										<div class="summary uncapitalize">
+												<code>chrome.bookmarks.onCreated.addListener</code>(<code>function <code class="variable">callback</code></code>)
+										</div>
+										<div class="description">
+												<h4>
+														Parameters
+												</h4>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onCreated-callback"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">callback</code> <code class="property">( function )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+												<h4>
+														Callback
+												</h4>
+												<p>
+														The <em>callback</em> parameter should specify a function that looks like this:
+												</p>
+												<pre class="prettyprint">
+function(string id, <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> bookmark) <code class="subdued">{...}</code>;
+</pre>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onCreated-id"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">id</code> <code class="property">( string )</code>
+																				</dt>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-onCreated-bookmark"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">bookmark</code> <code class="property">( <a href="bookmarks.html#type-BookmarkTreeNode">BookmarkTreeNode</a> )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div>
+						<h4 id="event-onRemoved">
+								onRemoved
+						</h4>
+						<div class="description">
+								<p>
+										Fired when a bookmark or folder is removed. When a folder is removed recursively, a single notification is fired for the folder, and none for its contents.
+								</p>
+								<div>
+										<h4 id="event-onRemoved-addListener">
+												addListener
+										</h4>
+										<div class="summary uncapitalize">
+												<code>chrome.bookmarks.onRemoved.addListener</code>(<code>function <code class="variable">callback</code></code>)
+										</div>
+										<div class="description">
+												<h4>
+														Parameters
+												</h4>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onRemoved-callback"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">callback</code> <code class="property">( function )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+												<h4>
+														Callback
+												</h4>
+												<p>
+														The <em>callback</em> parameter should specify a function that looks like this:
+												</p>
+												<pre class="prettyprint">
+function(string id, object removeInfo) <code class="subdued">{...}</code>;
+</pre>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onRemoved-id"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">id</code> <code class="property">( string )</code>
+																				</dt>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-onRemoved-removeInfo"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">removeInfo</code> <code class="property">( object )</code>
+																				</dt>
+																				<dd>
+																						<dl>
+																								<dd>
+																										<div>
+																												<a name="property-removeInfo-parentId"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">parentId</code> <code class="property">( string )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																										<div>
+																												<a name="property-removeInfo-index"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">index</code> <code class="property">( integer )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																								</dd>
+																						</dl>
+																				</dd>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div>
+						<h4 id="event-onChanged">
+								onChanged
+						</h4>
+						<div class="description">
+								<p>
+										Fired when a bookmark or folder changes. <b>Note:</b> Currently, only title and url changes trigger this.
+								</p>
+								<div>
+										<h4 id="event-onChanged-addListener">
+												addListener
+										</h4>
+										<div class="summary uncapitalize">
+												<code>chrome.bookmarks.onChanged.addListener</code>(<code>function <code class="variable">callback</code></code>)
+										</div>
+										<div class="description">
+												<h4>
+														Parameters
+												</h4>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onChanged-callback"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">callback</code> <code class="property">( function )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+												<h4>
+														Callback
+												</h4>
+												<p>
+														The <em>callback</em> parameter should specify a function that looks like this:
+												</p>
+												<pre class="prettyprint">
+function(string id, object changeInfo) <code class="subdued">{...}</code>;
+</pre>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onChanged-id"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">id</code> <code class="property">( string )</code>
+																				</dt>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-onChanged-changeInfo"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">changeInfo</code> <code class="property">( object )</code>
+																				</dt>
+																				<dd>
+																						<dl>
+																								<dd>
+																										<div>
+																												<a name="property-changeInfo-title"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">title</code> <code class="property">( string )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																										<div>
+																												<a name="property-changeInfo-url"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">url</code> <code class="property">( <code class="optional">optional</code> string )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																								</dd>
+																						</dl>
+																				</dd>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div>
+						<h4 id="event-onMoved">
+								onMoved
+						</h4>
+						<div class="description">
+								<p>
+										Fired when a bookmark or folder is moved to a different parent folder.
+								</p>
+								<div>
+										<h4 id="event-onMoved-addListener">
+												addListener
+										</h4>
+										<div class="summary uncapitalize">
+												<code>chrome.bookmarks.onMoved.addListener</code>(<code>function <code class="variable">callback</code></code>)
+										</div>
+										<div class="description">
+												<h4>
+														Parameters
+												</h4>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onMoved-callback"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">callback</code> <code class="property">( function )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+												<h4>
+														Callback
+												</h4>
+												<p>
+														The <em>callback</em> parameter should specify a function that looks like this:
+												</p>
+												<pre class="prettyprint">
+function(string id, object moveInfo) <code class="subdued">{...}</code>;
+</pre>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onMoved-id"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">id</code> <code class="property">( string )</code>
+																				</dt>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-onMoved-moveInfo"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">moveInfo</code> <code class="property">( object )</code>
+																				</dt>
+																				<dd>
+																						<dl>
+																								<dd>
+																										<div>
+																												<a name="property-moveInfo-parentId"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">parentId</code> <code class="property">( string )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																										<div>
+																												<a name="property-moveInfo-index"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">index</code> <code class="property">( integer )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																										<div>
+																												<a name="property-moveInfo-oldParentId"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">oldParentId</code> <code class="property">( string )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																										<div>
+																												<a name="property-moveInfo-oldIndex"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">oldIndex</code> <code class="property">( integer )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																								</dd>
+																						</dl>
+																				</dd>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div>
+						<h4 id="event-onChildrenReordered">
+								onChildrenReordered
+						</h4>
+						<div class="description">
+								<p>
+										Fired when the children of a folder have changed their order due to the order being sorted in the UI. This is not called as a result of a move().
+								</p>
+								<div>
+										<h4 id="event-onChildrenReordered-addListener">
+												addListener
+										</h4>
+										<div class="summary uncapitalize">
+												<code>chrome.bookmarks.onChildrenReordered.addListener</code>(<code>function <code class="variable">callback</code></code>)
+										</div>
+										<div class="description">
+												<h4>
+														Parameters
+												</h4>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onChildrenReordered-callback"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">callback</code> <code class="property">( function )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+												<h4>
+														Callback
+												</h4>
+												<p>
+														The <em>callback</em> parameter should specify a function that looks like this:
+												</p>
+												<pre class="prettyprint">
+function(string id, object reorderInfo) <code class="subdued">{...}</code>;
+</pre>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onChildrenReordered-id"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">id</code> <code class="property">( string )</code>
+																				</dt>
+																		</dl>
+																</div>
+																<div>
+																		<a name="property-onChildrenReordered-reorderInfo"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">reorderInfo</code> <code class="property">( object )</code>
+																				</dt>
+																				<dd>
+																						<dl>
+																								<dd>
+																										<div>
+																												<a name="property-reorderInfo-childIds"></a>
+																												<dl>
+																														<dt>
+																																<code class="variable">childIds</code> <code class="property">( array of string )</code>
+																														</dt>
+																												</dl>
+																										</div>
+																								</dd>
+																						</dl>
+																				</dd>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div>
+						<h4 id="event-onImportBegan">
+								onImportBegan
+						</h4>
+						<div class="description">
+								<p>
+										Fired when a bookmark import session is begun. Expensive observers should ignore onCreated updates until onImportEnded is fired. Observers should still handle other notifications immediately.
+								</p>
+								<div>
+										<h4 id="event-onImportBegan-addListener">
+												addListener
+										</h4>
+										<div class="summary uncapitalize">
+												<code>chrome.bookmarks.onImportBegan.addListener</code>(<code>function <code class="variable">callback</code></code>)
+										</div>
+										<div class="description">
+												<h4>
+														Parameters
+												</h4>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onImportBegan-callback"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">callback</code> <code class="property">( function )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+												<h4>
+														Callback
+												</h4>
+												<p>
+														The <em>callback</em> parameter should specify a function that looks like this:
+												</p>
+												<pre class="prettyprint">
+function() <code class="subdued">{...}</code>;
+</pre>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div>
+						<h4 id="event-onImportEnded">
+								onImportEnded
+						</h4>
+						<div class="description">
+								<p>
+										Fired when a bookmark import session is ended.
+								</p>
+								<div>
+										<h4 id="event-onImportEnded-addListener">
+												addListener
+										</h4>
+										<div class="summary uncapitalize">
+												<code>chrome.bookmarks.onImportEnded.addListener</code>(<code>function <code class="variable">callback</code></code>)
+										</div>
+										<div class="description">
+												<h4>
+														Parameters
+												</h4>
+												<dl>
+														<dd>
+																<div>
+																		<a name="property-onImportEnded-callback"></a>
+																		<dl>
+																				<dt>
+																						<code class="variable">callback</code> <code class="property">( function )</code>
+																				</dt>
+																		</dl>
+																</div>
+														</dd>
+												</dl>
+												<h4>
+														Callback
+												</h4>
+												<p>
+														The <em>callback</em> parameter should specify a function that looks like this:
+												</p>
+												<pre class="prettyprint">
+function() <code class="subdued">{...}</code>;
+</pre>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>
+
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/trunk/extensions/bookmarks.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

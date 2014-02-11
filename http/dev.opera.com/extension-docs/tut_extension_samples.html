@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Extension templates and samples - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Extension templates and samples</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>This is a repository of all the example extensions to help you get started with making Opera extensions. These could be useful for just looking through the code and learning about extensions, or you could take any of these as a starting point and then edit them and build upon them for your own extensions. If you haven’t done so already, we highly recommend that you read through the <a href="tut_architecture_overview.html">architecture overview</a> before proceeding.</p>
+
+<h2 id="browser_and_page_actions">Browser and Page Actions</h2>
+
+<p><strong>Sample extensions</strong>:</p>
+
+<ul>
+<li><a href="samples/BrowserActions-button.nex">An extension which simply adds a button to the toolbar</a></li>
+
+<li><a href="samples/BrowserActions-Popup.nex">An extension which simply adds a popup to the toolbar</a></li>
+
+<li><a href="samples/PageActions.nex">An extension which adds a page action</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_browser_actions.html">Buttons, popups and badges(browser actions)</a></li>
+
+<li><a href="browserAction.html">chrome.browserAction</a></li>
+</ul>
+
+<h2 id="messaging">Messaging</h2>
+
+<p><strong>Sample extensions</strong>:</p>
+
+<ul>
+<li><a href="samples/MessagePassing.nex">An extension which does simple, short lived communication (it counts the number of paragraphs in the page and updates the badge)</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+
+<li><a href="runtime.html">chrome.runtime</a></li>
+</ul>
+
+<h2 id="windows_and_tabs">Windows and Tabs</h2>
+
+<p><strong>Sample extensions</strong>:</p>
+
+<ul>
+<li><a href="samples/WinTabs-CreateATab.nex">An extension which simply creates a new tab</a></li>
+
+<li><a href="samples/WinTabs-Wave.nex">An extension which takes current URL, creates a new tab and runs the URL by the WAVE accessibility evaluation tool</a></li>
+
+<li><a href="samples/WinTabs-UpdateTab.nex">If you are on dev.opera.com, then clicking on button will redirect it to opera.com</a></li>
+
+<li><a href="samples/WinTabs-CloseReloadDuplicate.nex">An example of closing, reloading and duplicating tabs</a></li>
+
+<li><a href="samples/WinTabs-PrivateWindow.nex">Creates a new window with three predefined URLs loading in that window</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+
+<li><a href="tabs.html">chrome.tabs</a>, <a href="windows.html">chrome.windows</a></li>
+</ul>
+
+<h2 id="context_menu">Context Menu</h2>
+
+<p><strong>Sample extension</strong>:</p>
+
+<ul>
+<li><a href="samples/ContextMenu-SelectedText.nex">A sample extension showing how to use the Context Menu API</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+
+<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+</ul>
+
+<h2 id="speed_dial">Speed Dial</h2>
+
+<p><strong>Sample extension</strong>:</p>
+
+<ul>
+<li><a href="samples/SpeedDial-CenterContent.nex">Sample speed dial extension</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+
+<li><a href="speeddial.html">opr.speeddial</a></li>
+</ul>
+
+<h2 id="history_api">History API</h2>
+
+<p><strong>Sample extension</strong>:</p>
+
+<ul>
+<li><a href="samples/HistoryAPI-1.nex">Accessing history of currently active tab</a></li>
+
+<li><a href="samples/HistoryAPI-2.nex">Deleting history of the currently active tab</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_hist.html">Working with the browser history</a></li>
+
+<li><a href="history.html">chrome.history</a></li>
+</ul>
+
+<h2 id="internationalization_i18n">Internationalization (i18n)</h2>
+
+<p><strong>Sample extension</strong>:</p>
+
+<ul>
+<li><a href="samples/i18nExtension.nex">Extension showing how i18n should work. The text in popup should be correctly translated in Spanish if the browser locale is changed to Spanish</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_internationalization.html">Internationalization</a></li>
+
+<li><a href="i18n.html">chrome.i18n</a></li>
+</ul>
+
+<h2 id="address_bar_extensions">Address Bar extensions</h2>
+
+<p><strong>Sample extension</strong>:</p>
+
+<ul>
+<li><a href="samples/Omnibox.nex">Type the keyword ‘extquery’ in the address bar followed by your query. The extension will search the query on the Opera extensions documentation site</a></li>
+
+<li><a href="samples/Omnibox2.nex">Type the keyword ‘extdocs’ in the address bar followed by your query. The default suggestion is to search on the Opera Extensions documentation site . The next option is a search on StackOverflow with the tag <code>[opera-extension]</code>, followed by a Google search.</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+
+<li><a href="omnibox.html">chrome.omnibox</a></li>
+</ul>
+
+<h2 id="offroad_mode">Off-Road Mode</h2>
+
+<p><strong>Sample extension</strong>:</p>
+
+<ul>
+<li><a href="samples/offroad.nex">Extension which toggles Off-Road Mode in the browser</a></li>
+</ul>
+
+<p><strong>Relevant reading</strong>:</p>
+
+<ul>
+<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+
+<li><a href="types.html">chrome.types</a></li>
+</ul>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

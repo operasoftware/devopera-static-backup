@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="hu">
+<head>
+  <title>HTML szöveges példák</title>
+</head>
+
+
+<body>
+
+<h1>HTML szöveges példák</h1>
+
+<p>Ez a fájl tartalmazza a példakódokat a "Szöveges részek megjelölése HTML-ben" leíráshoz, így élőben kipróbálhatod, hogy hogyan jelennek meg a bemutatott forráskódok egy böngészőben.</p>
+
+<h2 id="whitespace">Fehér karakter példa</h2>
+
+<h3>Kezdetben   teremté
+                az   Úr</h3>
+
+<h2 id="headings">Címsor példa</h2>
+ 
+<h1>Szöveges részek megjelölése HTML-ben</h1>
+<h2>Bevezető</h2>
+<h2>Space — a legvégső határ</h2>
+<h2>Blokk szintű elemek</h2>
+<h3>A lap szakaszcímei</h3>
+<h3>Általános bekezdések</h3>
+<h3>Más források idézése</h3>
+<h3>Előformázott szöveg</h3>
+<h2>Inline elemek</h2>
+<p>[…és így tovább…]</p>
+              
+   
+ <h2 id="paragraph">Bekezdés példa</h2>
+   
+<p>Ez egy nagyon rövid bekezdés. Csak két mondatból áll.</p>
+        
+ <h2 id="cite">Más források idézése példa</h2>
+ 
+<p>A HTML 4.01 az egyetlen olyan HTML verzió, amelyet egy új
+weblap létrehozásakor használhatsz, a specifikáció szerint:</p>
+   <blockquote cite="http://www.w3.org/TR/html401/">
+   <p>Ez a dokumentum érvényteleníti a HTML 4.0 korábbi verzióit, 
+   bár a W3C továbbra is elérhetővé teszi ezeket a 
+   specifikációkat és a hozzájuk tartozó DTD-ket a W3C weboldalán.</p>
+   </blockquote>
+            
+
+<h2 id="preformatted">Előformázott példa</h2>     
+     
+     
+<pre><code class="language-perl">
+            # vegig beolvassa a megnevezett fajlt
+            sub slurp {
+                my $filename = shift;
+                my $file     = new FileHandle $filename;
+                
+                if ( defined $file ) {
+                    local $/;
+                    return <$file>;
+                }
+                return undef;
+            };
+        </code></pre>
+        
+
+
+<h2 id="q">Beágyazott idézet példa</h2>
+
+<p>Ez nem végződött túl jól a számomra. Hát igen,
+              <q lang="fr">c'est la vie</q>, ahogy a franciák mondják.</p>
+              
+ 
+ <h2 id="em">Kiemelés példa</h2>
+
+ 
+ 
+ <p><em>Megjegyzés:</em> a bojlert ki kell húzni 
+                éjszakára.</p>
+              
+  <h2 id="emstrong">Kiemelés és erős kiemelés példa</h2>             
+              
+ <p><em>Megjegyzés: a bojlert ki <strong>kell</strong> húzni
+              minden éjszaka, különben felrobban -
+              <strong>és mind meghalunk</strong></em>.</p>
+ 
+              </body>
+</html>
+
+

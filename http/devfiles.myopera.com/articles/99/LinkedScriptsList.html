@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Linked Scripts List</title>
+</head>
+<body>
+    <h1>Linked Scripts List</h1>
+    
+    <p>To use this bookmarklet, right-click the link below and choose "Add Link to Bookmarks".</p>
+
+    <p><a href="javascript:void(html='&lt;html&gt;&lt;head&gt;&lt;title&gt;Overview of scripts for '+document.title+'&lt;/title&gt;&lt;base href=\''+window.location.href+'\'&gt;&lt;/head&gt;&lt;body&gt;');function a(d){void(el=d.getElementsByTagName('script'));for(i=0;i&lt;el.length;i++){void(html+='&lt;br / &gt;&lt;a href=\''+el[i].src+'\'&gt;'+el[i].src+'&lt;/a&gt;');}}function b(f){a(f.document);}function c(f){for(j=0;j&lt;f.frames.length;j++){b(f.frames[j]);}} if(top.frames.length){c(top);}else{a(document);} if(html.length&gt;150){ void(w=window.open()); void(w.document.open()); void(w.document.write(html+'&lt;/body&gt;&lt;/html&gt;'));void(w.document.close());}">List external JS files</a></p>
+</body>
+</html>

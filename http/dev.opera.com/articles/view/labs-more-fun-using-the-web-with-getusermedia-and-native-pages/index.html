@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>More fun using the Web, with getUserMedia and native pages - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>More fun using the Web, with getUserMedia and native pages</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <p class="note">Note: the features covered in this article are now available in a much more stable form in our latest <a href="http://www.opera.com/browser/next/">Opera Next</a> release.</p>
+
+<div id="content">
+  <p> Another Opera labs release is upon us, esteemed friends in the land of Web! This time we are making available a very exciting build indeed, with support for both the <code> getUserMedia </code> method, enabling us to make use of video input from a user’s web cam, and native pages — codenamed Opera Reader — an innovative new set of CSS constructs that allow you to split pages up into paged media, revolutionising the Web reading experience. Want to know more? Read on. <h2> The builds </h2>
+  </p><p> To start off with, let’s get you acquainted with the new builds themselves. You can play with these new experimental features in any of the builds listed below: <ul>
+    <li><a href="http://snapshot.opera.com/labs/camera-and-pages/Opera-Labs-Camera-and-Pages-12.00-1113.dmg"> Opera desktop for Mac </a></li><li><a href="http://snapshot.opera.com/labs/camera-and-pages/Linux-FreeBSD/"> Opera desktop for Linux </a></li><li><a href="http://snapshot.opera.com/labs/camera-and-pages/Opera-Labs-Camera-and-Pages-12.00-1113.exe"> Opera desktop for Windows </a></li><li><a href="http://www.opera.com/download/get.pl?sub=++++&amp;amp;id=34184&amp;amp;location=360&amp;amp;nothanks=yes"> Opera Mobile for Android </a></li></ul>
+  <h2> Native pages </h2>
+  </p><p> Browsers have adopted the scroll metaphor, offering scrollbars for navigating up and down our content. This is an easy solution for the software, as it allows all content to be accessible without needing to worry about pagination. This however leads to chopped lines of text, and doesn’t work so well on mice-less devices. In addition, mankind misses the beauty of a nicely laid out page. </p><p> We’ve more recently seen a step in the right direction, with a proliferation of e-reader devices (such as the Amazon Kindle) with “next page” and “previous page” buttons allowing users to read e-books in a more “book like” fashion. But the Kindle is a walled garden: wouldn’t it be beneficial to have an open technology that allows us to present any content we choose in this manner? <p style="float:left;margin:0;padding-right: 1em;"><img alt="A codex" src="../../../../devfiles.myopera.com/articles/6942/codex.jpg" /></p></p><p> To this end, we are very excited to give you a first look at how a browser can split content into native pages. This proof of concept implements CSS3 extensions to split content into pages that can be “turned” in a natural manner through gestures rather than point and click, control the positioning/floating of figures in multi-column layouts more precisely and provide a consistent navigation system for such content that is independent of your documents. The new CSS3 features that enable this are detailed in the <a href="http://dev.w3.org/csswg/css3-gcpm/"> CSS Generated Content for Paged Media module </a> . <p style="clear: both;"> For example, turning the contents of an entire web page into a rudimentary paged experience is as simple as including the following in your page: </p><pre>
+ <code>
+  @media -o-paged {
+    html { 
+      height: 100%;
+      overflow: -o-paged-x;
+    }
+  }
+ </code>
+</pre></p><p> What we are doing here is declaring that devices that support the <code> -o-paged </code> media type should break up the contents of the <code> &lt;html&gt; </code> element into pages that fill 100% of the height of the browser window. These pages should be navigated in between horizontally (e.g. by swiping right and left on a touchscreen device): this is what <code> overflow: -o-paged-x; </code> does. </p><p> Like the book revolutionised reading when it replaced the scroll as the most popular reading format in the 5th century, we are hoping that native pages will revolutionise the way that people read the web. </p><p> To find out more and play with some demos, read <a href="http://people.opera.com/howcome/2011/reader/index.html"> Opera Reader: Paging the Web </a> by Chris Mills and Håkon Wium Lie. <h2> Cameras and getUserMedia </h2>
+  </p><p> We’ve also added support for <code> getUserMedia </code> , an HTML5 API method that allows you to set the source of an HTML5 <code> &lt;video&gt; </code> as the input of the user’s web cam. This can be achieved with something as simple as the following: <pre>
+ <code>
+  // Replace the source of the video element with the stream from the camera
+  var video = document.getElementById(&#39;sourcevid&#39;);
+  if (navigator.getUserMedia) {
+      navigator.getUserMedia(&#39;video&#39;, successCallback, errorCallback);
+      function successCallback(stream) {
+          video.src = stream;
+      }
+      function errorCallback(error) {
+          console.error(&#39;An error occurred: [CODE &#39; + error.code + &#39;]&#39;);
+          return;
+      }
+  } else {
+      console.log(&#39;Native web camera streaming (getUserMedia) is not supported in this browser.&#39;);
+      return;
+  }
+ </code>
+</pre><p style="text-align: center;"><img alt="html5 exploding camera demo" src="../../../../devfiles.myopera.com/articles/6942/html5-exploding-camera.jpg" /></p></p><p> For more information about this, including demos, hurry along and have a read of <a href="../playing-with-html5-video-and-getusermedia-support/index.html"> Playing with HTML5 video and getUserMedia support </a> by Daniel Davis. <h2> Release notes for desktop </h2>
+  <ul>
+    <li> The desktop builds are based on the recent Opera 12 pre-alpha release. Features introduced in there, such as hardware acceleration and WebGL support, are disabled. </li><li> Two opera:config preferences are turned on by default: “Scroll is Pan” and “Smooth Scrolling”. As a consequence of this, text selection is broken. This will be fixed soon. </li><li> A known issue is that, when pages have page overflow set, users have to focus the page to be able to use keyboard navigation. </li><li> The device API does not have a user interface yet. This will be added soon. </li><li> These are proof of concept builds, and should be considered experimental and for developer use only. </li></ul>
+  <h2> Release notes for mobile </h2>
+  <ul>
+    <li> This build is based on Opera Mobile 11.5 for Android, and installs side-by-side next to the regular Opera Mobile 11.5 for Android. </li><li> This build is considered experimental and is intended for development and testing purposes only. This build has not gone through full release testing, and may include unknown bugs or issues. </li><li> Two opera:config preferences are turned on by default: “Scroll is Pan” and “Smooth Scrolling”. As a consequence of this, long press and text selection are broken. </li><li> The device API does not have a user interface yet. This will be added soon. </li></ul>
+  <h2> Feedback </h2>
+  </p><p> If you have any feedback, please post it at the <a href="http://my.opera.com/desktopteam/blog/2011/10/19/new-opera-labs-release-with-getusermedia-and-opera-reader"> Opera desktop blog </a> . </p></div>
+
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-75963142">
+      <a href="../../../author/Swapnil99pro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/524/8595f6063949c4abc7369cac0d44b87a24f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Swapnil99pro.html">Swapnil Rustagi</a></p>
+      <p class="commentdate">Wednesday, November 30, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Cool! Works great here. Hoping it for Opera 12.00 - talking about getUserMedia API/Device API here.</section>
+    </li>
+    <li id="comment-77226292">
+      <a href="../../../author/TiRaNiD.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c9/6ea/65f115cf7195f947d4ec6cf44bcc1c32457.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/TiRaNiD.html">TiRANiD</a></p>
+      <p class="commentdate">Wednesday, December 14, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great job with the reader, guys. And how about making it the default reader not only for the e-books but also for the ordinary articles? Safari has it&#39;s Reader, Opera should have it&#39;s own as well.</section>
+    </li>
+    <li id="comment-77254772">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, December 14, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>That&#39;s a nice idea - cheers @TiRANiD ;-)</section>
+    </li>
+    <li id="comment-77312222">
+      <a href="../../../author/ramkira.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/089/483b377f70fee4f35d3b70cd2072a6c43c7.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ramkira.html">Julio</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Greetings from Peru. I love that feature, but I have a problem, not whether if they happen to everyone, I tested the demo on Linux fedora, there were no problems, but when tested on Windows XP, Vista even seven, gave me a blue screen error, is there any way to fix this error or is your own version of Opera. Greetings and congratulations.</section>
+    </li>
+    <li id="comment-77342092">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hrm, that is interesting. We&#39;ve not had any other feedback about crashing on Windows - at least you managed to check it out on Linux. These are very experimental builds, and as such are prone to crashers.</section>
+    </li>
+    <li id="comment-77470272">
+      <a href="../../../author/ramkira.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/089/483b377f70fee4f35d3b70cd2072a6c43c7.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ramkira.html">Julio</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>While I take the trouble to take a photo in windows error comes, hopefully help improve the software. I hope they look good.<br/><br/><a href="http://imageshack.us/photo/my-images/193/16dec0001.jpg" target="_blank">http://imageshack.us/photo/my-images/193/16dec0001.jpg</a><br/><br/><br/>Edit:<br/>A detail, I tried it on Windows 7 64 bit and there was no problem :)</section>
+    </li>
+    <li id="comment-78146842">
+      <a href="../../../author/little7.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a5/21f/dd629490aa6de2b12f1c422cccbc4b92882.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/little7.html">little7</a></p>
+      <p class="commentdate">Thursday, December 22, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This is good, but I come across with a problem saving the image with one frame of the video. It raises security violation when a aCanvas.toDataURL() is invoked. The src of aCanvas is video stream. Please see link here. <a href="http://my.opera.com/community/forums/topic.dml?id=1155742" target="_blank">http://my.opera.com/community/forums/topic.dml?id=1155742</a></section>
+    </li>
+    <li id="comment-79270132">
+      <a href="../../../author/dontcallmedom.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b9/8d4/d0fcc19d7fc6d8a6cc201c0e08194d3eb2c." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dontcallmedom.html">Dominique Hazael-Massieux</a></p>
+      <p class="commentdate">Friday, January 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I can&#39;t get the build to work properly with getUserMedia on my Galaxy Nexus (Android ICS) — is that a known problem?<br/><br/>I tried the exploding video demo, the mustache dem, as well as the book of trolls, to no avail.</section>
+    </li>
+    <li id="comment-79499632">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, January 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi Dom!<br/><br/>We did find problems with this build on some of Android devices. I think this should work better on our next gUM iteration, which will be out in the next couple of days with any luck.<br/><br/>@little7 - thanks for the feedback. again, let em know if you get better results on the upcoming new version.</section>
+    </li>
+    <li id="comment-80925952">
+      <a href="../../../author/thethisorthat.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/42/9b5/554f73f740cbb761479f0149f581ce58fec.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/thethisorthat.html">thethisorthat</a></p>
+      <p class="commentdate">Sunday, January 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Here&#39;s my attempt at implementing getUserMedia <a href="http://html5photobooth.com" target="_blank">http://html5photobooth.com</a>. <br/>I Open Sourced the code if you&#39;re interested how it was put together. Look forward to see improvements and feedback. <a href="https://github.com/davexoxide/HTML5-Photobooth" target="_blank">https://github.com/davexoxide/HTML5-Photobooth</a></section>
+    </li>
+    <li id="comment-84858422">
+      <a href="../../../author/simson2010.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/64/44f/f0af5caf9251dfa9c6ca8159080611ed154." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/simson2010.html">Eric Poon</a></p>
+      <p class="commentdate">Wednesday, March 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>We only can play this on the browser above? And I can play this on my opera mobile 12/11.</section>
+    </li>
+    <li id="comment-84915452">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, March 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Eric Poon things have moved on, yes! We should update this soon.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, October 19, 2011
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

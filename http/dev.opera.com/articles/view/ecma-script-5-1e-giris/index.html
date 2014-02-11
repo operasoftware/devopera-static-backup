@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ECMAScript 5.1'e Giriş - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="tr">
+      <h1>ECMAScript 5.1'e Giriş</h1>
+      <p class="print author">By Çağlar Yeşilyurt</p>
+
+      <h2>İçindekiler Listesi:</h2>
+
+<ol>
+    <li><a href="index.html#introduction">Giriş</a></li>
+    <li><a href="index.html#browser-support">Tarayıcı Desteği</a></li>
+    <li><a href="index.html#strict-mode">ES5&#39;ın Katı Modu</a></li>
+    <li><a href="index.html#json">JSON</a>
+    <li><a href="index.html#object-additions">Nesnelere Eklemeler</a></li>
+    <li><a href="index.html#array-extras">Dizilere İlaveler</a></li>
+    <li><a href="index.html#function-bind">Function.prototype.bind</a></li>
+    <li><a href="index.html#further-reading">Ek Referenslar</a></li>
+</li></ol>
+
+
+<h2 id="introduction">Giriş</h2>
+
+<p>ECMAScript 5.1 (yada sadece ES5) ECMAScript standardının &#x2014; önergede JavaScript temel alınmıştır &#x2014; en son gözden geçirimidir. HTML5 önergesinin sürecine benzer şekilde, ES5 varolan JavaScript kullanımlarını, dile ve ECMAScript nesnelerine olan eklemeleri standart bir şekle sokar. ES5  &quot;strict mode&quot; olan bilinen bu dilin bir strict türevini de tanıtır.</p>
+  
+<p>Bu makalede dile ait en yararlı değişiklikleri ve eklemeleri tanıtacağız. Tam liste için, <a href="http://www.ecmascript.org/">http://www.ecmascript.org/</a> adresinden <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf">resmi ECMAScript dil önergesi</a> (PDF indirmesi, 3MB) adresinden erişilen belgenin Ek D ve E bölümlerine bakın; bu içeriği HTML biçiminde <a href="http://es5.github.com/">Michael[tm] Smith&#39;in resmi olmayan açıklamalı HTML sürümü</a>nden de indirebilirsiniz.</p>
+
+<h2 id="browser-support">Tarayıcı Desteği</h2>
+
+<p>Opera 11.60&#39;ın sürülmesiyle beraber, beş büyük tarayıcı ES5 desteklemektedir, <a href="http://kristopolous.blogspot.com/2011/11/winners-are-opera-ie-firefox-chrome.html">uygulamaya dayalı hatalar</a> için kaydedin. Aksine bir şey ifade edilmezse, bu makalede bahsedilen her şey aşağıdaki tarayıcı sürümleri(ve daha yüksek sürümleri) ile beraber kullanılabilmektedir:</p>
+
+<ul>
+  <li>Opera 11.60</li>
+  <li>Internet Explorer 9*</li>
+  <li>Firefox 4</li>
+  <li>Safari 5.1**</li>
+  <li>Chrome 13</li>
+</ul>
+
+<p class="note">* <a href="http://msdn.microsoft.com/en-us/library/hh673540(v=VS.85).aspx">IE9 strict mode desteğini sağlamamaktadır</a> &#x2014; bu IE10 ile beraber eklendi.</p>
+<p class="note">** <a href="https://bugs.webkit.org/show_bug.cgi?id=26382"><code>Function.prototype.bind</code> desteği son Webkit sürümünde bulunmasına</a> rağmen Safari 5.1 halen <code>Function.prototype.bind</code> desteğine sahip değil.</p>
+
+<p>Daha eski tarayıcılara bu destek için, Juriy Zaytsev&#39;in mükemmel <a href="http://kangax.github.com/es5-compat-table/">ECMAScript 5 uyumluluğu tablosu</a>na bakın.
+  
+<h2 id="strict-mode">ES5 için Strict Mode</h2>
+
+<p>Katı mod, geliştirici için dilin daha tutucu bir çeşidini kullanmasını sağlar &#x2014; geliştiriciler için ek güvenilirlik ve kullanıcılar için ek güvenlik sağlar. Katı mod, Javascript dosyasının ya da fonksiyonunun başına &quot;use strict&quot; yönergesi yerleştirilerek etkinleştirilebilir.  &quot;use strict&quot; yönergesi sadece bir katar olduğu için eski tarayıcılar tarafından güvenli bir şekilde yok sayılacaktır.</p>
+
+<pre><code>&quot;use strict&quot;;</code></pre>
+ 
+<pre><code>function strict(){
+  &quot;use strict&quot;;
+  //...
+}
+
+function sloppy(){
+  eval(&quot;window.foo = &#39;bar&#39;&quot;);
+}</code></pre>
+
+<p>Katı mod kullanırken pek çok şey sürpriz bir şekilde ya da sorunlu bir davranış olarak çalışma anında hata üretecektir. Örneğin:</p>
+
+<ul>
+  <li>Tanımlanmamış bir değişkene değer atamak, global bir değişken oluşturmak yerine <code>ReferenceError</code>hatası fırlatır.</li>
+  <li>Aynı özelliği bir nesneye birden fazla kez atamak <code>SyntaxError</code>(söz dizimi hatası) fırlatır.</li>
+  <li><code>with</code> ifadesinin kullanımı <code>SyntaxError</code>(söz dizimi hatası) fırlatır.</li>
+</ul>
+
+<p><a href="http://msdn.microsoft.com/en-us/library/br230269(v=vs.94).aspx">MDSN&#39;deki katı mod makalesi</a> tüm bu farkları özetleyen yararlı bir tablo içerir.</p>
+
+<h2 id="json">JSON</h2>
+
+<p>ES5 bir nesneyi JSON biçimine dönüştürme (<code>JSON.stringify</code>) ve bu biçimden eski haline geri dönüştürme (<code>JSON.parse</code>) için genel bir <code>JSON</code> nesnesi tanımlar.</p>
+
+<p class="not">Eski tarayıcılar için, Douglas Crockford&#39;un <a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js">json2.js</a> dosyasını kullanmayı göz önünde bulundurun. Bu dosya, tarayıcının bu özelliği doğal olarak destekleyip desteklemediğini test ettikten sonra eski tarayıcılarda aynı işlevlerin kullanılabilmesini sağlar.</p>
+  
+<h3><code>JSON.parse(yazi [, fonksiyon])</code></h3>
+
+<p><code>JSON.parse</code> JSON olarak biçimlendirilmiş yazıyı alır ve bir ECMAScript değeri olarak geri döndürür. İsteğe bağlı kullanılabilecek parametre ise iki ayrı parametreye sahip, <code>anahtar</code> ve <code>değer</code>, bir fonksiyondur. Bu fonksiyon sonuçlar üzerine işlem yapar &#x2014; filtreleme yapmaya veya geri dönecek değeri değiştirmeye olanak sağlar.</p>
+
+<pre><code>&gt;&gt; var sonuc = JSON.parse(&#39;{&quot;a&quot;: 1, &quot;b&quot;: &quot;2&quot;}&#39;);
+Object
+
+&gt;&gt; sonuc.b
+&quot;2&quot;</code></pre>
+
+<p>Eğer ayrıştırma işlemine kadar değerin tam sayı olduğundan emin olmak istiyorsanız, isteğe bağlı fonksiyonu aşağıdaki gibi kullanabilirsiniz.</p>
+
+<pre><code>var sonuc = JSON.parse(&#39;{&quot;a&quot;: 1, &quot;b&quot;: &quot;2&quot;}&#39;, function(anahtar, deger){
+  if (typeof deger == &#39;string&#39;){
+    return parseInt(deger);
+  } else {
+    return deger; 
+  }
+})
+
+&gt;&gt; sonuc.b
+2</code></pre>
+
+
+<h3><code>JSON.stringify(deger [, yerdegistirici [, bosluk]])</code></h3>
+
+<p><code>JSON.stringify</code> geliştiricilerin bir ECMAScript değerini alıp bunu JSON biçimindeki karakter dizisine dönüştürmesini sağlar. Basitçe, <code>JSON.stringify</code> bir değer alır ve geriye bir karakter dizisi döndürür.</p>
+
+<pre><code>&gt;&gt;&gt; var mike = JSON.stringify({mike: &quot;taylor&quot;})
+undefined
+
+&gt;&gt; mike
+&#39;{&quot;mike&quot;: &quot;taylor&quot;}&#39;
+
+&gt;&gt; typeof mike
+&quot;string&quot;</code></pre>
+
+<p>Karakterleştirilmiş değeri değiştirmeye ihtiyacımız varsa yada seçilen bazı değerleri filtrelemek gerekiyorsa, bunu yer değiştirici fonksiyon aracılığıyla yapabiliriz. Örneğin nesnemizdeki 13 sayısını karakterleştirme işlemi sırasında filtrelemek istiyorsak,</p>
+
+<pre><code>var sayilar = {
+  &quot;birinci&quot;: 7,
+  &quot;ikinci&quot;: 14,
+  &quot;ucuncu&quot;: 13
+}
+
+var sansliNumaralar = JSON.stringify(sayilar, function(anahtar, deger){
+  if (deger == 13) {
+    return undefined;
+  } else {
+    return deger;
+  }
+});
+
+&gt;&gt; sansliNumaralar
+&#39;{&quot;birinci&quot;: 7, &quot;ikinci&quot;: 14}&#39;</code></pre>
+
+<p>Eğer yer değiştirici fonksiyon <code>undefined</code> değeri geri döndürürse , anahtar/değer çifti son JSON&#39;da yer almayacaktır. Bir alana neyin geri döndüğünü öğrenirken okunabilirliği arttırmak için bir boşluk parametresi de kullanabiliriz. Bu parametrenin alabileceği değerler, JSON katarı ya da bir katarın her bir girinti seviyesindeki boşluğun sayısını gösterecek bir numara olabilir.  Bir sayı 10&#39;un üzerinde ise yada bir karakter dizisi 10 karakterden fazla karaktere sahipse, 10&#39;a yada ilk 10 karaktere düşürülecektir.</p>
+
+<pre><code>var sansliNumaralar = JSON.stringify(sayilar, function(anahtar, deger) {
+  if (deger == 13) {
+    return undefined;
+  } else {
+    return deger;
+  }
+}, 2);
+
+&gt;&gt; sansliNumaralar
+&#39;{
+  &quot;birinci&quot;:7,
+  &quot;ikinci&quot;:14
+}&#39;</code></pre>
+
+<h2>Nesne Eklemeleri</h2>
+
+<p><code>Object</code> constructor aşağıdaki yöntemler eklendi:</p>
+
+<ul>
+  <li><code>Object.getPrototypeOf</code></li>
+  <li><code>Object.getOwnPropertyDescriptor</code></li>
+  <li><code>Object.getOwnPropertyNames</code></li>
+  <li><code>Object.create</code></li>
+  <li><code>Object.defineProperty</code></li>
+  <li><code>Object.defineProperties</code></li>
+  <li><code>Object.seal</code></li>
+  <li><code>Object.freeze</code></li>
+  <li><code>Object.preventExtensions</code></li>
+  <li><code>Object.isSealed</code></li>
+  <li><code>Object.isFrozen</code></li>
+  <li><code>Object.isExtensible</code></li>
+  <li><code>Object.keys</code></li>
+</ul>
+
+<p>Bu eklemelerin yararlarından biri nesnenin özellikleri üzerindeki denetimi arttırmaktır. Örneğin neyin değiştirilebileceğini, silinebileceğini, listelenebileceğini belirleyebilmemizi sağlar. Bu, bir nesnenin <em>özellik tanımlamalarına</em> program niteliğinde erişme yoluyla yapılır. Örneğin:</p>
+  
+<pre><code>var kedi = {};
+
+Object.defineProperty(kedi, &quot;ad&quot;, {
+  value: &quot;Maru&quot;,
+  writable: false,
+  enumerable: true,
+  configurable: false
+});
+
+Object.defineProperty(kedi, &quot;beceri&quot;, {
+  value: &quot;kutuları keşfetme&quot;,
+  writable: true,
+  enumerable: true,
+  configurable: true
+});</code></pre>
+
+<p><code>kedi</code> nesnemiz için, onun <code>ad</code>ı değiştirilemez ama <code>for-in</code> döngüsünde değeri görüntülenebilir. Diğerleri arasında, Maru kutuları keşfetmede iyi, ama bu gelecekte değişebilir çünkü  <code>beceri</code> özelliği <code>writable</code>(yazılabilir) ve <code>configurable</code>(ayarlanabilir) olarak kaldı.</p>
+
+<p>İleride, bir makalede nesne eklemelerinin tümünü ayrıntılarıyla keşfedeceğiz.</p>
+
+<h2>Dizilere İlaveler</h2>
+
+<p>Aşağıdaki yöntemler dizi <code>prototype</code> nesnesine eklenmiştir:</p>
+
+<ul>
+  <li><code>Array.prototype.indexOf</code></li>
+  <li><code>Array.prototype.lastIndexOf</code></li>
+  <li><code>Array.prototype.every</code></li>
+  <li><code>Array.prototype.some</code></li>
+  <li><code>Array.prototype.forEach</code></li>
+  <li><code>Array.prototype.map</code></li>
+  <li><code>Array.prototype.filter</code></li>
+  <li><code>Array.prototype.reduce</code></li>
+  <li><code>Array.prototype.reduceRight</code></li>
+</ul>
+
+<p>Dmitry Soshnikov <a href="../javascript-array-extras-in-detail/index.html">ES5 dizi &quot;ilaveleri&quot;</a> adresinde bulunan hakkında detaylı bir makale yazdı.</p>
+
+<p>Dmitry&#39;nin makalesinde yer almayan tek şey <code>Array.isArray</code>. Görebileceğiniz gibi bu, <code>prototype</code> nesnesinin değil doğrudan <code>Array</code> kurucusunun üzerindedir.
+
+<code>Array.isArray</code> beklemediğiniz kadar tatlıdır &#x2014; parametrenin [[Class]] dahili özelliği &quot;Array&quot; olup olmamasına göre <code>true</code> ya da <code>false</code> döndüren bir yöntemdir.
+
+<pre><code>Array.isArray(&quot;NO U&quot;)
+&gt;&gt; false
+
+Array.isArray([&quot;NO&quot;, &quot;U&quot;])
+&gt;&gt; true</code></pre>
+
+<p>In ES3&#39;te değerin bir dizi olup olmadığını belirlemenin tek güvenilir yolu <a href="http://www.songhaysystem.com/kb/number/2076072056/subject/htmlscrp">&quot;the Miller Device&quot;</a> kullanımıydı. Aşağıdaki örnekte dahili olan <code>[[Class]]</code> özelliğini dizininkiyle karşılaştırabilirsiniz.</p>
+  
+<pre><code>Object.prototype.toString.apply(value) === &#39;[object Array]&#39;</code></pre>
+
+<h2 id="function-bind"><code>Function.prototype.bind(thisArg [, arg1 [, arg2, …]])</code></h2>
+
+<p><code>Function.prototype.bind</code> <em>this</em> değeri<code>thisArg</code> parametresine bağlanan yeni bir fonksiyon nesnesi geri döndürür. Bu, temel olarak, diğer nesnenin bir faaliyet alanındayken bir fonksiyon çalıştırmanıza olarak sağlar.</p>
+
+<pre><code>function locate(){
+  console.log(this.location);
+}
+
+function Maru(location){
+  this.location = location;
+}
+
+var kitty = new Maru(&quot;cardboard box&quot;);
+
+var locateMaru = locate.bind(kitty);
+
+locateMaru();</code></pre>
+
+<p>Bu örnekte <code>location</code> fonksiyonunu Maru nesnesinin içeriğindeyken çağırıyoruz. <code>locate</code> global nesnenin bir özelliği olduğu için, onun <code>this</code> değeri global nesnedir(<code>window</code>). Bu durumda, bir kediye bakıyoruz, <code>Location</code> nesnesine değil. Öyleyse <code>this</code> değeri her zaman <code>kitty</code> olan <code>locateMaru</code>adında yeni bir yöntem oluşturabiliriz.</p>
+
+<h2 id="further-reading">Ek Referanslar</h2>
+
+<ul>
+  <li>John Resig tarafından <a href="http://ejohn.org/blog/ecmascript-5-objects-and-properties/">ECMAScript 5 Nesnesi ve Özellikleri</a></li>
+  <li>Yehuda Katz tarafından <a href="http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/">JavaScript Fonksiyon Yürüymesini ve &quot;this&quot;i Kavrama</a></li>
+  <li>Angus Croll tarafından <a href="http://javascriptweblog.wordpress.com/2011/05/03/javascript-strict-mode/">JavaScript Katı Mod</a></li>
+  <li>Detaylarda ECMA-262-5: Dmitry Soshnikov tarafından <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/">Giriş</a></li>
+  <li>Juriy Zaytsev tarafından <a href="http://kangax.github.com/es5-compat-table/">ECMAScript 5 uyumluluk tablosu</a></li>
+</ul>
+
+
+
+a href=Aynı özelliği bir nesneye birden fazla kez atamak </p></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/greench.html" rel="author">Çağlar Yeşilyurt</a></h1>
+        <a href="../../../author/greench.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/55/e98/9459ab63cbd6aa9b293bc4686a4dfbcc3d9.jpg" alt=""/></a>
+        <p>An enthusiastic about new web technologies. <br/>Web Developer at Opera Turkey | <a href="http://www.operaturkiye.net" target="_blank">http://www.operaturkiye.net</a><br/>W3C Web Education Turkish Project Coordinator<br/>Technical Blog | <a href="http://www.zettlina.com" target="_blank">http://www.zettlina.com</a><br/>Twitter @hcneerg</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/miketaylr.html" rel="author">Mike Taylor</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/greench.html" rel="author">Çağlar Yeşilyurt</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, January 31, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/array&#32;extras.html" rel="tag">array extras</a></li>
+        <li><a href="../../tags/dizi&#32;ilaveleri.html" rel="tag">dizi ilaveleri</a></li>
+        <li><a href="../../tags/ecmascript.html" rel="tag">ecmascript</a></li>
+        <li><a href="../../tags/ecmascript&#32;5.1.html" rel="tag">ecmascript 5.1</a></li>
+        <li><a href="../../tags/es5.html" rel="tag">es5</a></li>
+        <li><a href="../../tags/Function.prototype.bind.html" rel="tag">Function.prototype.bind</a></li>
+        <li><a href="../../tags/json.html" rel="tag">json</a></li>
+        <li><a href="../../tags/katı&#32;mod.html" rel="tag">katı mod</a></li>
+        <li><a href="../../tags/nesne&#32;eklemeleri.html" rel="tag">nesne eklemeleri</a></li>
+        <li><a href="../../tags/object&#32;additions.html" rel="tag">object additions</a></li>
+        <li><a href="../../tags/strict&#32;mode.html" rel="tag">strict mode</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../introducing-ecmascript-5-1/index.html">English</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

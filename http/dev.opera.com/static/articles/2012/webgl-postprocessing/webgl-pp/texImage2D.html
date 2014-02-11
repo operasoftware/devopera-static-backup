@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>Using texImage2D</title>
+  <link href='style.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+  <header>
+  <h1>Using texImage2D with HTMLImage and HTMLVideo</h1>
+  <div class='description'>Using Sobel edge-detection filter with the Camera input.
+    Hover the image to apply the postprocessing.</div>
+  </header>
+  <div id='log'></div>
+  <div class='main'>
+    <div class='arguments'>
+      <img src='assets/image.jpg' style='display:none' alt='a sample image'>
+      <video style='display:none'></video>
+    </div>
+    <canvas id='webgl-canvas' width=512 height=512></canvas>
+  </div>
+  <div class='code'>
+    <script src="https://gist.github.com/3716949.js?file=texImage2D.js"></script>
+  </div>
+  <script src='js/lib.js'></script>
+  <script src='js/teximage2d.js'></script>
+</body>
+</html>

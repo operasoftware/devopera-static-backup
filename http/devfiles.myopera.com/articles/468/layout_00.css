@@ -1,0 +1,62 @@
+body {
+	font-size: 14px;
+	font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+}
+
+p {
+	text-align: justify;
+	text-indent: 1.429em;
+	line-height: 1.5;
+}
+
+q {
+	letter-spacing: .143em;
+}
+
+q:before,
+ q:after {
+
+	content: "";
+}
+
+h1 {
+	font-size: x-large;
+	font-family: Helvetica,Arial,sans-serif;
+	font-style: italic;
+}
+
+blockquote {
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+blockquote p {
+	text-align: left;
+	text-indent: 0;
+}
+
+.sectionNote {
+	font-size: medium;
+	font-style: normal;
+}
+
+.attribution {
+	font-size: small;
+	line-height: 1.5;
+}
+
+.author {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.source a {
+	text-decoration: none;
+}
+
+.pullQuote {
+	word-spacing: .143em;
+}
+
+.opening {
+	font-variant: small-caps;
+}

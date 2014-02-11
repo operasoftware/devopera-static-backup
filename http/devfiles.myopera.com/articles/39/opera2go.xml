@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events">
+<head>
+  <title>Example #: Pick the best browser and go</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="pickbrowser">
+    <field name="browser">
+      <prompt>What is the name of the best browser?</prompt>
+      <option value="opera">Opera</option>
+	  <nomatch>Try again.</nomatch>
+	  <filled>
+	    <assign name="window.location" expr="'http://www.opera.com/features/'"/>
+	  </filled>
+   </field>
+  </form>
+</head>
+<body ev:event="load" ev:handler="#pickbrowser">
+<h1>Example 6: Pick the best browser and go</h1>
+<p>For the best user experience, we ask you to select your preferred browser.</p>
+<h2>Source code</h2>
+<pre><code><![CDATA[
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ev="http://www.w3.org/2001/xml-events">
+<head>
+  <title>Example #: Pick the best browser and go</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="pickbrowser">
+    <field name="browser">
+      <prompt>What is the name of the best browser?</prompt>
+      <option value="opera">Opera</option>
+	  <nomatch>Try again.</nomatch>
+	  <filled>
+	    <assign name="window.location" expr="'http://www.opera.com/features/'"/>
+	  </filled>
+   </field>     
+  </form>
+</head>
+<body ev:event="load" ev:handler="#pickbrowser">
+]]>
+</code></pre>
+</body>
+</html>

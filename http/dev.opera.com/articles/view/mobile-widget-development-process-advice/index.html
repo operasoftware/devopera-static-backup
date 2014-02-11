@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mobile widget development process advice - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Widgets - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/widgets">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Widgets - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/widgets">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="widgets">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Mobile widget development process advice</h1>
+      <p class="print author">By Opera Software</p>
+
+      <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">24th April 2012: Please note</h2>
+
+<p>Starting with Opera 12, Opera Widgets will <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">be turned off for new users and completely removed in a later release</a>. If you&#39;re interested in building addons for Opera, we recommend going with our extensions platform — check out <a href="../../../addons/extensions/index.html">our extensions documentation</a> to get started.</p>
+</div>
+
+
+<p>Table of contents:</p>
+
+<ol>
+<li><a href="index.html#introduction">Introduction</a></li>
+<li><a href="index.html#defineidea">Define a widget idea</a></li>
+<li><a href="index.html#desktop">Develop on desktop</a>
+<ol>
+<li><a href="index.html#desktop-spatial">Tip: Spatial navigation on desktop</a></li>
+</ol>
+</li>
+<li><a href="index.html#testing">Testing your widget</a>
+<ol>
+<li><a href="index.html#testing-emulator">Test in the emulator</a></li>
+<li><a href="index.html#testing-phone">Test on the phone</a></li>
+<li><a href="index.html#testing-dragonfly">Debug using Opera Dragonfly</a></li>
+</ol>
+</li>
+<li><a href="index.html#deploy">Deploy your widget</a></li>
+<li><a href="index.html#tools">Tools</a>
+<ol>
+<li><a href="index.html#tools-editors">Editing environments</a></li>
+<li><a href="index.html#tools-autocomplete">Tip: Import dummy JavaScript files for auto completion</a></li>
+</ol>
+</li>
+<li><a href="index.html#resources">Resources</a></li>
+</ol>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This articles provides some advice on developing mobile widgets, with special focus on mobile widgets. We can split the process into four main parts:</p>
+
+<ul>
+<li>Defining a widget idea</li>
+<li>Development</li>
+<li>Testing</li>
+<li>Deployment</li>
+</ul>
+
+<p>Generally, we recommend that you develop your widget on desktop, test your widget in the <a href="../widget-emulator/index.html">Widget Emulator</a>, and test on the phone when you’re done. Finally, you should upload your widget to <a href="http://widgets.opera.com">widgets.opera.com</a> to share it with the world.</p>
+
+<h2 id="defineidea">Define a widget idea</h2>
+
+<p>You should start out by determining what sort of widget you want to make. We recommend analysing user needs and <a href="../characteristics-of-widgets-on-mobile-pho/index.html">considering the characteristics of the mobile device</a> before embarking on making a widget.</p>
+
+<p>Who are the users? Young or old? Professionals or casual users? What is the need the widget satisfies or the problem it will solve? Which situations will the widget be used in? In the user’s office, living room or while on the move? These are all questions you should have answered before embarking on development.</p>
+
+<h2 id="desktop">Develop on desktop</h2>
+
+<p>Developing on desktop is quick, easy and supported by several tools, so it’s a lot easier to do the bulk of your development work there, before then testing on mobile devices.</p>
+
+<h3 id="desktop-spatial">Tip: Spatial navigation on desktop</h3>
+
+<p>You can simulate Spatial navigation on desktop by clicking Shift + &lt;arrow key&gt;. Opera will highlight the active link and move the focus when you click the arrow keys.</p>
+
+<p>Spatial navigation is an Opera technology allowing the joystick on your mobile phone to be used to move focus between navigable elements on a webpage. Form controls and links and elements with <code>onclick</code> handlers are added to the spatial navigation connection. Moving the joystick right or down will move to the next navigable element on the page. Moving it up or left will move to the previous one.</p>
+
+<p>By testing Spatial navigation on desktop, you can get an idea of how your widget works on different devices which support it.</p>
+
+<h2 id="testing">Testing your widget</h2>
+
+<h3 id="testing-emulator">Test in the emulator</h3>
+
+<p>The <a href="../opera-mobile-10-widgets-mobile-emulator-desktop/index.html">Opera Widgets Mobile Emulator</a> is a useful desktop application for testing what your widget will look like on different devices. Instead of copying your widget onto your mobile phone each time you make a change, you can work on your desktop using your favorite editing tools and run the widget inside the emulator.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/1571/6-opera-widgets-add.png" width="640" height="585" alt="Screenshot of the Opera Widgets Mobile Emulator" /></p>
+<p class="comment">Figure 1: The Opera Widgets Mobile Emulator</p>
+
+<p>The beauty of the emulator is not only that it runs on your desktop, but it&#39;s also a native application that fully reflects the features and capabilities of our <a href="http://labs.opera.com/news/2010/02/18/">Opera Widgets manager for mobile phones</a>. See the article on the <a href="../opera-mobile-10-widgets-mobile-emulator-desktop/index.html">Opera Widgets Mobile Emulator</a> for more details and a download link.</p>
+
+<h3 id="testing-phone">Test on the phone</h3>
+
+<p>When you are satisfied with the result, you can copy the widget onto the device and make final tests.</p>
+
+<p>In order to test your widget on a an actual device, you have some choices:</p>
+
+<ul>
+<li>Copy the packaged widget onto the device, for example through USB or Bluetooh connection, and run it from the file system. How this is done varies from mobile to mobile.</li>
+<li>Make the widget downloadable from the web. Opera will recognize any .zip or .wgt file served with the <code>application/x-opera-widgets</code> MIME type. Visit the URL with your mobile phone to load the widget.</li>
+</ul>
+
+<h3 id="testing-dragonfly">Debug using Opera Dragonfly</h3>
+
+<p>In order to speed up debugging, you can use Opera’s inspector and debugger Opera Dragonfly. You can debug scripts running in widgets on Desktop as explained in the <a href="../debugging-widgets-using-opera-dragonfly/index.html">article on debugging widgets with the Widget Emulator and Dragonfly</a>.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/403/dragonfly_opera_script.png" title="Screenshot of the Opera Dragonfly" alt="Screenshot of the Opera Dragonfly" /></p>
+
+<p class="comment">Figure 2: Opera Dragonfly.</p>
+
+<p>You can also <a href="../remote-debugging-with-opera-dragonfly/index.html">debug widgets running on the mobile phone</a>, by connecting it to a debugger running on Desktop.</p>
+
+<p>You should use Opera Dragonfly rather than use more cumbersome methods such as calls to <code>alert()</code> and <code>opera.postError()</code>. Note that these functions usually do not work on mobiles anyway.</p>
+
+<h2 id="deploy">Deploy your widget</h2>
+
+<p>You have two choices when finally deploying your widget:</p>
+
+<ul>
+<li>Upload your widget to <a href="http://widgets.opera.com">widgets.opera.com</a>. This website is the hub of all community widget activity. Each widget is reviewed by Opera Software to check if it works on different devices.</li>
+<li>Make the widget available on your own website. Opera will recognize any .zip or .wgt served with the application/x-opera-widgets MIME type. The link element can be used to announce a widget from a web page using rel=“alternate” and type=“application/x-opera-widgets”.</li>
+</ul>
+
+<p>widgets.opera.com will filter the list of available widgets based on the client viewing the pages. If you visit the site with a mobile phone, you will only be able to access those widgets that have been approved for use on that type of device.</p>
+
+<p>See <a href="../packing-and-deploying-your-opera-widget/index.html">Packing and deploying your Opera Widget</a> at <a href="../../../index.html">dev.opera.com</a> for more information.</p>
+
+<h2 id="tools">Tools</h2>
+
+<h3 id="tools-editors">Editing environments</h3>
+
+<p>Several editors have good support for web related languages such as HTML, JavaScript and CSS. Some suggestions:</p>
+
+<ul>
+<li><a href="http://www.aptana.org/">Aptana</a> – Eclipse-based IDE, featuring built in support for various toolkits.</li>
+<li><a href="http://www.openkomodo.com/">OpenKomodo</a> – Limitless scriptability.</li>
+<li><a href="http://www.ultraedit.com/">UltraEdit</a> – for a slimmer experience</li>
+<li><a href="http://www.gnu.org/software/emacs/">Emacs</a> – for the diehard Unix user.</li>
+</ul>
+
+<h3 id="tools-autocomplete">Tip: Import dummy JavaScript files for auto completion</h3>
+
+<p>Some editors, like Komodo, support importing JavaScript files and using their contents for auto completion. There is a dummy file for the <a href="../../../libraries/widgetobject/widget-object.js.html">Opera Widgets core DOM reference</a> available that you can use to get auto completion of the widget and window objects when editing your JavaScript.</p>
+
+<p><a href="../../../libraries/widgetobject/widget-object.js.html">Download the file here</a>.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="../widget-emulator/index.html">Widget Emulator</a>.</li>
+<li><a href="../packing-and-deploying-your-opera-widget/index.html">Packing and deploying your Opera Widget</a></li>
+</ul>
+
+<ul class="seriesNav">
+<li><a href="../opera-widgets-sdk/index.html" rel="index">Opera Widgets SDK table of contents</a></li>
+</ul>
+                          Widget Emulator
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=233232">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, February 9, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/development.html" rel="tag">development</a></li>
+        <li><a href="../../tags/mobile.html" rel="tag">mobile</a></li>
+        <li><a href="../../tags/process.html" rel="tag">process</a></li>
+        <li><a href="../../tags/widgets.html" rel="tag">widgets</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Playing SVG Darts: Target Practice - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Playing SVG Darts: Target Practice</h1>
+      <p class="print author">By Ruud Steltenpool</p>
+
+      <p><object data="index.html" width="250" height="250" class="right">[SVG showing darts board]</object></p>
+
+<p>This is the first part out of three showing how to create a game of darts using <abbr title="Scalable Vector Graphics">SVG</abbr>. In this part I will show how to draw a dart board, including using &#39;iron wire&#39; SVG Fonts for numbers. In the two following parts I will show how to make the game work, using some easy SVG scripting, and the advantages of using SVG filters for statistics, photorealism, and accessibility.</p>
+
+<h2 class="clear">The colored sections</h2>
+
+<p><object data="index.html" width="200" height="100" class="right">[SVG showing the four component slices]</object>In SVG everything is rendered in order of the document, so when two things overlap the second will be on top. This is a principle heavily used in this example. Imagine looking through a circular hole in the ceiling straight down onto a sort of wedding-cake on a big black table. There are 6 cake layers from bottom to top: red/green, black/white, again red/green, and finally a black/white one topped off with green icing and a red cherry.</p>
+
+<p>I&#39;ll <a href="http://www.w3.org/TR/SVG/struct.html#Head">define</a> one SLICE (technically a <a href="http://en.wikipedia.org/wiki/Circular_sector">circular sector</a>) and use that 20 times alternating in color for every size of SLICE: &quot;inner&quot;,&quot;triple&quot;,&quot;outer&quot; and &quot;double&quot; to make up the dartboard.</p>
+
+
+<pre><code>&lt;defs&gt;
+    &lt;path id=&quot;SLICE&quot; d=&quot;M 0 0 L 15.643 98.769 A 100 100 0 0 1 -15.643 98.769 Z&quot; stroke-width=&quot;0&quot; /&gt;
+    &lt;use id=&quot;double&quot; xlink:href=&quot;#SLICE&quot; transform=&quot;scale(1.695)&quot; /&gt;
+    &lt;use id=&quot;outer&quot; xlink:href=&quot;#SLICE&quot; transform=&quot;scale(1.605)&quot; /&gt;
+    &lt;use id=&quot;triple&quot; xlink:href=&quot;#SLICE&quot; transform=&quot;scale(1.065)&quot; /&gt;
+    &lt;use id=&quot;inner&quot; xlink:href=&quot;#SLICE&quot; transform=&quot;scale(0.975)&quot; /&gt;
+&lt;/defs&gt;</code></pre>
+
+<p><a href="../../../../devfiles.myopera.com/articles/24/slices.svg">View the source code</a></p>
+
+<h2>The separating wires</h2>
+
+<p>A dartboard is of course not complete without iron wires to be able to unambiguously determine the score, 20 lines and 6 circles. I don&#39;t define the wires as stroke of the SLICE, because for scoring i need to be able to distinguish them from the area they surround. Plus as stroke-width scales along with the area it would limit
+re-<a href="http://www.w3.org/TR/SVG/struct.html#UseElement">use</a>.</p>
+
+<h2>The numbers</h2>  
+<p>Then I added the 20 silver-colored numbers around the target and the blue score (initially 0). I coded them as SVG Fonts so that no matter how funky or unreadable they are, you can still copy them to other applications just like plain text, and search engines like Google can read them too. With some highschool mathematics I modeled the digits as pieces of iron wire, just using straight lines, and circular arcs of 2 different radii. Here are the defined numbers in use:</p>
+
+<pre><code>&lt;g id=&quot;numbers&quot;&gt;
+  &lt;text font-family=&quot;dartdigits&quot; text-anchor=&quot;middle&quot; fill=&quot;Silver&quot; 
+        font-size=&quot;100&quot; transform=&quot;rotate(-270) translate(0,-205)&quot; &gt;6&lt;/text&gt;
+  &lt;text font-family=&quot;dartdigits&quot; text-anchor=&quot;middle&quot; fill=&quot;Silver&quot; 
+        font-size=&quot;100&quot; transform=&quot;rotate(-288) translate(0,-205)&quot;&gt;13&lt;/text&gt;
+  &lt;i&gt;[17 more numbers successively rotated 18° around the target]&lt;/i&gt;
+  &lt;text font-family=&quot;dartdigits&quot; text-anchor=&quot;middle&quot; fill=&quot;Silver&quot; 
+        font-size=&quot;100&quot; transform=&quot;rotate(-252) translate(0,-205) rotate(180)&quot;&gt;10&lt;/text&gt;
+&lt;/g&gt;
+&lt;text font-family=&quot;dartdigits&quot; id=&quot;scoreboard&quot; x=&quot;245&quot; y=&quot;-205&quot; font-size=&quot;325&quot; 
+      stroke=&quot;blue&quot; text-anchor=&quot;end&quot; fill=&quot;blue&quot;&gt;0&lt;/text&gt;</code></pre>
+
+<p><object data="index.html" width="300" height="140" class="right">[SVG showing the numbers]</object>As you see in this illustration the upright numbers are aligned with the upside-down versions, which is not the case for many common fonts. This is needed for aligning the numbers 11 up to 6 and 8 up to 10 all on one circle through  rotation, and is accomplished by centering the glyphs on y=0. As I had the glyph definitions also centered on x=0, where SVG takes the left edge as 0, I had to change all (absolute) x-values. A little task that will be a lot simpler as soon as the horiz-origin-x attribute is implemented.</p>
+
+<p>With some rotate and translate (which are applied in the order of reading from right to left) and text-anchor=&quot;middle&quot; I correctly position, orient, and center the numbers next to the corresponding slices.</p>
+
+<h2>The scoreboard</h2>
+
+<p>The scoreboard at the upper right corner is updated through the <code>onmouseover=&quot;showScore(..)</code> function. I declare that hitting a wire always results in a &quot;bounce-out,&quot; something that in reality only rarely happens. Another imperfection, this time not in my code but in Opera 9 is that the score is not always properly updated, probably through mouseover not always firing when it should.</p>
+
+<h2>Implementation notes</h2> 
+
+
+<ul>
+<li>Because the Opera 9 implementation of glyphs (the definition of how the characters look) was limited, I had to convert mystroked path for the numbers to a non-stroked outline of the same shape. I used <a href="http://www.inkscape.org/">Inkscape</a>&#39;s &quot;stroke to path&quot; function for this purpose.</li>
+<li>While developing this example i looked a lot at <a href="http://opera.com/docs/specs/opera9/svg/">what Opera 9 implements of SVG</a>, and used attributes instead of style declarations. </li>
+<li>Possible improvements of this example are more realistic &#39;bouncing wires&#39;, smaller filesize, better code readability and anything you can come up with. </li>
+<li>I love Inkscape, but i don&#39;t like that it changes SVG that I didn&#39;t call any actions on into code that is quite different of which the rendering is sometimes not the same, though very, very similar.</li>
+</ul>
+  
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=163025">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/stelt.html" rel="author">Ruud Steltenpool</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, October 17, 2006
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/graphics.html" rel="tag">graphics</a></li>
+        <li><a href="../../tags/reuse.html" rel="tag">reuse</a></li>
+        <li><a href="../../tags/svg.html" rel="tag">svg</a></li>
+        <li><a href="../../tags/SVG&#32;fonts.html" rel="tag">SVG fonts</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

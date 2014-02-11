@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Introducing Opera Unite in Opera 10.10 - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Unite Apps - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/unite">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Unite Apps - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/unite">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="unite">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Introducing Opera Unite in Opera 10.10</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">24th April 2012: Please note</h2>
+
+<p>Starting with Opera 12, Opera Unite will <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">be turned off for new users and completely removed in a later release</a>. If you&#39;re interested in building addons for Opera, we recommend going with our extensions platform — check out <a href="../../../addons/extensions/index.html">our extensions documentation</a> to get started.</p>
+</div>
+
+<h2>Introduction</h2>
+              
+<p>Opera has just released <a href="http://www.opera.com/browser/">Opera 10.10</a>, featuring Opera Unite &#8212; follow the link to find out more, and install it.</p>
+
+<p>Opera Unite is a collaborative technology that uses a compact server inside the Opera desktop browser to share data and applications. You can write Opera Unite applications (using open Web standards) that use this server to serve content to other Web users. You can also install applications created by other people, found on <a href="http://unite.opera.com">unite.opera.com</a>.</p>
+
+<p>Why is this exciting? Well, it allows you to share your photos, MP3s and other data, communicate with friends and collaborate with them on games or documents &#8212; all without the need for any third-party Web sites/applications to be involved at all. The only thing you need to serve content and share applications is Opera Unite installed on your machine (and for it to be turned on); your friends can consume your content and applications from any browser they choose, and you are only limited by the creativity of your application development.</p>
+
+<p>In this article, I first present a tour of Opera Unite, with details of how to activate it, how to install an Opera Unite application, and how to use those applications to collaborate with your friends and colleagues. If you want to find out more about developing your own Opera Unite applications, read our <a href="../opera-unite-developer-primer-revisited/index.html">Opera Unite developer&#39;s primer</a>.</p>
+
+<h2>Running an Opera Unite application</h2>
+
+<p>Once you&#8217;ve installed your shiny new Opera 10.10 build, open up the Panels (see the left hand side of Figure 1) and click on the Opera Unite panel tab (see the highlighted tab in Figure 1).</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure1.png" alt="" />
+<p class="comment">Figure 1: The Opera 10.10 Unite Panel</p>
+
+<p>You can also get to your Unite panel by clicking the Opera Unite icon in the icon tray on the very left of the browser window and selecting <em>Manage Applications</em> (see Figure 2), or by selecting <em>Tools &gt; Opera Unite Server &gt; Manage applications</em>.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/figure6.png" alt="" />
+<p class="comment">Figure 2: The bottom left-hand corner Opera Unite icon, when enabled</p>
+
+<p>A number of Opera Unite applications come preinstalled in Opera 10.10, as you can see listed in Figure 1. To run one, simply double-click on the application (I&#8217;ll choose <em>Media Player</em> for now). If this is your first time running Opera Unite, you&#8217;ll see the <em>Opera Unite Settings</em> dialog box, which will prompt you to log in to your Opera account &#8212; see Figure 3.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure2.png" alt="" />
+<p class="comment">Figure 3: Logging in to your Opera account</p>
+
+<p>Your Opera account is the same account that your use to log in to <a href="http://my.opera.com">my.opera</a>, or <a href="http://opera.com/link">Opera Link</a>.</p> Enter your details and click <em>OK</em>, and you will be taken to the <em>Opera Unite Settings</em> dialog. You&#8217;ll now be prompted to choose a name for your computer from a drop-down list, as shown in Figure 4.
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure4.png" alt="" />
+<p class="comment">Figure 4: Choosing an Opera Unite identification name for your computer</p>
+
+<p>This name is basically your computer&#8217;s identity on the Opera Unite system &#8212; this is the URL that your contacts can go to if they want to make use of your Opera Unite applications, and share them with you.</p>
+
+<p>The next dialog box you&#8217;ll get to is the <em>Media Player</em> settings dialog box &#8212; see Figure 5.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure5.png" alt="" />
+<p class="comment">Figure 5: The <em>Media Player</em> settings dialog.</p>
+
+<p class="note">If you <em>don&#8217;t</em> already have an Opera account, you can easily create one by clicking the I do not have an account button and filling in the short form that appears.</p>
+
+<p>In the application&#8217;s settings dialog, you don&#8217;t need to do anything except use the file chooser to select the folder you want to share music from. When you click <em>OK</em>, the application will open in the browser window, as seen in Figure 6.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure6.png" alt="" />
+<p class="comment">Figure 6: The <em>Media Player</em> application running in the browser.</p>
+
+<h3>So what about sharing and collaboration?</h3>
+
+<div class="right">
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure7.png" alt="" />
+<p class="comment" style="width:200px;">Figure 7: Opera Unite administrator options.</p>
+
+</div>
+
+<p>All well and good so far &#8212; you can now click on the controls to play your songs. But what about sharing the application with your friends? Note the contents of the right hand panel of the <em>Media Player</em> window (see Figure 7):</p>
+
+
+  <li>First there are a couple of links &#8212; <em>My applications</em> and <em>My friends&#8217; applications</em>. These go to a list of the applications you currently have running, and a list of applications your friends have running, respectively</li>
+  <li>Next there is a URL for you to share with your friend(s) to allow them to access your music, along with a series of buttons (<em>Share via:</em>) to allow you to share the link via e-mail, Facebook, Twitter and Del.icio.us</li>
+  <li>In the <em>Privacy</em> section there are two different security levels you can select for your application:
+    <ol>
+      <li><strong>Public access</strong>: Everyone can access it freely without a password</li>
+      <li><strong>Password protected</strong>: Your friends and colleagues can access it, as long as they have the password to access that application.</li>
+    </ol>
+  </li>
+
+
+
+
+<p>So, let&#8217;s try it out &#8212; send your friend(s) the <em>Sharing</em> URL; if they access your application using this URL, it will bring up the screen shown in Figure 12, provided of course, you&#8217;ve got it set to <em>Public access</em>.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure8.png" alt="" />
+<p class="comment">Figure 8: The <em>Media Player</em> application being shared with a friend running Firefox!</p>
+
+<p class="note">If you haven&#8217;t got any friends, test it out by opening another browser on your machine, and point it to the URL.</p>
+
+<p>If you have your application set to <em>Password protected</em>, upon accessing the URL your friends will see the screen shown in Figure 9.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure9.png" alt="" />
+<p class="comment">Figure 9: The application password screen, shown in Safari.</p>
+
+<p>If this is the case, you need to send your friends the password shown on your application administration screen. On entering it, they will get to the application.</p>
+
+<p>Your friends can now double-click on the track names to hear them, straight from your hard drive! This is great for parties &#8212; you can get access to all your friends&#8217; playlists without them needing to bring anything round to your house, or upload them to any kind of server.</p>
+
+<p class="note">Opera Unite uses a special URL system. To identify your computer uniquely in the system, it uses the name you chose for your computer, followed by your unique identifying name, followed by the standard server domain, for example <code>http://mymac.chrismills.operaunite.com/media_player/ </code>. In this case the device running Opera Unite has been called <code>mymac</code> (you can have multiple devices under one user name), and the user name logged in to Opera unite is <code>chrismills.</code></p> This is the URL others can use to access your applications. If you add <code>http://admin at the beginning of the URL, ie  <code>&gt;http://admin.mymac.chrismills.operaunite.com/media_player/</code>, you can access the administration page for the application, which allows you to alter security settings, etc. But only if you are the person running the applications. You&#8217;ll need an admin password if you try to access this from a different computer to the one running your applications (this can be got from the <em>Unite Home Page</em> &#8212; see later on). You will get to the admin page automatically upon running the application if you are using the Opera Unite browser the applications are running in, but in this case, you probably are the administrator!
+
+ 
+<h2>Installing new applications from unite.opera.com</h2>
+
+<p>There are a host of other applications available at the <a href="http://unite.opera.com/">Opera Unite home page</a> &#8212; navigate to this page now, and click on one of the applications at the bottom of the page to display more information about that application (see Figure 1). Click on the <em>Launch application</em> button and it will either start to download &#8212; in which case you&#8217;ll see a progress box, or it will inform you that the application is already installed and give you instructions to access it from your browser, or reinstall it if you so wish.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure10.png" alt="" />
+<p class="comment">Figure 10: An Opera Unite application on the Opera Unite home page</p>
+</div>
+
+
+<h2>Finding your way around Opera Unite</h2>
+
+<p>Double click on the Opera Unite Home icon &#8212; this brings up your Opera Unite homepage &#8212; see Figure 11.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/newfigure11.png" alt="" />
+<p class="comment">Figure 11: The Opera Unite homepage</p>
+
+<p>Your home page contains:</p>
+
+<ul>
+  <li>The URL that your friends need to access to get to your applications. When they go to your home page they can choose form a list of the applications you currently have running as mentioned before,</li>
+  <li>A link to the <a href="http://unite.opera.com/">Opera Unite web site</a>, where you can download more applications and find more information &#8212; <em>Get more applications</em> </li>
+  <li>A list of the applications you have running</li>
+  <li>A link to view your the applications your friends have running</li>
+  <li>A list of recent activity, ie, what people have been doing with your applications recently</li>
+</ul>
+
+<div class="note">
+<p>You can also get to your Opera Unite home page by</p>
+
+<ul>
+  <li>Clicking the Opera Unite icon in the bottom left hand corner of your browser (remember Figure 2) and selecting <em>Opera Unite Home</em></li>
+  <li>Selecting <em>Tools &gt; Opera Unite Server &gt; Oper Unite Home</em></li>
+</ul>
+</div>
+
+<h2>The Opera Unite menu</h2>
+
+<p>Let&#8217;s revisit Figure 2, so we can explain the options there:</p>
+
+<img src="../../../../devfiles.myopera.com/articles/869/figure6.png" alt="" />
+<p class="comment">Figure 2: The bottom left-hand corner Opera Unite icon, when enabled</p>
+
+
+<p>The options here are:</p>
+
+<ul>
+  <li><strong>Discover Local Opera Unite Features</strong>: when checked, your browser will automatically detect other Opera Unite users on the same network, all done using UPnP</li>
+  <li><strong>Opera Unite Home</strong>: Opens up your <em>Opera Unite Home</em> page</li>
+  <li><strong>Configure&#8230;</strong>: Opens the <em>Opera Unite Settings</em> dialog, if you need to reconfigure your settings</li>
+  <li><strong>Show Status</strong>: gives you various bits of status information about your Opera Unite install, including applications running, mount of data traffic, etc.</li>
+  <li><strong>Manage Applications</strong>: Opens/closes the Unite panel on the left hand side of your browser window.</li>
+  <li><strong>What is Opera Unite?</strong>: Takes you to the <a href="http://unite.opera.com">unite.opera.com</a> web site.</li>
+</ul>
+
+<h2>Summary</h2>
+<p>So that’s a wrap. I&#8217;ve introduced you to Opera Unite, given you a tour of the new property, and shown you how it works. If you are a developer wanting to write Opera Unite applications, the best place to start is our <a href="../opera-unite-developer-primer-revisited/index.html">Opera Unite developer&#8217;s primer</a>.</p>
+
+<p>You might also want to have a look at our <a href="../../../addons/unite.html">Opera Unite corner</a> on Dev.Opera, where you can find documentation for building your own Opera Unite applications.</p>
+
+<p>Now it&#8217;s up to you &#8212; we invite you to start playing with the available Opera Unite applications and let us know what you think.</p>
+</code>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=309131">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, November 23, 2009
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/media&#32;player.html" rel="tag">media player</a></li>
+        <li><a href="../../tags/opera&#32;10.10.html" rel="tag">opera 10.10</a></li>
+        <li><a href="../../tags/opera&#32;unite.html" rel="tag">opera unite</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

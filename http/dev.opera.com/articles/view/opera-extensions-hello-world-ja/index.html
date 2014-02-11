@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera エクステンションで Hello World! - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>Opera エクステンションで Hello World!</h1>
+      <p class="print author">By t.ashula</p>
+
+      <p class="note">
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+</p>
+
+<h2>はじめに</h2>
+<p>
+この文書では Opera エクステンション開発の初歩を手ほどきします。
+ツールバーのボタンを押したら「こんにちは世界！」とポップアップが表示されるエクステンションを作っていきます。
+Opera エクステンションは一般のオープンな Web 標準を使って作られているので、Opera 11 とエディタか IDE だけで開発が始められます。</p>
+<h2>
+エクステンションの構成</h2>
+<p>
+最初に、エクステンションの名前や作者、エクセテンションマネージャでのアイコンなど、メタデータを記述した構成ファイルを作ります。
+Opera エクステンションは Opera Widget と同じく <a href="http://www.w3.org/TR/widgets/">W3C Widgets</a> を使って作られています。</p>
+<p>
+さて、まず下記のような素の構成ファイルを作ります。</p>
+<pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot; id=&quot;http://www.example.org/helloworld&quot;&gt;
+  &lt;name&gt;Hello extensions!&lt;/name&gt;
+  &lt;description&gt;A simple hello world example&lt;/description&gt;
+  &lt;author href=&quot;yourURL&quot; email=&quot;yourEmail&quot;&gt;Enter your name here&lt;/author&gt;
+  &lt;icon src=&quot;hello.png&quot;/&gt;
+&lt;/widget&gt;</code></pre>
+<p>
+出来たら開発用のディレクトリに <code>config.xml</code> として保存します。</p>
+<h2>
+エクステンションのアイコン</h2>
+<p>
+構成ファイルにアイコンの項目があったことに気がついてると思います。
+ここで指定されたアイコンはエクステンションマネージャと Opera エクステンションのサイトで使われます。
+アイコンを作るとき 64x64 ピクセルとすることをおすすめします。</p>
+<p>
+アイコンファイル <a href="../../../../devfiles.myopera.com/articles/3862/hello.png">hello.png</a> をダウンロードして開発用のディレクトリに保存します。</p>
+<h2>
+Opera のツールバーにボタンを追加</h2>
+<p>
+エクステンションの構成が済んだら、実際のコードの開発を始められます。
+まず、ツールバーに追加するボタンを作るために、下記のコードを使います。</p>
+<pre><code>
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;script&gt;
+      window.addEventListener(&quot;load&quot;, function(){
+        var ToolbarUIItemProperties = {
+          title: &quot;Hello World&quot;,
+          icon: &quot;hello-button.png&quot;,
+          popup: {
+            href: &quot;popup.html&quot;,
+            width: 130,
+            height: 50
+          }
+        };
+        var theButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);
+        opera.contexts.toolbar.addItem(theButton);
+      }, false);
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>
+このコードを <code>index.html</code> として開発用のディレクトリに保存します。</p>
+<p>
+Opera エクステンションでは <code>index.html</code> と言う名前のファイルが必要です。
+ツールバーのボタンなど UI の要素を作るためのスクリプトが書かれた HTML の雛形で、文書の本体部は使われません。</p>
+<p>
+前述のスクリプトはプロパティの値に基づいてツールバーにボタンを作ります。ボタンは 18x18 のアイコンで作成されます。
+ボタンから呼び出されるポップアップも指定されたサイズで作成され、内容は別の定義を参照して作成されます。</p>
+<p>
+ツールバー用のアイコンファイル <a href="../../../../devfiles.myopera.com/articles/3862/hello-button.png"> hello-button.png</a> をダウンロードして開発用のディレクトリに保存します。</p>
+<h2>
+ポップアップの作成</h2>
+<p>
+ボタンも作りポップアプのサイズも指定したので、次はポップアップの内容を作ります。
+ポップアップの内容は、指定されたサイズの表示域をもつただの HTML ファイルです。
+HTML や CSS, JavaScript など普段のウェブページ作成で使う技術が何でも使えます。
+今回は下記のようなファイルを作ります。</p>
+<pre><code>
+&lt;!doctype html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;こんにちは世界！&lt;/title&gt;
+    &lt;style&gt;
+      h1 {
+        font: 14px helvetica, arial, sans-serif;
+        text-align: center;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;こんにちは世界！&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>
+<code> popup.html</code> として開発用のディレクトリに保存します。</p>
+<h2>
+エクステンションのパッケージ化とインストール</h2>
+<p>
+エクステンションの開発もほとんど最後になりました。
+残された作業は、全部のファイルを選択して ZIP で圧縮することだけです。
+圧縮ファイルが出来たら、<code>Hello.oex</code> と言うふうに元のファイルを拡張子 .zip の部分も含めて名前を変えます。
+それでお終いです。</p>
+<p>
+最終的な<a href="../../../../devfiles.myopera.com/articles/4092/hello.oex">「こんにちは世界！」エクステンションのダウンロードはこちら</a>から。</p>
+<p>
+エクステンションをブラウザにドラッグアンドドロップすると、インストールするか尋ねてきます。
+構成ファイルで指定したアイコンが表示されているでしょう。
+タブを切り替えてツールバーに新しく作ったボタンをクリックしてみましょう。</p>
+<p>
+プロパティの値を変えたりポップアップの内容を変えたりして、満足いくまで何度でも実験してみるといいでしょう。</p>
+              
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=793132">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/dstorey.html" rel="author">David Storey</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/t-ashula.html" rel="author">t.ashula</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, November 3, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/japanese.html" rel="tag">japanese</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-extensions-hello-world-ar-ye/index.html">Arabic (Yemen)</a>,
+        <a href="../opera-extensions-hello-world/index.html">English</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

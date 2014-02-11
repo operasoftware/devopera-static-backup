@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Desktop build with new extension APIs: Screenshot, Resource Loader and URL Filter - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Desktop build with new extension APIs: Screenshot, Resource Loader and URL Filter</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <p>We&#39;ve been working hard recently to improve the functionality available inside Opera extensions, and today we are proud to reveal some of the fruits of our labours. In this article we&#39;ll share with you some new experimental desktop builds that feature three new extension APIs:</p>
+	
+
+<ul>
+  <li>A screenshot API for capturing screenshots of pages within tabs</li>
+  <li>A resource loader API for easier loading of local resources by an extension</li>
+  <li>Some updates to the URL filter API (for adding and removing URLs to and from Opera&#39;s list of blocked URLs)</li>
+</ul>
+
+<p>Below you&#39;ll find details of where to download the builds, what the new features do, and available documentation. Please give us as much feedback as you can on all this new experimental functionality before it becomes finalised.</p>
+
+<p class="note">Note that these features are now available in Opera for desktop version 12.10 and above.</p>
+
+<h2>Download the builds</h2>
+
+<p>We have builds available for:</p>
+
+<ul>
+  <li><a href="http://www.opera.com/download/get.pl?id=34724&amp;sub=true&amp;nothanks=yes&amp;location=360">Windows i386</a> | <a href="http://www.opera.com/download/get.pl?id=34725&amp;sub=true&amp;nothanks=yes&amp;location=360">Windows x64</a></li>
+  <li><a href="http://www.opera.com/download/get.pl?id=34726&amp;sub=true&amp;nothanks=yes&amp;location=360">Mac i386/x64</a></li>
+  <li><a href="http://www.opera.com/download/get.pl?id=34727&amp;sub=true&amp;nothanks=yes&amp;location=360">Linux tar.xz i386</a> | <a href="http://www.opera.com/download/get.pl?id=34728&amp;sub=true&amp;nothanks=yes&amp;location=360">Linux tar.xz x64</a> | <a href="http://www.opera.com/download/get.pl?id=34730&amp;sub=true&amp;nothanks=yes&amp;location=360">Linux deb i386</a> | <a href="http://www.opera.com/download/get.pl?id=34729&amp;sub=true&amp;nothanks=yes&amp;location=360">Linux deb x64</a></li>
+  <li><a href="http://www.opera.com/download/get.pl?id=34723&amp;sub=true&amp;nothanks=yes&amp;location=360">FreeBSD i386</a> | <a href="http://www.opera.com/download/get.pl?id=34722&amp;sub=true&amp;nothanks=yes&amp;location=360">FreeBSD x64</a></li>
+</ul>
+
+<h2 id="screenshot">The screenshot API</h2>
+
+<p>You can use the screenshot API to capture screenshots of pages within tabs in the browser by calling the <code>getScreenshot()</code> method from an extension injected or background script. You might want to take a screenshot of the current page and manipulate it within a <code>&lt;canvas&gt;</code>, or store it somewhere for later use.</p>
+
+<p>Further reading:</p>
+
+<ul>
+  <li><a href="../extensions-api-screenshot/index.html">View the screenshot API documentation</a></li>
+  <li><a href="../extensions-api-screenshot-getScreenshot/index.html">View the <code>getScreenshot()</code> method documentation</a></li>
+</ul>
+
+<h2 id="resource-loader">The resource loader API</h2>
+
+<p>The resource loader API has been created to get around a problem whereby the extension security model will not allow local files to be accessed by an extension even if they are contained within the same extension package. The resource loader API&#39;s <code>getfile()</code> method can be used to grab the contents of a file, and those contents can then be read using the W3C File API. This is useful in so many ways — if you want to pull in different content, images or even script and styles into your extension.</p>
+
+<p>Further reading:</p>
+
+<ul>
+  <li><a href="../extensions-api-resourceloader/index.html">View the resource loader API documentation</a></li>
+  <li><a href="../extensions-api-resourceloader-getFile/index.html">View the <code>getFile()</code> method documentation</a></li>
+</ul>
+
+<h2 id="url-filter">The URL filter API</h2>
+
+<p>Finally, the URL filter API allows you to add and remove URLs to and from the Opera native content blocker&#39;s list of blocked URLs. Such changes added through the API are temporary, and only remain in effect for as long as the browser session is active and the extension is enabled.</p>
+
+<p>This API was originally available in Opera 11.10, but since then we&#39;ve added some new features that are available to experiment with in this set of builds:</p>
+
+<ul>
+  <li>White list support — intended as a list of exceptions to the blocked URL (black) list. The basic syntax looks like this — <code>opera.extension.urlfilter.allow.add(pattern, options)</code></li>
+  <li>Including domains: <code>block.add(pattern, {includeDomains: [&quot;google.com&quot;, &quot;google.co.uk&quot;, &quot;google.com.au&quot;])</code></li>
+  <li>Excluding domains: <code>block.add(pattern, {excludeDomains: [&quot;google.com&quot;, &quot;google.co.uk&quot;, &quot;google.com.au&quot;])</code> </li>
+  <li>Ability to fire events when a URL is blocked (black list) or allowed (white list). At the moment we don&#39;t intend to allow firing of events when there are no matches (when the URL is allowed because it is not in any list), as this can potentially impact performance</li> 
+  <li>Third-party blocking (for example, blocking facebook.com only when it is called from another site) of URLs: <code>block.add(pattern, {thirdParty: true})</code></li>
+  <li>Filtering by resource types (scripts, images, stylesheets, etc.): <code>block.add(pattern, {resources: urlfilter.RESOURCE_SCRIPT | urlfilter.RESOURCE_STYLESHEET)</code></li>
+  <li>New filter syntax:
+    <ul>
+      <li>There is now a separator wildcard character available, <code>^</code>. For example, <code>example.com^foo</code> will match <code>example.com/foo</code> and  <code>example.com?foo</code></li> 
+      <li>You also have hostname matching syntax — <code>||</code>. For example, <code>||example.com</code> will match any URL with <code>example.com</code> as the filter</li>
+    </ul>
+  </li>
+  <li>New syntax will also be enabled in the urlfilter.ini file</li>
+  
+</ul>
+
+<p>Further reading:</p>
+
+<ul>
+  <li><a href="../site-blocking-with-operas-url-filter-api/index.html">Read the tutorial: <q>Site blocking with Opera’s URL Filter API</q></a></li>
+  <li><a href="../extensions-api-urlfilter/index.html">View the URL filter API documentation</a></li>
+  <li><a href="../extensions-api-urlfilter-allow-add/index.html">View the <code>add()</code> method documentation</a></li>
+  <li><a href="../extensions-api-ruleoptions-excludedomains/index.html">View the <code>excludeDomains</code> property documentation</a></li>
+  <li><a href="../extensions-api-ruleoptions-includedomains/index.html">View the <code>includeDomains</code> property documentation</a></li>
+  <li><a href="../extensions-api-ruleoptions-resources/index.html">View the <code>resources</code> property documentation</a></li>
+  <li><a href="../extensions-api-ruleoptions-thirdparty/index.html">View the <code>thirdParty</code> property documentation</a></li>
+</ul>
+
+<p><a href="http://www.flickr.com/photos/comedynose/3720718593/">Cover image by Comedy Nose</a></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-89491082">
+      <a href="../../../author/ZAHEK.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bf/04e/8bfaf8f99ebfaab5ff190d4569fd669c15f.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ZAHEK.html">Mağruf Çolakoğlu</a></p>
+      <p class="commentdate">Wednesday, May 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This is very nice and thanks.A new and improved Opera is waiting us...</section>
+    </li>
+    <li id="comment-89499252">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Wednesday, May 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;Note that these features will not be part of the final Opera 12 release, but a later release.&quot;<br/>what a shame ... but still, thank you :)</section>
+    </li>
+    <li id="comment-89501042">
+      <a href="../../../author/greench.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/55/e98/9459ab63cbd6aa9b293bc4686a4dfbcc3d9.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/greench.html">Çağlar Yeşilyurt</a></p>
+      <p class="commentdate">Wednesday, May 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Better late than never :) Finally, we could see improvements on the extension API.</section>
+    </li>
+    <li id="comment-89502792">
+      <a href="../../../author/svdb0.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/86/369/05fc46a3a798cdf648487152801a4551f62." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/svdb0.html">svdb0</a></p>
+      <p class="commentdate">Wednesday, May 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Nice improvements, but please add an opera.extension.urlfilter.block.test(url) function. I&#39;ve been wanting to make a script to remove links to blocked content (or strike-through link text) since before the URL API existed.<br/>And as you should already have such a function for internal use, it wouldn&#39;t take much time to expose it to JavaScript.<br/></section>
+    </li>
+    <li id="comment-89505892">
+      <a href="../../../author/blackcaeser.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/64/9f3/f156c61ffb81c622292a577954c3921c8c8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/blackcaeser.html">blackcaeser</a></p>
+      <p class="commentdate">Wednesday, May 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>It’s great that Opera is improving the URL filter. But when will we finally be able to use regular expressions with it?</section>
+    </li>
+    <li id="comment-89521792">
+      <a href="../../../author/mp3geek.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/71/9b5/932f310eb69c243b6cd56d4ec4b63c0b5f0.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mp3geek.html">mp3geek</a></p>
+      <p class="commentdate">Thursday, May 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Chris, have you got more details on the urlfilter changes? sample filters etc?<br/><br/>/Fanboy</section>
+    </li>
+    <li id="comment-89549732">
+      <a href="../../../author/JanGen.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2e/e84/d153e5ce1cf39b54ace3a35501941ab3e0d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/JanGen.html">JanGen</a></p>
+      <p class="commentdate">Thursday, May 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@svdb0<br/>a:-o-blocked { text-decoration: line-through;}<br/>:)</section>
+    </li>
+    <li id="comment-89551042">
+      <a href="../../../author/JanGen.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2e/e84/d153e5ce1cf39b54ace3a35501941ab3e0d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/JanGen.html">JanGen</a></p>
+      <p class="commentdate">Thursday, May 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@resource loader, would it be possible for the user to add files to an extension package, so local files can be used by the extension:<br/>1 by settings in preferences (security issues?!)<br/>2 adding files to a directory in the extension folder (compressed?!)</section>
+    </li>
+    <li id="comment-89612352">
+      <a href="../../../author/svdb0.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/86/369/05fc46a3a798cdf648487152801a4551f62." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/svdb0.html">svdb0</a></p>
+      <p class="commentdate">Friday, May 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@JanGen: Although in theory you could do things with opera.extension.urlfilter.block.test() which you couldn&#39;t do with a CSS pseudo-class (in combination with querySelectorAll), I can&#39;t think of any practical cases. And -o-blocked would be easier to use in the simple cases. So I&#39;d be happy if -o-blocked were implemented instead (or in addition).<br/>I would think that a test() function would be easier to implement though.<br/></section>
+    </li>
+    <li id="comment-89627742">
+      <a href="../../../author/gwarser.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b9/5d0/5e04a057fa2e74981a09a8aee60fa8d5ebc." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/gwarser.html">gwarser</a></p>
+      <p class="commentdate">Friday, May 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Maybe urlfilter.block.get() (see comment here <a href="../extensions-api-urlfilter/index.html" target="_blank">http://dev.opera.com/articles/view/extensions-api-urlfilter/</a>) should return all (or for current page?) filters in JSON format (with all properties included)? Please tell more about events - they may be solution.<br/><br/>When I use &quot;google.com&quot; in include/excludeDomain it also match www.google.com and plus.google.com?<br/><br/>How about special top-level domain (.tld). (e.g. block &quot;google.tld&quot; instead of long list of domains or use it in include/excludeDomains)?<br/><br/>Screenshot API: how about security? (take screenshot and send somewhere without user knowledge).<br/><br/>//edit:<br/>This is correct filter?<br/>urlfilter.block.add(&#39;*&#39;, {thirdParty: true, resources: urlfilter.RESOURCE_SCRIPT});</section>
+    </li>
+    <li id="comment-89630222">
+      <a href="../../../author/svdb0.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/86/369/05fc46a3a798cdf648487152801a4551f62." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/svdb0.html">svdb0</a></p>
+      <p class="commentdate">Friday, May 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Lachlan Hunt: Thanks for your reply, and for considering this feature request.<br/><br/>The test() function as I envisioned it, would only tell you whether the link would be blocked if followed, or not.<br/>It was not intended as a way to query the URL filter rule list, though I could imagine that such an API could also be useful.<br/>But even with the ability to query the rule list, a test() function would be useful, so that the mechanism for interpreting the rules would not have to be replicated in JavaScript code when the only concern is whether a link is blocked or not.<br/><br/>I was not aware that Opera allows blocking based on other information than just the URL. An extra (optional?) parameter to test() to supply this information would indeed be appropriate.<br/><br/>As for your question regarding making a test() function available from User JavaScript, that would indeed be the most convenient way.<br/><br/>But I like the CSS pseudo-class way as well.<br/><br/>The use cases which I had in mind were striking through links to blocked URLs, and to remove images which link to blocked sites. (Which I guess could be done through CSS as well.)<br/><br/>Another theoretical use case — nothing which intend to actually implement — would be to make a more sophisticated block list manager in an extension.<br/>In this case, a function to query the actual rules (as well as a test() function) would be useful. Just the CSS pseudo-class would not suffice here.<br/><br/>Also, now that I have your attention, here are a few other suggestions with respect to the URL filtering:<br/>- I would like it to be easier to block independently of subdomains, protocols, and port numbers. Right now, a block rule *://example.com:*/ matches <a href="http://example.com:8080/" target="_blank">http://example.com:8080/</a>, but not <a href="http://example.com/" target="_blank">http://example.com/</a> . And *://*.example.com/ does not match <a href="http://example.com/" target="_blank">http://example.com/</a> .<br/>- It may be useful to have a third state besides &quot;block&quot; and &quot;don&#39;t block&quot;, namely &quot;raise an event&quot;. In the (user JavaScript) event handler, you could perform more complex checks than glob matching, such as examining the parameters.<br/>- Another useful feature would be the ability to rewrite URLs as they are activated (so also for JavaScript redirects). This could be implemented using the same event mechanism, by allowing the URL to be changed from the event handler. Such an event handler could for instance rewrite <a href="http://example.com/out?url=http://external.example.com/" target="_blank">http://example.com/out?url=http://external.example.com/</a> to <a href="http://external.example.com/" target="_blank">http://external.example.com/</a><br/><br/>With the event mechanism suggested above, and a single rule raising an event for every link followed, it would even be possible to write an URL blocker extension completely in JavaScript, using localStorage to store the rules. Such an extension could be much more powerful than the built-in blocker, using RegExps, subdomain and port independent blocking, blocking based on parameters, etc.<br/><br/></section>
+    </li>
+    <li id="comment-89639612">
+      <a href="../../../author/svdb0.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/86/369/05fc46a3a798cdf648487152801a4551f62." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/svdb0.html">svdb0</a></p>
+      <p class="commentdate">Saturday, May 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Lachlan Hunt<br/>Good to know about the || and ^.<br/><br/>Regarding the third state, I was referring to performing more semantic checks on the parameters in the URL. For instance, block a URL which redirects to a blocked URL stored in an URL parameter.<br/>One situation where you might want this is for sites which route external links through some internal page, perhaps for statistics. These sites may look like <a href="http://example.com/out?url=http://badsite.example.com" target="_blank">http://example.com/out?url=http://badsite.example.com</a> .<br/>I would like to be able to do something like this:<br/><br/>// ==UserScript==<br/>// @include <a href="http://example.com/out?*" target="_blank">http://example.com/out?*</a><br/>// ==/UserScript==<br/>window.opera.addEventListener(&#39;urlfilter&#39;, function (e) {<br/>    if (e.url.splice(0, 23) !== &quot;<a href="http://example.com/out?" target="_blank">http://example.com/out?</a>&quot;)<br/>      return true;<br/><br/>    var rest = &quot;&amp;&quot; + e.url.splice(27);<br/>    var urlStart = rest.indexOf(&quot;&amp;url=&quot;);<br/>    if (urlStart === -1)<br/>      return true;<br/>    rest = rest.splice(urlStart + 5);<br/>    var urlEnd = rest.indexOf(&quot;&amp;&quot;);<br/>    if (urlEnd !== -1)<br/>      rest = rest.splice(0, urlEnd);<br/>    var dest = decodeURIComponent(rest);<br/><br/>    if (opera.extension.urlfilter.test(dest)) {<br/>      e.preventDefault();<br/>      return false;<br/>    }<br/><br/>    return true;<br/>  }, false);<br/><br/>This would be all the more useful if we could strike through blocked links.<br/><br/>As for rewriting URLs before they are activated, how would I do this? I could edit all the <a href="http://dev.opera.com/articles/view/new-extension-apis-screenshot-resource-loader-url-filter/...">, <area />, &lt;script&gt;, &lt;style&gt;, references etc. before the page is activated, but I would also want to rewrite URLs in elements which were dynamically created (through document.createElement(), document.write(), Element.innerHTML, maybe DOMParser.parseFromString, etc.), as well as URLs used in location.replace(), window.open(), etc.
+</a></section>
+    </li>
+    <li id="comment-89704252">
+      <a href="../../../author/rseiler.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e9/9be/f8a0cef0984fa44ca0dd1d16c9b96cbdafb.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rseiler.html">rseiler</a></p>
+      <p class="commentdate">Saturday, May 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I know you said that urlfilter.ini gets the new syntax, but does it get all the new features, too?  If not, which ones doesn&#39;t it get?</section>
+    </li>
+    <li id="comment-90212322">
+      <a href="../../../author/lachlanhunt.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e4/b91/9b90b5edf06e885ec784483550cf3713c3b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lachlanhunt.html">Lachlan Hunt</a></p>
+      <p class="commentdate">Tuesday, May 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@rseiler, urlfilter.ini only gets the new pattern syntax. None of the new options (include/excludeDomains, thirdParty or resource types) are supported in urlfilter.ini.</section>
+    </li>
+    <li id="comment-91044572">
+      <a href="../../../author/nahtanoj999.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3d/be9/b7413b564eede728238d1f54a0569176e0c.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nahtanoj999.html">nahtanoj999</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>When are extensions going to get Unite&#39;s old functionality?</section>
+    </li>
+    <li id="comment-91048992">
+      <a href="../../../author/s-a-s-h.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f1/e2c/7c909833de97da6ab68f9d608287331813b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/s-a-s-h.html">Alexander</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>In all other major browsers extensions can modify context and main menus. What a shame that opera haven&#39;t this. This blocks development of tons useful extensions</section>
+    </li>
+    <li id="comment-91098722">
+      <a href="../../../author/4just1.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e4/a9d/1f32ea0529c45d5c8cd5a4850bda12a3a2c." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/4just1.html">4just1</a></p>
+      <p class="commentdate">Friday, June 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>can not open my browser for opera, a dragonfly to login from my desk top as direct link that is private</section>
+    </li>
+    <li id="comment-91513392">
+      <a href="../../../author/katorce.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2e/dde/a850b0950b9424e64147dd79f2a30d2d2f5." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/katorce.html">katorce</a></p>
+      <p class="commentdate">Friday, June 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>That stuff is more important than 64bits or gpu. Opera really needs a new adblock compatible with adblock plus filters. So you can block ads without white spaces or block all javascript.<br/><br/>Also a feed reader which mix opera reader, and google reader sync as feedly does. With a beautiful interface (on the browser not on the lateral bar). A feedly with all opera reader stuff, and google sync, yeah, I&#39;d love that.</section>
+    </li>
+    <li id="comment-92654922">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Thursday, July 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>how about urlfilter.allow/block.clear()  ?</section>
+    </li>
+    <li id="comment-93567252">
+      <a href="../../../author/famlam.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c2/9dc/372799e7d37fea8b19f9bd99993a92c977b." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/famlam.html">Fam lam</a></p>
+      <p class="commentdate">Saturday, July 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>urlfilter.(allow|block).clear() would be a great addition in my opinion. (Or urlfilter.clear() to clear both at the same time)<br/><br/><br/>Will there also be a method to set case sensitivity? Nearly every time if I want to block (for example) */ads/*, then I also want to block */adS/* */aDs/* */Ads/* */ADs/* */AdS/* */aDS/* and */ADS/*. It would be great if this wouldn&#39;t require 2^n rules, but just one.<br/><br/><br/>Also, will it be possible to block background images loaded by CSS?<br/>It seems like you can&#39;t filter for the image loaded by elements containing style=&quot;background-image: url(&#39;<a href="http://site.com/image.png" target="_blank">http://site.com/image.png</a>');&quot;<br/><br/><br/>Last but not least, is there any documentation about which rules are not allowed? The rule &quot;*&quot; for example is not honored it seems. Therefore I&#39;m not able to let users exclude sites from any resources to be blocked because I can&#39;t use urlfilter.allow.add(&quot;*&quot;, {includeDomains: [&#39;theSiteYouWantUnblocked&#39;]}) (which would exclude all first and third party resources on domain &#39;theSiteYouWantToUnblock&#39;, without the need to manually exclude every individual resource on the page). Being able to do that would allow people to show for example ads on sites where they think the ads are actually relevant for them.</section>
+    </li>
+    <li id="comment-93700612">
+      <a href="../../../author/metude.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/75/892/119e53720dd1fc7f3d3f71c66539c07b282.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/metude.html">metude</a></p>
+      <p class="commentdate">Monday, July 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>There&#39;s a suggestion list to take attention: <a href="http://code.google.com/p/adblockforchrome/issues/detail?id=5143#c42" target="_blank">http://code.google.com/p/adblockforchrome/issues/detail?id=5143#c42</a></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, May 16, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/Resource&#32;Loader.html" rel="tag">Resource Loader</a></li>
+        <li><a href="../../tags/screenshot.html" rel="tag">screenshot</a></li>
+        <li><a href="../../tags/URL&#32;filter.html" rel="tag">URL filter</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

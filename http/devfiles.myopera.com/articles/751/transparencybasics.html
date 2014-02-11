@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<style type="text/css">
+body {
+  width: 600px;
+  font-family: "Trebuchet MS", "Lucida Grande", "lucida sans unicode", Arial, Helvetica, sans-serif;
+  
+}
+
+pre {
+  max-width:100%;
+  overflow:auto;
+  line-height:1.4;
+  background-color: #ffffee;
+  padding-top: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  border-top-color: #cccc99;
+  border-left-color: #cccc99;
+  border-right-color: #cccc99;
+  border-bottom-color: #cccc99;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: dotted;
+  border-left-style: dotted;
+  border-right-style: dotted;
+  border-bottom-style: dotted;
+}
+</style>
+<title>CSS 3 transparency basics</title>
+</head>
+<body>
+
+<h2>CSS 3 transparency basics</h2>
+
+<p>Opera 10 supports three different ways to make web page elements transparent. First of all, you can use the CSS 3 opacity property, which allows you to easily set transparency on an element — for example:</p>
+
+<pre><code>div { opacity: .5; background-color: rgb(255, 0, 0); }</code></pre>
+
+<p>A value of 0 is completely transparent; 1 is completely opaque.</p>
+
+<p>The downside of this is that it applies the transparency to everything inside that element, including text and background colours. This may not be what you wanted; an easy way to get around this and apply the transparency only to the desired part of the element is to set the relevant colour using a colour value that includes an alpha channel. You can do this using an <abbr title="Red Green Blue Alpha">RGBA</abbr> colour value, like so:</p>
+
+<pre><code>div { background-color: rgba(255, 0, 0, 0.5); }</code></pre>
+
+<p>Or you can use a <abbr title="Hue Saturation Lightness Alpha">HSLA</abbr> value, like so:</p>
+
+<pre><code>div { background-color: hsla(240, 100%, 50%, 0.5); }</code></pre>
+
+</body>
+</html>

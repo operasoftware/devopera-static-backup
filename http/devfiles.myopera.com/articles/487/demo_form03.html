@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>CSS Technique Demonstration: Forms</title>
+
+<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/487/bmh.form.styles.03.css" />
+
+</head>
+<body>
+
+<h3>Contact Us</h3>
+
+<form id="contactForm" method="post" action="http://devfiles.myopera.com/cgi-bin/generic_email_script.php">
+  <ul>
+	<li id="nameField" class="required"><label for="realname">Name:</label><input type="text" name="name" value="" class="medium" id="realname" /><span class="note">required</span></li>
+	<li id="addressField" class="required"><label for="address">Email:</label><input type="text" name="email" value="" class="medium" id="address" /><span class="note">required</span></li>
+	<li id="acctTypeField" class="required"><label for="acctNone">Account type:</label>
+		<fieldset>
+			<label for="acctGold">Gold</label><input type="radio" name="acct_type" id="acctGold" class="rInput" /><label for="acctSilver">Silver</label><input type="radio" name="acct_type" id="acctSilver" class="rInput" /><label for="acctBronze">Bronze</label><input type="radio" name="acct_type" id="acctBronze" class="rInput" /><label for="acctNone">None</label><input type="radio" name="acct_type" id="acctNone" class="rInput" checked="checked" />
+		</fieldset>
+		<span class="note">required</span>
+	</li>
+	<li id="subjectField"><label for="natureOfInquiry">General subject:</label><select name="subject" class="medium" id="natureOfInquiry">
+		<option value="support">Support</option>
+		<option value="billing">Accounts &amp; billing</option>
+		<option value="press">Press</option>
+		<option value="other_q">Other questions</option></select>
+	</li>
+	<li id="availabilityField"><label for="availability">My account is unavailable:</label><input type="checkbox" name="is_down" id="availability" class="rInput" /></li>
+	<li id="messageField"><label for="messageBody">Comments:</label><textarea name="comments" cols="32" rows="8" class="long" id="messageBody"></textarea></li>
+	<li class="submitField"><input type="submit" value="Send" class="submitButton" /></li>
+  </ul>
+</form>
+
+</body>
+</html>

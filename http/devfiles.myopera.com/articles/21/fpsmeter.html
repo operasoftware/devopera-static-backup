@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<title>Opera Animation Library: </title>
+<style type="text/css">
+
+h1 {
+  text-align: center;
+  }
+
+p.animatable {
+  position:absolute;
+  margin:0;
+  padding:0;
+  margin-left:-100px;
+  margin-top:-100px;
+  height:200px;
+  width:200px;
+  background-color:#f00;
+  left:50%;
+  top:300px;
+  cursor:pointer;
+  font-size: 40px;
+  }
+
+</style>
+<script  type="text/javascript" src="http://devfiles.myopera.com/articles/21/animation.js" ></script>
+<script type="text/javascript">
+
+var then = 0;
+
+var wobbling=function(property, current, animation)
+{
+
+  var round=Math.round;
+  var style=animation.style;
+  var currentAmplitude=
+    1+
+    animation.amplitude*
+    Math.exp(-current/100*animation.damping)*
+    Math.sin(current/100*2*Math.PI*animation.oscillations)/100;
+  style.height=round(currentAmplitude*animation.defaultHeight)+'px';
+  style.width=round(currentAmplitude*animation.defaultWidth)+'px';
+  style.marginTop=(-round(currentAmplitude*animation.defaultHeight/2))+'px';
+  style.marginLeft=(-round(currentAmplitude*animation.defaultWidth/2))+'px';
+ // style.fontSize = round(currentAmplitude*animation.defaultFont)+'px'
+  var now = new Date();
+  return null;
+}
+
+onload=function()
+{
+  var animation=document.getElementsByTagName('p')[2].createAnimation();
+  animation.speed=.2; // the speed for the animation
+  animation.oscillations=27; // number of oscilllations
+  animation.damping=3; // 1 soft; 10 strong
+  animation.amplitude=25; // the amplitude in percentages from the dimension of the element
+  animation.defaultHeight=200; // in px
+  animation.defaultWidth=200; // in px
+  animation.element.onclick=function()
+  {
+    animation.current=0;
+    animation.addAnimation('wobbling', '', '', wobbling).run();
+  };
+}
+
+var timers = [];
+var deltas = [];
+
+// First, start the FPS meter when we start the animation
+window.addEventListener('OAnimationStart',function(){
+  timers = [];
+  deltas = [];
+  timers[0] = new Date().getTime();
+  deltas[0] = 0;
+},false);
+
+// Check the FPS for every frame of the animation
+// and print the correct value in the input field
+window.addEventListener('OAnimationFrame',function(){
+  var delta;
+  if (timers.length > 30){
+    timers.shift();
+  }   
+  
+  if (deltas.length > 30){
+    deltas.shift();
+  }
+  
+  var date = parseInt(new Date().getTime());
+  timers[timers.length] = date;
+  
+  if (deltas.length < 2){
+    delta = timers[0];
+  } else {
+    delta = timers[timers.length-2];
+  } 
+  
+  deltas[deltas.length] = date-delta; 
+  var sum =0; 
+  for (var i = 0; i < deltas.length; i++){
+    sum = sum+deltas[i];
+  }
+  
+  var fps = Math.round(1000/(sum/deltas.length));
+
+  var s = document.getElementById('status');
+  s.value = fps+" fps";
+},false);
+
+</script>
+</head>
+<body>
+<h1>FPS Timer</h1>
+    <p>This is an accompanying example to the <a href="../../../dev.opera.com/libraries/animation/index.html">Opera Animation Library documentation</a>, demonstrating the animations event system.</p>
+
+<p>Click on the red square below to start an animation and observe the measured FPS: <input id="status" type="text"></p>
+<p class="animatable"></p>
+
+</body>
+</html>

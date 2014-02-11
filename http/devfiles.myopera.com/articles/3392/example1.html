@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Corey's scrolling site of green</title>
+<meta name="author" content="Corey Mwamba" />
+<meta name="description" content="this page shows how to create a horizontal scrolling interface, just using CSS3" />
+<meta name="keywords" content="CSS3,target" />
+<meta name="language" content="en" />
+<meta charset="utf-8" />
+<style type="text/css">
+body { font-size: 76%; font-family:  freesans, helvetica, "liberation sans", arial, sans-serif;  }
+section, article {display: block;}
+a:link {color: #000; text-decoration: underline; }
+a:hover {color: #cfd; background-color: rgb(100, 110, 10); text-decoration: none; }
+a:visited {color: #000; text-decoration: none;}
+div ul {
+list-style-type: none; 
+font-size: 1em;
+}
+section p {font-size: 1.1em;}
+
+article, section {display: block; }
+article { 
+position: fixed;
+outline: 1px solid blue;
+left: 1em;
+top: 10em; }
+section[id^="s"] {width: 25em;
+  height: 25em;
+  position: absolute;
+  background-image: url(http://devfiles.myopera.com/articles/3392/271.jpg);
+  background-size:25em 25em;  
+  font-size: 1em;
+  opacity: 0;
+      -webkit-transition: all 2.5s;
+      -moz-transition: all 2.5s;
+      -ms-transition: all 2.5s;
+      -o-transition: all 2.5s;  
+      transition: all 2.5s;
+    }
+#s0 {
+left: 0em;
+  top: 0em;
+  background-position: 0em 0em;
+}
+
+#s1 {
+left: 25em;
+  top: 0em;
+  background-position: -25em 0em;
+}
+
+#s2 {
+left: 50em;
+  top: 0em;
+  background-position: -50em 0em;
+}
+
+#s0:target, #s1:target, #s2:target {opacity: 1}
+</style>
+</head>
+
+<body>
+<div>
+<h1>Corey's scrolling site of green</h1>
+
+<ul id="nav">
+<li><a href="example1.html#s0">Welcome</a> </li>
+<li><a href="example1.html#s1">Tab styling</a></li>
+<li><a href="example1.html#s2">Applications</a></li>
+</ul>
+
+
+<article>
+<section id="s0">
+<h2>Welcome</h2>
+<p>This is a basic study in green, in HTML5. I've decided to use a collection of <code>section</code> elements housed within an <code>article</code>, but I could have used a generic container (<abbr title="id est" lang="la">i.e.</abbr> a <code>div</code>). As long as the outer container (in this case <code>article</code>) holds the background image and is fixed, then you can get a scrollable background!</p>
+
+</section>
+
+<section id="s1">
+<h2>Tab styling</h2>
+<p>It's all rounded corners, and an inset <var>box-shadow</var> to create a three-dimensional effect. It perhaps is not as good as a drawing - but it's quicker.</p>
+</section>
+<section id="s2">
+<h2>Applications</h2>
+<p>You could use this for a kiosk or information terminal; and bearing in mind that you don't only have to scroll horizontally, a very creative person could create an accessible web-comic where the reader was guided to each frame, with the art rendered in SVG, or text with <var>:content</var> generated images.</p>
+</section>
+</article>
+</div>
+</body>
+</html>

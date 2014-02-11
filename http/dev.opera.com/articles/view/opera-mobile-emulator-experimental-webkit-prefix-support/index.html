@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Mobile Emulator build with experimental WebKit prefix support - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Mobile Emulator build with experimental WebKit prefix support</h1>
+      <p class="print author">By Bruce Lawson</p>
+
+      <p>CSS vendor prefixes were introduced in CSS 2.1 for vendor-specific extensions with the warning that <a href="http://www.w3.org/TR/CSS21/syndata.html#vendor-keywords">authors should avoid vendor-specific extensions</a>. CSS Snapshot 2010 <a href="http://www.w3.org/TR/css-2010/#experimental">extended the definition</a>: &quot;Prior to a specification reaching the Candidate Recommendation stage in the W3C process, all implementations of a CSS feature are considered experimental. The CSS Working Group recommends that implementations use a vendor-prefixed syntax for such features, including those in W3C Working Drafts.&quot;</p>
+
+<p>Opera, along with Mozilla, announced at a CSS Working Group meeting (<a href="http://lists.w3.org/Archives/Public/www-style/2012Feb/0313.html">minutes</a>) that we would support some -webkit- prefixes. This is because through our site compatibility work, we have experienced that many authors of (especially mobile) sites only use -webkit- prefixed CSS, thereby ignoring other vendor prefixes and not even including an unprefixed equivalent. This leads to a reduced user experience on Opera and Firefox, which don&#39;t receive the same shiny effects such as transitions, gradients and the like, <em>even if the browser supported those effects</em>.</p>
+
+<p>The vendor prefix system is hard to use. It&#39;s easy to miss out a vendor prefix when copying and pasting multiple lines, or because a vendor doesn&#39;t support a certain feature while you&#39;re developing. Some specifications seem to take forever to get to the Candidate Recommendation stage at the W3C, after which vendors are supposed to unprefix their implementations. Some developers erroneously assume that mobile development equals iOS devices, so only use -webkit- prefixes because they don&#39;t know or don&#39;t care about other browsers. There are many reasons for missing out some prefixes - but the user is always the loser.</p>
+
+<h2 id="recovery">Automatic error recovery (<a href="index.html#recovery">#</a>)</h2>
+
+<p>One of the <a href="http://www.w3.org/TR/html-design-principles/#handle-errors">HTML5 design principles</a> is &quot;Error handling should be defined so that interoperable implementations can be achieved. Prefer graceful error recovery to hard failure, so that users are not exposed to authoring errors.&quot;</p>
+
+<p>CSS is not HTML, of course. But the same principle holds. Using single-vendor code on the World Wide Web that results in non-interoperability is an authoring error. In the same way that the HTML5 parsing algorithm &quot;re-writes&quot; HTML to make tags close correctly in the DOM in order to ensure interoperability, this Labs release tests reacting to certain -webkit- prefixed CSS properties as though they were -o- prefixes in order that users are not exposed to authoring errors.</p>
+
+<h2 id="buils">Builds  (<a href="index.html#builds">#</a>)</h2>
+<p>In order to test this out, we have prepared Opera Mobile Emulator Labs builds with support for <a href="index.html#whichones">selected</a> -webkit- prefixes.</p>
+<ul>
+<li><a href="http://www.opera.com/download/get.pl?id=34627&amp;sub=true&amp;nothanks=yes&amp;location=360">Opera Mobile Emulator Labs build for Mac</a></li>
+<li><a href="http://www.opera.com/download/get.pl?id=34629&amp;sub=true&amp;nothanks=yes&amp;location=360">Opera Mobile Emulator Labs build for Windows</a></li>
+<li><a href="http://www.opera.com/download/get.pl?id=34628&amp;sub=true&amp;nothanks=yes&amp;location=360">Opera Mobile Emulator Labs build for Linux</a></li>
+</ul>
+
+<h2 id="whichones">Which prefixes are affected?  (<a href="index.html#whicones">#</a>)</h2>
+ 
+ <p>Two different types of prefixes are supported:</p>
+ <h3>-webkit-linear-gradient</h3>
+      <p><code>-webkit-linear-gradient</code> and <code>-o-linear-gradient</code> will behave identically and the following rules will be obeyed when evaluating styles.</p>
+      <ul>
+        <li>Duplicate properties will not be preserved when both <code>-webkit-linear-gradient</code> and <code>-o-linear-gradient</code> are found. Whichever comes last will override the other.</li>
+        <li>Which name is in use will be tracked, so if the value is retreived from JavaScript, the prefix is remembered.</li>
+    </ul>
+    <h3>Properties</h3>
+      <p><code>-webkit-</code> prefixed properties are supported through a CSS property aliasing mechanism, and also will obey the following rules.</p>
+      <ul>
+        <li>As above, when a <code>-webkit-</code> prefixed property and an <code>-o-</code> prefixed property are encountered, they are treated as instances of the same property, so the latest one (according to usual cascade rules) wins.</li>
+        <li>When accessing or setting the value of a property through JavaScript, all the aliased names of a property are visible as members of the <code>CSSStyleDeclaration</code> object, and they map to the same value.
+          <ul>
+            <li>However, the CSSStyleDeclaration .item(*) function will return the canonical name of the alias, not the name actually used. This point may be changed in the future if it is found to cause problems.</li>
+        </ul></li>
+        <li><code>removeProperty</code>, <code>setProperty</code>, <code>getPropertyValue</code>, and <code>getPropertyPriority</code> all will work with aliases as described above.</li>
+        <li><code>webkitTransitionEnd</code> is aliased to <code>oTransitionEnd</code> enabling the use of <code>addEventListener(&quot;webkitTransitionEnd&quot;...)</code>
+          <ul>
+            <li>If both <code>addEventListener(&quot;webkitTransitionEnd&quot;...)</code> and <code>addEventListener(&quot;oTransitionEnd&quot;...)</code> have been used to register a listener, only the <code>oTransitionEvent</code> will be fired.</li>
+        </ul></li>
+        <li>If the property name is used as the value of another property (as is the case with <code>transition-property</code>), the name that was used is preserved.</li>
+        </ul>
+<p>       The properties that have been aliased in this way are:</p>
+    <table>
+      <tr>
+        <th><code>-o-</code></th>
+        <th><code>-webkit-</code></th>
+      </tr>
+      <tr>
+        <td><code>box-shadow</code></td><td><code>-webkit-box-shadow</code></td>
+      </tr>
+      <tr>
+        <td><code>-o-transform</code></td><td><code>-webkit-transform</code></td>
+      </tr>
+      <tr>
+        <td><code>-o-transform-origin</code></td><td><code>-webkit-transform-origin</code></td>
+      </tr>
+      <tr>
+        <td><code>border-radius</code></td><td><code>-webkit-border-radius</code></td>
+      </tr>
+      <tr>
+        <td><code>border-top-left-radius</code></td><td><code>-webkit-border-top-left-radius</code></td>
+      </tr>
+      <tr>
+        <td><code>border-top-right-radius</code></td><td><code>-webkit-border-top-right-radius</code></td>
+      </tr>
+      <tr>
+        <td><code>border-bottom-left-radius</code></td><td><code>-webkit-border-bottom-left-radius</code></td>
+      </tr>
+      <tr>
+        <td><code>border-bottom-right-radius</code></td><td><code>-webkit-border-bottom-right-radius</code></td>
+      </tr>
+      <tr>
+        <td><code>-o-transition</code></td><td><code>-webkit-transition</code></td>
+      </tr>
+      <tr>
+        <td><code>-o-transition-delay</code></td><td><code>-webkit-transition-delay</code></td>
+      </tr>
+      <tr>
+        <td><code>-o-transition-duration</code></td><td><code>-webkit-transition-duration</code></td>
+      </tr>
+      <tr>
+        <td><code>-o-transition-property</code></td><td><code>-webkit-transition-property</code></td>
+      </tr>
+      <tr>
+        <td><code>-o-transition-timing-function</code></td><td><code>-webkit-transition-timing-function</code></td>
+      </tr>
+</table>
+
+<h2 id="choice">How did you choose these?  (<a href="index.html#choice">#</a>)</h2>
+
+<p>We decided to alias properties and values for which are frequently used in the wild with a -webkit- prefix and without fallback, but which we already support either under an -o- prefix or unprefixed. To determine which property was frequent, and how often it had fallbacks, we analyzed the style sheets of a large number of popular websites (Alexa top 10,000). Based on that information, we made a subjective judgment.</p> 
+
+
+<h2 id="desktop">Just mobile, or desktop too?  (<a href="index.html#desktop">#</a>)</h2>
+
+<p>Both. Our Desktop and Mobile browsers share the same core. Testing in multiple browsers is hard enough without having to worry about subtle differences between various ports of the same browsers.</p>
+
+
+<h2 id="mySite">What will happen to my site?  (<a href="index.html#mySite">#</a>)</h2>
+<p>One of the following:</p>
+<ul>
+<li><p>If you were just ignoring Opera, and only used -webkit- prefixes, we&#39;ve just made your site more compatible to Opera users.</p><p>
+<p>In this example, the words &quot;Vital information&quot; were previously invisible to Opera, but visible in WebKit browsers. Now, they are visible in Opera too.</p>
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;meta charset=utf-8&gt;
+&lt;style&gt;
+div {color:white; height:100px;
+background: -webkit-linear-gradient(top, rgba(30,87,153,1)
+ 0%,rgba(125,185,232,0) 100%);
+}
+&lt;/style&gt;
+
+&lt;div&gt;Vital information&lt;/div&gt;
+</code>
+</pre>
+<p><a href="../../../../devfiles.myopera.com/articles/9202/gradient-test-1.html">Test example 1</a>.</p>
+</p></li> 
+<li>If you weren&#39;t using -webkit- prefixes (you were using the unprefixed variant, for instance), nothing changes and you don&#39;t have to care.</li>
+<li>If you&#39;ve been using both -webkit- and -o- (or unprefixed) and supplying the same value to both, it will keep working just fine and you don&#39;t need to care.</li>
+ 
+<li><p>If you were using both -webkit- and -o- (or unprefixed), and supplied different values to each, you need to check the order in which they put things in the style sheet. Because these -o- and -webkit- prefixes are regarded as being variants of the same name, the later version will be the one that is applied, whether it is prefixed -webkit- or -o-.</p>
+<p>Consider a page that for some reason sends a red gradient to Opera and a blue gradient to WebKit. If the -o- rule comes before the -webkit- rule, Opera and webkit will receive a blue gradient, because the -webkit- rule over-rides the -o- rule:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;meta charset=utf-8&gt;
+&lt;style&gt;
+div {color:white; height:100px;
+background: -o-linear-gradient(top, rgba(255,0,0,1) 0%, rgba(125,185,232,0) 100%);
+background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%);
+}
+&lt;/style&gt;
+
+&lt;div&gt;Vital information&lt;/div&gt;
+</code></pre>
+<p><a href="../../../../devfiles.myopera.com/articles/9202/gradient-test-2.html">Try example 2</a>. Note that current versions of Opera will show a red gradient, this Labs build shows a blue background.</p>
+<p>In order to send a rule with different values to Opera, it must be after the -webkit- rule in the cascade (<a href="../../../../devfiles.myopera.com/articles/9202/gradient-test-3.html">example 3</a>):</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;meta charset=utf-8&gt;
+&lt;style&gt;
+div {color:white; height:100px;
+background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%);
+background: -o-linear-gradient(top, rgba(255,0,0,1) 0%, rgba(125,185,232,0) 100%);
+}
+&lt;/style&gt;
+
+&lt;div&gt;Vital information&lt;/div&gt;
+
+</code></pre>
+<p>We discussed having the -o- prefixed version always trump a -webkit- version, but that breaks the cascade mechanism of CSS, which make it much harder for authors to debug sites and could have many unforeseen consequences. Therefore, we ask you to make a once-only check.</p></li>
+</ul>
+ 
+
+ 
+<h2 id="behavior">What about differences in behaviors between WebKit and Opera?  (<a href="index.html#behavior">#</a>)</h2>
+<p>As far as we can tell, the behavior the properties that we have aliased is identical in WebKit and Opera, or at least close enough that the differences will not matter in practice. If it turns out that there are differences big enough to cause breakage, we will consider our options, one of which is to align the behavior of our -webkit- prefixed variant to what WebKit actually does.</p>
+ 
+
+
+<h2 id="devlife">Isn&#39;t this going to ruin everything and make my life as a developer way more complicated?  (<a href="index.html#devlife">#</a>)</h2>
+<p>No. If you&#39;re using vendor prefixes correctly, nothing will change. If you were only using -webkit- prefixes, you get backwards compatibility for some of those in Opera, without harming your iPhone joy.</p>
+ 
+<h2 id="interop">Why is Opera breaking the Web and interoperability?  (<a href="index.html#interop">#</a>)</h2>
+<p>We&#39;re not. We make a web browser, that allows people to access content on the web. When people block access by certain browsers, whether by omitting CSS rules or actively blocking, we have a duty to our users to access that content.</p><p>We&#39;re promoting interoperability by silently correcting errors in an entirely predictable way, to benefit users.</p>
+
+<h2 id="past">Has similar stuff been done before?  (<a href="index.html#past">#</a>)</h2>
+ 
+<p>All browsers include mechanisms to deal with broken or unintended content. For example, IE6 invented DOCTYPE switching that assumed, from the lack of DOCTYPE that the developer wanted the erroneous IE5 box model. Opera and Firefox had to include bug compatibility with IE6, which is only being removed now.</p>
+
+<p>More recently, Opera Mobile and Safari/iOS supported semicolons as delimiters between values for the viewport meta tag. The spec specifies commas, but authors were using semicolons.</p>
+
+<p>When encountering broken XML (served as application/xhtml+xml), Opera decided to silently reparse the broken document as HTML, rendering the content to the end user, instead of showing an incomprehensible Parsing Failed error.</p>
+
+<p>And, of course, the HTML5 parsing algorithm &quot;rewrites&quot; broken or mis-nested HTML to ensure interoperable DOMs between browsers.</p>
+ 
+ 
+<h2 id="blame">Why are you levelling blame at the feet of us developers?  (<a href="index.html#blame">#</a>)</h2>
+
+<p>We&#39;re not. Others share the blame too:</p>
+
+<ul>
+<li> The CSS WG (that includes us) for failing to sufficiently prioritize specs that are seeing wide adoption</li>
+<li>WebKit vendors for not putting much effort in standardizing their proposals, for advertising -webkit- without fallbacks, and for not dropping prefixes at all</li>
+<li>The CSS WG for designing the prefix system, with all its downsides</li>
+<li>Authors and clients who believed it to be legitimate to exclude people because of their browsers</li>
+</ul>
+
+<p>The point of this isn&#39;t to blame anyone. It&#39;s to get the content to the user.</p>
+ 
+<h2 id="onlywebkit">So I only need to use -webkit- prefixes now? w00t!  (<a href="index.html#onlywebkit">#</a>)</h2>
+
+<p>Absolutely not. We&#39;re doing this now to ensure that there is compatibility with the 13 features we&#39;re aliasing. We hope we never need add any more and that we can drop support for these. It remains vitally important to make sure that you code for all browsers, even if they don&#39;t have support for a certain feature while you&#39;re coding. We suggest  this as a pattern that will ensure the cascade functions and any Opera-specific values are rendered:</p>
+<pre><code>blah {
+-webkit-foo : bar;
+-moz-foo : bar;
+-ms-foo : bar;
+-o-foo : bar;
+foo : bar;
+}</code>
+</pre>
+<p>Added 8 May 2012:</p>
+<p>We want to ensure that the vendor prefix system never gets us into this situation again. So, in parallel with this experimental build of Opera Mobile Emulator, Opera&#39;s representative on the CSS Working Group, Florian Rivoal, has a <a href="http://lists.w3.org/Archives/Public/www-style/2012May/0125.html">proposal to fix the vendor prefixing system</a>:</p>
+<blockquote><p>When a browser vendor implements a new css feature, it should support it,
+ from day 1, both prefixed and unprefixed, the two being aliased. If a
+style sheet contains both prefixed and unprefixed, the last one wins,
+according to the cascade.</p>
+<p>Authors should write their style sheets using the unprefixed property,
+and only add a prefixed version of the property (below the unprefixed
+one) if they discover a bug or inconsistency that they need to work
+around in a particular browser.</p>
+<p>If a large amount of content accumulates using the a particular vendor
+prefix to work around an issue with the early implementation in that
+browser, the vendor could decide to freeze the behavior of the prefixed
+property while continuing to improve the unprefixed one.</p>
+</blockquote>
+<p>(Read the <a href="http://lists.w3.org/Archives/Public/www-style/2012May/0125.html">full explanation</a>). This is <a href="http://lists.w3.org/Archives/Public/www-style/2012May/thread.html#msg125">currently being debated</a> in the Working Group.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-88236972">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>(This comment was posted first but moved down when I inserted a link.)<br/><br/>Thanks a lot for explaining your decision in such detail. You are right, what matters in the end is the user. However, many people are using Opera as a development tool, especially all the people reading this article. This change will make our live harder because we can&#39;t see if we missed a <strong>non</strong>-webkit property. As a matter of fact you will see a lot more sites relying on the -webkit- prefix only. I totally understand your problem and why you need to solve it but this attempt will make it worse in the long run. Isn&#39;t there an other solution like using your <a href="http://de.opera.com/docs/browserjs/" target="_blank">browser.js</a> to patch broken sites?</section>
+    </li>
+    <li id="comment-88238902">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I think you missed my point. I was talking about missing <strong>non</strong>-webkit properties. Since -webkit- will work &quot;everywhere&quot; it does not matter any more if we web developers care about the -o- or unprefixed properties. Many developers are using Firefox or Safari and just do a quick check in Opera. They don&#39;t see a difference any more even if they missed a vital CSS property. And about your browser.js, you only need to fix a few sites where something is invisible or otherwise broken like in your example. On most sites it does not matter at all if a corner is angular or a transition is done without an animation. Most people won&#39;t even notice. The properties we are talking about are mostly <a href="http://en.wikipedia.org/wiki/Bling-bling" target="_blank">bling-bling</a> and not breaking user experiences except for a few cases. Did your research include a number of sites where a feature is actually <strong>broken</strong> because of a missing property?</section>
+    </li>
+    <li id="comment-88244532">
+      <a href="../../../author/jabcreations.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/74/012/ac7b49ba8f3c426bba1f0b83418bc513edb.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jabcreations.html">John A. Bilicki III</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>KILL IT WITH FIRE!<br/><br/>Do NOT retard Opera because people are incompetent at doing the jobs they&#39;re being paid to do.<br/><br/>Show your support for end users by having companies whip lazy and inept web designers or have them fired so competent web designers can take their place. Nature works best!</section>
+    </li>
+    <li id="comment-88278762">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Saturday, April 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@John: I love Opera (both the webbrowser and the company) very much but this change makes our life as a developers more complicated and, whats more important, it makes the problem (like incompetent people using &quot;-webkit-box-shadow&quot; only) worse. This will make <strong>more</strong> incompetent people using only the -webkit- properties and ignoring the spec. I wish they would address this in this document.</section>
+    </li>
+    <li id="comment-88289442">
+      <a href="../../../author/ianlunn.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/79/1c7/0d6b4ddb13b49f8c5bb716c4bab51500cf7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ianlunn.html">Ian Lunn</a></p>
+      <p class="commentdate">Saturday, April 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I&#39;ve written my concerns about what I&#39;ve seen so far in the experimental Opera Mobile Emulator and provided some code examples that could cause issues with existing applications here:<br/><br/><a href="http://www.ianlunn.co.uk/blog/articles/concerns-about-opera-rendering-webkit-properties/" target="_blank">http://www.ianlunn.co.uk/blog/articles/concerns-about-opera-rendering-webkit-properties/</a></section>
+    </li>
+    <li id="comment-88299802">
+      <a href="../../../author/Muzzlehatch.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f9/d8a/4cc312782994f1489a49f0a37f5c1784085.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Muzzlehatch.html">Charlie Clark</a></p>
+      <p class="commentdate">Saturday, April 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Regarding who is being punished and who is being rewarded. This is a red herring. Unfortunately, because developers are punishing users by failing to use the prefix system correctly, there is little to be gained by pointing the finger. You could raise alerts in the browser saying that the site is poorly coded but that is only likely to annoy a user even more. That&#39;s what error logs are for if anyone is interested.<br/><br/>Although Eric Meyer has staunchly and lucidly defended (<a href="http://www.alistapart.com/articles/the-vendor-prefix-predicament-alas-eric-meyer-interviews-tantek-celik/" target="_blank">http://www.alistapart.com/articles/the-vendor-prefix-predicament-alas-eric-meyer-interviews-tantek-celik/</a>) the prefix system, Bruce hints that, he at least, considers it to have problems. To recap: prefixes prevent the catch 22 of HTML &amp; CSS development - you can only implement a completed specification but you real world specification must be tested in the real world before completion - by allowing developers not only to suggest features but also to provide working implementations of them. Gradients are a good example how this worked to clarify the semantics of the feature. It is ironic to see them part of this issue. If the issue was only with regard to eye-candy it could probably be ignored but it has also allowed Opera to submit and demonstrate the fantastic page-media extensions.<br/><br/>With hindsight, I can think of several flaws in the prefix approach: firstly, it is cumbersome; secondly, it supposes a level of knowledge of the specifications and their implementations that most developers are not aware of: thirdly, it is not easy to test for, not in the sense of modernizr in checking for support of a feature, but in the behaviour; fourthly, and perhaps most importantly, by including support for experimental features in main releases vendors have inadvertently blessed them. To blame web site makers for using such features to differentiate or enhance their site even though they might only work with their preferred browser is not only naive but fundamentally wrong: making the user experience better is their job. I think it would have been better to limit implementations to lab builds only or provide user control to enable or disable experimental features. Properly handled that could even speed up to adoption or rejection of proposed features. The problem is: would all vendors go along with that? I remember very clearly when Apple launched a Flash-free presentation of one its product that was used browser-sniffing to lock out all but Safari browsers from some CSS 3 transitions.</section>
+    </li>
+    <li id="comment-88408242">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>About &quot;not breaking the specs&quot;, this <strong>does</strong> break the specs. I almost forgot but this Twitter user <a href="https://twitter.com/#!/thijs/status/196296698086166528" target="_blank">nails it down</a>: <i>&quot;A page isn’t &#39;poorly authored&#39; when the author decides only WebKit supports a new feature well enough to use it.&quot;</i> In other words, a property prefixed with -webkit- is supposed to work <strong>only</strong> in webbrowsers based on the WebKit engine. I have to ask this question again: How many sites are actually <strong>broken</strong> because of a -webkit- property? How do you know which site in your research is actually erroneous and which site uses a -webkit- property on purpose?<br/><br/>I created an example page: <a href="http://maettig.com/code/css/why-opera-is-breaking-the-web.html" target="_blank">Why Opera is breaking the web</a>.</section>
+    </li>
+    <li id="comment-88427102">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>No, it&#39;s not &quot;predictable and consistent&quot; since it <i>changes</i> the behavior of the Opera webbrowser. Opera not only starts reading properties it was never supposed to read, it starts <i>ignoring</i> <strong>un</strong>prefixed properties (see my example). This will <strong>break</strong> existing websites. And this is <i>not</i> just a theory, this is how CSS is written in reality: Unprefixed first, prefixed in the end.<br/><br/>Here is an example on what will happen: Let&#39;s assume a web developer creates a site in Firefox. The site is finished and he does some checks in a few other webbrowsers. He starts with Opera (for whatever reason, probably because he likes it more than Chrome). He applies some fixes or not, but in the end, the site looks fine. Then he switches to Chrome and there are a few problems. He has to add a few -webkit- properties to work around this. He will never notice <strong>these WebKit-specific fixes broke the site in Opera</strong> till the client sues him. He has to add Opera-specific -o- prefixed workarounds (or change the order <i>very</i> carefully) to fix problems <strong>caused by WebKit-specific -webkit- prefixed workarounds</strong>. I&#39;m very sorry but I think this is sick.</section>
+    </li>
+    <li id="comment-88429102">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>About what you call a &quot;situation&quot;: I really want to understand that &quot;situation&quot;. Please show us a list of sites that are <strong>actually broken</strong> because of a missing border-radius, box-shadow, transform or transition (with &quot;broken&quot; meaning &quot;can&#39;t be used&quot; or at least &quot;looks broken even for somebody who never saw the site in WebKit&quot;).</section>
+    </li>
+    <li id="comment-88433512">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>OK, let&#39;s focus on whats important: &quot;transform&quot; and &quot;transition&quot; is not a problem since its prefixed anyway. But you already dropped all prefixes from &quot;border-radius&quot; and &quot;box-shadow&quot;. This change will prefix these properties <strong>again</strong>. This will break existing standard-compliant websites that <i>rely</i> on the non-prefixed properties.</section>
+    </li>
+    <li id="comment-88447162">
+      <a href="../../../author/aardrian.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/66/71d/b6e1a6434f5c2d71b35708c238789173a35.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/aardrian.html">Adrian Roselli</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Thiemo, I have seen a few sites that are &quot;broken&quot; thanks to poor coding, but the one that stood out to me is <a href="http://webs.com" target="_blank">http://webs.com</a>. I included a screen shot of the home page in Opera vs. Safari in my own rant at <a href="http://blog.adrianroselli.com/2012/04/dont-blame-opera-blame-devs.html" target="_blank">http://blog.adrianroselli.com/2012/04/dont-blame-opera-blame-devs.html</a>. Sadly, that&#39;s the only example I have handy, but it&#39;s the most common error I have seen (white text on a missing gradient).</section>
+    </li>
+    <li id="comment-88549202">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Wednesday, May 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Fixing &quot;a few&quot; sites is a job for the <a href="http://de.opera.com/docs/browserjs/" target="_blank">browser.js</a> and no reason to mess around with a web standard. Also, there is an other very, very easy solution: Drop the -o- prefix and make Opera aware of linear-gradient. This will fix sites like webs.com. Don&#39;t tell me you can&#39;t do this till the spec is a W3C recommendation. This is not different from aliasing &quot;-webkit-linear-gradient&quot;. Alias &quot;linear-gradient&quot; instead.</section>
+    </li>
+    <li id="comment-88627622">
+      <a href="../../../author/yongshun.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a9/9c4/69941b58eb8e228ef5a0ada5ecbcbeafbc6.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/yongshun.html">YongShun</a></p>
+      <p class="commentdate">Thursday, May 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Disappointment to web developers who insists on using webkit css instead of the standards</section>
+    </li>
+    <li id="comment-88898822">
+      <a href="../../../author/Frenzie.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/60/977/a138dd78268b10df5ff1065ab228bcb3747.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Frenzie.html">Frans</a></p>
+      <p class="commentdate">Monday, May 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Adrian<br/>The very same thing would happen in e.g. IE8. Good practice is something like<br/><br/>background:solidcolor;<br/>background:hsla(x,x,x,.5) or background:gradient or whatever<br/><br/>It&#39;s only slightly more complicated than including both a background-color and a background-image (also something many don&#39;t seem to do). Or to put it another way: I&#39;ve been running into this very same problem for over 10 years whenever I disabled images.</section>
+    </li>
+    <li id="comment-88421812">
+      <a href="../../../author/patrickhlauke.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/311/e211c5a9704ba8411d0a0694fbb961d97ad.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/patrickhlauke.html">Patrick H. Lauke</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thiemo, regarding the broken behaviour in your example pages: as the above-mentioned properties have been aliased, it&#39;s simply a matter of cascade and the order in which the rules are present. Last one wins. Possibly not ideal (well, the whole situation isn&#39;t), but at least it is predictable and consistent.</section>
+    </li>
+    <li id="comment-91456322">
+      <a href="../../../author/JanGen.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2e/e84/d153e5ce1cf39b54ace3a35501941ab3e0d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/JanGen.html">JanGen</a></p>
+      <p class="commentdate">Thursday, June 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I also don&#39;t like Opera supporting webkit prefixes. It&#39;s simple, like Thiemo explained.<br/>1. -webkit- is for webkit<br/>2. -o- is for opera.<br/><br/>Developers targeting only browsers with large marketshare is a problem, but not a new one. I can remember the times major sites in Holland blocked Opera. Some did it by mistake, some by ignorance, some by purpose<br/>All bad reasons, and IMHO they should be blamed for it. But we live in a free world.<br/><br/>Now Opera is acting irrational and adding confusion, normally I add prefixes in an alphabetical order, but now you suggest -webkit- first and -o- last? That will break everything I did before<br/><br/>And about the new Florian suggestion, I like, but unprefixed first and prefixed last is the opposite we&#39;ve done before. So there is no clear workflow for developers yet. <br/>IMHO just start implementing the unprefixed property sooner, that will solve most cases.<br/><br/>`We hope we never need add any more and that we can drop support for these. `<br/>If it&#39;s just a temporary problem, don&#39;t deal with it, it&#39;s just about eye-candy. nothing is broken when graceful degradation &amp; progressive enhancement protecting is done properly: (test a website without images).<br/><br/>I hope Opera will not implement this, better fight for their right: -o- <br/>Alternatives<br/>1 UserJS<br/>2 (default) Extension<br/>3 At least is should be configurable, like experimental webkit prefix support: <br/>1,2 with code like:<br/>opera.addEventListener(&#39;BeforeCSS&#39;, function(userJSEvent){<br/>  userJSEvent.cssText = userJSEvent.cssText<br/>    .replace(/-(webkit|o)-(border)/g,&#39;$2&#39;)<br/>    .replace(/-(webkit)-(gradient|transform|transition)/g,&#39;-o-$2&#39;);<br/>}, false);<br/>or 2 with <a href="http://leaverou.github.com/prefixfree/" target="_blank">http://leaverou.github.com/prefixfree/</a> <br/><br/>Better just support the unprefixed version faster.</section>
+    </li>
+    <li id="comment-92277692">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I can&#39;t belief you are putting this broken stuff in the current 12.50 preview without answering any of the questions. What about using the browser.js? Don&#39;t tell us it would be &quot;to big&quot;. Fix the sites that need to be fixed but don&#39;t mess around with a web standard. What about simply dropping all -o- prefixes instead of prefixing properties *again* that aren&#39;t prefixed currently? What about making -o- properties higher precedence? Don&#39;t tell us this would &quot;break the cascade&quot;. What you do is worse: -webkit- properties were *never* be intended to be part of the cascade in the Presto rendering engine. Don&#39;t tell us the vendor prefixes are not made to target specific rendering engines. It doesn&#39;t make any sense to introduce vendor specific properties and *later*, when we all use them tell us these vendor specific properties were never be intended to be vendor specific. What the heck? I want a browser that acts like the browser I love. I don&#39;t need *another* browser that acts like Webkit. I&#39;m begging you please, please find another solution. There *are* other solutions. At least make this -webkit- rubbish lower precedence (lower than -o- and also lower that the unprefixed properties). From all I know this would be the easiest solution to <a href="http://maettig.com/code/css/why-opera-is-breaking-the-web.html" target="_blank">not break existing sites</a>.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/brucelawson.html" rel="author">Bruce Lawson</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, April 27, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/emulator.html" rel="tag">emulator</a></li>
+        <li><a href="../../tags/opera&#32;mobile.html" rel="tag">opera mobile</a></li>
+        <li><a href="../../tags/presto.html" rel="tag">presto</a></li>
+        <li><a href="../../tags/vendor&#32;prefixes.html" rel="tag">vendor prefixes</a></li>
+        <li><a href="../../tags/webkit.html" rel="tag">webkit</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

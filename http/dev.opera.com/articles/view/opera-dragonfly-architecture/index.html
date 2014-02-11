@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Dragonfly Architecture - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Dragonfly Architecture</h1>
+      <p class="print author">By Hans S. Tømmerholt</p>
+
+      <h2>Introduction</h2>
+
+<p>This article covers the architecture of Opera Dragonfly in detail, showing what the different components in the architecture are, and how they interact during Dragonfly&#39;s running.</p>
+
+<ul>
+<li><a href="index.html#archoverview">Architecture overview</a></li>
+<li><a href="index.html#scenarios">Debugging scenarios</a>
+<ul>
+<li><a href="index.html#scenariosintegrated">Integrated</a></li>
+<li><a href="index.html#scenariosremote">Remote</a></li>
+</ul>
+</li>
+<li><a href="index.html#components">Components</a>
+<ul>
+<li><a href="index.html#componentruntime">Runtime</a></li>
+<li><a href="index.html#componentdebugged">Debugging host</a></li>
+<li><a href="index.html#componentscope">The Scope module</a>
+<ul>
+<li><a href="index.html#scopeprotocol">The Scope protocol</a></li>
+</ul>
+</li>
+<li><a href="index.html#componentproxy">Proxy</a></li>
+<li><a href="index.html#componentdebugger">The debugging client</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h2 id="archoverview">Architecture overview</h2>
+
+<p>The architecture of Opera Dragonfly, Opera Software&#8217;s development tools, is designed to allow debugging on a desktop computer, as well as on other devices such as mobile phones.</p>
+
+<p>A <em>Scope module</em> exposes information about the <em>runtimes</em>, i.e. the web pages and applications in the debugged Opera instance. This instance acts as the <em>debugging host</em> and serves this information to <em>clients</em>. The format of the data sent back and forth is defined by a <em>Scope protocol</em>.</p>
+
+<p>To overcome potential firewall issues, a <em>proxy</em> mediates the communication between the browser and the debugger. An example is debugging an application or web page on a mobile phone, using a normal desktop computer.</p>
+
+<p>The <em>client</em>, i.e. the debugger application visualizes the information and allows the user to manipulate the runtimes.</p>
+
+<p>The host and client, may run on the same or different devices, and the proxy may run inside either instance or on a separate server.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/370/overview.png" title="Overview of Dragonfly architecture, showing the host, scope module, protocol, proxy and client" alt="Overview of Dragonfly architecture, showing the host, scope module, protocol, proxy and client" /></p>
+
+
+
+
+<h2 id="scenarios">Debugging scenarios</h2>
+
+<p>There are two primary ways of doing debugging:</p>
+
+<ul>
+<li>Integrated: The scope, proxy and debugger run in the same Opera instance.</li>
+<li>Remote: The scope and debugger run on two different instances of Opera, for example on two different devices. The proxy may run on one of them, or on a separate computer.</li>
+</ul>
+
+<h3 id="scenariosintegrated">Integrated</h3>
+
+<p>This is the typical scenario. The developer is working on a web application and runs it in the normal Opera browser. The debugger is running in the same instance and is shown in a separate window or in a panel integrated in the browser window.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/370/integrated.png" title="Diagram showing integrated debugging. The debugging host, proxy and client are running on the same computer." alt="Diagram showing integrated debugging. The debugging host, proxy and client are running on the same computer." /></p>
+
+<p>In this case, the debugging host, proxy and client are all running inside the same browser instance. The proxy runs on a random port chosen by Opera, and the Scope module and debugger are automatically connected to it.</p>
+
+<h3 id="scenariosremote">Remote</h3>
+
+<p>An example for this scenario is debugging a web page or application on a mobile phone. The phone has limited screen space and may be cumbersome to develop on, so instead a desktop computer is used to do the debugging.</p>
+
+<p>Another possibility is debugging one Opera instance from another instance on the same device, which is useful if the debugging host is in danger of crashing.</p>
+
+<p>Remote debugging can be broken down into two main scenarios:</p>
+
+<ul>
+<li>The proxy runs on one of the two instances.</li>
+<li>The proxy runs outside both instances, for example on a public server.</li>
+</ul>
+
+<p><img src="../../../../devfiles.myopera.com/articles/370/local.png" title="Diagram showing remote debugging where the proxy is integrated into the client." alt="Diagram showing remote debugging where the proxy is integrated into the client." /></p>
+
+<p>The second scenario is applicable when either or both the debugged instance and the debugger is running behind a firewall.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/370/remote.png" title="Diagram showing remote debugging. The debugging host, proxy and client are potentially all running on different computers." alt="Diagram showing remote debugging. The debugging host, proxy and client are potentially all running on different computers." /></p>
+
+<h2 id="components">Components</h2>
+
+<p>The architecture is made up of the following components:</p>
+
+<ul>
+<li><a href="index.html#componentruntime">Runtime</a></li>
+<li><a href="index.html#componentdebugged">Debugging host</a></li>
+<li><a href="index.html#componentscope">Scope module</a>
+<ul>
+<li><a href="index.html#scopeprotocol">Scope protocol</a></li>
+</ul></li>
+<li><a href="index.html#componentproxy">Proxy</a></li>
+<li><a href="index.html#componentdebugger">Debugging client</a></li>
+</ul>
+
+<h3 id="componentruntime">Runtime</h3>
+
+<p>Each ECMAScript environment is a single runtime. Each HTML document then has a single runtime associated with it. Documents in frames and iframes also have their own runtimes.</p>
+
+<h3 id="componentdebugged">Debugging host</h3>
+
+<p>A debugging host is any instance of Opera which has the Scope module enabled and which has connected to the proxy. It may contain several <a href="index.html#component-runtime">runtimes</a>.</p>
+
+<h3 id="componentscope">The Scope module</h3>
+
+<p>The Scope module is a part of the Opera application. Once enabled, the module establishes a socket connection to a proxy URL and inspects any runtimes in the debugging host. It then sends this information to the debugger. It also responds to commands made by the debugger for specific information, such as downloading the DOM for a selected node.</p>
+
+<h4 id="scopeprotocol">The Scope protocol</h4>
+
+<p>The Scope protocol is a set of rules and formats for exchanging information about <a href="index.html#component-runtime">runtimes</a> between the host and the client. Examples include getting the DOM document structure from a runtime, or a set of computed styles.</p>
+
+<p class="note">The Scope protocol is still under development. Once it is finished, it will be made public. Vendors may then create their own debugging clients and integrate them into applications such as IDEs (e.g. Aptana or Eclipse). Using the scope protocol, such clients can retrieve information about the runtimes of an Opera browser.</p>
+
+<h3 id="componentproxy">Proxy</h3>
+
+<p>The proxy is responsible for routing messages between the browser and the debugger. It is especially important in a remote debugging scenario where the debugging host and client are not on the same computer.</p>
+
+<p>Opera supplies an integrated proxy in the instance running the debugger, but a proxy can also run on a a public server. This way, both the debugged instance and the debugger can be behind a firewall.</p>
+
+<h3 id="componentdebugger">The debugging client</h3>
+
+<p>The debugger is the client which connects to the scope module of the debugging host through the proxy. It receives a representation of the runtimes in that instance. The debugger visualizes the runtimes and allows the user to modify them. It does this by sending requests back to the Scope module using the <a href="index.html#scope-protocol">Scope protocol</a>.</p>
+
+<p>The current implementation of the debugger is made entirely in web technology: HTML/XML, CSS and JavaScript.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/370/dragonfly-script.png" title="Dragonfly showing the ECMAScript debugger on www.opera.com" alt="Dragonfly showing the ECMAScript debugger on www.opera.com" /></p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/370/dragonfly-dom.png" title="Dragonfly showing the DOM inspector on www.opera.com" alt="Dragonfly showing the DOM inspector on www.opera.com" /></p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=231584">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/For_d.html" rel="author">Hans S. Tømmerholt</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, May 6, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/architecture.html" rel="tag">architecture</a></li>
+        <li><a href="../../tags/debugging.html" rel="tag">debugging</a></li>
+        <li><a href="../../tags/dragonfly.html" rel="tag">dragonfly</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-dragonfly-12398-ja/index.html">Japanese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

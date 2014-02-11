@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Single column markup: bare bones</title>
+
+<!-- The stylesheet assumes that the primary navigation will run from left to
+     right within the header; the two and three column examples will offer
+     different approaches. All numeric values chosen are arbitrary. -->
+
+<style type="text/css">
+
+/* ******** */
+/* DOCUMENT */
+/* ******** */
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+#main {
+	position: relative;
+	width: 960px;
+	margin: 0 auto 0 auto;
+}
+
+/* ******************* */
+/* HEADER & SITE TITLE */
+/* ******************* */
+
+#header {
+	position: relative;
+		/* reset the positioning context for the sake of the logo/title and
+		   primary nav */
+	height: 6.857em;
+	overflow: hidden;
+		/* without this producers will gleefully play hob with the layout */
+}
+
+h1 {
+	position: absolute;
+		/* left: 0; top: 0; are defaults */
+	width: 192px;
+	background-image: url(/images/logotype.png);
+	background-position: 6px 6px;
+		/* create a gutter since left and top are set to zero */
+}
+
+h1 a {
+	display: block;
+		/* Ensure that the active footprint of the link swallows up the entire
+		   footprint of the logo */
+	width: 186px;
+	height: 60px;
+	margin: 6px 0 0 6px;
+		/* make the active footprint of the link flush with the edge of the
+		   h1's background image */
+	text-indent: -10000px;
+		/* Enhanced Fahrner Image Replacement in action */
+		/* these units in pixels because of the image replacement */
+}
+
+/* ****************** */
+/* PRIMARY NAVIGATION */
+/* ****************** */
+
+#nav {
+	position: absolute;
+	left: 0;
+	top: 7.143em;
+		/* since #nav has been moved to be directly within #main and is
+		   intended to appear within the sidebar, this is what needs to be
+		   done */
+	width: 13.714em;
+		/* same as the effective width of #sidebar */
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+		/* resets */
+}
+
+#nav li {
+	height: 1.286em;
+	height: 1.429em;
+	float: left;
+	margin: 0;
+	border-bottom: 1px solid;
+	padding: 0;
+}
+
+#nav li a {
+	display: block;
+	width: 13.143px;
+	height: 1.143em;
+	/* the net result of these dimensions is to increase the footprint of the
+	   links and line them up so that there are no blowouts */
+	overflow: hidden;
+	padding: .071em 0 .143em .571em;
+}
+
+/* ********************* */
+/* DUAL COLUMN CONTAINER */
+/* ********************* */
+
+#innerContainer {
+	float: left;
+	width: 51.429em;
+}
+
+/* *************** */
+/* PRIMARY CONTENT */
+/* *************** */
+
+#bodyCopy {
+	width: 36em;
+	float: right;
+	padding-bottom: 2em;
+		/* placed arbitarily, just in case */
+}
+
+/* ***************** */
+/* SECONDARY CONTENT */
+/* ***************** */
+
+#sidebar {
+	margin-right: 37.714em;
+	/* ensure that the margin will stay consistent throughout the page */
+	padding-top: 8.571em;
+	/* accounts for the height of the nav and provides a gutter between the
+	   nav and the actual sidebar content */
+}
+
+/* **************** */
+/* TERTIARY CONTENT */
+/* **************** */
+
+#tertiary {
+	margin-left: 54.857em;
+}
+
+/* ************************ */
+/* FOOTER AND SECONDARY NAV */
+/* ************************ */
+
+#footer {
+	clear: both;
+		/* with two columns, it needs to be certain that this won't collide
+		   with anything */
+}
+
+#secondaryNav {
+	list-style-type: none;
+	margin: 0;
+		/* resets */
+}
+
+#secondaryNav li {
+	display: inline;
+	margin-right: 1.429em;
+		/* cause these to behave like unembellished text, and provide a gutter
+		   between each */
+}
+
+#copyrightStatement {
+	text-align: center;
+		/* arbitrary */
+}
+
+</style>
+</head>
+
+<body>
+	<div id="main">
+
+		<div id="header">
+			<h1><a href="/"></a></h1>
+		</div>
+		<ul id="nav">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		
+		<div id="innerContainer">
+
+			<div id="bodyCopy">
+			</div>
+		
+			<div id="sidebar">
+			</div>
+		
+		</div>
+		
+		<div id="tertiary">
+		</div>
+
+		<div id="footer">
+			<ul id="secondaryNav">
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<p id="copyrightStatement">&hellip;</p>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

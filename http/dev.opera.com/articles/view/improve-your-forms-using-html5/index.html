@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Improve your forms using HTML5! - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Improve your forms using HTML5!</h1>
+      <p class="print author">By Anne van Kesteren</p>
+
+      <div class="note">
+ <h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">16th December 2011: This article is obsolete</h2>
+
+<p>This article is obsolete/out of date, so should no longer be treated as a current or reliable source of information. Please consult <a href="../new-form-features-in-html5/index.html">New form features in HTML5</a> for a more complete, up to date view.</p>
+ </div>
+
+<p><abbr title="HyperText Markup Language">HTML</abbr> hasn&#39;t really been updated since <abbr>HTML</abbr> version 4 was released back in 1998. However, the <a href="http://www.whatwg.org/"><abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr> community</a> has been working on HTML since 2004 and then passed to the W3C which takes the form of the <a href="http://dev.w3.org/html5/spec/Overview.html">W3C HTML5 specifications</a>. This article shows some of the new functionality of the proposed form chapter of <abbr>HTML</abbr>5: <a href="http://www.whatwg.org/specs/web-forms/current-work/">Web Forms 2</a>. Opera supports Web Forms 2 from Version 9.5 or later. To test it, <a href="http://www.opera.com/browser">grab the latest version of Opera.</a>
+
+<h2><code>autofocus</code> and omitting attributes</h2>
+<p>The new Web Forms allows you to do validation and a number of other features in a more declarative way making it much easier to author. For instance this code example:</p>
+<pre id="example-autofocus-wrong">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;<code>
+ &lt;p&gt;&lt;label&gt;Search: &lt;input name=search type=&quot;text&quot; id=&quot;search&quot;&gt;&lt;/label&gt;&lt;/p&gt;
+ &lt;script&gt; document.getElementById(&#39;search&#39;).focus() &lt;/script&gt;
+ <span class="comment">&lt;!-- the rest of the form --&gt;</span>
+&lt;/form&gt;</code></pre>
+<p>can be written using the new form functionality as follows:</p>
+<pre id="example-autofocus-right"><code>&lt;form&gt;
+ &lt;p&gt;&lt;label&gt;Search: &lt;input name=search <span class="m">autofocus</span>&gt;&lt;/label&gt;&lt;/p&gt;
+  <span class="comment">&lt;!-- the rest of the form --&gt;</span>
+&lt;/form&gt;</code></pre>
+
+<p>Some code has been removed from the example and a new attribute, <code class="mattr">autofocus</code>, has been added. The <a href="http://www.whatwg.org/specs/web-forms/current-work/#the-autofocus"><code class="mattr">autofocus</code></a> attribute effectively removed the need for the <code class="mtag">script</code> element and the <code class="mattr">id</code> attribute on <code class="mtag">input</code> which was used by the script. The <code class="mattr">method</code> attribute on the <code class="mtag">form</code> element can be omitted because the form will do a <code>GET</code> request by default. Similarly, <code class="mtag">input</code> controls are <code class="mvalue">text</code> by default. Per Web Forms 2 you can also omit the <code class="mattr">action</code> attribute when set to the empty string. Indeed, it will give you the same result.</p>
+
+<h2>Form validation</h2>
+<p>Nowadays web developers use nifty scripts to perform form validation on the client side. Soon you&#39;ll be able to simply write the following:</p>
+<pre id="example-validation"><code>&lt;form&gt;
+ &lt;p&gt;&lt;label&gt;Name: &lt;input name=name <span class="m mattr">required</span>&gt;&lt;/label&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;label&gt;E-mail: &lt;input name=email <span class="m">type=<span class="mvalue">email</span> required</span>&gt;&lt;/label&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;label&gt;URL: &lt;input name=url <span class="m">type=url</span>&gt;&lt;/label&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;label&gt;Comment: &lt;textarea name=comment <span class="m mattr">required</span>&gt;&lt;/textarea&gt;&lt;/label&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;input type=submit value=React!&gt;&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+<p>I&#39;d argue that it&#39;s almost as readable as English! When the user tries to submit the form the user agent checks if all conditions are being met and if that&#39;s the case it submits the form and otherwise it shows an error message to the user. Of course, you should always have server-side validation but in case the user agent supports the new forms this might just save your user a few round trips. Better for usability and your bandwidth.</p>
+<p>What I&#39;ve introduced in the above example are a few of the new controls: <code class="mvalue"><a href="http://www.whatwg.org/specs/web-forms/current-work/#email">email</a></code> and <code class="mvalue"><a href="http://www.whatwg.org/specs/web-forms/current-work/#url">url</a></code>. And also a new attribute available to all form controls: <a href="http://www.whatwg.org/specs/web-forms/current-work/#the-required"><code>required</code></a>. Besides these, Web Forms 2 also includes controls for dates, time and numbers.</p>
+
+<h2>Styling controls</h2>
+<p>If you want to style a required form control (<code>&lt;input required&gt;</code>) that&#39;s quite trivial using some of the new pseudo-classes:</p>
+<pre>input:required { background:yellow }</pre>
+<p>Simarly for disabled controls, checked checkboxes, the default submit button, read-only controls, et cetera:</p>
+<pre>input:disabled { ... }
+input:checked + label { ... }
+input[type=button]:default { ... }
+input:read-only { ... }</pre>
+
+<p><a href="../../../../devfiles.myopera.com/articles/67/example.html">This form example</a> shows these features in action.</p></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/anne.html" rel="author">Anne van Kesteren</a></h1>
+        <a href="../../../author/anne.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/31c/9d3271b8679e17620609d35c10b249e1b23.png" alt=""/></a>
+        <p>Anne van Kesteren works for Opera Software from his home in the Netherlands. He also travels a fair bit to talk about standards. His goal is to keep the Web an open place and fix all the bugs in Web standards.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/2.5/" rel="license">Creative Commons Attribution, Non Commercial - No Derivs 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=169941">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/anne.html" rel="author">Anne van Kesteren</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, December 13, 2006
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/forms.html" rel="tag">forms</a></li>
+        <li><a href="../../tags/html5.html" rel="tag">html5</a></li>
+        <li><a href="../../tags/selectors.html" rel="tag">selectors</a></li>
+        <li><a href="../../tags/whatwg.html" rel="tag">whatwg</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../improve-your-forms-using-html5-fr/index.html">French</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

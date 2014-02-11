@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Automatic numbering with CSS Counters - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Automatic numbering with CSS Counters</h1>
+      <p class="print author">By David Storey</p>
+
+      <p class="note">Note that there is a Czech translation of this article available - <a href="http://zdrojak.root.cz/clanky/automaticke-cislovani-pomoci-css/"><span lang="cs">Automatické číslování pomocí kaskádových stylů</span></a> - translated by Martin Hassman.</p>
+
+<h2>Introduction</h2>
+
+<p>When writing documents, it is often useful to number sections and have a table of contents.  You can number these by hand, directly in the markup, but this can be time consuming if the order changes and you have to edit all the numbers.  CSS2.1 gives us a automated way to generate numbers using CSS counters, and this article will walk you through how to use them. One word of note before we start is that CSS counters are not yet implemented in IE, although they are on the roadmap for IE8.</p>
+
+<h2>Setting up the counter</h2>
+
+<p>The first step is to reset the counter to its base value and give it a name.  This can be achieved with the <code>counter-reset</code> property, like the following example:</p>
+
+<pre><code>body { counter-reset: section; }</code></pre>
+
+<p>This says that the counter will be reset to zero on the <code>body</code> element, and the counter identifier is <var>section</var>.  This can be any name that you wish.  The property can also take a optional second value that sets the starting value of the counter.  If you’d like the counter to start counting from 5 upwards, you can specify it like so:</p>
+
+<pre><code>body { counter-reset: section 4; }</code></pre>
+
+<p>The reason for setting it at 4 is that it always increments the counter just before it displays it. So if you start it at 4, at the moment before it displays it, the value increases to 5.</p>
+
+<h2>Incrementing the counter</h2>
+
+<p>The next step is to specify when the counter increments and by what value.  This can be specified with the <code>counter-increment</code> property. If no value is specified then a default increment of one is used:</p>
+
+<pre><code>body { counter-reset: section 4; }
+
+<strong>h2 { counter-increment: section; }</strong></code></pre>
+
+<p>If you’d like it to increment by two instead, you could specify it like so:</p>
+
+<pre><code>h2 { counter-increment: section 2; }</code></pre>
+
+<p>The property also accepts 0 and negative values. If the counter is reset and incremented on the same element, then it is reset first then incremented by the specified value, therefore in the following example, the value will always be 2:</p>
+
+<pre><code>h2 { 
+  counter-reset: section;
+  counter-increment: section;
+}</code></pre>
+
+
+<h2>Displaying the counter</h2>
+
+<p>Once the counter is set up, you need to display it on the page.  This can be done with generated content using the <code>counter</code> function, and the <code>:before </code> pseudo class:</p>
+
+<pre><code>body { counter-reset: section 4; }
+
+h2 { counter-increment: section; }
+
+<strong>h2:before  { counter(section) “ “; }</strong></code></pre>
+
+<p>If you use a counter and increment it  on the same element, like I have done in the examples above on the <code>h2</code> element, then it is incremented <em>before</em> it is used. </p> 
+
+<p>View the <a href="../../../../devfiles.myopera.com/articles/501/counters-example-1.html">finished CSS counters example</a>.</p>
+
+<h2>Using two or more counters</h2>
+
+<p>The <code>counter</code> function can used more than once on the <code>content</code> property.  In the following example I use two counters to specify numbering for sections and sub-sections.  The sub-section counter is reset for each new section.</p>
+
+<pre><code>body { counter-reset: section; }
+
+h2 { 
+  counter-increment: section;
+  counter-reset: sub-section;
+}
+
+h2:before, h3:before  { content: counter(section) “.“ counter(sub-section) “ “; }
+
+h3:before  {
+  counter-increment: sub-section;
+}</code></pre>
+
+<h2>Using nested counters</h2>
+
+<p>As well as specifying each counter there is also a <code>counters()</code> function for specifying nested counters.  This works fine for elements such as lists, where lists can be nested inside each other.  It wouldn’t work for the example above as the sub-sections are not nested inside the main sections, but are rather sibling elements. </p>
+
+<p>Nested counters can be specified as follows:</p>
+
+<pre><code>ol {
+  counter-reset: section;
+  list-style-type: none;
+}
+		
+ol li { counter-increment: section; }
+            
+<strong>ol li:before  { content: counters(section, &quot;.&quot;) &quot;. &quot;; }</strong></code></pre>
+
+<p>This will increment the counter for each list item, no matter how many nested lists are in the markup.  It is important to reset the counter in the correct place, so that it resets to zero for each of the nested elements.  In this case I reset the counter on the <code>ol</code> element. In the following example the first nested list will start at 1.1 and count up 1.2, 1.3 and so on.  The second nested list would start at 1.1.1 and count up (1.1.2 and so on).</p>  
+
+<pre><code>&lt;ol&gt;
+  &lt;li&gt;item 1
+    &lt;ol&gt;
+      &lt;li&gt;sub item 1
+        &lt;ol&gt;
+          &lt;li&gt;sub-sub item 1&lt;/li&gt;
+          &lt;li&gt;sub-sub item 2&lt;/li&gt;
+          &lt;li&gt;sub-sub item 3&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Sub item 2&lt;/li&gt;
+   &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;item 2&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+<p>View an example using <a href="../../../../devfiles.myopera.com/articles/501/nested-counters-example.html">nested counters</a>.</p>
+
+<h2>Styling counters</h2>
+
+<p>It is possible to style the counter by specifying it as the second argument in the <code>counter</code> or counters functions.  The values are the same as for the <code>list-style-type</code> property.  Although all the values are valid, for counters only a subset make sense, as values such as <code>disc</code>, <code>square</code> and <code>circle</code> stay the same no matter what the value of the counter is.  The style can be specified as follows:</p>
+
+<pre><code>ol li:before  { counter(answer, lower-alpha) “) “; }</code></pre>
+
+<p>View an example using <a href="../../../../devfiles.myopera.com/articles/501/style-counters-example.html">the counter function to style counters</a>.  The example also highlights using non-default counter reset and counter increment values. </p>
+
+<h2>Using counters to replace the deprecated start attribute</h2>
+
+<p>If you have a need to use the <code>start</code> attribute on the <code>ol</code> element, to start a list from a value other than one, and you are using a strict doctype, you will notice that your markup will not validate.  There are arguments over whether the <code>start</code> attribute is presentational or not, and indeed HTML5 has declared that it is no longer deprecated in the current working drafts (at the time of writing). Even if the <code>start</code> attribute is allowed again in HTML5, it doesn’t help with pages that need to be validated against the HTML4 doctype, and the HTML5 doctype is not ready to be used in the production sites yet as HTML5 support is still experimental.  If you want your page to validate you either need to use a transitional doctype or use CSS counters.</p>
+
+<p>If you would like to start a list at 4 instead of 1, you could specify the following CSS:</p>
+
+<pre><code>body { counter-reset: list-order 3; }
+
+ol li { 
+  counter-increment: list-order;
+  list-style-type: none;
+}
+
+ol li:before  { content: counter(list-order) “ “; }</code></pre>
+
+<p>It is important to remove the list marker so that you do not get double numbers.</p>
+
+<p>View an example using <a href="../../../../devfiles.myopera.com/articles/501/counters-start-example.html">CSS counters to replace the <code>start</code> attribute</a>.</p>
+
+
+<h2>Conclusion</h2>
+
+<p>In this article I’ve covered how to specify and style counters in CSS, instead of adding them directly to the markup.  This is useful for things such as numbering sections in articles and tables of contents.  Using this approach saves on maintenance when reordering markup. It is also more flexible as the type of marker can be changed via CSS and will automatically change if you use JavaScript to reorder content on your page, eg if you have a script to sort a list or table.  I also covered how you can use counters as a replacement for the deprecated <code>start</code> attribute on ordered lists.  CSS counters are easy to use when you know how, but the main drawback is that they currently are not supported by IE.</p>
+  
+
+      <section id="author-info">
+        <h1><a href="../../../author/dstorey.html" rel="author">David Storey</a></h1>
+        <a href="../../../author/dstorey.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/f3/119/2440dec3e332b16b8b7845262a1d6e9ca6d.png" alt=""/></a>
+        <p>David Storey heads up the Open the Web initiative at Opera.  This small global team is tasked with improving the compatibility of web sites across Opera&#39;s wide range of browsers, as well as promoting web standards, accessibility and best practices, so that the Web will work for all standards-aware browsers, platforms, devices and users.  He is a member of the W3C Mobile Web Best Practices Working Group.<br/><br/>On his blog, Slightly Ajar, he discusses this work, as well as random topics, from travel to music.  <br/><br/>David previously worked for CERN, home of the World Wide Web, before taking up his post at Opera Software.  <br/></p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=251638">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/dstorey.html" rel="author">David Storey</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, October 1, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/counters.html" rel="tag">counters</a></li>
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/generated.html" rel="tag">generated</a></li>
+        <li><a href="../../tags/IE.html" rel="tag">IE</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

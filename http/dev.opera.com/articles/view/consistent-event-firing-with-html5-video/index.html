@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Consistent event firing with HTML5 video - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Consistent event firing with HTML5 video</h1>
+      <p class="print author">By Simon Pieters</p>
+
+      <h2>Introduction</h2>
+
+<p>If you play around with the HTML5 &lt;video&gt; element for any significant length of time, you may well run into a problem with inconsistently firing events: sometimes you don&#39;t seem to get some events, and sometimes it behaves differently depending on whether you&#39;re testing locally or over the network.</p>
+
+<p>This article explores the problem, and puts forward some solutions.</p>
+
+<h2>Why does it happen?</h2>
+
+<p>The cause of this problem is that there is probably a race condition in effect: the browser fires the events before you have had a chance to set up the event listeners for them. Consider the example below:</p>
+
+<pre><code>&lt;video src=&quot;test.webm&quot; id=&quot;video&quot;&gt;&lt;/video&gt;
+&lt;script&gt;
+var video = document.getElementById(&#39;video&#39;);
+video.onloadedmetadata = function(e) {
+  alert(&#39;Got loadedmetadata!&#39;);
+}
+&lt;/script&gt;</code></pre>
+
+<p>If you test locally or over a fast network, the video will probably load very quickly, which means that the browser will fire <code>loadedmetadata</code> before the script that sets the event listener has run. If on the other hand you test over a slow network, where the video takes a bit longer to load, the script might run before the browser fires the event. Whether you get the event simply depends on network conditions, whether the video is cached, and possibly even where the TCP packet boundaries happen to be in the markup. This can also be affected if you use <code>&lt;source&gt;</code> elements instead of a <code>src=&quot;&quot;</code> attribute, and also affects other events - like <code>loadstart</code>, <code>loadeddata</code>, <code>canplay</code>, etc.
+
+<h2>A permanent solution in the browser?</h2>
+
+<p>Surely this is a bug - isn&#39;t there a way to fix this problem in the browsers? Not really - browsers want to load the video as soon as possible, and cannot know when or if you are going to set an event listener for a particular event. So instead, if there is for example no event listener for <code>loadedmetadata</code> when the browser has loaded the metadata of the video, it just throws away the event.</p>
+
+<h2>How about a fix then?</h2>
+
+<p>To avoid this brittleness, you should make sure that you have set the event listeners before the browser has a chance to fire them. You can either use event listeners as attributes on the <code>&lt;video&gt;</code> element, as follows:</p>
+
+<pre><code>&lt;video src=&quot;test.webm&quot; onloadedmetadata=&quot;alert(&#39;Got loadedmetadata!&#39;)&quot;&gt;&lt;/video&gt;</code></pre>
+
+<p>Or you can create the <code>&lt;video&gt;</code> element in the same script that sets the event listeners:</p>
+
+<pre><code>&lt;script&gt;
+var video = document.createElement(&#39;video&#39;);
+video.onloadedmetadata = function(e) {
+  alert(&#39;Got loadedmetadata!&#39;);
+}
+video.src = &#39;test.webm&#39;;
+document.body.appendChild(video);
+&lt;/script&gt;</code></pre>
+
+<p>Both of these solutions are robust regardless of network conditions - you will always get the <code>loadedmetadata</code> event since the event listener is registered up front.</p>
+<p>If you want to avoid inline JavaScript, but don&#39;t want to write the <code>&lt;video&gt;</code> element with script (you want users without JS to be able to see the video with browser-default controls while users with script get the sexy enhanced video player), you can use a <b>capturing event listener</b> on an ancestor object by setting the last argument of <code>addEventListener</code> to <code>true</code>. This causes the event listener to be invoked in the capturing phase of the event. Events first go through the window object, then the document object, then the root element and down the chain of ancestors of the target element, then the target element itself, and finally, if the event is a bubbling event, it goes back through the target&#39;s ancestors again. The events on media elements are not bubbling events, however, which is why a capturing event listener is needed to listen for a media element event on an ancestor object.</p>
+
+<pre>
+<code>
+&lt;head&gt;
+&lt;script&gt;
+window.addEventListener(&#39;loadedmetadata&#39;, function(e) { 
+  alert(&#39;Got loadedmetadata!&#39;); }, true);
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;video src=&quot;test.webm&quot;&gt;&lt;/video&gt;
+</code>
+</pre>
+
+<p>The event listener will fire for any media element in the page; to know which media element fired the event, use <code>e.target</code>.</p>
+      
+
+</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=759582">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/zcorpan.html" rel="author">Simon Pieters</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, October 6, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/events.html" rel="tag">events</a></li>
+        <li><a href="../../tags/html5.html" rel="tag">html5</a></li>
+        <li><a href="../../tags/video.html" rel="tag">video</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

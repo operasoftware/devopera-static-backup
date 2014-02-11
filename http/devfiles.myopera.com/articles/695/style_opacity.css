@@ -1,0 +1,97 @@
+body {
+  font-family: 'Times New Roman', serif;
+  margin:10px;
+  font-size: 80%;
+} 
+
+h1,h2,h3,li {
+  font-family:'Lucida Grande',Verdana,sans-serif; 
+}
+
+h1 { 
+  font-size:250%;
+} 
+h2 { 
+  font-size:140%; 
+} 
+h3 { 
+  font-size:120%; 
+} 
+
+p {
+  font-size:100%; 
+  line-height:150%;
+  padding-left: 15px;
+  text-align: justify;
+} 
+
+#header { 
+  margin:0 0 0 0; 
+  padding: 1px 0px 0px 10px;
+  border-bottom:1px solid #0f0;
+  background-color: #7f7;
+} 
+ 
+#content { 
+  float:left; 
+  width:60%;
+  padding:0px 10px 10px 30px; 
+  border-right:1px solid #0f0;
+} 
+
+#sidebar { 
+  float:right;
+  width:30%; 
+  margin-bottom:10px; 
+  padding:30px 10px 10px 0px; 
+} 
+
+#footer { 
+  clear:both; 
+  padding:10px; 
+  border-top:1px solid #0f0;  
+}
+
+.news-item {
+  padding: 10px 25px 10px 10px;
+  margin: 20px 20px 20px 0px;
+  border: 1px solid #0f0;
+  background-color: #7f7;
+}
+
+a:link, a:visited {
+  text-decoration: underline;
+  color: #333;
+}
+  
+a:hover, a:active {
+  text-decoration: none;
+  color: #333;
+}
+
+li {
+  padding: 10px 10px 10px 10px;
+  width: 200px;
+  font-size: 140%;
+  list-style: none;
+}
+
+/* CSS 3 rules under here */
+
+h1 {
+  text-shadow: #555 4px 4px 3px;
+}
+
+.news-item {
+  background-color: rgb(0, 255, 0);
+  opacity: 0.4;
+}
+
+#content { 
+  background-image: url(http://devfiles.myopera.com/articles/695/globe.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  -o-background-size: 100% auto;
+  -webkit-background-size: 100% auto;
+  -khtml-background-size: 100% auto;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Advanced Timeline</title>
+<style type="text/css">
+/*TABLE*/
+#timeline	{width:960px; overflow:hidden; overflow-x:scroll; position:relative; border:1px solid #4f6b72; -webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.5); -moz-box-shadow:1px 1px 3px rgba(0,0,0,0.5); box-shadow:1px 1px 3px rgba(0,0,0,0.5); background:#e5d6ca;}
+#main	{width:2470px; margin:10px; height:210px;}
+
+
+/*CONTAINERS AND HEADER*/
+.year	{padding:0; margin-left:-1px; border: 1px solid #000; background:#fff; float:left; height:210px; width:300px;}
+.year:nth-child(even) {background:#f9f6f3;}
+.year:first-child	{border-radius:30px 0 0 30px; -moz-border-radius:30px 0 0 30px;}
+.year:last-child	{border-radius:0 30px 30px 0; -moz-border-radius:0 30px 30px 0;}
+.year:first-child h2{border-radius:29px 0 0 0; -moz-border-radius:26px 0 0 0;}
+.year:last-child h2	{border-radius:0 29px 0 0; -moz-border-radius:0 26px 0 0;}
+
+h2		{font:bold 18px Verdana, sans-serif; color:#fff; text-align:center; background:#291200; margin:0 0 20px 0; padding:10px 0; border: 1px solid #000;}
+.gap	{display:block; margin-right:22px;}
+.gap h2::after	{content:"..."; position:absolute; margin-left:125px; color:#000;}
+</style>
+</head>
+  <body>
+<h1>My timeline CV:</h1>
+<div id="timeline">
+	<div id="main">
+	    <div class="year gap">
+			<h2>1986</h2>
+		</div>
+	    <div class="year gap">
+			<h2>2001</h2>
+		</div>
+	    <div class="year">
+			<h2>2005</h2>
+		</div>
+	    <div class="year">
+			<h2>2006</h2>
+		</div>
+	    <div class="year">
+			<h2>2007</h2>
+		</div>
+	    <div class="year">
+			<h2>2008</h2>
+		</div>
+	    <div class="year">
+			<h2>2009</h2>
+		</div>
+	    <div class="year">
+			<h2>2010</h2>
+		</div>
+	</div>
+</div>
+
+  </body>
+</html>

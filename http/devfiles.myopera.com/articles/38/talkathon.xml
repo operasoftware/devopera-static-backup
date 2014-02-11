@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//VoiceXML Forum//DTD XHTML+Voice 1.2//EN"
+"http://www.voicexml.org/specs/multimodal/x+v/12/dtd/xhtml+voice12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ev="http://www.w3.org/2001/xml-events"
+	  xmlns:xv="http://www.voicexml.org/2002/xhtml+voice">
+<head>
+  <title>Example 2: Listen to me</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="speak-now">
+   <block><prompt xv:src="#spoken"/></block>
+  </form>
+  <style type="text/css">
+  #spoken {background: #FFD}
+  h1, h2, h3, h4 {
+     voice-family: child female; 
+	 -xv-voice-volume: loud; 
+	 pause: 1s;
+  }
+  p {
+     voice-family: male 1;
+	 -xv-voice-volume: soft;
+  }
+  .surprise {
+     pause-before: 1.5s;
+	 -xv-voice-volume: x-loud;
+  }
+  .disclaimer {
+     -xv-voice-volume: x-soft; 
+	 -xv-voice-rate: 280;
+  }
+  </style>
+</head>
+
+<body>
+  <h1>Example 2:  Listen to me</h1>
+  <p>Either use an Opera command to speak the following paragraphs <button ev:event="focus" ev:handler="#speak-now">or click this button</button></p>
+<div id="spoken">
+<h2>Opera releases voice browser</h2>
+<p>Opera Software has released a browser to fulfil all your conversational needs. Like any good partner it can listen to you, ignore you, and talk back <span class="surprise">at the least expected moment.</span></p>
+<h3 class="disclaimer">Disclaimer</h3>
+<p class="disclaimer">Void when used in the vicinity of person or persons of human or inhuman origin.</p>
+</div>
+<h2 class="source">Source code </h2>
+<object class="source" data="talkathon.txt" type="text/plain">
+   <a href="talkathon.txt">The source code</a>
+</object>
+</body>
+</html>

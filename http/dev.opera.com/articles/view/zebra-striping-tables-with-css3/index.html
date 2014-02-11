@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> Zebra striping tables with CSS3 - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1> Zebra striping tables with CSS3</h1>
+      <p class="print author">By Christopher Schmitt</p>
+
+      <h2>Introduction</h2>
+	<p>Zebra striping—or, coloring or shading alternate rows on a table—is thought to enhance the usability of a table by guiding the user’s eye along a row. This method has been used in print for years, and many designers try to emulate this technique when making tables for the Web. CSS has made achieving zebra striping easier, but, up until CSS3, it still involved a bit of cumbersome coding.&#xA0; </p>
+	<p>With the advent of CSS3’s <code>nth-child</code> selector, we are able to target multiple elements in a document by creating a &quot;counter&quot; that skips over&#xA0;specified children in the document tree. This allows us, specifically, to style only the odd or even rows of a table. This article details how to use <code>nth-child</code> sucessfully.</p>
+
+<p><a href="../../../../devfiles.myopera.com/articles/480/zebra_striping_demos.zip">Download the sample code for this article</a>.</p>
+
+
+<h2>The bad old days ...</h2>
+	<p>Before we begin covering how to use this new selector, let’s review the old way of doing things. First, we would have to add a class attribute to every other table row:</p>
+	
+<pre>&lt;table&gt;
+  &lt;tr valign=&quot;top&quot; <strong>class=&quot;odd&quot;</strong>&gt;
+    &lt;td&gt;Salmon&lt;/td&gt;
+    &lt;td&gt;Omega-3&#39;s help the brain develop properly, reduce the risk of Alzheimer&#39;s, and help prevent heart disease.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot;&gt;
+    &lt;td&gt;Spinach&lt;/td&gt;
+    &lt;td&gt;Great source of folate and lutein. Prevents birth defects, heart disease, stroke, and protects your skin from sun damage.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr valign=&quot;top&quot; <strong>class=&quot;odd&quot;</strong>&gt;
+    &lt;td&gt;Sweet Potatoes&lt;/td&gt;
+    &lt;td&gt;Beta carotene protects your skin from sun damage.&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+
+	<p>Luckily, our table is fairly small, so this doesn’t require too much work. But you could imagine how tedious this process would be if our table was dozens of rows long! We would then add a CSS rule that targeted those rows:</p>
+	
+<pre>tr.odd {
+  background-color: #99ff99;
+}</pre>
+	<p>While this method works, it’s a bit inefficient in that it requires extra markup in the HTML document. This markup, in turn, doesn’t really add anything semantically valuable: The odd rows don’t serve a different function&#xA0;than the even rows; we just want them to look different. Hence, we haven’t kept the structure separate from the presentation. Not to mention that coding a large table this way can be a frustrating task.</p>
+	<h2>Introducing the nth-child</h2>
+	<p>CSS3, however, includes selectors that let us keep our hands out of the markup and use just CSS to pick out the rows we want to style. The relevant selector—the nth-child selector—is a bit complicated, so let’s take a moment to understand how it works. </p>
+	<p>The <code>nth-child</code> selector targets elements in a document tree that have a certain number of siblings <em>before</em> it. Where <code>n</code> is an integer, <code>:nth-child(an+b)</code> would match the element that has an+b-1 siblings before it.</p>
+	<p>What does this mean? </p>
+	<p>That <code>n</code> is basically a counter: it begins with zero, then it moves up incrementally until it runs out of children elements. Then the <code>b</code> variable represents the counter’s starting place—in other words, the position of first element we begin counting from. Finally, the <code>a</code> variable represents the positions of the elements we match after that. </p>
+	<p>To clear things up a bit, let’s break down an example:</p>
+	
+ <pre>:nth-child(<strong>5</strong>n+<strong>2</strong>)</pre>
+ 
+	<p>In our hypothetical example above, the <code>b</code> variable is set as two, which means that the first element targeted is the <em>second</em> child beneath the parent in the document tree, the second paragraph within the body, or the second item within a list. </p>
+	
+	<p>Also in the example above, the <code>a</code> variable is set to five, which means that every fifth child after that is also to be targeted. Now that we’ve defined both <code>a</code> and <code>b</code> variables, we can determine which child elements are going to be styled. By plugging in the starting value of <em>zero</em> and counting till we run out of child elements, we can determine which child elements get styled.</p>
+	
+	<p>In this example as shown in Table 1, you can see that the second child element is matched, then the seventh, then the twelfth, and so on, until we’ve run out of elements.</p>
+	<table border="1">
+      <tr>
+        <th colspan="4" scope="col">Which child element gets selected?</th>
+      </tr>
+      <tr>
+        <th width="122" scope="col">Child Element</th>
+        <th colspan="3" scope="col">Formulas</th>
+      </tr>
+      <tr>
+        <th scope="row">&#xA0;</th>
+        <th width="81" scope="col">n</th>
+        <th width="81" scope="col">5n</th>
+        <th width="73" scope="col">5n+2</th>
+      </tr>
+      <tr>
+        <th scope="row">0</th>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">9</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">10</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">11</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">12</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+    </table>
+	<p class="comment">Table 1. Demonstrating which child element is selected</p>
+	<h2>Calculating zebra stripes</h2>
+	<p>How does this selector help us with zebra striping? Note that this formula allows for some quite complicated configurations—making it very versatile. To target only odd or even elements, however, we need only remember two kinds of selectors. </p>
+	<p>To target all even rows as shown in Table 2, we can use the following selector: </p>
+
+	  <pre>tr:nth-child(2n)</pre>
+
+	<table border="1">
+      <tr>
+        <th colspan="3" scope="col">Which child element gets selected?</th>
+      </tr>
+      <tr>
+        <th width="122" scope="col">Child&#xA0;Element</th>
+        <th colspan="2" scope="col">Formulas</th>
+      </tr>
+      <tr>
+        <th scope="row">&#xA0;</th>
+        <th width="120" scope="col">n</th>
+        <th width="118" scope="col">2n</th>
+      </tr>
+      <tr>
+        <th scope="row">0</th>
+        <td>n/a</td>
+        <td>n/a</td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Y</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Y</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Y</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Y</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">9</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">10</th>
+        <td>Y</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">11</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">12</th>
+        <td>Y</td>
+        <td>Y</td>
+      </tr>
+    </table>
+	<p class="comment">Table 2. Demonstrating that only even-numbered of rows are selected</p>
+	<p>To target all odd rows, we would compose the following selector:</p>
+	
+	<pre>tr:nth-child(2n+1)</pre>
+	
+	<p>This selector matches the first row within a table, and every second row after that—all of the odd rows as shown in Table 3. </p>
+	<table border="1">
+      <tr>
+        <th colspan="4" scope="col">Which child element gets selected?</th>
+      </tr>
+      <tr>
+        <th width="122" scope="col">Child&#xA0;Element</th>
+        <th colspan="3" scope="col">Formulas</th>
+      </tr>
+      <tr>
+        <th scope="row">&#xA0;</th>
+        <th width="81" scope="col">n</th>
+        <th width="81" scope="col">2n</th>
+        <th width="73" scope="col">2n+1</th>
+      </tr>
+      <tr>
+        <th scope="row">0</th>
+        <td>n/a</td>
+        <td>n/a</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">9</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">10</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+      <tr>
+        <th scope="row">11</th>
+        <td>Y</td>
+        <td>&#xA0;</td>
+        <td>Y</td>
+      </tr>
+      <tr>
+        <th scope="row">12</th>
+        <td>Y</td>
+        <td>Y</td>
+        <td>&#xA0;</td>
+      </tr>
+    </table>
+	<p class="comment">Table 3. Demonstrating that only odd-numbered of rows are selected</p>
+	<h2>Illustrating zebra striping</h2>
+	<p> Figure 1 shows a table listing various &quot;superfoods&quot; and their nutritional virtues as an demonstration of zebra striping.</p>
+	<p><img src="../../../../devfiles.myopera.com/articles/480/html-table_no-style.png" width="747" height="581" alt="a sample HTML table with no particular row styling" /></p>
+	<p class="comment">Figure 1: The HTML table</p>
+	<p> In this demonstration, we want to color the background of the odd rows so that the table is easier to read. The declaration block is written as such:</p>
+	
+<pre>tr:nth-child(2n+1) {
+  background-color: #99ff99;
+}</pre>
+    
+	<p>This rule matches all of the odd rows, and applies the background color only to that row as shown in Figure 2.</p>
+	<p><img src="../../../../devfiles.myopera.com/articles/480/html-table_css-zebra-stripes.png" width="747" height="581" alt="the same example table as before with zebra stripes created using nth child" /></p>
+	<p class="comment">Figure 2: Only the even-numbered rows are styled</p>
+	<p>If these formulas are too complicated for you to remember, the<code> nth-child</code> property allows the math-challenged to use keyword shortcuts. Instead of a mathematical formula, we can also use the &quot;odd&quot; or &quot;even&quot; keywords as a value: </p>
+
+<pre>tr:nth-child(<strong>odd</strong>) {
+  background-color: #99ff99;
+}</pre>
+
+	<p>CSS3 provides us with a hassle-free technique for zebra-striping our tables, list items or forms, and so on. </p>
+	<p>Unfortunately, the <code>nth-child</code> selector enjoys limited browser support. As of this writing, the nth-child selector works in Safari 3 and Opera 9.5. Sadly, you may want to stick to the more inefficient CSS coding method until support for the property is brought up to speed in other browsers. Or, if you want to support other browers like Internet Explorer with easy method of zebra striping, you can <a href="http://web.archive.org/web/20080730063636/http://15daysofjquery.com/examples/zebra/">&quot;patch&quot; up <code>nth-child</code> support</a> in those browsers. By using a JavaScript framework like <a href="http://jquery.com/">jQuery</a>, you can deliver a JavaScript-enabled solution through <a href="../supporting-ie-with-conditional-comments/index.html">conditional comments</a> to just IE while the other browsers use the CSS rules to style the page.</p>
+
+<h2>Superfoods table live example</h2>
+
+<p>If you have a browser that supports <code>nth-child</code>, <a href="../../../../devfiles.myopera.com/articles/480/zebra2.html">this linked HTML table will appear to be zebra-striped</a>. The CSS is inserted in the <code>head</code> on this page so you can view source to easily check out what is going on.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=247860">My Opera</a>.</p>
+  <ul>
+    <li id="comment-80624162">
+      <a href="../../../author/YangombiUmpakati.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/da/b06/9a390b5819bf839fd6e848d90701094a1e8.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/YangombiUmpakati.html">YangombiUmpakati</a></p>
+      <p class="commentdate">Wednesday, January 25, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>thx, helpful :)</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/teleject.html" rel="author">Christopher Schmitt</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, August 28, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/child.html" rel="tag">child</a></li>
+        <li><a href="../../tags/nth.html" rel="tag">nth</a></li>
+        <li><a href="../../tags/nth-child.html" rel="tag">nth-child</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

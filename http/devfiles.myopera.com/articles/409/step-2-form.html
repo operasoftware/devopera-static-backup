@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <title>Step 2: added structure and accessibility</title>
+</head>
+
+
+<body>
+
+<h1>My feedback form</h1>
+
+<form id="contact-form" action="http://devfiles.myopera.com/articles/409/script.php" method="post">
+
+<input type="hidden" name="redirect" value="http://www.opera.com" />
+<ul>
+<li><label for="name">Name:</label> <input type="text" name="name" id="name" value="" /></li>
+<li><label for="email">Email:</label> <input type="text" name="email" id="email" value="" /></li>
+<li><label for="comments">Comments:</label> <textarea name="comments" id="comments" cols="25" rows="3"></textarea></li>
+<li><input type="submit" value="submit" /><input type="reset" value="reset" /></li>
+</ul>
+</form>
+</body>
+</html>

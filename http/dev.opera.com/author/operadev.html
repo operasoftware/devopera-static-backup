@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Software - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../feeds/atom/articles">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body>
+    <header role="banner"  >
+      <div>
+        <a href="../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" class="authorinfo" role="main">
+  <aside>
+  <h2>Opera Software</h2>
+  <img src="http://devfiles.myopera.com/operadev/authorpic.jpg" alt="photo"/>
+  <ul class="nobullets">
+  <li><strong>User Name:</strong> operadev</li>
+  <li><a href="http://my.opera.com/operadev/about/"> View profile on My Opera</a></li>
+  </ul>
+  </aside>
+  <h3>Articles:</h3>
+  <ul class="results">
+    <li>
+      <p><a lang="zh-tw" href="../articles/view/opera-tv-store-app-templates-zh-tw/index.html" class="title">Opera TV Store 應用程式範本</a></p>
+      <p>Wednesday, October 17, 2012</p>
+    </li>
+    <li>
+      <p><a lang="zh-cn" href="../articles/view/opera-tv-store-app-templates-zh-cn/index.html" class="title">Opera TV Store 应用程序模板</a></p>
+      <p>Wednesday, October 17, 2012</p>
+    </li>
+    <li>
+      <p><a lang="vi" href="../articles/view/opera-tv-store-app-templates-vi/index.html" class="title">Mẫu (template) cho kho ứng dụng Opera TV Store</a></p>
+      <p>Wednesday, October 17, 2012</p>
+    </li>
+    <li>
+      <p><a lang="th" href="../articles/view/opera-tv-store-app-templates-th/index.html" class="title">เทมเพลตแอป Opera TV Store </a></p>
+      <p>Wednesday, October 17, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-target/index.html" class="title">MenuEvent.target</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-srcelement/index.html" class="title">MenuEvent.srcElement</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-source/index.html" class="title">MenuEvent.source</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-mediatype/index.html" class="title">MenuEvent.mediaType</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-iseditable/index.html" class="title">MenuEvent.isEditable</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu/index.html" class="title">Context Menu API</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-srcurl/index.html" class="title">MenuEvent.srcURL</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-selectiontext/index.html" class="title">MenuEvent.selectionText</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-pageurl/index.html" class="title">MenuEvent.pageURL</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-linkurl/index.html" class="title">MenuEvent.linkURL</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-documenturl/index.html" class="title">MenuEvent.documentURL</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-type/index.html" class="title">MenuItem.type</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-title/index.html" class="title">MenuItem.title</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-targeturlpatterns/index.html" class="title">MenuItem.targetURLPatterns</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-parent/index.html" class="title">MenuItem.parent</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-id/index.html" class="title">MenuItem.id</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-icon/index.html" class="title">MenuItem.icon</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-documenturlpatterns/index.html" class="title">MenuItem.documentURLPatterns</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-disabled/index.html" class="title">MenuItem.disabled</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-contexts/index.html" class="title">MenuItem.contexts</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-onclick/index.html" class="title">opera.contexts.menu.onclick and MenuItem.onclick</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-length/index.html" class="title">opera.contexts.menu.length</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-removeitem/index.html" class="title">opera.contexts.menu.removeItem() and MenuItem.removeItem()</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-item/index.html" class="title">opera.contexts.menu.item() and MenuItem.item()</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-additem/index.html" class="title">opera.contexts.menu.addItem() and MenuItem.addItem()</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-contextmenu-createitem/index.html" class="title">opera.contexts.menu.createItem()</a></p>
+      <p>Friday, August 24, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-urlfilter-syntax/index.html" class="title">URL Filter syntax</a></p>
+      <p>Tuesday, May 22, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-resourceloader-getfile/index.html" class="title">opera.extension.getFile()</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-resourceloader/index.html" class="title">Resource Loader API</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-screenshot-getscreenshot/index.html" class="title">opera.extension.getScreenshot() and BrowserTab.getScreenshot()</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-screenshot/index.html" class="title">Screenshot API</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-ruleoptions-thirdparty/index.html" class="title">RuleOptions.thirdParty</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-ruleoptions-resources/index.html" class="title">RuleOptions.resources</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-ruleoptions-includedomains/index.html" class="title">RuleOptions.includeDomains</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-ruleoptions-excludedomains/index.html" class="title">RuleOptions.excludeDomains</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-urlfilter-allow-add/index.html" class="title">opera.extension.urlfilter.allow.add()</a></p>
+      <p>Wednesday, May 16, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-windows-tabs/index.html" class="title">Windows &amp; Tabs API</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-focused/index.html" class="title">BrowserTab.focused</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-position/index.html" class="title">BrowserTab.position</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-tabgroup/index.html" class="title">BrowserTab.tabGroup</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-browserwindow/index.html" class="title">BrowserTab.browserWindow</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-url/index.html" class="title">BrowserTab.url</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-title/index.html" class="title">BrowserTab.title</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-faviconurl/index.html" class="title">BrowserTab.faviconUrl</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-readystate/index.html" class="title">BrowserTab.readyState</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-selected/index.html" class="title">BrowserTab.selected</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-private/index.html" class="title">BrowserTab.private</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-locked/index.html" class="title">BrowserTab.locked</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-closed/index.html" class="title">BrowserTab.closed</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-id/index.html" class="title">BrowserTab.id</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-update/index.html" class="title">BrowserTab.update()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-focus/index.html" class="title">BrowserTab.focus()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tab-close/index.html" class="title">BrowserTab.close()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabs-getselected/index.html" class="title">opera.extension.tabs.getSelected()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabs-getall/index.html" class="title">opera.extension.tabs.getAll()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabs-create/index.html" class="title">opera.extension.tabs.create()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-position/index.html" class="title">BrowserTabGroup.position</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-tabs/index.html" class="title">BrowserTabGroup.tabs</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-browserwindow/index.html" class="title">BrowserTabGroup.browserWindow</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-collapsed/index.html" class="title">BrowserTabGroup.collapsed</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-closed/index.html" class="title">BrowserTabGroup.closed</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-id/index.html" class="title">BrowserTabGroup.id</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-update/index.html" class="title">BrowserTabGroup.update()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-insert/index.html" class="title">BrowserTabGroup.insert()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-focus/index.html" class="title">BrowserTabGroup.focus()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroup-close/index.html" class="title">BrowserTabGroup.close()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroups-getall/index.html" class="title">opera.extension.tabGroups.getAll()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-tabgroups-create/index.html" class="title">opera.extension.tabGroups.create()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-left/index.html" class="title">BrowserWindow.left</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-top/index.html" class="title">BrowserWindow.top</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-width/index.html" class="title">BrowserWindow.width</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-height/index.html" class="title">BrowserWindow.height</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-tabs/index.html" class="title">BrowserWindow.tabs</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-tabgroups/index.html" class="title">BrowserWindow.tabGroups</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-private/index.html" class="title">BrowserWindow.private</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-focused/index.html" class="title">BrowserWindow.focused</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-closed/index.html" class="title">BrowserWindow.closed</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-id/index.html" class="title">BrowserWindow.id</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-update/index.html" class="title">BrowserWindow.update()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-focus/index.html" class="title">BrowserWindow.focus()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-close/index.html" class="title">BrowserWindow.close()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-window-insert/index.html" class="title">BrowserWindow.insert()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-windows-getlastfocused/index.html" class="title">opera.extension.windows.getLastFocused()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-windows-getall/index.html" class="title">opera.extension.windows.getAll()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-windows-create/index.html" class="title">opera.extension.windows.create()</a></p>
+      <p>Thursday, April 26, 2012</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-toolbar-createitem/index.html" class="title">opera.contexts.toolbar.createItem()</a></p>
+      <p>Friday, December 16, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-browser-toolbar/index.html" class="title">Button &amp; Badge API</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-addeventlistener/index.html" class="title">Button.addEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-badge/index.html" class="title">Button.badge</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-disabled/index.html" class="title">Button.disabled</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-icon/index.html" class="title">Button.icon</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-onclick/index.html" class="title">Button.onclick</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-popup/index.html" class="title">Button.popup</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-removeeventlistener/index.html" class="title">Button.removeEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-button-title/index.html" class="title">Button.title</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-toolbar-additem/index.html" class="title">opera.contexts.toolbar.addItem()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-toolbar-length/index.html" class="title">opera.contexts.toolbar.length</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-toolbar-removeitem/index.html" class="title">opera.contexts.toolbar.removeItem()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-badge-textcontent/index.html" class="title">Badge.textContent</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-badge-display/index.html" class="title">Badge.display</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-badge-color/index.html" class="title">Badge.color</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-badge-backgroundcolor/index.html" class="title">Badge.backgroundColor</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-xml/index.html" class="title">config.xml</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-xml-lang/index.html" class="title">xml:lang attribute</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-widget/index.html" class="title">widget element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-span/index.html" class="title">span element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-preference/index.html" class="title">preference element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-name/index.html" class="title">name element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-license/index.html" class="title">license element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-icon/index.html" class="title">icon element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-feature/index.html" class="title">feature element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-dir/index.html" class="title">dir attribute</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-description/index.html" class="title">description element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-content/index.html" class="title">content element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-author/index.html" class="title">author element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-config-access/index.html" class="title">access element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-object/index.html" class="title">Widget object</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-version/index.html" class="title">widget.version</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-shortname/index.html" class="title">widget.shortName</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-preferences/index.html" class="title">widget.preferences</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-name/index.html" class="title">widget.name</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-id/index.html" class="title">widget.id</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-description/index.html" class="title">widget.description</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-authorhref/index.html" class="title">widget.authorHref</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-authoremail/index.html" class="title">widget.authorEmail</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-widget-author/index.html" class="title">widget.author</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging/index.html" class="title">Messaging API</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging-broadcastmessage/index.html" class="title">opera.extension.broadcastMessage()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging-removeeventlistener/index.html" class="title">opera.extension.removeEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging-addeventlistener/index.html" class="title">opera.extension.addEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging-onmessage/index.html" class="title">opera.extension.onmessage</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging-ondisconnect/index.html" class="title">opera.extension.ondisconnect</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging-onconnect/index.html" class="title">opera.extension.onconnect</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-messaging-bgprocess/index.html" class="title">opera.extension.bgProcess</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup-removeeventlistener/index.html" class="title">opera.extension.removeEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup-addeventlistener/index.html" class="title">opera.extension.addEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup-postmessage/index.html" class="title">opera.extension.postMessage()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup-onmessage/index.html" class="title">opera.extension.onmessage</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup-width/index.html" class="title">Popup.width</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup-href/index.html" class="title">Popup.href</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup-height/index.html" class="title">Popup.height</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-popup/index.html" class="title">Popup API</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-speeddial-url/index.html" class="title">opera.contexts.speeddial.url</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-speeddial-title/index.html" class="title">opera.contexts.speeddial.title</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-speeddial-param/index.html" class="title">Speed Dial param element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-speeddial-feature/index.html" class="title">Speed Dial feature element</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-speeddial-viewmodes/index.html" class="title">Speed Dial viewmodes attribute</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-speeddial/index.html" class="title">Speed Dial API</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-opera-posterror/index.html" class="title">opera.postError()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-opera-definemagicvariable/index.html" class="title">opera.defineMagicVariable()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-opera-definemagicfunction/index.html" class="title">opera.defineMagicFunction()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-opera-removeeventlistener/index.html" class="title">opera.removeEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-opera-addeventlistener/index.html" class="title">opera.addEventListener()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-injected-scripts/index.html" class="title">Injected scripts</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-urlfilter-block-remove/index.html" class="title">opera.extension.urlfilter.block.remove()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-urlfilter-block-add/index.html" class="title">opera.extension.urlfilter.block.add()</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/extensions-api-urlfilter/index.html" class="title">URL filter API</a></p>
+      <p>Tuesday, December 6, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-for-devices-out-of-memory-system/index.html" class="title">Opera for Devices: Out of Memory System</a></p>
+      <p>Monday, November 21, 2011</p>
+    </li>
+    <li>
+      <p><a lang="ja" href="../articles/view/opera-extensions-publishing-guidelines-ja/index.html" class="title">Opera エクステンションの公開ガイドライン</a></p>
+      <p>Friday, October 28, 2011</p>
+    </li>
+    <li>
+      <p><a lang="ja" href="../articles/view/creating-effective-opera-extension-icons-ja/index.html" class="title">効果的な Opera エクステンションアイコンの作成</a></p>
+      <p>Friday, October 28, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-mini-request-headers/index.html" class="title">Opera Mini request headers</a></p>
+      <p>Monday, August 29, 2011</p>
+    </li>
+    <li>
+      <p><a lang="ja" href="../articles/view/cookie-sharing-in-opera-extensions-ja/index.html" class="title">Opera エクステンションでの cookie 共有</a></p>
+      <p>Wednesday, August 10, 2011</p>
+    </li>
+    <li>
+      <p><a lang="ja" href="../articles/view/creating-opera-speed-dial-extensions-ja/index.html" class="title">Opera Speed Dial エクステンション（拡張機能）の作成</a></p>
+      <p>Wednesday, May 18, 2011</p>
+    </li>
+    <li>
+      <p><a lang="ja" href="../articles/view/opera-speed-dial-enhancements-ja/index.html" class="title">作成したサイトを Speed Dial 内で際立たせるには</a></p>
+      <p>Tuesday, April 26, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-extensions-publishing-guidelines/index.html" class="title">Opera extensions: publishing guidelines</a></p>
+      <p>Thursday, March 31, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-mini-web-content-authoring-guidelines/index.html" class="title">Opera Mini: web content authoring guidelines</a></p>
+      <p>Friday, February 11, 2011</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/how-are-opera-mini-widgets-different/index.html" class="title">How are Opera Mini widgets different?</a></p>
+      <p>Tuesday, December 7, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-mini-widgets-authoring-guidelines/index.html" class="title">Opera Mini widgets authoring guidelines</a></p>
+      <p>Wednesday, December 1, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/icon-creator-tutorial/index.html" class="title">Icon Creator tutorial</a></p>
+      <p>Wednesday, May 5, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/adding-a-docked-mode-to-your-widgets/index.html" class="title">Adding a docked mode to your widgets</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/mobile-widget-development-process-advice/index.html" class="title">Mobile widget development process advice</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/cross-device-development-techniques-for/index.html" class="title">Cross-device development techniques for widgets</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/characteristics-of-widgets-on-mobile-pho/index.html" class="title">Characteristics of widgets on mobile phones</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-cross-platform-applicatio/index.html" class="title">Opera Widgets: cross-platform applications</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-security-model/index.html" class="title">Opera Widgets security model</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-preference-store/index.html" class="title">Opera Widgets Preference Store</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-and-ajax-connecting-to-mu/index.html" class="title">Opera Widgets and Ajax: connecting to multiple servers</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/widget-modes-docked-widget-and-more/index.html" class="title">Widget modes: docked, widget, and more</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widget-support-notes/index.html" class="title">Opera Widget support notes</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/packing-and-deploying-your-opera-widget/index.html" class="title">Packing and deploying your Opera Widget</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/creating-your-first-opera-widget/index.html" class="title">Creating your first Opera widget</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/widget-emulator/index.html" class="title">Widget Emulator</a></p>
+      <p>Tuesday, February 9, 2010</p>
+    </li>
+    <li>
+      <p><a lang="ja" href="../articles/view/efficient-javascript-ja/index.html" class="title">効率的な JavaScript</a></p>
+      <p>Thursday, December 10, 2009</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-web-standards-curriculum-glossary/index.html" class="title">Opera Web Standards Curriculum glossary</a></p>
+      <p>Friday, September 26, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/wcl-developer-guide/index.html" class="title">WCL developer guide</a></p>
+      <p>Thursday, August 21, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/the-opera-animation-library/index.html" class="title">The Opera Animation library</a></p>
+      <p>Wednesday, July 23, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-specification-1-0-third-ed-2/index.html" class="title">Opera Widgets specification 1.0, third edition</a></p>
+      <p>Wednesday, May 21, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-sdk/index.html" class="title">Opera Widgets SDK</a></p>
+      <p>Wednesday, May 21, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-core-dom-reference/index.html" class="title">Opera Widgets - core DOM reference</a></p>
+      <p>Wednesday, May 21, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/file-i-o-api-for-widgets/index.html" class="title">File I/O API</a></p>
+      <p>Thursday, May 15, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/the-opera-plug-in-interface/index.html" class="title">The Opera plug-in interface</a></p>
+      <p>Friday, January 18, 2008</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/a-call-for-video-on-the-web-opera-vid/index.html" class="title">A call for video on the web - Opera &lt;video&gt; release on Labs</a></p>
+      <p>Wednesday, November 7, 2007</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/safe-media-queries/index.html" class="title">Safe media queries</a></p>
+      <p>Wednesday, November 7, 2007</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-widgets-specification-1-0/index.html" class="title">Opera Widgets Specification 1.0</a></p>
+      <p>Monday, April 30, 2007</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/making-small-devices-look-great/index.html" class="title">Making Small Devices Look Great</a></p>
+      <p>Wednesday, March 14, 2007</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/hello-animation/index.html" class="title">Hello Animation!</a></p>
+      <p>Friday, November 24, 2006</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/opera-dev-console-bookmarklet/index.html" class="title">Opera developer console bookmarklet</a></p>
+      <p>Wednesday, November 15, 2006</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/designing-with-opera-mini-in-mind/index.html" class="title">Designing With Opera Mini in Mind</a></p>
+      <p>Monday, November 13, 2006</p>
+    </li>
+    <li>
+      <p><a lang="en" href="../articles/view/the-phone-factor-2/index.html" class="title">The Phone Factor</a></p>
+      <p>Wednesday, November 1, 2006</p>
+    </li>
+  </ul>
+</section>
+
+    <footer>
+      <section role="contentinfo">
+        <p class="copyright"><small>&copy; 2014 Opera Software ASA.</small></p>
+        <ul>
+          <li><a href="../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

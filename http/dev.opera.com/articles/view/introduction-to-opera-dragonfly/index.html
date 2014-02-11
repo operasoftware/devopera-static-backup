@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Introduction to Opera Dragonfly - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Introduction to Opera Dragonfly</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <p class="note">This article is <strong>deprecated</strong>; instead, consult our <a href="http://www.opera.com/dragonfly/documentation/">Opera Dragonfly Field Guide</a> for up-to-date information.</p>
+
+<h2>Introduction</h2>
+
+<p>Now reaching a mature stage of development, Opera Dragonfly is Opera&#39;s comprehensive set of developer tools, designed to give developers a lightweight-but-powerful application that provides effective mechanisms for web standards debugging and problem solving without slowing down the browser, and fits in nicely with the development workflow. The current feature set includes:</p>
+
+<ul>
+<li>JavaScript debugger</li>
+<li>DOM inspector</li>
+<li>CSS inspector</li>
+<li>Command Line to allow commands to be inputed</li>
+<li>Error Console that outputs validation errors and warnings exhibited by the CSS and JavaScript connected with the page</li>
+<li>Proxy to allow debugging directly on mobile devices</li>
+<li>Network analyzer</li>
+<li>Cookie and local storage viewer</li>
+<li>Colour picker</li>
+</ul>
+
+<p>The current release version is an alpha, so it is currently a little rough round the edges; also we decided to implement all the most critical features first, and go from there - we have big plans afoot for our developer tools and you can expect to see a lot of fantastic additions in coming months. It is going to be released under an open source BSD licence.</p>
+
+<p>This articles structure is as follows:</p>
+
+<ul>
+
+<li><a href="index.html#installingdragonfly">How to access Dragonfly</a></li>
+<li><a href="index.html#UIoverview">An overview of the UI</a></li>
+<li><a href="index.html#basictasks">How to perform basic tasks</a>
+<ul>
+<li><a href="index.html#script">The Script tab</a>
+<ul>
+<li><a href="index.html#callstack">The Call Stack panel</a></li>
+<li><a href="index.html#threadlog">The Thread Log panel</a></li>
+<li><a href="index.html#frameinspection">The Frame Inspection panel</a></li>
+<li><a href="index.html#commandline">The Command Line</a></li>
+</ul>
+</li>
+<li><a href="index.html#dom">The DOM tab</a></li>
+<li><a href="index.html#stylesheetstab">The Stylesheets tab</a>
+<ul>
+<li><a href="index.html#stylestab">The Styles tab</a></li>
+<li><a href="index.html#domattributestab">The Properties tab</a></li>
+<li><a href="index.html#layouttab">The Layout tab</a></li>
+</ul>
+
+</li>
+
+<li><a href="index.html#console">The Error Console tab</a></li>
+
+</ul>
+</li>
+<li><a href="index.html#summary">Summary</a></li>
+</ul>
+
+<p><strong>Note</strong>: Opera Dragonfly is not to be confused with the original  
+Opera developer tools (available at <a href="../opera-dev-console-bookmarklet/index.html">http://dev.opera.com/articles/view/opera-developer-tools/</a> 
+ ) - these tools served us well, but are now being superseded by  
+Opera Dragonfly.
+</p>
+
+<h2 id="installingdragonfly">How to access Dragonfly</h2>
+
+<p>Dragonfly is built into the Opera desktop browser and there are four ways to launch it:<p>
+
+<ul>
+  <li>From Opera&#39;s red menu button, select Page &gt; Developer tools &gt; Opera Dragonfly.</li>
+  <li>If you have a menu bar, from the Tools menu select Advanced &gt; Opera Dragonfly (see Figure 1).</li>
+  <li>Right-click on any element in a web page and select Inspect Element from the context menu.</li>
+  <li>Press Ctrl+Shift+i on your keyboard.</li>
+</ul>
+
+<img src="../../../../devfiles.myopera.com/articles/369/open_menu-bar.png" width="454" height="486" alt="The menu option to start the Dragonfly client" />
+<p class="comment">Figure 1: Starting up the Dragonfly client from the menu bar.</p>
+
+<p>Note: There might be an occasion where you&#39;ll want to revert to a different version of the Dragonfly client for whatever reason. If you want to do this, go to the <a href="opera:config">Opera config page</a>, find the Developer Tools section, and make sure it looks like Figure 2. The URL in the Developer Tools URL field points to the Dragonfly client - this needs to be populated with the URL of the client you want to switch to.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/configscreen.gif" alt="The Developer Tools configuration settings" />
+<p class="comment">Figure 2: The opera:config Developer Tools configuration section.</p>
+
+<p>Once you&#39;ve made the change and clicked save, you&#39;ll need to restart Opera for the changes to take effect.</p>
+
+<h2 id="UIoverview">An overview of the UI</h2>
+
+<p>The Dragonfly client looks like Figure 3 by default. Let&#39;s explore it now.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-layout.png" width="578" height="579" alt="The Dragonfly UI" />
+<p class="comment">Figure 3: The default Dragonfly UI.</p>
+
+<p>The different areas are as follows:</p>
+
+<ol>
+  <li>The Script, DOM and Console tabs: These are the main functionality selectors in the UI, which allow you to check out different facets of the web sites loaded into the Opera browser.</li>
+  <li>The site/widget selector: This shows which site or widget is currently loaded and active in Dragonfly. The drop down menu displays the sites and widgets currently available and when you select one, it becomes the active site/widget in Dragonfly.</li>
+  <li>Context sensitive tools: Different tools are shown in these areas, depending on which main tab is selected. We&#39;ll look at all the different options in detail later on.</li>
+  <li>Search boxes/Quick find: Using these, you can search for different terms inside the various panes.</li>
+  <li>The main information window: This shows the full contents of the different scripts, CSS files, etc. you can select from the site information window &#x2014; the contents will differ depending on which main tab is currently active. Again, we&#39;ll look at the different contents later on.</li>
+  <li>The command line: This allows you to enter JavaScript commands to be evaluated by Opera Dragonfly.</li>
+  <li>Information panels: These panels vary depending on which main tab is selected &#x2014; they display different information about the scripts, styles, etc. that you are currently examining. Again, we&#39;ll look at these further later on in the article.</li>
+  <li>This indicator shows the status of the web sites being debugged and the debugger, showing what is active at any one time.</li>
+</ol>
+
+<p>Now that you&#39;re familiar with the basics of Dragonfly, let&#39;s look at what you can do in the different contexts available.</p>
+
+<h2 id="basictasks">How to perform basic tasks</h2>
+
+<p>Let&#39;s start by loading up a few web sites in the version of Opera that Dragonfly is active inside &#x2014; feel free to open up any sites that you are interested in examining. My browser window currently looks like Figure 5.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/browser-screenshot.png" width="630" height="456" alt="Some web sites opened up in Opera" />
+<p class="comment">Figure 5: Some of my favourite web sites open in the Opera desktop browser.</p>
+
+<p>When you open the sites, they will appear in the drop-down menu inside the Dragonfly UI, as shown in Figure 6.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-site-selector.png" width="578" height="115" alt="The web sites appear in the Dragonfly site/widget selector drop-down menu." />
+<p class="comment">Figure 6: The web sites appear in the Dragonfly site/widget selector drop-down menu.</p>
+
+<h3 id="script">The Script tab</h3>
+
+<p>Making sure that the Script tab is selected, select one of ther sites in the drop down menu, and click on one of the black information lines that appear along with the site URL in the site information window. You&#39;ll see the display update as shown in Figure 7. Here I&#39;ve selected an experiment from one of my colleague&#39;s web sites, but you can choose any example you like.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-script-tab.png" width="776" height="647" alt="Examining a JavaScript file in Dragonfly" />
+<p class="comment">Figure 7: Examining a JavaScript file in Dragonfly.</p>
+
+<p>You can set a breakpoint by clicking on the line numbers - see Figure 8 for examples.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/breakpoints.gif" alt="setting breakpoints in the javascript" />
+<p class="comment">Figure 8: Setting breakpoints in the JavaScript.</p>
+
+<p>When you set a breakpoint and then run the script (ie by doing something that causes the part of the script you&#39;ve set a breakpoint on to run, such as click a button), the script will stop executing at the breakpoint, and you can then inspect what the environment looks like in that instant, ie what values the different variables have and so on. See Figure 9 for the result of me clicking a button that executed the <code>playSong()</code> function - the arrow shows the breakpoint that the code stopped at.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/activebreakpoint.gif" alt="The breakpoint that the script paused at." />
+<p class="comment">Figure 9: the arrow shows the break point that the script execution paused at.</p>
+
+<p>Notice the HTML DOM &quot;breadcrumb trail&quot; at the bottom of the window, which indicates where in the DOM Tree the item being examined is at. This appears in all the views. There is also a button in the top left of this tab called &quot;Reload selected window in the host&quot; - this, predictably, reloads the currently selected web page in the browser, to refresh it to its initial state.</p>  
+
+<img src="../../../../devfiles.myopera.com/articles/369/jsbuttons.gif" alt="The JavaScript buttons" />
+<p class="comment">Figure 10: The main button controls in the Script view.</p>
+
+<p>The main buttons (see Figure 10) provide the following functions, from left to right:</p>
+
+<ul>
+<li>Continue (F8): This continues the currently selected script after it has stopped at a breakpoint.</li>
+<li>Step into (F11): This allows you to step into the next function in the stack, after the current function the breakpoint is contained within.</li>
+<li>Step over (F10): This allows you to step to the next line after the one the breakpoint is set on - you can use this multiple times to follow the execution path of the script.</li>
+<li>Step out (Shift + F11): This causes you to step out of the function.</li>
+<li>Stop at new thread: This is an on/off toggle that selects whether the script will stop at the next new thread when run.</li>
+<li>Stop at error: This is an on/off toggle that selects whether the script will stop at the next error when run.</li>
+<li>Log threads: This is an on/off toggle that selects whether the threads will be logged in the threads panel (see top right hand corner.)</li>
+</ul>
+
+<h4 id="callstack">The Call Stack panel</h4>
+
+<p>The Callstack shows the nature of the runtime environment at the time of a specific function call - whathas been called, and in what order. For example, function A calls B, which calls C. First C returns, then B, then A. Each function call will typically change something in the environment, for example changing the value of a variable. Figure 11 shows an example of how the callstack looks after I&#39;ve executed up to my first breakpoint, then stepped into the next function call in the stack.</p>
+
+
+<img src="../../../../devfiles.myopera.com/articles/369/callstack.gif" alt="the callstack panel" />
+<p class="comment">Figure 11: The Call Stack panel, showing the different function calls that make up the call stack.</p>
+
+<p>You can now click on the different calls in the stack to move the identifying arrow in the script window to the position of that call. Try it!</p>
+
+<h4 id="threadlog">The Thread Log panel</h4>
+
+<p>The Thread Log panel records details of the different threads running through the script you are currently examining, provided you have the Log threads button pressed in (see above). Figure 12 shows an example from the Thread Log window after I&#39;ve run my example code.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/threads.gif" alt="the thread log panel in action" />
+<p class="comment">Figure 12: The Thread Log panel in action.</p>
+
+<p>There are two buttons in the Thread Log panel, as follows:
+
+<ul>
+<li>Clear thread log: This does what its name suggests.</li>
+<li>Export thread log: This exports the current thread log to a plain text document in a new browser window.</li>
+</ul>
+
+<h4 id="frameinspection">The Frame Inspection panel</h4>
+
+<p>The Frame Inspection panel lists all of the property values etc for the current call stack, as shown in Figure 13 - frames are specific parts of the call stack. You can change frames by selecting a call in the Call Stack panel.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/frameinspection.gif" alt="the frame inspection panel" />
+<p class="comment">Figure 13: The Frame Inspection panel, showing all the current property values etc for the currently selected call in the stack.</p>
+
+<p>The button in the top left hand corner of the Frame Inspection panel is the &quot;Hide default properties in global scope&quot; button, which does as its name suggests. Try it out.</p>
+
+
+<h4 id="commandline">The Command Line</h4>
+
+<p>The command line panel allows you to input and execute JavaScript commands, to find information and perform tests on the JavaScript code you are currently examining. For example, try entering some simple commands such as:</p>
+
+<pre>var a = 1;
+var b = 2;
+var c = a + b;</pre>
+
+<pre>document.getElementsByTagName(&#39;div&#39;);</pre>
+
+</p>
+
+
+<h3 id="dom">The DOM tab</h3>
+
+<p>Now try selecting the DOM tab and selecting a web site. The display will change to show the DOM of the selected site in a typical expandable/collapsible view, plus Styles, DOM Properties and Layout tabs on the right hand side, which I&#39;ll cover later on (see Figure 14). If you change the tab selection in the second set of tabs down from DOM to Stylesheets, the display in the site information window will change to show what CSS is attached to each web page, and how. Let&#39;s keep it on DOM for now.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-dom-tab.png" width="776" height="627" alt="examining the DOM of a site in Dragonfly." />
+<p class="comment">Figure 14: Examining the DOM of a site in Dragonfly.</p>
+
+<p>Try playing with the DOM tree for a while, selecting different elements and seeing how this affects the display. Notice the green highlight that indicates the currently selected element.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dom-buttons.png" width="213" height="28" alt="The DOM buttons" />
+<p class="comment">Figure 15: The main button controls in the DOM view.</p>
+
+<p>The main buttons (see Figure 15) in the DOM view provide the following functions, from left to right:</p>
+
+<ul>
+  <li>Expand the DOM tree: Clicking this button expands the whole DOM tree.</li>
+  <li>Export current DOM view: Click on this to open up a new tab - Export - which contains the absolute current DOM view, ie collapsed nodes are not shown at all.</li>
+  <li>Find element by clicking: When you have this button pushed in, you can click anywhere on the page to select different elements in the DOM inspector.</li>
+  <li>Highlight by mouse hover: When this button is pressed in, you will get an outline highlighting the currently selected element in the DOM inspector when it is hovered over with the mouse.</li>
+  <li>Update DOM when a node is removed: Only when this button is pressed in, will you see the results of running a JavaScript command to select a node and remove it from the DOM programmatically, for example if you run something like <code>div.parentNode.removeChild(div);</code> on the Dragonfly command line.</li>
+  <li>Draw a border on to selected elements</li>
+  <li>Show comment nodes: Push this in/out to show/hide HTML and CSS comments.</li>
+  <li>Show whitespace nodes: Push this in/out to show/hide whitespace nodes.</li>
+  <li>Show DOM in tree view: When this is pushed in, it shows &quot;tree branches&quot; connecting the different nodes, to give a better idea of the DOM tree hierarchy. Which view style you use is down to personal preference.</li>
+</ul>
+
+<h3 id="stylesheetstab">The Stylesheets tab</h3>
+
+<p>Now let&#39;s try clicking on the Stylesheets tab. This will bring up information on the different stylesheets associated with the web sites or widgets you have loaded. Selecting different stylesheets will change the view to show the contents of the different stylesheets in the bottom Stylesheet tab, as seen in Figure 16.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-stylesheet-tab.png" width="528" height="542" alt="Examining stylesheets" />
+<p class="comment">Figure 16: Examining stylesheets in Dragonfly.</p>
+
+<p>There is a single button at the top left of the Stylesheets tab, &quot;use shortcuts for properties&quot;, which toggles between seeing all CSS properties as expanded longhand, and just seeing the single-line shorthand values (where appropriate.)</p>
+
+<p>Now we&#39;ve looked at what is going on in the left hand side of the screen, let&#39;s turn our attention to the right.</p>
+
+<h4 id="stylestab">The Styles tab</h4>
+
+<p>The Styles tab contains two sections, Computed Style and Styles, as seen in Figure 17.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-styles-tab.png" width="328" height="740" alt="the styles tab" />
+<p class="comment">Figure 16: The two sections of the Styles tab - Computed style and Styles.</p>
+
+<p>The Styles section shows all the CSS that is acting on the currently selected DOM node, and the Computed style section shows the actual computed style values that are in effect on the currently selected on DOM node. As you&#39;ll see form Figure 17, it rather usefully splits the styles up to show what styles are directly applied to the DOM node, and what stryles are inherited from parent nodes.</p>
+
+<p>This tab has two buttons in its top left hand corner, as seen in Figure 18 - they are, from left to right:</p>
+
+<ul>
+<li>Hide initial values in computed styles: This does as expected - pushing it in or out hides/shows initial values in computed styles.</li>
+<li>Hide shorthands in computed styles: As expected, pushing it in or out hides/shows shorthand values in computed styles.</li>
+</ul>
+
+<img src="../../../../devfiles.myopera.com/articles/369/stylesbuttons.gif" alt="The hide empty strings and null values button" />
+<p class="comment">Figure 18: The Styles tab buttons.</p>
+
+<h4 id="domattributestab">The Properties tab</h4>
+
+<p>This tab shows all the attributes of the DOM object for the selected element. Note that these are different from the HTML attributes on the selected element - if you select an <code>img</code> element for example, you will get the full URL of the source they point for the <code>src</code> DOM attribute. See Figure 19 for an example.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-properties-tab.png" width="283" height="492" alt="The Properties tab" />
+<p class="comment">Figure 19: The Properties tab.</p>
+
+<p>This tab has one button in its top left hand corner, &quot;hide empty strings and null values&quot;, which does what it says on the tin &#x2014; pushing it in and out hides/shows empty strings and null values. </p>
+
+
+<h4 id="layouttab">The Layout tab</h4>
+
+<p>This rather useful tab shows a visual representation of the box model as it looks for the currently selected DOM node, along with a breadcrumb trail showing the node in relation to its parent and child nodes, and a list of the offset values, as shown in Figure 20.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-layout-tab.png" width="325" height="630" alt="The layout tab" />
+<p class="comment">Figure 20: The layout tab.</p>
+
+<h3 id="console">Error Console</h3>
+
+<p>Finally, click on the Error Console tab - this will result in the display changing to show CSS and JavaScript validation errors and warnings, as shown in Figure 21.</p>  
+
+<img src="../../../../devfiles.myopera.com/articles/369/dragonfly-error-console.png" width="" height="667" alt="The error console view shows CSS and JavaScript warnings" />
+<p class="comment">Figure 21: The error console view shows CSS and JavaScript warnings and errors.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/369/console-buttons.png" width="67" height="28" alt="The error console buttons" />
+<p class="comment">Figure 22: The main button controls in the error console view.</p>
+
+<p>The buttons in the error console view (see Figure 22) do the following, from left to right:</p>
+
+<ul>
+<li>Clear log: This clears the current contents of the error console tab.</li>
+<li>Use selected runtime as filter: This shows the error console output for just the selected runtime, as opposed to all runtimes.</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<p>In this article we&#39;ve covered the basics of Dragonfly including how to install it, and given you a guided tour of the basics. To find out more, explore the <a href="http://www.opera.com/dragonfly/" alt="the Dragonfly homepage">Dragonfly website</a>, and ask questions and let us know what you think at <a href="../../../../my.opera.com/community/forums/forum.dml%3Fid=11057.html" alt="The Dragonfly support forums">the Dragonfly forums</a>.</p></p></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=231583">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, May 6, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/debugger.html" rel="tag">debugger</a></li>
+        <li><a href="../../tags/deprecated.html" rel="tag">deprecated</a></li>
+        <li><a href="../../tags/developer.html" rel="tag">developer</a></li>
+        <li><a href="../../tags/DOM.html" rel="tag">DOM</a></li>
+        <li><a href="../../tags/dragonfly.html" rel="tag">dragonfly</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/tools.html" rel="tag">tools</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

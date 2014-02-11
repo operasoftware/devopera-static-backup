@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//VoiceXML Forum//DTD XHTML+Voice 1.2//EN"
+"http://www.voicexml.org/specs/multimodal/x+v/12/dtd/xhtml+voice12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ev="http://www.w3.org/2001/xml-events">
+<head>
+  <title>Example 4: Command module</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="sayHello">
+    <block>Hello. Voice is installed.</block>
+  </form>
+  <form xmlns="http://www.w3.org/2001/vxml" id="command">
+   <field name="commandInterpreter">
+  	 <grammar><![CDATA[
+        #JSGF V1.0;
+         grammar command;
+         public <command> = [I want to] <action> {the_action = $action} 
+                            <object> {the_object = $object}  
+                            [with <instrument>{the_instrument=$instrument}];
+         <action> = watch | shut down | surprise | control | buy | hide | ignore ;
+         <object> = [the| a] tv | [the | a] phone | [the | my] neighbor | Opera | my boss;
+         <instrument> = [the] remote control | [my famous] wit | [a] stick | [a] camera | 
+		                [an expired] credit card | a wet blanket;
+         ]]></grammar> 
+  	  <prompt>Give me a command</prompt>
+        <nomatch>I refuse to do that. </nomatch>
+    </field>
+    <filled> <!-- Give feedback -->
+          Why do you want to <value expr="the_action"/> the poor <value expr="the_object"/>?
+    </filled>
+  </form>
+</head>
+
+<body ev:event="load" ev:handler="#sayHello">
+  <h1>Example 4: Give a command</h1>
+  <p>Click the PTT button and tell me what you want.</p>
+  <p><button ev:event="click" ev:handler="#command"><b>P</b>ush<b>T</b>o<b>T</b>alk</button></p>
+
+<h2 class="source">Source code </h2>
+<object class="source" data="big-grammar.txt" type="text/plain">
+   <a href="big-grammar.txt">The source code</a>
+</object>
+</body>
+</html>

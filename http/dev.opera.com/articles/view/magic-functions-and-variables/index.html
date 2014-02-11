@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Magic functions and variables - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Magic functions and variables</h1>
+      <p class="print author">By  Hallvord R. M. Steen</p>
+
+      <h2>Introduction</h2>
+
+<p>Opera comes with two special methods of the <code>opera</code> object&#x2014;<code>window.opera.defineMagicFunction()</code> and <code>window.opera.defineMagicVariable()</code>. These allow you to override global functions and variables defined on a web page, which is especially useful when you want to write some User JS or Opera extensions that modify the behaviour of existing web pages and applications. In fact, these methods are not intended for use on regular pages, only User JS and extensions&#x2014;calling them from a normal web page will have no effect.</p>
+
+<p>This article gives you an explanation of how to use them.</p>
+
+<h2>opera.defineMagicFunction()</h2>
+
+<p>A User Script injected into a web page can override any functions the web page defines in its global scope with <code>opera.defineMagicFunction()</code>. For example, you might want to modify an existing page that includes a simple JavaScript function for showing and hiding an element upon the click of a button:</p>
+
+<pre><code>&lt;div&gt;
+  &lt;button onclick=&quot;toggleElement(this.nextElementSibling)&quot;&gt;show/hide&lt;/button&gt;
+  &lt;div&gt;You can show/hide me&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+function toggleElement( elm ) {
+  if (elm.style.display == &#39;none&#39;) {
+    elm.style.display = &#39;&#39;;
+  } else {
+    elm.style.display = &#39;none&#39;;
+  }
+}&lt;/script&gt;</code></pre>
+
+<p>You could then override this function, adding a smooth CSS3 transition during the hiding and showing, with the following code:</p>
+
+<pre><code>window.opera.defineMagicFunction(&#39;toggleElement&#39;, function(realFunc, realThis, elm) {
+  elm.style.OTransition=&#39;opacity 1s&#39;;
+  elm.style.transition=&#39;opacity 1s&#39;;
+  if (elm.style.opacity == 1 || elm.style.opacity == &#39;&#39;) {
+    elm.style.opacity = 0;
+  } else {
+    elm.style.opacity = 1;
+  }
+});</code></pre>
+
+<p>To see how this works, first install our <a href="../../../../devfiles.myopera.com/articles/4372/magic-function.oex">defineMagicFunction() extension</a>, then check out the <a href="../../../../devfiles.myopera.com/articles/4372/ujs-magic-func-demo.htm">defineMagicFunction() demo page</a>, first with the extension disabled, then with the extension enabled, to see the effect.</p>
+
+<h2>opera.defineMagicVariable()</h2>
+<p>A User Script injected into a web page can redefine variables the page&#39;s script declares in its global scope with <code>opera.defineMagicVariable()</code>. This way you can easily change input data or objects the page uses.</p>
+
+For example, GMail&#39;s login page calculates approximately how much total storage each user has and updates a number in the page every second. The numbers are calculated based on numbers in an array named <code>CP</code>. If you wanted to modify the storage data to make the counter negative for fun, you could do so using the following code:
+
+<pre><code>if (window.location.href.indexOf(&#39;https://www.google.com/accounts/ServiceLogin?service=mail&#39;) == 0) {
+  window.opera.defineMagicVariable(&#39;CP&#39;, function(originalObj) {
+    /* the data is in a double array, [ [1,2], [1,2] ... ] */
+    for (var i = 0, len = originalObj.length; i &lt; len; i++ ) {
+      originalObj[i][1] *= -1;
+    }
+    return originalObj;
+  }, null);
+}</code></pre>
+
+<p>See this in action by installing our <a href="../../../../devfiles.myopera.com/articles/4372/magic-variable.oex">GMail counter <code>defineMagicVariable()</code> extension</a>. If you go to the GMail login page, you should see the effect shown in Figure 1. Please note that the User JS inside this extension will break if Google re-names the variable used in this page.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/4372/image1.png" alt="GMail login page with negative storage counter, just for fun" /></p>
+<p class="comment">Figure 1: The GMail login page with negative storage counter, just for fun or profit?</p>
+
+<p class="note">Note: GMail uses <code>https://</code> so to get this example to work using just User Script, you&#39;ll need to go to <a href="opera:config">opera:config</a> and check the &quot;User JavaScript on HTTPS&quot; check box in the &quot;User Prefs&quot; section. User Script wrapped in an extension, however, is enabled over HTTPS by default so this configuration change isn&#39;t needed.</p>
+
+<h2>Summary</h2>
+
+<p>This pretty much wraps up usage of these two interesting methods. We look forward to seeing how you make use of them in your Opera extensions! Please see the <a href="http://www.opera.com/docs/userjs/">Opera UserJS documentation</a> for more information.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=959632">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/hallvors.html" rel="author"> Hallvord R. M. Steen</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, April 12, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/defineMagicFunction().html" rel="tag">defineMagicFunction()</a></li>
+        <li><a href="../../tags/defineMagicVariable().html" rel="tag">defineMagicVariable()</a></li>
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/magic&#32;function.html" rel="tag">magic function</a></li>
+        <li><a href="../../tags/magic&#32;variable.html" rel="tag">magic variable</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

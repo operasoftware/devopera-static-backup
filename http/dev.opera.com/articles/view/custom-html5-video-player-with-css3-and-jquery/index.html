@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Building a custom HTML5 video player with CSS3 and jQuery - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Building a custom HTML5 video player with CSS3 and jQuery</h1>
+      <p class="print author">By Ionut Colceriu</p>
+
+      <h2>Introduction</h2>
+	
+	<p>The HTML5 <code>&lt;video&gt;</code> element is already supported by most modern browsers, and even IE has support announced for version 9. There are many advantages of having video embedded natively in the browser (covered in the article <a href="../introduction-html5-video/index.html">Introduction to HTML5 video</a> by Bruce Lawson), so many developers are trying to use it as soon as possible. There are a couple of barriers to this that remain, most notably the problem of which codecs are supported in each browser, with a disagreement between Opera/Firefox and IE/Safari. That might not be a problem for much longer though, with Google recently releasing the VP8 codec, and <a href="http://www.webmproject.org/">the WebM project</a> coming into existence. Opera, Firefox, Chrome and IE9 all have support in final builds, developer builds, or at least support announced for this format, and Flash will be able to play VP8. This means that we will soon be able to create a single version of the video that will play in the <code>&lt;video&gt;</code> element in most browsers, and the Flash Player in those that don&#39;t support WebM natively.</p>
+	
+	<p>The other major barrier to consider is building up a custom HTML5 <code>&lt;video&gt;</code> player &#x2014; this is where a Flash-only solution currently has an advantage, with the powerful Flash IDE providing an easy interface with which to create a customized video player component. IF we want to write a customised player for the HTML5 <code>&lt;video&gt;</code> element we need to handcode all the HTML5, CSS3, JavaScript, and any other open standards we want to use to build a player!</p>
+	
+	<p>And this is where this article comes in. This is the first of a series in which we will look at building up an easily customizable HTML5 <code>&lt;video&gt;</code> player, including packaging it as a simple jQuery plugin, choosing control types and outputting custom CSS for your own situation. In this article we will look at:</p>
+
+	<ol>
+		<li><a href="index.html#sec1">Video controls</a></li>
+		<li><a href="index.html#sec2">Basic markup for controls</a></li>
+		<li><a href="index.html#sec3">Packaging the player as a jQuery plugin</a></li>
+		<li><a href="index.html#sec4">Look and Feel</a></li>
+		<li><a href="index.html#sec5">Themeing the player</a></li>
+	</ol>
+	
+	<p class="note">We&#39;ll use jQuery for easier DOM manipulation, and jQuery UI for the slider controls used for seeking and changing the volume level. To build a scalable solution, we&#39;ll wrap everything up in a jQuery plugin.</p>
+	
+	<h2 id="sec1">Video controls</h2>
+
+	<p>As professional web designers, we want to create a video player that looks consistent across browsers. Each browser however provides its own different look and feel for the player, from the minimal approach of Firefox and Chrome, to the more shiny controls of Opera and Safari (see Figure 1 for the controls in each browser). If we want our controls to look the same across all browsers, and integrate with our own design, we&#39;ll have to create our own controls from scratch. This is not as hard as it seems.</p>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/2642/native-video-controls.jpg" width="630" height="400" alt="Native browser video controls" /></p>
+	<p class="comment">Figure 1: Native browser video controls across different browsers</p>
+	
+	<p>All media elements in HTML5 support the <a href="http://www.w3.org/TR/html5/the-iframe-element.html#media-elements">media elements API</a>, which we can access using JavaScript and use to easily wire up functions such as play, pause, etc. to any buttons we create. Because the native video player plays nicely with other open web technologies, we can create our controls using HTML, CSS, SVG or whatever else we like.</p>
+
+	
+
+	<h2 id="sec2">Basic markup for controls</h2>
+
+	<p>First, we&#39;ll need to create the actual markup for the video controls. We&#39;ll need a Play/Pause button, a seek bar, a timer and a volume button and slider. We&#39;ll insert the markup for the controls after the <code>&lt;video&gt;</code> element, and wrap them up in another element.</p>
+
+<pre><code>&lt;div class=&quot;ghinda-video-controls&quot;&gt;
+	&lt;a class=&quot;ghinda-video-play&quot; title=&quot;Play/Pause&quot;&gt;&lt;/a&gt;
+	&lt;div class=&quot;ghinda-video-seek&quot;&gt;&lt;/div&gt;
+	&lt;div class=&quot;ghinda-video-timer&quot;&gt;00:00&lt;/div&gt;
+	&lt;div class=&quot;ghinda-volume-box&quot;&gt;
+		&lt;div class=&quot;ghinda-volume-slider&quot;&gt;&lt;/div&gt;
+		&lt;a class=&quot;ghinda-volume-button&quot; title=&quot;Mute/Unmute&quot;&gt;&lt;/a&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+	<p class="note">We&#39;ve used classes instead of IDs for all elements, to be able to use the same code for multiple video players on the same page.</p>
+
+	<h2 id="sec3">Packaging the player as a jQuery plugin</h2>
+
+	<p>After creating the markup we&#39;ll have to tie our elements to the media elements API, in order to control the video&#39;s behavior. As noted before, we&#39;ll package the player as a jQuery plugin, which will also aid reuse on multiple elements.</p>
+
+	<p class="note">AUTHOR&#39;S NOTE: I&#39;m going to assume you are familiar with the basic anatomy of a jQuery plugin, and JavaScript, so I&#39;m only briefly going to explain the script. If you need more information on these subjects, consult Craig Buckler&#39;s <a href="http://www.sitepoint.com/blogs/how-to-develop-a-jquery-plugin/">How to develop a jQuery plugin</a> tutorial, and <a href="../programming-the-real-basics/index.html">the JavaScript section of the Opera web standards curriculum</a>.</p>
+	
+<pre><code>$.fn.gVideo = function(options) {
+	// build main options before element iteration
+	var defaults = {
+		theme: &#39;simpledark&#39;,
+		childtheme: &#39;&#39;
+	};
+	var options = $.extend(defaults, options);
+	// iterate and reformat each matched element
+	return this.each(function() {
+		var $gVideo = $(this);
+		
+		//create html structure
+		//main wrapper
+		var $video_wrap = $(&#39;&lt;div&gt;&lt;/div&gt;&#39;).addClass(&#39;ghinda-video-player&#39;).addClass(options.theme).addClass(options.childtheme);
+		//controls wraper
+		var $video_controls = $(&#39;&lt;div class=&quot;ghinda-video-controls&quot;&gt;&lt;a class=&quot;ghinda-video-play&quot; title=&quot;Play/Pause&quot;&gt;&lt;/a&gt;&lt;div class=&quot;ghinda-video-seek&quot;&gt;&lt;/div&gt;&lt;div class=&quot;ghinda-video-timer&quot;&gt;00:00&lt;/div&gt;&lt;div class=&quot;ghinda-volume-box&quot;&gt;&lt;div class=&quot;ghinda-volume-slider&quot;&gt;&lt;/div&gt;&lt;a class=&quot;ghinda-volume-button&quot; title=&quot;Mute/Unmute&quot;&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&#39;);						
+		$gVideo.wrap($video_wrap);
+		$gVideo.after($video_controls);</code></pre>
+	
+	<p>Here we are using jQuery to create the video player markup dynamically (but not the video player itself), and removing the <code>controls</code> attribute once the script loads. That&#39;s because in cases where the user has JavaScript disabled, these controls will be useless, and he/she won&#39;t even get the native browser controls to the video element. It makes a lot more sense to start with the <code>controls</code> attribute present in case the script fails to load, and then removing it so the player will use our custom controls only after the script successfully loads.</p>
+		
+	<p>Next, we&#39;ll have to target each of the elements in the controls, in order to be able to add listeners.</p>
+	
+<pre><code>//get newly created elements
+var $video_container = $gVideo.parent(&#39;.ghinda-video-player&#39;);
+var $video_controls = $(&#39;.ghinda-video-controls&#39;, $video_container);
+var $ghinda_play_btn = $(&#39;.ghinda-video-play&#39;, $video_container);
+var $ghinda_video_seek = $(&#39;.ghinda-video-seek&#39;, $video_container);
+var $ghinda_video_timer = $(&#39;.ghinda-video-timer&#39;, $video_container);
+var $ghinda_volume = $(&#39;.ghinda-volume-slider&#39;, $video_container);
+var $ghinda_volume_btn = $(&#39;.ghinda-volume-button&#39;, $video_container);
+
+$video_controls.hide(); // keep the controls hidden</code></pre>
+	
+	<p>We&#39;re targeting each control by its class; we&#39;ll keep the controls hidden until everything is ready. </p>
+	
+	<p>Now for the Play/Pause controls:</p>
+	
+<pre><code>var gPlay = function() {
+	if($gVideo.attr(&#39;paused&#39;) == false) {
+		$gVideo[0].pause();					
+	} else {					
+		$gVideo[0].play();				
+	}
+};
+
+$ghinda_play_btn.click(gPlay);
+$gVideo.click(gPlay);
+
+$gVideo.bind(&#39;play&#39;, function() {
+	$ghinda_play_btn.addClass(&#39;ghinda-paused-button&#39;);
+});
+
+$gVideo.bind(&#39;pause&#39;, function() {
+	$ghinda_play_btn.removeClass(&#39;ghinda-paused-button&#39;);
+});
+
+$gVideo.bind(&#39;ended&#39;, function() {
+	$ghinda_play_btn.removeClass(&#39;ghinda-paused-button&#39;);
+});
+</code></pre>
+	
+	<p>Most browsers provide a secondary set of controls for the video in the right-click (ctrl-click on a Mac) context menu. Because of the way we are putting this together, if a user activated these alternative controls it would break our custom controls. In order to avoid this we&#39;re attaching events to the Play/Pause button itself, <em>and</em> the &quot;Play&quot;, &quot;Pause&quot; and &quot;Ended&quot; listeners of the video player. </p>
+	
+	<p>We&#39;re also adding and removing classes from our button to change the look of it, depending on the state of the video (Playing or Paused). </p>
+	
+	<p>For creating the seek slider we&#39;ll use the jQuery UI Slider component.</p>
+	
+<pre><code>var createSeek = function() {
+	if($gVideo.attr(&#39;readyState&#39;)) {
+		var video_duration = $gVideo.attr(&#39;duration&#39;);
+		$ghinda_video_seek.slider({
+			value: 0,
+			step: 0.01,
+			orientation: &quot;horizontal&quot;,
+			range: &quot;min&quot;,
+			max: video_duration,
+			animate: true,					
+			slide: function(){							
+				seeksliding = true;
+			},
+			stop:function(e,ui){
+				seeksliding = false;						
+				$gVideo.attr(&quot;currentTime&quot;,ui.value);
+			}
+		});
+		$video_controls.show();					
+	} else {
+		setTimeout(createSeek, 150);
+	}
+};
+
+createSeek();</code></pre>
+	
+	<p>As you can see, we&#39;re using a recursive function, while reading the <code>readyState</code> of the video. We have to keep polling the video until it is ready, otherwise we can&#39;t determine the duration, and can&#39;t create the slider. Once the video is ready, we initialize the slider, and also show the controls. </p>
+	
+	<p>Next we&#39;ll create the timer, and attach it to the <code>timeupdate</code> listener of the video element. </p>
+	
+<pre><code>var gTimeFormat=function(seconds){
+	var m=Math.floor(seconds/60)&lt;10?&quot;0&quot;+Math.floor(seconds/60):Math.floor(seconds/60);
+	var s=Math.floor(seconds-(m*60))&lt;10?&quot;0&quot;+Math.floor(seconds-(m*60)):Math.floor(seconds-(m*60));
+	return m+&quot;:&quot;+s;
+};
+
+var seekUpdate = function() {
+	var currenttime = $gVideo.attr(&#39;currentTime&#39;);
+	if(!seeksliding) $ghinda_video_seek.slider(&#39;value&#39;, currenttime);
+	$ghinda_video_timer.text(gTimeFormat(currenttime));							
+};
+
+$gVideo.bind(&#39;timeupdate&#39;, seekUpdate);</code></pre>
+		
+	<p>Here we&#39;re using the <code>seekUpdate</code> function to get the <code>currentTime</code> attribute of the video, and the <code>gTimeFormat</code> function to format the actual value received. </p>
+	
+	<p>For the volume controls, we&#39;ll also use the jQuery UI slider and a custom function on the volume button for muting and un-muting the video. </p>
+	
+<pre><code>$ghinda_volume.slider({
+	value: 1,
+	orientation: &quot;vertical&quot;,
+	range: &quot;min&quot;,
+	max: 1,
+	step: 0.05,
+	animate: true,
+	slide:function(e,ui){
+		$gVideo.attr(&#39;muted&#39;,false);
+		video_volume = ui.value;
+		$gVideo.attr(&#39;volume&#39;,ui.value);
+	}
+});
+
+var muteVolume = function() {
+	if($gVideo.attr(&#39;muted&#39;)==true) {
+		$gVideo.attr(&#39;muted&#39;, false);
+		$ghinda_volume.slider(&#39;value&#39;, video_volume);
+		
+		$ghinda_volume_btn.removeClass(&#39;ghinda-volume-mute&#39;);					
+	} else {
+		$gVideo.attr(&#39;muted&#39;, true);
+		$ghinda_volume.slider(&#39;value&#39;, &#39;0&#39;);
+		
+		$ghinda_volume_btn.addClass(&#39;ghinda-volume-mute&#39;);
+	};
+};
+
+$ghinda_volume_btn.click(muteVolume);</code></pre>
+	
+	<p>Finally we&#39;re going the remove the <code>controls</code> attribute from the <code>&lt;video&gt;</code>, because by this point our own custom controls are set up and we want to use those instead of the browser defaults.</p>
+	
+<pre><code>$gVideo.removeAttr(&#39;controls&#39;);</code></pre>
+	
+	<p>Now that we have our plugin all done, we can call it on any video element we want, like so. </p>
+	
+<pre><code>$(&#39;video&#39;).gVideo();</code></pre>
+	
+	<p>This will call the plugin on all the video elements on the page. </p>
+	
+	<h2 id="sec4">Look and Feel</h2>
+	
+	<p>And now for the fun part, the look and feel of the video player. Once the plugin is ready, customizing the controls is really easy with a little bit of CSS. As you&#39;ve notice we haven&#39;t added any styling to the controls. We&#39;ll use CSS3 for all the customizations regarding the player. </p>
+	
+	<p>First, we&#39;ll add some style to the main video player container. We&#39;ll use this as the main chrome for the player. </p>
+	
+<pre><code>.ghinda-video-player {
+	float: left;
+	padding: 10px;
+	border: 5px solid #61625d;
+		
+	-moz-border-radius: 5px; /* FF1+ */
+        -ms-border-radius: 5px; /* IE future proofing */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	border-radius: 5px; /* Opera 10.5, IE 9 */
+	
+	background: #000000;
+	background-image: -moz-linear-gradient(top, #313131, #000000); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #313131),color-stop(1, #000000)); /* Saf4+, Chrome */
+	
+	box-shadow: inset 0 15px 35px #535353;
+}</code></pre>
+	
+	<p>We&#39;ve floated it left, to prevent it from expanding to the full width of the player, instead keeping it restrained to the width of the actual video element. We&#39;re using gradients and border radius to add polish, plus an inset box shadow to emulate the gradient effect in Opera, as it does not yet support gradients (as of 10.60, the latest version at the time of writing). </p>
+	
+	<p>Next we&#39;ll float all the controls to the left, to align them horizontally. We&#39;ll use opacity and transitions on the Play/Pause and Volume Mute/Unmute buttons to create a nice hover effect. </p>
+	
+<pre><code>.ghinda-video-play {
+	display: block;
+	width: 22px;
+	height: 22px;
+	margin-right: 15px;
+	background: url(../images/play-icon.png) no-repeat;	
+	
+	opacity: 0.7;
+	
+	-moz-transition: all 0.2s ease-in-out; /* Firefox */
+        -ms-transition: all 0.2s ease-in-out; /* IE future proofing */
+        -o-transition: all 0.2s ease-in-out;  /* Opera */
+	-webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
+	transition: all 0.2s ease-in-out; 
+}
+
+.ghinda-paused-button {
+	background: url(../images/pause-icon.png) no-repeat;
+}
+
+.ghinda-video-play:hover {	
+	opacity: 1;
+}</code></pre>
+	
+	<p>I&#39;m sure you followed the JavaScript part carefully, and saw that we&#39;re adding and removing classes on the Play/Pause button depending on the state of the video(Playing/Paused). That&#39;s why the <code>ghida-paused-button</code> class overwrites the background property of the <code>ghinda-video-play</code> class. </p>
+	
+	<p>Now for the sliders. As you saw before, we&#39;re using the jQuery UI slider control for both the seek bar and the volume level. This component has its own styles defined in jQuery UI&#39;s stylesheet, but we&#39;ll completely overwrite these to make the look of the slider more in keeping with the rest of the player. </p>
+	
+<pre><code>.ghinda-video-seek .ui-slider-handle {
+	width: 15px;
+	height: 15px;
+	border: 1px solid #333;
+	top: -4px;
+
+	-moz-border-radius:10px;
+        -ms-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;	
+	
+	background: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));
+	
+	box-shadow: inset 0 -3px 3px #d5d5d5;	
+}
+
+.ghinda-video-seek .ui-slider-handle.ui-state-hover {
+	background: #fff;
+}
+
+.ghinda-video-seek .ui-slider-range {
+	-moz-border-radius:15px;
+        -ms-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	
+	background: #4cbae8;
+	background-image: -moz-linear-gradient(top, #4cbae8, #39a2ce);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #4cbae8),color-stop(1, #39a2ce));
+	
+	box-shadow: inset 0 -3px 3px #39a2ce;
+}</code></pre>
+	
+	<p>Currently the volume slider is also visible at all times, positioned next to the volume button. We&#39;ll change this so the slider is hidden by default, and shows up only when we&#39;re hovering the Mute/Unmute button, to make it look a bit more dynamic and neater. Again, transitions are our answer here:</p>
+	
+<pre><code>.ghinda-volume-box {	
+	height: 30px;
+	
+	-moz-transition: all 0.1s ease-in-out; /* Firefox */
+        -ms-transition: all 0.1s ease-in-out; /* IE future proofing */
+        -o-transition: all 0.2s ease-in-out;  /* Opera */
+	-webkit-transition: all 0.1s ease-in-out; /* Safari and Chrome */
+	transition: all 0.1s ease-in-out; 
+}
+
+.ghinda-volume-box:hover {	
+	height: 135px;
+	padding-top: 5px;
+}
+
+.ghinda-volume-slider {	
+	visibility: hidden;
+	opacity: 0;
+	
+	-moz-transition: all 0.1s ease-in-out; /* Firefox */
+        -ms-transition: all 0.1s ease-in-out;  /* IE future proofing */
+        -o-transition: all 0.1s ease-in-out;  /* Opera */
+	-webkit-transition: all 0.1s ease-in-out; /* Safari and Chrome */
+	transition: all 0.1s ease-in-out; 
+}
+
+.ghinda-volume-box:hover .ghinda-volume-slider {
+	position: relative;
+	visibility: visible;
+	opacity: 1;
+}</code></pre>
+	
+	<p>We&#39;re hiding the volume slider by default, and giving the volume container a small fixed height that just fits the width of the volume button. We&#39;re also assigning transitions to both.</p>
+	
+	<p>When the volume button is hovered, its height increases via the specified transition; we then use the <code>.ghinda-volume-box:hover .ghinda-volume-slider</code> descendant selector to transition the volume slider into view.</p>
+	
+	<p>With basic CSS knowledge and some new CSS3 properties, we&#39;ve already created a nice interface for our player, it looks like Figure 2:</p>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/2642/dark-player-shot.jpg" width="630" height="384" alt="Video player screenshot" /></p>
+	<p class="comment">Figure 2: Our finished video player.</p>
+	
+	
+	<h2 id="sec5">Themeing the player</h2>
+		
+	<p>As you probably noticed, when creating the jQuery plugin, we&#39;ve defined a set of default options. These options are <code>theme</code> and <code>childtheme</code>, and can be changed when calling the plugin, allowing us to easily apply custom themes as desired.</p>
+	
+	<p>A theme represents a <strong>completely new set of CSS rules</strong> for every single control. A child theme on the other hand is a set of CSS rules that <strong>builds upon the rules of an existing theme</strong>, adding or overwriting the &quot;parent&quot; theme&#39;s style. </p>
+	
+	<p>We can specify both of there options or only one, when calling the jQuery plugin.</p>
+	
+<pre><code>$(&#39;video&#39;).gVideo({
+	childtheme:&#39;smalldark&#39;
+});
+</code></pre>
+	
+	<p>In the above example code we are calling the plugin with the <code>smalldark</code> child theme specified. This will apply our default parent theme, and then apply our child theme over the top of it, overwriting a small portion of the rules set by the parent theme. See Figure 3 for the Smalldark theme in action.</p>
+		
+	<p><img src="../../../../devfiles.myopera.com/articles/2642/smalldark-child-theme.jpg" width="490" height="218" alt="Smalldark child theme" /></p>
+	<p class="comment">Figure 3: the Smalldark child theme in action.</p>
+	
+	<p>You can <a href="../../../../devfiles.myopera.com/articles/2642/index.html">check out the final video player example live</a> to see both themes in action.</p>
+
+              <p class="note">The techniques contained within these articles about HTML5 <code>&lt;video&gt;</code> have resulted in a production-ready jQuery plugin. You can check out the latest version, and follow the development, on the <a href="http://github.com/ghinda/acornmediaplayer">Github repository for the Acorn Media Player</a>. This code is up to date and actively maintained.</p>
+	
+	<h2>Summary</h2>
+	
+	<p>Building our own custom video player with HTML5 video, JavaScript and CSS3 is fairly easy. By using JavaScript only for the actual functionality of the controls, and CSS3 for everything that involves the look and feel of the player, we get a powerful, easily customizable solution.</p>
+<h2 id="resources">HTML5 Video resources</h2>
+<ul>
+<li><a href="../introduction-html5-video/index.html">Introduction to HTML5 video</a></li>
+<li><a href="../accessible-html5-video-with-javascripted-captions/index.html">Accessible HTML5 Video with JavaScripted captions</a></li>
+<li><a href="http://my.opera.com/core/blog/2010/03/03/everything-you-need-to-know-about-html5-video-and-audio-2">Everything you need to know about HTML5 video and audio</a> - and it really is <em>everything</em>!</li>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#video"><code>&lt;video&gt;</code> specification</a></li>
+<li><a href="http://my.opera.com/core/blog/2009/12/31/re-introducing-video">How <code>&lt;video&gt;</code> is implemented in Opera</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=669342">My Opera</a>.</p>
+  <ul>
+    <li id="comment-78758822">
+      <a href="../../../author/supermatricola.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/73/daa/d6753a277516765607e69e3a752c4beb8d8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/supermatricola.html">supermatricola</a></p>
+      <p class="commentdate">Friday, December 30, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi Ionut,  <br/>i&#39;m trying to adapt this plugin to work on iPad unsuccessfully. The plugin works correctly on Safary Chrome and Firefox using respectively *.mp4/*.ogg video.  When initialize the plugin the video doesn&#39; t start (remains hidden behind) i also try binding on canplaythrough,load,progress events without success.<br/>Do you understand the reason ?  Can you help me to fix it? <br/>Also on ipad the  readyState event  is not available I folded over HAVE_ENOUGH_DATA ...<br/><br/>Thanks Daniele<br/></section>
+    </li>
+    <li id="comment-79500552">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, January 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@supermatricola have you got the MP4 <source> appearing first in the list? ther eis an iPad bug whereby it won&#39;t pick up the video it can play if it is not listed first in the list.
+
+If that is not the problem, then I will need to defer this to the author. thanks!</source></section>
+    </li>
+    <li id="comment-81985502">
+      <a href="../../../author/heawer.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/01/ac4/440d4c1c1354ce75bfc59ec0f3da592f64a." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/heawer.html">heawer</a></p>
+      <p class="commentdate">Friday, February 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi, nice article. It works with jquery 1.4.2 but when I&#39;m using it with jquery 1.7.1 id doesn&#39;t show the controls. Does anyone know a fix for this?</section>
+    </li>
+    <li id="comment-82341902">
+      <a href="../../../author/aijazaman.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4c/cab/a2c856092c1f97053d8516ce798e2a002ef." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/aijazaman.html">aijazaman</a></p>
+      <p class="commentdate">Tuesday, February 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi All,<br/>This is a nice article, it is working fine with mp4 and ogv but i tried with flv and it is not working.<br/>Can anyone suggest me or add sample code for flv player.<br/>Thanks in advance....</section>
+    </li>
+    <li id="comment-82651682">
+      <a href="../../../author/angvisola.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cd/652/3096ec99e2c6e386e7ebd720f311c2e3b1f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/angvisola.html">angvisola</a></p>
+      <p class="commentdate">Friday, February 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hallo, I want to say big thanks, everything works just great !<br/>I have only one problem, i want my video autoplay when page is open, this works on firefox but not on safari..<br/>i changed play and pause buttons( i just switch the pictures, too lazy to changing javascript code :) <br/><video controls="controls" width="458" height="247" id="video1" autoplay="autoplay">
+Can you help me?
+Thank you and have a nice day! </video></section>
+    </li>
+    <li id="comment-82651912">
+      <a href="../../../author/angvisola.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cd/652/3096ec99e2c6e386e7ebd720f311c2e3b1f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/angvisola.html">angvisola</a></p>
+      <p class="commentdate">Friday, February 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>oh i used script and now it shows me the slider :)<br/>the code i used was<br/>video controls =&quot;controls&quot; width=&quot;458&quot; height=&quot;247&quot; id=&quot;video1&quot; autoplay=&quot;autoplay&quot;</section>
+    </li>
+    <li id="comment-82909092">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, February 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@aijazaman<br/><br/>It really depends on what you want me to do. It is pretty easy to provide a flash video player as a fallback for browsers that don&#39;t support HTML5 video - see <a href="../simple-html5-video-flash-fallback-custom-controls/index.html" target="_blank">http://dev.opera.com/articles/view/simple-html5-video-flash-fallback-custom-controls/</a>. For guidance on this.</section>
+    </li>
+    <li id="comment-82909222">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, February 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@angvisola glad you got it sorted out!</section>
+    </li>
+    <li id="comment-83154332">
+      <a href="../../../author/angvisola.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cd/652/3096ec99e2c6e386e7ebd720f311c2e3b1f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/angvisola.html">angvisola</a></p>
+      <p class="commentdate">Thursday, February 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>:) thanks for your answer, i have also - maybe strange - problem,  for one special design i need two sliders for one video. I need maybe something like clone div video-seek with all his functions, but give him different name to be able change his padding in css. Is it possible?<br/>i tried this  $(&#39;.video-seek&#39;).clone().appendTo(&#39;.video-seek2&#39;); but didnt work...<br/>Thanks for any help !</section>
+    </li>
+    <li id="comment-83204792">
+      <a href="../../../author/darrcass.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d3/aaf/dfab7fd089a6af7906178a0285b4a461a25.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/darrcass.html">Darren Cassidy</a></p>
+      <p class="commentdate">Thursday, February 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@heawer: in 1.7.1, use $gVideo.prop(&#39;readyState&#39;) instead of .attr</section>
+    </li>
+    <li id="comment-83211442">
+      <a href="../../../author/darrcass.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d3/aaf/dfab7fd089a6af7906178a0285b4a461a25.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/darrcass.html">Darren Cassidy</a></p>
+      <p class="commentdate">Friday, February 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Of course... .prop() works everywhere except IE.</section>
+    </li>
+    <li id="comment-83218262">
+      <a href="../../../author/darrcass.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d3/aaf/dfab7fd089a6af7906178a0285b4a461a25.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/darrcass.html">Darren Cassidy</a></p>
+      <p class="commentdate">Friday, February 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Oh OK. I get it now; THIS page is using jQuery 1.7.1. The downloadable code does not work in 1.7.1, but works on the live demo page because the live demo page is using jQuery 1.4.2</section>
+    </li>
+    <li id="comment-85696172">
+      <a href="../../../author/iamcoolraju.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1e/573/5a1a0203ffab6e3e30a0e36bd6e7e3d92e2." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/iamcoolraju.html">iamcoolraju</a></p>
+      <p class="commentdate">Saturday, March 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>First thanks for the great article,I need a small clarification to know before starting my project.I am starting to develop a new video player and I need to modify this code and redistribute it(ie..I need to sell my video player).So can you give me the clarification of the License.I would like to know in and out before doing anything.</section>
+    </li>
+    <li id="comment-85893612">
+      <a href="../../../author/tfairf.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/63/2a9/7ec9ce02ab06ffde618fc4523cab3a510cc." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tfairf.html">tfairf</a></p>
+      <p class="commentdate">Monday, March 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>when I first viewed this article a few months back, the demo played on my iPad. Now, it doesnt appear. Just a black screen. There seems to be some issue now with removing the controls and replacing them. Do you have any idea what could be happening?</section>
+    </li>
+    <li id="comment-86103192">
+      <a href="../../../author/bradr29.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f0/b8b/abff3b6616b7e99b740ab55dfaed791231c." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/bradr29.html">bradr29</a></p>
+      <p class="commentdate">Thursday, March 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I like the themes.  In the source code, I see you are using &quot;id&#39;s&quot; and not classes? (referencing video1 and video2 for the child theme).  This method only allows me to use  them twice on any page obviously.  So if I wanted to put 4 different videos using just the parent theme on the same page, what classes would I reference, I have tried your markup, with no luck - sorry but I&#39;m a bit new to HTML5 video, but am trying to get acquainted with everything, including the JQuery script (thanks so much for the helpful breakdown there).
+
+<div class="ghinda-video-controls">
+	<a class="ghinda-video-play" title="Play/Pause"></a>
+	<div class="ghinda-video-seek"></div>
+	<div class="ghinda-video-timer">00:00</div>
+	<div class="ghinda-volume-box">
+		<div class="ghinda-volume-slider"></div>
+		<a class="ghinda-volume-button" title="Mute/Unmute"></a>
+	</div>
+</div></section>
+    </li>
+    <li id="comment-86412662">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, April 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@bradr29 if you want to use classes instead - there is nothing stopping you - you could make your own up, and just change the references to them in the script. Let me know how you get on.</section>
+    </li>
+    <li id="comment-86413792">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, April 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@tfairf Hrm, I seem to get a similar problem on my Galaxy tab. The video players load, but  when you try to play the videos, they just don&#39;t appear. I&#39;ll ask the author if he has any ideas.</section>
+    </li>
+    <li id="comment-86416402">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, April 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@iamcoolraju This article is under a non-commercial license, which would prohibit use of it under a commercial project. However, I am prepared to waive that condition, as long as your work included a link to the original article and a note of the orginal author. I am not sure if this extends to the source code though. If I were you, I would contact the author and ask about it. See <a href="http://ghinda.net/" target="_blank">http://ghinda.net/</a> for contact details.</section>
+    </li>
+    <li id="comment-87655402">
+      <a href="../../../author/dsienko.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5e/7d9/0b96ad11bb157b81cab74ccf11e279331ad." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dsienko.html">David Sienko</a></p>
+      <p class="commentdate">Thursday, April 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>How can I use a custom icon as a poisition marker?</section>
+    </li>
+    <li id="comment-87721572">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, April 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@David Sienko<br/><br/>Should be pretty simple - it should be a matter of attaching a custom background image on to the current slider/drag handle. From looking at the example on Opera Dragonfly, I can see that the current graphic is just a div, made to look like a round button using border-radius.</section>
+    </li>
+    <li id="comment-87954892">
+      <a href="../../../author/dsienko.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5e/7d9/0b96ad11bb157b81cab74ccf11e279331ad." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dsienko.html">David Sienko</a></p>
+      <p class="commentdate">Monday, April 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>That&#39;s what I thought.    But I haven&#39;t been able to get it to work.</section>
+    </li>
+    <li id="comment-87983332">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Tuesday, April 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@David Sienko have you got a test case you can point me at, so I can see what your code is doing?</section>
+    </li>
+    <li id="comment-88432812">
+      <a href="../../../author/dsienko.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5e/7d9/0b96ad11bb157b81cab74ccf11e279331ad." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dsienko.html">David Sienko</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Here&#39;s the code I&#39;ve changed for the icon,  and a link to the PNG I want to use.    The images is in the same folder as the other PNG&#39;s used.    I can see the size of the slider change, but can&#39;t see the image.   <br/><br/><a href="http://www.tulaliplushootseed.com/images/whale-solo-icon.png" target="_blank">http://www.tulaliplushootseed.com/images/whale-solo-icon.png</a>  <br/><br/>The section of Code I changed:<br/><br/>.ghinda-video-player.simpledark .ghinda-video-seek .ui-slider-handle {<br/>	width: 27px;<br/>	height: 20px;<br/>	border: 1px solid #333;<br/>	top: -4px;<br/><br/>	background: url(images/whale-solo-icon.png) no-repeat;<br/>	<br/>	<br/>	background: #e6e6e6;<br/>	background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);<br/>	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));<br/>	<br/>	box-shadow: inset 0 -3px 3px #d5d5d5;	<br/>}<br/><br/>I also want to change the progree bar colors to a blue, so it looks like the whale is going through the water.<br/><br/>Dave</section>
+    </li>
+    <li id="comment-88444992">
+      <a href="../../../author/dsienko.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5e/7d9/0b96ad11bb157b81cab74ccf11e279331ad." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dsienko.html">David Sienko</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Figured it out,  I left some of the other code and the shadow code.</section>
+    </li>
+    <li id="comment-88452592">
+      <a href="../../../author/dsienko.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5e/7d9/0b96ad11bb157b81cab74ccf11e279331ad." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dsienko.html">David Sienko</a></p>
+      <p class="commentdate">Monday, April 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>So, I now have the the Tribes Orca whale Icon displayed and nice colors showing the progress, but I can&#39;t seem to figure out how to put the whale fin in alignment with the Progress of the video.    I need to shift the slider handler back or the progress bar ahead about 7px.     Any suggestions?</section>
+    </li>
+    <li id="comment-88598422">
+      <a href="../../../author/dsienko.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5e/7d9/0b96ad11bb157b81cab74ccf11e279331ad." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dsienko.html">David Sienko</a></p>
+      <p class="commentdate">Wednesday, May 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I have it all working great in all the major browsers, but it still hangs up in iOS.      Any suggestions?<br/><a href="http://www.tulaliplushootseed.com/videos/HTML5-test-5-2-12.html" target="_blank">http://www.tulaliplushootseed.com/videos/HTML5-test-5-2-12.html</a>     With custom player<br/><a href="http://www.tulaliplushootseed.com/videos/HTML5-test-5-2-12b.html" target="_blank">http://www.tulaliplushootseed.com/videos/HTML5-test-5-2-12b.html</a>   Without custom player.     <br/></section>
+    </li>
+    <li id="comment-89913312">
+      <a href="../../../author/ghindadev.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9c/264/0e7410d0fd3ec33ceaedb8e32c435f57658.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ghindadev.html">Ionut Colceriu</a></p>
+      <p class="commentdate">Wednesday, May 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>For everybody having issues with the video player version provided with the article, you can check out the maintained version of the HTML5 media player, that came out from this article and the &quot;A more accessible HTML5 &lt;video&gt; player&quot; article  (<a href="../more-accessible-html5-video-player/index.html" target="_blank">http://dev.opera.com/articles/view/more-accessible-html5-video-player/</a>), referring to accessibility on the player, from it&#39;s GitHub repo: <a href="https://github.com/ghinda/acornmediaplayer" target="_blank">https://github.com/ghinda/acornmediaplayer</a><br/><br/>It includes support for the latest jQuery, along with other improvements and fixes.</section>
+    </li>
+    <li id="comment-89913922">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, May 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Ionut Colceriu: Thanks! I have also added this information into a note into the above article.<br/><br/></section>
+    </li>
+    <li id="comment-89915432">
+      <a href="../../../author/ghindadev.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9c/264/0e7410d0fd3ec33ceaedb8e32c435f57658.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ghindadev.html">Ionut Colceriu</a></p>
+      <p class="commentdate">Wednesday, May 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks @Chris!<br/>Btw Pull Requests are very gladly accepted, especially for better mobile support, since I don&#39;t have many devices to test on.</section>
+    </li>
+    <li id="comment-93397312">
+      <a href="../../../author/iamhub.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/be/6cb/709300ab187acc9885d41e02f6ed02f2e88." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/iamhub.html">james dean</a></p>
+      <p class="commentdate">Wednesday, July 25, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I need the exact same player as www.worldstarhiphop.com has. Can any one help me? Will pay for help.</section>
+    </li>
+    <li id="comment-97598012">
+      <a href="../../../author/aditya2ky.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4c/6ef/223ebe9522b070f7f729445294df0b71b25." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/aditya2ky.html">aditya2ky</a></p>
+      <p class="commentdate">Friday, October 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span> want to implement something simliar to youtube player has. Like when a user drags his mouse over the seekbar he is able to see small thumbnails of the video at that future time over the seekbar.<br/><br/>Any ideas how to implement this feature ???</section>
+    </li>
+    <li id="comment-98899102">
+      <a href="../../../author/itstudent.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/46/21a/b64ac75ba3903205da3cca95e0f1edbc8d3." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/itstudent.html">itstudent</a></p>
+      <p class="commentdate">Thursday, November 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>hello im not sure how to put this all together . i created the css file,the js file with the plugin,linked the jquery 1.4.2 and other file i noticed others were using not sure if i need it. but i get a player but no custom controls just the default ones.<br/><br/>thanks in advance for any help truly appreciated</section>
+    </li>
+    <li id="comment-99757962">
+      <a href="../../../author/feuyeux.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c7/7d7/4f5d4f644134f25d2785392765ae8cd6f0d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/feuyeux.html">feuyeux</a></p>
+      <p class="commentdate">Sunday, November 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>as a html5 fan, this article is very useful for me. thanks!</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/ghindadev.html" rel="author">Ionut Colceriu</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, July 28, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css3.html" rel="tag">css3</a></li>
+        <li><a href="../../tags/html5.html" rel="tag">html5</a></li>
+        <li><a href="../../tags/jquery.html" rel="tag">jquery</a></li>
+        <li><a href="../../tags/opacity.html" rel="tag">opacity</a></li>
+        <li><a href="../../tags/Transitions.html" rel="tag">Transitions</a></li>
+        <li><a href="../../tags/video.html" rel="tag">video</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

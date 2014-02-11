@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>How are Opera Mini widgets different? - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>How are Opera Mini widgets different?</h1>
+      <p class="print author">By Opera Software</p>
+
+              <p class="note">Note: the ability to run Opera Mini widgets on your phone is a B2B product delivered only to Vodafone at this time.</p>
+
+	<h2>Introduction</h2>
+	
+	<p>This article details the key differences between Opera Mobile and Opera Mini Widgets.</p>
+	
+	<h2>Overall architecture</h2>
+	
+	<p>Opera Mobile widgets run in the same manner as Widgets on Opera desktop - the full widget runtime resides on the device, and the widgets runs of top of it.</p>
+	
+	<p>Mini is a bit different - see Figure 1. The lightweight Opera Mini client is installed on the client. When you want to run a widget, requests are sent from the device to the Opera Widgets server. The server performs updates to the Widget and transcodes the output. This output is sent back to the client.</p>
+
+        <div>
+	  <p><img src="../../../../devfiles.myopera.com/articles/4472/mini_widget_server.png" alt="opera mini widgets architecture" /></p>
+	  <p class="comment">Figure 1: Opera Mini widget architecture.</p> 
+	</div>
+	
+	<h2 style="clear:both;">Supported operating systems</h2>
+	
+        <p>Opera Mobile can run widgets on Windows Mobile, Android and Symbian. Opera Mini widgets, on the other hand, can run on any operating systems based on Java or Brew.</p>
+	
+	<h2>Widgets environment</h2>
+	
+	<table>
+	  <tr>
+	    <th></th>
+	    <th>Opera Mobile Widgets</th>
+	    <th>Opera Mini Widgets</th>
+	  </tr>
+	  <tr>
+	    <th>Client type</th>
+	    <td>Full widget runtime client</td>
+	    <td>Thin client</td>
+	  </tr>
+	  <tr>
+	    <th>Server connection</th>
+	    <td>n/a</td>
+	    <td>HTTP and socket supported</td>
+	  </tr>
+	  <tr>
+	    <th>Widgets specification supported</th>
+	    <td>W3C Widgets</td>
+	    <td>W3C Widgets</td>
+	  </tr>
+	  <tr>
+	    <th>Widgets execution environment</th>
+	    <td>Local</td>
+	    <td>Server-side, on a Widgets server</td>
+	  </tr>
+	  <tr>
+	    <th>Available SDKs</th>
+	    <td>Widgets SDK</td>
+	    <td>Widgets SDK</td>
+	  </tr>
+	  <tr>
+	    <th>Running multiple widgets simultaneously</th>
+	    <td>Supported only if multiprocessing is supported by the device</td>
+	    <td>Supported on the Widgets server</td>
+	  </tr>
+	  <tr>
+	    <th>Device API integration</th>
+	    <td>Supported on client</td>
+	    <td>Supported on Widgets server</td>
+	  </tr>
+	  <tr>
+	    <th>JIL</th>
+	    <td>Supported on client</td>
+	    <td>Limited JIL support on Opera Mini, which is further limited by the JSRs supported by the device. Also, JIL is only supported on Socket connections.</td>
+	  </tr>
+	</table>
+	
+	<h2>Functional differences</h2>
+	
+	<table>
+	  <tr>
+	    <th></th>
+	    <th>Opera Mobile Widgets</th>
+	    <th>Opera Mini Widgets</th>
+	  </tr>
+	  <tr>
+	    <th>Execution flow</th>
+	    <td>Execution and rendering of Widgets is done locally on the client device.</td>
+	    <td>Execution is routed to a Widgets server that maintains a widget session per user. The server enders updates to Widgets, then transcodes them and sends them to the client.</td>
+	  </tr>
+	  <tr>
+	    <th>Technology support</th>
+	    <td>Local support for HTML, CSS, SVG, JavaScript, DOM, HTML5 Forms and other web standards.</td>
+	    <td>Local support for OBML.<br />
+	    
+	    Server-side support for HTML, CSS, JavaScript, DOM and other web standards, which is then transcoded into OBML and sent to the client. As such, the CSS rendering has limitations, for example no support for CSS transitions, border radius and other processor intensive CSS. JavaScript support is also limited, as the execution is on the server: instant updates to the DOM will not work, for example.</td>
+	  </tr>
+	  <tr>
+	    <th>Widget updates on client</th>
+	    <td>Widgets are continuously running; updates are instant.</td>
+	    <td>Widgets are executed on the server only when the client requests updates.
+            updates are supported in socket connections – every update in the widget is sent automatically by the widget server.<br />
+For HTTP-based connections, the widget is not running continuously on the
+server, but in iterations lasting a couple of minutes or so, depending on
+how the user reloads the pages. Whenever the user reloads the page, the
+widget is kick-started (if it is sleeping). It will send its updates to the client
+and, if no other updates are requested within a couple of minutes, it will go
+back to sleep.</td>
+	  </tr>
+	  <tr>
+	    <th>State storage</th>
+	    <td>Done locally by JavaScript</td>
+	    <td>Done by JavaScript on the widget server. As an example, a currency
+converter, feed reader, or Facebook/Twitter-based widgets can store
+user-specific details between consecutive connections.</td>
+	  </tr>
+   	  <tr>
+	    <th>Animations</th>
+	    <td>Supported</td>
+	    <td>Smooth animations are not supported at all. Animations with slower updates will require a lot of network traffic, and updates to the widget will be dependent on network speeds.</td>
+	  </tr>
+      <tr>
+	    <th>Good for games?</th>
+	    <td>Yes</td>
+	    <td>Not for fancy games, but state-based games will work very well, for example tic-tac-toe, chess, etc.</td>
+	  </tr>
+	  <tr>
+	    <th>Examples</th>
+	    <td>Any W3C widget</td>
+	    <td>Widgets that are portals to other services work very well, for example weather, calculator, currency converter, stocks, feed reader, etc.</td>
+	  </tr>
+	  <tr>
+	    <th>Live icons</th>
+	    <td>Supported</td>
+	    <td>Supported</td>
+	  </tr>
+	</table>
+	
+	<h2>Opera Mobile widgets examples</h2>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/4472/mob_widgets_game.png" alt="opera mobile widgets example" style="padding-right: 2px;" /><img src="../../../../devfiles.myopera.com/articles/4472/mob_widgets_screen.png" alt="opera mobile widgets example" style="padding-right: 2px;" /><img src="../../../../devfiles.myopera.com/articles/4472/mob_widgets_add_widgets.png" alt="opera mobile widgets example" /></p> 
+	
+	<h2>Opera Mini widgets examples</h2>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/4472/mini_widgets.png" alt="opera mini widgets example" style="padding-right: 2px;" /><img src="../../../../devfiles.myopera.com/articles/4472/mini_widgets2.png" alt="opera mini widgets example" style="padding-right: 2px;" /><img src="../../../../devfiles.myopera.com/articles/4472/mini_widget_live_scores.png" alt="opera mini widgets example" /></p>
+      
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=830882">My Opera</a>.</p>
+  <ul>
+    <li id="comment-81339352">
+      <a href="../../../author/cooleythug22.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/41/394/9e9da927d1cef9e8d9787dcd29e7e86f849." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cooleythug22.html"> ALFRED DUNBAR</a></p>
+      <p class="commentdate">Friday, February 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I can only imagine the large amount of time and patients envolved in the apps ,wigets, add-ons ,extension ,  java scripting  and etc,.     I f also find it just as alarming  to see how shaddy  the market has become.  I understand that nothings for free  in some cases and I respect  that. I think its sad  when people devalutize  other people property. take for example these apps.  So the question I pose to you is &quot;  Where does this stop?   </section>
+    </li>
+    <li id="comment-81371682">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Saturday, February 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@cooleythug22 I really don&#39;t understand what you are saying. We developed the widgets technology, and these app examples were created in conjunction with the original creators...?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, December 7, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/differences.html" rel="tag">differences</a></li>
+        <li><a href="../../tags/Opera&#32;Mini.html" rel="tag">Opera Mini</a></li>
+        <li><a href="../../tags/opera&#32;mobile.html" rel="tag">opera mobile</a></li>
+        <li><a href="../../tags/operaminiwidgets.html" rel="tag">operaminiwidgets</a></li>
+        <li><a href="../../tags/widgets.html" rel="tag">widgets</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

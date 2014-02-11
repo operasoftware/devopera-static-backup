@@ -1,0 +1,35 @@
+body {
+	margin: 0;
+	padding: 0 20%;
+	font-size: 14px;
+	font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+}
+
+p {
+	margin: .429em auto;
+}
+
+q:before,
+ q:after {
+
+	content: "";
+}
+
+h1 {
+	font-size: x-large;
+	font-family: Helvetica,Arial,sans-serif;
+	font-style: italic;
+}
+
+blockquote {
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+.sectionNote {
+	font-size: medium;
+	font-style: normal;
+}
+
+.attribution {
+	font-size: small;
+}

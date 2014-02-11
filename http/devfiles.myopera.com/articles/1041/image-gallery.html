@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>An image gallery showcase for CSS Transitions</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+        	@font-face {
+        		/* Juergen font by Hans J. Zinken http://www.zinken.net/ */
+        		font-family: "Juergen";
+            	src: url(http://devfiles.myopera.com/articles/1041/Juergen.ttf)
+        	}	
+       		body { background: rgb(51, 51, 51) url("http://devfiles.myopera.com/articles/1041/wood.jpg"); 
+       			min-width: 1200px;
+       			overflow:  hidden;
+       		}
+       		h1 {
+       			font: 48px/1.6 "Juergen", cursive;
+       			background-color: rgba(245, 245, 245, 0.98);
+       			width: 370px;
+       			padding: 0.3em 0.3em 0 0.3em;
+       			text-align: center;
+       			box-shadow: 0px 0px 15px black;
+       			border-radius: 0 50px 50px 0;
+       			text-shadow: 0px 0px 3px grey;
+       			-o-transform: translate(-20px, 510px) rotate(-3deg);
+       			-webkit-transform: translate(-20px, 510px) rotate(-3deg);
+       			transform: translate(-20px, 510px) rotate(-3deg);
+       			z-index: 10;
+       		}
+       		figure {
+				display: inline-block;
+				padding: 10px 10px 5px 10px;
+				background-color: white;
+				margin:  10px;
+				border: 2px solid rgba(0, 0, 0, 0.1);
+				-o-transition-property: all;
+				-o-transition-duration: 1s;
+				-o-transition-timing-function: ease-in-out;
+				-webkit-transition-property: all;
+				-webkit-transition-duration: 0.5s;
+				-webkit-transition-timing-function: ease-in-out;
+				transition-property: all;
+				transition-duration: 1s;
+				transition-timing-function: ease-in-out;
+			}
+			figure p {
+				font: 16px/1.5 "Juergen", cursive;
+				margin: 0;
+				display: none;
+			}
+			figure a {
+				float: right;
+				color: rgb(41, 106, 165);
+				text-decoration: none;
+			}
+			
+			figure:nth-of-type(1) {
+				-o-transform: scale(0.6) translate(700px, -350px) rotate(-10deg);
+				-webkit-transform: scale(0.6) translate(700px, -350px) rotate(-10deg);
+				transform: scale(0.6) translate(700px, -350px) rotate(-10deg);
+			}
+			figure:nth-of-type(2) {
+				-o-transform: scale(0.6) translate(180px, -420px) rotate(10deg);
+				-webkit-transform: scale(0.6) translate(180px, -420px) rotate(10deg);
+				transform: scale(0.6) translate(180px, -420px) rotate(10deg);
+			}
+			figure:nth-of-type(3) {
+				-o-transform: scale(0.6) translate(1000px, -840px) rotate(35deg);
+				-webkit-transform: scale(0.6) translate(1000px, -840px) rotate(35deg);
+				transform: scale(0.6) translate(1000px, -840px) rotate(35deg);
+			}
+			figure:nth-of-type(4) {
+				-o-transform: scale(0.6) translate(-240px, -790px) rotate(-20deg);
+				-webkit-transform: scale(0.6) translate(-240px, -790px) rotate(-20deg);
+				transform: scale(0.6) translate(-240px, -790px) rotate(-20deg);
+				
+			}
+			figure:nth-of-type(5) {
+				-o-transform: scale(0.6) translate(1000px, -1540px) rotate(-4deg);
+				-webkit-transform: scale(0.6) translate(1000px, -1540px) rotate(-4deg);
+				transform: scale(0.6) translate(1000px, -1540px) rotate(-4deg);
+			}
+			figure:nth-of-type(6) {
+				-o-transform: scale(0.6) translate(-10px, -1450px) rotate(10deg);
+				-webkit-transform: scale(0.6) translate(0px, -1450px) rotate(10deg);
+				transform: scale(0.6) translate(-10px, -1450px) rotate(10deg);
+			}
+			figure:nth-of-type(7) {
+				-o-transform: scale(0.6) translate(1200px, -2440px) rotate(45deg);
+				-webkit-transform: scale(0.6) translate(1200px, -2440px) rotate(45deg);
+				transform: scale(0.6) translate(1200px, -2440px) rotate(45deg);
+			}
+			figure:nth-of-type(8) {
+				-o-transform: scale(0.6) translate(-50px, -2140px) rotate(-5deg);
+				-webkit-transform: scale(0.6) translate(-50px, -2140px) rotate(-5deg);
+				transform: scale(0.6) translate(-50px, -2140px) rotate(-5deg);
+			}
+			figure:nth-of-type(9) {
+				-o-transform: scale(0.6) translate(500px, -2840px) rotate(-60deg);
+				-webkit-transform: scale(0.6) translate(500px, -2840px) rotate(-60deg);
+				transform: scale(0.6) translate(500px, -2840px) rotate(-60deg);
+			}
+			figure:nth-of-type(10) {
+				-o-transform: scale(0.6) translate(00px, -2650px) rotate(-10deg);
+				-webkit-transform: scale(0.6) translate(00px, -2650px) rotate(-10deg);
+				transform: scale(0.6) translate(00px, -2650px) rotate(-10deg);
+			}
+			figure:nth-of-type(11) {
+				-o-transform: scale(0.6) translate(300px, -3040px) rotate(-15deg);
+				-webkit-transform: scale(0.6) translate(300px, -3040px) rotate(-15deg);
+				transform: scale(0.6) translate(300px, -3040px) rotate(-15deg);
+			}
+			figure:nth-of-type(12) {
+				-o-transform: scale(0.6) translate(300px, -3390px) rotate(3deg);
+				-webkit-transform: scale(0.6) translate(300px, -3390px) rotate(3deg);
+				transform: scale(0.6) translate(300px, -3390px) rotate(3deg);
+			}
+			figure:nth-of-type(13) {
+				-o-transform: scale(0.6) translate(1050px, -3760px) rotate(-25deg);
+				-webkit-transform: scale(0.6) translate(1050px, -3760px) rotate(-25deg);
+				transform: scale(0.6) translate(1050px, -3760px) rotate(-25deg);
+			}
+			figure.active {
+				z-index: 10;
+					 -o-transform: rotate(0deg);
+					 -webkit-transform: rotate(0deg);
+					 position: fixed;
+					 top: 10px;
+					 left: 10px;
+					 box-shadow: 0px 0px 50px black;
+				}
+			figure.active p { display: block; }
+			
+			figure:hover {
+				 z-index: 11;
+				 box-shadow: 0px 0px 20px black;
+			}
+			
+			figure:hover:before {
+				color: #fff;
+				content: "Click to enlarge";
+				font-family: "Juergen", cursive;
+				font-size: 1.8em;
+				margin: 0 10px;
+				position: absolute;
+				text-shadow: #000 0px 1px 1px;
+			}
+			
+			figure.active:hover:before {
+				content: "";
+			}
+			
+      </style>
+      <script type="text/javascript" src="http://devfiles.myopera.com/articles/1041/image-gallery.js"></script>
+  </head>
+  <body>
+  		<h1>Land of the nomads</h1>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/17843828.jpg" width="500" height="366" alt="" />
+  			<p>Arabian Eyes in Egypt <a href="http://www.flickr.com/photos/mnadi/17843828/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/3834852526.jpg" width="500" height="308" alt="" />
+  			<p>Toureg lying on the sand of the Moroccan Sahara <a href="http://www.flickr.com/photos/nwardez/3834852526/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/279233719.jpg" width="493" height="346" alt="" />
+  			<p>Touareg woman near the oasis of Timia, Niger <a href="http://www.flickr.com/photos/ianna/279233719/">[Credit]</a></p>	
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/374338118.jpg" alt="" width="500" height="382" />
+  			<p>Zeina and the caravan, northern Mali <a href="http://www.flickr.com/photos/modern_nomad/374338118/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/3646471947.jpg" alt="" width="500" height="334" />
+  			<p>Touareg walking through the Chebbi Erg <a href="http://www.flickr.com/photos/juanma36/3646471947/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/361733411.jpg" alt="" width="500" height="333" />
+  			<p>Tamashek girl in Aguelhoc <a href="http://www.flickr.com/photos/modern_nomad/361733411/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/279233848.jpg" alt="" width="495" height="336" />
+  			<p>Touareg in search of wood, Tenerè desert, Niger <a href="http://www.flickr.com/photos/ianna/279233848/">[Credit]</a></p> 	
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/497983955.jpg" alt="" width="333" height="500" />
+  			<p>Tuareg woman and her child <a href="http://www.flickr.com/photos/modern_nomad/497983955/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/2947286617.jpg" alt="" width="500" height="333" />
+  			<p>Touareg on a camel in Sahara <a href="http://www.flickr.com/photos/fizzphotos/2947286617/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/302652002.jpg" alt="" width="500" height="375" />
+  			<p>Berber Village <a href="http://www.flickr.com/photos/pietroizzo/302652002/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/235844606.jpg" alt="" width="500" height="375" />
+  			<p>Berber girl in traditional headdress <a href="http://www.flickr.com/photos/joaomaximo/235844606/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/362649725.jpg" alt="" width="500" height="333" />
+  			<p>Badi <a href="http://www.flickr.com/photos/modern_nomad/362649725/">[Credit]</a></p>
+  		</figure>
+  		<figure>
+  			<img src="http://devfiles.myopera.com/articles/1041/1220233646.jpg" alt="" width="500" height="333" />
+  			<p>Dancing in the desert <a href="http://www.flickr.com/photos/modern_nomad/1220233646/">[Credit]</a></p>
+  		</figure>
+  </body>
+</html>

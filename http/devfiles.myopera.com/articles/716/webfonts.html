@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Web fonts example</title>
+<style type="text/css">
+
+@font-face {
+  src: url(http://devfiles.myopera.com/articles/716/MINYN___.ttf) format("truetype");
+  font-family: "Minya Nouvelle";
+  font-style: normal;
+/* Larabie fonts license agreement: http://devfiles.myopera.com/articles/593/license.txt */
+}
+@font-face {
+  src: url(http://devfiles.myopera.com/articles/716/Forgotte.ttf) format("truetype");
+  font-family: "Forgotten Futurist", serif;
+  font-style: normal;
+}
+
+
+h1 {font: 1.6em Helvetica; margin-top: 0.5em; padding: 0.2em; background-color: #eee; text-shadow: #aaa 1px 1px 5px; font-weight: bold; color: #111;}
+#para1 {font: 1.4em "Minya Nouvelle";}
+#para3 {font: 1.7em "Forgotten Futurist"; }
+p:not([id=para3])::first-letter {font-size: 2.3em; float: left; padding: 0 0.1em 0 0; line-height: 1;}
+</style>
+</head>
+<body>
+
+<h1>Minya Nouvelle example</h1>
+<p id="para1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris tincidunt venenatis velit. Morbi quis odio eu felis scelerisque elementum. Maecenas augue diam, ullamcorper id, tincidunt in, viverra quis, metus. Fusce eleifend tellus et est. Fusce purus metus, elementum at, sodales eget, commodo fermentum, eros. Sed sapien urna, tincidunt et, pharetra mattis, volutpat sed, odio. Nulla pulvinar nisi vitae nisl. Duis consequat odio. Donec euismod feugiat dolor. Donec purus. Morbi tortor felis, convallis ac, euismod in, fringilla pharetra, orci. Morbi dignissim. Vestibulum vitae eros. Donec a lacus. Vestibulum porta consequat dolor. Etiam mi nisl, vehicula at, venenatis quis, ornare eu, elit.</p>
+
+<h1>Forgotten Futurist example</h1>
+<p id="para3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris tincidunt venenatis velit. Morbi quis odio eu felis scelerisque elementum. Maecenas augue diam, ullamcorper id, tincidunt in, viverra quis, metus. Fusce eleifend tellus et est. Fusce purus metus, elementum at, sodales eget, commodo fermentum, eros. Sed sapien urna, tincidunt et, pharetra mattis, volutpat sed, odio. Nulla pulvinar nisi vitae nisl. Duis consequat odio. Donec euismod feugiat dolor. Donec purus. Morbi tortor felis, convallis ac, euismod in, fringilla pharetra, orci. Morbi dignissim. Vestibulum vitae eros. Donec a lacus. Vestibulum porta consequat dolor. Etiam mi nisl, vehicula at, venenatis quis, ornare eu, elit.</p>
+
+
+</body>
+</html>

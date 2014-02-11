@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Introduction to hCard - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Introduction to hCard</h1>
+      <p class="print author">By Christopher Schmitt</p>
+
+      <ul class="seriesNav">
+<li class="next"><a href="../introduction-to-hcard-part-two-styling/index.html" rel="next" title="link to the previous article in the series">Next article—Introduction to hCard, Part two: Styling hCards</a></li>
+</ul>
+
+<h2>Introduction</h2>
+<p>hCard is a way of representing contact information - including people, organizations and places - using nothing but XHTML <code>class</code> attributes. It is one of many standards detailed on the <a href="http://microformats.org">Microformats project</a>, the aim of which is to provide standards for coding machine-readable information into web pages using semantic HTML.</p> 
+
+<p>Among other things, this standardized way of representing information allows for third-party software to glean this information and put it to all kinds of good use. hCard is the perfect vehicle for showing off the potential of Microformats, so let&#39;s take a look at how to create hCards, and how other sites make use of them.</p>
+
+<h2>What is an hCard?</h2>
+
+<p>The hCard Microformat is fashioned after the vCard, which is a popular file format for contact information. vCard is already implemented in a lot of software (including Microsoft Outlook and the Apple address book), so using it as a basis for an analogous web-focused format makes sense: it makes it readily compatible with a ubiquitous file format. The hCard is structured after the vCard in that its organization - the fields it uses - mirrors that of the standard vCard.</p>
+
+<p>Let&#39;s take a look at a simple HTML hCard:</p>
+
+<pre><code>&lt;div class=&quot;vcard&quot;&gt;
+  &lt;span class=&quot;fn n&quot;&gt;Jack Tripper&lt;/span&gt;
+  &lt;div class=&quot;org&quot;&gt;Jack&#39;s Bistro&lt;/div&gt;
+  &lt;div class=&quot;adr&quot;&gt;
+    &lt;div class=&quot;street-address&quot;&gt;834 Ocean Vista Ave.&lt;/div&gt;
+    &lt;span class=&quot;locality&quot;&gt;Santa Monica&lt;/span&gt;,
+    &lt;span class=&quot;region&quot;&gt;CA&lt;/span&gt;,
+    &lt;span class=&quot;postal-code&quot;&gt;90405&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p>The <code>div</code> with the <code>vcard</code> <code>class</code> attribute identifies this block of HTML as an hCard. Each piece of contact data (or set of data) is then wrapped in an element sporting a standardized class name that, again, makes these bits of code &quot;machine-readable&quot; by identifying them as hCard fields.</p>
+
+<p>Most of the fields are optional, and the hCard above only includes a sampling of possible <code>class</code> names. You can include telephone numbers, birthdays, email addresses, instant messaging handles, even photos. And while the above card is a relatively simple one, hCard allows you to map out complex contact data, including nicknames, home and work addresses and phone numbers, preferred phone numbers, and organization info. (Check out the <a href="http://microformats.org/wiki/hcard-cheatsheet">full list of hCard fields</a>).</p>
+
+<p>The only required fields are <code>fn</code> and <code>n</code>, both of which label the contact name. The <code>n</code> <code>class</code> represents the full name (which would include first and last name fields, and any prefixes or suffixes). The <code>fn</code> class labels the &quot;formatted name&quot;, or how you would like the name to appear as the label for the card (eg, you may prefer &quot;Mr. Jack Tripper&quot;, or &quot;Tripper, Jack&quot; among others). As the formatted name and the full name are often the same, you can combine these fields by assigning both of these classes to the same element.</p>
+
+<p>Figure 1 shows the default rendering of an hCard.</p>
+
+
+<img src="../../../../devfiles.myopera.com/articles/628/image001.gif" alt="Default rendering of an hCard" />
+<p class="comment">Figure 1. Default rendering of an hCard.</p>
+
+<p>While perfectly legible, you can easily spruce up this sparse contact card with a bit of CSS.</p>
+<h2>hCard Tools and Uses</h2>
+<p>Marking up HTML as an hCard is fairly straightforward: it requires little more than labeling existing data with specialized classes. However, you may want to make use of a few good tools to make the process easier; details of available tools can be found in this section.</p>
+<p>The <a href="http://microformats.org/code/hcard/creator">Microformats.org hCard creator</a> on the Microformats website is a simple tool to create valid hCards. While its interface doesn&#39;t include all of the hCard fields available, it’s a great way to quickly whip up an hCard with basic contact information.</p>
+<p>If you&#39;re creating your hCards by hand, you may want to check out the <a href="http://en.hcard.geekhood.net/">hCard validator</a>, which checks your syntax to make sure you&#39;re marking up the HTML correctly.</p>
+<p>Once you&#39;ve incorporated a few hCards into your website, you may wonder &quot;Now what?&quot; How can third-party sites or applications make use of this &quot;machine-friendly&quot; data? To illustrate hCards in action, let&#39;s look at them through the eyes of some popular third-party tools.</p>
+
+
+<h3>Technorati contact feeds</h3>
+<p>You should try out the <a href="http://www.technorati.com/contacts">Technorati Contacts Feed Service</a> as shown in Figure 2.</p>
+
+<p>This utility, which is available to use on the site and as a favelet, pulls out the hCard data from a Web address, and lets you download the data as a vCard. You can then import the vCard into your favorite address book application.</p>
+
+
+<img src="../../../../devfiles.myopera.com/articles/628/image002.jpg" alt="The Technorati hCards contacts page" />
+<p class="comment">Figure 2. The Technorati hCards contacts page.</p>
+
+<p>You can use the hCard extractor that&#39;s included on the web page, but let&#39;s install the favelet, so that we can use the tool in any browser. To do so, <em>Drag the favelet link to your bookmarks toolbar/Personal Bar</em> (you can see this link underneath the &quot;Get hCards favelet&quot; header).</p>
+
+<p>Then, go to a page that includes an hCard. For example, Figure 3 shows a My Opera Profile page.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/628/image003.jpg" alt="A profile page on Flickr" />
+<p class="comment">Figure 3. A My Opera Profile page, which features an hCard.</p>
+
+<p>Click on the &quot;Get hCard Contacts&quot; favelet (in the Personal Bar). This will convert the hCards found on the page into vCards that will then be made available for download. You can then open up these vCards with a compatible address book application, as shown in Figure 4.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/628/image004.jpg" alt="Exporting hCard content using the Technorati contact feeds service" />
+<p class="comment">Figure 4: Exporting hCard content using the Technorati contact feeds service.</p>
+
+<p>Utilities like these let you quickly identify and utilize the contact data contained in a web page. And what&#39;s great is that these tools are able to glean data from any website that has Microformatted data - including your humble blog or small business site!</p>
+
+<h3>Other Microformats applications</h3>
+
+<p>There are other applications out there that can utilize Microformats:</p>
+
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/4106">Operator</a> is a Firefox add-on that detects Microformatted text on a web page, and then provides you with options to do various things with this data, depending on the type of microformat.</li>
+<li>The <a href="https://addons.mozilla.org/en-US/firefox/addon/tails-export/">Tails Firefox extension</a> provides similar functionality to Operator.</li>
+<li>There are also a couple of budding Microformats search engines, including the <a href="http://kitchen.technorati.com/search/">Technorati search engine</a> and <a href="http://virel.de">Virel</a>.</li> 
+</ul>
+<h2>Summary</h2>
+<p>A simple construction of HTML elements, the hCard microformat makes the information in your site much more versatile, which is one of the reasons sites like Flickr and Google Maps use it to markup contact information. With tools such as those discussed above, it is well worth the effort to mark up your contact data using hCards; it makes it more easily accessible to developers and users alike.</p>
+
+<ul class="seriesNav">
+<li class="next"><a href="../introduction-to-hcard-part-two-styling/index.html" rel="next" title="link to the previous article in the series">Next article—Introduction to hCard, Part two: Styling hCards</a></li>
+</ul>
+  p
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=268729">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/teleject.html" rel="author">Christopher Schmitt</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, March 6, 2009
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/div.html" rel="tag">div</a></li>
+        <li><a href="../../tags/hcard.html" rel="tag">hcard</a></li>
+        <li><a href="../../tags/html.html" rel="tag">html</a></li>
+        <li><a href="../../tags/microformat.html" rel="tag">microformat</a></li>
+        <li><a href="../../tags/vcard.html" rel="tag">vcard</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

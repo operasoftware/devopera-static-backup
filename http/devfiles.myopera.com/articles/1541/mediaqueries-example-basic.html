@@ -1,0 +1,53 @@
+<!doctype html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Media Queries demo for Opera Mini 5</title>
+<style>
+/* these general rules apply all the time */
+body { font: 0.9em/1.3 Helvetica, Arial, sans; padding: 0 5px; }
+h1 { font-size: 2em; margin: 5px 0; }
+h2 { font-size: 1.2em; margin: 15px 0 0 0; }
+p { margin: 0; }
+h1, h2 { color: #c60f16; }
+div.sidebar { width: 250px; padding: 150px 10px 10px 10px; float: left; font-size: 1.6em; letter-spacing: -1px; font-weight: bold; line-height: 0.95; margin: 0 20px 5px 0; background: #c60f16 url(http://devfiles.myopera.com/articles/1541/mediaqueries-mob.png) no-repeat center 10px; color: #fff; }
+div.sidebar p { margin: 0 0 10px 0; padding: 0; }
+
+div.content { max-width: 700px; padding-bottom: 15px; border-bottom: 5px #ccc solid; }
+.screen, .mobile { max-width: 700px; background: #eee; border: 5px #c60f16 solid; padding: 5px; font-size: 0.8em; font-weight: bold;}
+.screen strong, .mobile strong { color:#c60f16; }
+
+.screen { display: block; }
+.mobile { display: none; }
+
+/* the following rules explictly override certain general styles for small-screen devices */
+@media handheld, screen and (max-width: 480px), screen and (max-device-width: 480px)  {
+	.screen { display: none; }
+	.mobile { display: block; }
+	body { padding: 0; }
+	div.sidebar { width: auto; float: none; background: #c60f16 url(http://devfiles.myopera.com/articles/1541/mediaqueries-mob-s.png) no-repeat left center; margin: 0; padding: 10px 5px 10px 160px; font-size: 1.3em; }
+}
+</style>
+</head>
+<body>
+<p class="mobile note">Layout optimised for <strong>mobile and small screen devices</strong>.</p>
+<p class="screen note">Layout optimised for <strong>large screen devices</strong>.</p>
+
+<h1>Opera Mini 5</h1>
+
+<div class="sidebar">
+<p>The next generation of mobile browsing.</p>
+<p>Runs on almost every phone.</p>
+</div>
+
+<div class="content">
+<h2>Innovative and easy-to-use</h2>
+<p>Living up to our vision of providing the best Internet experience on any device, Opera Mini 5 boasts a powerful new user interface. Merging the best from our desktop browser together with new innovations for mobile phones, Opera Mini is advanced, yet highly intuitive to use.</p>
+<h2>Full Web in your palm</h2>
+<p>When visiting a Web page, Opera Mini displays the overview of the page and suggests where to begin your reading before you zoom in. Opera Mini also detects when you are on a Web page designed for a mobile phone and displays it optimally.</p>
+<h2>Touch and keypad</h2>
+<p>The user interface has been designed for both touchscreen- and keypad-style mobile phones. With a touchscreen, you can enjoy even easier navigation with our new zooming and kinetic scrolling.</p>
+<h2>Password Manager</h2>
+<p>There is no more hassle with those hard-to-enter usernames and passwords. Opera Mini 5 will remember your credentials, and you can log on to your favorite Web sites with just a single click. The passwords are stored on your phone for your convenience.</p>
+</div>
+
+</body>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <title>Field Help Method</title>
+    <link href="http://devfiles.myopera.com/articles/295/master.css" media="screen" rel="stylesheet" type="text/css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="Frank M. Palinkas, MCP, MCT, MCSE, MCDBA, A+" http-equiv="author">
+    <meta content="Microsoft MVP - Windows Help" name="affiliation">
+    <meta content="Senior Technical Communicator, Web Standards and Accessibility Designer" name="jobtitle">
+
+    <script type="text/javascript" src="http://devfiles.myopera.com/articles/295/fieldhelp.js"></script>
+
+</head>
+<body id="fieldmethod">
+    <div id="masthead">
+        <p id="header">
+            Calling Accessible Context-Sensitive Help with Unobtrusive DOM/JavaScript
+        </p>
+        <h1 id="topic">
+            Field Help Method</h1>
+    </div>
+    <div id="content">
+        <div class="border">
+            <h2 id="a1">
+                Context-Sensitive Field Help
+            </h2>
+            <h3>
+                Activate/Click a Help icon to open/close the field-level help.</h3>
+            <form action="FieldMethod.htm#" method="post" id="enquiryform">
+                <fieldset>
+                    <legend>Enquiry Form</legend>
+                    <h3 class="form" title="help instructions">
+                        Activate/Click a Help icon to open or close help.
+                    </h3>
+                    <div>
+                        <label for="subject" title="Subject dropdown list">
+                            Subject <span class="req">(required)</span>
+                            <img src="http://devfiles.myopera.com/articles/295/help_small.gif" id="subjecthelp" class="help" alt="help for subject dropdown list" width="16" height="16"></label>
+                    </div>
+                    <div id="containersubjecthelp">
+                        <p class="cshelp">
+                            Please select a subject in the dropdown list.</p>
+                    </div>
+                    <div>
+                        <select name="subject" id="subject">
+                            <option value="">Select a Subject</option>
+                            <option value="Option 1">Help Authoring Tools</option>
+                            <option value="Option 2">Microsoft HTML Help</option>
+                            <option value="Option 3">Web-based Help</option>
+                            <option value="Option 4">Context-Sensitive Help</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="name" title="Name field">
+                            Name <span class="req">(required)</span>
+                            <img src="http://devfiles.myopera.com/articles/295/help_small.gif" id="namehelp" class="help" alt="help for name field" width="16" height="16"></label>
+                    </div>
+                    <div id="containernamehelp">
+                        <p class="cshelp">
+                            Please enter your full name in the textbox.</p>
+                    </div>
+                    <div>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div>
+                        <label for="email" title="Email field">
+                            Email <span class="req">(required)</span>
+                            <img src="http://devfiles.myopera.com/articles/295/help_small.gif" id="emailhelp" class="help" alt="help for email field" width="16" height="16"></label>
+                    </div>
+                    <div id="containeremailhelp">
+                        <p class="cshelp">
+                            Please enter your email address in the textbox.</p>
+                    </div>
+                    <div>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <div>
+                        <label for="message" title="Message field.">
+                            Message <span class="req">(required)</span>
+                            <img src="http://devfiles.myopera.com/articles/295/help_small.gif" id="messagehelp" class="help" alt="help for message field" width="16" height="16"></label>
+                    </div>
+                    <div id="containermessagehelp">
+                        <p class="cshelp">
+                            Please enter your message in the textbox.</p>
+                    </div>
+                    <div>
+                        <textarea name="message" id="message" rows="6" cols="30"></textarea>
+                    </div>
+                    <div>
+                        <label for="update" title="Receive updates checkbox">
+                            Send Me Updates <span class="req">(optional)</span>
+                            <img src="http://devfiles.myopera.com/articles/295/help_small.gif" id="updateshelp" class="help" alt="help for updates checkbox" width="16" height="16">
+                        </label>
+                    </div>
+                    <div id="containerupdateshelp">
+                        <p class="cshelp">
+                            Check the box if you want to receive updates.</p>
+                    </div>
+                    <div>
+                        <input class="checkbox" type="checkbox" name="update" id="update" value="n">
+                    </div>
+                    <label for="submit" title="Click to submit your data.">
+                        <input class="submit" type="submit" id="submit" value="Submit Enquiry"></label>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

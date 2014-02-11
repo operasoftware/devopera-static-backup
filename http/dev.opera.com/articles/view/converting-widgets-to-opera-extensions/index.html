@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Converting widgets to Opera extensions: Things to keep in mind - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Converting widgets to Opera extensions: Things to keep in mind</h1>
+      <p class="print author">By Shwetank Dixit</p>
+
+      <p class="note">
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This article will shed light on some things to keep in mind for Widgets developers when converting widgets into Opera Extensions. We recently announced that the <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">sun is setting on our support for Widgets (and Unite)</a> in upcoming versions of Opera, so this article will help developers who have existing Widgets to convert them into the highly-popular Opera Extensions format, if they so choose.</p>
+
+<p>If you haven’t already, we&#39;d recommended that you take a look at <a href="../../../addons/extensions/index.html">developing Opera extensions</a> and gain some familiarity with how it is made before reading this article.</p>
+
+<p>One very important and useful thing to note is that Opera Extensions are based on the same packaging format as Widgets, i.e, the <a href="http://www.w3.org/TR/widgets/">Widget Packaging and XML Configuration Specification</a>. There are a few differences between the two, but essentially both are based on the same config.xml file, index.html build file, and other files necessary for the look and behavior, which are then packaged together into a zip file (then given a custom file extension — .wgt for widgets and .oex for extensions).</p>
+
+<p>To start with, let’s take a deeper look into the packaging format. We will take the <a href="http://widgets.opera.com/widget/26182/">Geolocator widget</a> and convert it to an extension during the course of the article.</p>
+
+<h2 id="packaging">Packaging</h2>
+
+<p>Widgets are .wgt files and Opera Extensions are .oex files, however, both are essentially .zip files renamed into their respective formats. One thing to keep in mind is that if you want to convert your widget to an extension (especially if it requires some interactivity from the user’s side), the best way is to make it run inside the popup page of the extension. Figure 1 shows how the files differ between a Widget and an Opera Extension</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/9112/widgetfilesystem.jpg" alt="Files inside the geolocator widget file" /></p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/9112/extensionfilesystem.jpg" alt="Files inside the converted geolocator extension file" /></p>
+<p class="figure">Figure 1: Files inside the Geolocator widget file (top), and the converted Geolocator extension file (bottom).</p>
+
+<p>In Widgets, generally the build file (called index.html) was the main page where the UI of the whole app manifested itself. All the JS, CSS and image files were ultimately linked to that. In the equivalent Opera Extension, you want to display the functionality in the popup, so start off by renaming your widget’s index.html to popup.html.</p>
+
+<p>Then what about the index.html file? Is isn’t it needed even in extensions? Yes, it is. Next you should create a new index.html build file linking to the background.js script, which should look like so:</p> 
+
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Index Page&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;background.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+&lt;/html&gt;</code></pre>
+
+<p>The linked background.js file is needed to define the UI properties of the extension (like the icon, the popup file, the size of the popup, etc). So let&#39;s create that next; you define the popup like so:</p>
+
+<pre><code>...
+popup: {
+        href: &quot;popup.html&quot;,
+        width: 500,
+        height: 420
+      },
+...</code></pre>
+
+<p class="note">Read our article <a href="../opera-extensions-buttons-badges-and-popups/index.html">how to use the background.js script to add buttons, badges and popups to extensions</a> to find out more about how background script works.</p>
+
+<p>Keep in mind that this popup.html is just the renamed &#39;index.html&#39; that we had in the widget.</p>
+
+<h2>Correcting the configuration file</h2>
+
+<p>Now let&#39;s move on to the configuration file: usually referred to as config.xml, this is a simple XML file needed for both widgets and extensions. You already have a widget config.xml, which just needs a few changes to make it work properly in extensions. These changes actually make writing config.xml easier for extensions, which is welcome news!</p>
+
+<p>You need to make the following changes:</p>
+
+<ul>
+  <li>The <code>&lt;widget&gt;</code> tag for widget config.xml had an attribute called <code>&quot;dockable&quot;</code>. That was specific to widgets, so delete it.</li>
+  <li>You need to add an <code>xmnls</code> attribute to the <code>&lt;widget&gt;</code> tag, so that it looks like <code>&lt;widget xmlns = &quot;http://www.w3.org/ns/widgets&quot;&gt;</code></li>
+  <li>In widgets, you have the tag <code>&lt;widgetname&gt;</code>. This should be renamed to <code>&lt;name&gt;</code> in the config.xml for extensions.</li>
+  <li><code>&lt;width&gt;</code> and <code>&lt;height&gt;</code> are defined in the config.xml for widgets, but they are not needed for extensions, so delete those elements (in extensions, the width and height of the popup is defined in the background.js file).</li>
+  <li>In widgets, the author information was stated in the <code>&lt;id&gt;</code> tag of the config.xml, but this is not needed in extensions. Instead, you can include similar information in the &lt;author&gt; tag, with attributes like <code>&quot;email&quot;</code> and <code>&quot;href&quot;</code>.</li>
+  <li>In widgets, icon files used to be defined in the config.xml like so: <code>&lt;icon&gt;icon.png&lt;/icon&gt;</code>. In the config.xml for extensions, it is simply defined like <code>&lt;icon src=&quot;icon.png&quot; /&gt;</code>. You need to make this change as well.</li>
+  <li>The <code>&lt;host&gt;</code> tag is not required in the config.xml for extensions, so delete it.</li>
+</ul>
+
+<h2 id="storage">Storage</h2>
+
+<p>The mechanism for storage in widgets and extensions differ slightly. In extensions, you store items using <code>widget.preferences.setItem()</code> and retrieve it using <code>widget.preferences.getItem()</code>.</p>
+
+<table>
+<caption>Storage</caption>
+<thead>
+<tr>
+	<th>Action</th><th>widget</th><th>extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>Store</td><td>widget.setPreferenceForKey()</td><td>widget.preferences.setItem()</td>
+</tr>
+<tr>
+	<td>Retrieve</td><td>widget.preferenceForKey()</td><td>widget.preferences.getItem()</td>
+</tr>
+</tbody>
+</table>
+
+<p>So you need to replace <code>widget.setPreferenceForKey()</code> with <code>widget.preferences.setItem()</code>, and <code>widget.preferenceForKey()</code> with <code>widget.preferences.getItem()</code> in all of your scripts when you are converting your widgets to extensions. The functions work exactly the same way; its just the naming that has changed.</p>
+
+<h2>The finished product</h2>
+
+<p>And that&#39;s it! Figure 2 shows our existing Widget running as an Opera Extension.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/9112/extension_oslo1.png" alt="Geolocator extension" /></p>
+<p class="figure">Figure 2: The converted Geolocator extension</p>
+
+<p>You can <a href="http://widgets.opera.com/widget/26182/">download the Geolocator Widget file</a> and the <a href="../../../../devfiles.myopera.com/articles/9112/geolocator_extension.oex">converted Opera Extension file</a> and peruse the code to see the differences. As an additional example, take a look at the <a href="http://widgets.opera.com/widget/3529/">Analog Clock Widget</a> and the <a href="../../../../devfiles.myopera.com/articles/9112/analog_clock_extension.oex">converted Analog Clock extension</a>.</p>
+
+<h2 id="xhr">Communication with a server using XMLHttpRequest</h2>
+
+<p>Some widgets require communication with a server using Ajax. This was pretty straightforward in Widgets, where you could do an XHR request directly from the index page. However, in extensions, you need to communicate with the background script, which will do the Ajax request and then communicate the result back to the popup page. We have an excellent article showing how to do this — <a href="../accessing-an-opera-extensions-background-process/index.html">Accessing an Opera Extension&#39;s background process</a>.</p>
+
+<h2 id="openlinks">Opening links in the browser</h2>
+
+<p>Some widgets required the <code>widget.openURL()</code> method to open links in the browser. To do this in extensions however, the popup file would need to communicate with the background.js file, which will open a new tab and the load the URL within it. You can take a look at the <a href="http://www.opera.com/docs/apis/extensions/windowsandtabsguide/">Windows and Tabs API documentation</a> as well as our <a href="../opera-extensions-messaging/index.html">article on messaging in extensions</a>, which deals with communicating between different parts of an extension (including between popup and background script) and how to go ahead with it.</p>
+
+<h2 id="polishing">Polishing things up</h2>
+
+<p>Keep in mind that the Opera Extensions you have converting from Widgets may work, but still may or may not conform to the <a href="../opera-extensions-publishing-guidelines/index.html">Opera extension publishing guidelines</a>. We&#39;d recommend that you take a look at it, and adjust and polish the extension to conform to the guidelines before submitting it to the <a href="https://addons.opera.com">Opera addons catalog</a>.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-88184002">
+      <a href="../../../author/toscho.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e2/3bb/76accfffc07972e9c3f8e8922bd3af8f77a.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/toscho.html">Thomas Scholz</a></p>
+      <p class="commentdate">Thursday, April 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I wonder how this applies to games like the famous PipePanic or DrPresto. There is no UI button, and the game is running in a chromeless window unrelated to the browser. Could you add some examples for that? Thanks.</section>
+    </li>
+    <li id="comment-88189512">
+      <a href="../../../author/Johann-7.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c2/c80/df4f5f503bdbb76d180301a71f42745c930.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Johann-7.html">Johann Antonio</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>And Unite?</section>
+    </li>
+    <li id="comment-88215902">
+      <a href="../../../author/toscho.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e2/3bb/76accfffc07972e9c3f8e8922bd3af8f77a.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/toscho.html">Thomas Scholz</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I miss something important probably: To start one of the games I mentioned I don&#39;t need to start the browser. How do I do that with an extension?<br/>I can drag the game to any screen where I want it. This is not possible with an extension, is it? Plus, I cannot see how to get the extension button away from the extension bar and move the shortcut to another place like the desktop or the start menu. This is easy and intuitive with real widgets.</section>
+    </li>
+    <li id="comment-88236892">
+      <a href="../../../author/toscho.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e2/3bb/76accfffc07972e9c3f8e8922bd3af8f77a.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/toscho.html">Thomas Scholz</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>90% of the most popular widgets require the superior UX features of the widgets API. They cannot be converted to extensions (if I understand it correctly) until the extensions API reaches a similar stage. I really hope they are supported until then.</section>
+    </li>
+    <li id="comment-89569512">
+      <a href="../../../author/jlouisbiz.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ce/723/629056a9e0af267cd2b243da17df1cb14b2.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jlouisbiz.html">Mr. Louis</a></p>
+      <p class="commentdate">Thursday, May 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I don&#39;t understand quite why Opera company is changing drastically of what became successful without having a true solution for the replacement. It is confidence break with users.</section>
+    </li>
+    <li id="comment-88207892">
+      <a href="../../../author/shwetankdixit.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/10/084/9cc10f99a8e6b2107d64ecb31961d571336.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/shwetankdixit.html">Shwetank Dixit</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Thomas The Geolocator widget that I took the example of in my article also has no real UI button, and is running in a chromeless window unrelated to the browser. The screenshot you see in the article is the final result where we converted the widget and now its running inside the browser as an extension. <br/><br/>The same principles mentioned in the article will apply when converting the widget games to extensions.<br/><br/>@Jahann : We&#39;re using parts of Unite already in many places of Opera, like our UPnP support in Dragonfly etc. We&#39;re right now working on improving our extension platform, and will use the inspiration from Unite to add more awesome to the extensions plattform in the future. <br/><br/>Anon edit:<br/>There&#39;s a bug on page <a href="index.html" target="_blank">http://dev.opera.com/articles/view/converting-widgets-to-opera-extensions/</a><br/>I see Edit and Delete links for Shwetank Dixit&#39;s comment posted on Friday, April 27, 2012.<br/>I only tried Edit.</section>
+    </li>
+    <li id="comment-91091192">
+      <a href="../../../author/spadija.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4b/3f6/d85c3e67155c8e42a6cf4189ca614ce7a71.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadija.html">Joel Spadin</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>If you need a more persistent UI than an extension&#39;s popup, simply use opera.extension.tabs.create({ url: &#39;popup.html&#39;, focused: true }) to open the interface in a full-fledged tab. You could also <a href="../extensions-api-window-height/index.html" target="_blank">create a new window</a>, then create the tab in it.<br/><br/>Also, there are still a number of things which cannot be converted to extensions. Will extensions ever be able to read from and write to arbitrary (user white-listed) filesystem locations? Currently, the user must provide a file through a file open dialog, and the only way to save a file is to form a data URI and open it in a new tab, meaning it is impossible to build something like <a href="http://unite.opera.com/application/401/" target="_blank">UJS Manager</a> as an extension.<br/><br/>Speaking of Unite features and UJS Manager, one of the nicest Unite features was the ability to open a Unite service as a panel. When I try to open a widget:// URL as a panel, I get nothing. Will there be a way to interact with an extension through a panel?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/shwetankdixit.html" rel="author">Shwetank Dixit</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, April 25, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/widgets.html" rel="tag">widgets</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera extensions docs</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-hello-world/index.html" >Saying hello world to Opera extensions!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../whats-in-an-opera-extension/index.html" >What's in an Opera extension?</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-developer-workflow/index.html" >Opera extensions developer workflow</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>API reference<ul >
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-config-xml/index.html" >config.xml</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-widget/index.html" >widget element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-name/index.html" >name element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-description/index.html" >description element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-author/index.html" >author element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-license/index.html" >license element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-icon/index.html" >icon element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-content/index.html" >content element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-preference/index.html" >preference element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-access/index.html" >access element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-span/index.html" >span element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-xml-lang/index.html" >xml:lang attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-dir/index.html" >dir attribute</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-widget-object/index.html" >Widget object</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-author/index.html" >widget.author</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authoremail/index.html" >widget.authorEmail</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authorhref/index.html" >widget.authorHref</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-description/index.html" >widget.description</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-id/index.html" >widget.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-name/index.html" >widget.name</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-preferences/index.html" >widget.preferences</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-shortname/index.html" >widget.shortName</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-version/index.html" >widget.version</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-browser-toolbar/index.html" >Button &amp; Badge API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-createitem/index.html" >opera.contexts. toolbar.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-additem/index.html" >opera.contexts. toolbar.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-removeitem/index.html" >opera.contexts. toolbar.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-length/index.html" >opera.contexts. toolbar.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-badge/index.html" >Button.badge</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-disabled/index.html" >Button.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-icon/index.html" >Button.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-onclick/index.html" >Button.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-popup/index.html" >Button.popup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-title/index.html" >Button.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-addeventlistener/index.html" >Button.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-removeeventlistener/index.html" >Button.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-backgroundcolor/index.html" >Badge.backgroundColor</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-color/index.html" >Badge.color</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-display/index.html" >Badge.display</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-textcontent/index.html" >Badge.textContent</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-popup/index.html" >Popup API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-height/index.html" >Popup.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-href/index.html" >Popup.href</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-width/index.html" >Popup.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-postmessage/index.html" >opera.extension. postMessage()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-windows-tabs/index.html" >Windows &amp; Tabs API</a>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Windows<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-create/index.html" >opera.extension. windows.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getall/index.html" >opera.extension. windows.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getlastfocused/index.html" >opera.extension. windows.getLastFocused()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-insert/index.html" >BrowserWindow.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-close/index.html" >BrowserWindow.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focus/index.html" >BrowserWindow.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-update/index.html" >BrowserWindow.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-id/index.html" >BrowserWindow.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-closed/index.html" >BrowserWindow.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focused/index.html" >BrowserWindow.focused</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-private/index.html" >BrowserWindow.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabgroups/index.html" >BrowserWindow.tabGroups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabs/index.html" >BrowserWindow.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-height/index.html" >BrowserWindow.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-width/index.html" >BrowserWindow.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-top/index.html" >BrowserWindow.top</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-left/index.html" >BrowserWindow.left</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tab Groups<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-create/index.html" >opera.extension. tabGroups.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-getall/index.html" >opera.extension. tabGroups.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-close/index.html" >BrowserTabGroup.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-focus/index.html" >BrowserTabGroup.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-insert/index.html" >BrowserTabGroup.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-update/index.html" >BrowserTabGroup.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-id/index.html" >BrowserTabGroup.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-closed/index.html" >BrowserTabGroup.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-collapsed/index.html" >BrowserTabGroup. collapsed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-browserwindow/index.html" >BrowserTabGroup. browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-tabs/index.html" >BrowserTabGroup.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-position/index.html" >BrowserTabGroup.position</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tabs<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-create/index.html" >opera.extension. tabs.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getall/index.html" >opera.extension. tabs.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getselected/index.html" >opera.extension. tabs.getSelected()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-close/index.html" >BrowserTab.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focus/index.html" >BrowserTab.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-update/index.html" >BrowserTab.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-id/index.html" >BrowserTab.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-closed/index.html" >BrowserTab.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-locked/index.html" >BrowserTab.locked</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-private/index.html" >BrowserTab.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-selected/index.html" >BrowserTab.selected</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-readystate/index.html" >BrowserTab.readyState</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-faviconurl/index.html" >BrowserTab.faviconUrl</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-title/index.html" >BrowserTab.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-url/index.html" >BrowserTab.url</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-browserwindow/index.html" >BrowserTab.browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-tabgroup/index.html" >BrowserTab.tabGroup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-position/index.html" >BrowserTab.position</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focused/index.html" >BrowserTab.focused</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-injected-scripts/index.html" >Injected scripts</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-addeventlistener/index.html" >opera.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-removeeventlistener/index.html" >opera.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicfunction/index.html" >opera.defineMagicFunction()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicvariable/index.html" >opera.defineMagicVariable()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-posterror/index.html" >opera.postError()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-urlfilter/index.html" >URL filter API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-add/index.html" >opera.extension. urlfilter.block.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-remove/index.html" >opera.extension. urlfilter.block.remove()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-allow-add/index.html" >opera.extension. urlfilter.allow.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-excludedomains/index.html" >RuleOptions.excludeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-includedomains/index.html" >RuleOptions.includeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-resources/index.html" >RuleOptions.resources</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-thirdparty/index.html" >RuleOptions.thirdParty</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-syntax/index.html" >URL Filter syntax</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-messaging/index.html" >Messaging API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-bgprocess/index.html" >opera.extension.bgProcess</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onconnect/index.html" >opera.extension.onconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-ondisconnect/index.html" >opera.extension.ondisconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-broadcastmessage/index.html" >opera.extension. broadcastMessage()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-speeddial/index.html" >Speed Dial API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-viewmodes/index.html" >viewmodes attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-param/index.html" >param element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-title/index.html" >opera.contexts.speeddial.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-url/index.html" >opera.contexts.speeddial.url</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-resourceloader/index.html" >Resource Loader API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-resourceloader-getfile/index.html" >opera.extension.getFile()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-screenshot/index.html" >Screenshot API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-screenshot-getscreenshot/index.html" >opera.extension.getScreenshot() and BrowserTab.getScreenshot()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-contextmenu/index.html" >Context Menu API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-createitem/index.html" >opera.contexts. menu.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-additem/index.html" >opera.contexts. menu.addItem() and MenuItem.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-item/index.html" >opera.contexts.menu.item() and MenuItem.item()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-removeitem/index.html" >opera.contexts. menu.removeItem() and MenuItem.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-length/index.html" >opera.contexts.menu.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-onclick/index.html" >opera.contexts.menu.onclick and MenuItem.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-contexts/index.html" >MenuItem.contexts</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-disabled/index.html" >MenuItem.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturlpatterns/index.html" >MenuItem. documentURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-icon/index.html" >MenuItem.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-id/index.html" >MenuItem.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-parent/index.html" >MenuItem.parent</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-targeturlpatterns/index.html" >MenuItem.targetURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-title/index.html" >MenuItem.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-type/index.html" >MenuItem.type</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturl/index.html" >MenuEvent.documentURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-iseditable/index.html" >MenuEvent.isEditable</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-linkurl/index.html" >MenuEvent.linkURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-mediatype/index.html" >MenuEvent.mediaType</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-pageurl/index.html" >MenuEvent.pageURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-selectiontext/index.html" >MenuEvent.selectionText</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-source/index.html" >MenuEvent.source</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcelement/index.html" >MenuEvent.srcElement</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcurl/index.html" >MenuEvent.srcURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-target/index.html" >MenuEvent.target</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Extension tutorials<ul >
+  <li class="sub-collection leaf">
+<a href="../config-xml-howto/index.html" >The ins and outs of config.xml</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-buttons-badges-and-popups/index.html" >Buttons, badges and popups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-messaging/index.html" >Messaging</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-options-page/index.html" >Options page</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../accessing-an-opera-extensions-background-process/index.html" >Accessing an Opera extension's background process</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-opera-speed-dial-extensions/index.html" >Creating Opera Speed Dial Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cookie-sharing-in-opera-extensions/index.html" >Cookie-sharing in Opera extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../site-blocking-with-operas-url-filter-api/index.html" >Site blocking with Opera’s URL Filter API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-multilingual-extensions/index.html" >Creating multilingual extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hands-on-building-an-opera-extension/index.html" >Hands-on tutorial: building an Opera extension</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-userjs-to-extensions/index.html" >Converting UserJS to Opera Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Converting widgets to Opera Extensions: Things to keep in mind</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Templates and code samples<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extension-code-examples/index.html" >Opera extension code examples</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-prototypes-modifying-css/index.html" >Opera extensions prototypes for modifying CSS</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>UI guidelines and distribution<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-publishing-guidelines/index.html" >Publishing guidelines</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-effective-opera-extension-icons/index.html" >Creating effective Opera Extension icons</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../distributing-opera-extensions-and-auto-updates/index.html" >Distributing Opera extensions and auto-updates</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Page Title</title>
+ 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.4.1/build/yahoo/yahoo-min.js" ></script>
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.4.1/build/event/event-min.js" ></script>
+
+<script type="text/javascript" charset="utf-8">
+  
+  var Badge = function() {
+   
+    var obj;
+   
+    return({
+      init: function() {
+        var badge = document.getElementById('ufbadge');
+        if (badge) {
+          var link = badge.getElementsByTagName('a')[0];      
+          if (link) {
+            badge.innerHTML = "loading relationships for " + link.childNodes[0].nodeValue;
+            var head = document.getElementsByTagName('head');
+            var script = document.createElement('script');
+            script.type = "text/javascript";
+            Badge.obj = badge;
+            script.src = "http://lab.backnetwork.com/ufXtract/?url=" + escape(link.href) + "&format=xfn&output=json&callback=Badge.build";
+            head[0].appendChild(script);
+          }
+        }
+      },
+      build: function(response) {
+        var ul = document.createElement('ul');
+        ul.id = "ufbadge";
+        for (j in response.xfn) {
+          var li = document.createElement('li');
+          li.className = response.xfn[j].rel;
+          var a = document.createElement('a');
+          a.href= response.xfn[j].link;
+          var txt = document.createTextNode(response.xfn[j].link);
+          var span = document.createElement('span');
+          var rel = document.createTextNode(' (' + response.xfn[j].rel + ')');
+          a.appendChild(txt);
+          span.appendChild(rel);
+          li.appendChild(a);
+          li.appendChild(span);
+          ul.appendChild(li);
+        }
+      this.obj.parentNode.replaceChild(ul,this.obj);
+      }
+    });
+  }();
+  
+  YAHOO.util.Event.onDOMReady(Badge.init); 
+  
+</script>
+   
+</head>
+<body>
+     
+<div id="ufbadge"><a href="http://twitter.com/garethr">Gareth Rushgrove on twitter</a></div>
+
+<!--<div id="ufbadge"><a href="http://ben-ward.co.uk">Ben Ward</a></div>-->
+
+
+</body>
+
+</html>

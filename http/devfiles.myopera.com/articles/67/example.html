@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+ <head>
+  <title>Examples for the article "Improve your forms using HTML5!"</title>
+  <style>
+   #validation label input:valid { background:lime }
+   #validation label input:invalid { background:red; color:white }
+   input[type=submit]:default { border:solid }
+   textarea { height:4em; width:12em }
+  </style>
+ </head>
+ <body>
+  <h1>Examples for the article "Improve your forms using HTML5!"</h1>
+  <p>These examples form part of the article
+   <a href="../../../dev.opera.com/articles/view/improve-your-forms-using-html5/index.html">Improve
+   your forms using HTML5!</a> Have fun! (To play with the examples you need to
+   use <a href="http://www.opera.com/download/">Opera 9 or newer</a>.</p>
+  <p>The "search" control below should be focused:</p>
+  <form>
+   <p><label>Search: <input autofocus name=search></label></p>
+   <p><input type=submit value=Go!></p>
+  </form>
+  <p>The control below can be used to test "validation" of form controls:</p>
+  <form id="validation">
+   <p><label>Name: <input required name=name></label></p>
+   <p><label>E-mail: <input type=email required name=email></label></p>
+   <p><label>URL: <input type=url name=url></label></p>
+   <p><label>Comment: <textarea required name=comment></textarea></label></p>
+   <p><input type=submit value=React!></p>
+  </form>
+ </body>
+</html>

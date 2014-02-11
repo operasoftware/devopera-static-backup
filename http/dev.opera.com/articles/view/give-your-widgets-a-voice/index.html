@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Give your widgets a voice - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Widgets - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/widgets">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Widgets - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/widgets">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="widgets">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Give your widgets a voice</h1>
+      <p class="print author">By Ola P. Kleiven</p>
+
+      <p>Prerequisites: <a href="../../../web.html">knowledge of XHTML+Voice</a> and how to <a href="../../../addons/widgets/index.html">make a basic Opera widget</a></p>
+
+<p>X+V uses namespaces and it is therefore neccessary to make the widget using XML documents. However, the widget engine will only look for <q>index.html</q>. Thus, the XML file needs to be embedded in a normal HTML document. The <q>index.html</q> file body section could look something like this: </p>
+
+<pre><code>&lt;body&gt;
+ &lt;iframe src=&quot;main.xml&quot;&gt;&lt;/iframe&gt;
+&lt;/body&gt;</code></pre>
+
+<p>Now to the more interesting bit - adding voice to the widget. An example <samp>main.xml</samp> may look like this:</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot; ?&gt;
+<span class="m">&lt;!DOCTYPE html PUBLIC &quot;-//VoiceXML Forum//DTD XHTML+Voice 1.2//EN&quot;
+&quot;http://www.vxmlforum.org/specs/multimodal/x+v/12/dtd/xhtml+voice12.dtd&quot;&gt;</span>
+  
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+      <span class="m">xmlns:ev=&quot;http://www.w3.org/2001/xml-events&quot;
+      xmlns:vxml=&quot;http://www.w3.org/2001/vxml&quot;&gt;</span>
+
+&lt;head&gt;
+ &lt;title&gt;Hello world!&lt;/title&gt;
+
+  <span class="m">&lt;vxml:form id=&quot;helloworld&quot;&gt;
+   &lt;vxml:block &gt;
+    &lt;vxml&#58;prompt src=&quot;#srctext&quot; /&gt;
+   &lt;/vxml:block &gt;
+  &lt;/vxml:form &gt;</span>
+&lt;/head&gt;
+
+&lt;body <span class="m">ev:event=&quot;load&quot; ev:handler=&quot;#helloworld&quot;</span>&gt;
+ &lt;h2 id=&quot;srctext&quot;&gt;Hello World!&lt;/h2&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+
+<p>Now wrap your config.xml, index.html and main.xml into a zipped widget file and you have your first voice enabled widget. You can also add interaction just as you would with a normal X+V application. The widget is available for input as long as it has focus.</p>
+
+<p>If you want to voice enable an existing widget, make sure to convert your main document to a well-formed XML document, add the X+V markup and wrap it in an iframe.</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/olak.html" rel="author">Ola P. Kleiven</a></h1>
+        <a href="../../../author/olak.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/da/7aa/e55b308f7f8834fbb31446dbab394e354e6.jpg" alt=""/></a>
+        <p>Working in Opera&#39;s coreQA, making sure that Opera behaves on all kinds of websites. Previous experience as tester of the X+V technology and various embedded projects. Opera user since 1998, Opera worker since 2002.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=165812">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/olak.html" rel="author">Ola P. Kleiven</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, November 8, 2006
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/voice.html" rel="tag">voice</a></li>
+        <li><a href="../../tags/widgets.html" rel="tag">widgets</a></li>
+        <li><a href="../../tags/x+v.html" rel="tag">x+v</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

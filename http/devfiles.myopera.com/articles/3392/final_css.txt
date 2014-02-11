@@ -1,0 +1,170 @@
+body { 
+  font-size: 100%; 
+  font-family: freesans, helvetica, "liberation sans", arial, sans-serif; 
+  background-image:url(271.jpg);
+}
+
+section, article {
+  display: block;
+} 
+
+a:link {
+  color: rgba(255, 255, 255, 1); 
+  text-decoration: underline; 
+  font-size: 1.4em; 
+  z-index: 100; 
+  font-weight: 100;
+  text-decoration: underline;
+  text-shadow: 2px 1px 2px #000;
+}
+
+a:hover {
+  color: #cfd;
+  background-color: rgb(100, 110, 10);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
+#tabs, #apps, #welcome, span {
+  display: none;
+}
+
+div ul {
+  list-style-type: none; 
+  font-size: 1em;
+}
+
+section p {
+  font-size: 1.1em;
+}
+
+@media not all and (min-width: 1px) {
+
+  #nav {
+    display: none;
+  }
+
+  #skip {
+    display: none;
+  }
+
+  #tabs, #apps, #welcome { 
+    height: 1em; 
+    display: inline-block;
+    position: relative; left: 40em; top: -2em;
+    padding: 1ex; 
+    border: 1px solid #230; border-bottom: none; 
+    width: auto;
+    font-size: 1.4em; text-decoration: none;
+    border-radius: 2ex 2ex 0ex 0ex;
+    box-shadow: -2px 1px 2px 0px rgba(157, 184, 122, 0.5) inset;
+    background-color: rgba(127, 154, 102, 0.6); 
+    transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s; 
+  }
+
+  #tabs:hover, #apps:hover, #welcome:hover {
+    background-color: rgba(158, 192, 65, 0.6); 
+    top: -3em; 
+    height: 2em;
+    box-shadow: -2px 1px 2px 0px rgba(187, 214, 152,  0.3) inset;
+    transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s;
+  }
+
+  #tabs:target, #apps:target, #welcome:target {
+    background-color: rgba(158, 192, 65, 1); 
+    top: -4em;  
+    height: 3em;
+    box-shadow: -2px 1px 2px 0px rgba(217, 244, 182,  0.6) inset;
+  }
+
+  div > h1 { 
+    width: 80em; 
+    padding: 1.5ex; 
+    background-color: rgba(10, 10, 10, 0.8); 
+    color: #efe; 
+    font-size: 2.5em; 
+    margin: 0em;
+  }
+
+  div > h2 {
+    display: inline;
+  }
+
+  div {
+    position: fixed; 
+    left:0em; top: 0em; 
+  }
+
+  div > article {
+    width: 300em; height: 80em; 
+    position:absolute; 
+    left: 0em; top: 0em; 
+    background-image:url(271.jpg); 
+    background-size: 300em 80em; 
+    background-repeat: no-repeat; 
+    z-index: -100; 
+    list-style-type: none; 
+    font-size: 2em;
+    margin: 0; padding: 0;
+    transition: top 1.5s 1.5s, left 1.5s 1s; 
+  }
+
+  article > section {
+    width: 100em;
+    height: 80em;
+    margin: 0em;
+    padding: 0em; 
+    float:left; 
+    opacity: 0; 
+    color: #250; 
+    transition: all 1.5s; 
+  }
+
+  section[id^="s"] > p {
+    width: 36em;
+    padding-left: 2em;
+    font-size: 0.7em;
+  }
+
+  section[id^="s"] > h2, section[id^="s"] > h3 {
+    padding-left: 1em;
+    margin-bottom: 0.1em;
+    margin-top: 3em;
+  }
+
+  #tabs:target ~ article > section#s1 {
+    opacity: 1;
+  }
+
+  #apps:target ~ article > section#s2 {
+    opacity: 1;
+  }
+
+  section#s0 {
+    opacity: 1;
+  }
+
+  #tabs:target ~ article > section#s0, #apps:target ~ article > section#s0{
+    opacity: 0;
+  }
+
+  #welcome:target ~ article {
+    left: 0em;
+    top: 0em;
+  } 
+
+  #tabs:target ~ article {
+    left: -100em;
+    top: 0em;
+  }
+
+  #apps:target ~ article {
+    left: -200em;
+    top: 0em;
+  }
+
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WebGL and Hardware Acceleration - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>WebGL and Hardware Acceleration</h1>
+      <p class="print author">By Tim Johansson</p>
+
+      <p class="note">Note: the features covered in this article are now available in a much more stable form in our latest <a href="http://www.opera.com/browser/next/">Opera Next</a> release.</p>
+
+<p> A long time ago, in an office far far away...Opera released a custom build showing an implementation of a <a href="../../../../my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension.html"> 3D canvas context </a> . Now, more than 3 years later, we are releasing the first public build with a standards-based 3D canvas implementation using <a href="http://www.khronos.org/webgl"> WebGL </a> for Windows. <img alt="A WebGL demo running in the Opera 11 preview with WebGL and Hardware Acceleration for Windows" src="../../../../devfiles.myopera.com/articles/7272/opera11webgl.png" style="float:right; margin: 10px 0 10px 10px;" /><p> WebGL is a standard developed by the <a href="http://www.khronos.org"> Khronos group </a> , where Opera is an active member participating in the standardization process. We have been working on a WebGL implementation since early 2009, when the standardization process started. The specification has been changing quite frequently over the past few years, but now it is starting to mature and stabilise, which makes this the perfect time to release a public preview of our current WebGL implementation. <p> For those of you who have never heard of WebGL, it is a context to the <code> canvas </code> element which gives you hardware-accelerated 3D rendering in JavaScript. The API is based on OpenGL ES 2.0, which means that it is possible to run WebGL on many different devices, such as desktop computers, mobile phones and TVs. The <a href="http://khronos.org/webgl/wiki/Main_Page"> WebGL public wiki </a> contains more information about the standard, including tutorials and lots of demos — so it is a good place to go if you want to see our WebGL implementation in action. <h2> Hardware acceleration </h2>
+  <p> In June 2008 — around the same time as our first 3D canvas experiments — we showed a video preview of our <a href="http://my.opera.com/core/blog/2008/06/05/engineering-seminar"> fully hardware-accelerated renderer </a> . One of the requirements we had for enabling that code was that the software fallback — used when hardware acceleration is not available — should be at least as fast as what we were using in our desktop product at the time. To achieve that, we spent a lot of time and resources on optimizing our software renderer, which has been used in Opera&#39;s desktop browser since version 10.50 and has proven to be one of the fastest renderers around. Following the release of 10.50, we once again focused on our hardware renderer. <p> The results of this work have been rolled into this preview as well, meaning that this build also has full hardware acceleration enabled (on systems with compatible hardware and drivers). <p> Our hardware acceleration is a bit different from what other browsers have implemented. Most of them do full hardware acceleration of all draw operations, but only on Windows Vista and Windows 7 — dropping to a more limited set of accelerated draw operations on other platforms. Our implementation will feature full acceleration on any OS with sufficient hardware support. This means we can also use fully hardware accelerated draw operations on Windows XP, Linux, Mac OS X and OpenGL ES 2 capable devices such as recent smart-phones and web-enabled TVs. <h2> OpenGL </h2><img alt="opera:about showing the new Vega backend entry" src="../../../../devfiles.myopera.com/articles/7272/opera_about_opengl.png" style="float:right; margin: 10px 0 10px 10px;" /><p> This build only has an OpenGL backend. That means your system must have an OpenGL 2.x compatible graphics card and related drivers for hardware acceleration and WebGL to work. In future builds we will also add a Direct3D backend, which will reduce the requirements on drivers and should work out of the box on most modern systems. <p> So how can you tell if hardware acceleration is enabled? There are two easy ways to check. The first option is to load some WebGL content — if it works that means your hardware and drivers are compatible, and hardware acceleration is enabled in the browser. Alternatively, you can check the new &quot;Vega backend&quot; entry in <code> opera:about </code> — if the backend listed is <em> OpenGL </em> , you have hardware acceleration enabled; otherwise, the entry will show that the browser is using <em> Software </em> backend. <h2> Download it! </h2>
+  <p> This preview is currently only available for Windows — but builds for other operating systems are being worked on as well. <p><a href="http://snapshot.opera.com/labs/webgl/Opera_1150_24661_WebGL_en.exe"> Opera 11 preview with WebGL and Hardware Acceleration for Windows </a><p><strong> Disclaimer: </strong> this is not a stable build — it is an early preview of upcoming technologies in Opera. Neither WebGL nor hardware acceleration will be included in the upcoming release of Opera 11.10 for desktop. Some other aspects, such as SVG rendering, may not work correctly. We will continue working on these new features — fixing on all remaining bugs and optimizing our code — and we will release further preview builds to keep you up to date with our progress. <p> Please give us <a href="http://my.opera.com/core/blog/2011/02/28/webgl-and-hardware-acceleration-2#comments"> your feedback </a> — but remember to information about which graphics card and driver version you have, and if Vega is using the <em> OpenGL </em> or <em> Software </em> backend.</p>
+</p></p></p></p></p></p></p></p></p></p></p>
+
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-77495292">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@vargas2000<br/><br/>Opera 12 alpha now has WebGL support built in, for all platforms. See opera.com/browser/next</section>
+    </li>
+    <li id="comment-79132032">
+      <a href="../../../author/P2O2.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8c/e2c/c2d3bdc2ca194cc30f90bf2ddb29a5ab8fc." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/P2O2.html">P2O2</a></p>
+      <p class="commentdate">Wednesday, January 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;Vega backend&quot; check was moved from &quot;opera:about&quot; to &quot;opera:gpu&quot;.<br/><br/>Why don&#39;t you keep the Opera docs updated?<br/><br/>I asked in comments to<br/><a href="../64-bit-opera-and-out-of-process-plug-ins/index.html" target="_blank">http://dev.opera.com/articles/view/64-bit-opera-and-out-of-process-plug-ins/</a><br/>about &quot;comparison table for Opera Lab, Opera Next and Opera (stable)&quot; but without a &quot;feedback&quot; from the Team.<br/><br/>I think such separate page with what&#39;s on the workbenches and what was accomplished would pay to advantage of Opera and facilitate to keep the documentation up to date.<br/><br/>Good example comes from PC-BSD:<br/><a href="http://wiki.pcbsd.org/index.php/PC-BSD_version_task_list" target="_blank">http://wiki.pcbsd.org/index.php/PC-BSD_version_task_list</a><br/><br/>BTW. Check whole the PC-BSD Wiki and think about similar project for Opera. As I can see the Opera docs is a set of loosely coupled pages, stopping short of calling it a mess.<br/><br/>Regards<br/></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/timjoh.html" rel="author">Tim Johansson</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, February 28, 2011
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

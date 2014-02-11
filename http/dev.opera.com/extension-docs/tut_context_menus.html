@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Working with the context menu - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Working with the context menu</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>This article describes how to use the <code>chrome.contextmenus.*</code> methods and events to manipulate the browser’s context menu.</p>
+
+<h2 id="what_is_the_context_menu">What is the context menu?</h2>
+
+<p>Usually, when you right-click (or Ctrl-click on Mac) on something in a web page inside your browser, a menu pops up: This is called the context menu. You can usually bring this up using various keyboard shortcuts too, depending on the exact platform you are using. Using the Context Menu API we can add and manipulate items in this menu and have it perform actions. We can even restrict it to certain types of media. So for example, we can specify that a context menu item should appear only if a user right-clicks on an image, rather than a video or some other media type.</p>
+
+<h2 id="how_do_we_customize_the_context_menu">How do we customize the context menu?</h2>
+
+<p>There are a number of steps for us to take if we want to create an extension that customizes the context menu in some way. Lets go through these steps now.</p>
+
+<h3 id="declare_it_in_the_manifest">Declare it in the manifest</h3>
+
+<p>The first thing to do when working with the context menu is add the necessary permissions in the extension manifest file. We’ll use the <em>contextMenus</em> keyword in the <em>permissions</em> key to declare our intention to use it.</p>
+
+<p>It is also recommended to have a 16x16 icon next to the context menu item, which is also defined in the manifest.</p>
+
+<p>The manifest would look like so:</p>
+<pre class='prettyprint'>{
+  "name": "Context Menu Extension",
+  ...
+  "permissions": [
+    "contextMenus"
+  ],
+  "icons": {
+    "16": "icon-small.png",
+  ...
+  },
+  ...
+}</pre>
+<h2 id="creating_a_context_menu_item">Creating a context menu item</h2>
+
+<p>We can create a context menu item by calling the <code>create()</code> function. As an argument, this function takes an object that details which kind of context menu item we want to create.</p>
+
+<p>Lets for example create a context menu item that will only appear when a user right/ctrl-clicks some highlighted text; it will open a new tab, load <a href="http://www.google.com">Google</a> in it, and perform a Google search for the selected text.</p>
+
+<p>To set up the context menu, we would write something like this in the background.js script:</p>
+<pre class='prettyprint'>chrome.contextMenus.create({
+	title: "Look up: %s",
+	contexts: ["selection"],
+	onclick: searchText
+});</pre>
+<p>The object we are passing in as the argument of <code>create()</code> has three parts to it:</p>
+
+<ul>
+<li>
+<p>First, <code>title</code> defines what text the context menu item will have when displayed. Note the presence of the <em>%s</em>: this will make sure the highlighted text is mentioned in the menu item. For example, if we have selected the text “Opera for Android”, in the context menu item, the context menu text will show up as “Look up: Opera for Android”.</p>
+</li>
+
+<li>
+<p>Next, the <code>contexts</code> line specifies what circumstances the menu item should appear in; we’re limiting this context menu item to only appear when selected text is right/ctrl-clicked. You could other types of context like <em>‘image’</em>, <em>‘video’</em>, <em>‘page’</em>, <em>‘link’</em>, <em>‘editable’</em> (for form fields) and more. If you want your menu to appear in all contexts, use <em>‘all’</em>.</p>
+</li>
+
+<li>
+<p>Last, we are defining what happens when the menu item is clicked, in the <code>onclick</code> line: When someone clicks on the menu item, the <code>searchtext()</code> function will be fired.</p>
+</li>
+</ul>
+
+<h3 id="controlling_the_result_of_a_user_clicking_on_the_menu_item">Controlling the result of a user clicking on the menu item</h3>
+
+<p>Once the user clicks on the menu item, we need it to do something. In our example, the function <code>searchtext()</code> is called <code>onclick</code>. The function looks like so:</p>
+<pre class='prettyprint'>function searchText(info){
+	var myQuery = encodeURI("https://www.google.com/search?q="+info.selectionText);
+	chrome.tabs.create({url: myQuery});
+}</pre>
+<p>The function handles an ’<em>info</em>’ object of type <a href="contextMenus.html#type-OnClickData"><em>OnClickData</em></a> - This is an object which stores a bunch of relevant information when a context menu item is clicked. In our case, it will contain information about the text we selected. We can get this by using <code>info.selectionText</code>. After that it is just a simple matter of appending that text to Google’s query URL as a query string, creating a new tab, and loading the URL you just assembled in the new tab.</p>
+
+<p>You can <a href="samples/ContextMenu-SelectedText.nex">download the context menu extension example</a> described above and take a better look at the code.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

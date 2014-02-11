@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>Tabs example</title>
+<script type="text/javascript">
+var tabify = {
+  hasClass: function(el,c) {
+    return el.className.match(new RegExp('(\\s|^)'+c+'(\\s|$)'));        
+  },
+  addClass: function(el,c) {
+    if (!tabify.hasClass(el,c)) el.className += " " + c;
+  },
+  removeClass: function(el,c) {
+    if (tabify.hasClass(el,c)) {
+      el.className=el.className.replace(new RegExp('(\\s|^)'+c+'(\\s|$)'),' ');
+    }
+  },
+  hideAllTabs: function(ol) {
+    var links = ol.getElementsByTagName("a");
+    for (var i=0; i<links.length; i++) {
+      tabify.setTabFromLink(links[i], "none");
+   }
+  },
+  setTabFromLink: function(link, style) {
+    var dest = link.href.match(/#(.*)$/)[1];
+    document.getElementById(dest).style.display = style;
+    if (style == "none") {
+        tabify.removeClass(link, "active");
+    } else {
+        tabify.addClass(link, "active");
+    }
+  },
+  addEvent: function(obj, type, fn) {
+    if ( obj.attachEvent ) {
+      obj['e'+type+fn] = fn;
+      obj[type+fn] = function(){obj['e'+type+fn]( window.event );};
+      obj.attachEvent('on'+type, obj[type+fn] );
+    } else {
+      obj.addEventListener( type, fn, false );
+    }
+  },  
+  init: function() {
+    var ols = document.getElementsByTagName("ol");
+    for (var i=0; i<ols.length; i++) {
+      var ol = ols[i];
+      if (!/(^|\s)tablinks(\s|$)/.test(ol.className)) { continue; }
+      tabify.addEvent(ol, "click", function(e) {
+        var target = window.event ? window.event.srcElement : e.target;
+        if (target.nodeName.toLowerCase() === "a") {
+          tabify.hideAllTabs(e.target.parentNode.parentNode);
+          tabify.setTabFromLink(e.target, "block");
+          if (e) e.preventDefault();
+          if (window.event) window.event.returnValue = false;
+          return false;
+        }
+      }, true);
+      tabify.hideAllTabs(ol);
+      tabify.setTabFromLink(ol.getElementsByTagName("a")[0], "block");
+    }
+  }
+};
+tabify.addEvent(window, "load", tabify.init);
+</script>
+<style type="text/css">
+body {
+
+font-family: arial, verdana, sans-serif;
+background-color: black;
+
+}
+
+ol.tablinks {
+  margin: 0;
+  padding: 0;
+  
+}
+ol.tablinks li {
+  display:inline;
+  list-style: none;
+}
+
+ol.tablinks li a {
+  text-decoration: none;
+  color: black;
+  background-color: red;
+  padding: 6px 6px 0px 6px;  
+}
+
+ol.tablinks li a:hover {
+  background-color: white;
+}
+
+ol.tablinks li a:active {
+  font-weight:bold;
+}
+
+ol.tablinks li a.active {
+  background-color: white;
+}
+
+div.tab {
+  width: 500px;
+  background-color: white;
+  padding: 6px;
+}
+
+</style>
+</head>
+<body>
+<ol class="tablinks">
+  <li><a href="tabs.html#tab1">Tab 1</a></li>
+
+  <li><a href="tabs.html#tab2">Tab 2</a></li>
+  <li><a href="tabs.html#tab3">Tab 3</a></li>
+</ol>
+
+<div class="tab" id="tab1">This is tab 1. This is tab 1. This is tab 1. 
+This is tab 1. This is tab 1. This is tab 1. This is tab 1. This is tab 1. 
+This is tab 1. This is tab 1. This is tab 1. This is tab 1. </div>
+<div class="tab" id="tab2">This is tab 2. This is tab 2. This is tab 2. 
+This is tab 2. This is tab 2. This is tab 2. This is tab 2. This is tab 2. 
+This is tab 2. This is tab 2. This is tab 2. This is tab 2. </div>
+<div class="tab" id="tab3">This is tab 3. This is tab 3. This is tab 3. 
+This is tab 3. This is tab 3. This is tab 3. This is tab 3. This is tab 3. 
+This is tab 3. This is tab 3. This is tab 3. This is tab 3. </div>
+
+</body>
+</html>
+

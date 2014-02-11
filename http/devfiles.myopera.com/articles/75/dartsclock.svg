@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg cursor="crosshair" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="200mm" height="200mm" viewBox="-250 -250 500 500" onload="init(evt)">
+  <title>Dartboard clock</title>
+  <desc>A timely dartboard device</desc>
+  <script type="text/ecmascript"> <![CDATA[
+    function init(evt) {
+      svgDoc = evt.target.ownerDocument;
+      svgObjScore = svgDoc.getElementById("scoreboard").firstChild;
+    }
+    function showScore(score) {svgObjScore.nodeValue = score;}
+  ]]> </script>
+  <defs>
+    <clipPath id="hole">
+      <circle r="226" />
+    </clipPath>
+    <line id="refwire" x1="2.566" y1="16.198" x2="26.516" y2="167.413" stroke-width="1" stroke="Silver" />
+    <path id="SLICE" d="M 0 0 L 15.643 98.769 A 100 100 0 0 1 -15.643 98.769 Z" stroke-width="0" />
+
+    <use id="double" xlink:href="#SLICE" transform="scale(1.695)" />
+    <use id="outer"  xlink:href="#SLICE" transform="scale(1.605)" />
+    <use id="triple" xlink:href="#SLICE" transform="scale(1.065)" />
+    <use id="inner"  xlink:href="#SLICE" transform="scale(0.975)" />
+
+	
+	
+      <font horiz-adv-x='140'>
+	  <font-face font-family='dartdigits' 
+	  	  units-per-em='1000'
+	      panose-1='0 0 4 0 0 0 0 0 0 0'
+		  ascent='1000'
+		  descent='-1000'
+		  alphabetic='0' />
+<glyph unicode="0" glyph-name="0" d="M 70,-110 C 36.981362,-110 10,-83.018638 10,-50 L 10,50 C 10,83.018638 36.981362,110 70,110 C 103.01863800000001,110 130,83.018638 130,50 L 130,15 L 130,5 L 110,5 L 110,15 L 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 L 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 L 110,-15 L 110,-5 L 130,-5 L 130,-15 L 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 z " />
+<glyph unicode="1" glyph-name="1" d="M 87.07,-110 L 87.07,-100 L 87.07,80 C 87.06913,84.072656 84.645193,87.691579 80.8825,89.25 C 77.119812,90.808421 72.88774,89.941871 70.0075,87.0625 L 49.22762,66.736381 L 42.945,60 L 28.78875,74.125 L 35.85125,81.21875 L 54.28875,101.21875 C 63.72922,109.7757 77.35672,112.3501 88.53875,107.71875 C 99.720775,103.08741 107.06741600000001,92.10318 107.07,80 L 107.07,-100 L 107.07,-110 L 87.07,-110 z "/>
+<glyph unicode="2" glyph-name="2" d="M 40,-110 C 27.896819999999998,-109.99742 16.912587000000002,-102.65077 12.28125,-91.46875 C 7.649915,-80.286725 10.224302000000002,-67.340782 18.78125,-58.78125 L 99.09375,21.53125 C 114.45808,37.287786 114.216818,62.062231 98.65625,77.625 C 83.095681,93.18777 58.196208999999996,93.362101 42.4375,78 L 27.90625,63.4375 L 20.84375,56.375 L 6.6875,70.53125 L 13.75,77.59375 L 28.40625,92.21875 L 28.4375,92.28125 L 28.5,92.3125 C 51.934283,115.157 89.672865,114.92416 112.8125,91.78125 C 135.952134,68.638343 136.191565,30.899802 113.34375,7.46875 L 113.28125,7.4375 L 113.25,7.375 L 32.9375,-72.9375 C 30.058132,-75.817738 29.191578999999997,-80.049806 30.75,-83.8125 C 32.308421,-87.575193 35.927344,-89.99913 40,-90 L 120,-90 L 130,-90 L 130,-110 L 120,-110 L 40,-110 z "/>
+<glyph unicode="3" glyph-name="3" d="M 63.09375,-109.65625 C 47.717729,-109.81281 32.292525,-104.11729 20.5,-92.5625 L 13.34375,-85.5625 L 27.34375,-71.28125 L 34.5,-78.28125 C 50.36465,-93.826071 75.5176772,-93.583399 91.0625,-77.71875 C 106.607324,-61.854101 106.364649,-36.701074 90.5,-21.15625 L 90.46875,-21.09375 L 90.40625,-21.0625 C 78.778454,-9.4311923 78.77845429999999,9.7124426 90.40625,21.34375 L 90.46875,21.375 L 90.5,21.4375 C 106.364649,36.982324 106.607324,62.135353 91.0625,78 C 75.5176761,93.864649 50.36465,94.107321 34.5,78.5625 L 27.34375,71.5625 L 13.34375,85.84375 L 20.5,92.84375 C 44.085049999999995,115.95333 82.23416399999999,115.58505 105.34375,92 C 128.453336,68.414951 128.085051,30.234586 104.5,7.125 C 100.512518,3.136314 100.575018,-2.9488137 104.5625,-6.9375 C 128.147551,-30.047086 128.45333399999998,-68.133699 105.34375,-91.71875 C 93.788957,-103.51128 78.469771,-109.49969 63.09375,-109.65625 z " />
+<glyph unicode="4" glyph-name="4" d="M 110,-110 L 110,-100 L 110,80 C 110.00108900000001,84.48325 107.114282,88.331131 102.8125,89.59375 C 98.510713,90.856368 94.015857,89.178904 91.59375,85.40625 L 31.59375,-8.03125 C 29.607024000000003,-11.123796 29.456643,-14.992932 31.21875,-18.21875 C 32.980855,-21.444566 36.324279,-23.438073 40,-23.4375 L 90,-23.4375 L 100,-23.4375 L 100,-43.4375 L 90,-43.4375 L 40,-43.4375 C 29.044514999999997,-43.439209 18.908209,-37.427051 13.65625,-27.8125 C 8.404291,-18.19795 8.828564,-6.4360808 14.75,2.78125 L 74.75,96.21875 C 81.920813,107.38795 95.70179,112.51931 108.4375,108.78125 C 121.173214,105.04318 130.003225,93.272964 130,80 L 130,-100 L 130,-110 L 110,-110 z " />
+<glyph unicode="5" glyph-name="5" d="M 10,-110 L 10,-90 L 20,-90 L 70,-90 C 92.209836,-90 110,-72.209836 110,-50 C 110,-27.790164 92.209836,-10 70,-10 L 40,-10 C 23.549903999999998,-10 10,3.5499039 10,20 L 10,80 C 10,96.450096 23.549903999999998,110 40,110 L 120,110 L 130,110 L 130,90 L 120,90 L 40,90 C 34.358706,90 30,85.641294 30,80 L 30,20 C 30,14.358706 34.358706,10 40,10 L 70,10 C 103.01863800000001,10 130,-16.981362 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 L 20,-110 L 10,-110 z " />
+<glyph unicode="6" glyph-name="6" d="M 70,-110 C 36.981362,-110 10,-83.018638 10,-50 L 10,50 C 10,83.018638 36.981362,110 70,110 C 103.01863800000001,110 130,83.018638 130,50 L 130,40 L 110,40 L 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 L 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 L 110,-20 C 110,-14.358706 105.641294,-10 100,-10 L 50,-10 L 40,-10 L 40,10 L 50,10 L 100,10 C 116.450096,10 130,-3.5499039 130,-20 L 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 z " />
+<glyph unicode="7" glyph-name="7" d="M 60,-110 L 60,-100 L 60,0 C 60,6.4896819 62.1061907,12.808254 66,18 L 108,74 C 110.285305,77.047074 110.640866,81.062017 108.9375,84.46875 C 107.234137,87.875476 103.808839,90 100,90 L 20,90 L 10,90 L 10,110 L 20,110 L 100,110 C 111.34204299999999,110 121.771436,103.55088 126.84375,93.40625 C 131.916064,83.261621 130.805225,71.073632 124,62 L 82,6 C 80.700924,4.2678988 80,2.1651267 80,0 L 80,-100 L 80,-110 L 60,-110 z " />
+<glyph unicode="8" glyph-name="8" d="M 70,-110 C 36.981362,-110 10,-83.018638 10,-50 C 9.998990999999997,-40.771631 14.376257000000003,-32.166024 21.59375,-26.5 L 21.53125,-26.4375 L 38.59375,-10.09375 L 45.78125,-3.1875 L 59.625,-17.625 L 52.40625,-24.53125 L 35.375,-40.875 L 34.84375,-41.40625 L 34.21875,-41.84375 C 31.560377000000003,-43.724235 29.999644000000004,-46.743751 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 C 110.000356,-46.743751 108.439625,-43.724237 105.78125,-41.84375 L 105.5,-41.65625 L 105.25,-41.4375 L 22.6875,25.5 L 22.15625,25.90625 L 22.1875,25.9375 C 14.573559000000003,31.58345 9.998961000000001,40.495902 10,50 C 10,83.018638 36.981362,110 70,110 C 103.01863800000001,110 130,83.018638 130,50 C 130.001009,40.771631 125.623742,32.166025 118.40625,26.5 L 118.46875,26.4375 L 101.40625,10.09375 L 94.21875,3.1875 L 80.375,17.625 L 87.59375,24.53125 L 104.625,40.875 L 105.15625,41.40625 L 105.78125,41.84375 C 108.439625,43.724237 110.000356,46.743751 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 C 29.999644000000004,46.743751 31.560377000000003,43.724235 34.21875,41.84375 L 34.5,41.65625 L 34.75,41.4375 L 117.3125,-25.5 L 117.84375,-25.90625 L 117.8125,-25.9375 C 125.42644,-31.583451 130.001039,-40.495902 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 z " />
+<glyph unicode="9" glyph-name="9" d="M 70,110 C 103.01863800000001,110 130,83.018638 130,50 L 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 C 36.981362,-110 10,-83.018638 10,-50 L 10,-40 L 30,-40 L 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 L 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 L 30,20 C 30,14.358706 34.358706,10 40,10 L 90,10 L 100,10 L 100,-10 L 90,-10 L 40,-10 C 23.549903999999998,-10 10,3.5499039 10,20 L 10,50 C 10,83.018638 36.981362,110 70,110 z " />
+
+
+</font>
+  </defs>
+  <g transform="scale(1,-1)">
+    <rect id="wall" x="-250" y="-250" width="500" height="500" stroke-width="0" fill="brown" onmouseover="showScore(0)"/>
+    <g clip-path="url(#hole)">
+      <g id="dartboard" >
+        <rect id="infzero" onmouseover="showScore(0)" x="-1000" y="-1000" width="2000" height="2000" fill="black" />
+        <g transform="rotate(0)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(40)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(20)" />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(60)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(20)" />
+        </g>
+        <g transform="rotate(18)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(10)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(5)"  />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(15)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(5)"  />
+        </g>
+        <g transform="rotate(36)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(24)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(12)" />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(36)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(12)" />
+        </g>
+        <g transform="rotate(54)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(18)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(9)"  />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(27)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(9)"  />
+        </g>
+        <g transform="rotate(72)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(28)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(14)" />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(42)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(14)" />
+        </g>
+        <g transform="rotate(90)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(22)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(11)" />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(33)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(11)" />
+        </g>
+        <g transform="rotate(108)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(16)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(8)"  />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(24)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(8)"  />
+        </g>
+        <g transform="rotate(126)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(32)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(16)" />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(48)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(16)" />
+        </g>
+        <g transform="rotate(144)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(14)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(7)"  />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(21)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(7)"  />
+        </g>
+        <g transform="rotate(162)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(38)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(19)" />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(57)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(19)" />
+        </g>
+        <g transform="rotate(180)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(6)"  />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(3)"  />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(9)"  />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(3)"  />
+        </g>
+        <g transform="rotate(198)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(34)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(17)" />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(51)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(17)" />
+        </g>
+        <g transform="rotate(216)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(4)"  />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(2)"  />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(6)"  />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(2)"  />
+        </g>
+        <g transform="rotate(234)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(30)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(15)" />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(45)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(15)" />
+        </g>
+        <g transform="rotate(252)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(20)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(10)" />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(30)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(10)" />
+        </g>
+        <g transform="rotate(270)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(12)" />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(6)"  />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(18)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(6)"  />
+        </g>
+        <g transform="rotate(288)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(26)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(13)" />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(39)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(13)" />
+        </g>
+        <g transform="rotate(306)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(8)"  />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(4)"  />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(12)" />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(4)"  />
+        </g>
+        <g transform="rotate(324)">
+          <use xlink:href="#double" fill="red"    onmouseover="showScore(36)" />
+          <use xlink:href="#outer"  fill="black"  onmouseover="showScore(18)" />
+          <use xlink:href="#triple" fill="red"    onmouseover="showScore(54)" />
+          <use xlink:href="#inner"  fill="black"  onmouseover="showScore(18)" />
+        </g>
+        <g transform="rotate(342)">
+          <use xlink:href="#double" fill="green"  onmouseover="showScore(2)"  />
+          <use xlink:href="#outer"  fill="white"  onmouseover="showScore(1)"  />
+          <use xlink:href="#triple" fill="green"  onmouseover="showScore(3)"  />
+          <use xlink:href="#inner"  fill="white"  onmouseover="showScore(1)"  />
+        </g>
+
+        <circle r="16.4" fill="green" stroke-width="0" onmouseover="showScore(25)" />
+        <circle r="6.85" fill="red"   stroke-width="0" onmouseover="showScore(50)" />
+        <g id="grid" onmouseover="showScore(0)">
+          <use xlink:href="#refwire" transform = "rotate(0)" />
+          <use xlink:href="#refwire" transform= "rotate(18)" />
+          <use xlink:href="#refwire" transform= "rotate(36)" />
+          <use xlink:href="#refwire" transform= "rotate(54)" />
+          <use xlink:href="#refwire" transform= "rotate(72)" />
+          <use xlink:href="#refwire" transform= "rotate(90)" />
+          <use xlink:href="#refwire" transform="rotate(108)" />
+          <use xlink:href="#refwire" transform="rotate(126)" />
+          <use xlink:href="#refwire" transform="rotate(144)" />
+          <use xlink:href="#refwire" transform="rotate(162)" />
+          <use xlink:href="#refwire" transform="rotate(180)" />
+          <use xlink:href="#refwire" transform="rotate(198)" />
+          <use xlink:href="#refwire" transform="rotate(216)" />
+          <use xlink:href="#refwire" transform="rotate(234)" />
+          <use xlink:href="#refwire" transform="rotate(252)" />
+          <use xlink:href="#refwire" transform="rotate(270)" />
+          <use xlink:href="#refwire" transform="rotate(288)" />
+          <use xlink:href="#refwire" transform="rotate(306)" />
+          <use xlink:href="#refwire" transform="rotate(324)" />
+          <use xlink:href="#refwire" transform="rotate(342)" />
+          <circle r="169.5" fill="none" stroke-width="1" stroke="Silver" />
+          <circle r="160.5" fill="none" stroke-width="1" stroke="Silver" />
+          <circle r="106.5" fill="none" stroke-width="1" stroke="Silver" />
+          <circle r= "97.5" fill="none" stroke-width="1" stroke="Silver" />
+          <circle r= "16.4" fill="none" stroke-width="1" stroke="Silver" />
+          <circle r= "6.85" fill="none" stroke-width="1" stroke="Silver" />
+        </g>
+    
+    <!-- Added a clock -->
+    <g id="c" transform="scale(1,-1) rotate(180)" onmouseover="showScore(0)">
+    <g id="h">
+      <line stroke-width="7.5" y2="120" stroke="darkgoldenrod" opacity=".9" />
+        <animateTransform attributeName="transform" type="rotate"
+           repeatCount="indefinite" dur="12h" by="360" />
+      <circle r="7" onmouseover="showScore(50)"/>
+    </g>
+    <g id="m">
+      <line stroke-width="6" y2="142.5" stroke="#C00000" opacity=".9" />
+        <animateTransform attributeName="transform" type="rotate"
+           repeatCount="indefinite" dur="60min" by="360" />
+      <circle r="6" fill="red" onmouseover="showScore(50)"/>
+    </g>
+    <g id="s">
+      <line stroke-width="3" y2="150" stroke="#004000" />
+      <animateTransform attributeName="transform" type="rotate" additive="sum"
+          repeatCount="indefinite" dur="60s" by="360" />
+      <circle r="4" fill="blue" onmouseover="showScore(50)"/>
+    </g>
+  </g>
+  <!--  Bullseye hack, see article -->
+  <circle r="5.85" fill="red"   stroke-width="0" onmouseover="showScore(50)" />
+
+      </g>
+    </g>
+  </g>
+    <g id="numbers">
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-270) translate(0,-205)" >6</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-288) translate(0,-205)">13</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-306) translate(0,-205)" >4</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-324) translate(0,-205)">18</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-342) translate(0,-205)" >1</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-0)   translate(0,-205)">20</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-18)  translate(0,-205)" >5</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-36)  translate(0,-205)">12</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-54)  translate(0,-205)" >9</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-72)  translate(0,-205)">14</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-90)  translate(0,-205)">11</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-108) translate(0,-205) rotate(180)" >8</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-126) translate(0,-205) rotate(180)">16</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-144) translate(0,-205) rotate(180)" >7</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-162) translate(0,-205) rotate(180)">19</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-180) translate(0,-205) rotate(180)" >3</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-198) translate(0,-205) rotate(180)">17</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-216) translate(0,-205) rotate(180)" >2</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-234) translate(0,-205) rotate(180)">15</text>
+    <text font-family='dartdigits' text-anchor="middle" fill="Silver" font-size="100" transform="rotate(-252) translate(0,-205) rotate(180)">10</text>
+  </g>
+  <text font-family='dartdigits' id="scoreboard" x="245" y="-205" font-size="325" stroke="blue" text-anchor="end" fill="blue">0</text>
+</svg>

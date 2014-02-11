@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>background-color transition example</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+        	h1 {
+	 			font:  18px "Helvetica Neue", arial, sans-serif;
+			}
+        	p {
+        		border: 1px dashed silver;
+				padding: 0.5em;
+				border-radius: 0.5em;
+				font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+				background-color: rgb(254, 250, 218);
+				max-width: 44em;
+			}
+    	    div {
+    		    background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+    		    -o-transition-property: background-color; -webkit-transition-property: background-color;
+                transition-property: background-color;
+                -o-transition-duration: 4s;  -webkit-transition-duration: 4s;
+                transition-duration: 4s;
+            }
+  		    div:hover { background-color: blue; }
+      </style>
+  </head>
+  <body>
+  		<h1>Example of changing the colour via CSS3 Transitons</h1>
+  		<p>The <code>div</code> element below is initially red. Hover the <code>div</code> element to see it transiton from red to blue over 4 seconds.</p>
+  		<div></div>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Example of a form for navigation</title>
+    <style>
+      nav {
+        display:block;
+      }
+    </style>
+    <script>
+      document.createElement('nav');
+    </script>
+  </head>
+  <body>
+    
+    <nav>
+    <form action="http://devfiles.myopera.com/articles/377/send.php">
+      <p>
+        <label for="nav">Go to: </label>
+        <select id="nav" name="url">
+          <optgroup label="About Us">
+            <option value="about.html">About Us</option>
+            <option value="office.html">Offices</option>
+            <option value="people.html">People</option>
+          </optgroup>
+          <optgroup label="Contact Us">
+            <option value="email.html">Email form</option>
+            <option value="phonenumbers.html">Phone numbers</option>
+            <option value="addresses.html">Addresses</option>
+          </optgroup>
+          <optgroup label="Clients">
+            <option value="usa.html">USA</option>
+            <option value="asia.html">Asia</option>
+            <option value="europe.html">Europe</option>
+          </optgroup>
+        </select>
+        <input type="submit" value="go!">
+      </p>
+    </form>
+    </nav>
+    
+  </body>
+</html>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width='100%' height='100%' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' >
+
+<rect x='0' y='0' width='100%' height='100%' fill='black' />
+
+<!-- Sun Color -->
+<radialGradient id='rg' cx='50%' cy='50%' r='100%' >
+ <stop stop-color='red'       offset='0%'   stop-opacity='1' />
+ <stop stop-color='yellow'  offset='50%'  stop-opacity='1' />
+ <stop stop-color='white'    offset='100%' stop-opacity='1' />
+</radialGradient>
+
+<!-- Astroid's Path 3 -->
+<path id='path3' d='M700,300 h 0 a900,200 0 1,0 1,1 z' fill='none' stroke='black' stroke-width='1' />
+<circle cx='0' cy='0' r='1.5' fill='white' >
+<animateMotion dur='8s' fill='freeze' repeatCount='indefinite' >
+<mpath xlink:href='#path3' />
+</animateMotion >
+</circle>
+
+<!-- Defines Moon's Path 2 around Earth -->
+<defs> 
+<g id='E' transform='translate(-340,-90)'>
+
+<circle cx='347' cy='87' r='10' fill='blue' /> <!-- Earth -->
+
+<path id='path2' d='M390,80 h 0 a50,19 0 1,0 1,1 z'  fill='none' stroke='red' stroke-width='1' />
+
+<circle cx='0' cy='0' r='5' fill='white' stroke='black' stroke-width='1' > <!-- Moon -->
+<animateMotion dur='28s' fill='freeze' repeatCount='indefinite' >     
+<mpath xlink:href='#path2' />
+</animateMotion >
+</circle>
+</g>
+</defs>
+
+<circle cx='500' cy='300' r='32' fill='url(#rg)'  /> <!-- Sun -->
+
+<path id='path1' d='M900,292 h 0 a400,50 0 1,0 1,1 z' fill='none' stroke='red' stroke-width='1' />
+
+<use x='0' y='0' xlink:href='#E'  > <!-- Earth -->
+<animateMotion dur='365s' fill='freeze' repeatCount='indefinite' >     
+<mpath xlink:href='#path1' />
+</animateMotion > 
+</use>
+
+</svg >

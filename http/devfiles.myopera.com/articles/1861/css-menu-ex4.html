@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+   <title>Creating interactive expandable boxes using CSS: final example</title>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <style type="text/css">
+* {font-size: 100%; font-family: "liberation sans", arial, sans-serif; color: black; }
+.tran15 {
+  -webkit-transition: all 1.5s;
+  -moz-transition: all 1.5s;
+  -ms-transition: all 1.5s;
+  -o-transition: all 1.5s;
+  transition: all 1.5s;  
+}
+
+.tran2 {
+  -webkit-transition: all 2s;
+  -moz-transition: all 2s;
+  -ms-transition: all 2s;
+  -o-transition: all 2s;
+  transition: all 2s;
+}
+
+#nav { padding: 1ex; border: 2px solid #aaa; background-color: #ccf; margin: 1em; width: 20em; }
+#nav:hover { border: 2px solid #ddd; background-color: #eef; }
+#nav h2 { display: inline; vertical-align: middle; }
+
+.hide, .show  { display: none;  font-size: 80%; vertical-align: middle; }
+
+@media all and (min-width:1px) { .hide, .show  { display: inline; } }
+
+a.hide:focus + .show { display: inline; }
+.show { display: none; }
+a.hide:focus { display: none; }
+
+#menu { opacity: 1; height:7em; margin-top: 0em; width: auto; margin-left: -1ex; overflow: hidden; }
+a.hide:focus ~ #menu { opacity: 0; height: 0em; }
+
+@media print {
+.hide, .show  { display: none; } 
+#nav {position: static; border: none; width: auto;}
+#menu {width: auto;} 
+}
+   </style>
+</head>
+<body>
+<h1>Creating interactive expandable boxes using CSS</h1>
+<h2 id="ex4">The finished menu</h2>
+<div>
+<p>Here, we've applied height and colour transitions too. The transition for the <code>div</code> is given a two-second duration; the menu's is one-and-a half seconds.</p>
+<div id="nav" class="tran2">
+<h2>Contents</h2>
+<a href="css-menu-ex4.html#" class="hide">[hide]</a>
+<a href="css-menu-ex4.html#" class="show">[show]</a> 
+<ol id="menu" class="tran15">
+<li><a href="http://my.opera.com/coreymwamba/blog/2010/04/17/a-simple-svg-player">A simple SVG audio player</a></li>
+<li><a href="http://my.opera.com/coreymwamba/blog/expo-dock-paging-using-css3-and-a-bit-of-javascript-and-lots-of-php">Expo-dock paging in HTML5 and CSS</a></li>
+<li><a href="http://www.coreymwamba.co.uk">Bask in my shameless publicity</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Debt">Have a look at something the world owns!</a></li>
+<li><a href="http://www.opera.com">An awesome browser</a>
+
+</ol>
+</div>
+</body>
+</html>

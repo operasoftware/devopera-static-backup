@@ -1,0 +1,61 @@
+html, body {
+  text-align: center;
+  margin:0;
+  padding:0;
+}
+
+canvas {
+  background: black;
+  margin: auto;
+}
+
+div.main {
+  position: relative;
+  margin: 15px auto;
+}
+
+div.main > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+div.main #webgl-canvas {
+  opacity: 0;
+  -o-transition: opacity 500ms;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -ms-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+div.main:hover #webgl-canvas {
+  opacity: 1;
+}
+
+div.code {
+  text-align: left;
+  width: 800px;
+  margin: auto;
+  font-size: 0.9em;
+}
+
+ul.controls {
+  margin: 10px 0;
+  padding: 0;
+}
+
+ul.controls > li {
+  padding: 3px;
+  background: #eee;
+  border: 1px solid #ccc;
+  display: inline-block;
+  list-style-type: none;
+}
+
+.error {
+  font-weight: bold;
+  margin: 20px 0;
+  font-size: 1.1em;
+  color: red;
+}

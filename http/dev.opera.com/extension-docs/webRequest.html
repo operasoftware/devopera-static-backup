@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>chrome.webRequest - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>chrome.webRequest</h1>
+					 
+						<p class="badge badge-info pull-right">Support: Opera 15+</p>
+					
+					
+					
+          <div id="gc-pagecontent">
+        
+        
+        
+        <div id="toc">
+          <h2>Contents</h2>
+ 
+              <ol>
+                  <li><a href="webRequest.html#types">Types</a><ol>  <li>    <a href="webRequest.html#type-RequestFilter">RequestFilter</a>  </li>  <li>    <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>  </li>  <li>    <a href="webRequest.html#type-BlockingResponse">BlockingResponse</a>  </li>  <li>    <a href="webRequest.html#type-UploadData">UploadData</a>  </li></ol></li>
+                  <li><a href="webRequest.html#properties">Properties</a><ol>  <li>    <a href="webRequest.html#property-MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES">MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES</a>  </li></ol></li>
+                  <li><a href="webRequest.html#methods">Methods</a><ol>  <li><a href="webRequest.html#method-handlerBehaviorChanged">handlerBehaviorChanged</a></li></ol></li>
+                  <li><a href="webRequest.html#events">Events</a><ol>  <li><a href="webRequest.html#event-onBeforeRequest">onBeforeRequest</a></li>  <li><a href="webRequest.html#event-onBeforeSendHeaders">onBeforeSendHeaders</a></li>  <li><a href="webRequest.html#event-onSendHeaders">onSendHeaders</a></li>  <li><a href="webRequest.html#event-onHeadersReceived">onHeadersReceived</a></li>  <li><a href="webRequest.html#event-onAuthRequired">onAuthRequired</a></li>  <li><a href="webRequest.html#event-onResponseStarted">onResponseStarted</a></li>  <li><a href="webRequest.html#event-onBeforeRedirect">onBeforeRedirect</a></li>  <li><a href="webRequest.html#event-onCompleted">onCompleted</a></li>  <li><a href="webRequest.html#event-onErrorOccurred">onErrorOccurred</a></li></ol></li>
+                            </ol>
+        </div>
+
+<p id="classSummary">
+Use the <code>chrome.webRequest</code> module to intercept, block,
+or modify requests in-flight and to observe and analyze traffic.
+</p>
+
+
+        <div class="api_reference">
+            <h2 id="types">Types</h2>
+              <div>
+                <h3 id="type-RequestFilter">RequestFilter</h3>
+                <div>
+                  <dt><code class="type_name">  (    object  )</code></dt>
+              <dd>
+                    An object describing filters to apply to webRequest events.
+                  </dd>    <h4 id="RequestFilter-properties">
+                    Properties of <a href="webRequest.html#type-RequestFilter">RequestFilter</a>
+                  </h4>
+                  <dd><dl>      <div>
+                      <a name="property-RequestFilter-urls"></a>
+                      <dt>
+                        <code class="variable">urls</code>
+                        <code class="property">
+                          (
+                            
+                            array of string
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        A list of URLs or URL patterns. Requests that cannot match any of the URLs will be filtered out.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-RequestFilter-types"></a>
+                      <dt>
+                        <code class="variable">types</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            array of enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        A list of request types. Requests that cannot match any of the types will be filtered out.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-RequestFilter-tabId"></a>
+                      <dt>
+                        <code class="variable">tabId</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            integer
+                          )
+                        </code>
+                      </dt>
+                    </div>
+                    <div>
+                      <a name="property-RequestFilter-windowId"></a>
+                      <dt>
+                        <code class="variable">windowId</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            integer
+                          )
+                        </code>
+                      </dt>
+                    </div>
+              </dl></dd>
+                </div>
+              </div>
+              <div>
+                <h3 id="type-HttpHeaders">HttpHeaders</h3>
+                <div>
+                  <dt><code class="type_name">  (    array of object  )</code></dt>
+              <dd>
+                    An array of HTTP headers. Each header is represented as a dictionary containing the keys <code>name</code> and either <code>value</code> or <code>binaryValue</code>.
+                  </dd>  </div>
+              </div>
+              <div>
+                <h3 id="type-BlockingResponse">BlockingResponse</h3>
+                <div>
+                  <dt><code class="type_name">  (    object  )</code></dt>
+              <dd>
+                    Returns value for event handlers that have the 'blocking' extraInfoSpec applied. Allows the event handler to modify network requests.
+                  </dd>    <h4 id="BlockingResponse-properties">
+                    Properties of <a href="webRequest.html#type-BlockingResponse">BlockingResponse</a>
+                  </h4>
+                  <dd><dl>      <div>
+                      <a name="property-BlockingResponse-cancel"></a>
+                      <dt>
+                        <code class="variable">cancel</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            boolean
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        If true, the request is cancelled. Used in onBeforeRequest, this prevents the request from being sent.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-BlockingResponse-redirectUrl"></a>
+                      <dt>
+                        <code class="variable">redirectUrl</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            string
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        Only used as a response to the onBeforeRequest event. If set, the original request is prevented from being sent and is instead redirected to the given URL.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-BlockingResponse-requestHeaders"></a>
+                      <dt>
+                        <code class="variable">requestHeaders</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        Only used as a response to the onBeforeSendHeaders event. If set, the request is made with these request headers instead.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-BlockingResponse-responseHeaders"></a>
+                      <dt>
+                        <code class="variable">responseHeaders</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        Only used as a response to the onHeadersReceived event. If set, the server is assumed to have responded with these response headers instead. Only return <code>responseHeaders</code> if you really want to modify the headers in order to limit the number of conflicts (only one extension may modify <code>responseHeaders</code> for each request).
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-BlockingResponse-authCredentials"></a>
+                      <dt>
+                        <code class="variable">authCredentials</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            object
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        Only used as a response to the onAuthRequired event. If set, the request is made using the supplied credentials.
+                      </dd>
+                      <dd>
+                        <dl>
+                          <div>
+                            <a name="property-authCredentials-username"></a>
+                            <dt>
+                              <code class="variable">username</code>
+                              <code class="property">
+                                (
+                                  
+                                  string
+                                )
+                              </code>
+                            </dt>
+                          </div>
+                          <div>
+                            <a name="property-authCredentials-password"></a>
+                            <dt>
+                              <code class="variable">password</code>
+                              <code class="property">
+                                (
+                                  
+                                  string
+                                )
+                              </code>
+                            </dt>
+                          </div>
+                        </dl>
+                      </dd>
+                    </div>
+              </dl></dd>
+                </div>
+              </div>
+              <div>
+                <h3 id="type-UploadData">UploadData</h3>
+                <div>
+                  <dt><code class="type_name">  (    object  )</code></dt>
+              <dd>
+                    Contains data uploaded in a URL request.
+                  </dd>    <h4 id="UploadData-properties">
+                    Properties of <a href="webRequest.html#type-UploadData">UploadData</a>
+                  </h4>
+                  <dd><dl>      <div>
+                      <a name="property-UploadData-bytes"></a>
+                      <dt>
+                        <code class="variable">bytes</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            any
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        An ArrayBuffer with a copy of the data.
+                      </dd>
+                    </div>
+                    <div>
+                      <a name="property-UploadData-file"></a>
+                      <dt>
+                        <code class="variable">file</code>
+                        <code class="property">
+                          (
+                            <span class="optional">optional</span>
+                            string
+                          )
+                        </code>
+                      </dt>
+                      <dd>
+                        A string with the file's path and name.
+                      </dd>
+                    </div>
+              </dl></dd>
+                </div>
+              </div>
+            <h2 id="properties">Properties</h2>
+              <div>
+                <h3 id="property-MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES">MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES</h3>
+                <div class="summary"><code>
+                  <span>chrome.webRequest.MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES</span>
+                </code></div>
+                <div>
+                  <dt><code class="property">MAX_HANDLER_BEHAVIOR_CHANGED_CALLS_PER_10_MINUTES</code> <code class="type_name">  (    <code>20</code>  )</code></dt>
+              <dd>
+                    The maximum number of times that <code>handlerBehaviorChanged</code> can be called per 10 minute sustained interval. <code>handlerBehaviorChanged</code> is an expensive function call that shouldn't be called often.
+                  </dd>  </div>
+              </div>
+            <h2 id="methods">Methods</h2>
+              <div>
+                <h4 id="method-handlerBehaviorChanged">handlerBehaviorChanged</h4>
+                <div class="summary lower"><code>
+                  <span>chrome.webRequest.handlerBehaviorChanged</span>(<span class="optional">function <span class="variable">callback</span></span>)
+                </code></div>
+                <div class="description">
+                  <p>
+                    Needs to be called when the behavior of the webRequest handlers has changed to prevent incorrect handling due to caching. This function call is expensive. Don't call it often.
+                  </p>
+                  <h4>Parameters</h4>
+                  <dl>
+                      <div>
+                        <a name="property-handlerBehaviorChanged-callback"></a>
+                        <dt>
+                          <code class="variable">callback</code>
+                          <code class="property">
+                            (
+                              <span class="optional">optional</span>
+                              function
+                            )
+                          </code>
+                        </dt>
+                      </div>
+                  </dl>
+                    <h4>Callback</h4>
+                    <p>
+                          If you specify the <em>callback</em> parameter, it should
+                          specify a function that looks like this:
+                    </p>
+                    <pre class="prettyprint">function() <span class="subdued">{...}</span>;</pre>
+                </div>
+              </div>
+            <h2 id="events">Events</h2>
+              <div>
+                <h4 id="event-onBeforeRequest">onBeforeRequest</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onBeforeRequest<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when a request is about to occur.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onBeforeRequest-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-requestBody"></a>        <dt><code>          <span class="variable">requestBody</span>          <span class="property">            (              <span class="optional">optional</span>              object            )          </span>        </code></dt>        <dd>          Contains the HTTP request body data. Only provided if extraInfoSpec contains 'requestBody'.        </dd>        <dd>          <dl>            <div>              <a name="property-requestBody-error"></a>              <dt><code>                <span class="variable">error</span>                <span class="property">                  (                    <span class="optional">optional</span>                    string                  )                </span>              </code></dt>              <dd>                Errors when obtaining request body data.              </dd>            </div>            <div>              <a name="property-requestBody-formData"></a>              <dt><code>                <span class="variable">formData</span>                <span class="property">                  (                    <span class="optional">optional</span>                    object                  )                </span>              </code></dt>              <dd>                If the request method is POST and the body is a sequence of key-value pairs encoded in UTF8, encoded as either multipart/form-data, or application/x-www-form-urlencoded, this dictionary is present and for each key contains the list of all values for that key. If the data is of another media type, or if it is malformed, the dictionary is not present. An example value of this dictionary is {'key': ['value1', 'value2']}.              </dd>            </div>            <div>              <a name="property-requestBody-raw"></a>              <dt><code>                <span class="variable">raw</span>                <span class="property">                  (                    <span class="optional">optional</span>                    array of <a href="webRequest.html#type-UploadData">UploadData</a>                  )                </span>              </code></dt>              <dd>                If the request method is PUT or POST, and the body is not already parsed in formData, then the unparsed request body elements are contained in this array.              </dd>            </div>          </dl>        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onBeforeSendHeaders">onBeforeSendHeaders</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onBeforeSendHeaders<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired before sending an HTTP request, once the request headers are available. This may occur after a TCP connection is made to the server, but before any HTTP data is sent. 
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onBeforeSendHeaders-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-details-requestHeaders"></a>        <dt><code>          <span class="variable">requestHeaders</span>          <span class="property">            (              <span class="optional">optional</span>              <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>            )          </span>        </code></dt>        <dd>          The HTTP request headers that are going to be sent out with this request.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onSendHeaders">onSendHeaders</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onSendHeaders<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired just before a request is going to be sent to the server (modifications of previous onBeforeSendHeaders callbacks are visible by the time onSendHeaders is fired).
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onSendHeaders-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-details-requestHeaders"></a>        <dt><code>          <span class="variable">requestHeaders</span>          <span class="property">            (              <span class="optional">optional</span>              <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>            )          </span>        </code></dt>        <dd>          The HTTP request headers that have been sent out with this request.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onHeadersReceived">onHeadersReceived</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onHeadersReceived<span class="subdued">.addListener</span>(function(<span>object <span class="variable">deails</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when HTTP response headers of a request have been received.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onHeadersReceived-deails"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-deails-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-deails-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-deails-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-deails-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-deails-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-deails-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-deails-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-deails-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-deails-statusLine"></a>        <dt><code>          <span class="variable">statusLine</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          HTTP status line of the response.        </dd>      </div>      <div>        <a name="property-deails-responseHeaders"></a>        <dt><code>          <span class="variable">responseHeaders</span>          <span class="property">            (              <span class="optional">optional</span>              <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>            )          </span>        </code></dt>        <dd>          The HTTP response headers that have been received with this response.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onAuthRequired">onAuthRequired</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onAuthRequired<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>, <span class="optional">function <span class="variable">callback</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when an authentication failure is received. The listener has three options: it can provide authentication credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If bad user credentials are provided, this may be called multiple times for the same request.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onAuthRequired-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-details-scheme"></a>        <dt><code>          <span class="variable">scheme</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The authentication scheme, e.g. Basic or Digest.        </dd>      </div>      <div>        <a name="property-details-realm"></a>        <dt><code>          <span class="variable">realm</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          The authentication realm provided by the server, if there is one.        </dd>      </div>      <div>        <a name="property-details-challenger"></a>        <dt><code>          <span class="variable">challenger</span>          <span class="property">            (                            object            )          </span>        </code></dt>        <dd>          The server requesting authentication.        </dd>        <dd>          <dl>            <div>              <a name="property-challenger-host"></a>              <dt><code>                <span class="variable">host</span>                <span class="property">                  (                                        string                  )                </span>              </code></dt>            </div>            <div>              <a name="property-challenger-port"></a>              <dt><code>                <span class="variable">port</span>                <span class="property">                  (                                        integer                  )                </span>              </code></dt>            </div>          </dl>        </dd>      </div>      <div>        <a name="property-details-isProxy"></a>        <dt><code>          <span class="variable">isProxy</span>          <span class="property">            (                            boolean            )          </span>        </code></dt>        <dd>          True for Proxy-Authenticate, false for WWW-Authenticate.        </dd>      </div>      <div>        <a name="property-details-responseHeaders"></a>        <dt><code>          <span class="variable">responseHeaders</span>          <span class="property">            (              <span class="optional">optional</span>              <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>            )          </span>        </code></dt>        <dd>          The HTTP response headers that were received along with this response.        </dd>      </div>      <div>        <a name="property-details-statusLine"></a>        <dt><code>          <span class="variable">statusLine</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          HTTP status line of the response.        </dd>      </div>    </dl>  </dd></div><div>  <a name="property-onAuthRequired-callback"></a>  <dt><code>    <span class="variable">callback</span>    <span class="property">      (        <span class="optional">optional</span>        function      )    </span>  </code></dt></div>
+                    </dl>
+                    <h4>Callback</h4>
+                    <p>
+                          If you specify the <em>callback</em> parameter, it should
+                          specify a function that looks like this:
+                    </p>
+                    <pre class="prettyprint">function(<a href="webRequest.html#type-BlockingResponse">BlockingResponse</a> response) <span class="subdued">{...}</span>;</pre>
+                    <dl>
+                        <div>
+                          <a name="property-callback-response"></a>
+                          <dt>
+                            <code class="variable">response</code>
+                            <span class="property">
+                              (
+                                
+                                <a href="webRequest.html#type-BlockingResponse">BlockingResponse</a>
+                              )
+                            </span>
+                          </dt>
+                        </div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onResponseStarted">onResponseStarted</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onResponseStarted<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when the first byte of the response body is received. For HTTP requests, this means that the status line and response headers are available.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onResponseStarted-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-details-ip"></a>        <dt><code>          <span class="variable">ip</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.        </dd>      </div>      <div>        <a name="property-details-fromCache"></a>        <dt><code>          <span class="variable">fromCache</span>          <span class="property">            (                            boolean            )          </span>        </code></dt>        <dd>          Indicates if this response was fetched from disk cache.        </dd>      </div>      <div>        <a name="property-details-statusCode"></a>        <dt><code>          <span class="variable">statusCode</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          Standard HTTP status code returned by the server.        </dd>      </div>      <div>        <a name="property-details-responseHeaders"></a>        <dt><code>          <span class="variable">responseHeaders</span>          <span class="property">            (              <span class="optional">optional</span>              <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>            )          </span>        </code></dt>        <dd>          The HTTP response headers that were received along with this response.        </dd>      </div>      <div>        <a name="property-details-statusLine"></a>        <dt><code>          <span class="variable">statusLine</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          HTTP status line of the response.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onBeforeRedirect">onBeforeRedirect</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onBeforeRedirect<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when a server-initiated redirect is about to occur.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onBeforeRedirect-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-details-ip"></a>        <dt><code>          <span class="variable">ip</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.        </dd>      </div>      <div>        <a name="property-details-fromCache"></a>        <dt><code>          <span class="variable">fromCache</span>          <span class="property">            (                            boolean            )          </span>        </code></dt>        <dd>          Indicates if this response was fetched from disk cache.        </dd>      </div>      <div>        <a name="property-details-statusCode"></a>        <dt><code>          <span class="variable">statusCode</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          Standard HTTP status code returned by the server.        </dd>      </div>      <div>        <a name="property-details-redirectUrl"></a>        <dt><code>          <span class="variable">redirectUrl</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The new URL.        </dd>      </div>      <div>        <a name="property-details-responseHeaders"></a>        <dt><code>          <span class="variable">responseHeaders</span>          <span class="property">            (              <span class="optional">optional</span>              <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>            )          </span>        </code></dt>        <dd>          The HTTP response headers that were received along with this redirect.        </dd>      </div>      <div>        <a name="property-details-statusLine"></a>        <dt><code>          <span class="variable">statusLine</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          HTTP status line of the response.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onCompleted">onCompleted</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onCompleted<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when a request is completed.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onCompleted-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-details-ip"></a>        <dt><code>          <span class="variable">ip</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.        </dd>      </div>      <div>        <a name="property-details-fromCache"></a>        <dt><code>          <span class="variable">fromCache</span>          <span class="property">            (                            boolean            )          </span>        </code></dt>        <dd>          Indicates if this response was fetched from disk cache.        </dd>      </div>      <div>        <a name="property-details-statusCode"></a>        <dt><code>          <span class="variable">statusCode</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          Standard HTTP status code returned by the server.        </dd>      </div>      <div>        <a name="property-details-responseHeaders"></a>        <dt><code>          <span class="variable">responseHeaders</span>          <span class="property">            (              <span class="optional">optional</span>              <a href="webRequest.html#type-HttpHeaders">HttpHeaders</a>            )          </span>        </code></dt>        <dd>          The HTTP response headers that were received along with this response.        </dd>      </div>      <div>        <a name="property-details-statusLine"></a>        <dt><code>          <span class="variable">statusLine</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          HTTP status line of the response.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+              <div>
+                <h4 id="event-onErrorOccurred">onErrorOccurred</h4>
+                <div class="summary"><code>
+                  <span class="subdued">chrome.webRequest.</span>onErrorOccurred<span class="subdued">.addListener</span>(function(<span>object <span class="variable">details</span></span>)<span class="subdued"> {...}</span>);
+                </code></div>
+                <div class="description">
+              <p>
+                    Fired when an error occurs.
+                  </p>      <h4>Listener Parameters</h4>
+                    <dl>
+                      <div>  <a name="property-onErrorOccurred-details"></a>  <dt><code>    <span class="variable">details</span>    <span class="property">      (                object      )    </span>  </code></dt>  <dd>    <dl>      <div>        <a name="property-details-requestId"></a>        <dt><code>          <span class="variable">requestId</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The ID of the request. Request IDs are unique within a browser session. As a result, they could be used to relate different events of the same request.        </dd>      </div>      <div>        <a name="property-details-url"></a>        <dt><code>          <span class="variable">url</span>          <span class="property">            (                            string            )          </span>        </code></dt>      </div>      <div>        <a name="property-details-method"></a>        <dt><code>          <span class="variable">method</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          Standard HTTP method.        </dd>      </div>      <div>        <a name="property-details-frameId"></a>        <dt><code>          <span class="variable">frameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The value 0 indicates that the request happens in the main frame; a positive value indicates the ID of a subframe in which the request happens. If the document of a (sub-)frame is loaded (<code>type</code> is <code>main_frame</code> or <code>sub_frame</code>), <code>frameId</code> indicates the ID of this frame, not the ID of the outer frame. Frame IDs are unique within a tab.        </dd>      </div>      <div>        <a name="property-details-parentFrameId"></a>        <dt><code>          <span class="variable">parentFrameId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists.        </dd>      </div>      <div>        <a name="property-details-tabId"></a>        <dt><code>          <span class="variable">tabId</span>          <span class="property">            (                            integer            )          </span>        </code></dt>        <dd>          The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab.        </dd>      </div>      <div>        <a name="property-details-type"></a>        <dt><code>          <span class="variable">type</span>          <span class="property">            (                            enumerated string ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"]            )          </span>        </code></dt>        <dd>          How the requested resource will be used.        </dd>      </div>      <div>        <a name="property-details-timeStamp"></a>        <dt><code>          <span class="variable">timeStamp</span>          <span class="property">            (                            double            )          </span>        </code></dt>        <dd>          The time when this signal is triggered, in milliseconds since the epoch.        </dd>      </div>      <div>        <a name="property-details-ip"></a>        <dt><code>          <span class="variable">ip</span>          <span class="property">            (              <span class="optional">optional</span>              string            )          </span>        </code></dt>        <dd>          The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address.        </dd>      </div>      <div>        <a name="property-details-fromCache"></a>        <dt><code>          <span class="variable">fromCache</span>          <span class="property">            (                            boolean            )          </span>        </code></dt>        <dd>          Indicates if this response was fetched from disk cache.        </dd>      </div>      <div>        <a name="property-details-error"></a>        <dt><code>          <span class="variable">error</span>          <span class="property">            (                            string            )          </span>        </code></dt>        <dd>          The error description. This string is <em>not</em> guaranteed to remain backwards compatible between releases. You must not parse and act based upon its content.        </dd>      </div>    </dl>  </dd></div>
+                    </dl>
+                </div>
+              </div>
+        </div>
+         
+      </div>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/trunk/extensions/webRequest.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

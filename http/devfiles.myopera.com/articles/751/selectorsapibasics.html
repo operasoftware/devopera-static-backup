@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<style type="text/css">
+body {
+  width: 600px;
+  font-family: "Trebuchet MS", "Lucida Grande", "lucida sans unicode", Arial, Helvetica, sans-serif;
+  
+}
+
+pre {
+  max-width:100%;
+  overflow:auto;
+  line-height:1.4;
+  background-color: #ffffee;
+  padding-top: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  border-top-color: #cccc99;
+  border-left-color: #cccc99;
+  border-right-color: #cccc99;
+  border-bottom-color: #cccc99;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: dotted;
+  border-left-style: dotted;
+  border-right-style: dotted;
+  border-bottom-style: dotted;
+}
+</style>
+<title>Selectors API basics</title>
+</head>
+<body>
+
+<h2>Selectors API basics</h2>
+
+<p>The selectors API specification is designed to make selecting DOM elements a lot simpler. It works in a similar way to how JavaScript libraries such as jQuery select elements, and will make much more sense to non-JavaScript experts. The two main methods in the API are <code>querySelector()</code> and <code>querySelectorAll()</code>. The first one selects the first element in the DOM that matches the specified selector. For example, the following selects the first <code>p</code> element in a document:</p>
+
+<pre><code>document.querySelector("p");</code></pre>
+
+<p>The second method selects all of the matching elements in the DOM. For example, the following line selects all of the elements in a document with a <code>class</code> of <code>alert</code>:</p>
+
+<pre><code>document.querySelectorAll(".alert");</code></pre>
+
+</body>
+</html>

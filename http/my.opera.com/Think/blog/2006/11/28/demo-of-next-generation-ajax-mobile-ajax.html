@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Jan Standal - The AJAX phone</title>
+<meta property="og:url" content="http://my.opera.com/Think/blog/2006/11/28/demo-of-next-generation-ajax-mobile-ajax">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/Think/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/Think/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/Think/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/Think/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/Think/xml/rss/comments/589078">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/Think/xml/atom/comments/589078">
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://static.myopera.com/community/css/users/126/main.css" type="text/css">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="Jan Standal - The AJAX phone">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/nt/nOe/9gr+DMimKUdA5uOs5KwPCw/24751_l.jpg">
+<meta property="og:image" content="http://static.myopera.com/community/graphics/smiley.gif">
+<meta property="og:description" content="Would you like to get personalized and always updated newsfeed directly on the idle-screen of your mobile phone? How about location based traffic information or a map service similar to Google Maps? This is what Opera, Telenor and FAST set out to test in a R&amp;D study named 'Aida' earlier this year. The solution was tested on a large number of end users over many months and was very well received among the testers. Check out the video below from the solution running live on a Windo ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2FThink%2Fblog%2Fshow.dml%2F589078&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2"><h1><span>Barely scratching the surface</span></h1></div>
+<div id="menu"><ul>
+<li id="menu_blog"><a href="http://my.opera.com/Think/blog/" id="selected"><span>Blog</span></a></li>
+<li id="menu_albums"><a href="http://my.opera.com/Think/albums/"><span>Photos</span></a></li>
+<li id="menu_links"><a href="http://my.opera.com/Think/links/"><span>Links</span></a></li>
+<li id="menu_friends"><a href="http://my.opera.com/Think/friends/"><span>Friends</span></a></li>
+<li id="menu_about"><a href="http://my.opera.com/Think/about/"><span>About</span></a></li>
+</ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title">The AJAX phone</h2>
+<p class="postdate">Tuesday, November 28, 2006 1:25:41 PM</p>
+<p class="tags"><a href="http://my.opera.com/Think/blog/index.dml/tag/opera" rel="tag">opera</a>, <a href="http://my.opera.com/Think/blog/index.dml/tag/AJAX" rel="tag">AJAX</a>, <a href="http://my.opera.com/Think/blog/index.dml/tag/mobile" rel="tag">mobile</a>, <a href="http://my.opera.com/Think/blog/index.dml/tag/FAST" rel="tag">FAST</a>, <a href="http://my.opera.com/Think/blog/index.dml/tag/Telenor" rel="tag">Telenor</a>, <a href="http://my.opera.com/Think/blog/index.dml/tag/browser" rel="tag">browser</a> </p>
+<div class="content">Would you like to get personalized and always updated newsfeed directly on the idle-screen of your mobile phone? How about location based traffic information or a map service similar to Google Maps? This is what Opera, Telenor and FAST set out to test in a R&amp;D study named 'Aida' earlier this year. The solution was tested on a large number of end users over many months and was very well received among the testers. Check out the video below from the solution running live on a Windows Mobile phone.
+
+<object width="425" height="350"><param name="movie" value="http://www.youtube.com/v/K7O_UOiJ2oI">
+<param name="wmode" value="transparent">
+<embed src="http://www.youtube.com/v/K7O_UOiJ2oI" type="application/x-shockwave-flash" wmode="transparent" width="425" height="350" allowscriptaccess="never"></embed></object>
+
+<p>If you have problems understanding the text on the screen, it's most likely because it is in Norwegian <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink"></p>
+</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2FThink%2Fblog%2F2006%2F11%2F28%2Fdemo-of-next-generation-ajax-mobile-ajax&amp;title=The%20AJAX%20phone" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=The%20AJAX%20phone,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2FThink%2Fblog%2F2006%2F11%2F28%2Fdemo-of-next-generation-ajax-mobile-ajax&amp;title=The%20AJAX%20phone" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=The%20AJAX%20phone','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2FThink%2Fblog%2F2006%2F11%2F28%2Fdemo-of-next-generation-ajax-mobile-ajax&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/Think/blog/off-to-vegas"><span>Off to Vegas</span></a></span><span class="nxt"><a href="http://my.opera.com/Think/blog/show.dml/634825"><span>Wii wish you a merry christmas!</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/Think/xml/rss/comments/589078"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1" id="comment2330808">
+<div class="avatar"><a href="http://my.opera.com/albertrosa/"><img src="http://my.opera.com/community/users/avatar.pl/405399" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="albertrosa" href="http://my.opera.com/albertrosa/">Albert Rosa<span>albertrosa</span></a></b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2330808" class="permalink">#</a> Wednesday, November 29, 2006 2:57:09 PM</span></p>
+<div class="text">That's a great Idea, I had a similar concept based on the New York City Metro System, tracking time delays and schedules for busses and trains. Great to see this work there gives me a push on my concept can't wait to see what's next!</div>
+</div>
+<div class="comment2" id="comment2331060">
+<div class="avatar"><a href="http://my.opera.com/FataL/"><img src="http://my.opera.com/community/users/avatar.pl/25260" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="FataL" href="http://my.opera.com/FataL/">FataL</a></b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2331060" class="permalink">#</a> Wednesday, November 29, 2006 4:37:06 PM</span></p>
+<div class="text">This is freakin' awesome! <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-yes" alt="yes"><br>Can't wait when mobile internet become cheaper. Don't want to pay for internet twice...</div>
+</div>
+<div class="comment1 ownercomment" id="comment2333497">
+<div class="avatar"><a href="http://my.opera.com/Think/"><img src="http://my.opera.com/community/users/avatar.pl/24751" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Think" href="http://my.opera.com/Think/">Jan Standal<span>Think</span></a></b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2333497" class="permalink">#</a> Thursday, November 30, 2006 1:51:38 PM</span></p>
+<div class="text">BTW: The AIDA project was build using <a href="http://www.opera.com/products/mobile/platform/" rel="nofollow">Opera Platform</a>, which is an AJAX framwork running on top of the <a href="http://www.opera.com/products/mobile/products/" rel="nofollow">Opera Mobile browser</a>. This is such not based on the light-weight <a href="http://www.operamini.com/" rel="nofollow">Opera Mini browser</a>. </div>
+</div>
+<div class="comment2" id="comment2407730">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2407730" class="permalink">#</a> Friday, December 29, 2006 3:10:57 AM</span></p>
+<div class="text">Anonymous writes:
+
+good</div>
+</div>
+<div class="comment1" id="comment2432494">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2432494" class="permalink">#</a> Sunday, January 7, 2007 5:57:06 PM</span></p>
+<div class="text">Anonymous writes:
+
+Great idea.
+I was looking for something similar for Symbian S60, however some available solutions (e.g. I've tested Onskreen's Fusion) IMO are a bit immature (too slow, user added RSSs not correctly parsed, not possible to read the full feed without invoking the broswer, and worse of all, such browser cannot be chosen by user, e.g. it happens to be the default one). I'm confident that Opera team is doing it in the right way, coupling the terrific Opera browsing  performance and UI on mobile device with rich user customization. It would be great to have the desktop RSS widgetize concept also on a smartphone. Hope to see it soon for Symbian S60 (v2 also, not only v3).</div>
+</div>
+<div class="comment2" id="comment2437535">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2437535" class="permalink">#</a> Tuesday, January 9, 2007 11:34:09 AM</span></p>
+<div class="text">Anonymous writes:
+
+videos to mobile?</div>
+</div>
+<div class="comment1" id="comment2446183">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2446183" class="permalink">#</a> Friday, January 12, 2007 4:27:58 AM</span></p>
+<div class="text">Anonymous writes:
+
+What does that UI all mean. It doesn't make any sense? A bunch of line listings for traffic?</div>
+</div>
+<div class="comment2 ownercomment" id="comment2453580">
+<div class="avatar"><a href="http://my.opera.com/Think/"><img src="http://my.opera.com/community/users/avatar.pl/24751" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Think" href="http://my.opera.com/Think/">Jan Standal<span>Think</span></a></b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2453580" class="permalink">#</a> Sunday, January 14, 2007 4:54:55 PM</span></p>
+<div class="text">It's not UI, its multiple widgets running at the same time. But as I said it's a Norwegian reading exercise <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment1" id="comment2594555">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment2594555" class="permalink">#</a> Wednesday, February 28, 2007 12:18:50 PM</span></p>
+<div class="text">Anonymous writes:
+
+Шаш</div>
+</div>
+<div class="comment2" id="comment3767887">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment3767887" class="permalink">#</a> Wednesday, October 10, 2007 10:10:31 AM</span></p>
+<div class="text">JiF Software writes:
+
+Can't see the video at work, i'll go check it when I am at home.</div>
+</div>
+<div class="comment1" id="comment4666463">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment4666463" class="permalink">#</a> Tuesday, February 12, 2008 11:56:24 AM</span></p>
+<div class="text">That is a really wonderful idea. I tried to apply it while I was doing some research form my IT project on telecommunication and it worked great. Thanks for the video and sharing!</div>
+</div>
+<div class="comment2" id="comment4666671">
+<div class="avatar"><a href="http://my.opera.com/annmacgiff/"><img src="http://my.opera.com/community/users/avatar.pl/1333438" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="annmacgiff" href="http://my.opera.com/annmacgiff/">annmacgiff</a></b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment4666671" class="permalink">#</a> Tuesday, February 12, 2008 12:41:15 PM</span></p>
+<div class="text">I like the idea so much, also the idea of metro system adopted for mobiles seems to be a great solution. Mobile internet may be still a bit expensive for common folk, but the attitude and prices will change very fast and such solutions will be of grat value to enhance the progress even more.</div>
+</div>
+<div class="comment1" id="comment14751211">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment14751211" class="permalink">#</a> Saturday, January 2, 2010 5:48:18 PM</span></p>
+<div class="text">hfgtryufgbcvftdv writes:
+
+i love you beibe</div>
+</div>
+<div class="comment2" id="comment49775172">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment49775172" class="permalink">#</a> Friday, December 17, 2010 8:30:38 AM</span></p>
+<div class="text">Anonymous writes:
+
+</div>
+</div>
+<div class="comment1" id="comment50162532">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment50162532" class="permalink">#</a> Tuesday, December 21, 2010 7:19:34 PM</span></p>
+<div class="text">Daddyson writes:
+
+I want to login  to opera education</div>
+</div>
+<a name="lastcomment"></a><div class="comment2" id="comment70787662">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/Think/blog/show.dml/589078#comment70787662" class="permalink">#</a> Friday, September 23, 2011 11:24:46 AM</span></p>
+<div class="text">subasnembang writes:
+
+hi frind me</div>
+</div>
+</div>
+<div id="newcomment" class="w100">
+<h3>Write a comment</h3>
+<p>New comments have been disabled for this post.</p>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<div class="sidebox" id="qp">
+<h2>Jan Standal</h2>
+<div id="myphoto"><a href="http://my.opera.com/Think/"><img src="https://static.myopera.com/upic/pool1/nt/nOe/9gr+DMimKUdA5uOs5KwPCw/24751_l.jpg" width="220" height="165" alt="photo"></a></div>
+</div>
+<div class="sidebox" id="friendz">
+<h2>Friends (56)</h2>
+<div class="pad">
+<ul class="userlist nobullets">
+<li class="first"><a href="http://my.opera.com/jax/"><img src="https://static.myopera.com/upic/pool1/J1/yOt/O_ShchnURPHoel2vBgKQaQ/8418_m.jpg" width="104" height="78" alt="jax photo" title="jax "><span class="block">jax</span></a></li>
+<li><a href="http://my.opera.com/For_d/"><img src="https://static.myopera.com/upic/pool1/Kd/sNv/MBWLuGMp8Ijc_7SwMdmBYc/33584_m.jpg" width="104" height="78" alt="For_d photo" title="For_d "><span class="block">For_d</span></a></li>
+<li class="first"><a href="http://my.opera.com/ketoyo/"><img src="https://static.myopera.com/upic/pool1/kO/6m0/NVkD6xdU+nDozoSMAUYDEY/1802431_m.jpg" width="104" height="78" alt="ketoyo photo" title="ketoyo "><span class="block">ketoyo</span></a></li>
+<li><a href="http://my.opera.com/Lawmune/"><img src="https://static.myopera.com/upic/pool1/5Z/FlM/hQHsORuzigIoUZ0Th03TSg/34454_m.jpg" width="104" height="78" alt="Lawmune photo" title="Lawmune "><span class="block">Lawmune</span></a></li>
+<li class="first"><a href="http://my.opera.com/henrikb/"><img src="https://static.myopera.com/upic/pool1/z8/cRY/AeEG3nwJAIdpjUgNuVoIzU/146245_m.jpg" width="104" height="78" alt="henrikb photo" title="henrikb "><span class="block">henrikb</span></a></li>
+<li><a href="http://my.opera.com/sagar/"><img src="https://static.myopera.com/upic/pool1/Cm/KgX/CGLWLNQPdlZyYs8Vs5B5t8/35978_m.jpg" width="104" height="78" alt="sagar photo" title="sagar "><span class="block">sagar</span></a></li>
+</ul>
+<p><b><a href="http://my.opera.com/Think/friends/">Show all friends</a></b></p>
+</div>
+</div>
+<div class="sidebox" id="newcomments">
+<h2>Latest comments</h2>
+<div class="pad">
+<ul class="nobullets usercom">
+<li>
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/Think/blog/2006/11/28/demo-of-next-generation-ajax-mobile-ajax?cid=70787662#comment70787662" class="usertext"><text>subasnembang writes:
+
+hi frind me</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/Think/blog/2006/11/28/demo-of-next-generation-ajax-mobile-ajax?cid=50162532#comment50162532" class="usertext"><text>Daddyson writes:
+
+I want to login  to opera education</text></a></p>
+</li>
+<li>
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/Think/blog/2006/11/28/demo-of-next-generation-ajax-mobile-ajax?cid=49775172#comment49775172" class="usertext"><text>Anonymous writes:
+</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><a href="http://my.opera.com/georgmaier/"><img src="https://static.myopera.com/upic/pool1/yS/K2g/g8klUWY3XNuZxODDSCn32w/39823772_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/georgmaier/" class="username">Georg Maier</a></b></p>
+<p><a href="http://my.opera.com/Think/blog/2008/01/11/recap-of-2007?cid=37593912#comment37593912" class="usertext"><text>Its a pitty, that this blog is not that active anymore. Have ...</text></a></p>
+</li>
+<li>
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/Think/blog/2006/11/28/demo-of-next-generation-ajax-mobile-ajax?cid=14751211#comment14751211" class="usertext"><text>hfgtryufgbcvftdv writes:
+
+i love you beibe</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><a href="http://my.opera.com/Wargamez/"><img src="https://static.myopera.com/upic/pool1/Lc/t25/hr1Xdo8U9o+n2j1UT8NKs8/37063_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/Wargamez/" class="username">Espen Myhre</a></b></p>
+<p><a href="http://my.opera.com/Think/blog/2008/01/11/recap-of-2007?cid=7898952#comment7898952" class="usertext"><text>I am so looking forward to the recap of 2008 :coffee: </text></a></p>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/2007" rel="tag">2007</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/AJAX" rel="tag">AJAX</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/analysis" rel="tag">analysis</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/browser" rel="tag">browser</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/browsers" rel="tag">browsers</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/browsing" rel="tag">browsing</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/christmas" rel="tag">christmas</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/Community" rel="tag">Community</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/convergence" rel="tag">convergence</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/design" rel="tag">design</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/devices" rel="tag">devices</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/dotmobi" rel="tag">dotmobi</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/FAST" rel="tag">FAST</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/jobs" rel="tag">jobs</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/media-types" rel="tag">media-types</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/mobile" rel="tag">mobile</a></li>
+<li class="size1"><a href="http://my.opera.com/Think/blog/index.dml/tag/my.opera" rel="tag">my.opera</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/opera" rel="tag">opera</a></li>
+<li class="size5"><a href="http://my.opera.com/Think/blog/index.dml/tag/webdeveloper" rel="tag">webdeveloper</a></li>
+<li class="size3"><a href="http://my.opera.com/Think/blog/index.dml/tag/wii" rel="tag">wii</a></li>
+</ul></div>
+</div>
+<div class="sidebox" id="visitors">
+<h2>Recent visitors</h2>
+<div class="pad">
+<ul class="nobullets userlist">
+<li><a href="http://my.opera.com/frankreich-man/"><img src="https://static.myopera.com/upic/pool1/GL/Mz9/upf10TybHfuAfmBYOkTWTc/5506631_s.jpg" width="68" height="51" alt="frankreich-man"><span class="block">frankreich-man</span></a></li>
+<li class="mid"><a href="http://my.opera.com/marioflashgames/"><img src="https://static.myopera.com/upic/pool1/Ly/ixt/Q3+yONqKrgVp1KV+Pk6TWY/222669824_s.jpg" width="68" height="51" alt="marioflashgames"><span class="block">marioflashgames</span></a></li>
+<li><a href="http://my.opera.com/clandestino12/"><img src="https://static.myopera.com/upic/pool1/X7/tV+/Q4FigILfzJk+Lf63v4bZWQ/1076305_s.jpg" width="68" height="51" alt="clandestino12"><span class="block">clandestino12</span></a></li>
+<li><a href="http://my.opera.com/medizin-inga/"><img src="https://static.myopera.com/upic/pool1/Mk/MMH/QzeL0J0B47TPK9m+E8FwSQ/5021081_s.jpg" width="68" height="51" alt="medizin-inga"><span class="block">medizin-inga</span></a></li>
+<li class="mid"><a href="http://my.opera.com/marasan/"><img src="https://static.myopera.com/upic/pool1/9Z/K1_/5HdLZJ66g2HsjI__c1I_Bs/4352432_s.jpg" width="68" height="51" alt="marasan"><span class="block">marasan</span></a></li>
+<li><a href="http://my.opera.com/hkcslc/"><img src="https://static.myopera.com/upic/pool1/YA/lQb/r8538eN2y9GCm0gioxlE8Q/151975672_s.jpg" width="68" height="51" alt="hkcslc"><span class="block">hkcslc</span></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a>| <a href="http://my.opera.com/Think/xml/foaf/"><acronym title="Friend of a friend">FOAF</acronym></a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/Think/blog/2006/11/28/demo-of-next-generation-ajax-mobile-ajax"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392046112.myo.cDoyNzowMzowMA== -->

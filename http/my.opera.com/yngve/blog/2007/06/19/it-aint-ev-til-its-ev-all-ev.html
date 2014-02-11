@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Yngve Nysæter Pettersen - It ain't EV 'til it's EV, all EV</title>
+<meta property="og:url" content="http://my.opera.com/yngve/blog/2007/06/19/it-aint-ev-til-its-ev-all-ev">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/yngve/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/yngve/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/yngve/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/yngve/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/yngve/xml/rss/comments/1095376">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/yngve/xml/atom/comments/1095376">
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://static.myopera.com/community/css/users/102/main.css" type="text/css">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="Yngve Nysæter Pettersen - It ain't EV 'til it's EV, all EV">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/tf/++v/7EYs9UW0UGvsLG+ic9bpYw/9165_l.jpg">
+<meta property="og:description" content="In the past couple of weeks I have been sewing up most of the loose threads in Opera's support for Extended Validation (EV) certificates, and have actually started testing something that resembles the final system.
+
+The work to add Extended Validation has been going on for a while, the basic functionality was implemented last year, but there hasn't been time to build the surrounding infrastructure until this year.
+
+Now, we are finally starting to see the end of the road.
+
+However, I  ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2Fyngve%2Fblog%2Fshow.dml%2F1095376&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2">
+<h1><span>Implementer's notes</span></h1>
+<p id="subtitle"><span>What might get caught in the gears under the hood?</span></p>
+</div>
+<div id="menu"><ul>
+<li id="menu_blog"><a href="http://my.opera.com/yngve/blog/" id="selected"><span>Blog</span></a></li>
+<li id="menu_about"><a href="http://my.opera.com/yngve/about/"><span>About</span></a></li>
+</ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title">It ain't EV 'til it's EV, all EV</h2>
+<p class="postdate">Tuesday, June 19, 2007 2:34:00 PM</p>
+<p class="tags"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Opera" rel="tag">Opera</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/browsers" rel="tag">browsers</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/SSL" rel="tag">SSL</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Extended%20Validation" rel="tag">Extended Validation</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/User%20Interface" rel="tag">User Interface</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Certificates" rel="tag">Certificates</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Security" rel="tag">Security</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/TLS" rel="tag">TLS</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/browser" rel="tag">browser</a> </p>
+<div class="content">In the past couple of weeks I have been sewing up most of the loose threads in Opera's support for <a href="../12/extended-validation-v1-0-approved.html" rel="nofollow" target="_blank">Extended Validation</a> (EV) certificates, and have actually started testing something that resembles the final system.<br><br>The work to add Extended Validation has been going on for a while, the basic functionality was implemented last year, but there hasn't been time to build the surrounding infrastructure until this year.<br><br>Now, we are finally starting to see <a href="../../../show.dml/1095339.html" rel="nofollow" target="_blank">the end of the road</a>.<br><br>However, I have started to notice something that could become a problem: Not all EV sites, such as Verisign's and PayPal's sites, are coded the way I think they should be coded, or the way Opera's EV support need to be able to recognize them as EV sites.<br><br>The sites themselves and the content they serve are not the problem. The thirdparty content they have chosen to include on their site is; Content that is NOT served from EV servers. Apparently, MSIE 7 does not take this external content into consideration when deciding to show the EV indication.<br><br>One of the most prominent examples of this third-party content is Google Analytics, which is added to a web page by an external Javascript from a non-EV secure server hosted by Google. Since Google's servers are not using EV certificates, Opera's EV support does not consider the site to be an EV site.<br><br>This is due to how Opera's security evaluation system works. Each URL loaded is evaluated based on which protocol was used, what kind of encryption, keylengths, and whether or not the certificate validated correctly. All of this is summed up as a Level in the range of 0 to 3 as follows<br><br><ul class="bullets">
+<li>0: No encryption (example, plain HTTP)</li>
+<li>1: Weak encryption (40 and 56 bit symmetric methods), weak keys (less than 900 bits RSA/DH/DSA), certificate errors, authentiction only. Additionally a combination of problems that would result in Level 2 security being displayed if only one of them were encountered.</li>
+<li>2: One, and only one, of these: medium strength keys (900-999 bit RSA/DH/DSA) or failure to get a valid OCSP response. A combination of both results in Level 1 being chosen.</li>
+<li>3: Only when using 128 bit encryption, 1000 bit or more RSA/DH/DSA keys, no certificate validation problems.</li>
+</ul>
+<br><br>EV is implemented as Level 4 in this ranking, and a Level 3 resource is only escalated to Level 4 if it contains the necessary EV identificator.<br><br>For a group of URLs, such as a web page with redirects, images, CSS, scripts, frames, and so on, the URL with the weakest security level determines the security level for the entire document. This means that a web page with a single unencrypted 1-by-1 image gets Level 0, and that an EV website which includes a 1-by-1 image from a Level 3 non-EV site does not get the EV status. The only exception to this rule is that, on certain conditions, the first request may be a HTTP to HTTPS redirect.<br><br>The reason for this design is simple:<br><br><ul class="bullets">
+<li> It is difficult, and in most cases impossible, for a web browser to determine how sensitive a particular element of a page is.</li>
+<li> Some elements can affect the meaning of the site (for example, a big image, a script, or a frame).</li>
+<li> In some cases, such as unencrypted requests, analyzing that traffic may reveal what the user is working on (for example, evaluating a stock transaction).</li>
+</ul>
+<br><br>One can make the argument that since the page is secure we can assume that the owners of the site know what they are doing, and that any use of less secure resources is intentional and does not represent a security problem. That assumption is wrong. They may know what they are doing, and have no intention of lowering the security level, but they can still make a mistake somewhere. In at least two cases I have seen, misconfiguration of proxies or redirects caused content that was not secure to be included in otherwise secure banking/payment pages. In one of the cases this content was an external JavaScript used in a payment page, and an attacker could have gotten full access to the secure page if he had changed the JavaScript in transit.<br><br>With respect to EV one can make the same argument, but it is flawed in this case, too:<br><br><ul class="bullets">
+<li> The primary point of using an EV certificate on a site is to know the identity of the site's owner.</li>
+<li> The EV site's owner may or may not know who owns a non-EV third-party site, the client has no way of determining that. We do not know, and cannot know, if the agreement is just a click-wrap or the result of months long lawyer negotiations.</li>
+<li> In several of the observed cases the third-party content was external JavaScript, which means the third-party is essentially granted full access to manipulate the site's content, and all of it.</li>
+<li> By allowing non-EV third-party content in a EV site it becomes possible to set up EV "redirector" sites that let non-EV sites look like they are using EV by embedding their content in a frame.</li>
+</ul>
+<br><br>Part of the reason for creating Extended Validation certificates was raising the bar for identification on the Internet, so that is what we will do: Raise the bar.<br><br>When Opera ships a version with EV, probably in Kestrel, a site will not be considered as having EV unless <strong>all</strong> resources used in the rendered page are using Extended Validation certificates.<br><br>"It ain't EV 'til it's EV, all EV"<br>
+</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2F2007%2F06%2F19%2Fit-aint-ev-til-its-ev-all-ev&amp;title=It%20ain%26%2339%3Bt%20EV%20%26%2339%3Btil%20it%26%2339%3Bs%20EV%2C%20all%20EV" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=It%20ain%26%2339%3Bt%20EV%20%26%2339%3Btil%20it%26%2339%3Bs%20EV%2C%20all%20EV,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2F2007%2F06%2F19%2Fit-aint-ev-til-its-ev-all-ev&amp;title=It%20ain%26%2339%3Bt%20EV%20%26%2339%3Btil%20it%26%2339%3Bs%20EV%2C%20all%20EV" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=It%20ain%26%2339%3Bt%20EV%20%26%2339%3Btil%20it%26%2339%3Bs%20EV%2C%20all%20EV','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2F2007%2F06%2F19%2Fit-aint-ev-til-its-ev-all-ev&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="../../../show.dml/1095339.html"><span>A first look at EV in Opera</span></a></span><span class="nxt"><a href="http://my.opera.com/yngve/blog/2007/07/02/the-ev-indicator-now-you-see-it-now-you-dont"><span>The EV indicator: Now you see it, now you don't</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/yngve/xml/rss/comments/1095376"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1" id="comment3044595">
+<div class="avatar"><a href="http://my.opera.com/gerv/"><img src="http://my.opera.com/community/users/avatar.pl/162022" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="gerv" href="http://my.opera.com/gerv/">Gervase Markham<span>gerv</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3044595" class="permalink">#</a> Tuesday, June 19, 2007 2:58:47 PM</span></p>
+<div class="text">
+<i>The EV site's owner may or may not know who owns a non-EV third-party site</i><br><br>If they don't know who owns it or don't trust the remote site, why on earth are they embedding content from that site? That's madness whether you are using EV or not.<br><br>If the owner of Site A wants some content from Site B, which he trusts, he can do one of two things. A) He can copy the content to Site A and serve it from there, or B) he can embed it directly from Site B (using HTTPS of some sort to make sure it actually does come from Site B - all certs guarantee this, not just EV). <br><br>You are saying that A) is OK but B) is not - but it's the same content, so that doesn't make sense to me.<br><br>
+</div>
+</div>
+<div class="comment2 ownercomment" id="comment3044782">
+<div class="avatar"><a href="http://my.opera.com/yngve/"><img src="http://my.opera.com/community/users/avatar.pl/9165" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="yngve" href="http://my.opera.com/yngve/">Yngve Nysæter Pettersen<span>yngve</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3044782" class="permalink">#</a> Tuesday, June 19, 2007 3:31:47 PM</span></p>
+<div class="text">Gerv: The primary point is that the client have no way to tell. Ads is one possible area where the contract partner may be referencing third-party content. <br><br>The administrator may have opened an account at some "cool" webrelated tool provider, and just clicked through the agreement, added the tool to his pages, and not considered the possible side effects, or checked the provider more closesly.<br><br>In your case A the site owner assumes a much higher responsibility by serving the content directly, and is vouching for all of it. In case B he is "just" linking to content.</div>
+</div>
+<div class="comment1 ownercomment" id="comment3045687">
+<div class="avatar"><a href="http://my.opera.com/yngve/"><img src="http://my.opera.com/community/users/avatar.pl/9165" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="yngve" href="http://my.opera.com/yngve/">Yngve Nysæter Pettersen<span>yngve</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3045687" class="permalink">#</a> Tuesday, June 19, 2007 8:15:09 PM</span></p>
+<div class="text">Arthur, the way that discussion end may depend entirely on how the other browsers decide to approach the issue. Perhaps Microsoft decides to change their handling? Time will tell.</div>
+</div>
+<div class="comment2" id="comment3046057">
+<div class="avatar"><a href="http://my.opera.com/graste/"><img src="http://my.opera.com/community/users/avatar.pl/39343" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="graste" href="http://my.opera.com/graste/">graste</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3046057" class="permalink">#</a> Tuesday, June 19, 2007 11:23:29 PM</span></p>
+<div class="text">Opera is correct in enforcing the rules. I saw some sites where Opera told me to accept a weak certificate etc. while other browsers didn't have any problem at all with possible problems (default configuration). I like the information Opera is giving me. The whole EV system is based on trust (as the whole PKI is). I wouldn't trust a 'secure' site, if it has unsecure content in it. The unsecure content (e.g. a banner ad) could be served from fraudulent servers. It would be ridiculous for sincere sites to include unsecure content such as banners in important parts of the site.</div>
+</div>
+<div class="comment1" id="comment3046479">
+<div class="avatar"><a href="http://my.opera.com/ResearchWizard/"><img src="http://my.opera.com/community/users/avatar.pl/289485" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="ResearchWizard" href="http://my.opera.com/ResearchWizard/">Christian<span>ResearchWizard</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3046479" class="permalink">#</a> Wednesday, June 20, 2007 2:15:30 AM</span></p>
+<div class="text">I wonder why nobody mentions the possibility of a server hack so the insecure content is not necessarily under control of the secure site's owner. <br><br>There are lots of hacked web-servers around these days (especially in Italy).</div>
+</div>
+<div class="comment2 ownercomment" id="comment3047787">
+<div class="avatar"><a href="http://my.opera.com/yngve/"><img src="http://my.opera.com/community/users/avatar.pl/9165" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="yngve" href="http://my.opera.com/yngve/">Yngve Nysæter Pettersen<span>yngve</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3047787" class="permalink">#</a> Wednesday, June 20, 2007 9:46:57 AM</span></p>
+<div class="text">ResearchWizard: I am not mentioning that because that problem is a possibility even for an all-EV site.</div>
+</div>
+<div class="comment1" id="comment3052397">
+<div class="avatar"><a href="http://my.opera.com/dantesoft/"><img src="http://my.opera.com/community/users/avatar.pl/68612" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dantesoft" href="http://my.opera.com/dantesoft/">Dan Alexandru<span>dantesoft</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3052397" class="permalink">#</a> Thursday, June 21, 2007 11:11:03 AM</span></p>
+<div class="text">
+<a href="http://blog.johnath.com/index.php/2007/06/04/will-firefox-have-a-green-bar/" rel="nofollow" target="_blank">http://blog.johnath.com/index.php/2007/06/04/will-firefox-have-a-green-bar/</a><br><br>I agree with him that the message the browser should give users is on identity, not safety. Encryption/security is altogether different. It's essential for me to know that I'm seeing what I think I'm seeing, and that noone is eavesdropping on me, but <a href="http://www.canton.elegal.ca/archives/2006/05/new_disclaimer.html" rel="nofollow" target="_blank">the Internet is a bad place</a> and green means go.<br><br>I do appreciate all the information Opera gives me, when others don't.</div>
+</div>
+<div class="comment2" id="comment3079283">
+<div class="avatar"><a href="http://my.opera.com/elitegeek/"><img src="http://my.opera.com/community/users/avatar.pl/152802" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="elitegeek" href="http://my.opera.com/elitegeek/">James Cassell<span>elitegeek</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3079283" class="permalink">#</a> Wednesday, June 27, 2007 4:38:27 AM</span></p>
+<div class="text">I'm glad that you have such a good policy.  I hope the other browser vendors choose to have the same attitude.</div>
+</div>
+<div class="comment1" id="comment3140888">
+<div class="avatar"><a href="http://my.opera.com/wile-e-wonka/"><img src="http://my.opera.com/community/users/avatar.pl/487591" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="wile-e-wonka" href="http://my.opera.com/wile-e-wonka/">wile-e-wonka</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3140888" class="permalink">#</a> Monday, July 9, 2007 3:01:34 PM</span></p>
+<div class="text">"...another pointless security measure designed for the n00bs that can't distinguish between google.com and goggle.com..."<br><br>I have to disagree here--for example, let's say I go to www.bankofamerica.com and sign on to my account.  And let's say that the web designers at the bank wanted to know what users of the site think of some aspect of the site, so they insert a little code that draws from a survey vendor's site that allows a user of the site to give a little input while banking.  <br><br>A page by that description will still say bankofamerica.com, but it will have an element coming from the survey vendor's site.  Yngve is asserting that the whole page is only as secure as it's weakest element.  If the bank's materials are secure, the site may nonetheless be vulnerable if the code they are drawing from the survey vendor is insecure.  <br><br>Validation then comes into play because I, the user of the site, have no way of telling that the survey element is insecure or compromised since the URL still says "bankofamerica.com".  <br><br>So, although I think this type of validation may be overkill for most of my browsing needs, it will be very useful with sites that are intended to be secure.  If widely adopted this would be very effective at causing web designers of secure sites to ensure their sites contain only properly validated elements, which would result in a more secure site overall.  </div>
+</div>
+<div class="comment2" id="comment3278527">
+<div class="avatar"><a href="http://my.opera.com/josjoslyn/"><img src="http://my.opera.com/community/users/avatar.pl/473016" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="josjoslyn" href="http://my.opera.com/josjoslyn/">Jos<span>josjoslyn</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment3278527" class="permalink">#</a> Thursday, August 2, 2007 1:01:30 PM</span></p>
+<div class="text">Hi ..... EV is all well and good, but there is still the issue of the "Opera Browser" being rejected as a "secure browser" when visiting the vast majority of sites where "security validation" is required:-<br><br>1.  Banks(UK &amp; US) - not sure with regard to other countries<br>2.  On-Line Shopping - to my knowledge(experience) 100% - okay, 100% is limited to the sites I have visited, so no where near comprehensive, but still even if there are sites out there, Operas' acceptance as a secure browser is not global.  Which really frustrates me, when "they" want you to use IE(security is a joke on that tool!!) ... So I use Firefox for all my "https" visits.<br><br>I love using Opera on my desktop, although some of the "button" placements on some sites are still "skewed" and overlap content.  The security is great, and good to see Opera still attaching the highest value to this, the most important aspect of ANY "web browser".  BUT, it still fails to be accepted as a viable option to secure web-site usage.  Until that has been resolved, and Opera is regarded as "globally mainstream" by corporates, the Opera Browser will remain where it currently resides ...... which a crying shame.<br><br>Jos Joslyn</div>
+</div>
+<div class="comment1" id="comment4666519">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment4666519" class="permalink">#</a> Tuesday, February 12, 2008 12:09:02 PM</span></p>
+<div class="text">I'd like to thank you for publishing this article, it was really helpful. I needed to find some information on EV for my studies and here I've found everything I wanted to know. Thanks once again!</div>
+</div>
+<div class="comment2" id="comment4666843">
+<div class="avatar"><a href="http://my.opera.com/annmacgiff/"><img src="http://my.opera.com/community/users/avatar.pl/1333438" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="annmacgiff" href="http://my.opera.com/annmacgiff/">annmacgiff</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment4666843" class="permalink">#</a> Tuesday, February 12, 2008 1:10:19 PM</span></p>
+<div class="text">Thanks for giving me whole bunch of intereting information about extended validation. I've been doing some research on the subject of validation in general but the info on Opera browser really was helpful in my work.</div>
+</div>
+<div class="comment1" id="comment5055960">
+<div class="avatar"><a href="http://my.opera.com/D-n/"><img src="http://my.opera.com/community/users/avatar.pl/62226" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="D-n" href="http://my.opera.com/D-n/">D'n Russler<span>D-n</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment5055960" class="permalink">#</a> Tuesday, April 8, 2008 10:00:20 PM</span></p>
+<div class="text">[quote Yngve]so that is what we will do: Raise the bar[/quote]<br><br>[quote graste]Opera is correct in enforcing the rules.[/quote]<br><br>Absolutely! I also thank you, Yngve, for a clear and complete presentation of Opera's EV policy and where it came from.<br><br>A security policy is as secure as its weakest link: the Opera EV implementation clearly realizes this, and both the end-users and site-implementors benefit from this.<br><br>I too am a developer/architect of a forthcoming web service, which will of course rely on the security of our own web pages, as well as those of our partners.<br>
+</div>
+</div>
+<div class="comment2" id="comment5056520">
+<div class="avatar"><a href="http://my.opera.com/drworm/"><img src="http://my.opera.com/community/users/avatar.pl/30288" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="drworm" href="http://my.opera.com/drworm/">drworm</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment5056520" class="permalink">#</a> Wednesday, April 9, 2008 12:30:56 AM</span></p>
+<div class="text">Would it be too bold of opera to block insecure content from an EV site - kinda like it blocks popups.  I'd probably just ignore not seeing a green-bar, but if Opera blocked and warned me of insecure content I'd probably step back and re-evaluate the site.  I might even contact the site owner to find out what's going on.<br><br>I also liked the idea presented in that blog link above.  I think "Larry" the identity checker does a good job of illustrating the verified identity of the site without giving false impressions about it's security.<br><br><blockquote class="bbquote"><p>An Extended Validation certificate tells us, with more certainty than any other web technology out there, who you are.  It does not tell us that you’re a nice person.  Identity, not security.</p></blockquote>
+<br><br>I wonder if EV should have specified how browsers should treat insecure content.  It sounds like it's only half doing its job <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<a name="lastcomment"></a><div class="comment1" id="comment13062041">
+<div class="avatar"><a href="http://my.opera.com/xpyctjawii/"><img src="http://my.opera.com/community/users/avatar.pl/3576795" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="xpyctjawii" href="http://my.opera.com/xpyctjawii/">xpyctjawii</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/1095376#comment13062041" class="permalink">#</a> Sunday, December 13, 2009 4:19:57 PM</span></p>
+<div class="text">I'd like to thank you for publishing this article, it was really helpful. I needed to find some information on EV for my studies and here I've found everything I wanted to know.</div>
+</div>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<div class="sidebox" id="qp">
+<h2>Yngve Nysæter Pettersen</h2>
+<div id="myphoto"><a href="http://my.opera.com/yngve/"><img src="https://static.myopera.com/upic/pool1/tf/++v/7EYs9UW0UGvsLG+ic9bpYw/9165_l.jpg" width="220" height="165" alt="photo"></a></div>
+</div>
+<div id="blogsearch" class="sidebox">
+<label for="searchbox" class="h2">Blog search</label><form action="http://my.opera.com/yngve/search/?" method="get"><div class="pad">
+<input type="text" name="search" value="" id="searchbox" maxlength="128"><input type="submit" value="search" id="submitsearch">
+</div></form>
+</div>
+<table id="calendar">
+<caption><a href="http://my.opera.com/yngve/archive/monthly/?month=201402" id="calendarmonth">February 2014</a></caption>
+<thead><tr>
+<th scope="col" title="Sunday" abbr="Sunday">S</th>
+<th scope="col" title="Monday" abbr="Monday">M</th>
+<th scope="col" title="Tuesday" abbr="Tuesday">T</th>
+<th scope="col" title="Wednesday" abbr="Wednesday">W</th>
+<th scope="col" title="Thursday" abbr="Thursday">T</th>
+<th scope="col" title="Friday" abbr="Friday">F</th>
+<th scope="col" title="Saturday" abbr="Saturday">S</th>
+</tr></thead>
+<tfoot><tr><td colspan="7">
+<span id="prevmonth" class="left"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/yngve/archive/monthly/?month=201401" title="January 2014">January 2014</a></span><span id="nextmonth" class="right"><a href="http://my.opera.com/yngve/archive/monthly/?month=201403" title="March 2014">March 2014</a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span>
+</td></tr></tfoot>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+</tr>
+<tr>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/browser" rel="tag">browser</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/browsers" rel="tag">browsers</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Certificates" rel="tag">Certificates</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/cookies" rel="tag">cookies</a></li>
+<li class="size1"><a href="http://my.opera.com/yngve/blog/index.dml/tag/CRL" rel="tag">CRL</a></li>
+<li class="size4"><a href="http://my.opera.com/yngve/blog/index.dml/tag/encryption" rel="tag">encryption</a></li>
+<li class="size4"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Extended%20Validation" rel="tag">Extended Validation</a></li>
+<li class="size1"><a href="http://my.opera.com/yngve/blog/index.dml/tag/HTTP" rel="tag">HTTP</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Kestrel" rel="tag">Kestrel</a></li>
+<li class="size3"><a href="http://my.opera.com/yngve/blog/index.dml/tag/OCSP" rel="tag">OCSP</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Opera" rel="tag">Opera</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/protocols" rel="tag">protocols</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/published" rel="tag">published</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/revocation" rel="tag">revocation</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Security" rel="tag">Security</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/SSL" rel="tag">SSL</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/standards" rel="tag">standards</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/TLS" rel="tag">TLS</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/User%20Interface" rel="tag">User Interface</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/weak%20encryption" rel="tag">weak encryption</a></li>
+</ul></div>
+</div>
+<div class="sidebox" id="visitors">
+<h2>Recent visitors</h2>
+<div class="pad">
+<ul class="nobullets userlist">
+<li><a href="http://my.opera.com/mathiasbynens/"><img src="https://static.myopera.com/upic/pool1/ce/5Z8/EgNoEkFCkDdePgbDr6RQDM/208545_s.jpg" width="68" height="51" alt="mathiasbynens"><span class="block">mathiasbynens</span></a></li>
+<li class="mid"><a href="http://my.opera.com/Frenzie/"><img src="https://static.myopera.com/upic/pool1/Ei/GQW/GYQBKzlBg94wBfVEg6rFCY/16944_s.jpg" width="68" height="51" alt="Frenzie"><span class="block">Frenzie</span></a></li>
+<li><a href="http://my.opera.com/rif/"><img src="https://static.myopera.com/upic/pool1/TM/2qa/c6nJwcuww8PYx8bVfmu9DI/23319_s.jpg" width="68" height="51" alt="rif"><span class="block">rif</span></a></li>
+<li><a href="http://my.opera.com/greench/"><img src="https://static.myopera.com/upic/pool1/Uj/vda/1orrbYcy7y26UlGATvy3Xc/174006_s.jpg" width="68" height="51" alt="greench"><span class="block">greench</span></a></li>
+<li class="mid"><a href="http://my.opera.com/bohwaz/"><img src="https://static.myopera.com/upic/pool1/K7/Gmd/UHY4QDcd_79UXZ9a3ymGjQ/45849_s.jpg" width="68" height="51" alt="bohwaz"><span class="block">bohwaz</span></a></li>
+<li><a href="http://my.opera.com/catgroup/"><img src="https://static.myopera.com/upic/pool1/9i/zkP/uvblDFNI4VfAXg1_hTdwVA/153641222_s.jpg" width="68" height="51" alt="catgroup"><span class="block">catgroup</span></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/yngve/blog/2007/06/19/it-aint-ev-til-its-ev-all-ev"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392046108.myo.cDoyNzowNjowMA== -->

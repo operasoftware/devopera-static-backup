@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Working with tabs and windows - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Working with tabs and windows</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>The Opera Extension APIs provide a lot of power when it comes to manipulating windows and tabs inside the browser. In this article, you’ll take a deeper look at how to manipulate windows and tabs in extensions.</p>
+
+<h2 id="tabs">Tabs</h2>
+
+<p>The ability to manipulate tabs is one of the most basic but powerful and useful features of extensions. The <a href="tabs.html">Tabs and Windows API guide</a> provides a detailed overview of the methods and events associated with it.</p>
+
+<p>To work with tabs in an extension you need to first specify the relevant permissions in the <em>‘permissions’</em> field of the extension manifest, like so:</p>
+<pre class='prettyprint'>{
+  ...
+  "permissions": ["tabs"],
+  ...
+}</pre>
+<h3 id="creating_a_new_tab">Creating a new tab</h3>
+
+<p>Creating a new tab is done using the <code>create()</code> method. Inside this method you can specify the properties of the tab you want to create (for example the URL, whether it should be an active tab, whether it should be a pinned tab or not, etc.)</p>
+
+<p>For example, to specify extension functionality that opens up a new pinned tab containing <a href="http://www.opera.com">opera.com</a> when a button is clicked, you need to add this to the background.js file:</p>
+<pre class='prettyprint'>chrome.browserAction.onClicked.addListener(function() {
+  chrome.tabs.create({'url': ‘http://www.opera.com’});
+});</pre>
+<p>You can <a href="samples/WinTabs-CreateATab.nex">download the sample extension</a> and take a better look at how this works.</p>
+
+<h3 id="accessing_the_current_tab">Accessing the current tab</h3>
+
+<p>You can access the currently active tab and its properties via the <code>query()</code> method, for example:</p>
+<pre class='prettyprint'>chrome.tabs.query({currentWindow: true, active: true}, function(tab)</pre>
+<p>Lets extend this example a bit. To specify that on the click of a button the browser will take the current URL and open a new tab where it will run the URL through the WAVE accessibility evaluation tool, you could do something like this:</p>
+<pre class='prettyprint'>chrome.browserAction.onClicked.addListener(function() {
+  chrome.tabs.query({currentWindow: true, active: true}, function(tab) {
+    chrome.tabs.create( { "url": "http://wave.webaim.org/report?url=" +tab[0].url } );
+  });
+});</pre>
+<p>You can <a href="samples/WinTabs-Wave.nex">download the WAVE extension</a> and play with this code further.</p>
+
+<h3 id="modifying_existing_tabs">Modifying existing tabs</h3>
+
+<p>You can modify existing tabs using the <code>update()</code> method, performing tasks such as changing the URL loaded, making tabs active, highlighting, or pinning them. The <code>query()</code> method explained above is used to select the tab(s) you want to affect.</p>
+
+<p>For example, imagine you wanted to create an extension that allows us to redirect all tabs on <a href="../index.html">Dev.Opera</a> (not just the front page, but various articles too) to the <a href="http://www.opera.com">Opera homepage</a>.</p>
+
+<p>In the background.js, you would write something like:</p>
+<pre class='prettyprint'>var pattern = "http://dev.opera.com/*"; // This pattern will match all tabs that point to URLs on dev.opera.com including subdomains if any
+
+chrome.browserAction.onClicked.addListener(function() {
+  chrome.tabs.query({'currentWindow': true, 'url': pattern}, function(tab) { // This will match all tabs to the pattern we specified
+    for (var i=0; i&lt;tab.length; i++){ // Go through all tabs that match the URL pattern
+      chrome.tabs.update(tab[i].id, {'url': 'http://www.opera.com'}); // Update those tabs to point to the new URL, which is the opera homepage
+    }        
+  });
+});</pre>
+<p>You can <a href="samples/WinTabs-UpdateTab.nex">download the update example extension</a> to see the above code in action.</p>
+
+<h3 id="closing_reloading_and_duplicating_tabs">Closing, reloading and duplicating tabs</h3>
+
+<p>To close, reload and duplicate tabs, you need to use the <code>remove()</code>, <code>reload()</code> and <code>duplicate()</code> methods respectively. The important thing to note about these methods is that you do not necessarily need to mention the ‘tabs’ permission in the extension manifest in order to use them in the extension.</p>
+
+<p>All three of these methods work in the same way. Lets look at some example extension code that reloads a tab. The first thing to do would be to get hold of the current tab, after which you would call the <code>reload()</code> method. So, in the background script you would write something like so:</p>
+<pre class='prettyprint'>chrome.tabs.query({currentWindow: true, active: true}, function(tab){ // Get the current tab
+  chrome.tabs.remove(tab[0].id); // Remove the tab
+});</pre>
+<p>You can use the <code>remove()</code> and <code>duplicate()</code> methods in exactly the same way. Take a look at our <a href="samples/WinTabs-CloseReloadDuplicate.nex">sample close, reload and duplicate extension example</a> where we make use of all three methods to close, reload and duplicate the current tab.</p>
+
+<p>There are more functions available in Opera extensions: to find out about them, consult the <a href="tut_tab_window.html">API guide for Tabs and Windows</a>.</p>
+
+<h2 id="windows">Windows</h2>
+
+<p>Windows are easy to create using the Tabs and Windows APIs. The first thing to do when working with windows is to specify the necessary permissions in the extension manifest:</p>
+<pre class='prettyprint'>{
+  ...
+  "permissions": ["tabs"],
+  ...
+}</pre>
+<p><strong>Note:</strong> Yes, we specified [‘tabs’] in the above manifest code: this is <em>deliberate</em>. Windows and tabs are so closely related that it is a good idea to mention ‘tabs’ in the extension manifest whenever you are working with windows.</p>
+
+<p>The most common use case for the Windows API is to create a new window. Usually, when you create a new window, you’ll want to open a bunch of tabs and URLs inside it. Lets create an extension that does exactly that.</p>
+
+<p>The most common and hence most important function to note, when it comes to windows, is the <code>create()</code> function. It simply allows us to create a new window, specifying exactly what type of window we want. In this case, the code will create a new private window, with a few links already opened in it.</p>
+
+<p>You can achieve this by writing the following in the background.js:</p>
+<pre class='prettyprint'>var URL_list = ['http://www.opera.com', 'http://www.wikipedia.org', 'http://www.google.com'];//The list of URLs to load in the new window
+
+chrome.browserAction.onClicked.addListener(function() {
+  chrome.windows.create({'url': URL_list,'incognito': true});
+});</pre>
+<p><a href="samples/WinTabs-PrivateWindow.nex">Download the sample window extension</a> to see the above functionality in action and play with the code yourself.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>XHR 2 Demo: Uploading Files with <code>FormData</code> Objects</title>
+   <link rel="stylesheet" href="http://devfiles.myopera.com/articles/9482/xhr2.css" media="screen">
+     <style media="screen">i{font-style:normal;} progress{display:inline;}</style>
+</head>
+<body>
+
+<nav><a href="../../../dev.opera.com/articles/view/xhr2/index.html">Return to article</a></nav>
+
+<h1>XMLHttpRequest Demo: Uploading Files with <code>FormData</code> Objects</h1>
+
+
+<section id="demo">
+<p>Try uploading a file 4MB or less in size.</p>
+
+<p>This example also uses the <a href="http://dev.w3.org/html5/spec/Overview.html#the-progress-element"><code>progress</code></a> element.
+
+<form action="http://devfiles.myopera.com/articles/formdatafileupload/processing_script/" method="post">
+   <div>
+    <progress value="0" max="100"></progress>
+    <b><i></i>%</b>
+   </div>
+
+   <div>
+    <input type="file" name="upload" value="">
+    <button type="submit">Upload</button>
+   </div>
+</form>
+</section>
+
+<section id="results"></section>
+
+
+
+<script>
+
+// Reset the progress element value when we change the file.
+document.querySelector('form')['upload'].onchange = function(){
+	document.querySelector('progress').value = 0;
+	document.querySelector('i').innerHTML = '';
+}
+
+var makeRequest = function(event){
+    event.preventDefault();
+
+    var xhr = new XMLHttpRequest(),
+          dataToSend,
+          form = document.querySelector('form'),
+          progress = document.querySelector('progress'),
+          textprogress = document.querySelector('i'),
+
+          updateProgress = function(event){
+               var howmuch = (event.loaded / event.total) * 100;
+			   textprogress.innerHTML = ''+ Math.ceil(howmuch);
+               progress.value = howmuch;
+          },
+
+          updateLoading = function(event){
+               progress.value = 100;
+          },
+          onLoadHandler = function(event){
+             results.innerHTML = event.srcElement.response;
+          }
+
+	if( form['upload'].files[0] ){
+
+		if(progress.value > 0){
+			progress.value = 0;
+		}
+		dataToSend = new FormData(event.target)
+
+    } else {
+    	alert('I need a file to upload!');
+    	return;
+    }
+
+    xhr.upload.addEventListener('progress', updateProgress, false);
+    xhr.upload.addEventListener('load', updateLoading, false);
+    xhr.upload.addEventListener('loadend', updateLoading, false);
+
+    xhr.onload = onLoadHandler;
+
+    xhr.open('POST', 'http://people.opera.com/tiffanyb/devopera/xhr2/progressevents/index.php', true);
+    xhr.send(dataToSend);
+}
+
+</script>
+
+<script src="http://devfiles.myopera.com/articles/9482/xhr2.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Widget runtime: WAC-1.0-compliant Golden for Android - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Widget runtime: WAC-1.0-compliant Golden for Android</h1>
+      <p class="print author">By Pavel Fokin</p>
+
+      <div id="content">
+<p>
+ Hi guys,
+</p>
+<p>
+ It’s been a long trip, but we’ve finally arrived – today our lasting intensive work on a WAC-1.0-compliant runtime is finished, and we are proudly presenting the final Golden build that we are also demonstrating at the
+ <a href="http://www.mobileworldcongress.com/">
+  Mobile World Congress
+ </a>
+ event! All
+ <a href="http://www.wacapps.net/web/portal/1_0spec">
+  WAC 1.0 APIs and features
+ </a>
+ are now integrated; we have run the
+ <a href="http://tests.wacapps.net/">
+  WAC compliance program
+ </a>
+ and have sent the test results to WAC and the
+ <a href="http://dev.w3.org/2006/waf/widgets/imp-report/">
+  W3C
+ </a>
+ .
+</p>
+<p>
+ Download the
+ <a href="http://www.opera.com/download/get.pl?sub=++++&amp;amp;id=33469&amp;amp;location=270&amp;amp;nothanks=yes ">
+  Android build
+ </a>.</p>
+<p>
+ But that’s not all! We care about our fellow widget developers out there, so we have a sneak-peak of the next generation of our developer tools:
+ <a href="http://team.opera.com/widgets-sdk/">
+  Eclipse packaging plug-in
+ </a>
+ and Opera Widget Desktop Emulator with WAC 1.0 APIs support:
+</p>
+<p>
+ <a href="http://www.opera.com/download/get.pl?sub=++++&amp;amp;id=33470&amp;amp;location=270&amp;amp;nothanks=yes">
+  Windows version
+ </a>
+</p>
+<p>
+ <a href="http://www.opera.com/download/get.pl?sub=++++&amp;amp;id=33471&amp;amp;location=270&amp;amp;nothanks=yes">
+  Linux version
+ </a>
+</p>
+<p>
+ These tools ease the process of widgets development and allow developers to test and debug widgets before running them on the target devices.
+ <b>
+  Word of warning:
+ </b>
+ the desktop emulator is in the early development phase, and it is of the Alpha quality, meaning that not all functionality is implemented, and some serious issues such as, but not limited to, crashes and freezes, may occur. Please install and try it at your own risk, and make sure to save all valuable data before running the emulator.
+</p>
+<p>
+ So, why not give it a try – just grab the build, try to build your first WAC widget using our dev tools and have fun! Or, you can just play with the build and download already available widgets from
+ <a href="http://widgets.opera.com">
+  widgets.opera.com
+ </a>
+</p>
+<p>
+ You are always welcome to let us know what you think about our products, and this package is not an exception. We’re keen to hear your opinion – just post a reply in
+ <a href="http://my.opera.com/community/forums/forum.dml?id=1296">
+  our forum
+ </a>
+ , and we will follow up.
+</p>
+<p>
+ We would like to sincerely thank all our colleagues involved in the development of and release processes for these products.
+</p>
+<p>
+ We dedicate this release to the memory of our dear colleague Uliana Kumenova (1983-2011).
+</p>
+</div>
+
+
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-75492102">
+      <a href="../../../author/dantesoft.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3c/aae/fa4222dc7c3ead1419d3b33a94535a0db03.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dantesoft.html">Dan Alexandru</a></p>
+      <p class="commentdate">Thursday, November 24, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Version 9.8 of the app is quite big at 27MB and <a href="http://files.myopera.com/dantesoft/files/misc/OperaWidgets-9.8-Android-27MB.png" target="_blank">can&#39;t be moved on the SD card</a> (also notice the &quot;out of space&quot; icon in the status bar)</section>
+    </li>
+    <li id="comment-79393262">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Sunday, January 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I&#39;m on HTC Desire with CM7 and I can&#39;t add any WAC widget on my homescreen. I tried ADW launcher and LauncherPro,  but with no luck.</section>
+    </li>
+    <li id="comment-79421692">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Sunday, January 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>BTW, It seems there is already WAC2 . spec.Do you plan to update the widget runtime?</section>
+    </li>
+    <li id="comment-79500232">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, January 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@BS-Harou hi there! Sorry you are having no luck with the WAC 1.0 build. I&#39;m not sure what the problem could be exactly with your phone; it may just be that things have moved on since we released this, causing compat problems. I will check anyway.<br/><br/>As for WAC 2.0, we have no plans to support it as yet. I&#39;ll check to see if I can find any updates in this regard.</section>
+    </li>
+    <li id="comment-79889892">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Saturday, January 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chris Mills thx for info! :)<br/><br/>To describe the problem with home screen widgets more properly:<br/>I used to have the original Android 2.2 on my HTC Desire and It worked fine there. Then I rooted my phone and switched to CM7 ROM and when I now &quot;long-touch&quot; the homescreen to choose what to add, there is no item related to Opera Widgets in the list.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/pfokin.html" rel="author">Pavel Fokin</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, February 14, 2011
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

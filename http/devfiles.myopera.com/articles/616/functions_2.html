@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Functions: Example 2</title>
+	<script language="javascript">
+		function setElementBackground( elementID ) {
+			var red		= Math.floor(Math.random() * 256);
+			var green	= Math.floor(Math.random() * 256);
+			var blue	= Math.floor(Math.random() * 256);
+		
+			var obj = document.getElementById( elementID );
+			if ( obj ) {
+				obj.style.background = 'rgb('+red+','+green+','+blue+')';
+			}
+		}
+	</script>
+	<style type="text/css">
+		#element_to_change {
+			position:	relative;
+			width:		15em;
+			height:		5em;
+			padding:	1em;
+
+			border:		1px solid #999999;
+			background:	rgb(190,190,190);
+			
+			font:		1.5em/1.5 "Lucida Grande","Helvetica","Sans Serif";
+		}
+	</style>
+</head>
+<body>
+	<div id="element_to_change">
+		<p>Let the ugly background colourings commence!</p>
+	</div>
+	<button onclick="setElementBackground('element_to_change');">
+		Click Me!
+	</button>
+</body>
+</html>

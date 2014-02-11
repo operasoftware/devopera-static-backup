@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//VoiceXML Forum//DTD XHTML+Voice 1.2//EN"
+  "http://www.voicexml.org/specs/multimodal/x+v/12/dtd/xhtml+voice12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ev="http://www.w3.org/2001/xml-events"
+  xmlns:ss="http://www.w3.org/2001/10/synthesis"
+  xmlns:xv="http://www.voicexml.org/2002/xhtml+voice"
+  lang="en">
+  <!-- We now have the X+V DTD, and the XML namespaces for XHTML,
+       XHTML+Voice, XML Events and SSML -->
+
+  <head>
+    <title>PRO-Net - Example 2</title>
+
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="example1.css" />
+    <link rel="stylesheet" type="text/css" href="example2.css" />
+
+    <!-- The VoiceXML form. This does everything.
+         Notice the VoiceXML namespace. -->
+    <form xmlns="http://www.w3.org/2001/vxml" id="readpage">
+
+      <!-- We want to read the page title, on page load, so the user
+           will be aware the site is voice enabled. -->
+      <block>
+        <value expr="voice_ptitle()" />
+        <!-- We use a JavaScript function which will nicely return
+             the page title. -->
+      </block>
+
+      <!-- The voice command input field. -->
+      <field name="usrcmd">
+        <!-- The grammar. Click the file name to view. -->
+        <grammar type="application/srgs" src="example2.gram" />
+
+        <!-- The initial prompt. Timeout before throwing noinput
+             event is 10 seconds. -->
+        <prompt timeout="10s">
+          <ss:break time="5s" />
+          <!-- A pause inserted with SSML code and the message. -->
+          <value expr="document.voice_msg['prompt']" />
+        </prompt>
+
+        <!-- Rarely repeat the prompt. We don't want to annoy
+             the visitor if s/he leaves the page open. -->
+        <prompt count="2" timeout="600s">
+          <ss:break time="300s" />
+          <value expr="document.voice_msg['prompt']" />
+        </prompt>
+
+        <!-- Play the messages for help, nomatch and noinput events.
+             The _event variable holds the name of the event being catched.
+             This proves to be very useful in this case. -->
+        <catch event="help nomatch noinput">
+          <value expr="document.voice_msg[_event]" />
+          <!-- Make sure to reprompt, otherwise the noinput event will
+               be played forever, annoying the visitor. -->
+          <reprompt />
+        </catch>
+
+        <!-- This executes when the user says a recognized utterance. -->
+        <filled>
+          <!-- We send the lastresult$ variable to the
+               voice_done() JS function. -->
+          <assign name="voice_result"
+                  expr="voice_done(application.lastresult$);" />
+
+          <!-- The result can "instruct" this VoiceXML form to
+               perform actions only possible within VoiceXML. -->
+          <if cond="voice_result == 'event-nomatch'">
+            <clear namelist="usrcmd" />
+            <throw event="nomatch" />
+
+            <!-- This is for reading parts of the document. -->
+            <elseif cond="voice_result.action == 'prompt-element'" />
+            <prompt xv:expr="voice_result.src" />
+            <clear namelist="usrcmd" />
+
+            <!-- This is for reading a simple message. -->
+            <elseif cond="voice_result.action == 'prompt-value'" />
+            <value expr="voice_result.message" />
+            <clear namelist="usrcmd" />
+          </if>
+        </filled>
+      </field>
+    </form>
+
+    <!-- The script which handles all voice input -->
+    <script type="text/javascript" src="example2.js"></script>
+
+  </head>
+
+  <!-- With XML Events we initialize the VoiceXML form, on page load. -->
+  <body ev:event="load" ev:handler="#readpage">
+    <p id="skipnav"><a href="#content">Skip the navigation.</a></p>
+    <h1 id="header"><a href="http://www.robodesign.ro/coding/how-to-add-voice/site/">PRO-Net</a></h1>
+    <div id="nav">
+      <ul id="menus1">
+        <li><a href="http://www.robodesign.ro/coding/how-to-add-voice/site/offers">Offers</a></li>
+        <li><a href="http://www.robodesign.ro/coding/how-to-add-voice/site/support/dialup">Support</a></li>
+        <li><a href="http://www.robodesign.ro/coding/how-to-add-voice/site/contact">Contact</a></li>
+      </ul>
+      <ul id="menus2">
+        <li><a href="http://www.robodesign.ro/coding/how-to-add-voice/site/support/dialup">Dialup</a></li>
+        <li><a href="http://www.robodesign.ro/coding/how-to-add-voice/site/support/email">Email configuration</a></li>
+        <li><a href="http://www.robodesign.ro/coding/how-to-add-voice/site/support/connecting">Connecting to PRO-net</a></li>
+      </ul>
+    </div>
+    <h1 id="pagetitle">Example 2</h1>
+    <div id="content">
+      <p>Example page.</p>
+    </div>
+    <div id="footer">
+      <a id="backtotop" href="#header">Back to top</a>
+      <p>Tutorial example</p>
+    </div>
+  </body>
+</html>

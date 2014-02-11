@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>The basics of making an extension - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>The basics of making an extension</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>Making extensions for Opera 15+ is really easy. If you are already familiar with making Google Chrome extensions, then you will be right at home, as Opera 15+ uses the Chromium extensions architecture (with some minor differences). And even if you aren’t, Opera extensions are still easy — they are made using open web technologies, plus some specific APIs to tap into browser functionality.</p>
+
+<p>In this article we’ll put together a simple example extension to show you how it works.</p>
+
+<h2 id="whats_in_an_opera_extension">What’s in an Opera extension?</h2>
+
+<p>An Opera extension contains a <em>manifest file</em> which defines metadata like the name of the extension, its author, etc. It also lists the various API permissions we want the extension to have. It will also typically have a <em>background page</em> or <em>background script</em>, which is responsible for communicating with the browser UI. Apart from that, it could have a <em>content script</em> which deals with changes to web pages. You could also need some other HTML (and related CSS and JavaScript) files for button popups or an options page.</p>
+
+<p>Apart from all the JS and HTML files, you’ll also need to put in some images for the extension icons.</p>
+
+<p>All of this is wrapped in a ZIP file format with a special header and the .nex file extension. To know more about the architecture of extensions in Opera, please read the <a href="tut_architecture_overview.html">associated article</a>, which describes it in detail.</p>
+
+<h2 id="your_first_extension">Your first extension</h2>
+
+<p>Now that we’re familiar with the basics of how it all works, let’s try putting an extension together. We’ll make a simple extension that will add a button to the browser toolbar — when clicked, the button will open up a new tab and load <a href="../index.html">dev.opera.com</a>. This is a pretty trivial example, but it’ll get you used to the basics.</p>
+
+<h3 id="step_1_defining_the_extension_with_an_extension_manifest">Step 1: Defining the extension with an extension manifest</h3>
+
+<p>The first step we’ll take is to define the extension manifest. This is where we define the name of the extension, its description, author, version number, and other such details.</p>
+
+<p>There is another important aspect to extension manifests — inside we define the necessary permissions in order for the extension to run properly. For our example, working with tabs is required, so this needs to be specified in the manifest.</p>
+
+<p>Extension manifests are written in the <a href="http://json.org">JSON</a> format; we’ll explain the specifics later, but for now just open up a text editor, type the following into a new file and save it as ‘manifest.json’ in an empty directory, anywhere you like.</p>
+<pre class='prettyprint'>{
+  "manifest_version": 2,
+
+  "name": "Opera Extensions - Getting Started",
+  "description": "Sample extension for the 'Making your first extension' article. A button will be created in the toolbar, which upon being clicked, will open a new tab which goes to Dev.Opera",
+  "version": "1.0",
+  "background": {"scripts": ["background.js"]},
+
+  "permissions": ["tabs"],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Go to Dev.Opera!"    
+  }
+}</pre>
+<h3 id="step_2_communicating_with_the_browser_the_background_script">Step 2: Communicating with the browser: the background script</h3>
+
+<p>The background script is very important — this is where anything to do with manipulating the browser UI is contained. In our case, we’ll be working with tabs, so we will be using methods from the Tabs API in our script. You’ll read more about working with tabs later on, but for now, create a file named ‘background.js’ in the same directory as before and enter the following code into it:</p>
+<pre class='prettyprint'>
+chrome.browserAction.onClicked.addListener(function() {
+  chrome.tabs.query({currentWindow: true, active: true}, function(tab) {
+    chrome.tabs.create( { "url": "http://dev.opera.com" } );
+  });
+});</pre>
+<h3 id="step_3_including_icons_and_other_assets">Step 3: Including icons and other assets</h3>
+
+<p>You’ll need an icon for the toolbar button, and represent the extension in other places. For icons, we would recommend you <a href="tut_icons.html">read our article on it</a>, where we discuss the appropriate sizes and best practices for great looking icons in extensions.</p>
+
+<p>You may also need other files such as images, fonts, videos etc. You can include them in the parent directory, or create a separate folder (for example, a folder named ’<em>media</em>’) or two, and place them there.</p>
+
+<h3 id="step_4_testing_your_extension">Step 4: Testing your extension</h3>
+
+<p>Okay, time to test out your extension. For the final extension, you’ll need to package and sign the extension from the Extension Settings page. But the good news is that you don’t need to do this every time you want to test things out — you can test your extension straight from the directory, like so:</p>
+
+<ol>
+<li>Go to the browser address bar and type ’<em>opera:extensions’</em> (or use the <kbd>Cmd/Control</kbd> + <kbd>Shift</kbd> + <kbd>e</kbd> shortcut)</li>
+
+<li>Check the ’<em>Developer Mode</em>’ button to enable it.</li>
+
+<li>Click on the ’<em>Load Unpacked Extension</em>’ button.</li>
+
+<li>Select your extension’s directory</li>
+</ol>
+
+<p>Thats it! Your extension should be loaded in ‘Developer Mode’. This mode gives you the ability to inspect various parts of the extension using the browser’s developer tools. You can also make changes to your extension’s code and quickly see the effects with the Reload button.</p>
+
+<p>If all goes well, you should see an icon in the top right of the browser window next to the address bar. Clicking on it will open up a new tab, which will go to <a href="../index.html">Dev.Opera</a> - Opera’s developer tutorial site.</p>
+
+<h3 id="step_5__packing_it_all_up">Step 5 - Packing it all up!</h3>
+
+<p>Once you are satisfied that your extension is finished, you need to package it into a .nex file, as follows:</p>
+
+<ol>
+<li>Go to the browser address bar and type ’<em>opera:extensions’</em>.</li>
+
+<li>Make sure you have <em>Developer Mode</em> (located on the top right) checked.</li>
+
+<li>Click on the ’<em>Pack Extension</em>’ button, located on the top of the page.</li>
+
+<li>Select the directory of your extension</li>
+
+<li>Click ’<em>Ok</em>’.</li>
+</ol>
+
+<p>Your .nex package will be generated in the parent directory of the one you had selected. Congratulations!</p>
+
+<h2 id="what_now">What now?</h2>
+
+<p>As you can see, making extensions for Opera is really easy. Through this tutorial, you’ve learn how to make a basic extension, load it in <em>Developer Mode</em>, test it out and finally package it.</p>
+
+<p>From here you should take a look at the other tutorials we’ve written, covering different parts of extension functionality in more detail (like Buttons, Tabs, Messaging, etc.) If you need a pure reference guide, check out the Opera extensions <a href="index.html">API documentation</a>.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

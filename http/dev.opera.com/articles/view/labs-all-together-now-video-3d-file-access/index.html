@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>All together now: Video, 3D, File access - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>All together now: Video, 3D, File access</h1>
+      <p class="print author">By Charles McCathieNevile</p>
+
+       <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">This article is obsolete</h2>
+<p>It&#39;s here for historical purposes only. Download the <a href="http://www.opera.com/browser/">latest version of Opera</a> or see what&#39;s coming soon in <a href="http://www.opera.com/browser/next/">Opera.Next</a>.</p> 
+</div>  
+
+<div id="content">
+<p>
+ It’s here, the newest singing, dancing labs build (so far...). This time we basically have the latest desktop build plus video, 3D canvas, and File I/O. And this time we have Windows, Linux and Mac builds — so all you Mac fans, you can now have an Opera of your own in Ogg Theora.
+</p>
+<p>
+ Don’t forget the articles on these features, how to use them, and examples that we have published in the past:
+</p>
+<p>
+ File I/O (originally
+ <a href="http://labs.opera.com/news/2008/05/08/">
+  announced in May
+ </a>
+ , and
+ <a href="http://lists.w3.org/Archives/Public/public-webapi/2008May/0065.html">
+  proposed to W3C
+ </a>
+ for development as a standard) gives you a way to interact with the filesystem in your application. In this build, we have only enabled this feature for widgets, which can now ask the user to enable them to use an area in the filesystem — either to work with their existing content (manage photos that other applications also work on, for example) or a new clean sandbox for storage. Code documentation
+ <a href="../../../libraries/fileio/docs/index.html">
+  online
+ </a>
+ or as a downloadable
+ <a href="../../../libraries/fileio/FileIO.zip.html">
+  zip package
+ </a>
+ and a
+ <a href="../../../libraries/fileio/FileIO-examples.zip.html">
+  zip package of examples
+ </a>
+ are available.
+</p>
+<p>
+ The video feature provides support for the royalty-free Ogg Theora video format, used by Wikipedia and others. There are
+ <a href="../a-call-for-video-on-the-web-opera-vid/index.html">
+  HTML5 examples
+ </a>
+ based on working drafts of the HTML 5 specification being developed at W3C, and Erik Dahlström’s
+ <a href="../../../../my.opera.com/MacDev_ed/blog/2007/11/21/svg-at-the-movies-take-two.html">
+  video in SVG
+ </a>
+ article.
+</p>
+<p>
+ 3D canvas is the most experimental feature in this build. At least Opera and Mozilla have been thinking about how to provide 3D rendering in a way we can implement cross-platform even on proprietary systems. 3D canvas, like its 2D cousin, gives developers a javascript-based approach (which meant that we could implement it for you to try, without spending massive amounts of time that should be spent on current work). Tim Johansson, who implemented it, wrote about
+ <a href="../../../../my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension.html">
+  using 3D canvas
+ </a>
+ including some examples.
+</p>
+<h2>
+ The fine print
+</h2>
+<p>
+ This is a /labs/ build. That means it may eat your data, crash your machine, or do other bad things. BACKUP YOUR DATA before you install this, and you might not want to use it as your main build. (Then again, maybe you’re a video fiend, and you
+ <em>
+  do
+ </em>
+ want this as your main build. It is pretty close to the desktop team’s “
+ <a href="http://my.opera.com/desktopteam/blog/2008/07/18/a-peek-under-the-hood">
+  peek under the hood
+ </a>
+ ” released today, so roughly the same issues list should apply). You have been warned...
+</p>
+<p>
+ If you want to discuss the builds please head over to the
+ <a href="http://my.opera.com/desktopteam/blog/2008/07/18/file-i-o-video-3d-canvas-all-in-one-go">
+  Desktop Team blog
+ </a>
+ on My Opera.
+</p>
+</div>
+
+
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chaals.html" rel="author">Charles McCathieNevile</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, July 18, 2008
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

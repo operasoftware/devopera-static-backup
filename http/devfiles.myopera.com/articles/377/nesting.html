@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Example of a nested list menu</title>
+    <style>
+      nav {
+        display:block;
+      }
+    </style>
+    <script>
+      document.createElement('nav');
+    </script>
+  </head>
+  <body>
+
+    <h1>Nesting list menus</h1>
+
+    <h2>Danger, wrong markup!</h2>
+    
+    
+    <nav>
+    <ul>
+      <li><a href="http://devfiles.myopera.com/articles/377/index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+        <ul>
+          <li><a href="http://devfiles.myopera.com/articles/377/history.html">History</a></li>
+          <li><a href="http://devfiles.myopera.com/articles/377/people.html">People</a></li>
+        </ul>
+      <li><a href="http://devfiles.myopera.com/articles/377/clients.html">Our Clients</a></li>
+        <ul>
+          <li><a href="http://devfiles.myopera.com/articles/377/usa.html">USA</a></li>
+          <li><a href="http://devfiles.myopera.com/articles/377/asia.html">Asia</a></li>
+          <li><a href="http://devfiles.myopera.com/articles/377/europe.html">Europe</a></li>
+        </ul>
+      <li><a href="http://devfiles.myopera.com/articles/377/products.html">Our Products</a></li>
+      <li><a href="http://devfiles.myopera.com/articles/377/services.html">Our Services</a></li>
+      <li><a href="http://devfiles.myopera.com/articles/377/contact.html">Contact Us</a></li>
+    </ul>
+    </nav>
+
+    <h2>Correct markup!</h2>
+    
+    <nav>
+    <ul>
+      <li><a href="http://devfiles.myopera.com/articles/377/index.html">Home</a></li>
+      <li><a href="about.html">About Us</a>
+        <ul>
+          <li><a href="http://devfiles.myopera.com/articles/377/history.html">History</a></li>
+          <li><a href="http://devfiles.myopera.com/articles/377/people.html">People</a></li>
+        </ul>
+      </li>
+      <li><a href="http://devfiles.myopera.com/articles/377/clients.html">Our Clients</a>
+        <ul>
+          <li><a href="http://devfiles.myopera.com/articles/377/usa.html">USA</a></li>
+          <li><a href="http://devfiles.myopera.com/articles/377/asia.html">Asia</a></li>
+          <li><a href="http://devfiles.myopera.com/articles/377/europe.html">Europe</a></li>
+        </ul>
+      </li>
+      <li><a href="http://devfiles.myopera.com/articles/377/products.html">Our Products</a></li>
+      <li><a href="http://devfiles.myopera.com/articles/377/services.html">Our Services</a></li>
+      <li><a href="http://devfiles.myopera.com/articles/377/contact.html">Contact Us</a></li>
+    </ul>
+    </nav>
+
+  </body>
+</html>

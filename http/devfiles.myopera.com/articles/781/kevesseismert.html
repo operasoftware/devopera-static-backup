@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+  <title>Kevéssé ismert szemantikus elemek példák</title>
+
+
+</head><body>
+
+<h1>Kevéssé ismert szemantikus elemek példák</h1>
+
+<p>Ez a fájl tartalmazza a példakódokat a "Kevéssé ismert szemantikus 
+elemek" leírásból, hogy élőben is megnézhesd, hogyan jelennek meg
+a különböző forráskódok a böngészőben.</p>
+
+<h2 id="address1">Egyszerű address példa</h2>
+
+<address> 
+              <span>Mark Norman Francis</span>, 
+              <span class="tel">1-800-555-4865</span>
+            </address>
+
+
+
+<h2 id="address2">Komplex address példa</h2>
+
+<p class="footer">
+              © Copyright 2008 
+              </p><address>
+                <a href="http://devfiles.myopera.com/contact/">Mark Norman Francis</a>
+              </address>
+            
+
+<h2 id="address3">Hibás address példa</h2>
+
+<p> A cégünk címe: </p>
+  <pre><address>
+    Opera Software ASA,
+    Waldemar Thranes gate 98,
+    NO-0175 OSLO,
+    NORWAY
+  </address></pre>
+
+<h2 id="code1">Első code példa</h2>
+
+<p>Nem ajánlott az eseménykezelőket, mint például
+az <code>onclick</code>, közvetlenül a HTML-ben használni.</p>
+
+<h2 id="code2">Második code példa</h2>
+
+<p>Nem ajánlott az eseménykezelőket, mint például
+			az <code class="language-javascript">onclick</code>, 
+			közvetlenül a HTML-ben használni.</p>
+
+<h2 id="computer">Számítógépes kimenet és bemenet példa</h2>
+
+<p>Annak a megállapítására, hogy egy számítógép csatlakozva 
+van-e az internethez, gyakori módszer a <code>ping</code> nevű
+számítógépes program használata, amellyel ellenőrízhetjük, hogy
+egy másik gép elérhető és működik.</p>
+
+<pre><samp class="prompt">kittaghy%</samp> <kbd>ping -o google.com</kbd>
+  <samp>PING google.com (64.233.187.99): 56 data bytes
+  64 bytes from 64.233.187.99: icmp_seq=0 ttl=242 time=108.995 ms
+
+  --- google.com ping statistics ---
+  1 packets transmitted, 1 packets received, 0% packet loss
+  round-trip min/avg/max/stddev = 108.995/108.995/108.995/0.000 ms
+  </samp></pre>
+
+<h2 id="variables">Példák változókra</h2>
+
+<p>Az <var>x</var> értéke 4 ebben az egyenletben:
+ 3<var>x</var>+2=14.</p>
+    
+<pre><code class="language-perl">
+my <var>$udvozlet</var> = "Helló világ!";
+</code></pre>
+
+<h2 id="citations">Példa idézetre</h2>
+
+<p>A <q>Mindent a legegyszerűbben, de nem egyszerűbben kell csinálni</q> 
+mondást gyakran tulajdonítják <cite>Albert Einsteinnek</cite>,
+pedig valójában csak egy körülírása egy olyan idézetnek, 
+amelyet jóval nehezebb megérteni.</p>
+
+<h2 id="abbreviations">Példák rövidítésekre</h2>
+
+<p>A <abbr title="Hypertext Markup Language">HTML</abbr>
+dokumentumokhoz <abbr title="Cascading Style Sheets">CSS</abbr>
+használatával rendelhetünk stílust.</p>
+
+<h2 id="dfn1">Első példa példányok definiálására</h2>
+
+<p>A <dfn><abbr>HTML</abbr></dfn> („HyperText Markup Language”, 
+azaz hiperszöveg-leíró nyelv) a webes dokumentumok 
+leírására szolgáló nyelv.</p>
+
+<h2 id="dfn2">Második példa példányok definiálására</h2>
+
+<p>A <dfn><abbr title="HyperText Markup Language">HTML</abbr></dfn>
+(„HyperText Markup Language”, azaz hiperszöveg-leíró nyelv) 
+a webes dokumentumok leírására szolgáló nyelv.</p>
+
+<h2 id="dfn3">Harmadik példa példányok definiálására</h2>
+
+<p>A <abbr title="HyperText Markup Language">HTML</abbr>
+(<dfn>HyperText Markup Language</dfn>, azaz hiperszöveg-leíró nyelv) 
+a webes dokumentumok leírására szolgáló nyelv.</p>
+
+<h2 id="supsub">Példa felső- és alsó indexre</h2>
+
+<p>A víz kémiai vegyjele a H<sub>2</sub>O, vagy más néven 
+a hidrogén-hidorxid.</p>
+<p>Albert Einstein híres képlete az energia megmaradására 
+az E=mc<sup>2</sup> — az energia egyenlő 
+a tömeg és a sebesség négyzetének a szorzata.</p>
+
+<h2 id="breaks">Példa sortörésekre</h2>
+
+<p> A cégünk címe: </p>
+  <address>
+    Opera Software ASA,<br>Waldemar Thranes gate 98,<br>
+    NO-0175 OSLO,<br>NORWAY
+  </address>
+
+<h2 id="insdelexample">Példa beillesztésre és törlésre</h2>
+
+<p>Csak a felmerült problémákat kellene megoldanunk.
+Amint <cite><del datetime="2008-03-25 18:26:55 Z"
+  cite="/changes.html#revision-4">Donald Knuth</del><ins
+  datetime="2008-03-25 18:26:55 Z"
+  cite="/changes.html#revision-4">C. A. R. Hoare</ins></cite>
+  mondta: <q>az elhamarkodott optimalizálás minden
+  gonosz gyökere</q>.</p>
+  
+              </body></html>

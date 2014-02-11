@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Mobile Labs 11.5 for MeeGo netbooks and tablets - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Mobile Labs 11.5 for MeeGo netbooks and tablets</h1>
+      <p class="print author">By Mostyn Bramley-Moore</p>
+
+      <p class="note"><strong>Update 2012-02-21:</strong> This post has been edited with information about an updated build available <a href="http://www.opera.com/download/get.pl?sub=++++&amp;id=34191&amp;location=270&amp;nothanks=yes">from our download server</a> as well as from the Intel AppUp store. For a Nokia N9 build, check our <a href="../a-treat-for-nokia-n9-users-opera-mobile-labs-11-5/index.html">A treat for Nokia N9 users</a> Opera Labs post.</p>
+
+<p>Since releasing <a href="https://market.android.com/details?id=com.opera.browser&amp;amp;hl=en">Opera Mobile 11.5 for Android</a> earlier this month, we have been working on an updated Labs release for MeeGo netbooks and tablets running Intel Atom processors.</p>
+<p>Aside from the changes you may have seen on our Android release, this build contains a nifty hybrid mouse/touch input method which adds support  for mouseover events while still working on touchscreens. To try it out, use the <code>-usehybridinput</code> command line argument when launching.</p>
+<p>As with other Labs releases, this build has not gone through full release testing, but it should work well enough to have some fun with. To install, <a href="http://www.opera.com/download/get.pl?sub=++++&amp;id=34191&amp;location=270&amp;nothanks=yes">download this package</a>, and run the following command in a root terminal on your device:
+</p>
+<pre>
+rpm -i Opera_Mobile-Labs-MeeGo-11.50-42.i386.rpm
+</pre>
+<p>
+Or, if you have a previous version of Opera Mobile installed:
+</p>
+<pre>
+rpm -e Opera_Mobile-MeeGo
+rpm -U Opera_Mobile-Labs-MeeGo-11.50-42.i386.rpm
+</pre>
+<p>Alternatively, if your MeeGo install has the <a href="http://www.appup.com/applications/index">Intel&#39;s AppUp store</a>, you should be able to find Opera Mobile there as a free download as well.</p>
+<p><strong>Release notes:</strong></p>
+<ul>
+ <li>
+  Added data usage view: see how much bandwidth you have saved with Opera Turbo.
+ </li>
+ <li>
+  Updated Presto engine to 2.9.201.
+ </li>
+ <li>
+  Hybrid mouse/touch input events support for touchscreen netbooks.
+ </li>
+</ul>
+<p>
+ <strong>
+  Known issues:
+ </strong>
+</p>
+<ul>
+ <li>
+  Portrait orientation on tablets is not supported.
+ </li>
+ <li>
+  HTML5 video is not supported.
+ </li>
+ <li>
+  Flash is not supported.
+ </li>
+</ul>
+<p><strong>Additional notes for the release of 2012-02-21:</strong></p>
+<ul>
+<li>Italian, French, German and Spanish speaking users will be pleased to know that the user interface should appear in your system&#39;s default language.</li>
+<li>The compromised DigiNotar Root Certificate Authority has been removed from the list of trusted certificate authorities. Some background details are available <a href="http://my.opera.com/rootstore/blog/2011/09/06/diginotar-first-step-disabling-the-root">over at the Opera Rootstore blog</a>.</li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-75566362">
+      <a href="../../../author/faqfaqfaq.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5b/5ef/9996f303f9918283e6cec949af7f6bf335f.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/faqfaqfaq.html">Stefan Comanescu</a></p>
+      <p class="commentdate">Friday, November 25, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>great ! please continue supporting meego, we love it :)</section>
+    </li>
+    <li id="comment-76802302">
+      <a href="../../../author/lukkie.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ec/3f8/19b510a696b5dde7351077f9e0bbe7f61c9." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lukkie.html">lukkie</a></p>
+      <p class="commentdate">Thursday, December 8, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Please when are you going to release the Opera Mobile for Nokia N9 running MeeGo Harmattan?</section>
+    </li>
+    <li id="comment-77022702">
+      <a href="../../../author/mikleh.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d2/fc0/4fc7d201a76455ce544ca1a1afc6394c84e." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mikleh.html">mikleh</a></p>
+      <p class="commentdate">Sunday, December 11, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Yes Harmattan really needs Opera.. my N9 needs it too..</section>
+    </li>
+    <li id="comment-78614172">
+      <a href="../../../author/buhorya15.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b5/c63/31959fe50b01f1099858a99bd9d306d237e." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/buhorya15.html">Moisés Estrada Guerra</a></p>
+      <p class="commentdate">Wednesday, December 28, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>My N9 does not execute the rpm command What do I have to do?</section>
+    </li>
+    <li id="comment-78751192">
+      <a href="../../../author/obarthelemy.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/50/810/2e79e759e1c0d952f69a72a01acd72fb7c5." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/obarthelemy.html">Olivier Barthelemy</a></p>
+      <p class="commentdate">Friday, December 30, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>any chance of a debian-armel (or Fedora / ARM, the jury&#39;s still out on which distro will be the official one) port for the Raspberry Pi ? Actually, Opera Mini would probably be even better ?</section>
+    </li>
+    <li id="comment-79865842">
+      <a href="../../../author/tigas.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/be/fb3/b2a9138c2bdce6929edf51a38d78e8acacb.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tigas.html">Tiago Joao Silva</a></p>
+      <p class="commentdate">Saturday, January 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>C&#39;mon, Opera needs the N9! Just recompile to ARM and if you don&#39;t want to repackage as .DEB, someone will! That&#39;s what happened to the 11.0 version!  And this 11.0-hacked version is so much faster than the native browser it&#39;s almost ridiculous.</section>
+    </li>
+    <li id="comment-83024612">
+      <a href="../../../author/dmarkgilljay.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1e/55d/ac4ffe013edccd7181bbabc558403045eee." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dmarkgilljay.html">Mark Gill</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>We, WINDOWS MOBILE users are waiting for the update of Opera Mini Version 6.5 &amp; Opera Mini version 11. <br/><br/>hope it may be GRANTED... thanks a lot Opera Mini..</section>
+    </li>
+    <li id="comment-83041932">
+      <a href="../../../author/scholarsarena.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e8/2bf/7436dcd510ae26fed8c9a51dceb741c722d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/scholarsarena.html">Rakesh</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>+1 to Mark Gill<br/>I have my Lumia 800 and miss Opera<br/>When will you come?</section>
+    </li>
+    <li id="comment-83058912">
+      <a href="../../../author/Maciek.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/00/16b/6055307c06b1930f44537e921dc456de9bc.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Maciek.html">Maciek</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great news! Installing on my X101 right now. I hope it&#39;ll get flash support soon.</section>
+    </li>
+    <li id="comment-83111692">
+      <a href="../../../author/alex2286.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/87/dd7/8165b62822aa574142836f2dca80f80ee21." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/alex2286.html">Alexander</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Good</section>
+    </li>
+    <li id="comment-83561232">
+      <a href="../../../author/dedesusi123.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cd/50b/8067e28a3b9be27fba776fa4a7703acefe6." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dedesusi123.html">dedesusi123</a></p>
+      <p class="commentdate">Tuesday, February 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>may i use opera to open skype? thanks for answer</section>
+    </li>
+    <li id="comment-83592902">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Tuesday, February 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@dedesusi123 I&#39;ve thought about this, and asked my team for input, and our conclusion is &quot;not in any reliable, consistent way that would always work across browsers.&quot;<br/><br/>If you were talking Safari Mac specific, you could probably do this using AppleScript.<br/><br/>Skype has its own custom protocol hander, at least on desktop, so you could do <br/><br/><a href="skype:username">Call username</a><br/><br/>If Skype were installed, on any desktop browser at least. But I am not sure if that works on Mobile phones with Skype installed, and if skype isn&#39;t installed, you&#39;ll get an error. And I don&#39;t think it&#39;s really possible to feature detect this inside a browser.<br/><br/>It&#39;s a good really for the sake of security that it is not easy for web apps to invoke desktop apps without the user&#39;s prior say so.<br/><br/>Web Intents (<a href="http://webintents.org/" target="_blank">http://webintents.org/</a>) might handle this in the future, but this is very nascent right now.</section>
+    </li>
+    <li id="comment-83595792">
+      <a href="../../../author/gbilotta.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/14/350/73a31dbb3b4e01090203561ab1260093bb5.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/gbilotta.html">Giuseppe Bilotta</a></p>
+      <p class="commentdate">Tuesday, February 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I _so_ wish there were updates for the N900 (Fremantle) ...</section>
+    </li>
+    <li id="comment-101968082">
+      <a href="../../../author/Berni2.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bb/3f9/44bb17f3c597aaceafee6bebc4d201698e2." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Berni2.html">Berni2</a></p>
+      <p class="commentdate">Wednesday, January 2, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Tablet version / N9 is really great ; the fastest Internet browser and very easy to use.<br/>Just missing a solution to view Flash videos, this is very frustating.<br/>Could it be possible to call another program via a long press ?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/mymos.html" rel="author">Mostyn Bramley-Moore</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, November 2, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/appup.html" rel="tag">appup</a></li>
+        <li><a href="../../tags/atom.html" rel="tag">atom</a></li>
+        <li><a href="../../tags/intel.html" rel="tag">intel</a></li>
+        <li><a href="../../tags/MeeGo.html" rel="tag">MeeGo</a></li>
+        <li><a href="../../tags/opera&#32;mobile.html" rel="tag">opera mobile</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

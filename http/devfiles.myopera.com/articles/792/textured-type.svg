@@ -1,0 +1,43 @@
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.2" width="297mm" height="210mm">
+<!-- Created with Inkscape (http://www.inkscape.org/) and TextMate by Andreas Bovens, 2009 -->
+	<title>Textured type</title>
+	<defs id="defs5111">
+		<filter x="-0.2" y="-0.23999999" width="1.4" height="1.4" color-interpolation-filters="sRGB" id="filter5853">
+			<feTurbulence result="result1" type="fractalNoise" numOctaves="2" baseFrequency="0.32949640287769788" id="feTurbulence5855"/>
+			<feDisplacementMap in2="result1" scale="3.2" xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" result="result5" id="feDisplacementMap5857"/>
+			<feComposite in2="result5" operator="in" in="SourceGraphic" result="fbSourceGraphic" id="feComposite5859"/>
+			<feColorMatrix values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0" in="fbSourceGraphic" result="fbSourceGraphicAlpha" id="feColorMatrix5861"/>
+			<feGaussianBlur in="fbSourceGraphic" stdDeviation="8" result="result6" id="feGaussianBlur5863"/>
+			<feComposite in2="result6" operator="atop" in="fbSourceGraphic" result="result8" id="feComposite5865"/>
+			<feComposite in2="fbSourceGraphicAlpha" operator="atop" in="result8" result="result9" id="feComposite5867"/>
+		</filter>
+		<style type="text/css">
+	@font-face { 
+	     font-family: Blackout-Midnight; 
+	     src: url(Blackout-Midnight.ttf) format("truetype");  
+	}
+	/* Blackout font by Tyler Fink: available under an Attribution-ShareAlike 3.0 Unported Creative Commons license from http://www.theleagueofmoveabletype.com/fonts/5-blackout */
+	#title, #textblock, rect {filter:url(#filter5853);fill:#000;}
+	#title, #textblock {font-family:Blackout-Midnight;line-height:125%;}
+	#title {font-size: 120px;}
+	#textblock {font-size:56px;}
+	#textblock tspan:nth-child(1) tspan {fill:#aa0000;}
+	#textblock tspan:nth-child(2) tspan {fill:#217821;}
+	#textblock tspan:nth-child(3) tspan {fill:#006680;}
+	</style>
+	</defs>
+	
+	<g id="layer1">
+		<text x="31.094646" y="127.95984" id="title">
+			<tspan x="31.094646" y="127.95984">Textured type</tspan>
+		</text>
+		<text x="36.852913" y="238.51857" id="textblock">
+			<tspan x="36.852913" y="238.51857"><tspan>Web fonts</tspan> can be used </tspan>
+			<tspan x="36.852913" y="308.51855">in combination with <tspan>svg filters</tspan> </tspan>
+			<tspan x="36.852913" y="378.51855">to give letters <tspan>irregular</tspan>, print-like</tspan>
+			<tspan x="36.852913" y="448.51855">edges.</tspan>
+		</text>
+		<rect width="922.47443" height="8.0615749" x="34.004566" y="160" id="rect6719"/>
+	</g>
+
+</svg>

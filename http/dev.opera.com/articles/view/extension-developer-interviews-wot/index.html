@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Extension developer interview: coffee with the WOT team - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="addons">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Extension developer interview: coffee with the WOT team</h1>
+      <p class="print author">By Andreas Bovens</p>
+
+      <p class="note">This is the third article in a <a href="../../tags/extension&#32;interview.html">series of interviews</a> with Opera extension developers. We want to shed a light on what drives them, what their workflow is like, which tools they use, what their plans for future extension versions are, and so on. For this interview, we sat down with Ulla Särkikangas from <a href="http://www.mywot.com">Web of Trust</a>, which is the company behind the popular <a href="https://addons.opera.com/en/extensions/details/wot/">WOT extension</a>, and asked her some questions over a (virtual) coffee.</p>
+
+<p><strong>What is WOT?</strong></p>
+
+<p><a href="http://www.mywot.com">Web of Trust</a> (WOT) is a website reputation and review service that helps people make informed decisions about whether to trust a website or not. For example, online shoppers who explore new sites may be concerned about which ones can be trusted in terms of quality of products and customer service. By using WOT they can check potential issues of unknown sites, read other peoples’ reviews and compare the reputation of different sites. We all want to explore the net safely and WOT helps you to do this with unknown and less popular sites.</p>
+
+<p>WOT works in a very simple way — it shows website reputations as traffic lights next to search results when using Google, Yahoo!, Bing or any other search engine. They are also visible next to links in social networking sites like Facebook and Twitter and email like Gmail and Yahoo! Mail. In addition, users can rate and review websites themselves just by clicking on WOT toolbar icon next to address bar. It&#39;s very easy and simple.</p>
+
+<p>Today, WOT is the world’s leading crowdsourced website reputation service with over 90 million downloads worldwide and collaborates with the world’s leading internet companies such as Facebook, Opera and Mail.ru.</p>
+
+<p><strong>How many people work on WOT? Where are you based?</strong></p>
+
+<p>The WOT office is located in Helsinki, Finland. Currently we have around 10 employees.</p>
+
+<div style="width: 665px; margin: 1em 0 0 0;">
+<img src="../../../../devfiles.myopera.com/articles/12212/wot-devs-665.jpg" alt="WOT team" />
+<p class="caption">The WOT team</p>
+</div>
+
+<p><strong>How did you come up with the idea for WOT?</strong></p>
+
+<p>WOT was founded by Sami Tolvanen and Timo Ala-Kleemola when they were post-graduate students at the Tampere University of Technology in 2006. They wanted to create a system where people could share their real-life experiences of different websites, so that other users could benefit and find sites they can trust.</p>
+
+<p><strong>How is WOT different from other safe browsing extensions?</strong></p>
+
+<p>WOT is based on a unique crowdsourcing approach that collects ratings and reviews from a global community of millions of users who rate and comment on websites based on their personal experiences. The community-powered approach enables WOT to protect against threats that only the human eye can spot such as scams, unreliable web stores and questionable content. It complements traditional security solutions that protect computers against technical threats such as viruses and other harmful software.</p>
+
+<p>WOT is based on a patented system where user behavior is systematically analyzed and monitored to ensure the ratings are reliable, accurate and constantly updated. In addition, the ratings are validated with trusted third party information, such as blacklists of phishing sites.</p>
+
+<p><strong>How come WOT is free? How does this work?</strong></p>
+
+<p>WOT is 100% free for users.</p>
+
+<p>We receive revenue from licensing our reputation data to other internet companies.</p> 
+
+<p><strong>What type of unsafe sites is becoming more prominent now? Are it the same old tricks that you see over and over again, or is this an evolving terrain?</strong></p>
+
+<p>Some types of scam are really old, like the &quot;work-from-home&quot; scam where user is convinced to pay a starting fee in order to send a CV. We would say: threats are mutating, taking advantage of newest technology every year.</p>
+
+<p>One thing is for sure, scammers follow the crowds. They are in social networks and in mobile. You cannot hide from them. Therefore people should use multiple layers of protection in order to stay safe. We always recommend users install up-to-date antivirus software and complement that with WOT.</p>
+
+<p><strong>Which tool has been particularly useful when developing WOT (e.g. a particular text editor, library, framework, etc.)</strong></p>
+
+<p>Some of us are using <a href="http://www.vim.org/">Vim</a>, probably because they are too old to try new IDEs (smile).</p>
+
+<p>Our toolset also includes <a href="http://www.sublimetext.com/2">Sublime Text 2</a>, <a href="http://www.jetbrains.com/webstorm/">WebStorm</a> by Jetbrains, and other generic tools. For developing add-ons our developer uses WebStorm, <a href="http://www.sourcetreeapp.com">SourceTree</a> for managing code in Git, <a href="http://www.parallels.com">Parallels</a> to run Windows on Mac for testing the add-ons.</p>
+
+<p><strong>What can we expect in the next version of WOT? In which direction do you want to evolve WOT?</strong></p>
+
+<p>WOT just released a <a href="http://www.mywot.com">new version</a> that comes with multiple improvements. The major news surrounding the new WOT is the introduction of a categorization interface. This new categorization will provide greater transparency to the reasons behind users’ ratings and reviews. In practice, this means that when submitting a rating, you are asked to select one or more categories in order to provide supporting evidence for your assessment. These categories are then visible to other users helping them to make informed decisions whether to visit a site or not.  In addition, the rating window has been completely revamped and offers now a comprehensive interface to rate, review and comment a site. You can read more about the new features <a href="http://www.mywot.com/en/newwot">on our site</a>.</p>
+
+<p>We will continue to improve the transparency of ratings in upcoming releases. In addition, a new theme that we will introduce in the near future aims to further increase the participation of the WOT community to rate websites. We believe more opinions means better coverage of websites and more insightful observations about them – and a safer internet for everyone!</p>
+
+<p><strong>Thanks for this interview, Ulla, and good luck to the whole WOT crew!</strong></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></h1>
+        <a href="../../../author/andreasbovens.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/c0/c93/83b9a906e6ee77ac0410e7056fbe0013388.jpg" alt=""/></a>
+        <p>Andreas is based in Oslo, where he works for Opera Software as Extensions Product Manager + Developer Relations.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-113567082">
+      <a href="../../../author/FGM1592.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d0/3ca/9676322e8c227307c6939a806162367c437." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/FGM1592.html">FGM1592</a></p>
+      <p class="commentdate">Saturday, November 16, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Who cares?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, September 17, 2013
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/extension&#32;interview.html" rel="tag">extension interview</a></li>
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/wot.html" rel="tag">wot</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

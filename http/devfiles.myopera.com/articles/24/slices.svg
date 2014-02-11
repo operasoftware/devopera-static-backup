@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="50 -220 250 250" >
+<!-- width="200mm" height="200mm"  -->
+  <title>dartboard</title>
+<!-- by steltenpower.com -->
+  <desc>slices to build dartboard with</desc>
+  <defs>
+    <path id="SLICE" d="M 0 0 L 15.643 98.769 A 100 100 0 0 1 -15.643 98.769 Z" stroke-width="0" />
+
+    <use id="double" xlink:href="#SLICE" transform="scale(1.695)" />
+    <use id="outer"  xlink:href="#SLICE" transform="scale(1.605)" />
+    <use id="triple" xlink:href="#SLICE" transform="scale(1.065)" />
+    <use id="inner"  xlink:href="#SLICE" transform="scale(0.975)" />
+	
+  </defs>
+  <g transform="scale(1,-1)">
+        <rect id="infzero" x="-1000" y="-1000" width="2000" height="2000" fill="grey" />
+          <use xlink:href="#double" fill="red"    x="0" />
+          <use xlink:href="#outer"  fill="black"  x="60" />
+          <use xlink:href="#triple" fill="red"  x="100" />
+          <use xlink:href="#inner"  fill="black"  x="140" />
+
+          <use xlink:href="#double" fill="green"    x="220" />
+          <use xlink:href="#outer"  fill="white"  x="280" />
+          <use xlink:href="#triple" fill="green"  x="320" />
+          <use xlink:href="#inner"  fill="white"  x="360" />
+	  </g>
+</svg>

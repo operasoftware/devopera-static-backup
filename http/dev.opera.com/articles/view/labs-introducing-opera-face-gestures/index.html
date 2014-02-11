@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Introducing Opera Face Gestures - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Introducing Opera Face Gestures</h1>
+      <p class="print author">By Roberto Mateu</p>
+
+      <div id="content">
+<p>
+ At Opera we are always working on new ways to make your browsing faster. Eight years ago we introduced Mouse Gestures as a way to speed up your interaction with the browser and focus on what’s important: the content you’re looking at. We didn’t stop there, in 2005 we introduced Voice Navigation on the desktop and more recently we have worked with Nintendo to create a browser that takes full advantage of the “Wiimote” and later, the touchscreen in the DSi.
+</p>
+<p>
+ Looking ahead, we recognize the future importance of touch interfaces, but we believe that there is another input device that is already present in most new computers and it’s ready to enable a whole new way of user-interaction: the webcam.
+</p>
+<p>
+ Today we introduce Face Gestures, a revolutionary technology designed to make interacting with your browser easier and simpler on computers with cameras. Face Gestures lets you perform frequent browsing operations with natural and easy to make face gestures. By using an internal technology dubbed Face Observation Opera Language, we are able to recognize pre-determined facial expressions and match them to commands on the Opera browser.
+</p>
+<p>
+ You can try Face Gestures today by downloading the latest Opera 10 alpha snapshot or check out the video below to learn more.
+</p>
+<p>
+ <object style="display:block; margin:2em 0;" width="480" height="385">
+  <param name="movie" value="http://www.youtube.com/v/kkNxbyp6thM&amp;amp;hl=en&amp;amp;fs=1" />
+  
+  <param name="allowFullScreen" value="true" />
+  
+  <param name="allowscriptaccess" value="never" />
+  
+  <embed src="http://www.youtube.com/v/kkNxbyp6thM&amp;amp;hl=en&amp;amp;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="480" height="325" allowscriptaccess="never" />
+  
+ </object>
+</p>
+<h3 id="setup">
+ Setting up Face Gestures
+</h3>
+<p>
+ To enable Face Gestures press
+ <kbd>
+  F8
+ </kbd>
+ . You will hear a beeping sound as soon as Opera finishes calibrating your passive facial expression. Please don’t close your eyes, move your head or make any facial expressions while Face Gestures is calibrating.
+</p>
+<h3 class="guide">
+ Look at me
+</h3>
+<p>
+ Among many others, the following gestures are currently included:
+</p>
+<dl class="diagram clearfix">
+ <dt>
+  Initial stance
+ </dt>
+ <dd class="initial">
+  <span>
+   Relaxed expression
+  </span>
+ </dd>
+ <dt>
+  Back
+ </dt>
+ <dd class="back">
+  <span>
+   Left wink
+  </span>
+ </dd>
+ <dt>
+  Forward
+ </dt>
+ <dd class="fwd">
+  <span>
+   Right wink
+  </span>
+ </dd>
+ <dt>
+  New Tab
+ </dt>
+ <dd class="newtab">
+  <span>
+   Double wink
+  </span>
+ </dd>
+ <dt>
+  Reload
+ </dt>
+ <dd class="reload">
+  <span>
+   Shake head
+  </span>
+ </dd>
+ <dt>
+  Go to Home Page
+ </dt>
+ <dd class="tohome">
+  <span>
+   Roll eyes / Fake smile
+  </span>
+ </dd>
+ <dt>
+  Scroll Up
+ </dt>
+ <dd class="sup">
+  <span>
+   Raise eyebrows
+  </span>
+ </dd>
+ <dt>
+  Scroll Down
+ </dt>
+ <dd class="sdown">
+  <span>
+   Frown eyebrows
+  </span>
+ </dd>
+ <dt>
+  Zoom In
+ </dt>
+ <dd class="zin">
+  <span>
+   Suck cheeks
+  </span>
+ </dd>
+ <dt>
+  Zoom Out
+ </dt>
+ <dd class="zout">
+  <span>
+   Puff cheeks
+  </span>
+ </dd>
+ <dt>
+  Bookmark Page
+ </dt>
+ <dd class="bkmk">
+  <span>
+   Lick up
+  </span>
+ </dd>
+ <dt>
+  Open Speed Dial
+ </dt>
+ <dd class="dial">
+  <span>
+   Waggle tongue
+  </span>
+ </dd>
+</dl>
+<p class="clear">
+ As always, we encourage all feedback and suggestions you may have. Please upload your gestures suggestions as a response to the above
+ <a href="http://www.youtube.com/watch?v=kkNxbyp6thM">
+  video in YouTube
+ </a>
+ .
+</p>
+<h3 id="secutiry">
+ Security Considerations
+</h3>
+<p>
+ No personal information or images are sent back to Opera when Face Gestures is enabled, so don’t worry about how you look.
+</p>
+<h3 id="issues">
+ Known Issues
+</h3>
+<p>
+ As with any beta release there are some known issues with the current version of Face Gestures. Please read below before reporting a bug.
+</p>
+<ul>
+ <li>
+  <h4>
+   Beards and hair styles
+  </h4>
+  <p>
+   Face Gestures is compatible with most types of facial hair and haircuts. But if your face is covered with more than 25% of facial hair, recognition errors may occur. Please note that handlebars and goatees are compatible independently but if combined recognition will decrease. At the moment soul-patches crashes the browser and it refuses to relaunch, we are looking into this problem. Bushmen beards and emo haircuts are not supported.
+  </p>
+ </li>
+ <li>
+  <h4>
+   Adult Web sites
+  </h4>
+  <p>
+   Users visiting Web sites that contain adult content sometimes make unconscious facial expressions. If Opera keeps opening Speed Dial and Zooming In and Out, please be aware that this not a bug. It may be useful to disable Face Gestures for a better experience. Also remember that wiping your cache is recommend after visiting untrusted websites.
+  </p>
+ </li>
+ <li>
+  <h4>
+   Financial Web sites
+  </h4>
+  <p>
+   For compatibility reasons Face Gestures auto-detects financial news services and disables itself. The current version of the recognition software is unable to adapt fast enough to the sudden change in the users expression map. As soon as the new version is available you will be prompted to install
+   <code>
+    stimulus_package.patch
+   </code>
+   .
+  </p>
+ </li>
+</ul>
+<p>
+ Download
+ <s><a>
+  Opera 10 Alpha with Face Gestures
+ </a></s>
+ or share your experience at
+ <a href="http://my.opera.com/community/blog/face-the-future">
+  My Opera
+ </a>
+ .
+</p>
+</div>
+
+
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-89963172">
+      <a href="../../../author/ozoratsubasa.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a3/8bd/89647c70b6c16c8e06945c6d42f7ad02a62.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ozoratsubasa.html">Tiago Wakabayashi</a></p>
+      <p class="commentdate">Thursday, May 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>ahah funny</section>
+    </li>
+    <li id="comment-91990662">
+      <a href="../../../author/gunalanmk.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3a/714/ce066749f1d001cbdfccef206a705abf8d3." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/gunalanmk.html">gunalanmk</a></p>
+      <p class="commentdate">Sunday, July 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>is it working.... can i use it in my browser...</section>
+    </li>
+    <li id="comment-102786942">
+      <a href="../../../author/jonasbits.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/01/ccb/9e1d091f3c9553021964c5d43c7375f534a." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jonasbits.html">Jonas Östman</a></p>
+      <p class="commentdate">Sunday, January 20, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>this is a aprils joke ;-)</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/rmateu.html" rel="author">Roberto Mateu</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, April 1, 2009
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

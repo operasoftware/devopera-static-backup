@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title></title>
+<script type="text/javascript">
+var linksuffix = {
+  addEvent: function(obj, type, fn) {
+    if ( obj.attachEvent ) {
+      obj['e'+type+fn] = fn;
+      obj[type+fn] = function(){obj['e'+type+fn]( window.event );};
+      obj.attachEvent('on'+type, obj[type+fn] );
+    } else {
+      obj.addEventListener( type, fn, false );
+    }
+  },  
+  init: function() {
+    var links = document.getElementsByTagName("a");
+    for (var i=0; i<links.length; i++) {
+      var matches = links[i].href.match(/^http:\/\/(.*?)\//);
+      if (matches) {
+        var linkdomain = matches[1];
+        var span = document.createElement("span");
+        var spantext = document.createTextNode(" ["+linkdomain+"]");
+        span.appendChild(spantext);
+        links[i].parentNode.insertBefore(span, links[i].nextSibling);
+      }
+    }
+  }
+};
+linksuffix.addEvent(window, "load", linksuffix.init);
+</script>
+<style type="text/css">
+
+body {
+
+font-family: georgia, "times new roman", serif;
+font-size: 16px;
+
+}
+
+p {
+  
+  width: 600px;
+  border: 3px solid red;
+  padding: 5px;
+
+}
+
+a:link {
+
+color: red;
+
+}
+
+a:hover {
+
+text-decoration: none;
+
+}
+
+span {
+
+font-size: 80%;
+
+}
+
+</style>
+</head>
+<body>
+<p id="start">This is some text that has 
+<a href="http://www.w3.org/TR/html4/struct/links.html">links</a> in it
+to various places, including <a href="http://www.opera.com">Opera</a>,
+<a href="http://www.bbc.co.uk/">the BBC</a> and an internal link to
+<a href="linkify.html#start">the beginning of this section</a>. All the external links should have <span>[domain]</span> after them.</p>
+</body>
+</html>
+

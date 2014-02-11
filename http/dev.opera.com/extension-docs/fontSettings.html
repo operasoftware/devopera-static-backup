@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>chrome.fontSettings - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>chrome.fontSettings</h1>
+					 
+						<p class="badge badge-info pull-right">Support: Opera 19+</p>
+					
+					
+					
+          <div id="gc-pagecontent">
+      
+        
+        
+        <div id="toc">
+          <h2>Contents</h2>
+ 
+              <ol>
+                  <li >
+                        <a href="fontSettings.html#manifest"
+                           data-list-item
+                           >Manifest</a>
+                      </li>
+                      <li >
+                        <a href="fontSettings.html#scripts"
+                           data-list-item
+                           >Generic Font Families and Scripts</a>
+                      </li>
+                      <li class="separator">
+                        <a href="fontSettings.html#types"
+                           data-list-item
+                           >Types</a>
+                        <ol>
+                          <li >
+                            <a href="fontSettings.html#type-FontName"
+                               data-list-item
+                               >FontName</a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#type-ScriptCode"
+                               data-list-item
+                               >ScriptCode</a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#type-GenericFamily"
+                               data-list-item
+                               >GenericFamily</a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#type-LevelOfControl"
+                               data-list-item
+                               >LevelOfControl</a>
+                          </li>
+                        </ol>
+                      </li>
+                      <li >
+                        <a href="fontSettings.html#methods"
+                           data-list-item
+                           >Methods</a>
+                        <ol>
+                          <li >
+                            <a href="fontSettings.html#method-clearFont"
+                               data-list-item
+                               >clearFont        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-getFont"
+                               data-list-item
+                               >getFont        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-setFont"
+                               data-list-item
+                               >setFont        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-getFontList"
+                               data-list-item
+                               >getFontList        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-clearDefaultFontSize"
+                               data-list-item
+                               >clearDefaultFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-getDefaultFontSize"
+                               data-list-item
+                               >getDefaultFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-setDefaultFontSize"
+                               data-list-item
+                               >setDefaultFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-clearDefaultFixedFontSize"
+                               data-list-item
+                               >clearDefaultFixedFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-getDefaultFixedFontSize"
+                               data-list-item
+                               >getDefaultFixedFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-setDefaultFixedFontSize"
+                               data-list-item
+                               >setDefaultFixedFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-clearMinimumFontSize"
+                               data-list-item
+                               >clearMinimumFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-getMinimumFontSize"
+                               data-list-item
+                               >getMinimumFontSize        </a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#method-setMinimumFontSize"
+                               data-list-item
+                               >setMinimumFontSize        </a>
+                          </li>
+                        </ol>
+                      </li>
+                      <li >
+                        <a href="fontSettings.html#events"
+                           data-list-item
+                           >Events</a>
+                        <ol>
+                          <li >
+                            <a href="fontSettings.html#event-onFontChanged"
+                               data-list-item
+                               >onFontChanged</a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#event-onDefaultFontSizeChanged"
+                               data-list-item
+                               >onDefaultFontSizeChanged</a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#event-onDefaultFixedFontSizeChanged"
+                               data-list-item
+                               >onDefaultFixedFontSizeChanged</a>
+                          </li>
+                          <li >
+                            <a href="fontSettings.html#event-onMinimumFontSizeChanged"
+                               data-list-item
+                               >onMinimumFontSizeChanged</a>
+                          </li>
+                        </ol>
+                      </li>
+                  
+          </ol>
+          
+          <table class="intro" id="intro">
+            <tr>
+              <td class="title">Description:</td>
+              <td>
+                  Use the <code>chrome.fontSettings</code> API to manage Chrome's font settings.
+                          <br>
+              </td>
+            </tr>
+            <tr>
+              <td class="title">Permissions:</td>
+              <td>
+                  <code class="code">
+                  "fontSettings"
+                          </code>
+                  <br>
+              </td>
+            </tr>
+          </table>
+          
+        </div>
+        
+        <p id="classSummary">
+<h2 id="manifest">Manifest</h2>
+<p>To use the Font Settings API, you must declare the "fontSettings" permission
+in the <a href="manifest.html">extension manifest</a>.
+For example:</p>
+<pre data-filename="manifest.json">
+{
+  "name": "My Font Settings Extension",
+  "description": "Customize your fonts",
+  "version": "0.2",
+  <b>"permissions": [
+    "fontSettings"
+  ]</b>,
+  ...
+}
+</pre>
+
+<h2 id="scripts">Generic Font Families and Scripts</h2>
+<p>Chrome allows for some font settings to depend on certain generic font
+families and language scripts. For example, the font used for sans-serif
+Simplified Chinese may be different than the font used for serif Japanese.</p>
+
+<p>The generic font families supported by Chrome are based on
+<a href="http://www.w3.org/TR/CSS21/fonts.html#generic-font-families">CSS generic font families</a>
+and are listed in the API reference below. When a webpage specifies a generic
+font family, Chrome selects the font based on the corresponding setting. If no
+generic font family is specified, Chrome uses the setting for the "standard"
+generic font family.</p>
+
+<p>When a webpage specifies a language, Chrome selects the font based on the
+setting for the corresponding language script. If no language is specified,
+Chrome uses the setting for the default, or global, script.</p>
+
+<p>The supported language scripts are specified by ISO 15924 script code and
+listed in the API reference below. Technically, Chrome settings are not strictly
+per-script but also depend on language. For example, Chrome chooses the font for
+Cyrillic (ISO 15924 script code "Cyrl") when a webpage specifies the Russian
+language, and uses this font not just for Cyrillic script but for everything the
+font covers, such as Latin.</p>
+
+       <div class="api_reference">
+           <h2 id="types">Types</h2>
+             <div>
+               <h3 id="type-FontName">FontName</h3>
+               <div>
+                 <dd>Represents a font name.</dd>
+                   <h3 id="FontName-properties" class="capitalize" title="">
+                     properties of <a href="fontSettings.html#type-FontName">FontName</a>
+                   </h3>
+                   <dd>
+                     <dl>
+                       <div>
+                         <a name="property-FontName-fontId"></a>
+                         <dl>
+                           <dt>
+                             <h4 id="property-FontName-fontId" title="">
+                               fontId
+                               <code class="property">
+                                 (
+                                   string
+                                 )
+                               </code>
+                             </h4>
+                           </dt>
+                           <dd>
+                             The font ID.
+                           </dd>
+                         </dl>
+                       </div><div>
+                         <a name="property-FontName-displayName"></a>
+                         <dl>
+                           <dt>
+                             <h4 id="property-FontName-displayName" title="">
+                               displayName
+                               <code class="property">
+                                 (
+                                   string
+                                 )
+                               </code>
+                             </h4>
+                           </dt>
+                           <dd>
+                             The display name of the font.
+                           </dd>
+                         </dl>
+                       </div>
+                     </dl>
+                   </dd>
+               </div>
+             </div>
+             <div>
+               <h3 id="type-ScriptCode">ScriptCode</h3>
+               <div>
+                 <dd>enum of
+                   <code>"Afak"</code>, 
+                   <code>"Arab"</code>, 
+                   <code>"Armi"</code>, 
+                   <code>"Armn"</code>, 
+                   <code>"Avst"</code>, 
+                   <code>"Bali"</code>, 
+                   <code>"Bamu"</code>, 
+                   <code>"Bass"</code>, 
+                   <code>"Batk"</code>, 
+                   <code>"Beng"</code>, 
+                   <code>"Blis"</code>, 
+                   <code>"Bopo"</code>, 
+                   <code>"Brah"</code>, 
+                   <code>"Brai"</code>, 
+                   <code>"Bugi"</code>, 
+                   <code>"Buhd"</code>, 
+                   <code>"Cakm"</code>, 
+                   <code>"Cans"</code>, 
+                   <code>"Cari"</code>, 
+                   <code>"Cham"</code>, 
+                   <code>"Cher"</code>, 
+                   <code>"Cirt"</code>, 
+                   <code>"Copt"</code>, 
+                   <code>"Cprt"</code>, 
+                   <code>"Cyrl"</code>, 
+                   <code>"Cyrs"</code>, 
+                   <code>"Deva"</code>, 
+                   <code>"Dsrt"</code>, 
+                   <code>"Dupl"</code>, 
+                   <code>"Egyd"</code>, 
+                   <code>"Egyh"</code>, 
+                   <code>"Egyp"</code>, 
+                   <code>"Elba"</code>, 
+                   <code>"Ethi"</code>, 
+                   <code>"Geor"</code>, 
+                   <code>"Geok"</code>, 
+                   <code>"Glag"</code>, 
+                   <code>"Goth"</code>, 
+                   <code>"Gran"</code>, 
+                   <code>"Grek"</code>, 
+                   <code>"Gujr"</code>, 
+                   <code>"Guru"</code>, 
+                   <code>"Hang"</code>, 
+                   <code>"Hani"</code>, 
+                   <code>"Hano"</code>, 
+                   <code>"Hans"</code>, 
+                   <code>"Hant"</code>, 
+                   <code>"Hebr"</code>, 
+                   <code>"Hluw"</code>, 
+                   <code>"Hmng"</code>, 
+                   <code>"Hung"</code>, 
+                   <code>"Inds"</code>, 
+                   <code>"Ital"</code>, 
+                   <code>"Java"</code>, 
+                   <code>"Jpan"</code>, 
+                   <code>"Jurc"</code>, 
+                   <code>"Kali"</code>, 
+                   <code>"Khar"</code>, 
+                   <code>"Khmr"</code>, 
+                   <code>"Khoj"</code>, 
+                   <code>"Knda"</code>, 
+                   <code>"Kpel"</code>, 
+                   <code>"Kthi"</code>, 
+                   <code>"Lana"</code>, 
+                   <code>"Laoo"</code>, 
+                   <code>"Latf"</code>, 
+                   <code>"Latg"</code>, 
+                   <code>"Latn"</code>, 
+                   <code>"Lepc"</code>, 
+                   <code>"Limb"</code>, 
+                   <code>"Lina"</code>, 
+                   <code>"Linb"</code>, 
+                   <code>"Lisu"</code>, 
+                   <code>"Loma"</code>, 
+                   <code>"Lyci"</code>, 
+                   <code>"Lydi"</code>, 
+                   <code>"Mand"</code>, 
+                   <code>"Mani"</code>, 
+                   <code>"Maya"</code>, 
+                   <code>"Mend"</code>, 
+                   <code>"Merc"</code>, 
+                   <code>"Mero"</code>, 
+                   <code>"Mlym"</code>, 
+                   <code>"Moon"</code>, 
+                   <code>"Mong"</code>, 
+                   <code>"Mroo"</code>, 
+                   <code>"Mtei"</code>, 
+                   <code>"Mymr"</code>, 
+                   <code>"Narb"</code>, 
+                   <code>"Nbat"</code>, 
+                   <code>"Nkgb"</code>, 
+                   <code>"Nkoo"</code>, 
+                   <code>"Nshu"</code>, 
+                   <code>"Ogam"</code>, 
+                   <code>"Olck"</code>, 
+                   <code>"Orkh"</code>, 
+                   <code>"Orya"</code>, 
+                   <code>"Osma"</code>, 
+                   <code>"Palm"</code>, 
+                   <code>"Perm"</code>, 
+                   <code>"Phag"</code>, 
+                   <code>"Phli"</code>, 
+                   <code>"Phlp"</code>, 
+                   <code>"Phlv"</code>, 
+                   <code>"Phnx"</code>, 
+                   <code>"Plrd"</code>, 
+                   <code>"Prti"</code>, 
+                   <code>"Rjng"</code>, 
+                   <code>"Roro"</code>, 
+                   <code>"Runr"</code>, 
+                   <code>"Samr"</code>, 
+                   <code>"Sara"</code>, 
+                   <code>"Sarb"</code>, 
+                   <code>"Saur"</code>, 
+                   <code>"Sgnw"</code>, 
+                   <code>"Shaw"</code>, 
+                   <code>"Shrd"</code>, 
+                   <code>"Sind"</code>, 
+                   <code>"Sinh"</code>, 
+                   <code>"Sora"</code>, 
+                   <code>"Sund"</code>, 
+                   <code>"Sylo"</code>, 
+                   <code>"Syrc"</code>, 
+                   <code>"Syre"</code>, 
+                   <code>"Syrj"</code>, 
+                   <code>"Syrn"</code>, 
+                   <code>"Tagb"</code>, 
+                   <code>"Takr"</code>, 
+                   <code>"Tale"</code>, 
+                   <code>"Talu"</code>, 
+                   <code>"Taml"</code>, 
+                   <code>"Tang"</code>, 
+                   <code>"Tavt"</code>, 
+                   <code>"Telu"</code>, 
+                   <code>"Teng"</code>, 
+                   <code>"Tfng"</code>, 
+                   <code>"Tglg"</code>, 
+                   <code>"Thaa"</code>, 
+                   <code>"Thai"</code>, 
+                   <code>"Tibt"</code>, 
+                   <code>"Tirh"</code>, 
+                   <code>"Ugar"</code>, 
+                   <code>"Vaii"</code>, 
+                   <code>"Visp"</code>, 
+                   <code>"Wara"</code>, 
+                   <code>"Wole"</code>, 
+                   <code>"Xpeo"</code>, 
+                   <code>"Xsux"</code>, 
+                   <code>"Yiii"</code>, 
+                   <code>"Zmth"</code>, 
+                   <code>"Zsym"</code>, 
+                   or <code>"Zyyy"</code>
+                 </dd>
+                 <dd>An ISO 15924 script code. The default, or global, script is represented by script code "Zyyy".</dd>
+               </div>
+             </div>
+             <div>
+               <h3 id="type-GenericFamily">GenericFamily</h3>
+               <div>
+                 <dd>enum of
+                   <code>"standard"</code>, 
+                   <code>"sansserif"</code>, 
+                   <code>"serif"</code>, 
+                   <code>"fixed"</code>, 
+                   <code>"cursive"</code>, 
+                   or <code>"fantasy"</code>
+                 </dd>
+                 <dd>A CSS generic font family.</dd>
+               </div>
+             </div>
+             <div>
+               <h3 id="type-LevelOfControl">LevelOfControl</h3>
+               <div>
+                 <dd>enum of
+                   <code>"not_controllable"</code>, 
+                   <code>"controlled_by_other_extensions"</code>, 
+                   <code>"controllable_by_this_extension"</code>, 
+                   or <code>"controlled_by_this_extension"</code>
+                 </dd>
+                 <dd>One of<br><var>not_controllable</var>: cannot be controlled by any extension<br><var>controlled_by_other_extensions</var>: controlled by extensions with higher precedence<br><var>controllable_by_this_extension</var>: can be controlled by this extension<br><var>controlled_by_this_extension</var>: controlled by this extension</dd>
+               </div>
+             </div>
+           <h2 id="methods">Methods</h2>
+             <div>
+               <h3
+                   id="method-clearFont"
+                   >clearFont
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.clearFont</code>(<code>object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Clears the font set by this extension, if any.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-clearFont-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearFont-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                       <dd>
+                         <h4 title="">Properties</h4>
+                         <dl>
+                           <div>
+                             <a name="property-details-script"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-script" title="">
+                                   script
+                                   <code class="property">
+                                     (
+                                       <code class="optional">optional</code>
+                                       <a href="fontSettings.html#type-ScriptCode">ScriptCode</a>
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The script for which the font should be cleared. If omitted, the global script font setting is cleared.
+                               </dd>
+                             </dl>
+                           </div><div>
+                             <a name="property-details-genericFamily"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-genericFamily" title="">
+                                   genericFamily
+                                   <code class="property">
+                                     (
+                                       <a href="fontSettings.html#type-GenericFamily">GenericFamily</a>
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The generic font family for which the font should be cleared.
+                               </dd>
+                             </dl>
+                           </div>
+                         </dl>
+                       </dd>
+                     </div>
+                     <div>
+                       <a name="property-clearFont-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearFont-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-getFont"
+                   >getFont
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.getFont</code>(<code>object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Gets the font for a given script and generic font family.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-getFont-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getFont-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                       <dd>
+                         <h4 title="">Properties</h4>
+                         <dl>
+                           <div>
+                             <a name="property-details-script"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-script" title="">
+                                   script
+                                   <code class="property">
+                                     (
+                                       <code class="optional">optional</code>
+                                       <a href="fontSettings.html#type-ScriptCode">ScriptCode</a>
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The script for which the font should be retrieved. If omitted, the font setting for the global script (script code "Zyyy") is retrieved.
+                               </dd>
+                             </dl>
+                           </div><div>
+                             <a name="property-details-genericFamily"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-genericFamily" title="">
+                                   genericFamily
+                                   <code class="property">
+                                     (
+                                       <a href="fontSettings.html#type-GenericFamily">GenericFamily</a>
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The generic font family for which the font should be retrieved.
+                               </dd>
+                             </dl>
+                           </div>
+                         </dl>
+                       </dd>
+                     </div>
+                     <div>
+                       <a name="property-getFont-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getFont-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                   <dl>
+                       <div>
+                         <a name="property-callback-details"></a>
+                         <dl>
+                           <dt>
+                             <h4 id="property-callback-details" title="">
+                               details
+                               <code class="property">
+                                 (
+                                   object
+                                 )
+                               </code>
+                             </h4>
+                           </dt>
+                           <dd>
+                           </dd>
+                         </dl>
+                         <dd>
+                           <h4 title="">Properties</h4>
+                           <dl>
+                             <div>
+                               <a name="property-details-fontId"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-fontId" title="">
+                                     fontId
+                                     <code class="property">
+                                       (
+                                         string
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The font ID. Rather than the literal font ID preference value, this may be the ID of the font that the system resolves the preference value to. So, <var>fontId</var> can differ from the font passed to <code>setFont</code>, if, for example, the font is not available on the system. The empty string signifies fallback to the global script font setting.
+                                 </dd>
+                               </dl>
+                             </div><div>
+                               <a name="property-details-levelOfControl"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-levelOfControl" title="">
+                                     levelOfControl
+                                     <code class="property">
+                                       (
+                                         <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The level of control this extension has over the setting.
+                                 </dd>
+                               </dl>
+                             </div>
+                           </dl>
+                         </dd>
+                       </div>
+                   </dl>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-setFont"
+                   >setFont
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.setFont</code>(<code>object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Sets the font for a given script and generic font family.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-setFont-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setFont-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                       <dd>
+                         <h4 title="">Properties</h4>
+                         <dl>
+                           <div>
+                             <a name="property-details-script"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-script" title="">
+                                   script
+                                   <code class="property">
+                                     (
+                                       <code class="optional">optional</code>
+                                       <a href="fontSettings.html#type-ScriptCode">ScriptCode</a>
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The script code which the font should be set. If omitted, the font setting for the global script (script code "Zyyy") is set.
+                               </dd>
+                             </dl>
+                           </div><div>
+                             <a name="property-details-genericFamily"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-genericFamily" title="">
+                                   genericFamily
+                                   <code class="property">
+                                     (
+                                       <a href="fontSettings.html#type-GenericFamily">GenericFamily</a>
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The generic font family for which the font should be set.
+                               </dd>
+                             </dl>
+                           </div><div>
+                             <a name="property-details-fontId"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-fontId" title="">
+                                   fontId
+                                   <code class="property">
+                                     (
+                                       string
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The font ID. The empty string means to fallback to the global script font setting.
+                               </dd>
+                             </dl>
+                           </div>
+                         </dl>
+                       </dd>
+                     </div>
+                     <div>
+                       <a name="property-setFont-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setFont-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-getFontList"
+                   >getFontList
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.getFontList</code>(<code>function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Gets a list of fonts on the system.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-getFontList-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getFontList-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         The <em>callback</em> parameter should specify a function
+                         that looks like this:
+                   </p>
+                   <pre>function(array of <a href="fontSettings.html#type-FontName">FontName</a> results) <code class="subdued">{...}</code>;</pre>
+                   <dl>
+                       <div>
+                         <a name="property-callback-results"></a>
+                         <dl>
+                           <dt>
+                             <h4 id="property-callback-results" title="">
+                               results
+                               <code class="property">
+                                 (
+                                   array of <a href="fontSettings.html#type-FontName">FontName</a>
+                                 )
+                               </code>
+                             </h4>
+                           </dt>
+                           <dd>
+                           </dd>
+                         </dl>
+                       </div>
+                   </dl>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-clearDefaultFontSize"
+                   >clearDefaultFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.clearDefaultFontSize</code>(<code class="optional">object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Clears the default font size set by this extension, if any.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-clearDefaultFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearDefaultFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                           This parameter is currently unused.
+                         </dd>
+                       </dl>
+                     </div>
+                     <div>
+                       <a name="property-clearDefaultFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearDefaultFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-getDefaultFontSize"
+                   >getDefaultFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.getDefaultFontSize</code>(<code class="optional">object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Gets the default font size.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-getDefaultFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getDefaultFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                           This parameter is currently unused.
+                         </dd>
+                       </dl>
+                     </div>
+                     <div>
+                       <a name="property-getDefaultFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getDefaultFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                   <dl>
+                       <div>
+                         <a name="property-callback-details"></a>
+                         <dl>
+                           <dt>
+                             <h4 id="property-callback-details" title="">
+                               details
+                               <code class="property">
+                                 (
+                                   object
+                                 )
+                               </code>
+                             </h4>
+                           </dt>
+                           <dd>
+                           </dd>
+                         </dl>
+                         <dd>
+                           <h4 title="">Properties</h4>
+                           <dl>
+                             <div>
+                               <a name="property-details-pixelSize"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-pixelSize" title="">
+                                     pixelSize
+                                     <code class="property">
+                                       (
+                                         integer
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The font size in pixels.
+                                 </dd>
+                               </dl>
+                             </div><div>
+                               <a name="property-details-levelOfControl"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-levelOfControl" title="">
+                                     levelOfControl
+                                     <code class="property">
+                                       (
+                                         <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The level of control this extension has over the setting.
+                                 </dd>
+                               </dl>
+                             </div>
+                           </dl>
+                         </dd>
+                       </div>
+                   </dl>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-setDefaultFontSize"
+                   >setDefaultFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.setDefaultFontSize</code>(<code>object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Sets the default font size.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-setDefaultFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setDefaultFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                       <dd>
+                         <h4 title="">Properties</h4>
+                         <dl>
+                           <div>
+                             <a name="property-details-pixelSize"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-pixelSize" title="">
+                                   pixelSize
+                                   <code class="property">
+                                     (
+                                       integer
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The font size in pixels.
+                               </dd>
+                             </dl>
+                           </div>
+                         </dl>
+                       </dd>
+                     </div>
+                     <div>
+                       <a name="property-setDefaultFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setDefaultFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-clearDefaultFixedFontSize"
+                   >clearDefaultFixedFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.clearDefaultFixedFontSize</code>(<code class="optional">object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Clears the default fixed font size set by this extension, if any.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-clearDefaultFixedFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearDefaultFixedFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                           This parameter is currently unused.
+                         </dd>
+                       </dl>
+                     </div>
+                     <div>
+                       <a name="property-clearDefaultFixedFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearDefaultFixedFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-getDefaultFixedFontSize"
+                   >getDefaultFixedFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.getDefaultFixedFontSize</code>(<code class="optional">object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Gets the default size for fixed width fonts.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-getDefaultFixedFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getDefaultFixedFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                           This parameter is currently unused.
+                         </dd>
+                       </dl>
+                     </div>
+                     <div>
+                       <a name="property-getDefaultFixedFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getDefaultFixedFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                   <dl>
+                       <div>
+                         <a name="property-callback-details"></a>
+                         <dl>
+                           <dt>
+                             <h4 id="property-callback-details" title="">
+                               details
+                               <code class="property">
+                                 (
+                                   object
+                                 )
+                               </code>
+                             </h4>
+                           </dt>
+                           <dd>
+                           </dd>
+                         </dl>
+                         <dd>
+                           <h4 title="">Properties</h4>
+                           <dl>
+                             <div>
+                               <a name="property-details-pixelSize"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-pixelSize" title="">
+                                     pixelSize
+                                     <code class="property">
+                                       (
+                                         integer
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The font size in pixels.
+                                 </dd>
+                               </dl>
+                             </div><div>
+                               <a name="property-details-levelOfControl"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-levelOfControl" title="">
+                                     levelOfControl
+                                     <code class="property">
+                                       (
+                                         <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The level of control this extension has over the setting.
+                                 </dd>
+                               </dl>
+                             </div>
+                           </dl>
+                         </dd>
+                       </div>
+                   </dl>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-setDefaultFixedFontSize"
+                   >setDefaultFixedFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.setDefaultFixedFontSize</code>(<code>object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Sets the default size for fixed width fonts.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-setDefaultFixedFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setDefaultFixedFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                       <dd>
+                         <h4 title="">Properties</h4>
+                         <dl>
+                           <div>
+                             <a name="property-details-pixelSize"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-pixelSize" title="">
+                                   pixelSize
+                                   <code class="property">
+                                     (
+                                       integer
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The font size in pixels.
+                               </dd>
+                             </dl>
+                           </div>
+                         </dl>
+                       </dd>
+                     </div>
+                     <div>
+                       <a name="property-setDefaultFixedFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setDefaultFixedFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-clearMinimumFontSize"
+                   >clearMinimumFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.clearMinimumFontSize</code>(<code class="optional">object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Clears the minimum font size set by this extension, if any.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-clearMinimumFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearMinimumFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                           This parameter is currently unused.
+                         </dd>
+                       </dl>
+                     </div>
+                     <div>
+                       <a name="property-clearMinimumFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-clearMinimumFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-getMinimumFontSize"
+                   >getMinimumFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.getMinimumFontSize</code>(<code class="optional">object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Gets the minimum font size.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-getMinimumFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getMinimumFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                           This parameter is currently unused.
+                         </dd>
+                       </dl>
+                     </div>
+                     <div>
+                       <a name="property-getMinimumFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-getMinimumFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                   <dl>
+                       <div>
+                         <a name="property-callback-details"></a>
+                         <dl>
+                           <dt>
+                             <h4 id="property-callback-details" title="">
+                               details
+                               <code class="property">
+                                 (
+                                   object
+                                 )
+                               </code>
+                             </h4>
+                           </dt>
+                           <dd>
+                           </dd>
+                         </dl>
+                         <dd>
+                           <h4 title="">Properties</h4>
+                           <dl>
+                             <div>
+                               <a name="property-details-pixelSize"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-pixelSize" title="">
+                                     pixelSize
+                                     <code class="property">
+                                       (
+                                         integer
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The font size in pixels.
+                                 </dd>
+                               </dl>
+                             </div><div>
+                               <a name="property-details-levelOfControl"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-details-levelOfControl" title="">
+                                     levelOfControl
+                                     <code class="property">
+                                       (
+                                         <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                   The level of control this extension has over the setting.
+                                 </dd>
+                               </dl>
+                             </div>
+                           </dl>
+                         </dd>
+                       </div>
+                   </dl>
+               </div>
+             </div>
+             <div>
+               <h3
+                   id="method-setMinimumFontSize"
+                   >setMinimumFontSize
+               </h3>
+               <div class="summary uncapitalize">
+               <div class="line">
+               <code>chrome.fontSettings.setMinimumFontSize</code>(<code>object details</code>, <code class="optional">function callback</code>)
+               </div>
+               </div>
+               <div class="description">
+                 <p>
+                   Sets the minimum font size.
+                 </p>
+                 <h4 title="">Parameters</h4>
+                 <dl>
+                     <div>
+                       <a name="property-setMinimumFontSize-details"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setMinimumFontSize-details" title="">
+                             details
+                             <code class="property">
+                               (
+                                 object
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                       <dd>
+                         <h4 title="">Properties</h4>
+                         <dl>
+                           <div>
+                             <a name="property-details-pixelSize"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-details-pixelSize" title="">
+                                   pixelSize
+                                   <code class="property">
+                                     (
+                                       integer
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                                 The font size in pixels.
+                               </dd>
+                             </dl>
+                           </div>
+                         </dl>
+                       </dd>
+                     </div>
+                     <div>
+                       <a name="property-setMinimumFontSize-callback"></a>
+                       <dl>
+                         <dt>
+                           <h4 id="property-setMinimumFontSize-callback" title="">
+                             callback
+                             <code class="property">
+                               (
+                                 <code class="optional">optional</code>
+                                 function
+                               )
+                             </code>
+                           </h4>
+                         </dt>
+                         <dd>
+                         </dd>
+                       </dl>
+                     </div>
+                 </dl>
+                   <p>
+                         If you specify the <em>callback</em> parameter, it should
+                         specify a function that looks like this:
+                   </p>
+                   <pre>function() <code class="subdued">{...}</code>;</pre>
+               </div>
+             </div>
+           <h2 id="events">Events</h2>
+             <div>
+               <h3 id="event-onFontChanged">onFontChanged</h3>
+               <div class="description">
+             <p>
+                   Fired when a font setting changes.
+                 </p>      <div>
+                     <h4
+                         title="">addListener
+                     </h4>
+                     <div class="summary uncapitalize">
+                     <div class="line">
+                     <code>chrome.fontSettings.onFontChanged.addListener</code>(<code>function callback</code>)
+                     </div>
+                     </div>
+                     <div class="description">
+                       <h4 title="">Parameters</h4>
+                       <dl>
+                           <div>
+                             <a name="property-onFontChanged-callback"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-onFontChanged-callback" title="">
+                                   callback
+                                   <code class="property">
+                                     (
+                                       function
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                               </dd>
+                             </dl>
+                           </div>
+                       </dl>
+                         <p>
+                               The <em>callback</em> parameter should specify a function
+                               that looks like this:
+                         </p>
+                         <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                         <dl>
+                             <div>
+                               <a name="property-onFontChanged-details"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-onFontChanged-details" title="">
+                                     details
+                                     <code class="property">
+                                       (
+                                         object
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                 </dd>
+                               </dl>
+                               <dd>
+                                 <h4 title="">Properties</h4>
+                                 <dl>
+                                   <div>
+                                     <a name="property-details-fontId"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-fontId" title="">
+                                           fontId
+                                           <code class="property">
+                                             (
+                                               string
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The font ID. See the description in <code>getFont</code>.
+                                       </dd>
+                                     </dl>
+                                   </div><div>
+                                     <a name="property-details-script"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-script" title="">
+                                           script
+                                           <code class="property">
+                                             (
+                                               <code class="optional">optional</code>
+                                               <a href="fontSettings.html#type-ScriptCode">ScriptCode</a>
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The script code for which the font setting has changed.
+                                       </dd>
+                                     </dl>
+                                   </div><div>
+                                     <a name="property-details-genericFamily"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-genericFamily" title="">
+                                           genericFamily
+                                           <code class="property">
+                                             (
+                                               <a href="fontSettings.html#type-GenericFamily">GenericFamily</a>
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The generic font family for which the font setting has changed.
+                                       </dd>
+                                     </dl>
+                                   </div><div>
+                                     <a name="property-details-levelOfControl"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-levelOfControl" title="">
+                                           levelOfControl
+                                           <code class="property">
+                                             (
+                                               <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The level of control this extension has over the setting.
+                                       </dd>
+                                     </dl>
+                                   </div>
+                                 </dl>
+                               </dd>
+                             </div>
+                         </dl>
+                     </div>
+                   </div>
+               </div>
+             </div>
+             <div>
+               <h3 id="event-onDefaultFontSizeChanged">onDefaultFontSizeChanged</h3>
+               <div class="description">
+             <p>
+                   Fired when the default font size setting changes.
+                 </p>      <div>
+                     <h4
+                         title="">addListener
+                     </h4>
+                     <div class="summary uncapitalize">
+                     <div class="line">
+                     <code>chrome.fontSettings.onDefaultFontSizeChanged.addListener</code>(<code>function callback</code>)
+                     </div>
+                     </div>
+                     <div class="description">
+                       <h4 title="">Parameters</h4>
+                       <dl>
+                           <div>
+                             <a name="property-onDefaultFontSizeChanged-callback"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-onDefaultFontSizeChanged-callback" title="">
+                                   callback
+                                   <code class="property">
+                                     (
+                                       function
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                               </dd>
+                             </dl>
+                           </div>
+                       </dl>
+                         <p>
+                               The <em>callback</em> parameter should specify a function
+                               that looks like this:
+                         </p>
+                         <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                         <dl>
+                             <div>
+                               <a name="property-onDefaultFontSizeChanged-details"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-onDefaultFontSizeChanged-details" title="">
+                                     details
+                                     <code class="property">
+                                       (
+                                         object
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                 </dd>
+                               </dl>
+                               <dd>
+                                 <h4 title="">Properties</h4>
+                                 <dl>
+                                   <div>
+                                     <a name="property-details-pixelSize"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-pixelSize" title="">
+                                           pixelSize
+                                           <code class="property">
+                                             (
+                                               integer
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The font size in pixels.
+                                       </dd>
+                                     </dl>
+                                   </div><div>
+                                     <a name="property-details-levelOfControl"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-levelOfControl" title="">
+                                           levelOfControl
+                                           <code class="property">
+                                             (
+                                               <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The level of control this extension has over the setting.
+                                       </dd>
+                                     </dl>
+                                   </div>
+                                 </dl>
+                               </dd>
+                             </div>
+                         </dl>
+                     </div>
+                   </div>
+               </div>
+             </div>
+             <div>
+               <h3 id="event-onDefaultFixedFontSizeChanged">onDefaultFixedFontSizeChanged</h3>
+               <div class="description">
+             <p>
+                   Fired when the default fixed font size setting changes.
+                 </p>      <div>
+                     <h4
+                         title="">addListener
+                     </h4>
+                     <div class="summary uncapitalize">
+                     <div class="line">
+                     <code>chrome.fontSettings.onDefaultFixedFontSizeChanged.addListener</code>(<code>function callback</code>)
+                     </div>
+                     </div>
+                     <div class="description">
+                       <h4 title="">Parameters</h4>
+                       <dl>
+                           <div>
+                             <a name="property-onDefaultFixedFontSizeChanged-callback"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-onDefaultFixedFontSizeChanged-callback" title="">
+                                   callback
+                                   <code class="property">
+                                     (
+                                       function
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                               </dd>
+                             </dl>
+                           </div>
+                       </dl>
+                         <p>
+                               The <em>callback</em> parameter should specify a function
+                               that looks like this:
+                         </p>
+                         <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                         <dl>
+                             <div>
+                               <a name="property-onDefaultFixedFontSizeChanged-details"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-onDefaultFixedFontSizeChanged-details" title="">
+                                     details
+                                     <code class="property">
+                                       (
+                                         object
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                 </dd>
+                               </dl>
+                               <dd>
+                                 <h4 title="">Properties</h4>
+                                 <dl>
+                                   <div>
+                                     <a name="property-details-pixelSize"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-pixelSize" title="">
+                                           pixelSize
+                                           <code class="property">
+                                             (
+                                               integer
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The font size in pixels.
+                                       </dd>
+                                     </dl>
+                                   </div><div>
+                                     <a name="property-details-levelOfControl"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-levelOfControl" title="">
+                                           levelOfControl
+                                           <code class="property">
+                                             (
+                                               <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The level of control this extension has over the setting.
+                                       </dd>
+                                     </dl>
+                                   </div>
+                                 </dl>
+                               </dd>
+                             </div>
+                         </dl>
+                     </div>
+                   </div>
+               </div>
+             </div>
+             <div>
+               <h3 id="event-onMinimumFontSizeChanged">onMinimumFontSizeChanged</h3>
+               <div class="description">
+             <p>
+                   Fired when the minimum font size setting changes.
+                 </p>      <div>
+                     <h4
+                         title="">addListener
+                     </h4>
+                     <div class="summary uncapitalize">
+                     <div class="line">
+                     <code>chrome.fontSettings.onMinimumFontSizeChanged.addListener</code>(<code>function callback</code>)
+                     </div>
+                     </div>
+                     <div class="description">
+                       <h4 title="">Parameters</h4>
+                       <dl>
+                           <div>
+                             <a name="property-onMinimumFontSizeChanged-callback"></a>
+                             <dl>
+                               <dt>
+                                 <h4 id="property-onMinimumFontSizeChanged-callback" title="">
+                                   callback
+                                   <code class="property">
+                                     (
+                                       function
+                                     )
+                                   </code>
+                                 </h4>
+                               </dt>
+                               <dd>
+                               </dd>
+                             </dl>
+                           </div>
+                       </dl>
+                         <p>
+                               The <em>callback</em> parameter should specify a function
+                               that looks like this:
+                         </p>
+                         <pre>function(object details) <code class="subdued">{...}</code>;</pre>
+                         <dl>
+                             <div>
+                               <a name="property-onMinimumFontSizeChanged-details"></a>
+                               <dl>
+                                 <dt>
+                                   <h4 id="property-onMinimumFontSizeChanged-details" title="">
+                                     details
+                                     <code class="property">
+                                       (
+                                         object
+                                       )
+                                     </code>
+                                   </h4>
+                                 </dt>
+                                 <dd>
+                                 </dd>
+                               </dl>
+                               <dd>
+                                 <h4 title="">Properties</h4>
+                                 <dl>
+                                   <div>
+                                     <a name="property-details-pixelSize"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-pixelSize" title="">
+                                           pixelSize
+                                           <code class="property">
+                                             (
+                                               integer
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The font size in pixels.
+                                       </dd>
+                                     </dl>
+                                   </div><div>
+                                     <a name="property-details-levelOfControl"></a>
+                                     <dl>
+                                       <dt>
+                                         <h4 id="property-details-levelOfControl" title="">
+                                           levelOfControl
+                                           <code class="property">
+                                             (
+                                               <a href="fontSettings.html#type-LevelOfControl">LevelOfControl</a>
+                                             )
+                                           </code>
+                                         </h4>
+                                       </dt>
+                                       <dd>
+                                         The level of control this extension has over the setting.
+                                       </dd>
+                                     </dl>
+                                   </div>
+                                 </dl>
+                               </dd>
+                             </div>
+                         </dl>
+                     </div>
+                   </div>
+               </div>
+             </div>
+       </div>
+       
+          
+      </div>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/extensions/fontSettings.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

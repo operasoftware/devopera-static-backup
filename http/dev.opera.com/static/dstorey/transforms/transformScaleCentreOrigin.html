@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Simple transform scale example</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+        	h1 {
+	 			font:  18px "Helvetica Neue", arial, sans-serif;
+			}
+        	
+        	p {
+				border: 1px dashed silver;
+				padding: 0.5em;
+				border-radius: 0.5em;
+				font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+				background-color: rgb(254, 250, 218);
+				max-width: 44em;
+			}
+    	    div {
+    		    background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+            }
+            div:nth-of-type(1) {
+   		   		-o-transform: scale(2.5); -webkit-transform: scale(2.5);
+   		   		transform: scale(2.5);
+   		   		opacity: 0.5;
+   		   	}
+   		   	div:nth-of-type(2) {
+   		   		background-color: blue;
+   		   		position: relative;
+				top: -3em; /*moveup by the height of the previous div.*/
+   		   	}
+
+      </style>
+  </head>
+  <body>
+  		<h1>Simple CSS transform example using the translate scale function</h1>
+  		<p>The red <code>div</code> element below would usually be a 3em square. A <code>-o-transform: scale(2.5x);</code> scale is applied to scale the element up two and a half times, or an effective size of 7.5em.  As the scale origin is the centre point it scales to overlap this paragraph and partially off the left hand of the page. A blue <code>div</code> has been positioned at the original position to better illustrate how the element has scaled equally from the centre. An <code>opacity</code> has been added so that this text is fully visible. As the transitioned element don't interfere with the flow of the document, <code>z-index</code> can be applied, just as if it had been positioned.</p>
+  		<div></div>
+  		<div></div>
+  </body>
+</html>

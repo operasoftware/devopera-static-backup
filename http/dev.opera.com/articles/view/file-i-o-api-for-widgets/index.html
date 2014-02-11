@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>File I/O API - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>File I/O API</h1>
+      <p class="print author">By Opera Software</p>
+
+      <p>This document is the API Specification for File I/O API.</p>
+<h4>Summary</h4>
+
+<h3>File IO API</h3>
+
+<p>This API document describes the JavaScript bindings for accessing
+the local file system in Opera.</p>
+
+<h4>The basics</h4>
+
+<p>The File I/O API consists of three classes: <code>FileSystem</code>, <code>File</code> and <code>FileStream</code>.</p>
+
+<p>The <code>FileSystem</code> class is initialized as a singleton, and is available as <code>opera.io.filesystem</code>.
+This is a virtual file system. In order to actually use it, you&#39;ll need to add directories
+from your actual file system as mount points to the virtual filesystem.</p>
+
+<p>The <code>File</code> object works like similar objects in other frameworks. It can point to a directory,
+archive or regular file. It exposes properties like <code>path</code>, <code>isDirectory</code>, <code>exists</code>, 
+<code>parent</code>, etc. It also works as an array to let you access files and subdirectories in a directory.</p>
+
+<p>The <code>FileStream</code> is used when you want to read from or write to the files in the filesystem.
+It supports reading and writing text, images, binary data and Base64 text.</p>
+
+<h4>Enabling File I/O</h4>
+
+<p>In order to make the file system and its methods available, you need to add a <code>feature</code> element to your config.xml file like this:</p>
+
+<pre><code>&lt;widget&gt;
+  ...
+  &lt;feature name=&quot;http://xmlns.opera.com/fileio&quot;&gt;
+    &lt;param name=&quot;folderhint&quot; value=&quot;home&quot; /&gt;
+  &lt;/feature&gt;
+  ...
+&lt;/widget&gt;</code></pre>
+
+<p>The <code>folderhint</code> parameter is used in conjunction with the <a href="index.html#shared">shared folder</a>. If the parameter is present, the user will be presented with a file dialogue that defaults to a directory corresponding to the value of the parameter. If multiple <code>folderhint</code> parameters are present, and the implementation supports only one shared folder, the last is used. If the parameter values do not correspond to a directory, the system will use its default starting location for the file dialogue.</p>
+
+<p>If no <code>folderhint</code> parameter is present, no dialogue will be presented to the user and no shared folder will be available.</p>
+
+<p>The following folder hints are recognized:</p>
+
+<dl>
+<dt>home</dt><dd>The user&#39;s default home directory, or other appropriate directory (My documents on Windows, /home/username/ on Linux, /Users/username/ on Mac)</dd>
+<dt>pictures</dt><dd>The user&#39;s default pictures directory</dd>
+<dt>music</dt><dd>The user&#39;s default music directory, such as /home/username/Documents/My Videos on Ubuntu)</dd>
+<dt>video</dt><dd>The user&#39;s default video directory</dd>
+<dt>documents</dt><dd>The user&#39;s default documents directory ( such as /home/username/Documents on Ubuntu)</dd>
+<dt>downloads</dt><dd>If the user has a default downloads directory</dd>
+<dt>desktop</dt><dd>The desktop, where applicable.</dd>
+</dl>
+
+<p>You may compress multiple <code>param</code> elements to <code>value=&quot;home music pictures&quot;</code>.</p>
+
+<p><em>The following method is deprecated:</em> In order to make the file system and its methods available, you need to add a <code>file</code> attribute with the value <code>yes</code> to the <code>widget</code> element in the config.xml file of your widget or service.</p>
+
+<h4>Mount points</h4>
+
+<p>Instead of accessing the file system directly, this API uses a concept of mount points. In order to access 
+parts of a disk, it must first be mounted as a mount point in a virtual filesystem. There are two types of mount points:</p>
+
+<ul>
+  <li>Predefined <strong>system mount points</strong> activated by the <a href="../../../libraries/fileio/docs/opera.io.filesystem.dml.html#mountSystemDirectory">opera.io.filesystem.mountSystemDirectory()</a> method.</li>
+  <li><strong>General mount points</strong> created from anywhere on the user&#39;s disk, using the <a href="../../../libraries/fileio/docs/opera.io.filesystem.dml.html#browseForDirectory">opera.io.filesystem.browseForDirectory()</a> and <a href="../../../libraries/fileio/docs/opera.io.filesystem.dml.html#browseForFile">opera.io.filesystem.browseForFile()</a> methods.</li>
+</ul>
+
+<h5>System mountpoints: the application, storage and shared directories</h5>
+
+<p>There are three special directories you can use with the File I/O API:</p>
+
+<ul>
+  <li>The <strong>application</strong> directory, which contains the actual files in the application accessing the 
+file system. If the application is a widget, this directory will contain all the files in the widget, like config.xml, 
+index.html and others. This directory is always mounted as readonly.</li>
+  <li>The private <strong>storage</strong> directory, which can be used to save temporary files and configuration 
+information specific to the application. The files stored in this directory persist until the application is uninstalled.</li>
+  <li id="shared">The private <strong>shared</strong> directory, which can be used to share and store files. This directory is typically chosen by the user when installing the application, and is accessible to the user in the normal file system. One example of use is sharing a set of images from somewhere on the user&#39;s disk.</li>
+</ul>
+
+<p>These are not available by default and need to be mounted using the <a href="../../../libraries/fileio/docs/opera.io.filesystem.dml.html#mountSystemDirectory">opera.io.filesystem.mountSystemDirectory()</a>.
+method:</p>
+
+<pre><code>opera.io.filesystem.mountSystemDirectory(&#39;shared&#39;);
+opera.io.filesystem.mountSystemDirectory(&#39;storage&#39;,&#39;myCoolSaves&#39;);</code></pre>
+
+<p>Once mounted, they become available under in the <code>opera.io.filesystem.mountPoints</code> property.</p>
+
+<p>You may specify an optional name to mount these directories as. If not supplied, it defaults to <code>application</code>, <code>storage</code> and <code>shared</code> respectively.</p>
+
+<p>In the example above shared directory will be mounted as <code>shared</code> and have a path <code>/shared</code>,
+while storage will be mounted as <code>myCoolSaves</code> and have a path <code>/myCoolSaves</code>.</p>
+
+<p>These can then be accessed as regular mount points and through the mountpoint URL protocol as other mounted files, except that the <code>application</code> directory is mounted as read-only.</p>
+
+<p class="warning" style="color: red">WARNING: The <code>shared</code> directory will be read-write, unless the underlying 
+file system defines it to be read-only. Be careful to protect your data by controlling how data gets written to it. You 
+should supply some sort of authentication of users who access data in this folder and be careful to not leave code open to exploitation.</p>
+
+<h5>Creating your own mount points</h5>
+
+<p class="note">Note: Creating mount points with the <code>browseFor*</code> methods is not supported in Opera Unite services. It should be possible for Opera Widgets. Mounting system mount points should work in both cases.</p>
+
+<p>It is possible to create your own mount points from any directory on the user&#39;s disk, using the <a href="../../../libraries/fileio/docs/opera.io.filesystem.dml.html#browseForDirectory">opera.io.filesystem.browseForDirectory()</a>, <a href="../../../libraries/fileio/docs/opera.io.filesystem.dml.html#browseForFile">opera.io.filesystem.browseForFile()</a> and <a href="../../../libraries/fileio/docs/opera.io.filesystem.dml.html#browseForSave">opera.io.filesystem.browseForSave()</a> methods.</p>
+
+<p>These functions will open a file dialog, and let the user choose a file to share. The
+selected file is returned as an argument to a callback function. If the user cancels the
+dialog, or the selected file is somehow invalid, the callback function is called with
+null.</p>
+
+<p class="warning" style="color: red">WARNING: Once mounted, the mount point will be read-write unless the 
+underlying file system defines it to be read-only. Be careful to protect your data by controlling how data
+gets written to them. You should supply some sort of authentication of users who access these directories 
+and be careful to not leave code open to exploitation.</p>
+
+<p>The following is an example using <code>browseForDirectory()</code>, which is the most common case:</p>
+ 
+<pre><code>opera.io.filesystem.browseForDirectory( &#39;share&#39;, &#39;&#39;, processDir ); //Let the user choose a directory
+function processDir( dir )
+{
+    if ( ! dir )
+    {
+        return; //Invalid file or canceled dialog
+    }
+    opera.postError(dir.path);
+}</code></pre>
+ 
+<p>In this case, &#39;share&#39;; becomes the name of the directory in the virtual file system. The <code>processDir</code> function is called with the file the user selects.</p>
+
+<p>Mount points become available in the <code>opera.io.filesystem.mountPoints</code> property. This object is a <code>File</code> 
+object.</p>
+
+<h5>The mountpoint URL protocol</h5>
+
+<p>In some cases, you want your application to be able to reference files
+that have been mounted in the virtual file system from a Web page. You can use the mountpoint URL protocol
+for this purpose. A mountpoint URL starts with <code>mountpoint://</code>, followed by the name of a mount point
+and a path to a file under that mount point.</p>
+
+<p>For example, if a user has added a mount point, and named it <code>myImages</code> using the call:</p>
+
+<pre><code>browseForDirectory(&quot;myImages&quot;,&quot;&quot;,callback_function);</code></pre>
+
+<p>the user can access files inside the mount point by creating an absolute URI:</p>
+
+<pre><code>&lt;img src=&quot;mountpoint://myImages/avatar.png&quot;&gt;</code></pre>
+
+<h4>Paths</h4>
+
+<p>Note that the path separator is always <code>&#39;/&#39;</code>, regardless of the underlying file system.</p>
+
+<p>The <code>fileSystem.mountPoints</code> property represents the root of the file system and has the path <code>&#39;/&#39;</code>.</p>
+
+<p>A mount point mounted with the name foo has the path <code>&#39;/foo&#39;</code>.</p>
+
+<p>All files belong to only one mount point, so if a directory mounted as <code>&#39;foo&#39;</code> has a file called 
+<code>&#39;bar&#39;</code>, the path of the file is <code>&#39;/foo/bar&#39;</code>.</p>
+
+<p>Paths that begin with <code>&#39;/&#39;</code> are absolute paths, starting from the root and moving down through a 
+mount point, through any subdirectories and potentially to a file.</p>
+
+<p>You may use relative paths. Any path not starting with a &#39;/&#39; is a relative path. The &#39;.&#39; and &#39;..&#39; directory references
+are supported. Paths are relative to the current directory. If <code>file</code> is a regular file, and you call 
+<code>file.moveTo(&#39;some/path&#39;)</code> or similar methods, the path is relative to the parent directory of <code>file</code>. 
+If <code>file</code> is a directory, the path is relative to that directory.</p>
+
+<h4>Working with files</h4>
+
+<p>You obtain an initial file by adding a mount point as described earlier. From here you have two options:</p>
+
+<p>If the mount point is a directory, you can move into its content as described in the next section.</p>
+
+<p>You can use the <code>resolve()</code> method on the initial <code>File</code> object to get a reference to a File
+somewhere under the mount point. This method takes a path as an argument and will attempt to resolve it. If
+the path is valid, an <code>File</code> object is returned. Note that the file does not need to exist; the path simply needs to be a possible valid path.</p>
+
+<pre><code>var file = mp.resolve(&#39;path/to/my/file&#39;);</code></pre>
+
+<p>Note that the path separator is always &#39;/&#39;, regardless of the underlying file system.</p>
+
+<p>Some important properties of the <code>File</code> object:</p>
+
+<dl>
+<dt>exists</dt><dd>Check if the file referenced by this <code>File</code> object actually exists. Especially useful when using the <code>resolve()</code> method.</dd>
+<dt>isFile</dt><dd>If the <code>File</code> object references a regular file.</dd>
+<dt>isDirectory</dt><dd>If the <code>File</code> object references a directory.</dd>
+<dt>created</dt><dd>When the file was created.</dd>
+<dt>modified</dt><dd>When the file was last modified.</dd>
+<dt>path</dt><dd>The path to this file in the virtual file system, starting with &#39;/&#39; and the name of the mount point.</dd>
+</dl>
+
+<p>You may copy and move files by using the <code>copy</code> and <code>moveTo</code> methods:</p>
+
+<pre><code>file.copyTo(&#39;path/to/copy&#39;);
+file.moveTo(&#39;new/name/of/file&#39;);</code></pre>
+
+<p>Both methods take an optional argument <code>overwrite</code>, which will cause any existing files with the new path to be overwritten.</p>
+
+<p>To create a new directory, use the following syntax:</p>
+
+<pre><code>var file = mountPoint.createDirectory(somePath);
+var file = mountPoint.createDirectory(mountPoint.resolve(somePath));</code></pre>
+
+<p>In order to write files, you need to open a <code>FileStream</code> to the file and write to it. See the section on <a href="index.html#stream">working with streams</a>.</p>
+
+<p>To delete files or directories, use the <code>deleteFile()</code> or <code>deleteDirectory()</code> methods:</p>
+
+<pre><code>mp.deleteFile(&#39;path/to/file&#39;);
+mp.deleteDirectory(&#39;path/to/directory&#39;, true);</code></pre>
+
+<p>Both methods may take a <code>File</code> object instead of a path. The second argument is to delete content recursively</p>
+
+<h4>Working with directories</h4>
+
+<p>A <code>File</code> object made from a directory points to its subdirectories and contained files.
+The <code>File</code> object supports a <code>length</code> property and an array-like syntax to access these subfiles.
+Note that the subfiles and directories need to be &#39;refreshed&#39; before you can actually access
+them. Through this process, information about the files in the directory are loaded into the virtual
+filesystem. The method <code>refresh()</code> is used for this purpose:</p>
+
+<pre><code>dir.refresh(); //Load the contents of the directory
+for ( var i = 0, file; file = dir[i]; i++ )
+{
+    opera.postError(file.path + &#39; &#39; + file.isDirectory + &#39; &#39; file.isFile);
+}</code></pre>
+
+<p>When the file is a directory, its <code>length</code> property will tell you how many files and subdirectories there are in the directory.</p>
+
+<p>It&#39;s important to note that information about the subfiles and directories of this directory is
+<strong>not live</strong>. If files are added, moved or deleted, you need to call <code>refresh()</code> again to update
+the information in the <code>File</code> object.</p>
+
+<p>You can similarly recurse through the file structure.</p>
+
+<h4 id="stream">Reading and writing: Working with files streams</h4>
+
+<p>In order to read or write to a file, you need to make a <code>File</code> object and then open it for reading or writing 
+using the <code>open</code> method:</p>
+
+<pre><code>var stream = dir.open(&#39;newfile&#39;, opera.io.filemode.WRITE);
+stream.writeLine(&#39;hello&#39;);
+stream.close();
+stream = dir.open(&#39;newfile&#39;);
+var data = stream.readLine();
+opera.postError(data);</code></pre>
+
+<p>Using <code>opera.io.filemode.WRITE</code> will overwrite all data in the file. Use <code>opera.io.filemode.APPEND</code> to append data instead. If the file does not exist, it is immediately created when opened in either of these modes.</p>
+
+<p>The following modes are supported:</p>
+
+<dl>
+<dt>READ</dt>
+<dd>Open the file for reading. If the file doesn&#39;t exist, throw an exception.</dd>
+<dt>WRITE</dt>
+<dd>Open the file for writing. This will delete everything in the file first. If the file doesn&#39;t exist, it is created.</dd>
+<dt>APPEND</dt>
+<dd>Open the file appending. This will write data at the end of the file. If the file doesn&#39;t exist, it is created.</dd>
+<dt>UPDATE</dt>
+<dd>Open the file for reading and writing. If the file doesn&#39;t exist, throw an exception.</dd>
+</dl>
+
+<p>The modes can be combined using a bitwise OR: <code>( READ | WRITE )</code>.</p>
+
+<p>You may write characters, lines, Base64-encoded text and images to the stream, using the different <code>writeX()</code> methods of the <code>FileStream</code> object.</p>
+  
+
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-nd/2.5/" rel="license">Creative Commons Attribution, Non Commercial - No Derivs 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=232601">My Opera</a>.</p>
+  <ul>
+    <li id="comment-80742072">
+      <a href="../../../author/Victorq10.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a1/c85/b012bfb287f3b7a79b893cc406c3e9c69ba.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Victorq10.html">Victor</a></p>
+      <p class="commentdate">Friday, January 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>what is &quot;mp&quot; in code example? Where are we get it?</section>
+    </li>
+    <li id="comment-80743422">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, January 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Victor - sorry that this isn&#39;t more clearly written. I think &quot;mp&quot; is just the mount point stored in a variable. You can find more information at the Github page where the library is stored:<br/><br/><a href="https://github.com/operasoftware/unite-libraries/tree/master/fileio-api" target="_blank">https://github.com/operasoftware/unite-libraries/tree/master/fileio-api</a><br/><a href="https://github.com/operasoftware/unite-libraries/blob/master/fileio-api/file-io.js" target="_blank">https://github.com/operasoftware/unite-libraries/blob/master/fileio-api/file-io.js</a></section>
+    </li>
+    <li id="comment-82417682">
+      <a href="../../../author/webcane.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ec/fca/0fbce7f0d6e868cf2767445b36174c48206.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/webcane.html">Mikhail Niedre</a></p>
+      <p class="commentdate">Wednesday, February 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chris, Can I use html5 File API instead Opera File I/O API ?</section>
+    </li>
+    <li id="comment-82789182">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Sunday, February 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Mikhail - yes, you should be able to. And the file API is a more standardised solution for basically the same problem. I think I need to add an obsolete message to this page soon.</section>
+    </li>
+    <li id="comment-83799122">
+      <a href="../../../author/evsnm.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1b/a10/33bebc8321ff7042468cc641c5524c1b640." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/evsnm.html">Edward Simpson</a></p>
+      <p class="commentdate">Thursday, March 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>1. Do Opera Mobile 10 Widgets on Windows Mobile 6.5 support File I/O or the HTML5 File API yet?<br/>2. If so, is there an example of the above?</section>
+    </li>
+    <li id="comment-83829602">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, March 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Edward Simpson<br/><br/>No, they don&#39;t support those unfortunately. I&#39;ll try to find out if we have any plans in that area.</section>
+    </li>
+    <li id="comment-84354372">
+      <a href="../../../author/webcane.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ec/fca/0fbce7f0d6e868cf2767445b36174c48206.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/webcane.html">Mikhail Niedre</a></p>
+      <p class="commentdate">Thursday, March 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>HTML5 File API also do not supported correctly in the Opera desktops Widgets at this moment. :-(</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, May 15, 2008
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

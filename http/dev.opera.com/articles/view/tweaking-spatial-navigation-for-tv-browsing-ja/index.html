@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TV ブラウジング用に空間ナビゲーションを調整する - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in TV - RSS 2.0 Feed" href="../../../feeds/rss/articles/tv">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in TV - Atom 1.0 Feed" href="../../../feeds/atom/articles/tv">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="tv">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>TV ブラウジング用に空間ナビゲーションを調整する</h1>
+      <p class="print author">By Go Uehiro</p>
+
+      <p>TV 向けコンテンツのデザインにあたり、最大の難題の一つとなるのはナビゲーションです。ページのナビゲーションにはいくつかの異なるメソッド(方式)が存在するだけでなく、そのうちのどれも、完璧な利便性と実用性を備えているとは言い難いからです。現時点においては、ユーザーは以下のデバイスを使って、TV 上のブラウジング操作を行っていると想定できます:</p>
+
+<ul>
+    <li>十字キー付きのリモコン（キーパッド付き）</li>
+    <li>タッチパッド、または同等の入力デバイスを備えたリモコン (フルキーボード付き)</li>
+    <li>ジャイロマウス</li>
+    <li>赤外線ポインター</li>
+    <li>携帯電話やタブレットのタッチスクリーン</li>
+</ul>
+
+<p>現状では通常のリモコンによる、基本的な上下左右、および選択ボタンが圧倒的に広く使用されています。このような方向キーによるコントロールは <dfn>空間ナビゲーション</dfn> と呼ばれ、TV 上での優れたユーザー体験の実現に当たり、正しい理解が不可欠となります。これはキーバッドを利用した携帯電話や、Amazon の Kindle のような非タッチ型デバイスにおけるナビゲージョンメソッドにも適用できます。</p>
+
+<h2>空間ナビゲージョンのテスト</h2>
+
+<p>空間ナビゲージョンは TV または同様のコネクティッドデバイス上のブラウザだけでなく、 Opera の他のプラットフォーム上でも利用できます。それで開発者はデスクトップマシンを使って、簡単に空間ナビゲーションのテストが行えます:</p>
+
+<ul>
+    <li><a href="http://www.opera.com/browser/">Opera デスクトップブラウザ</a>では、<kbd>Shift</kbd> ボタンを押したまま矢印キーを押すことで空間ナビゲージョンの動作となります。</li>
+    <li><a href="http://www.opera.com/developer/tools/mobile/">Opera Mobile エミュレーター</a>では、起動時の設定にて <i>Keypad</i> を選択してください。</li>
+</ul>
+
+<p>いくつかのサイトを空間ナビゲーションだけを使ってブラウジングしてみることは、この機能を理解する上で、優れたエクササイズとなるでしょう。ナビゲーションが全く不可能というわけではないものの、カーソルが要素間をランダムに移動する状況は、ユーザーにフラストレーションを感じさせることになります。テレビでは、さらにユーザーがフラストレーションを感じる要素として、赤外線によるリモコンと TV 間の通信があります。リモコンのボタンを押してから、スクリーンのカーソルが実際に動くまでに、ユーザーが認知可能な程 (最大 0.5 秒程度) の遅延が生じます。結果として時間の消費という観点から見ると、ユーザーの操作ミスや意図しないカーソルの動きが、非常にインパクトを与えるものになります。幸いにも CSS3 を使うことで、これらの問題の多くを軽減することができます。</p>
+
+<h2>CSS3 を使ってナビゲーションを操作する</h2>
+
+<p>フォーカス移動の方向を規定した仕様 <a href="http://www.w3.org/TR/css3-ui/#nav-dir">CSS3 Basic User Interface</a> は解説、実装方法の両面において非常に簡潔になっています。これは Web 製作者が、ユーザーが方向キーを押した際にどの要素にフォーカスをあてるべきかを指定するために規定されています。たとえば、ユーザーがあなたのページの下部にある著作権情報 (Copyright) にフォーカスしていて、 下矢印キーを押した場合、ページ上部にあるロゴにフォーカスを移動するといったことが可能になります。実際の CSS コードは以下のようになります:</p>
+
+<pre><code>
+/* CSS */
+#copyright {
+    nav-down: #logo;
+}
+</code></pre>
+
+<p>これはどの CSS セレクタにも適用可能ですが、プロパティーの値は要素の <code>ID</code> (例: 先頭に # )である必要があります。簡単に予想できることですが、利用可能な他のプロパティー名は <code>nav-up</code>, <code>nav-left</code> and <code>nav-right</code> です。ご覧の通り、これは実装に当たり非常に明快な拡張であり、デスクトップやタッチスクリーン環境には全く影響を与えずに、十字キーによるナビゲーションを行うユーザーに対して、ユーザー体験を格段に向上させることができます。ユーザーを酷く驚かせてしまうことを避けるために、公開前に動作を完全にテストするようにしましょう。</p>
+
+<h2>例</h2>
+
+<p>ここに <a href="http://people.opera.com/danield/css3/navdir/">CSS と空間ナビゲージョンの例</a>があります。ページ内には、同じ内容の写真グループが二つあります - 右、左キーを使って写真間の移動をお試しください。初めのグループはブラウザの空間ナビゲージョンのアルゴリズムを利用している一方、2番目のグループは CSS ナビゲーションを利用しており、ユーザーが写真間を簡単にスクロールできるように設計されています。</p>
+
+<h2>結論</h2>
+
+<p>シンプルな方向キーの持つデバイスでは特に、単純な &#39;次の / 前のリンクへジャンプする&#39; というナビゲーションのアプローチよりも、空間ナビゲーションがより自然な方式であるといえます。これに CSS の機能を追加することで、開発者はどの要素がフォーカスを受けるべきかの順番を細かく調整することができます。</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/tagawa.html" rel="author">Daniel Davis</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/ysg.html" rel="author">Go Uehiro</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, June 4, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/css3.html" rel="tag">css3</a></li>
+        <li><a href="../../tags/devices.html" rel="tag">devices</a></li>
+        <li><a href="../../tags/tv.html" rel="tag">tv</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../tweaking-spatial-navigation-for-tv-browsing/index.html">English</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

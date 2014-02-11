@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events">
+<head>
+  <title>Example 3: Drink dispenser</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="drinkform">
+    <field name="drink">
+      <prompt>Would you like coffee, tea, or milk?</prompt>
+      <grammar><![CDATA[
+        #JSGF V1.0;
+        grammar drinks;
+        public <drinks> = coffee | tea | milk ;]]>
+      </grammar>
+	  <nomatch>I didn't quite catch that. </nomatch>
+	<filled>Sorry, I'm out of <value expr="drink"/>.</filled>  
+     </field>     
+  </form>
+</head>
+<body ev:event="load" ev:handler="#drinkform">
+<h1>Example 3: Drink dispenser</h1>
+<p>Our drink dispenser can offer you a wide choice of refreshing drinks!</p>
+</body>
+</html>

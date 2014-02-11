@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Native CSS feature detection via the @supports rule - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Native CSS feature detection via the @supports rule</h1>
+      <p class="print author">By Chris Mills</p>
+
+        <h2>Introduction</h2>
+  
+  <p>With browsers of varying degrees of standards support still in use for browsing the Web (from decent modern browsers, to old rustbuckets like IE6), we are pretty comfortable with the idea of sending different code to different browsers to provide different-but-still-acceptable user experiences. This is done in a variety of ways, but generally it relies on the rather error-prone browser detection, or the cleverer and more robust feature detection.</p>
+  
+  <p>Feature detection is normally done by writing your own JavaScript to test if a fundamental property, method, etc. of the feature you are detecting exists or can be used, or by using a 3rd party feature detection library, such as the excellent <a href="http://www.modernizr.com">Modernizr</a>. Modernizr provides feature tests and mechanisms for selectively applying CSS and JavaScript based on the results of those tests, for a whole host of different HTML5 and CSS3 features.</p>
+  	
+  <p>This is really useful, but many people have asked if we are going to see native mechanisms for doing such feature tests. The good news is that we are already starting to do so! This article looks at the CSS <code>@supports</code> rule, part of the <a href="http://www.w3.org/TR/css3-conditional/#at-supports">CSS3 Conditional Rules Module Level 3</a>, which provides a perfect mechanism for selectively applying CSS based on feature support. Here we&#39;ll look at basic syntax, along with an applied example.</p>	
+
+<p class="note">Note: <code>@supports</code> can currently be seen working across Opera 12.10 and Firefox Aurora; browsers that don&#39;t support <code>@supports</code> will just ignore the code inside those blocks completely. This means that it has some useful applications already, but if it doesn&#39;t suit your situation, you can stick to Modernizr for now.</p>
+
+<h2>@supports syntax</h2>
+
+<p><code>@supports</code> takes the form of an at-rule block, which performs a test and then executes normal CSS rules placed inside the block depending on whether the test returns true or not. In this case, the test is always one or more CSS declarations, and the browser returns true if it supports the indicated declaration(s). For example:</p>
+
+<pre><code>@supports (display:flex) {
+  section { display: flex }
+  ...
+}</code></pre>
+
+<p>The rules inside this block will be applied if the browser supports <code>display: flex</code>.</p>
+
+<p><code>@supports</code> also provides a <code>not</code> keyword for applying styles when features are not supported. You could provide some specific alternative styling for browsers that don&#39;t support <code>display:flex</code> like this:</p>
+
+<pre><code>@supports not (display: flex) {
+  // provide alternative layout
+  // with floats perhaps
+}</code></pre>
+
+<p><code>@supports</code> also provides <code>or</code> and <code>and</code> keywords, for applying styles only if the browser passes two or more specific support tests, or if the browser passes one of a number of different support tests.</p>
+
+<p>For example, Flexbox is only supported without prefixes in Opera (Mobile and Next) and IE10 preview. To test if the browser supports any of the necessary prefixed versions or the non-prefixed version, you could do this:</p>
+
+<pre><code>@supports (display: -webkit-flex) or
+          (display: -moz-flex) or
+          (display: flex) {
+  section {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    …
+  }           
+}</code></pre>
+
+<p>For an <code>and</code> example, you might want to apply a multi-column layout and associated rules only when the unprefixed version of the <code>column-width</code> and <code>column-span</code> properties are supported, as browsers that support multi-col with prefixes currently don&#39;t support <code>column-span</code>, which limits its usefulness:</p>
+
+<pre><code>@supports (column-width: 20rem) and (column-span: all) {
+  div { column-width: 20rem }    
+  div h2 { column-span: all }
+  div h2 + p { margin-top: 0; }
+  ...
+}</code></pre>
+
+<p>The last thing to note about <code>@supports</code> syntax is that you are not allowed to mix <code>and</code>, <code>or</code> and <code>not</code> without using a layer of parentheses to make the precedence clear. So for example you might want to apply an animation involving a 3D transform to an element, ONLY if the browser supports both the animation and 3D transform:</p>
+
+<pre><code>@supports ((-webkit-animation-name: my-animation) and (-webkit-transform: rotate3D(1,2,4,90deg))) or
+          ((-moz-animation-name: my-animation) and (-moz-transform: rotate3D(1,2,4,90deg))) or
+          ((-ms-animation-name: my-animation) and (-ms-transform: rotate3D(1,2,4,90deg))) or
+          ((-o-animation-name: my-animation) and (-o-transform: rotate3D(1,2,4,90deg))) or
+          ((animation-name: my-animation) and (transform: rotate3D(1,2,4,90deg))) {
+  // add your funky animation here!
+}</code></pre>
+
+<h2>A @supports example</h2>
+
+<p>To demonstrate a real world usage of <code>@supports</code>, I&#39;m going to rewrite an example I first wrote for my book (<a href="http://my.opera.com/chrismills/blog/2012/07/12/practical-css3-my-book-is-finally-published">Practical CSS3: develop and design</a>) — a simple 3D rotating card flipper example that uses Modernizr to provide an alternative experience to browsers that don&#39;t support 3D transforms (like Opera, at the time of writing; we&#39;ve got it in the pipeline!) or 2D transforms (I just apply a lot of left padding to the front of the card on hover to show the back.) You can <a href="../../../static/articles/2012/supports/example-with-modernizr/two-faced-cheek-modernizr.html">view the Modernizr card flipper example running live</a>, and see the difference between the experience for different support levels in Figures 1-3.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/10692/css-supports-rule_3d-transform.jpg" alt="A business card created using CSS3. In browsers that do support 3D transforms the card flips over with a nice animation" /></p>
+<p class="caption">Figure 1: In browsers that do support 3D transforms the card flips over with a nice animation.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/10692/css-supports-rule_2d-transform.jpg" alt="A business card created using CSS3. In browsers that don&#39;t support 3D transforms but do support 2D transforms, the front of the card moves over with a nice animation to reveal the back" /></p>
+<p class="caption">Figure 2: In browsers that don&#39;t support 3D transforms but do support 2D transforms, the front of the card moves over with a nice animation to reveal the back.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/10692/css-supports-rule_basic-move.jpg" alt="A business card created using CSS3. In browsers that don&#39;t support 3D or 2D transforms the front of the card just moves to show the back with no animation" /></p>
+<p class="caption">Figure 3: In browsers that don&#39;t support 3D or 2D transforms, the front of the card just moves to show the back with no animation.</p>
+
+<p>In my Modernizr example, I am working backwards, providing fallback code for browsers that don&#39;t support 3D transforms, then providing a really basic experience for browsers that don&#39;t support 2D transforms either. In the @supports example, I work the other way around with more of progressive enhancement approach, first providing a really basic experience to show both sides of the business card that works in pretty much all browsers:</p>
+
+<pre><code>/* || For browsers that don&#39;t support 2D or 3D transforms */
+
+#wrapper:hover #inner-wrapper #front, #wrapper:focus #inner-wrapper #front {
+  margin-left: -350px;
+}</code></pre>
+
+<p>Older browsers will just get to here, and then ignore everything inside the <code>@supports</code> rules.</p> 
+
+<p>Then we have a set of rules for browsers supporting 2D transforms:</p>
+      
+<pre><code>/* || For browsers supporting 2D transforms */
+      
+@supports (-webkit-transform: rotate(-30deg)) or
+          (-moz-transform: rotate(-30deg)) or
+          (-ms-transform: rotate(-30deg)) or
+          (-o-transform: rotate(-30deg)) or
+          (transform: rotate(-30deg)) {
+                               
+                
+  #inner-wrapper #front {
+    -webkit-transition: 0.8s all ease-in;
+    -moz-transition: 0.8s all ease-in;
+    -ms-transition: 0.8s all ease-in;
+    -o-transition: 0.8s all ease-in;
+    transition: 0.8s all ease-in;
+  }
+      
+  #wrapper:hover #inner-wrapper #front, #wrapper:focus #inner-wrapper #front {
+    margin-left: 0;
+          
+    -webkit-transform: rotate(-30deg) translate(-50%,-100%);
+    -moz-transform: rotate(-30deg) translate(-50%,-100%);
+    -ms-transform: rotate(-30deg) translate(-50%,-100%);
+    -o-transform: rotate(-30deg) translate(-50%,-100%);
+    transform: rotate(-30deg) translate(-50%,-100%);
+  }
+  
+}</code></pre>   
+
+<p>and finally, a set of rules for browsers supporting 3D transforms:</p>
+
+<pre><code>/* || For browsers supporting 3D transforms */
+      
+@supports (-webkit-transform: rotateX(0deg)) or
+          (-moz-transform: rotateX(0deg)) or
+          (-ms-transform: rotateX(0deg)) or
+          (-o-transform: rotateX(0deg)) or
+          (transform: rotateX(0deg)) {
+      
+  #front, #back {        
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+      
+  #front {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);        
+  }
+      
+  #back {
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+      
+  #wrapper:hover #inner-wrapper, #wrapper:focus #inner-wrapper {
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+  
+  #wrapper:hover #inner-wrapper #front, #wrapper:focus #inner-wrapper #front {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+  }
+      
+}</code></pre>
+
+<p><a href="../../../static/articles/2012/supports/example-with-supports/two-faced-cheek-supports.html">See the @supports card flipper example running live</a>.</p>
+
+<h2>window.supportsCSS();</h2>
+
+<p>Opera 12.10 is currently the only browser to support <code>@supports</code>&#39; corresponding JavaScript API, which allows you to run code conditionally depending on whether the browser supports a given CSS feature. For example, here&#39;s my initial simple example rewritten for JavaScript:</p>
+
+<pre><code>var flexy = window.supportsCSS(&#39;display:flex&#39;);
+
+if(flexy) {
+  alert(&#39;I support Flexbox!&#39;);
+}</code></pre>
+
+<p class="note">In the spec, you&#39;ll see that the syntax is listed as <code>CSS.supports</code>, not <code>window.supportsCSS</code>. This is because we implemented a slightly older version of the spec, plus we were worried about the site compatibility implications of an object called <code>CSS</code> in the global namespace. What is eventually settled upon remains to be seen.</p>
+
+<h2>Summary</h2>
+
+<p>And so draws to a close our study of <code>@supports</code>! This feature is really interesting, as you can be so precise with the feature detection and CSS delivery you are implementing. One problem is of course, the fact that older browsers you will want to deliver alternative styling to won&#39;t support <code>@supports</code>, but it still has uses now. In any case, we hope the was a useful exploration, and we expect this feature to become a lot more useful in the future. Let us know what you think of the idea, by giving your feedback on the comments of this article, or on the <a href="http://lists.w3.org/Archives/Public/www-style/">www-style</a> list.</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-99907922">
+      <a href="../../../author/ninjatux2k.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a9/1d0/9bc186256ce7d11dbabdc4bc704f2023fc9." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ninjatux2k.html">ninjatux2k</a></p>
+      <p class="commentdate">Wednesday, November 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Personally I think this could be very useful. Just write down you css starting from the minimal feature/layout requirement and add things depending on browser&#39;s support!<br/>Really cool, I wasn&#39;t aware of this</section>
+    </li>
+    <li id="comment-99908452">
+      <a href="../../../author/dahulevogyre.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/98/3d0/8e77be4753ce0843afcef2af48c4407e21d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dahulevogyre.html">dahulevogyre</a></p>
+      <p class="commentdate">Wednesday, November 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Will browsers that don&#39;t support the @support syntax actually ignore or try to apply the code inside the curly brackets ?<br/><br/>If they ignore it, you should state it in your introduction note, imo. Because, if so, I can start using @support now. Current browsers (other than Opera) will just render things as if they don&#39;t support the features I test. It may be perfectly fine for my uses cases. (ie. if I only test for features that are only in Opera; or if I&#39;m ok with providing the basic version to other UAs, and thus put pressure on their developers)<br/><br/>The note makes me think it&#39;s not a backward compatible syntax.</section>
+    </li>
+    <li id="comment-99910052">
+      <a href="../../../author/POWRSURG.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/20/e18/a08203106a934f650c8510521bd99da87de." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/POWRSURG.html">POWRSURG</a></p>
+      <p class="commentdate">Wednesday, November 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Can &quot;not&quot; come after an &quot;or&quot; or an &quot;and&quot; keyword?</section>
+    </li>
+    <li id="comment-99921672">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, November 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@dahulevogyre good point - non-supporting browsers ignore @supports blocks. I have updated the wording to reflect this better.<br/><br/>@POWRSURG Good question - I&#39;ve not tested that! Have you tried it? I can do a test later this week, when I get the chance.</section>
+    </li>
+    <li id="comment-99948442">
+      <a href="../../../author/ahmadalfy.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d7/d21/b1369600e00a792abb1f0e20ec0091b7c11.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ahmadalfy.html">Ahmad Alfy</a></p>
+      <p class="commentdate">Thursday, November 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Once again, Opera leaps above other browsers with early support for this feature.<br/><br/>Gotta test that :D</section>
+    </li>
+    <li id="comment-99969922">
+      <a href="../../../author/POWRSURG.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/20/e18/a08203106a934f650c8510521bd99da87de." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/POWRSURG.html">POWRSURG</a></p>
+      <p class="commentdate">Thursday, November 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Nope, hadn&#39;t tried it. Hadn&#39;t heard about this until this article ... really wish this was implemented when CSS was first created. Would have made life much easier. </section>
+    </li>
+    <li id="comment-100192272">
+      <a href="../../../author/antarticonorte.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/27/05f/50dc97f9025aa608f9ea8847300ffcd6c8a." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/antarticonorte.html">Alex Fernández</a></p>
+      <p class="commentdate">Tuesday, November 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I tried to use the javascript API but it seems the syntax in the example is incorrect. The function window.supportsCSS needs two parameters instead of one, being the second one the value of the CSS property.<br/><br/>I made a quick jsfiddle to test it <a href="http://jsfiddle.net/DSdsz/" target="_blank">http://jsfiddle.net/DSdsz/</a></section>
+    </li>
+    <li id="comment-101705512">
+      <a href="../../../author/fearphage.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/88/970/2538f5c54146c1e4fedd79af5a3f1405518.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/fearphage.html">MyOpera team, please fix this!</a></p>
+      <p class="commentdate">Friday, December 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Mozilla just added a similar (although differently named) JS API: <pre>CSS.supports(...)</pre><br/><br/><a href="https://plus.google.com/115203843155141445032/posts/eZWWfoCfg1v" target="_blank">https://plus.google.com/115203843155141445032/posts/eZWWfoCfg1v</a></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, November 21, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/@supports.html" rel="tag">@supports</a></li>
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/feature&#32;detection.html" rel="tag">feature detection</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

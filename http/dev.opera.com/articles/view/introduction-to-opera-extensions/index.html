@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting started with Opera extensions - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Getting started with Opera extensions</h1>
+      <p class="print author">By Andreas Bovens</p>
+
+      <p class="note">DEPRECATED: This article is deprecated. We recommend using our <a href="../../../addons/extensions/index.html">quick documentation overview</a> instead.</p>
+
+<h2 id="intro">Intro</h2>
+
+<p>Opera 11 comes with a standards-based framework for running extensions that add extra functionality to the browser. This extensions framework is built on existing standards, with W3C Widgets and JavaScript as the basis. This means that if you can write a web application or widget you already have the skills you need to write extensions. They also make use of HTML5 technology such as <a href="http://dev.w3.org/html5/postmsg/">cross-document messaging</a>, and of course, you can use CSS as well.</p>
+
+<p>To get you started, we&#39;ve prepared API reference guides, as well as a number of articles and tutorials. There is a <a href="../opera-extensions-quick-documentation-overview/index.html">quick documentation overview</a> if you want to have a structured, <abbr title="Table of Contents">TOC</abbr>-like outline of what is available. This article covers the same documentation pointers, but in a more contextualized fashion.</p>
+
+<p>If you have any questions, feel free to ask them on our <a href="../../../../my.opera.com/community/forums/forum.dml%3Fid=42202.html">Opera extensions development forum</a>.</p>
+
+<h2 id="gettingstarted">Getting started</h2>
+
+<p>If you want to have a peek inside an Opera extension and start playing around with some code, we recommend starting with our introductory <a href="../whats-in-an-opera-extension/index.html">What&#39;s in an Opera extension?</a> article, and then continue with the <a href="../opera-extensions-hello-world/index.html">Hello World</a> one, in which you learn how to make a simple extension.</p>
+<p>Also be sure to have a look at the <a href="../opera-extensions-developer-workflow/index.html">developer workflow article</a>, so you can make optimal use of the developer features we&#39;ve included for your convenience.</p>
+
+<h2 id="apiguides">API guides</h2>
+
+<p>Apart from the standard web technologies Opera extensions are built on, there are also a number of unique APIs that come into play. These APIs allow programmers to talk to the browser and control browser functionality such as tabs and windows. We have made our extensions APIs as straightforward as possible, so that developers can pick them up quickly and easily.</p>
+ 
+<p>Opera extension APIs exist in the <code>opera.extensions</code> namespace. <code>opera.extensions</code> is a global object which most API modules are built upon. For example, if you want to initialize the <code>tabs</code> object, you will write <code>opera.extensions.tabs</code>.</p>
+
+<p>As a starting point, we recommend having a look at the <a href="../opera-extensions-quick-documentation-overview/index.html#apireference">Opera Extensions API guides</a> page. You can then further dig down and inspect the guides to <a href="../extensions-api-messaging/index.html">Messaging</a>, the <a href="../extensions-api-browser-toolbar/index.html">Browser Toolbar</a>, <a href="../extensions-api-config-xml/index.html">config.xml elements and attributes</a>, <a href="../extensions-api-injected-scripts/index.html">Injected Scripts</a>, <a href="../extensions-api-popup/index.html">Popups</a>, <a href="../extensions-api-speeddial/index.html">Speed Dial</a>, <a href="http://www.opera.com/docs/apis/extensions/windowsandtabsguide/">Windows and Tabs</a> and the <a href="../extensions-api-urlfilter/index.html">URL Filter API</a>.</p>
+
+
+<h2 id="apitutorials">API and packaging tutorials</h2>
+
+<p>We have also created a few tutorials to go with the API guides mentioned above. They cover config.xml, User Interface, Tabs, Windows, Messaging, the Options page and the URL Filter API.</p>
+ 
+<ul>
+<li><a href="../config-xml-howto/index.html">The ins and outs of config.xml</a>: In this article we build up a complete configuration document, showing step by step what all the different elements and attributes do.</li>
+<li><a href="../opera-extensions-buttons-badges-and-popups/index.html">Buttons, badges and popups</a>: This article introduces the <code>ToolbarContext</code>, <code>ToolbarUIItem</code>, <code>ToolbarUIItemProperties</code>, <code>Popup</code> and <code>Badge</code> objects: you will learn more about creating UI for toolbars, including tooltips, icons and more.</li>
+<li><a href="../opera-extensions-tabs/index.html">Tabs</a>: This article introduces the <code>tabs</code> object and explains how you can manipulate tabs.</li>
+<li><a href="../opera-extensions-windows/index.html">Windows</a>: This article introduces the <code>windows</code> object and explains how to manipulate windows.</li>
+<li><a href="../opera-extensions-messaging/index.html">Messaging</a>: This article introduces <code>opera.extensions</code>&#39; <code>postMessage</code> method and the <code>onconnect</code> and <code>onmessage handlers</code>. You will learn how to send messages between scripts and popups.</li>
+<li><a href="../opera-extensions-options-page/index.html">Options page</a>: This article explains how you can create a nicely integrated preferences page for your extension, and includes a template which you can use in your own extension.</li>
+<li><a href="../site-blocking-with-operas-url-filter-api/index.html">Site blocking with Opera’s URL Filter API</a>: Opera&#39;s URL Filter API allows you to easily implement features in extensions that restrict access to certain domains, on a temporary or permanent basis. This article explains the concept, syntax basics and how to build a simple extension using this API.</li>
+<li><a href="../accessing-an-opera-extensions-background-process/index.html">Accessing an Opera extension&#39;s background process</a>: This article explains how to make optimal use of the bgProcess object, allowing you to avoid messaging in many cases.</li>
+</ul>
+
+<h2 id="tutorialstemplates">Extension building tutorials and templates</h2>
+
+<p>Once you&#39;re somewhat familiar with the basic structure and different APIs, it&#39;s time to have a look at some hands-on tutorials and templates.</p>
+<ul>
+	<li><a href="../hands-on-building-an-opera-extension/index.html">Hands-on tutorial: building an Opera extension</a>: this tutorial shows how to add extra functionality to a page with JavaScript.</li>
+	<li><a href="../opera-extensions-prototypes-modifying-css/index.html">Opera extensions prototypes for modifying CSS</a>: this article introduces three Opera extension templates, which you can use to build your own Opera extension that modifies a page&#39;s CSS.</li>
+	<li><a href="../opera-extension-code-examples/index.html">Opera extension code examples</a>: this article introduces a number of code snippets for basic extension functionality.</li>
+	<li><a href="../converting-userjs-to-extensions/index.html">Converting UserJS to Opera extensions</a>: this article teaches you how to convert an existing Opera UserJS into an Opera extension.</li>
+	<li><a href="../creating-opera-speed-dial-extensions/index.html">Creating Opera Speed Dial extensions</a>: this article covers all the things you need to know for creating Speed Dial extensions.</li>
+	<li><a href="../creating-multilingual-extensions/index.html">Creating multilingual extensions</a>: this article explains how you can make optimal use of the extension packaging format&#39;s built-in mechanisms for providing multilingual versions of an extensions.</li>
+</ul>
+
+<h2 id="uiguidelines">UI guidelines and distribution</h2>
+<ul>
+	<li><a href="https://addons.opera.com/developer/guidelines/">Publishing guidelines</a>: This guide explains how to make sure your extension is of high quality and shines, so as to get it published on the <a href="https://addons.opera.com/addons/extensions/">Opera extensions catalog</a>.</li>
+	<li><a href="../distributing-opera-extensions-and-auto-updates/index.html">Distributing Opera extensions and auto-updates</a>: This article talks about methods of distributing your Opera extensions, covering the Opera extensions catalog, MIME type settings if you distribute on your own, and the auto-update mechanism.</li>
+</ul>
+
+
+
+      <section id="author-info">
+        <h1><a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></h1>
+        <a href="../../../author/andreasbovens.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/c0/c93/83b9a906e6ee77ac0410e7056fbe0013388.jpg" alt=""/></a>
+        <p>Andreas is based in Oslo, where he works for Opera Software as Extensions Product Manager + Developer Relations.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=776312">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, October 21, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/API.html" rel="tag">API</a></li>
+        <li><a href="../../tags/articles.html" rel="tag">articles</a></li>
+        <li><a href="../../tags/builds.html" rel="tag">builds</a></li>
+        <li><a href="../../tags/deprecated.html" rel="tag">deprecated</a></li>
+        <li><a href="../../tags/documentation.html" rel="tag">documentation</a></li>
+        <li><a href="../../tags/download.html" rel="tag">download</a></li>
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/opera&#32;extensions.html" rel="tag">opera extensions</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../getting-started-with-opera-extensions-ja/index.html">Japanese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>getUserMedia: accessing the camera and privacy UI - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>getUserMedia: accessing the camera and privacy UI</h1>
+      <p class="print author">By Bruce Lawson</p>
+
+      <p>In 2011, one of the most discussed aspects of HTML5 was whether web applications would &quot;kill&quot; native apps that are written for specific devices in platform-dependent languages. Two years ago, access to a device&#39;s Global Positioning System was only possible through native code; now, it&#39;s trivially easy to access via a Web app using the W3C Geolocation API.</p>
+<p>Opera co-chaired the Geolocation Working Group, and today we&#39;re advancing the Web further towards feature-parity with native applications. We&#39;re not there yet, but we&#39;re getting closer.</p>  
+<p>We were the first browser to   give developers JavaScript access to a device&#39;s media capture facilities on Android, and then on desktop. This latest desktop build adds a privacy UI.</p>
+<p><a href="http://dev.w3.org/2011/webrtc/editor/getusermedia.html"><code>getUserMedia</code></a> began life as the <code>&lt;device&gt;</code> element in the HTML5 specification. It was renamed, and then rehoused with the W3C WebRTC Working Group. The spec allows access to camera and microphone, but this build accesses camera alone.</p>
+<h2>Accessing the API</h2>
+<p><code>navigator.getUserMedia</code> requires two arguments, and optionally a third. The first argument tells the device which media you require access to, and is passed as a JavaScript object. So, if you only require access to the microphone, the first argument would be <code>{audio: true}</code>; for video-chatting, you would use <code>{audio: true, video: true}</code>.</p>
+<p>Which camera is used is left to the device: &quot;User agents are encouraged to default to using the user&#39;s primary or system default camera and/or microphone (as appropriate) to generate the media stream.&quot; </p>
+
+<p>Devices with more than one camera generally have  a mechanism that allow the user to choose which one is used, so this gives the user control. Note also that the spec says &quot;User agents may allow users to use any media source, including pre-recorded media files.&quot;</p>
+<p>The second argument is the <b>success callback</b> - the code to be executed assuming that the user allows access and the device supports your request. </p>
+<p>There is an optional third argument. This is the <b>failure callback</b> - the code to be executed if something went wrong. It&#39;s optional, but only optional in the same way as washing your hands before you eat is optional: if you don&#39;t do it, you leave yourself open to all sorts of bugs and your mum will shout at you.</p>
+<p>Of course, it&#39;s important to do feature detection before making an API call to ensure that the browser and device are capable, but even if feature detection is passed, there is still much that can cause failure: the user could deny permission; the user (or device) could turn off the camera via a hardware switch, for example.</p>
+<p>So here&#39;s how we recommend you use the API:</p>
+<pre>
+<code>navigator.getUserMedia({audio: true, video: true}, success, error);
+
+ function success(stream) {
+  // ... use &#39;stream&#39; ...
+  }
+ 
+  function error(){
+  //display fallback content
+  }
+</code>
+</pre>
+ 
+<h3>Changes from previous versions</h3>
+<p>Older Opera.Labs getUserMedia implementations used an earlier version of the specification, in which the options were passed as a string rather than a JavaScript object. This Labs build supports the older version and the new version. We plan to remove support for the older syntax.</p>
+
+<h2>User Experience</h2>
+<p>Allowing a website access to the camera and microphone has obvious privacy implications. The <a href="http://dev.w3.org/geo/api/spec-source.html#security">Geolocation specification</a> requires that the user be informed which domain name is requesting access (because it may be in an iframe and therefore not corresponding with the address bar that a user can see). </p>
+<p>The getUserMedia specification currently has nothing to say on this matter, but we are experimenting with a UI that will easily allow the user to see all permissions she has granted a particular site at once (camera, microphone, geolocation etc), as well as its security record. </p>
+<p>Assume that you&#39;ve come to a site that wants media access. You&#39;ll see a notification callout, pointing to the address bar badge next  next to the URL, which tells you that the site is asking for camera access and asking you to confirm or deny. </p>
+<p><img src="../../../../devfiles.myopera.com/articles/8202/gum1c.gif" alt="notification callout" width="340" height="212" /></p>
+<p class="caption">Figure 1: Notification callout when a site requires access to your camera</p>
+<p>Information about the site&#39;s security record is provided by Netcraft and Phishtank. As with current desktop versions of Opera, clicking on the badge provides information about a site, and choosing &quot;details&quot; from the dialogue allows you to report a site for phishing or fraud.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/8202/gum2c.gif" alt="review and amend permissions" width="331" height="296" /></p>
+<p class="caption">Figure 2: The site&#39;s security information. &quot;Details&quot; allows you to report phishing etc</p>
+<p>New in this Labs build is a second tab, with a tickmark. This is where you can  review and amend all the permissions you have granted a site. </p>
+<p> Here&#39;s an example of a site that I&#39;ve granted both camera and Geolocation access to.</p>
+<p><img src="../../../../devfiles.myopera.com/articles/8202/gum3c.gif" alt="multiple permissions" width="421" height="353" /></p><p class="caption">Figure 3: Permissions you&#39;ve granted the current site, with chance to amend them</p>
+<p>If a site iframes content from another URL which requests access, you&#39;ll also be alerted to that. Please note that we&#39;re continually trying to improve this UI. We&#39;re interested in any feedback you have about this.</p>
+
+<h2>Show me the demos!</h2>
+<p>So that&#39;s the theory. What can we do with this new facility? We&#39;ve enjoyed copying video into <code>&lt;canvas&gt;</code>, then manipulating the pixel data with JavaScript:</p>
+<ul>
+<li><a href="http://people.opera.com/brucel/articles/magic-html5-moustache.html">Magical HTML5 Moustache</a> by Richard Tibbett (the &quot;<a href="http://www.wired.com/thisdayintech/2011/03/0310bell-invents-telephone-mr-watson-come-here/">Mr. Watson, come here</a>&quot; of getUserMedia demos)</li>
+<li><a href="http://people.opera.com/danield/html5/explode/">Exploding camera demo</a> (and <a href="../playing-with-html5-video-and-getusermedia-support/index.html">how-it-works tutorial</a>)</li>
+<li>Relive yesteryear with Daniel&#39;s <a href="http://people.opera.com/danield/webapps/instant-camera/">Webaroid Instant Camera</a> that doesn&#39;t need to be <a href="http://www.reddit.com/r/IAmA/comments/l63y6/iama_polaroid_expert_polaroid_camera_collector_ama/c2q3ao5">put under your armpit</a> to develop</li>
+<li><a href="http://people.opera.com/shwetankd/external/demos/rlcp/rlcolorpicker.htm">Real Life Colour Picker</a></li>
+<li><a href="http://people.opera.com/shwetankd/external/demos/warholiser/warholiser.htm">Warholiser</a></li>
+<li><a href="http://miketaylr.com/photobooth/">Online Photo Booth</a></li>
+</ul>
+
+<h2>Now you show us yours!</h2>
+<p>This is where you take over. We&#39;d love to see what you make with getUserMedia. Please let us know in the comments or tweet us at <a href="http://twitter.com/odevrel">@odevrel</a>.</p>
+
+<h2>What&#39;s next?</h2>
+<p>Of course, Webaroids and magic moustaches are fun, but unlikely to change the face of the Web. However, getUserMedia is part of a wider  spec called <a href="http://www.w3.org/TR/webrtc/">WebRTC 1.0 Real-time Communication Between Browsers</a> which includes a Peer-to-Peer API. The goal is  in-browser video conferencing and is an initiative begun by Google and supported by Mozilla and Opera - read more at the <a href="http://www.webrtc.org/blog">WebRTC blog</a>.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/BSD/" rel="license">Creative Commons BSD License</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-79566562">
+      <a href="../../../author/paulneave.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/18/097/54028d2f9afa6997cb1d1c52daf03d31e4f.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/paulneave.html">Paul Neave</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I&#39;m working on an HTML5 version of my Flash-based Webcam Toy app. It uses WebGL shaders + getUserMedia. Latest demo available here: <a href="http://neave.com/webcam/html5/" target="_blank">http://neave.com/webcam/html5/</a></section>
+    </li>
+    <li id="comment-79570102">
+      <a href="../../../author/tekonaza.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d3/3d0/6d3b4d4baf2e209214d1043a001dbe42501.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tekonaza.html">Diego Schild Smiths</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great work Paul Neave!<br/>I really like your webcam app. Very funny.</section>
+    </li>
+    <li id="comment-79570212">
+      <a href="../../../author/paddy2k.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/24/396/08de61fe88200e97ff6c886ef762413589a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/paddy2k.html">Patrick O'Reilly</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Those latest getUserMedia demos don&#39;t seem to work with the last Opera Mobile Labs build. Can we expect a new build soon?</section>
+    </li>
+    <li id="comment-79572962">
+      <a href="../../../author/darklink88.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f7/caf/e03ceaf586267c1779766247efa5bb85c70.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/darklink88.html">Daniele</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I love the new experimental UI of the badge with geolocation and camera access! I suggest to move also password notifications to the badge dialog! Here&#39;s a quick and dirty mockup: <a href="http://minus.com/mbhj8YfQZe" target="_blank">http://minus.com/mbhj8YfQZe</a></section>
+    </li>
+    <li id="comment-79573842">
+      <a href="../../../author/darklink88.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f7/caf/e03ceaf586267c1779766247efa5bb85c70.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/darklink88.html">Daniele</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>:D</section>
+    </li>
+    <li id="comment-79574482">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Daniele: The thing is that camera or geo. access is often needed so the site can work properly. On the other hand you don&#39;t have to save password for the site to work correctly. Now the current version of &quot;save password dialog&quot; makes it possible to view the site without noticing the dialog at all.</section>
+    </li>
+    <li id="comment-79574782">
+      <a href="../../../author/darklink88.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f7/caf/e03ceaf586267c1779766247efa5bb85c70.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/darklink88.html">Daniele</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>good point, however the password dialog could be labeled under a different name (not &quot;Access&quot;) in order to not mix it with other feature</section>
+    </li>
+    <li id="comment-79607712">
+      <a href="../../../author/c69.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6a/d33/0533b078035063c59d40751470361dbd365.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/c69.html">Constantine Vesna</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>+1 to feature access UI appreciation. <br/><br/>Guys - any info why no audio input is available in this build ? I expect the market for VoiP is not smaller than market for video-conferencing. And testing audio is somewhat easier, because there is less data transferred.</section>
+    </li>
+    <li id="comment-79650182">
+      <a href="../../../author/mbaluta.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/66/a41/32e03b1a100c0206eec808dee3939686e62.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mbaluta.html">Maciej Bałuta</a></p>
+      <p class="commentdate">Wednesday, January 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>New UI for this is really great and more intuitive than previous horizontal bar for geolocation. Another big thing you made is that video from webcam can be used simultaneously on many sites, so it&#39;s even better for video conferences than Flash and it&#39;s not license-protected, so i expect wider use of this technology as soon as other major browsers implement it. I&#39;m also amazed about performance, it works great even without HW acceleration (but it would be nice if I had one on my Intel HD graphics;) ). Great work!</section>
+    </li>
+    <li id="comment-79697172">
+      <a href="../../../author/erucipe.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bb/d4e/9055fbf87521369e0ff38d284cc6f59175b." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/erucipe.html">Seung Joon Choi</a></p>
+      <p class="commentdate">Thursday, January 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Cool! with this getUserMedia and pixel manipulation feature i could make a &#39;simple motion detection test&#39; <a href="http://www.youtube.com/watch?v=Ngq3QOY01xA" target="_blank">http://www.youtube.com/watch?v=Ngq3QOY01xA</a> live demo : <a href="http://goo.gl/1FHqk" target="_blank">http://goo.gl/1FHqk</a> maybe i can try GPGPU version of it next time since 12.00 1232 has webgl enabled.</section>
+    </li>
+    <li id="comment-79779552">
+      <a href="../../../author/Spectatorx.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/17/9c9/c0e7cc4b0e6f4ea2565d20d506673944880.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Spectatorx.html">spectatorx</a></p>
+      <p class="commentdate">Friday, January 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Bruce, did your mom shout at you when you didn&#39;t use a failure callback argument? :-) Ha ha :-)<br/><br/>Anyway very nice article, and so on changes in opera labs build ;-)<br/><br/>P.S.<br/>I wonder why you didn&#39;t make x64 version for windows? In previous labs build there was one.</section>
+    </li>
+    <li id="comment-79819782">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Friday, January 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>spectatorx: The prev. lab build was meant to show that Opera is working on 64bit, but it is not common that lab build would consist of more than one &quot;lab&quot; feature. So the prev. showed x64 and this one getUserMedia.</section>
+    </li>
+    <li id="comment-80130612">
+      <a href="../../../author/jjsl6.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/92/8e9/916436904be4e7339bb2d8ae4c9fbd1dc9a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jjsl6.html">Julian</a></p>
+      <p class="commentdate">Wednesday, January 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great article Bruce, so is there a labs camera build for android? like that one you showed in the last Opera tech break. </section>
+    </li>
+    <li id="comment-80388462">
+      <a href="../../../author/jonnyquesty2k.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6c/7f1/cbb5e1daeba22506b3f3950951b34a2857a.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jonnyquesty2k.html">alchemist11</a></p>
+      <p class="commentdate">Sunday, January 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The camera labs build crashes every time I try to load the Magical HTML5 Moustache. Ubuntu Linux.</section>
+    </li>
+    <li id="comment-80486742">
+      <a href="../../../author/brucelawson.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c4/800/0323b240ea0dc05ed78b7816e85bbbd7889.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/brucelawson.html">Bruce Lawson</a></p>
+      <p class="commentdate">Monday, January 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Joel Julian Salas López - a gUM build for Opera Mobile Android is in the works, but not here yet.<br/><br/>alchemist11 - haven&#39;t had anyone else tell me this; which version of Ubuntu is it and which machine?</section>
+    </li>
+    <li id="comment-82281212">
+      <a href="../../../author/ernestobalestrini.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/7fb/789699bf697006708aba66506c395127aa5." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ernestobalestrini.html">Balestrini E.</a></p>
+      <p class="commentdate">Monday, February 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi guys i&#39;m in a personal project and i know to know if you can give me a hand, i want to know if is possible to record the movie and microphone which is showed using the the object ( navigator.getUserMedia({audio: true, video: true} )  to save it in a folder.<br/>I would really appreciate if you can help me and give me some references. Thank you. </section>
+    </li>
+    <li id="comment-83548752">
+      <a href="../../../author/ernestobalestrini.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/7fb/789699bf697006708aba66506c395127aa5." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ernestobalestrini.html">Balestrini E.</a></p>
+      <p class="commentdate">Monday, February 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi Chris i was reading what you told me but, i think it dows not works with gUM, another interesting point is that the microphone is not captable by te gUM jet is it? maybe im wrong! but i would like to listing your opinion. </section>
+    </li>
+    <li id="comment-83550002">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, February 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Balestrini E.<br/><br/>Sadly not. We are currently referring to it as camera access.</section>
+    </li>
+    <li id="comment-83739162">
+      <a href="../../../author/ernestobalestrini.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/7fb/789699bf697006708aba66506c395127aa5." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ernestobalestrini.html">Balestrini E.</a></p>
+      <p class="commentdate">Thursday, March 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you very much Chris.</section>
+    </li>
+    <li id="comment-93733012">
+      <a href="../../../author/virusgratis2.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9e/9d2/11d6260c6adede2d48b8d19d0c89189fd3a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/virusgratis2.html">virusgratis2</a></p>
+      <p class="commentdate">Monday, July 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera have support for getUserMedia (only for camera acces), but not for the microphone and Peer to Peer support, as chrome, it supports all, but only for webkit.getUserMedia.</section>
+    </li>
+    <li id="comment-94993962">
+      <a href="../../../author/spadmanabhan.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/64/d67/9a4f69f94489b9eca6d4838233d84cd2bba." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadmanabhan.html">Senthil</a></p>
+      <p class="commentdate">Monday, August 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>stream.stop() doesn&#39;t seem to work in opera. Is there a way to stop the webcam or stop streaming after we are done with our streaming. stream.stop() works in chrome.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/brucelawson.html" rel="author">Bruce Lawson</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, January 10, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/devices.html" rel="tag">devices</a></li>
+        <li><a href="../../tags/getusermedia.html" rel="tag">getusermedia</a></li>
+        <li><a href="../../tags/html5.html" rel="tag">html5</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/privacy.html" rel="tag">privacy</a></li>
+        <li><a href="../../tags/webrtc.html" rel="tag">webrtc</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

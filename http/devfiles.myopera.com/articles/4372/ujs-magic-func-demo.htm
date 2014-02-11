@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head>
+	<title> overriding a magic function </title>
+</head>
+<body>
+
+  <div>
+    <button onclick="toggleElement(this.nextElementSibling)">show/hide</button>
+    <div>You can show/hide me</div>
+  </div>
+
+	<script type="text/javascript">
+
+	function toggleElement( elm ){
+    if(elm.style.display=='none'){
+      elm.style.display='';
+    }else{
+      elm.style.display='none';
+    }
+	}
+	</script>
+
+</body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <title>Opera Animation Library: Simple animation example</title>
+  <head>
+    <style type="text/css">
+      
+      #myAnimatableElement {
+        width: 0px;
+        height: 0px;
+        background: blue;
+        position: relative;
+        opacity: 0;
+      }
+    
+    </style>
+    <script type="text/javascript" src="http://devfiles.myopera.com/articles/21/animation.js"></script>
+    <script type="text/javascript">
+      
+// Add animations and event listeners in the
+// load event 
+window.addEventListener("load",function(ev){
+
+  // Get an element
+  var myElement = document.getElementById( 'myAnimatableElement' );
+  // Create an animation for 'myElement' and assign the animation to myAnimation
+  // We only need to do this once for an element
+  var myAnimation = myElement.createAnimation();
+
+  document.getElementById('button1').addEventListener("click",function(ev){
+    // Changing the width ...
+    myAnimation.addAnimation( 'width', '0px', '200px' );
+    // ... and the height ...
+    myAnimation.addAnimation( 'height', '0px', '200px' );
+    // ... and also the opacity ...
+    myAnimation.addAnimation( 'opacity', '0.0', '1.0' );
+    myAnimation.run();
+  },false);
+},false);
+      
+    </script>
+  </head>
+
+  <body>
+    <h1>Simple animation</h1>
+    <p> is an accompanying example to the <a href="../../../dev.opera.com/libraries/animation/index.html">Opera Animation Library documentation</a>, demonstrating simple animation.</p>
+    <p>Activate  <input type="button" value="this button" id="button1"> to run the animation example. Every time that button is clicked, a rectangle will expand from 0&times;0 to 200px&times;200px size and from opacity 0 to opacity 1.0</p>
+
+    
+    <div id="myAnimatableElement"></div>
+  </body>
+</html>

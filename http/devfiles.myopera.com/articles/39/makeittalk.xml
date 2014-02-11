@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C/DTD XHTML+Voice 1.0/EN" "xhtml+voice.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ev="http://www.w3.org/2001/xml-events">
+<head>
+  <title>Example #: Make it talk</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="talker">
+    <block>I always believed that <value expr="document.getElementById('phrase').value"/></block>
+  </form>
+</head>
+
+<body>
+  <h1>Make Opera say what you want</h1>
+  <p>
+    <label>Text: <input type="text" id="phrase" value="You are the greatest." size="30"/></label>
+    <button ev:event="click" ev:handler="#talker">Say it now!</button>
+  </p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Animation via setTimeout</title>
+	<link rel="stylesheet" href="http://devfiles.myopera.com/articles/10242/s.css" media="screen">
+	<style media="screen">
+	#box{
+	    width: 100px;
+	    height:100px;
+	    background: hsl(0, 100%, 50%);
+	}
+	button{
+	    position:absolute;
+	    top: 200px;
+	}
+	</style>
+</head>
+<body>
+	<p>Click or tap the box to resume the animation.</p>
+    <div id="box"></div>
+    <div id="valofnewcol"></div>
+
+<script type="text/javascript">
+    var box = document.getElementById('box'),
+       update = document.getElementById('valofnewcol'),
+       start = 0,
+       anim, restart;
+
+    changecolor = function(element, degreeshift, update){
+        var newcol = (start * degreeshift)/360 << 8,
+            col = 'hsl('+newcol+',100%,50%)',
+            coltxt = document.createTextNode(col);
+
+        element.style.background = col;
+        start++;
+
+        if(update.firstChild){
+            update.replaceChild( coltxt, update.firstChild );
+        } else {
+            update.appendChild( coltxt );
+        }
+    }
+
+    anim = setInterval(changecolor, 50, box, 45, update);
+    restart = function(){}
+    box.addEventListener('click', restart, false);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+body {
+	margin: 0;
+	padding: 0 20%;
+	font-size: 14px;
+}
+
+p {
+	margin: .429em auto;
+}
+
+q:before,
+ q:after {
+
+	content: "";
+}
+
+h1 {
+	font-size: x-large;
+}
+
+.sectionNote {
+	font-size: medium;
+}
+
+.attribution {
+	font-size: small;
+}

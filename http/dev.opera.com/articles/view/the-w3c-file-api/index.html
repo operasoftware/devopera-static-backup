@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The W3C file API - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>The W3C file API</h1>
+      <p class="print author">By Bruce Lawson</p>
+
+      <h2>Introduction</h2>
+
+<p>In Opera 11.10, partial support for the <a href="http://www.w3.org/TR/file-upload/">W3C File API</a> makes its debut. This spec &quot;provides an API for representing file objects in web applications, as well as programmatically selecting them and accessing their data&quot;. For example, you can upload files into the browser and find out information such as name, size and type without having to go to the server. You can also open the file and manipulate its contents. This can enhance interactivity of browser-based applications to make them more like desktop applications.</p>
+
+<h3>Getting some examples on file</h3>
+
+<p>Let&#39;s build up a couple of simple examples. Assume you have a Content Management System that allows a user to upload images to your corporate website, and you want to ensure that they don&#39;t upload uncompressed images. What we&#39;ll do is use the File API to check that the file they upload isn&#39;t larger than 128K.</p>
+
+<p>The HTML is rudimentary:</p>
+
+<pre><code>&lt;form&gt;
+&lt;input type=file id=upload name=files&gt;
+&lt;div id=message&gt;&lt;/div&gt;
+&lt;input type=submit&gt;
+&lt;/form&gt;</code></pre>
+
+<p>The blank message <code>&lt;div&gt;</code> is present so we can insert an error message into it if the file is too large. We&#39;ll also disable the submit button if the file is too large. If the user doesn&#39;t have script enabled, or is using a browser that doesn&#39;t support this part of the File API, there is no error checking, so you&#39;ll need to do it on the server. In fact, this is a good time to repeat the Infallible Mantra of Forms: <em>Never, ever, ever rely on client-side validation or error checking. Always check on the server and sanitise the input. Always.</em></p>
+
+<p>The script adds an event listener to the file upload field (<code>id=input</code>) so the checking function is called if the user selection changes:</p>
+
+<pre><code>document.getElementById(&#39;upload&#39;).addEventListener(&#39;change&#39;, doStuff, false);</code></pre>
+
+<p>The magical part is</p>
+
+<pre><code>var size = evt.target.files[0].size;</code></pre>
+
+<p>The API gives us an array of files, because HTML5 allows the <code>multiple</code> attribute on <code>&lt;input type=file&gt;</code>, but we only want the first element as we&#39;re only allowing one upload for our example.</p>
+
+<p>The <code>size</code> property is in bytes, so we test whether it exceeds 131072 (which is 128K) and, if so, we disable the submit button and offer a helpful error message:</p>
+
+<pre><code>document.getElementById(&#39;message&#39;).innerHTML = size + &#39; is too big, you numpty&#39;;
+var submit = document.querySelector(&#39;input[type=submit]&#39;);
+submit.disabled=true;</code></pre>
+
+<p>Try out our <a href="../../../../devfiles.myopera.com/articles/5312/size-check.html">check size example</a>.</p>
+  
+<p>We can check other things too, such as the name of a file and its last modification date (but you can&#39;t rely on that to be present; the spec says &quot;If user agents cannot make this information available, they MUST return the empty string&quot;).</p>
+
+<p>Also of interest is the file type. Let&#39;s tweak our script to disable the submit button if the file type is not a PNG image:</p>
+
+<pre><code>var type = evt.target.files[0].type;
+	
+if (type != &#39;image/png&#39;) {
+  message.innerHTML = type + &#39; is not a PNG, you dweeb&#39;;
+  submit.disabled = true;
+}
+</code></pre>
+
+<p>Here we compare the MIME type with the file&#39;s <code>type</code> property to make sure we have the correct format that our CMS requires. It&#39;s also important to note that, as with the last modification date, &quot;If implementations cannot determine the media type of the Blob, they MUST return the empty string&quot;, so in the case of an empty string you should allow upload to the server for further error checking there.</p>
+
+<pre><code>
+if (type == &#39;image/png&#39; || type == &#39;&#39;) {
+  message.innerHTML = type + &#39; is a lovely type&#39;;
+  submit.disabled = false;
+}
+</code></pre>
+
+<p>Try out our <a href="../../../../devfiles.myopera.com/articles/5312/type-check.html">check type example</a>.</p>
+
+<p>Remember the mantra never to trust client-side validation? If you rename <code>evil-virus.exe</code> to <code>lovely-flowers.jpg</code>, the File API will believe it&#39;s an image. You don&#39;t want to store <em>that</em> in your file system without checking it on the server first!</p>
+
+<p>It&#39;s also possible to open the file and use the contents using the <a href="http://www.w3.org/TR/file-upload/#dfn-filereader">File Reader API</a>. For example, you could generate thumbnails of uploaded images and display them next to the form so a user would know at a glance which ones they&#39;ve already uploaded from a directory. If you&#39;re really clever, you could grab the <a href="http://www.id3.org/id3v2.3.0">artist and title information from an MP3 file</a> - or even the album cover art!</p>
+<!--
+<p>Here's another example. The File Reader API allows us to get the contents of a file encoded as a date URL via the <a href="http://www.w3.org/TR/FileAPI/#readAsDataURL"readAsDataURL method</a>. Here's a simple <a href="http://people.opera.com/brucel/demo/file-api/base-64.html">Image to DataURI converter</a> that converts a file into its base 64 representation for embedding in CSS or HTML to save HTTP requests for external files (very useful if optimising for mobile - see <a href="http://dev.opera.com/articles/view/the-mobile-web-optimization-guide/">Mobile-friendly: The mobile web optimization guide</a> for more details.</p>
+-->
+<h2>Summary</h2>
+
+<p>This concludes our tour of the current Opera support for the W3C file API. Happy Filing!</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=959642">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/brucelawson.html" rel="author">Bruce Lawson</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, April 12, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/array.html" rel="tag">array</a></li>
+        <li><a href="../../tags/file.html" rel="tag">file</a></li>
+        <li><a href="../../tags/file&#32;api.html" rel="tag">file api</a></li>
+        <li><a href="../../tags/opera11.10.html" rel="tag">opera11.10</a></li>
+        <li><a href="../../tags/size.html" rel="tag">size</a></li>
+        <li><a href="../../tags/type.html" rel="tag">type</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Mobile 11 for Maemo, MeeGo and Windows - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Mobile 11 for Maemo, MeeGo and Windows</h1>
+      <p class="print author">By Fredrik Öhrn</p>
+
+      <div id="content">
+<p>
+ Today we are launching final versions of Opera Mobile 11 for Android and Symbian/S60 as well as Mini 6 for various platforms. We are also making available builds of Opera Mobile 11 for Maemo, MeeGo and Windows here on labs.opera.com. The MeeGo and Windows builds come with our new tablet optimized UI.
+</p>
+<p>
+ Download on your device now from
+ <a href="http://m.opera.com/">
+  m.opera.com
+ </a>
+ , or use the following direct links to the
+ <a href="http://www.opera.com/download/get.pl?sub=++++&amp;amp;id=33519&amp;amp;location=360&amp;amp;nothanks=yes">
+  Windows
+ </a>
+ ,
+ <a href="http://www.opera.com/download/get.pl?sub=++++&amp;amp;id=33520&amp;amp;location=360&amp;amp;nothanks=yes">
+  MeeGo (generic)
+ </a>
+ and
+ <a href="http://www.opera.com/download/get.pl?sub=++++&amp;amp;id=33521&amp;amp;location=360&amp;amp;nothanks=yes">
+  MeeGo (WeTab)
+ </a>
+ versions.
+</p>
+<p>
+ On MeeGo, you may need to install the downloaded RPM package by running &quot;rpm -i &quot; as root in a terminal window. On the WeTab a reboot is required before the Opera icon becomes visible.
+</p>
+<p>
+ The recommended way to install on Maemo is to use the Application manager and enable the extras-testing repository.
+</p>
+<p>
+ Tap to zoom has been changed from single-click to double-click. You can now click links without having to zoom in first.
+</p>
+<h2>
+ So what else is new? A lot:
+</h2>
+<h3>
+ Features
+</h3>
+<ul>
+ <li>
+  Modernized new user interface
+ </li>
+ <li>
+  New UI optimized for tablet devices
+ </li>
+ <li>
+  Major improvements in panning and zooming
+ </li>
+ <li>
+  Faster framerates
+ </li>
+ <li>
+  No checkerboard, ever
+ </li>
+ <li>
+  Text stays sharp during zooming
+ </li>
+ <li>
+  Improved text-wrap on zoom
+ </li>
+ <li>
+  Incremental zooming for devices w/o multi-touch
+ </li>
+ <li>
+  Buttons for jumping to the top/bottom of the page
+ </li>
+ <li>
+  Share URL on social networks, email etc
+ </li>
+ <li>
+  Improved Geolocation support
+ </li>
+ <li>
+  Session restore
+ </li>
+ <li>
+  Rendering
+ </li>
+</ul>
+<h3>
+ Presto 2.7.81
+</h3>
+<ul>
+ <li>
+  JIT for greatly improved Javascript performance (was supported in 10.1 on some platforms)
+ </li>
+ <li>
+  Application Cache
+ </li>
+ <li>
+  WebStorage and WebDatabase
+ </li>
+ <li>
+  DOM touch and multi-touch events
+ </li>
+ <li>
+  HTML5 Audio/Video
+ </li>
+ <li>
+  Support for CSS @viewport
+ </li>
+ <li>
+  Improved support for meta viewport
+ </li>
+ <li>
+  Support for Web Open Font Format (WOFF)
+ </li>
+ <li>
+  Support for Arabic ligatures
+ </li>
+ <li>
+  Improved form fields skin
+ </li>
+</ul>
+</div>
+
+
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-75549442">
+      <a href="../../../author/Shubb-Niggurath.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/66/911/828e4e3b6db38cff9cf86d8f8f30fa3ce44.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Shubb-Niggurath.html">Shubb-Niggurath</a></p>
+      <p class="commentdate">Friday, November 25, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is this real newer version? I download and reinstall Opera Mobile on my Asus T101 (Win7 HP), but if I check build, is the same - 11.00.11648 as Opera Mobile downloaded few months ago...<br/>greets<br/>Krzysztof</section>
+    </li>
+    <li id="comment-75556252">
+      <a href="../../../author/zoso.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fc/d98/1e8d3ff1599e30e8200dc990e5fa76f26fc.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/zoso.html">Esteban Manchado Velázquez</a></p>
+      <p class="commentdate">Friday, November 25, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>No, this is from March. It just got to the top of the news temporarily :-)</section>
+    </li>
+    <li id="comment-81923252">
+      <a href="../../../author/geraldchouinard.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5f/21a/224434535380d19b813a1988bf72abee8d4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/geraldchouinard.html">Gerald Chouinard</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>ls it possible to improve the offline experience by having Opera verifying if a web page referred to by a hyperlink has been stored locally before trying to go on line?  This way, a thread of web pages stored locally when connected could be retrieved by using the hyperlink process. This would be a very nice improvement and should not be difficult to implement. Thank&#39;s.</section>
+    </li>
+    <li id="comment-85543572">
+      <a href="../../../author/urlwolf.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e9/f6a/4f9a6defbca15e4139ece3da6b847068509.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/urlwolf.html">urlwolf</a></p>
+      <p class="commentdate">Thursday, March 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I would love to have an update to v 12 for windows. It makes my exopc a beautful tool.</section>
+    </li>
+    <li id="comment-87292162">
+      <a href="../../../author/tovganesh.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ab/803/55e3fe91ace85356df0b462f5c04dffcda0." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tovganesh.html">tovganesh</a></p>
+      <p class="commentdate">Saturday, April 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>is there any plan to support this officially?<br/>i love this over ie9 :)</section>
+    </li>
+    <li id="comment-91353542">
+      <a href="../../../author/sirzing.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/af/8c2/7587020ec55306e972c5b88001682cdf85e.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/sirzing.html">Sirzingcool</a></p>
+      <p class="commentdate">Tuesday, June 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>i like</section>
+    </li>
+    <li id="comment-103657572">
+      <a href="../../../author/haohalalulu.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fb/356/1ba12bc037d40c7ee70adb87f68decbd136.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/haohalalulu.html">Александр</a></p>
+      <p class="commentdate">Sunday, February 10, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Русская версия существует?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/ohrn.html" rel="author">Fredrik Öhrn</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, March 22, 2011
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

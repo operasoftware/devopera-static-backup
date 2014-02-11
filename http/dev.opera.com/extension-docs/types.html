@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>chrome.types - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>chrome.types</h1>
+					 
+						<p class="badge badge-info pull-right">Support: Opera 18+</p>
+					
+					
+					
+    <div id="gc-pagecontent">
+	
+	
+	
+	<div id="toc">
+		<ol>
+			<li>
+				<a href="types.html#ChromeSetting">ChromeSetting prototype</a>
+				<ol>
+					<li><a href="types.html#ChromeSetting-lifecycle">Scope and life cycle</a></li><li><a href="types.html#ChromeSetting-precedence">Precedence</a></li>
+				</ol>
+			</li>
+			<div class="api-reference">
+				<li>
+					<a href="types.html#apiReference">Reference</a>
+					<ol>
+						<li>
+							<a href="types.html#types">Types</a>
+							<ol>
+								<li>
+									<a href="types.html#type-ChromeSetting">ChromeSetting</a>
+							<ol><li>
+										<a href="types.html#ChromeSetting-methods">Methods</a>
+										<ol>
+											<li><a href="types.html#method-ChromeSetting-get">get</a></li>
+											<li><a href="types.html#method-ChromeSetting-set">set</a></li>
+											<li><a href="types.html#method-ChromeSetting-clear">clear</a></li>
+										</ol>
+									</li></ol><ol><li>
+										<a href="types.html#ChromeSetting-events">Events</a>
+										<ol>
+											<li><a href="types.html#event-ChromeSetting-onChange">onChange</a></li>
+										</ol>
+									</li></ol>	</li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+			</div>
+		</ol>
+	</div>
+	<table class="intro" id="intro">
+		<tr>
+			<td class="title">Description:</td>
+			<td>
+					
+					
+					The <code>chrome.types</code> API contains type declarations for Chrome.
+					
+					
+					
+					<br>
+			</td>
+		</tr>
+	</table>
+<h2 id="ChromeSetting">ChromeSetting prototype</h2>
+
+<p>
+The <code>ChromeSetting</code> prototype provides a common set of functions
+(<code>get()</code>, <code>set()</code>, and <code>clear()</code>) as
+well as an event publisher (<code>onChange</code>) for settings in Opera.
+</p>
+
+<h3 id="ChromeSetting-lifecycle">Scope and life cycle</h3>
+
+<p>
+Chrome distinguishes between three different scopes of browser settings:
+<dl>
+<dt><code>regular</code></dt>
+<dd>Settings set in the <code>regular</code> scope apply to regular
+browser windows and are inherited by incognito windows if they are not
+overwritten. These settings are stored to disk and remain in place until
+they are cleared by the governing extension, or the governing extension is
+disabled or uninstalled.</dd>
+
+<dt><code>incognito_persistent</code></dt>
+<dd>Settings set in the <code>incognito_persistent</code> scope apply only
+to incognito windows. For these, they override <code>regular</code>
+settings. These settings are stored to disk and remain in place until
+they are cleared by the governing extension, or the governing extension is
+disabled or uninstalled.</dd>
+
+<dt><code>incognito_session_only</code></dt>
+<dd>Settings set in the <code>incognito_session_only</code> scope apply only
+to incognito windows. For these, they override <code>regular</code> and
+<code>incognito_session_only</code> settings. These settings are not
+stored to disk and are cleared when the last incognito window is closed. They
+can only be set when at least one incognito window is open.</dd>
+
+</dl>
+</p>
+
+<h3 id="ChromeSetting-precedence">Precedence</h3>
+
+<p>
+Opera manages settings on different layers. The following list describes the
+layers that may influence the effective settings, in increasing order of
+precedence.
+<ol>
+<li>System settings provided by the operating system</li>
+<li>Command-line parameters</li>
+<li>Settings provided by extensions</li>
+<li>Policies</li>
+</ol>
+</p>
+
+<p>
+As the list implies, policies might overrule any changes that you specify with
+your extension. You can use the <code>get()</code> function to determine whether
+your extension is capable of providing a setting or whether this setting would
+be overridden.
+</p>
+
+<p>
+As discussed above, Opera allows using different settings for regular
+windows and incognito windows. The following example illustrates the behavior.
+Assume that no policy overrides the settings and that an extension can set
+settings for regular windows <b>(R)</b> and settings for incognito windows
+<b>(I)</b>.
+</p>
+
+<p>
+<ul>
+<li>If only <b>(R)</b> is set, these settings are effective for both
+regular and incognito windows.</li>
+<li>If only <b>(I)</b> is set, these settings are effective for only
+incognito windows. Regular windows use the settings determined by the lower
+layers (command-line options and system settings).</li>
+<li>If both <b>(R)</b> and <b>(I)</b> are set, the respective settings are
+used for regular and incognito windows.</li>
+</ul>
+</p>
+
+<p>
+If two or more extensions want to set the same setting to different values,
+the extension installed most recently takes precedence over the other
+extensions.	If the most recently installed extension sets only <b>(I)</b>, the
+settings of regular windows can be defined by previously installed extensions.
+</p>
+
+<p>
+The <em>effective</em> value of a setting is the one that results from
+considering the precedence rules. It is used by Chrome.
+<p>
+
+	<div class="api_reference">
+			<h2 id="types">Types</h2>
+				<div>
+					<h3 id="type-ChromeSetting">ChromeSetting</h3>
+					<div>
+						<dd>An interface that allows access to an Opera browser setting.</dd>
+						
+							<h4 id="ChromeSetting-methods" class="capitalize">
+								methods of <a href="types.html#type-ChromeSetting">ChromeSetting</a>
+							</h4>
+							<dd>
+								<dl>
+										<div>
+											<h4 id="method-ChromeSetting-get">
+												get
+											</h4>
+											
+											<div class="summary">
+											<div class="line">
+											<code>ChromeSetting.get</code>(<code>object <code class="variable">details</code></code>, <code>function <code class="variable">callback</code></code>)
+											</div>
+											</div>
+											<div class="description">
+												<p>
+													Gets the value of a setting.
+												</p>
+												<h4>Parameters</h4>
+												<dl>
+														<div>
+															<a name="property-get-details"></a>
+															<dl>
+																<dt>
+																	<code class="variable">details</code>
+																	<code class="property">
+																		(
+																			
+																			object
+																		)
+																	</code>
+																</dt>
+																<dd>
+																	Which setting to consider.
+																
+																</dd>
+															</dl>
+															<dd>
+																<h5>Properties of <code class="variable">details</code></h5>
+																<dl>
+																	<div>
+																		<a name="property-details-incognito"></a>
+																		<dl>
+																			<dt>
+																				<code class="variable">incognito</code>
+																				<code class="property">
+																					(
+																						<code class="optional">optional</code>
+																						boolean
+																					)
+																				</code>
+																			</dt>
+																			<dd>
+																				Whether to return the value that applies to the incognito session (default false).
+																			
+																			</dd>
+																		</dl>
+																	</div>
+																</dl>
+															</dd>
+														</div>
+														<div>
+															<a name="property-get-callback"></a>
+															<dl>
+																<dt>
+																	<code class="variable">callback</code>
+																	<code class="property">
+																		(
+																			
+																			function
+																		)
+																	</code>
+																</dt>
+																<dd>
+																
+																</dd>
+															</dl>
+														</div>
+												</dl>
+													<h4>Callback</h4>
+													<p>
+																The <em>callback</em> parameter should specify a function
+																that looks like this:
+													</p>
+													<pre class="prettyprint">function(object details) <code class="subdued">{...}</code>;</pre>
+													<dl>
+															<div>
+																<a name="property-callback-details"></a>
+																<dl>
+																	<dt>
+																		<code class="variable">details</code>
+																		<code class="property">
+																			(
+																				
+																				object
+																			)
+																		</code>
+																	</dt>
+																	<dd>
+																		Details of the currently effective value.
+																	
+																	</dd>
+																</dl>
+																<dd>
+																	<h5>Properties of <code class="variable">details</code></h5>
+																	<dl>
+																		<div>
+																			<a name="property-details-value"></a>
+																			<dl>
+																				<dt>
+																					<code class="variable">value</code>
+																					<code class="property">
+																						(
+																							
+																							any
+																						)
+																					</code>
+																				</dt>
+																				<dd>
+																					The value of the setting.
+																				
+																				</dd>
+																			</dl>
+																		</div>
+																		<div>
+																			<a name="property-details-levelOfControl"></a>
+																			<dl>
+																				<dt>
+																					<code class="variable">levelOfControl</code>
+																					<code class="property">
+																						(
+																							
+																							enum of <code>"not_controllable"</code>, <code>"controlled_by_other_extensions"</code>, <code>"controllable_by_this_extension"</code>, or <code>"controlled_by_this_extension"</code>
+																						)
+																					</code>
+																				</dt>
+																				<dd>
+																					One of<ul><li><var>not_controllable</var>: cannot be controlled by any extension</li><li><var>controlled_by_other_extensions</var>: controlled by extensions with higher precedence</li><li><var>controllable_by_this_extension</var>: can be controlled by this extension</li><li><var>controlled_by_this_extension</var>: controlled by this extension</li></ul>
+																				
+																				</dd>
+																			</dl>
+																		</div>
+																		<div>
+																			<a name="property-details-incognitoSpecific"></a>
+																			<dl>
+																				<dt>
+																					<code class="variable">incognitoSpecific</code>
+																					<code class="property">
+																						(
+																							<code class="optional">optional</code>
+																							boolean
+																						)
+																					</code>
+																				</dt>
+																				<dd>
+																					Whether the effective value is specific to the incognito session.<br/>This property will <em>only</em> be present if the <var>incognito</var> property in the <var>details</var> parameter of <code>get()</code> was true.
+																				
+																				</dd>
+																			</dl>
+																		</div>
+																	</dl>
+																</dd>
+															</div>
+													</dl>
+											</div>
+										</div>
+										<div>
+											<h4 id="method-ChromeSetting-set">
+												set
+											</h4>
+											
+											<div class="summary">
+											<div class="line">
+											<code>ChromeSetting.set</code>(<code>object <code class="variable">details</code></code>, <code class="optional">function <code class="variable">callback</code></code>)
+											</div>
+											</div>
+											<div class="description">
+												<p>
+													Sets the value of a setting.
+												</p>
+												<h4>Parameters</h4>
+												<dl>
+														<div>
+															<a name="property-set-details"></a>
+															<dl>
+																<dt>
+																	<code class="variable">details</code>
+																	<code class="property">
+																		(
+																			
+																			object
+																		)
+																	</code>
+																</dt>
+																<dd>
+																	Which setting to change.
+																
+																</dd>
+															</dl>
+															<dd>
+																<h5>Properties of <code class="variable">details</code></h5>
+																<dl>
+																	<div>
+																		<a name="property-details-value"></a>
+																		<dl>
+																			<dt>
+																				<code class="variable">value</code>
+																				<code class="property">
+																					(
+																						
+																						any
+																					)
+																				</code>
+																			</dt>
+																			<dd>
+																				The value of the setting. <br/>Note that every setting has a specific value type, which is described together with the setting. An extension should <em>not</em> set a value of a different type.
+																			
+																			</dd>
+																		</dl>
+																	</div>
+																	<div>
+																		<a name="property-details-scope"></a>
+																		<dl>
+																			<dt>
+																				<code class="variable">scope</code>
+																				<code class="property">
+																					(
+																						<code class="optional">optional</code>
+																						enum of <code>"regular"</code>, <code>"regular_only"</code>, <code>"incognito_persistent"</code>, or <code>"incognito_session_only"</code>
+																					)
+																				</code>
+																			</dt>
+																			<dd>
+																				Where to set the setting (default: regular). One of<ul><li><var>regular</var>: setting for the regular profile (which is inherited by the incognito profile if not overridden elsewhere),</li><li><var>regular_only</var>: setting for the regular profile only (not inherited by the incognito profile),</li><li><var>incognito_persistent</var>: setting for the incognito profile that survives browser restarts (overrides regular preferences),</li><li><var>incognito_session_only</var>: setting for the incognito profile that can only be set during an incognito session and is deleted when the incognito session ends (overrides regular and incognito_persistent preferences).</li></ul>
+																			
+																			</dd>
+																		</dl>
+																	</div>
+																</dl>
+															</dd>
+														</div>
+														<div>
+															<a name="property-set-callback"></a>
+															<dl>
+																<dt>
+																	<code class="variable">callback</code>
+																	<code class="property">
+																		(
+																			<code class="optional">optional</code>
+																			function
+																		)
+																	</code>
+																</dt>
+																<dd>
+																	Called at the completion of the set operation.
+																
+																</dd>
+															</dl>
+														</div>
+												</dl>
+													<h4>Callback</h4>
+													<p>
+																If you specify the <em>callback</em> parameter, it should
+																specify a function that looks like this:
+													</p>
+													<pre class="prettyprint">function() <code class="subdued">{...}</code>;</pre>
+											</div>
+										</div>
+										<div>
+											<h4 id="method-ChromeSetting-clear">
+												clear
+											</h4>
+											
+											<div class="summary">
+											<div class="line">
+											<code>ChromeSetting.clear</code>(<code>object <code class="variable">details</code></code>, <code class="optional">function <code class="variable">callback</code></code>)
+											</div>
+											</div>
+											<div class="description">
+												<p>
+													Clears the setting, restoring any default value.
+												</p>
+												<h4>Parameters</h4>
+												<dl>
+														<div>
+															<a name="property-clear-details"></a>
+															<dl>
+																<dt>
+																	<code class="variable">details</code>
+																	<code class="property">
+																		(
+																			
+																			object
+																		)
+																	</code>
+																</dt>
+																<dd>
+																	Which setting to clear.
+																
+																</dd>
+															</dl>
+															<dd>
+																<h5>Properties of <code class="variable">details</code></h5>
+																<dl>
+																	<div>
+																		<a name="property-details-scope"></a>
+																		<dl>
+																			<dt>
+																				<code class="variable">scope</code>
+																				<code class="property">
+																					(
+																						<code class="optional">optional</code>
+																						enum of <code>"regular"</code>, <code>"regular_only"</code>, <code>"incognito_persistent"</code>, or <code>"incognito_session_only"</code>
+																					)
+																				</code>
+																			</dt>
+																			<dd>
+																				Where to clear the setting (default: regular). One of<ul><li><var>regular</var>: setting for the regular profile (which is inherited by the incognito profile if not overridden elsewhere),</li><li><var>regular_only</var>: setting for the regular profile only (not inherited by the incognito profile),</li><li><var>incognito_persistent</var>: setting for the incognito profile that survives browser restarts (overrides regular preferences),</li><li><var>incognito_session_only</var>: setting for the incognito profile that can only be set during an incognito session and is deleted when the incognito session ends (overrides regular and incognito_persistent preferences).</li></ul>
+																			
+																			</dd>
+																		</dl>
+																	</div>
+																</dl>
+															</dd>
+														</div>
+														<div>
+															<a name="property-clear-callback"></a>
+															<dl>
+																<dt>
+																	<code class="variable">callback</code>
+																	<code class="property">
+																		(
+																			<code class="optional">optional</code>
+																			function
+																		)
+																	</code>
+																</dt>
+																<dd>
+																	Called at the completion of the clear operation.
+																
+																</dd>
+															</dl>
+														</div>
+												</dl>
+													<h4>Callback</h4>
+													<p>
+																If you specify the <em>callback</em> parameter, it should
+																specify a function that looks like this:
+													</p>
+													<pre class="prettyprint">function() <code class="subdued">{...}</code>;</pre>
+											</div>
+										</div>
+								</dl>
+							</dd>
+							<h4 id="ChromeSetting-events" class="capitalize">
+								events of <a href="types.html#type-ChromeSetting">ChromeSetting</a>
+							</h4>
+							<dd>
+								<dl>
+										<div>
+											<h4 id="event-ChromeSetting-onChange">onChange</h4>
+											
+											<div class="description">
+										<p>
+													Fired after the setting changes.
+												</p>			<div>
+														<h4 id="event-ChromeSetting-onChange-addListener">
+															addListener
+														</h4>
+														
+														<div class="summary">
+														<div class="line">
+														<code>onChange.addListener</code>(<code>function <code class="variable">callback</code></code>)
+														</div>
+														</div>
+														<div class="description">
+															<h4>Parameters</h4>
+															<dl>
+																	<div>
+																		<a name="property-onChange-callback"></a>
+																		<dl>
+																			<dt>
+																				<code class="variable">callback</code>
+																				<code class="property">
+																					(
+																						
+																						function
+																					)
+																				</code>
+																			</dt>
+																			<dd>
+																			
+																			</dd>
+																		</dl>
+																	</div>
+															</dl>
+																<h4>Callback</h4>
+																<p>
+																			The <em>callback</em> parameter should specify a function
+																			that looks like this:
+																</p>
+																<pre class="prettyprint">function(object details) <code class="subdued">{...}</code>;</pre>
+																<dl>
+																		<div>
+																			<a name="property-onChange-details"></a>
+																			<dl>
+																				<dt>
+																					<code class="variable">details</code>
+																					<code class="property">
+																						(
+																							
+																							object
+																						)
+																					</code>
+																				</dt>
+																				<dd>
+																				
+																				</dd>
+																			</dl>
+																			<dd>
+																				<h5>Properties of <code class="variable">details</code></h5>
+																				<dl>
+																					<div>
+																						<a name="property-details-value"></a>
+																						<dl>
+																							<dt>
+																								<code class="variable">value</code>
+																								<code class="property">
+																									(
+																										
+																										any
+																									)
+																								</code>
+																							</dt>
+																							<dd>
+																								The value of the setting after the change.
+																							
+																							</dd>
+																						</dl>
+																					</div>
+																					<div>
+																						<a name="property-details-levelOfControl"></a>
+																						<dl>
+																							<dt>
+																								<code class="variable">levelOfControl</code>
+																								<code class="property">
+																									(
+																										
+																										enum of <code>"not_controllable"</code>, <code>"controlled_by_other_extensions"</code>, <code>"controllable_by_this_extension"</code>, or <code>"controlled_by_this_extension"</code>
+																									)
+																								</code>
+																							</dt>
+																							<dd>
+																								One of<ul><li><var>not_controllable</var>: cannot be controlled by any extension</li><li><var>controlled_by_other_extensions</var>: controlled by extensions with higher precedence</li><li><var>controllable_by_this_extension</var>: can be controlled by this extension</li><li><var>controlled_by_this_extension</var>: controlled by this extension</li></ul>
+																							
+																							</dd>
+																						</dl>
+																					</div>
+																					<div>
+																						<a name="property-details-incognitoSpecific"></a>
+																						<dl>
+																							<dt>
+																								<code class="variable">incognitoSpecific</code>
+																								<code class="property">
+																									(
+																										<code class="optional">optional</code>
+																										boolean
+																									)
+																								</code>
+																							</dt>
+																							<dd>
+																								Whether the value that has changed is specific to the incognito session.<br/>This property will <em>only</em> be present if the user has enabled the extension in incognito mode.
+																							
+																							</dd>
+																						</dl>
+																					</div>
+																				</dl>
+																			</dd>
+																		</div>
+																</dl>
+														</div>
+													</div>
+											</div>
+										</div>
+								</dl>
+							</dd>
+					</div>
+				</div>
+	</div>
+</div>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/extensions/types.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>My Simple Photo Gallery - Example 1 (HTML Only)</title>
+    <link rel="stylesheet" type="text/css" href="ex1-gallery.css" />
+</head>
+<body>
+<p>Click on a thumbnail to view the image:</p>
+<script type="text/javascript"><![CDATA[
+<!--
+    function showPreview(img) {
+        var div = document.getElementById("preview");
+        if(div) {
+            var preview_img = document.createElement("img");
+            preview_img.className = "the_preview"; 
+            preview_img.src = img.id + ".jpg";
+
+            while(div.hasChildNodes()) { div.removeChild(div.firstChild); }
+            div.appendChild(preview_img);
+        }
+    }
+// -->
+]]>
+</script>
+<div class="thumbnails">
+    <a href="calif1.jpg"><img class="thumb" id="calif1" src="calif1-thumb.jpg" onclick="showPreview(this); return false;"/></a>
+    <a href="calif2.jpg"><img class="thumb" id="calif2" src="calif2-thumb.jpg" onclick="showPreview(this); return false;"/></a>
+    <a href="calif3.jpg"><img class="thumb" id="calif3" src="calif3-thumb.jpg" onclick="showPreview(this); return false;"/></a>
+    <a href="calif4.jpg"><img class="thumb" id="calif4" src="calif4-thumb.jpg" onclick="showPreview(this); return false;"/></a>
+</div>
+<div class="preview" id="preview"/>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<title>Web fonts + multiple text-shadows (+ RGBA)</title>
+<style type="text/css">
+
+@font-face {
+  src: url(http://devfiles.myopera.com/articles/792/ccredalert.ttf) format("truetype"); /* http://www.dafont.com/c-c-red-alert-inet.font */
+  font-family: "ccredalert";
+  font-style: normal;
+}
+
+.imgblock {border: 1px solid black; width: 500px; height: 375px; position: relative; float: left; margin: 3px;}
+.imgblock:nth-child(3) {clear: left;}
+span {font-family: "ccredalert"; font-size: 13px; position: absolute; bottom: 0; right: 2px; color: #000; text-shadow: rgba(255, 255, 255, 0.6) 1px 1px 0, rgba(255, 255, 255, 0.6) -1px -1px 0, rgba(255, 255, 255, 0.6) 1px -1px 0, rgba(255, 255, 255, 0.6) -1px 1px 0;}
+</style>
+</head>
+<body>
+
+<div class="imgblock">
+<img src="http://farm4.static.flickr.com/3400/3424688804_63f930f50f.jpg" alt="blossoms">
+<span>&copy; Andreas Bovens</span>
+</div>
+
+<div class="imgblock">
+<img src="http://farm4.static.flickr.com/3626/3651413409_5336a3668a.jpg?v=0" alt="clouds">
+<span>&copy; Andreas Bovens</span>
+</div>
+
+<div class="imgblock">
+<img src="http://farm4.static.flickr.com/3114/3083587606_b5b22f7451.jpg" alt="Paris">
+<span>&copy; Andreas Bovens</span>
+</div>
+
+<div class="imgblock">
+<img src="http://farm4.static.flickr.com/3664/3360699261_9eb1af106c.jpg" alt="drop">
+<span>&copy; Andreas Bovens</span>
+</div>
+
+</body>
+</html>

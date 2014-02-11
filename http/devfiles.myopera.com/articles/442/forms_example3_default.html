@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;
+charset=utf-8" />
+<title>Simple form example 3</title>
+
+<link rel="stylesheet" href="http://devfiles.myopera.com/articles/442/screenstyle.css" type="text/css" media="screen" />
+
+</head>
+<body>
+
+<div id="wrapper">
+<h1>Welcome to summer camp!</h1>
+<img src="http://devfiles.myopera.com/articles/442/camp_mini.gif" alt="" />
+
+<p>Hi there, and welcome to summer camp&#8212;we are very glad to have you staying with us! To make your stay as fun as possible, we&#8217;d like to customise our offerings to your needs and and preferences. Fill in the following form to tell us a little about yourself, so we can give you the activities you&#8217;ll most enjoy, and pair you up with people you&#8217;ll have something in common with initially. After the initial settling in period, you can then go on to talk to others, and find more out about other cultures. Let a member of staff know if there is anything you need.</p>
+
+<form action="forms_example1.html">
+<fieldset>
+<legend>Personal details</legend>
+<ul>
+<li class="interest"><label for="name">First and last name:</label> <input type="text" name="name" id="name" value="" /></li>
+<li id="spacer" class="interest"><label for="age">Age:</label> <input type="text" name="age" id="age" value="" /></li>
+<li class="divider"><p>Interests (tick all that apply):</p>
+<p class="interest"><label for="music">Music:</label> <input type="checkbox" name="music" id="music" /></p>
+<p class="interest"><label for="sports">Sports:</label> <input type="checkbox" name="sports" id="sports" /></p>
+<p class="interest"><label for="travel">Travel:</label> <input type="checkbox" name="travel" id="travel" /></p>
+<p class="interest"><label for="fooddrink">Food and drink:</label> <input type="checkbox" name="fooddrink" id="fooddrink" /></p>
+<p class="interest"><label for="gaming">Computer gaming:</label> <input type="checkbox" name="gaming" id="gaming" /></p>
+<p class="interest"><label for="otherinterest">Other interest:</label> <input type="text" name="otherinterest" id="otherinterest" value="" /></p>
+</li>
+<li class="divider interest"><p><label for="country">Home country:</label>
+<select id="country">
+  <option value="UK">United Kindom</option>
+  <option value="USA">USA</option>
+  <option value="Norway">Norway</option>
+  <option value="Canada">Canada</option>
+  <option value="Germany">Germany</option>
+  <option value="Netherlands">The Netherlands</option>
+  <option value="Belgium">Belgium</option>
+</select></p>
+<p><label for="othercountry">Other country:</label> <input type="text" name="othercountry" id="othercountry" value="" /></p>
+</li>
+<li><input type="submit" value="submit" /></li>
+</ul>
+</fieldset>
+</form>
+
+</div>
+
+</body>
+</html>

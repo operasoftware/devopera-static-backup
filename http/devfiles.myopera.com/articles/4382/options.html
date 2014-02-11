@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Hello world options page</title>
+		
+		<style>
+		
+		#wrapper {
+		  margin: 2em auto;
+		  width: 500px;
+		  background-image: url(http://devfiles.myopera.com/articles/4382/images/gradient.png);
+		  padding: 1em;
+		  border-radius: 20px;
+		  box-shadow: 6px 6px 7px #89a, 2px 2px 2px #89a ;
+		}
+		
+		h1 {
+		  font-family: sans-serif;
+		  font-size: 1.3em;
+		}
+		
+		label {
+          display: block;
+          width: 200px;
+          float: left;
+          clear: left;
+          text-align: right;
+          margin-left: -1em;
+        }
+
+        select {
+          margin-left: 1em;
+          width: 150px;
+          font-size: 0.8em;
+        }
+        
+        li {
+          list-style-type: none;
+        }
+		  
+		</style>
+	</head>
+	<body>
+	
+	<div id="wrapper">
+	
+	<h1>Sample options page for hello world example</h1>
+	
+	<form>
+	
+	<ul>
+	  <li><label for="colour">Select background colour:</label>
+	  <select name="colour" id="colour" />
+          <option value="white">Default white</option>
+          <option value="red">Red</option>
+          <option value="yellow">Yellow</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+      </select>
+	  </li>
+	  <li><label for="font">Select font:</label>
+	  <select name="font" id="font" />
+          <option value="sans-serif">Default sans</option>
+          <option value="serif">Serif</option>
+          <option value="monospace">Monospace</option>
+      </select>
+	  </li>
+	</ul>
+	
+	</form>
+	
+	</div>
+	
+	
+	<script>
+	var bgColor = document.getElementById( 'colour' ),
+	    font = document.getElementById( 'font' );
+  
+	bgColor.addEventListener( 'change', function() {
+		widget.preferences.backgroundColor = this.value;	
+	}, false );
+  
+	font.addEventListener( 'change', function() {
+		widget.preferences.font = this.value;
+	}, false );
+  
+	if ( widget.preferences.backgroundColor && widget.preferences.font ) {
+		bgColor.value = widget.preferences.backgroundColor;
+		font.value = widget.preferences.font;
+	}
+	</script>
+	</body>
+</html>

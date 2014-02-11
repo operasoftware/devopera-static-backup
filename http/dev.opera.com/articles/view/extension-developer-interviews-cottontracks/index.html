@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Extension developer interview: coffee with the cottonTracks team - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="addons">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Extension developer interview: coffee with the cottonTracks team</h1>
+      <p class="print author">By Andreas Bovens</p>
+
+      <p class="note">This is the first article in what will be a series of interviews with Opera extension developers. We want to shed a light on what drives them, what their workflow is like, which tools they use, what their plans for future extension versions are, and so on. For this interview, we sat down with Hadrien Raffalli, who is co-founder of <a href="http://cottontracks.com">cottonTracks</a>, the company behind the novel <a href="https://addons.opera.com/en/extensions/details/cottontracks/?display=en">cottonTracks extension</a>, and asked him some questions over a (virtual) coffee.</p>
+
+<p><strong>What is cottonTracks?</strong></p>
+
+<p>Hadrien: <a href="https://addons.opera.com/en/extensions/details/cottontracks/?display=en">cottonTracks</a> is essentially an improved, searchable and contextual version of your memory. You browse web pages every day and apply a different level of attention to various subjects. Our browser extension analyzes your behavior in real-time and create beautiful stories of your favorite content automatically.</p>
+
+<div style="float: right; width: 400px; margin: 1em 0em 0em 1em;">
+<img src="../../../../devfiles.myopera.com/articles/11902/Team-cT-T-500.jpg" alt="the cottonTracks crew" /> 
+<p class="caption">The cottonTracks crew</p>
+</div>
+
+<p style="margin-top: 1em;"><strong>How many people work on cottonTracks? Where are you based?</strong></p>
+
+<p>Hadrien: We are four French entrepreneurs who met in Paris. What started as a dorm project quickly grew into a mission. We moved to Santiago, Chile, in February 2013, after getting accepted to the revolutionary <a href="http://startupchile.org">Start-Up Chile</a> accelerator program.</p>
+
+<p><strong>How did you come up with the idea for cottonTracks?</strong></p>
+
+<p>Hadrien: We started on a completely different project (navigating the web in 3D) and realized it was only possible to map the internet if we were focusing on one single user’s perception. One of our co-founders has a crazy memory so we started to reverse engineer it as a foundation of our behavioral technology.</p>
+
+<p><strong>Where does the name cottonTracks come from?</strong></p>
+
+<p>Hadrien: The original idea is pretty poetic, it symbolizes the tracks you leave when you walk in the snow.</p>
+
+<p><strong>What is your idea-to-development workflow? What&#39;s your UX process, are there several rounds of iterations and testing before each feature is
+added?</strong></p>
+
+<p>Hadrien: We work using agile methodology (scrum) to define the workflow of new features and to keep track of features to improve. We implement unit tests before the feature itself. It helps to keep the code clean and creates better stability. We test all new features inside our team first and then release it to a few users. Using the feedback we get, we fix bugs and improve or remove each new addition before releasing the upgrade to a wider audience.</p>
+
+<p><strong>cottonTracks has been out for a few weeks: have you already learned something from the initial user group? Do they use cottonTracks as
+expected? Are there things you think you&#39;ll need to change based on the initial user feedback?</strong></p>
+
+<p>Hadrien: We are impressed by the amount of data produced. Since bookmarking is usually manual, you only do it a couple of times a day with traditional solutions, but with cottonTracks, automation makes it possible to retain all the content you wish you had bookmarked. From a usability perspective, our users are asking for a simpler navigation flow and a decent sharing experience.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/11902/cottontracks-screenshot.jpg" alt="cottonTracks in action" style="margin: 1em 0 0.5em 0;" />
+<p class="caption">cottonTracks showing cards for some music and dance queries I did recently — history on steroids, really!</p> 
+
+<p><strong>Which tool has been particularly useful when developing cottonTracks?</strong></p>
+
+<p>Hadrien: Our object structure relies on John Resig&#39;s <a href="http://ejohn.org/blog/simple-javascript-inheritance/">simple Class.js inheritance pattern</a>. <a href="http://www.amazon.com/gp/product/193398869X/">Secrets of the JavaScript Ninjas</a>, from the very same author, is a excellent resource to read for better design, performance, and maintenance.</p>
+
+<p>As mentioned, we use a test-driven development technique, with unit tests for every part of the code. We are using <a href="http://qunitjs.com">QUnit</a> for this purpose.</p>
+
+<p><strong>How was your experience of developing Opera extensions specifically? Do you have any tips or tricks to help other extensions developers?</strong></p>
+
+<p>Hadrien: One of the key benefits about Opera is its support team. We have had an amazing relationship since we started to work with them a couple of months ago. They are strong supporters of the Open Web and actively promote innovation. You should definitely contact them.</p>
+
+<p><strong>What can we expect in the next version of cottonTracks?</strong></p>
+
+<p>Hadrien: In the coming weeks, we will greatly improve our reader feature so you can use it as a full-fledged read-later. Search and content management are the next items on the list.</p>
+
+<p><strong>In which direction do you want to evolve cottonTracks?</strong></p>
+
+<p>Hadrien: Today, cottonTracks makes your past navigation and habits more valuable. Tomorrow, we want to leverage this highly curated and personal content to help you accelerate your future navigation. We want to predict what is the next best page for you to read before you even know about it.</p>
+
+<p><strong>Thanks for the interview, Hadrien, and good luck to you and your team!</strong></p>
+
+<p>If you have suggestions who we have to interview next, <a href="https://twitter.com/odevrel/">let us know</a>!</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></h1>
+        <a href="../../../author/andreasbovens.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/c0/c93/83b9a906e6ee77ac0410e7056fbe0013388.jpg" alt=""/></a>
+        <p>Andreas is based in Oslo, where he works for Opera Software as Extensions Product Manager + Developer Relations.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, July 2, 2013
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/cottontracks.html" rel="tag">cottontracks</a></li>
+        <li><a href="../../tags/extension.html" rel="tag">extension</a></li>
+        <li><a href="../../tags/extension&#32;interview.html" rel="tag">extension interview</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

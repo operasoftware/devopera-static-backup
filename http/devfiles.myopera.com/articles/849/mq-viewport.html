@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset=utf-8>
+
+<title>Media Queries + viewport</title>
+
+<meta name="author" content="Andreas Bovens" >
+
+<meta name="viewport" content="width=device-width" >
+
+<style type="text/css" media="screen, projection">
+* {font-size: 1em; margin: 0; padding: 0; font-family: Arial, sans-serif;}
+body {text-align: center; background-color: #22171e;}
+ul {list-style-type: none;}
+#container {text-align: left;}
+h1 {padding: 10px; font-weight: bold; text-shadow: #ffffae 0 0 20px; color: #fff; font-size: 2em;}
+#main {background-color: #cdc2a3; font-size: 0.9em; padding-bottom: 10px; border: 1px solid #000;}
+
+#sidebar {background-color: #7fa080; font-size: 0.8em; padding-bottom: 10px; border: 1px solid #000;}
+
+#pub {color: #fff; font-size: 0.8em;}
+
+#footer {height: 100%; color: #fff; font-size: 0.7em; }
+
+#main p, #sidebar p, #sidebar ul, #pub p, h2 {margin: 0 10px 0 10px; padding: 10px 0 0px 0;}
+#footer p {margin: 0.3em;}
+
+	#container {margin: 0px auto 0px auto; width: 800px;}
+	#main {width: 498px; float: left;}
+	#sidebar {width: 148px; float: left;}
+	#pub {width: 150px; float: left;}
+	#footer {clear: both;}
+
+
+
+@media all and (min-width: 480px) and (max-width: 800px) {
+	#container {width: auto; max-width: 800px;}
+	#main {width: 70%; float: left;}
+	#sidebar {width: 29%; float: left; margin-bottom: 10px;}
+	#pub {width: 29%; margin-left: 70%; float: none;}	
+}
+@media all and (max-width: 480px) {
+	#container, #main, #sidebar {width: 100%; font-size: 0.9em;}
+	#pub {display: none;}
+	#sidebar ul li {display: inline;}
+	* {clear: both; border-left: 0 !important; border-right: 0 !important;}
+} 
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<h1>Lorem ipsum</h1>
+
+<div id="main">
+	
+<h2>Dolor sit</h2>
+	
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nulla. Suspendisse auctor. Sed nunc. Etiam vitae purus eget quam molestie imperdiet. Praesent eu felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas egestas. Phasellus tellus felis, aliquam id, ullamcorper at, auctor vel, libero. In hac habitasse platea dictumst. Cras vel risus quis magna lacinia venenatis. Fusce iaculis. Aenean dignissim augue at magna. Nam porttitor enim. Etiam magna. Nam scelerisque.</p>
+
+<p>Proin pharetra enim id libero. Phasellus cursus, ante sit amet sagittis ultricies, magna erat cursus quam, sed consequat quam ipsum vitae lorem. Curabitur laoreet, sem ut tempus volutpat, mauris turpis eleifend orci, id volutpat sem arcu nec nulla. Donec commodo, diam ut placerat facilisis, mauris nunc elementum ipsum, sit amet rutrum nibh lacus nec nibh. Pellentesque sit amet mi. Proin magna ipsum, rutrum non, commodo ut, tempus sed, urna. Quisque nec nisl vitae velit luctus tincidunt. Proin convallis, lacus sed tincidunt porttitor, velit velit porta pede, vel scelerisque diam tellus vitae metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis congue felis. Morbi ultrices augue et est. Proin eu neque vitae enim auctor rutrum.</p>
+
+<p>Morbi fermentum, turpis et cursus dignissim, libero urna venenatis pede, id rhoncus velit sapien sit amet arcu. Quisque nisl. Donec tempor volutpat felis. Mauris diam. Nunc fringilla dolor at neque. Vivamus erat turpis, accumsan ac, ultricies sit amet, pellentesque nec, lorem. Aenean lobortis ante in metus. Cras pulvinar. Proin risus. Vivamus vel elit. Nulla facilisi. Etiam sodales, magna a volutpat ornare, leo ligula molestie erat, eu condimentum magna erat fermentum sapien.</p>
+
+</div>
+
+<div id="sidebar">
+<h2>Dolor sit</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nulla.</p>
+<ul>
+	<li>Lorem ipsum</li>
+	<li>Lorem ipsum</li>
+	<li>Lorem ipsum</li>
+	<li>Lorem ipsum</li>
+</ul>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nulla. Suspendisse auctor. Sed nunc. Etiam vitae purus eget quam molestie imperdiet. </p>
+</div>
+
+<div id="pub">
+<h2>Adipiscing elit</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu nulla. Suspendisse auctor. Sed nunc. Etiam vitae purus eget quam molestie imperdiet. Praesent eu felis.</p>
+</div>
+
+
+<div id="footer"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+
+</div>	
+
+</body>
+</html>

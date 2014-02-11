@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+   <title>menu mockup</title>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <style type="text/css">
+      .show {display: none; }
+      .hide:focus + .show {display: inline; }
+      .hide:focus { display: none; }
+      .hide:focus ~ #list { display:none; }
+      @media print { .hide, .show { display: none; } }
+   </style>
+</head>
+<body>
+   <p>Here's a list</p>
+      <div>
+         <a href="css-menu-ex1.html#" class="hide">[hide]</a>
+         <a href="css-menu-ex1.html#" class="show">[show]</a>
+         <ol id="list">
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+         </ol>
+      </div>
+   <p>How about that?</p>
+</body>
+</html>

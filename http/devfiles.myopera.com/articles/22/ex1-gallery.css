@@ -1,0 +1,14 @@
+.thumbnails {
+    width:512px; margin: auto;
+    border-style:solid; background-color: grey;
+    background-image: url("http://devfiles.myopera.com/articles/22/banner-background.jpg");
+}
+img.thumb { 
+    width: 100px; height: 75px; margin: 5px; 
+    border-style: solid; border-color: blue;
+}
+div.preview {
+    width:512px; height:384px; margin: auto;
+    border-style:solid; background-color: lightgrey;
+}
+img.the_preview { width:512px; }

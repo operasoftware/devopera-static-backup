@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Dev.Opera articles</title>
+<link rel="alternate" href="http://dev.opera.com/" />
+<content>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</content>
+<rights>Opera Software ASA</rights>
+<updated>2013-07-02T07:48:45Z</updated>
+<entry>
+<title type="text">Extension developer interview: coffee with the cottonTracks team</title>
+<link href="http://dev.opera.com/articles/view/extension-developer-interviews-cottontracks" />
+<author>
+<name>Andreas Bovens</name>
+</author>
+<content>We sat down with the developers behind the novel cottonTracks extension, and asked them some questions over a (virtual) coffee. We talked about what the cottonTracks extension is all about, what their development workflow is, what they have learned thus far, and much more. </content>
+<id>http://dev.opera.com/articles/view/extension-developer-interviews-cottontracks</id>
+<updated>2013-07-02T07:48:45Z</updated>
+</entry>
+<entry>
+<title type="text">Major changes in Opera&apos;s extensions infrastructure  </title>
+<link href="http://dev.opera.com/articles/view/major-changes-in-operas-extensions-infrastructure" />
+<author>
+<name>Andreas Bovens</name>
+</author>
+<content>With Opera switching from Presto to Chromium and a complete UI remake, our extensions infrastructure has also gotten a major overhaul: from Opera 15 onward, Opera 11 &amp;amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model.</content>
+<id>http://dev.opera.com/articles/view/major-changes-in-operas-extensions-infrastructure</id>
+<updated>2013-05-28T06:13:02Z</updated>
+</entry>
+<entry>
+<title type="text">MenuEvent.target</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu-target" />
+<author>
+<name>Opera Software</name>
+</author>
+<content></content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu-target</id>
+<updated>2012-08-24T09:33:13Z</updated>
+</entry>
+<entry>
+<title type="text">MenuEvent.srcElement</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu-srcelement" />
+<author>
+<name>Opera Software</name>
+</author>
+<content></content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu-srcelement</id>
+<updated>2012-08-24T08:25:27Z</updated>
+</entry>
+<entry>
+<title type="text">MenuEvent.source</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu-source" />
+<author>
+<name>Opera Software</name>
+</author>
+<content></content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu-source</id>
+<updated>2012-08-24T07:56:55Z</updated>
+</entry>
+<entry>
+<title type="text">MenuEvent.mediaType</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu-mediatype" />
+<author>
+<name>Opera Software</name>
+</author>
+<content></content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu-mediatype</id>
+<updated>2012-08-24T07:18:52Z</updated>
+</entry>
+<entry>
+<title type="text">MenuEvent.isEditable</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu-iseditable" />
+<author>
+<name>Opera Software</name>
+</author>
+<content></content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu-iseditable</id>
+<updated>2012-08-24T07:11:05Z</updated>
+</entry>
+<entry>
+<title type="text">Context Menu API</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu" />
+<author>
+<name>Opera Software</name>
+</author>
+<content>The Context Menu API enables an extension to add an item to the context menu, otherwise known as the right-click menu. An extension may only add one item to the context menu, but this item may contain various layers of sub-items, similar to a folder/sub-folder structure. </content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu</id>
+<updated>2012-08-24T06:57:46Z</updated>
+</entry>
+<entry>
+<title type="text">MenuEvent.srcURL</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu-srcurl" />
+<author>
+<name>Opera Software</name>
+</author>
+<content></content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu-srcurl</id>
+<updated>2012-08-24T06:57:33Z</updated>
+</entry>
+<entry>
+<title type="text">MenuEvent.selectionText</title>
+<link href="http://dev.opera.com/articles/view/extensions-api-contextmenu-selectiontext" />
+<author>
+<name>Opera Software</name>
+</author>
+<content></content>
+<id>http://dev.opera.com/articles/view/extensions-api-contextmenu-selectiontext</id>
+<updated>2012-08-24T06:57:28Z</updated>
+</entry>
+</feed>

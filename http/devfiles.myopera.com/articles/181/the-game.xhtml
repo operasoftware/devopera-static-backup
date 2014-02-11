@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//VoiceXML Forum//DTD XHTML+Voice 1.2//EN"
+  "http://www.voicexml.org/specs/multimodal/x+v/12/dtd/xhtml+voice12.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ev="http://www.w3.org/2001/xml-events"
+  xmlns:ss="http://www.w3.org/2001/10/synthesis"
+  xmlns:xv="http://www.voicexml.org/2002/xhtml+voice">
+	<head>
+		<title>VoiceXML+SVG demo game</title>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+		<script type="application/javascript" src="the-game.js"></script>
+		<link rel="stylesheet" type="text/css" href="the-game.css" />
+		<link rel="author" href="http://www.robodesign.ro" title="ROBO Design - Mihai Şucan" />
+
+		<form xmlns="http://www.w3.org/2001/vxml" id="vmain">
+
+			<block>
+				<prompt xv:src="#ttl" />
+			</block>
+
+			<!-- The voice command input field. -->
+			<field name="vcmd">
+				<grammar type="application/srgs" src="the-game.gram" />
+
+				<!-- The initial prompt. Timeout before throwing the noinput
+					event is 10 seconds. -->
+				<prompt timeout="10s">
+					<ss:break time="5s" />
+					<value expr="RD_game.voiceMessage('prompt');" />
+				</prompt>
+
+				<!-- Rarely repeat the prompt. We don't want to annoy
+					the visitor if s/he leaves the page open. -->
+				<prompt count="2" timeout="500s">
+					<ss:break time="200s" />
+					<value expr="RD_game.voiceMessage('prompt');" />
+				</prompt>
+
+				<catch event="help nomatch noinput">
+					<value expr="RD_game.voiceMessage(_event);" />
+
+					<!-- Make sure to reprompt, otherwise the noinput event will
+						be played forever, annoying the visitor. -->
+					<reprompt />
+				</catch>
+
+				<!-- This executes when the user says a recognized utterance. -->
+				<filled>
+					<assign name="vres" expr="RD_game.voiceCommand(application.lastresult$);" />
+
+					<!-- The result can "instruct" this VoiceXML form to
+						perform actions only possible within VoiceXML. -->
+					<if cond="vres == 'event-nomatch'">
+						<clear namelist="vcmd" />
+						<throw event="nomatch" />
+
+					<!-- This is for reading a simple message. -->
+					<elseif cond="vres.action == 'prompt-value'" />
+						<value expr="vres.message" />
+						<clear namelist="vcmd" />
+
+					<!-- Start waiting for a command again. -->
+					<elseif cond="vres == 'clear-cmd'" />
+						<clear namelist="vcmd" />
+
+					</if>
+
+				</filled> <!-- name=vcmd -->
+			</field>
+
+		</form>
+
+	</head>
+
+	<body ev:event="load" ev:handler="#vmain">
+
+	<div id="main">
+
+	<h1 id="ttl">Welcome to the demo game!</h1>
+
+	<div id="hud">
+
+		<p>Variations: <span id="out_variations"></span></p>
+
+		<p><label title="This controls how many objects will be used in the game. Changing the value only takes effect after game restart." for="in_nslots">Objects:</label> <input id="in_nslots" type="text" value="9" /></p>
+
+		<p><label title="This controls how many objects will show in a single row. Changing the value only takes effect after game restart." for="in_cols">Columns:</label> <input id="in_cols" type="text" value="3" /></p>
+
+		<table id="out_players" cellspacing="0" cellpadding="0">
+
+			<tr>
+				<th scope="col">Player</th>
+				<th scope="col">Score</th>
+			</tr>
+
+		</table>
+
+	</div>
+
+	<svg id="mysvg"
+		version="1.1"
+		width="528"
+		height="139"
+		xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink">
+
+		<defs>
+
+			<animate id="anim-slots" xlink:href="#svg-slots" attributeName="opacity" begin="indefinite" from="0" to="1" dur="1s" fill="freeze" />
+
+			<symbol id="shape-circle" viewBox="0 0 30 30" preserveAspectRatio="xMaxYMax">
+				<circle cx="15" cy="15" r="13" />
+			</symbol>
+
+			<symbol id="shape-square" viewBox="0 0 30 30" preserveAspectRatio="xMaxYMax">
+				<rect x="1" y="1" width="28" height="28" />
+			</symbol>
+
+			<symbol id="shape-triangle" viewBox="0 0 30 30" preserveAspectRatio="xMaxYMax">
+				<polygon points="1,28 28,28 15,1" />
+			</symbol>
+
+			<symbol id="prevMove1" viewBox="0 0 30 30" preserveAspectRatio="xMaxYMax" overflow="visible">
+				<circle cx="1" cy="31" r="1.5" />
+			</symbol>
+
+			<symbol id="prevMove2" viewBox="0 0 30 30" preserveAspectRatio="xMaxYMax" overflow="visible">
+				<circle cx="5" cy="31" r="1.5" />
+			</symbol>
+
+			<linearGradient id="fill-red" x1="0%" y1="100%" x2="0%" y2="0%">
+				<stop offset="0%" stop-color="#e00" />
+				<stop offset="100%" stop-color="#f33" />
+			</linearGradient>
+
+			<linearGradient id="fill-yellow" x1="0%" y1="100%" x2="0%" y2="0%">
+				<stop offset="0%" stop-color="#e5e500" />
+				<stop offset="100%" stop-color="#ff0" />
+			</linearGradient>
+
+			<linearGradient id="fill-blue" x1="0%" y1="100%" x2="0%" y2="0%">
+				<stop offset="0%" stop-color="#0149ff" />
+				<stop offset="100%" stop-color="#4d7fff" />
+			</linearGradient>
+
+			<linearGradient id="fill-backgroundh" x1="0%" y1="100%" x2="0%" y2="0%">
+				<stop offset="0%" stop-color="#d8d8d8" stop-opacity="0.8" />
+				<stop offset="50%" stop-color="#fff" stop-opacity="0.1" />
+				<stop offset="100%" stop-color="#d8d8d8" stop-opacity="0.8" />
+			</linearGradient>
+
+			<linearGradient id="fill-backgroundv">
+				<stop offset="0%" stop-color="#d8d8d8" stop-opacity="0.8" />
+				<stop offset="6%" stop-color="#fff" stop-opacity="0.1" />
+				<stop offset="94%" stop-color="#fff" stop-opacity="0.1" />
+				<stop offset="100%" stop-color="#d8d8d8" stop-opacity="0.8" />
+			</linearGradient>
+
+			<linearGradient id="fill-backgroundb" x1="0%" y1="100%" x2="0%" y2="0%">
+				<stop offset="0%" stop-color="#d8d8d8" stop-opacity="0" />
+				<stop offset="100%" stop-color="#d8d8d8" stop-opacity="0.7" />
+			</linearGradient>
+
+		</defs>
+
+		<rect fill="url(#fill-backgroundh)" stroke="#bfbfbf" x="-1" y="-1" width="389" height="125" />
+		<rect fill="url(#fill-backgroundv)" stroke="#bfbfbf" x="-1" y="-1" width="389" height="125" />
+		<rect fill="url(#fill-backgroundb)" x="-1" y="125" width="389" height="14" />
+
+		<g id="svg-slots" transform="translate(5,5)"></g>
+		<g id="svg-prevMoves" transform="translate(5,5)"></g>
+
+		<rect id="svg-bgrCombos" fill="#d0d0d0" x="389" y="0" width="160" height="1" />
+		<g id="svg-bonusCombos" transform="translate(384,0)"></g>
+
+	</svg>
+
+	<p id="formControl">Change all 
+		<select id="sel_color" title="Color">
+			<option value="-">---</option>
+		</select> 
+
+		<select id="sel_shape" title="Shape">
+			<option value="-">---</option>
+		</select> to 
+
+		<select id="dest_color" title="Color">
+			<option value="-">---</option>
+		</select> 
+
+		<select id="dest_shape" title="Shape">
+			<option value="-">---</option>
+		</select> 
+
+		<input type="button" id="btn_usrCommand" value="Apply" />
+	</p>
+
+	<p id="out_gStatus">The game is not yet initialized...</p>
+
+	<p id="p_restart"><input type="button" id="btn_restartGame" value="Restart the game" /></p>
+
+	</div> <!-- #main -->
+
+	</body>
+</html>
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Timeline</title>
+<style type="text/css">
+/*TABLE*/
+#timeline	{width:800px; overflow:hidden; overflow-x:scroll; position:relative; border:1px solid #4f6b72; -webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.5); -moz-box-shadow:1px 1px 3px rgba(0,0,0,0.5); box-shadow:1px 1px 3px rgba(0,0,0,0.5);}
+table	{width:1800px; border-collapse:collapse; table-layout:fixed;}
+
+/*CELLS AND HEADER*/
+td, th	{padding:0; height:22px; border: 1px solid #b4ced8;}
+th		{font:bold 14px "Trebuchet MS", sans-serif; color:#4f6b72; letter-spacing:2px; text-align:center; background:#cae3ed;}
+
+/*BOXES*/
+td div		{float:left; height:0;}
+td div p	{margin:0; text-align:center; cursor:default; font-size:14px; padding:2px; -webkit-box-shadow:1px 1px 2px #222; -moz-box-shadow:1px 1px 2px #222; box-shadow:1px 1px 2px #222;}
+
+/*BOX GROUPS*/
+.girly{background:#fdd; border:1px solid #e084ad; color:#db6483; -moz-border-radius:10px; border-radius:10px; font-family:Verdana;}
+.blueish{background:#b1c7ef; border:1px solid #8487ad; font-family:Georgia;}
+.elegant{background:#fffdce; border:1px solid #845700; color:#8f5600; -moz-border-radius:3px; border-radius:3px; font-family:Georgia;}
+
+/*INDIVIDUAL BOXES*/
+#one{width:260%;margin-left:50%;}
+#two{width:100%;margin-left:38%;}
+#three{width:150%;margin-left:10%;}
+#four{width:100%;}
+
+/*TIP CONTENT*/
+td div p span	{position:relative; text-align:center; height:0; display:block; overflow:hidden;}
+
+/*TIP SIZES*/
+.tiprows1:hover span,.tiprows1:focus span{height:1.2em;}
+.tiprows2:hover span,.tiprows2:focus span{height:2.4em;}
+
+/*TIP ANIMATIONS*/
+td div span, abbr{-webkit-transition:0.4s; -moz-transition:0.4s; -o-transition:0.4s; transition:0.4s;}
+
+/*DATES*/
+td div abbr		{font:bold 11px "Trebuchet MS", sans-serif; padding:0 3px; margin-left:8px; border:1px solid #777; border-bottom:0; border-radius:3px 3px 0 0; background:rgba(255,255,255,0.7);}
+
+/*HEADER AND LEGEND*/
+h3				{margin:10px 0;}
+#legend > div	{font-weight:normal; display:inline; font-size:70%; margin:0 5px;}
+</style>
+</head>
+  <body>
+<h3>Year:</h3>
+<div id="timeline">
+  <table>
+    <thead>
+      <tr>
+	    <th>1998</th>
+	    <th>1999</th>
+	    <th>2000</th>
+	    <th>2001</th>
+	    <th>2002</th>
+	  </tr>
+    </thead>
+	<tbody>
+      <tr>
+	    <td></td>
+	    <td><div id="one" class="vevent">
+			  <abbr><time datetime="1999-06-01" class="dtstart value-title" title="1999-06-01">July 1st, 1999</time> to <time datetime="2002-02-04" class="dtend value-title" title="2002-02-04">February 4th, 2002</time></abbr>
+			  <p class="girly tiprows1 summary" tabindex="2">This starts in the middle of 1999 <span>the animation sure looks slick</span></p>
+		</div></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td><div id="two" class="vevent">
+			  <abbr><time datetime="1998-05-17" class="dtstart value-title" title="1998-05-17">May 17th, 1998</time> to <time datetime="1999-05-17" class="dtend value-title" title="1999-05-17">May 17th, 1999</time></abbr>
+			  <p class="blueish tiprows2 summary" tabindex="1">Second dummy text <span>much better looking timelines are in the second part of this article</span></p>
+		</div></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td><div id="three" class="vevent">
+		<abbr><time datetime="2001-02-06" class="dtstart value-title" title="2001-02-06">February 6th, 2001</time> to <time datetime="2002-08-06" class="dtend value-title" title="2002-08-06">August 6, 2002</time></abbr>
+		<p class="girly tiprows1 summary" tabindex="4">Third one <span>not sure what to put here</span></p>
+		</div></td>
+		<td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td><div id="four" class="vevent">
+		
+		<abbr><time datetime="2010-08-18" class="dtstart value-title" title="2010-08-18">January 1st, 2000</time> to <time datetime="2010-08-19" class="dtend value-title" title="2010-08-19">December 31st, 2000</time></abbr>
+		<p class="elegant tiprows1 summary" tabindex="3">Fourth <span>just another test tip</span></p>
+		</div></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+      <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	  </tr>
+	</tbody>
+  </table>
+</div>
+  <div id="legend">Legend: <div class="girly">My relationships</div><div class="blueish">Life-changing events</div><div class="elegant">Education</div></div>
+  
+<p><a href="javascript:void(location.href='http://feeds.technorati.com/events/'+escape(location.href))">Download these events</a> to your calendar.</p>
+  </body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>12. A HTML alapjai - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="hu">
+      <h1>12. A HTML alapjai</h1>
+      <p class="print author">By Karbonade</p>
+
+      <ul class="seriesNav">
+<li class="prev"><a rel="prev" href="../11-tipografia-a-weben/index.html" title="hivatkozás a sorozat előző leírására">Előző leírás — Tipográfia a weben</a></li>
+<li class="next"><a rel="next" href="../13-a-html-head-eleme/index.html">Következő leírás — A HTML &lt;head&gt; eleme</a></li>
+<li><a rel="index" href="../1-bevezeto-a-webes-szabvanyokba/index.html#tartalom">Tartalomjegyzék</a></li>
+</ul>
+
+<h2>Bevezető</h2>
+
+<p>Ebben a leírásban megismerheted a HTML alapjait — mi az, mire jó, hogyan alakult ki, valamint hogyan épül fel egy HTML dokumentum szerkezete. A következő leírásokban majd részletesebben is megismerheted a HTML különböző részeit. Ebben a leírásban a következő témákról lesz szó:</p>
+
+<ul>
+  <li><a href="index.html#miahtml">Mi a HTML?</a></li>
+  <li><a href="index.html#hogynezki">Hogyan néz ki a HTML?</a></li>
+  <li><a href="index.html#tortenet">A HTML története</a></li>
+  <li><a href="index.html#szerkezet">A HTML dokumentum szerkezete</a></li>
+  <li><a href="index.html#szintaxis">A HTML elemek szintaxisa</a></li>
+  <li><a href="index.html#blokkinline">Blokk szintű és inline elemek</a></li>
+  <li><a href="index.html#karakterref">Karakter referenciák</a></li>
+  <li><a href="index.html#osszefoglalo">Összefoglaló</a></li>
+</ul>
+
+<h2 id="miahtml">Mi a HTML?</h2>
+
+<p>A legtöbb olyan asztali alkalmazás, amelyik fájlokat ír és olvas, egy bizonyos fájlkiterjesztést használ. A Microsoft Word például a „.doc” fájlokat érti meg, míg a Microsoft Excel az „.xls” fájlokat ismeri. Ezek a fájlok utasításokat tartalmaznak arra, hogy hogyan lehet felépíteni a dokumentumot a legközelebbi megnyitáskor, mit tartalmaz a dokumentum, valamint néhány „metaadatot” a dokumentumról, mint például a szerző vagy a legutolsó módosítás dátuma, sőt akár az utolsó módosítások is benne lehetnek, így vissza lehet állni a dokumentum egy korábbi verziójára.</p>
+
+<p>A <dfn>HTML</dfn> („HyperText Markup Language”, azaz hiperszöveg-leíró nyelv) a webes dokumentumok leírására szolgáló nyelv. Olyan speciális jelöléseket (más szóval elemeket) tartalmaz, amelyek körülveszik dokumentum szövegeit, és megadják, hogy a kliens eszközök hogyan értelmezzék a dokumentum megjelölt részeit.</p>
+
+<p>A „kliens eszközök” kifejezést használtuk itt a „webböngészők” helyett. Egy kliens eszköz lehet bármilyen szoftver, amely a felhasználó számára weboldalakat ér el. Fontos megemlítenünk még ezen a ponton, hogy az asztali böngészők (Internet Explorer, Opera, Firefox, Safari, stb.) és az alternatív böngészők (mint például a Wii Internet channel vagy a mobil böngészők, mint az Opera Mini vagy az iPhone WebKitje) egyaránt kliens eszközök, viszont nem minden kliens eszköz böngésző szoftver. Az olyan automata programok, mint amilyenekkel a Google és a Yahoo! indexeli a webet a keresőjük számára, ugyancsak kliens eszközök, viszont nem állnak közvetlen emberi irányítás alatt.</p>
+
+<h2 id="hogynezki">Hogyan néz ki a HTML?</h2>
+
+<p>A HTML a szövegek és az jelölések egyszerű szöveges megjelenítése. Például a fenti „Hogyan néz ki a HTML?” címsorhoz tartozó HTML kódrészlet a következő:</p>
+
+<pre>&lt;h2 id=&quot;hogynezki&quot;&gt;Hogyan néz ki a HTML?&lt;/h2&gt;</pre>
+
+<p>A „<code>&lt;h2&gt;</code>” rész egy jelölő (amire „tag” — ejtsd <em>teg</em> — névvel hivatkozunk), és azt jelenti, hogy „a következő rész második szintű címsornak számít”. A „<code>&lt;/h2&gt;</code>” ugyancsak egy tag, amely a második szintű címsor lezárását jelöli (éppen ezért „lezáró tagnek” is nevezik). A nyitó tag, a záró tag és minden, ami köztük van, együtt alkotja az „elemet”. Sokan a tag és elem kifejezéseket felcserélhetőként használják, pedig ez nem teljesen helyes. Az <code>id=&quot;hogynezki&quot;</code> egy attribútum; ezekről a későbbiekben lesz szó.</p>
+
+<p>A legtöbb böngészőben találhatsz egy „Forrás” vagy „Forráskód” pontot, legtöbbször a „Nézet” menü alatt. Ha megtalálod, válaszd ki most, és tölts egy kis időt ennek a lapnak a HTML forráskódját nézegetve.</p>
+
+<h2 id="tortenet">A HTML története</h2>
+
+<p><a href="../2-az-internet-es-a-web-tortenete/index.html">Az internet és a web története</a> leírásban már olvashattál arról, hogy hogyan alakult ki a modern web. Amikor Tim Berners-Lee megalkotta a World Wide Webet, akkor elkészítette az első webszervert, az első webböngészőt és <a href="http://www.w3.org/History/19921103-hypertext/hypertext/WWW/MarkUp/MarkUp.html">a HTML első verzióját </a>is.</p>
+
+<p>Bár a HTML rengeteget változott az első napok óta, sok része az első HTML dokumentációnak még mindig érvényben van a modern verzióban is, és az akkor definiált „HTML tagek” több mint fele most is létezik.</p>
+
+<p>Ahogy egyre többen kezdtek weblapokat és alternatív böngészőket írni, úgy bővült folyamatosan új funkciókkal a HTML is. Sokat általánosan adtak hozzá (mint például az <code>img</code> elemet egy kép beillesztéséhez, amelyet először az NCSA Mosaic valósított meg). Más elemek védettek voltak, és csak egy-két böngésző valósította meg őket. Egyre nőtt az igény a szabványosításra, hogy a böngésző szoftverek készítőinek legyen egy dokumentumuk (más néven specifikáció), amelynek alapján egyértelműen eldönthetik, hogy a HTML hogyan néz ki, és hogy egy HTML elemet helyesen valósítottak-e meg, vagy nem.</p>
+
+<p>Az IETF (Internet Engineering Task Force — a szabványos alap elkészítésére az internet egészéhez) a HTML ajánlásának első vázlatát 1993-ban adta ki. Ez 1994-ben elavult anélkül, hogy szabvánnyá vált volna, de arra késztette az IETF-et, hogy indítson egy csoportot a HTML szabványosítására.</p>
+
+<p>1995-ben elkészült a „HTML 2.0”, amely sok ötletet merített az eredeti HTML ajánlásból. Dave Raggett készített egy alternatív javaslatot is HTML+ névvel, amely sok új elem fejlesztésének alapjául szolgált a böngészőkben (például a képek behelyezésének a módszere a dokumentumokba, amelyben az NCSA Mosaic volt az úttörő).</p>
+
+<p>A HTML 3.0 ajánlása még ugyanebben az évben érkezett, de hamar befejezték vele a munkát, mivel a böngészőgyártók teljesen más irányokban kezdtek el fejleszteni. A HTML 3.2 sok funkciót elhagyott a HTML 3.0-ból, és helyettük beépítette a népszerűbb böngészők (mint a Mosaic és a Netscape Navigator) különböző fejlesztéseit.</p>
+
+<p>1997-ben a W3C kiadta ajánlásként a HTML 4.0-át, amelyben még több böngésző-sepcifikus kiterjesztést próbáltak meg ésszerűsíteni és egyszerűbbé tenni. Ezt azzal érték el, hogy több elemet elavultként jelöltek meg — ez azt jelenti, hogy ezek az elemek még léteznek ebben a verzióban (elavultként megjelölve), de a következőben már teljesen törölve lesznek. Ezzel próbálták meg a fejlesztőket rávenni arra, hogy a HTML-t szemantikusabban használják (erről részletesebben <a href="../4-a-webes-szabvanyok-modellje/index.html">A webes szabványok modellje</a> leírásban olvashatsz).</p>
+
+<p>A HTML 4.01 1999-ben jelent meg, majd néhány elírást javítottak benne 2001-ben. Ez az utolsó HTML verzió, bár jelenleg már elérhető a HTML 5 vázlata is.</p>
+
+<p>2000-ben a W3C kiadta az XHTML 1.0 specifikációját is, amely a HTML átdolgozása volt érvényes XML dokumentumra.</p>
+
+<h2 id="szerkezet">A HTML dokumentum szerkezete</h2>
+
+<p>A lehető legkisebb érvényes HTML dokumentum valahogy így néz ki:</p>
+
+<pre>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Példa lap&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Helló világ&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</pre>
+
+<p>A kód a dokumentum típusát megadó (<code>doctype</code>) elemmel kezdődik, erről részletesebben a <a href="../14-megfelelo-doctype-valasztasa/index.html">Megfelelő doctype választása</a> leírásban olvashatsz. Ez az elem adja meg, hogy melyik HTML változatot fogjuk használni, így a kliens eszközök tudni fogják, hogyan értelmezzék a dokumentumot, valamint hogy betartja-e a dokumentum az adott típus szabályait, vagy nem.</p>
+
+<p>Ezután egy nyitó <code>html</code> elemet láthatsz. Ez közrefogja az egész dokumentumot. A záró <em>html</em> tag az utolsó a HTML dokumentumban.</p>
+
+<p>A <code>html</code> elemen belül találjuk a <code>head</code> elemet. Ez a elem információkat tartalmaz a dokumentumról (a metaadatokat). Erről részletesebben <a href="../13-a-html-head-eleme/index.html">a következő leírásban</a> lesz szó. A <code>head</code> elemen belül találjuk a <code>title</code> elemet, amely a lap címét („Példa lap”) definiálja az ablak fejlécében.</p>
+
+<p>A <code>head</code> elem után következik a <code>body</code> elem, amely a lap valódi tartalmát fogja közre — amely ebben az esetben csak egy első szintű címsor elemből (<code>h1</code>) áll, amely a „Helló világ” szöveget tartalmazza. Ez a teljes dokumentumunk.</p>
+
+<p>Ahogy láthatod, az elemek gyakran tartalmaznak más elemeket. A dokumentum törzse mindig tartalmaz további beágyazott elemeket. Az oldal felosztása adja meg a dokumentum struktúráját, és tovább felosztásokat tartalmaz. Ebben lesznek a címsorok, a bekezdések, a listák, stb. A bekezdések ugyancsak több különböző elemet tartalmazhatnak: hivatkozásokat más dokumentumokra, idézőjeleket, kiemeléseket, stb. Ezekről az elemekről többet is meg fogsz tudni a későbbiekben.</p>
+
+<h2 id="szintaxis">A HTML elemek szintaxisa</h2>
+
+<p>Ahogy már láthattad, egy egyszerű elem a HTML-ben két jelölő tagből áll egy szövegblokk körül. Vannak olyan elemek is, amelyek nem fognak közre egy szöveget, és a legtöbb esetben az elemek további elemeket tartalmazhatnak (mint ahogy a fenti példában a <code>html</code> tartalmazza a <code>head</code> és a <code>body</code> elemeket).</p>
+
+<p>Az elemek ezen kívül tartalmazhatnak attribútumokat is, amelyek módosíthatják az elem működését, vagy újabb értelmezést adhatnak az elemnek.</p>
+
+<pre>&lt;div id=&quot;masthead&quot;&gt;
+  &lt;h1&gt;
+    A &lt;abbr title=&quot;Hypertext Markup Language&quot;&gt;HTML&lt;/abbr&gt; alapjai
+  &lt;/h1&gt;
+&lt;/div&gt;
+</pre>
+
+<p>Ebben a példa <code>div</code> elemben (amely a lap részeinek logikus blokkokba való felosztására szolgál) használtunk egy kiegészítő <code>id</code> attribútumot, amely a <code>masthead</code> értéket kapta. A <code>div</code> tartalmaz egy <code>h1</code> elemet (első, vagyis legmagasabb szintű címsor), amely tartalmaz egy szöveget. A szöveg egy részét az <code>abbr</code> elem fogja közre (ezzel adhatjuk meg a rövidítések leírását), amely tartalmaz egy <code>title</code> attribútumot, ennek értéke a „<code>Hypertext Markup Language</code>” szöveg.</p>
+
+<p>Sok attribútum a HTML-ben minden elemre használható, míg egyes attribútumokat csak bizonyos elemek mellett használhatunk. Mindig <code>kulcsszó=&quot;érték&quot;</code> formában használjuk. Az értéket sima vagy dupla idézőjelbe kell tenni (bár egyes esetekben az idézőjeleket elhagyhatjuk, viszont ez nem jó módszer a előreláthatóság, az érhetőség és a világos, tiszta kód szempontjából — a legjobb, ha <em>mindig</em> kiteszed az idézőjeleket).</p>
+
+<p><a href="http://www.w3.org/TR/html401/index/attributes.html">Az attribútumok és a lehetséges értékeik a HTML specifikációkban vannak megadva</a> — nem hozhatsz létre saját attribútumokat anélkül, hogy érvénytelenné nem tennéd a HTML dokumentumodat, mivel ez összezavarná a kliens eszközöket és problémákat okozhat a weblap helyes értelmezésében. Az egyetlen kivétel az <code>id</code> és a <code>class</code> attribútumok — ezeknek a lehetséges értékei teljes mértékben a te kezedben vannak, mivel ezekkel tudod a saját értelmezésedet és szemantikádat hozzáadni a dokumentumhoz.</p>
+
+<p>Egy elemre egy másik elemen belül az adott elem „gyerekeként” hivatkozunk. Így a fenti példában az <code>abbr</code> a <code>h1</code> gyereke, ami viszont már a <code>div</code> gyereke. Fordítva, a <code>div</code> így a <code>h1</code> elem „szülője” lesz. Ez a szülő/gyerek fogalom nagyon fontos, mivel ez biztosítja a CSS alapjait, és ezt használjuk majd a JavaScriptekben is.</p>
+
+<h2 id="blokkinline">Blokk szintű és inline elemek</h2>
+
+<p>A HTML elemeket általánosan két nagy kategóriára bonthatjuk, amelyek megfelelnek az elem által megjelenített tartalom és struktúra típusainak — ezek a blokk szintű és az inline elemek.</p>
+
+<p>A blokk szintű (<em>block level</em>) elem egy felsőbb szintű elemet jelent, amely általában a dokumentum struktúráját jelzi. Úgy gondolhatsz ezekre az elemekre, mint amelyek egy új sort kezdenek, vagy elválasztanak valamit a korábbi tartalomtól. A leggyakoribb blokk szintű elemek a bekezdések (paragrafusok), listaelemek és táblázatok.</p>
+
+<p>Az inline (azaz soron belüli) elemek ezzel szemben azok az elemek, amelyeket a blokk szintű elemek tartalmaznak, és csak a dokumentum kis részeit fogják közre, nem teljes bekezdéseket vagy csoportokat. Egy inline elem nem fog új sort generálni a dokumentumban; ezek azok az elemek, amelyek egy bekezdés szövegén belül találhatóak. A leggyakoribb inline elemek a hiperhivatkozások, a kiemelt szavak vagy mondatok és a rövid idézetek.</p>
+
+<h2 id="karakterref">Karakter referenciák</h2>
+
+<p>Még van egy fontos pont a HTML dokumentumokkal kapcsolatban, mégpedig a speciális karakterek használata. A HTML-ben a <code>&lt;</code>, <code>&gt;</code> és <code>&amp;</code> jelek speciálisak. Ezek adják meg HTML tagek elejét és végét, így a dokumentumon belül nem a kisebb, nagyobb és az <em>és</em> jeleket jelentik.</p>
+
+<p>Az egyik legegyszerűbb hiba, amit egy webfejlesztő véthet, hogy az <em>és</em> jelet felhasználja a dokumentumban, így valami váratlan történik. Ha például azt írja, hogy „<code>az angolszász jelölésben a tömeg stones&amp;pounds</code>”, akkor egyes böngészőkben ez úgy végződhet, hogy „<code>…stones£s</code>”.</p>
+
+<p>Ez azért van, mert a „<code>&amp;pounds;</code>” szövegrész valójában egy HTML karakter referencia. A karakter referencia egy módszer az olyan karakterek beillesztésére a dokumentumokba, amelyeket egyébként csak nehezen vagy sehogyan sem írhatunk be a billentyűzetet használva, vagy a dokumentum kódkészletében nem szerepel.</p>
+
+<p>Az <em>és</em> jel (<code>&amp;</code>) vezet be egy ilyen referenciát, és a pontosvessző (<code>;</code>) zárja le. Ennek ellenére sok kliens eszköz elég megbocsátó a HTML hibák iránt, és nem veszi figyelembe, hogy nincs lezáró pontosvessző, így a „<code>&amp;pound</code>” kifejezést is karakter referenciaként értelmezi. A referenciák lehetnek számok (numerikus referenciák), vagy rövid szavak (egyedi referenciák).</p>
+
+<p>Ha egy <em>és</em> jelet akarunk beírni a dokumentumba, akkor az „<code>&amp;amp;</code>” karakter referenciát kell használnunk, vagy a „<code>&amp;#38;</code>” numerikus referenciát. <a href="http://www.evolt.org/article/A_Simple_Character_Entity_Chart/17/21234/">A karakter referenciák listáját az evolt.org oldalán</a> találhatod meg.</p>
+
+<h2 id="osszefoglalo">Összefoglaló</h2>
+
+<p>Ebben a leírásban megismerhetted a HTML alapjait, hogy honnan fejlődött ki, és betekintést nyerhettél egy HTML dokumentum felépítésébe. A következő részben a HTML dokumentum <code>&lt;head&gt;</code> részével fogunk bővebben foglalkozni, majd rátérünk a <code>&lt;body&gt;</code> által közrefogott tartalomra.</p>
+
+<ul class="seriesNav">
+<li class="prev"><a rel="prev" href="../11-tipografia-a-weben/index.html" title="hivatkozás a sorozat előző leírására">Előző leírás — Tipográfia a weben</a></li>
+<li class="next"><a rel="next" href="../13-a-html-head-eleme/index.html">Következő leírás — A HTML &lt;head&gt; eleme</a></li>
+<li><a rel="index" href="../1-bevezeto-a-webes-szabvanyokba/index.html#tartalom">Tartalomjegyzék</a></li>
+</ul>
+
+<h2>A szerzőről</h2>
+
+<div class="right">
+<img src="../../../../devfiles.myopera.com/articles/755/norm.jpg" alt="Mark Norman Francis" />
+<p class="comment">Fotó: <a href="http://flickr.com/photos/andybudd/98405468/">Andy Budd</a>.</p>
+</div>
+
+<p>Mark Norman Francis már azelőtt az internettel foglalkozott, hogy a web megszületett volna. Jelenleg a Yahoo!-nál a világ legnagyobb weboldalán dolgozik mint kezelőfelület-tervező, új módszereket és kódolási szabályokat dolgoz ki, valamint nemzetközi támogatást nyújt a minőségi webfejlesztéshez.
+</p>
+
+<p>A Yahoo! előtt a Formula One Management, a Purple Interactive és a City University vállalatoknál dolgozott különböző minőségben, többek között mint webfejlesztő, CGI programozó és rendszertervező. A <a href="http://marknormanfrancis.com/">http://marknormanfrancis.com/</a> oldalon blogol.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=287163">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/mnfrancis.html" rel="author">Mark Norman Francis</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/karaj.html" rel="author">Karbonade</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, August 17, 2009
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/attribútum.html" rel="tag">attribútum</a></li>
+        <li><a href="../../tags/elem.html" rel="tag">elem</a></li>
+        <li><a href="../../tags/html.html" rel="tag">html</a></li>
+        <li><a href="../../tags/inline.html" rel="tag">inline</a></li>
+        <li><a href="../../tags/tag.html" rel="tag">tag</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../12-the-basics-of-html/index.html">English</a>,
+        <a href="../12-the-basics-of-html-ja/index.html">Japanese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ viewBox="800 -200 1000 1000">
+	<defs>
+  	<style type="text/css">
+  	 @font-face { 
+          font-family: tuffy; 
+          src: url(ryanlerch_-_Tuffy_Bold.ttf) format("truetype");
+     }
+     @font-face { 
+          font-family: trace; 
+          src: url(zeimusu_-_Let_s_Trace_Basic.ttf) format("truetype");
+     }
+     @font-face { 
+          font-family: ubuntu; 
+          src: url(UbuntuTitleBold.svg#UbuntuTitleBold) format("svg");
+     }
+     .ex1 {
+      font: 40px tuffy;
+     }
+     .ex2 {
+      font: 50px trace;
+     }
+     .ex3 {
+      font: 50px ubuntu;
+     }
+     text { text-anchor:middle }
+  	</style>
+    <path id="p" d="M700 400a200 200 0 1 1 400 0"/>
+    <radialGradient id="rg" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0" style="stop-color:hsl(210,80%,50%)"/>
+      <stop offset="1" style="stop-color:hsla(210,80%,50%,0)"/>
+    </radialGradient>
+  </defs>
+  
+  <circle cx="900" cy="400" r="1000" stroke-dasharray="104.9" stroke-dashoffset="100" stroke="url(#rg)" fill="none" stroke-width="1500"/>
+  
+  <text class="ex2" style="font-size:50px" transform="translate(900 380)">Let's Trace Basic (truetype)</text>
+  <text class="ex1" transform="translate(900 450)">Tuffy Bold (truetype)</text>
+  <text class="ex2"><textPath xlink:href="#p" text-anchor="middle" startOffset="50%">Using webfonts in svg is easy!</textPath></text>
+  <text class="ex3" transform="translate(900 520)">ubuntu (svgfont)</text>
+  
+  
+</svg>

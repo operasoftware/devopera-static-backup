@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>Dev.Opera articles</title>
+<link>http://dev.opera.com/</link>
+<copyright>Opera Software ASA</copyright>
+<pubDate>Tue, 23 Oct 2012 13:13:50 GMT</pubDate>
+<description>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</description>
+<item>
+<title>Network Service Discovery API support in Opera</title>
+<link>http://dev.opera.com/articles/view/network-service-discovery-api-support-in-opera</link>
+<author>Daniel Davis</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/network-service-discovery-api-support-in-opera</guid>
+<pubDate>Tue, 23 Oct 2012 13:13:50 GMT</pubDate>
+<description>The Network Service Discovery API enables web pages to communicate with devices advertising themselves on the network via different discovery protocols in a peer-to-peer configuration. Now you can use JavaScript to find a UPnP server locally, browse its content and send that content to a UPnP client. This article, with links to experimental builds, shows you how.</description>
+</item>
+<item>
+<title>Introducing mobile browser automation</title>
+<link>http://dev.opera.com/articles/view/introducing-mobile-browser-automation</link>
+<author>Andreas Tolf Tolfsen</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/introducing-mobile-browser-automation</guid>
+<pubDate>Thu, 02 Aug 2012 17:14:13 GMT</pubDate>
+<description>Opera Mobile brings the Web to millions of people through their mobile phones and other non-desktop devices. Opera believes in giving people access to the full Web, and not making the distinction of a “mobile web”. To help automated mobile testing, we&#39;ve updated the Opera Mobile Emulator so it can talk to our browser automation library, OperaDriver. </description>
+</item>
+<item>
+<title>A labs release to get your SPDY senses tingling</title>
+<link>http://dev.opera.com/articles/view/opera-spdy-build</link>
+<author>Chris Mills</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-spdy-build</guid>
+<pubDate>Fri, 06 Jul 2012 09:58:01 GMT</pubDate>
+<description>Opera is proud to present an experimental labs release that includes support for SPDY, Google&#39;s new networking protocol that enables performance increases across the web. Please try it out, and let us know what you think!</description>
+</item>
+<item>
+<title>Desktop build with new extension APIs: Screenshot, Resource Loader and URL Filter</title>
+<link>http://dev.opera.com/articles/view/new-extension-apis-screenshot-resource-loader-url-filter</link>
+<author>Chris Mills</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/new-extension-apis-screenshot-resource-loader-url-filter</guid>
+<pubDate>Wed, 16 May 2012 13:33:50 GMT</pubDate>
+<description>We&#39;ve been working hard recently to improve the functionality available inside Opera extensions, and today we are proud to reveal some of the fruits of our labours. In this article we&#39;ll share with you some new experimental desktop builds that feature three new extension APIs: the screenshot API, the resource  loader API, and several updates to the URL filter API.</description>
+</item>
+<item>
+<title>Opera Mobile Emulator build with experimental WebKit prefix support</title>
+<link>http://dev.opera.com/articles/view/opera-mobile-emulator-experimental-webkit-prefix-support</link>
+<author>Bruce Lawson</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-mobile-emulator-experimental-webkit-prefix-support</guid>
+<pubDate>Fri, 27 Apr 2012 15:21:17 GMT</pubDate>
+<description>Through our site compatibility work, we have experienced that many site authors only use -webkit- prefixed CSS, thereby ignoring other vendor prefixes and not even including an unprefixed equivalent. This leads to a reduced user experience on non-WebKit browsers, as they don&#39;t receive the same shiny effects, even although they support them. To tackle this problem, we are releasing an experimental Opera Mobile Emulator build with experimental support for selected -webkit- prefixes.</description>
+</item>
+<item>
+<title>Extensions come to Opera Mobile</title>
+<link>http://dev.opera.com/articles/view/extensions-opera-mobile-labs</link>
+<author>Andreas Bovens</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-opera-mobile-labs</guid>
+<pubDate>Tue, 03 Apr 2012 12:25:55 GMT</pubDate>
+<description>When adding extensions support to our Presto engine, a lot of time was spent behind the scenes so as to make our extensions framework very versatile and lightweight, with the aim of using it on other platforms as well. Today, we&#39;re happy to present you with an early preview of extensions running on Opera Mobile!</description>
+</item>
+<item>
+<title>Opera Mobile 12 for Android Ice Cream Sandwich MIPS tablet</title>
+<link>http://dev.opera.com/articles/view/opera-mobile-12-android-ics-mips</link>
+<author>Chris Mills</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-mobile-12-android-ics-mips</guid>
+<pubDate>Mon, 27 Feb 2012 08:25:46 GMT</pubDate>
+<description>Opera is proud to unveil a labs build of Opera Mobile 12, for devices built on MIPS architecture, which has already been run successfully on top of Android Ice Cream Sandwich.</description>
+</item>
+<item>
+<title>Opera Mobile 12 for x86 architectures</title>
+<link>http://dev.opera.com/articles/view/opera-mobile-12-android-ics-x86</link>
+<author>Chris Mills</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-mobile-12-android-ics-x86</guid>
+<pubDate>Mon, 27 Feb 2012 08:25:43 GMT</pubDate>
+<description>Opera is proud to unveil a labs build of Opera Mobile 12, for devices built on Intel x86 architectures, which has already been run successfully on top of Android Ice Cream Sandwich.</description>
+</item>
+<item>
+<title>A treat for Nokia N9 users - an official Opera Mobile 11.5 Labs release</title>
+<link>http://dev.opera.com/articles/view/a-treat-for-nokia-n9-users-opera-mobile-labs-11-5</link>
+<author>Mostyn Bramley-Moore</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/a-treat-for-nokia-n9-users-opera-mobile-labs-11-5</guid>
+<pubDate>Tue, 21 Feb 2012 17:30:01 GMT</pubDate>
+<description>Since our previous releases of Opera Mobile for MeeGo, we have noticed that a lot of our users have been hanging out for an official Opera Mobile build for the Nokia N9 and N950 Harmattan phones. Well, today is your lucky day &#x2014; we&#39;re happy to announce that a Labs release of Opera Mobile 11.5 for Harmattan is available for download now.</description>
+</item>
+<item>
+<title>64-bit Opera, and out-of-process plug-ins</title>
+<link>http://dev.opera.com/articles/view/64-bit-opera-and-out-of-process-plug-ins</link>
+<author>Chris Mills</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/64-bit-opera-and-out-of-process-plug-ins</guid>
+<pubDate>Thu, 09 Feb 2012 15:09:06 GMT</pubDate>
+<description>Originally published just before Christmas 2011, and now updated with a new set of builds on February 9th 2012, Opera is proud to present a new labs release featuring 64-bit builds and out-of-process plug-ins.</description>
+</item>
+</channel>
+</rss>

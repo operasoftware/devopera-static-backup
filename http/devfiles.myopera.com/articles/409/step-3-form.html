@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <title>Step 3: complex form input types</title>
+</head>
+
+<body>
+
+<h1>My feedback form</h1>
+
+<form id="contact-form" action="http://devfiles.myopera.com/articles/409/script.php" method="post">
+
+<ul>
+<li><label for="name">Name:</label> <input type="text" name="name" id="name" value="" /></li>
+<li><label for="email">Email:</label> <input type="text" name="email" id="email" value="" /></li>
+<li><label for="pwd">Password:</label> <input type="password" name="pwd" id="pwd" value="" /></li>
+</ul>
+
+<ul>
+  <li>Please check all the emotions that apply to you:
+    <ul>
+      <li><label for="angry">Angry</label> <input type="checkbox" name="angry" id="angry" value="angry" checked="checked"></li>
+      <li><label for="sad">Sad</label> <input type="checkbox" name="sad" id="sad" value="sad"></li>
+      <li><label for="happy">Happy</label> <input type="checkbox" name="happy" id="happy" value="happy"></li>
+      <li><label for="ambivalent">Ambivalent</label> <input type="checkbox" name="ambivalent" id="ambivalent" value="ambivalent"></li>
+    </ul>
+  </li>
+  <li>How satisfied were you with our service?
+    <ul>
+      <li><label for="vsat">Very satisfied</label> <input type="radio" name="satisfaction" id="vsat" value="vsat" checked="checked"></li>
+      <li><label for="sat">Satisfied</label> <input type="radio" name="satisfaction" id="sat" value="sat"></li>
+      <li><label for="dcare">Didn't care</label> <input type="radio" name="satisfaction" id="dcare" value="dcare"></li>
+      <li><label for="disat">Dissatisfied</label> <input type="radio" name="satisfaction" id="disat" value="disat"></li>
+      <li><label for="vdisat">Very dissatisfied</label> <input type="radio" name="satisfaction" id="vdisat" value="vdisat"></li>
+    </ul>
+  </li>
+  <li><label for="comments">Further comments:</label> <textarea name="comments" id="comments" cols="25" rows="3"></textarea></li>
+</ul>
+
+<ul>
+  <li><label for="photo">Bio photo:</label> <input type="file" name="photo" id="photo" value="" /></li>
+  <li><label for="location">Location visited:</label>
+  <select name="location" id="location">
+    <option value="">Select location</option>
+    <option value="nyork">New York</option>
+    <option value="vancouver">Vancouver</option>
+    <option value="atlantis">Atlantis</option>
+    <option value="alpha">Alpha Centauri</option>
+    <option value="blackpool">Blackpool</option>
+    <option value="bognor">Bognor Regis</option>
+  </select></li>
+</ul>
+
+<li><input type="submit" value="submit" /></li>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Extensions come to Opera Mobile - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Extensions come to Opera Mobile</h1>
+      <p class="print author">By Andreas Bovens</p>
+
+      <p>When adding extensions support to our Presto engine <a href="http://my.opera.com/chooseopera/blog/2010/10/14/opera-11-will-have-extensions">back in 2010</a>, a lot of time was spent behind the scenes so as to make our <a href="../../../addons/extensions/index.html">extensions framework</a> very versatile and lightweight. Although the initial release was targeted for desktop only, every aspect of the extensions API was drafted with mobile in mind.</p>
+
+<p>Today, we&#39;re happy to present you with a <strong>Labs release of Opera Mobile with support for extensions</strong>!</p>
+
+<p><object width="640" height="360"><param name="movie" value="http://www.youtube.com/v/PR6EoHsWL2Q?version=3&amp;hl=en_US&amp;rel=0" /><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="never" /><embed src="http://www.youtube.com/v/PR6EoHsWL2Q?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="640" height="360" allowfullscreen="true" allowscriptaccess="never" /></object></p>
+
+<p>This is a very early Labs release and it&#39;s not quite certain at this point that extensions functionality will effectively make it into a future release of Opera Mobile; the design is also most definitely <strong>not final</strong>, and there are some rough edges here and there, but if that doesn&#39;t scare you away – and why should it! –, you can find an Opera Mobile Labs build with extensions support for Android below. In addition, we&#39;ve released extension-enabled Opera Mobile Emulator Labs builds, so you can test your extensions in a desktop-based Opera Mobile instance as well.</p>
+
+<ul>
+	<li><a href="http://www.opera.com/download/get.pl?id=34585&amp;sub=true&amp;nothanks=yes&amp;location=360">Opera Mobile Labs build with extensions for Android (.apk)</a></li>
+	<li><a href="http://www.opera.com/download/get.pl?id=34588&amp;sub=true&amp;nothanks=yes&amp;location=360">Opera Mobile Emulator Labs build with extensions for Windows (.zip)</a></li>
+	<li><a href="http://www.opera.com/download/get.pl?id=34586&amp;sub=true&amp;nothanks=yes&amp;location=360">Opera Mobile Emulator Labs build with extensions for Mac (.dmg)</a></li>
+	<li><a href="http://www.opera.com/download/get.pl?id=34587&amp;sub=true&amp;nothanks=yes&amp;location=360">Opera Mobile Emulator Labs build with extensions for Linux (.tar.gz)</a></li>
+</ul>
+
+<p>Once you&#39;ve downloaded a build, you&#39;ll want to head over to <a href="http://addons.opera.com/">the Opera Extensions site</a>, where you&#39;ll find plenty of extensions to play with. When doing so, please keep in mind the following known issues:</p>
+
+<ul>
+	<li>Speed Dial extensions are not supported.</li>
+	<li>Extensions relying on keyboard shortcuts and/or mouse events might not work as expected.</li>
+	<li>Popup windows are currently launched as a new tab, which limits their functionality. This is a known issue, and as stated earlier, this is not the final design.</li>
+	<li>Buttons can become blurry on high-DPI screens.</li>
+</ul>
+
+<p>If you don&#39;t know where to start, we found the following extensions to work quite well: <a href="https://addons.opera.com/en/addons/extensions/details/ghostery/">Ghostery</a>, <a href="https://addons.opera.com/en/addons/extensions/details/layers/">Layers</a>, <a href="https://addons.opera.com/en/addons/extensions/details/google-images-direct/">Google Images Direct</a>, <a href="https://addons.opera.com/en/addons/extensions/details/http-header/">HTTP Header</a>, <a href="https://addons.opera.com/en/addons/extensions/details/lastpass/">LastPass</a>.</p>
+
+<p>You can find all installed extensions by clicking the green <em>Extensions</em> icon in the Opera Menu, from where you can disable or uninstall them, and tweak various settings. Furthermore, the <em>Install extension</em> menu option allows you to sideload extensions from the local file system as well.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/8532/mobile-emulator_extension-menu.png" alt="Screenshot of Opera Mobile Emulator with extension menu option" height="520" width="330" style="float: left;" />
+<img src="../../../../devfiles.myopera.com/articles/8532/mobile-emulator_extensions.png" alt="Screenshot of Opera Mobile Emulator showing all installed extensions" height="520" width="330" />
+
+<p>We have also added the option to load unzipped extensions for testing purposes, just like <a href="../opera-extensions-developer-workflow/index.html#developermode">Opera desktop&#39;s Developer Mode</a>. This is very handy for development, as it saves you from zipping and installing your extension over and over again. In order to use this, load Opera Mobile on your device or PC, choose the earlier mentioned <em>Install extension</em> menu option and navigate to the config.xml file of your unzipped extension. The extension will then be loaded in developer mode, and its settings page has a handy <em>Reload</em> menu option, which you can click to reload the extension after you&#39;ve made some changes to the code.</p>
+
+<p>And of course, you can use Opera Dragonfly&#39;s remote debugging functionality to inspect the inner workings of the installed extensions&#39; JS, DOM and CSS. For detailed instructions on how to connect Opera Mobile with Opera Dragonfly, we refer to the <a href="http://www.opera.com/dragonfly/documentation/remote/">remote debugging section</a> in our Opera Dragonfly guide: it&#39;s as easy as clicking a few buttons.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/8532/remote-debug-mobile-extension.png" alt="Remote debugging of an extension with Opera Dragonfly" width="660" height="322" />
+
+<p>So, that&#39;s mobile extensions in a nutshell. Give it a spin, try out your favorite extensions, and let us know in the comments what you think about it!</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></h1>
+        <a href="../../../author/andreasbovens.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/c0/c93/83b9a906e6ee77ac0410e7056fbe0013388.jpg" alt=""/></a>
+        <p>Andreas is based in Oslo, where he works for Opera Software as Extensions Product Manager + Developer Relations.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-86485802">
+      <a href="../../../author/ZAHEK.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bf/04e/8bfaf8f99ebfaab5ff190d4569fd669c15f.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ZAHEK.html">Mağruf Çolakoğlu</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This is really good news. It was a dealyed feature but it seems just implemented. Thanks.</section>
+    </li>
+    <li id="comment-86493932">
+      <a href="../../../author/paddy2k.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/24/396/08de61fe88200e97ff6c886ef762413589a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/paddy2k.html">Patrick O'Reilly</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Will there be a mobile friendly version of the Opera Extensions site? At present the site doesn&#39;t detect mobile devices (like <a href="http://m.opera.com" target="_blank">http://m.opera.com</a> does) nor does it use responsive design/media queries (like <a href="http://my.opera.com" target="_blank">http://my.opera.com</a>)</section>
+    </li>
+    <li id="comment-86497222">
+      <a href="../../../author/cotero60.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/95/060/5d8273228f6b502ea464f6a9a099d0a647b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cotero60.html">carlos a. otero r.</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Andreas .los felicito cada dia van mas adelante .opera sera en el futuro una compañia muy independiente.y cubrira un gran camino en el campo de las comunicaciones. Paso de creadores</section>
+    </li>
+    <li id="comment-86497892">
+      <a href="../../../author/d4rkn1ght.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/94/4c5/9488dbd8b84f4379627ba2a39eb5c4ccbed.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/d4rkn1ght.html">d4rkn1ght</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Fantastic!! \m/</section>
+    </li>
+    <li id="comment-86504162">
+      <a href="../../../author/chaz6.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/56/c8d/f505e361aa6a24e3ca22501c852c8add053.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chaz6.html">Chris Hills</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Please consider providing packages for Symbian Belle and Harmattan/Meego (N9).</section>
+    </li>
+    <li id="comment-86504332">
+      <a href="../../../author/whochan.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/19/195/bb21e576ccab112048ecb498375dedfffa2.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/whochan.html">ふ～ちゃん</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is not URLFilter API supported?</section>
+    </li>
+    <li id="comment-86504502">
+      <a href="../../../author/daycreeper.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/43/8ed/b70b0df6fd9c00318f3a8902b2913e5514d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/daycreeper.html">Zini Stanley</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>what about it for S60,   i want to try it too, but cant find the download</section>
+    </li>
+    <li id="comment-86510282">
+      <a href="../../../author/mega7star.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5c/719/e43ae9eae16f682bacaf646e1fa962f5856.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mega7star.html">mega7star</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>it&#39;s great! But you make an API for speeddial extension?</section>
+    </li>
+    <li id="comment-86537652">
+      <a href="../../../author/wahyu3s.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/52/178/0cfa4d230c720219a7a2bef05abb3afeeef.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/wahyu3s.html">wahyu3s</a></p>
+      <p class="commentdate">Wednesday, April 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>For Symbian please... :)</section>
+    </li>
+    <li id="comment-86541522">
+      <a href="../../../author/d4n3.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4a/94b/189c9c5211621c67dea51da3086f9d92e2a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/d4n3.html">Dane</a></p>
+      <p class="commentdate">Wednesday, April 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Sweet! Now all I need is an android phone :D</section>
+    </li>
+    <li id="comment-86552272">
+      <a href="../../../author/Khaled-Khalil.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b4/b1b/52b3d97fc8e0b87856501d5b29569005445.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Khaled-Khalil.html">Khaled Khalil</a></p>
+      <p class="commentdate">Wednesday, April 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>That could be good news if it is going to take place in final releases, but.. Opera mobile widgets would also be fine, it also looked promising at the time.</section>
+    </li>
+    <li id="comment-86616002">
+      <a href="../../../author/dsasha.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d3/84b/a6fa430cbc22945c339575bc4d96444b124.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dsasha.html">dsasha</a></p>
+      <p class="commentdate">Thursday, April 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Coooooolll<br/>Best Best Best</section>
+    </li>
+    <li id="comment-86693132">
+      <a href="../../../author/D1sasterp1ece.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4d/d0c/a87da6a1d137a7e5fe0f93215704d3c079d.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/D1sasterp1ece.html">D1sasterp1ece</a></p>
+      <p class="commentdate">Friday, April 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I can&#39;t wait to get my hands on a real smartphone to test this - Imma out of luck with my E51.</section>
+    </li>
+    <li id="comment-86698302">
+      <a href="../../../author/nidheeshroosevelt.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c7/a91/6863a854bd51df6dab00ebe48d141a7f7e3.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nidheeshroosevelt.html">nidheeshr</a></p>
+      <p class="commentdate">Friday, April 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>good...</section>
+    </li>
+    <li id="comment-86699852">
+      <a href="../../../author/mine2809.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d9/7a3/cf8294c478042232e7fea448d55b12fa723." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mine2809.html">Narendra Parmar</a></p>
+      <p class="commentdate">Friday, April 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Really useful extention. Hey need an extention for video chat so can chat on social network. And provide commentor to write website url. My blog <a href="http://narendrasblog.blogspot.com" target="_blank">http://narendrasblog.blogspot.com</a></section>
+    </li>
+    <li id="comment-86722402">
+      <a href="../../../author/michalborek.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9d/be9/0f05c2740b6854345d71f44f183aec2f48d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/michalborek.html">Michał Borek</a></p>
+      <p class="commentdate">Friday, April 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Waiting for Symbian Belle compilation.</section>
+    </li>
+    <li id="comment-86723572">
+      <a href="../../../author/michalborek.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9d/be9/0f05c2740b6854345d71f44f183aec2f48d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/michalborek.html">Michał Borek</a></p>
+      <p class="commentdate">Friday, April 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Tried on Android and looks nice :) But buttons should be placed somewhere else.<br/><br/>Anyway good work and I hope it will be pushed to official product ;)</section>
+    </li>
+    <li id="comment-86628532">
+      <a href="../../../author/QuHno.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0f/b9a/c0202066baeadb4b90136e1e8faaaa5b057.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/QuHno.html">QuHno</a></p>
+      <p class="commentdate">Saturday, April 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><s>Hm - I tested the emulator with my extension, it works just out of the box, but instead of the 64bit icon it seems to use the 18px icon which becomes a little bit blurry. Is there a documentation available how to change that?</s><br/>found it. I replaced it by a 72*72px icon which scales well to the 18px of the desktop version and the (don&#39;t know what, but multiple of 8) px of the mobile versions.</section>
+    </li>
+    <li id="comment-86937182">
+      <a href="../../../author/ko33.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e5/a83/cf3686accde1bd2dc917791b5222a91088b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ko33.html">Mates FM</a></p>
+      <p class="commentdate">Monday, April 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>very good, thx :-)</section>
+    </li>
+    <li id="comment-86973082">
+      <a href="../../../author/nanomcanthony.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3a/b2c/2009098701881fa3f986eacda92eb5c7b02.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nanomcanthony.html">MCAnthony</a></p>
+      <p class="commentdate">Tuesday, April 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I do not know whether there is Chinese IOS mobile phone client</section>
+    </li>
+    <li id="comment-86993832">
+      <a href="../../../author/myregs.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cc/6c0/4e32aaf685030f603d55fa511541b5069be." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/myregs.html">myregs</a></p>
+      <p class="commentdate">Tuesday, April 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>controls not fixed. page keeps floating right and left while scrolling. impossible to click on links, because page start shaking while clicking. text also keeps reflawing outside of visible area.<br/><br/>extensions does work. not all though. extensions based on text selection doesn&#39;t work. they can&#39;t get selected text.</section>
+    </li>
+    <li id="comment-87314802">
+      <a href="../../../author/silentalker07.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/df/b2e/93a264c55ac25c37e3e34aae39b6dc68bd7.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/silentalker07.html">Silentalker</a></p>
+      <p class="commentdate">Saturday, April 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>need opera ext for nokia x2</section>
+    </li>
+    <li id="comment-87394722">
+      <a href="../../../author/iDarned.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/50/7db/98c7a7cdcb6baec3ee26b30b5261568303d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/iDarned.html">iDarned</a></p>
+      <p class="commentdate">Monday, April 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Waiting for Symbian. tnx team</section>
+    </li>
+    <li id="comment-87429972">
+      <a href="../../../author/nikanorov.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/35/6bb/2503b38858bab1fc1ef88953012461707a4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nikanorov.html">Andrey Nikanorov</a></p>
+      <p class="commentdate">Monday, April 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you so much! </section>
+    </li>
+    <li id="comment-87576542">
+      <a href="../../../author/xcone.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b2/0af/1b9aa9082c4368eeaccbf524ee2eb2c81c9." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/xcone.html">xcone</a></p>
+      <p class="commentdate">Wednesday, April 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>its very awesome</section>
+    </li>
+    <li id="comment-87723522">
+      <a href="../../../author/derejed.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/100/e8041e9b598e81506ea12cf38f2ee16a98a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/derejed.html">dereje demissie</a></p>
+      <p class="commentdate">Friday, April 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>opera is my day to day browser.but i can&#39;t read my language amharic font.please help on this.</section>
+    </li>
+    <li id="comment-87770092">
+      <a href="../../../author/virussami.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/94/280/42fe74ff2484890cb71c436723ca3cec70b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/virussami.html">Samiul Islam</a></p>
+      <p class="commentdate">Saturday, April 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>But not for symbian.<br/>Please make it for symbian</section>
+    </li>
+    <li id="comment-88036202">
+      <a href="../../../author/ismaelabdulahi.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8f/558/bf1037054c11c68c578e91aeb6eff5dd2b5.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ismaelabdulahi.html">abdulahi ali mussa</a></p>
+      <p class="commentdate">Tuesday, April 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Where did i get amharic</section>
+    </li>
+    <li id="comment-88352382">
+      <a href="../../../author/akstiger.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/45/f87/f19ab405b8b549306f5102340d1eb1aefdb." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/akstiger.html">Ashok  singh</a></p>
+      <p class="commentdate">Sunday, April 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>nice</section>
+    </li>
+    <li id="comment-88992952">
+      <a href="../../../author/copicuatro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/30/9f8/85fd1c6fb5eea400e1067d0e185d8cfe95b." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/copicuatro.html">Edison Fredy Castillo Quintero</a></p>
+      <p class="commentdate">Tuesday, May 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks, </section>
+    </li>
+    <li id="comment-89613622">
+      <a href="../../../author/ataryosef.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/30/d21/8358be702bab63599c0c0180f6db9af544f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ataryosef.html">atar</a></p>
+      <p class="commentdate">Friday, May 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Are those mobile extensions intended also to iOS devices?</section>
+    </li>
+    <li id="comment-89870912">
+      <a href="../../../author/renato93.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/38/5a9/33871a0dba465fecbb9982fc6a40b2034ef." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/renato93.html">renato93</a></p>
+      <p class="commentdate">Tuesday, May 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>its a good idea but on HVGA screens (for example Sony Ericsson Xperia mini pro) the extension bar is too big, and the buttons in the menu also, see pics:<br/><a href="https://www.box.com/s/2c6b414b67e624714fc7" target="_blank">https://www.box.com/s/2c6b414b67e624714fc7</a><br/><a href="https://www.box.com/s/803a7d6ad4999fbce7bc" target="_blank">https://www.box.com/s/803a7d6ad4999fbce7bc</a><br/><a href="https://www.box.com/s/9f932ca6f57671a2146e" target="_blank">https://www.box.com/s/9f932ca6f57671a2146e</a><br/><a href="https://www.box.com/s/cf9b901bed1666c67a47" target="_blank">https://www.box.com/s/cf9b901bed1666c67a47</a><br/> </section>
+    </li>
+    <li id="comment-90198532">
+      <a href="../../../author/komalkoppikar29.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5f/85f/0d7f240c7379eddfc5bf20445c26245e87d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/komalkoppikar29.html">komalkoppikar29</a></p>
+      <p class="commentdate">Monday, May 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>hey in my opera mini for BlackBerry 8520 curve Facebook doesn&#39;t seems to work what should i do to rectify it   </section>
+    </li>
+    <li id="comment-91322892">
+      <a href="../../../author/moimadmax.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/56/116/55c26a5a5ac079a104398244b224873da92.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/moimadmax.html">Matthieu</a></p>
+      <p class="commentdate">Tuesday, June 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great news, works great out of the box on an htc desire.<br/>With that it will be possible to use my userjs and urlfilter rules (in an extension) and that&#39;s a good news.</section>
+    </li>
+    <li id="comment-91738602">
+      <a href="../../../author/jakotsu97989798.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/80/5a6/0f25be86a8b5aed7eddcaadd61caeb5af3a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jakotsu97989798.html">Charmed Espada</a></p>
+      <p class="commentdate">Tuesday, June 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I love but it would be nice to have a  rss extension or have it installed on it.</section>
+    </li>
+    <li id="comment-92449092">
+      <a href="../../../author/hardc0de.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/74/fe2/4de0f5561e3c47b0570a4fb7f65cd667292." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/hardc0de.html">hardc0de</a></p>
+      <p class="commentdate">Monday, July 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>When opera labs 12 for the N9?</section>
+    </li>
+    <li id="comment-92514122">
+      <a href="../../../author/christoph142.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7a/d36/a1ef2d0ce7edb42a678ee38ac6b298f6819.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/christoph142.html">Christoph</a></p>
+      <p class="commentdate">Tuesday, July 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Since iPhone users are only able to get Opera Mini: Can you comment on adding support for extensions to it as well?</section>
+    </li>
+    <li id="comment-94232042">
+      <a href="../../../author/benyamin90.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/78/4f5/d719c8d0dfbb80f277d2e5876283c5163c0.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/benyamin90.html">Benyamin Limanto</a></p>
+      <p class="commentdate">Tuesday, August 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>hmm does this exetensions will work to with opera mobile s60v3 and above? I think because many of us using symbian.. Please develop for symbian, thx....</section>
+    </li>
+    <li id="comment-94514122">
+      <a href="../../../author/nimeshthakkar.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/b1d/b867d83e34b7dbd006512156d6215d0773d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nimeshthakkar.html">Nimesh  </a></p>
+      <p class="commentdate">Sunday, August 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Nice implementation.<br/>any updates planned? this post/build is 4 months old.</section>
+    </li>
+    <li id="comment-95965062">
+      <a href="../../../author/vusidlamini.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a0/e50/6dfa6b9031059679eab8b37f72b1a632583.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/vusidlamini.html">Vusi,Tumelo,Nngcan's-DjsRoack,Dlamini</a></p>
+      <p class="commentdate">Thursday, September 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>whoy ths opera mini dosnot downloaded 2my hand set mmm </section>
+    </li>
+    <li id="comment-96956542">
+      <a href="../../../author/dond624.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/53/0a5/c42f452dee2165125cfce3e8dcd777c9f86.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dond624.html">dond624</a></p>
+      <p class="commentdate">Sunday, September 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>loaded this build on my archos a101 tablet. love it!  has now become my default browser!<br/>extensions BETTER make it into final, or i&#39;m gonna be very unhappy<br/>thanks for the great work.</section>
+    </li>
+    <li id="comment-97654452">
+      <a href="../../../author/btitan.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1c/625/8ed512f7ada576e52f689749bb4c3651ef8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/btitan.html">btitan</a></p>
+      <p class="commentdate">Sunday, October 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>what can i do without flash plugins? Is there any solution?</section>
+    </li>
+    <li id="comment-99355712">
+      <a href="../../../author/molecule-eye.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/da/e19/d46431f6fc7d7207ff668ff88ad0c0456ba." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/molecule-eye.html">Mike D</a></p>
+      <p class="commentdate">Saturday, November 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I hope a polished version of this comes to Opera Mobile proper. I&#39;m using it on Android ICS with lastpass and it&#39;s great alternative to Firefox for Android. I&#39;ve even started using Opera desktop for syncing purposes and I like it.</section>
+    </li>
+    <li id="comment-100390412">
+      <a href="../../../author/nicambrose.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/32/6fb/21bdb60f8a15dd13f131973117a94f75110." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nicambrose.html">nicambrose</a></p>
+      <p class="commentdate">Sunday, December 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>You know, if this is your idea of a &#39;rough&#39; initial attempt, I really CANNOT wait for what you consider &#39;polished&#39;. I recently purchased a Nexus 7, and both the stock &#39;mini&#39; and mobile Opera browsers crashed repeatedly. (I found Chrome lacking, and had been using Firefox for the flash support on 4.2.1) Also, with no extension support, I felt that my experience was really lacking. I found and installed this, and it&#39;s been FLAWLESS. It&#39;s now my default browser. Loaded WOT, Lastpass, and an ad blocker, and it has made browsing so enjoyable and productive. You MUST leave extension support alone--see how subtle I was there? It really makes this browser one-of-a-kind in the mobile workspace. Thank you for the hard work, and I look forward to seeing your progress.</section>
+    </li>
+    <li id="comment-100476332">
+      <a href="../../../author/jwallman.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/47/403/68aac0dba904bd218bab5cae5858de4bfae." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jwallman.html">Joakim Wallman</a></p>
+      <p class="commentdate">Monday, December 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I love this lab version,but it&#39;s getting pretty old. Will there be an updated version in a nerar future? Or even better, any plans to include it in the official version?</section>
+    </li>
+    <li id="comment-100720342">
+      <a href="../../../author/billyxmobile.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/67/9e7/8c42abd2155bcdab032ba7fdbe424f6baee." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/billyxmobile.html">billyxmobile</a></p>
+      <p class="commentdate">Saturday, December 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Works great!<br/>Please include it in the regular version!<br/><br/>For Adblock plus if you get the message about &quot;exceeded storage quota&quot; you have to change opera:config#PersistentStorage|DomainQuotaForWidgetPreferences (<a href="http://www.opera.com/support/usingopera/operaini/#persistent_storage" target="_blank">http://www.opera.com/support/usingopera/operaini/#persistent_storage</a>)</section>
+    </li>
+    <li id="comment-100814042">
+      <a href="../../../author/niks256.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/31/578/259135c4c71eaf0769ac48e68555f31d18f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/niks256.html">niks256</a></p>
+      <p class="commentdate">Monday, December 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Why isn&#39;t it included in official release? </section>
+    </li>
+    <li id="comment-101162692">
+      <a href="../../../author/ozoratsubasa.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a3/8bd/89647c70b6c16c8e06945c6d42f7ad02a62.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ozoratsubasa.html">Tiago Wakabayashi</a></p>
+      <p class="commentdate">Monday, December 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>nice addiction, but the &quot;install extension&quot; but makes us to search any file instead take us to the extension site. And I didn&#39;t like of a extension bar. Maybe it worked in a huge screen but not in a Samsung Galaxy Y. Please, if is to access the extensions i prefer use the extension button.</section>
+    </li>
+    <li id="comment-101857452">
+      <a href="../../../author/hairycheez.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/31/ffd/2cf36e5758f2040376a37650964a8228936.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/hairycheez.html">hairycheez</a></p>
+      <p class="commentdate">Monday, December 31, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>nice update, the only problem iv found is that it does not look good when I put it on a tablet. I love the addons!</section>
+    </li>
+    <li id="comment-102860712">
+      <a href="../../../author/Gildas35.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/59/548/3f1e79be4bbf6b6a4738f4bc13ad0c2d85a." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Gildas35.html">Gildas35</a></p>
+      <p class="commentdate">Tuesday, January 22, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Any updates on when it will be included in the official release?</section>
+    </li>
+    <li id="comment-103284342">
+      <a href="../../../author/ahmed2bori.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7e/bf9/9ce8a29753521f303f60e849bf1b0790481." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ahmed2bori.html">ahmed2bori</a></p>
+      <p class="commentdate">Friday, February 1, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The extension it is a good development but it seems there is no nokia S40 version. If there is let me know.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/andreasbovens.html" rel="author">Andreas Bovens</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, April 3, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/opera&#32;mobile.html" rel="tag">opera mobile</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

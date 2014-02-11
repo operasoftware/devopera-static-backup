@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 400 300"
+     version="1.1">
+  <title>Creating an SVG Animation with Script</title>
+
+  <script type="text/javascript">
+  <![CDATA[
+
+    function getTarget (event) {
+      var target = event.target;
+      while (target.parentNode !== event.currentTarget) {
+        target = target.parentNode;
+      }
+      return target;
+    }
+
+    function fade (target) {
+      // find animation target
+      var target = event.target;
+      while (target.parentNode !== event.currentTarget) {
+        target = target.parentNode;
+      }
+      // create the fade animation
+      var animation = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+      animation.setAttributeNS(null, 'attributeName', 'fill-opacity');
+      animation.setAttributeNS(null, 'begin', 'indefinite');
+      animation.setAttributeNS(null, 'to', 0);
+      animation.setAttributeNS(null, 'dur', 0.25);
+      animation.setAttributeNS(null, 'fill', 'freeze');
+      // link the animation to the target
+      target.appendChild(animation);
+      // start the animation
+      animation.beginElement();
+    }
+
+  ]]>
+  </script>
+  
+  <g onclick="fade(getTarget(evt))">
+    <text x="10" y="20">Hit me!</text>
+    <g fill-opacity="0.6" stroke="#fff" stroke-width="1px">
+      <circle cx="100px" cy="50px" r="50" fill="#00f" transform="translate(0,0)" />
+      <circle cx="100px" cy="50px" r="50" fill="#ff0" transform="translate(30,50)" />
+      <circle cx="100px" cy="50px" r="50" fill="#f0f" transform="translate(-30,50)"/>
+    </g>
+    <path d="M33.614,0.032c0,0-22.972-1.885-31.454,23.208c0,0-5.301,16.022,0.707,33.222c6.008,17.2,21.323,22.619,29.688,22.03c8.246,0,15.551-1.414,21.794-7.068c6.244-5.655,12.605-15.904,12.605-33.339S57.058,0.032,33.614,0.032z M49.047,49.747c-1.296,16.257-4.241,25.564-15.904,25.799c-12.134,1.061-14.372-17.317-14.372-17.317c-0.354-0.707-1.178-6.597-1.06-18.849c0.116-12.018,1.178-20.145,1.178-20.145c2.827-17.789,14.49-16.257,14.49-16.257c10.249,0,12.841,8.247,14.608,16.375C49.754,27.481,49.047,49.747,49.047,49.747z" fill="red" transform="translate(165,0)" />
+  </g>  
+    
+</svg>

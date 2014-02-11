@@ -1,0 +1,9 @@
+<?xml version="1.1"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="10em" height="10em" viewBox="0 0 100 100">
+  <path style="fill:#00f;fill-opacity:.5" d="M 0,0 L 0,1 0,1 1,0  1,0 z">
+    <animateTransform attributeName="transform" attributeType="XML"
+      type="scale" from="1" to="100"  begin="2s" dur="10s" fill="freeze"/>
+    <animate attributeName="d" attributeType="XML" begin="5s" dur="9s" 
+      to="M 0,0 L 0,1 1,1 1,1 1,0 z" fill="freeze" />
+  </path>
+</svg>

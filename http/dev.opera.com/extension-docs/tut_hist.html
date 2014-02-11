@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Working with the browser history - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Working with the browser history</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>The History API allows an extension to access and edit the user’s browsing history. This can come in handy in some situations, for example analyzing which are the most visited pages by the user, maintaining a list of closed tabs to re-open later, etc.</p>
+
+<p>The first thing to note is to declare it in the <em>permissions</em> field in the mainifest file, like so:</p>
+<pre class='prettyprint'>...
+  "permissions": [
+    "history"
+  ],
+...
+</pre>
+<h2 id="transition_types">Transition Types</h2>
+
+<p><em>Transition Type</em> is a term used to describe the way in which a particular URL has been navigated to. For example, a transition type of “link” will refer to the fact that the URL was navigated through by clicking on a hyperlink in a web page. The transition type of “typed” would mean that the user went to that page by explicitly typing that URL in the address bar, for instance. The full list of transition types are below:</p>
+<table>
+<tr>
+  <th> Transition type </th> <th> Description </th>
+</tr>
+<tr id='tt_link'>
+  <td>"link"</td>
+  <td>
+    The user got to this page by clicking a link on another page.
+  </td>
+</tr>
+<tr id='tt_typed'>
+  <td>"typed"</td>
+  <td>
+    The user got this page by typing the URL in the address bar.
+    Also used for other explicit navigation actions.
+    See also <a href='tut_hist.html#tt_generated'>generated</a>,
+    which is used for cases where the user selected a choice
+    that didn't look at all like a URL.
+  </td>
+</tr>
+<tr id='tt_auto_bookmark'>
+  <td>"auto_bookmark"</td>
+  <td>
+    The user got to this page through a suggestion in the UI &mdash;
+    for example, through a menu item.
+  </td>
+</tr>
+<tr id='tt_auto_subframe'>
+  <td>"auto_subframe"</td>
+  <td>
+    Subframe navigation.
+    This is any content that is automatically
+    loaded in a non-top-level frame.
+    For example, if a page consists of
+    several frames containing ads,
+    those ad URLs have this transition type.
+    The user may not even realize the content in these pages
+    is a separate frame, and so may not care about the URL
+    (see also <a href='tut_hist.html#tt_manual_subframe'>manual_subframe</a>).
+  </td>
+</tr>
+<tr id='tt_manual_subframe'>
+  <td>"manual_subframe"</td>
+  <td>
+    For subframe navigations that are explicitly requested by the user
+    and generate new navigation entries in the back/forward list.
+    An explicitly requested frame is probably more important than
+    an automatically loaded frame
+    because the user probably cares about the fact that
+    the requested frame was loaded.
+  </td>
+</tr>
+<tr id='tt_generated'>
+  <td>"generated"</td>
+  <td>
+    The user got to this page by typing in the address bar
+    and selecting an entry that did not look like a URL.
+    For example, a match might have the URL of a Google search result page,
+    but it might appear to the user as "Search Google for ...".
+    These are not quite the same as <a href='tut_hist.html#tt_typed'>typed</a> navigations
+    because the user didn't type or see the destination URL.
+    See also <a href='tut_hist.html#tt_keyword'>keyword</a>.
+  </td>
+</tr>
+<tr id='tt_auto_toplevel'>
+  <td>"auto_toplevel"</td>
+  <td>
+    The page was specified in the command line or is the start page.
+  </td>
+</tr>
+<tr id='tt_form_submit'>
+  <td>"form_submit"</td>
+  <td>
+    The user filled out values in a form and submitted it.
+    Note that in some situations &mdash;
+    such as when a form uses script to submit contents &mdash;
+    submitting a form does not result in this transition type.
+  </td>
+</tr>
+<tr id='tt_reload'>
+  <td>"reload"</td>
+  <td>
+    The user reloaded the page,
+    either by clicking the reload button
+    or by pressing Enter in the address bar.
+    Session restore and Reopen closed tab use this transition type, too.
+  </td>
+</tr>
+<tr id='tt_keyword'>
+  <td>"keyword"</td>
+  <td>
+    The URL was generated from a replaceable keyword
+    other than the default search provider.
+    See also
+    <a href='tut_hist.html#tt_keyword_generated'>keyword_generated</a>.
+  </td>
+</tr>
+<tr id='tt_keyword_generated'>
+  <td>"keyword_generated"</td>
+  <td>
+    Corresponds to a visit generated for a keyword.
+    See also <a href='tut_hist.html#tt_keyword'>keyword</a>.
+  </td>
+</tr>
+</table>
+<p>Each and every visit to any URL will be recorded in the history as a <a href="history.html#type-VisitItem"><code>VisitItem</code></a>. This item, besides holding detailed information about every visit, such as the URL visited, the time at which the visit occurred etc, will also hold information regarding the <em>transition type</em>, that is, how the user reached the webpage. Thus each and every visit to a web page will have a <em>transition type</em> associated with it.</p>
+
+<h2 id="accessing_the_history_behind_the_currently_active_tab">Accessing the history behind the currently active tab</h2>
+
+<p>Let’s say you wanted to know how many times the URL in the currently active tab has been accessed. We can take a look at the methods in the History API and build something to find it out.</p>
+
+<p>In our example, we’ll create a <em>browser action</em>, which when clicked, will update its badge with the number of times it has been accessed by the user. Let’s see the code for it, which is in the background script.</p>
+<pre class='prettyprint'>var count = 0;
+
+chrome.browserAction.onClicked.addListener(function (tab){
+	chrome.history.getVisits({"url":tab.url}, function (visitItem) {
+		count = visitItem.length;
+		chrome.browserAction.setBadgeBackgroundColor({color: "#ff0000"});
+		chrome.browserAction.setBadgeText({text: ""+count});
+		console.log("The user has visited "+url+" "+count+" times.");
+	});
+	
+});</pre>
+<p>In the above piece of code, we are getting the URL of the currently active tab. Then we pass the function <a href="history.html#method-getVisits"><code>getVisits()</code></a>. This will return a callback function which will return an array of <a href="history.html#type-VisitItem"><code>visitItem</code></a> objects for that particular URL (A <code>visitItem</code> object is generated any time a URL is visited). We can count these objects to get a number of the times the user visited that URL, and then update the badge with that number.</p>
+
+<p><a href="samples/HistoryAPI-1.nex">Download the extension</a> for the example above and install it to see it work.</p>
+
+<h2 id="removing_urls_from_the_history">Removing URLs from the history</h2>
+
+<p>One of the most common use cases regarding the browser history, is to remove particular URLs from the history. We can delete a URL from the browser history by using the <a href="history.html#method-deleteUrl"><code>deleteUrl()</code></a> method. For example, the following example will remove the URL of the currently active tab from the browser history.</p>
+<pre class='prettyprint'>chrome.browserAction.onClicked.addListener(function (tab){		
+	chrome.history.deleteUrl({"url":tab.url});
+});</pre>
+<p>You can <a href="samples/HistoryAPI-2.nex">download the extension</a> for this example and see it in action. You can go further and create a list of URLs and then remove them by looping over that list and calling the <code>deleteUrl()</code> method for each of those URLs.</p>
+
+<p>If you want to remove URLs within a specified time range, then you can use the <a href="history.html#method-deleteRange"><code>deleteRange()</code></a> method, and finally, if you want to remove all the URLs in history, you can simply call the <a href="history.html#method-deleteAll"><code>deleteAll()</code></a> method.</p>
+
+<p>You can take a further look at the <a href="history.html">History API docs</a> for more information regarding the objects, methods and events associated with it.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/extensions/history.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

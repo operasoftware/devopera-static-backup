@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>64-bit Opera, and out-of-process plug-ins - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>64-bit Opera, and out-of-process plug-ins</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <p class="note"><strong>Update, November 22nd 2012</strong>: Please note that Opera 12.00 final shipped with 64-bit and OOPP support, and that as of version 12.02, OOPP is disabled for Windows 32-bit.</p>
+
+<p class="note"><strong>Update, February 9th 2012</strong>: Article originally published just before Christmas 2011, and now updated with a new set of builds.</p>
+
+<p>Thanks for all your great feedback so far. We&#39;ve updated the <a href="index.html#builds">out-of-process plug-ins (OOPP) builds</a> to a newer version containing many fixes and updates. A lot of work has been done in the plugin backends on our various platforms. Keep testing with all the plugins you usually use, and remember to report back any issues to us!</p>
+
+<h3>Known Issues</h3>
+
+<h4>All platforms</h4>
+
+<ul>
+  <li>Plugin crash reporting not working yet</li>
+</ul>
+
+<h4>Linux/FreeBSD</h4>
+
+<ul>
+  <li>No Xt support</li>
+  <li>Sun JDK might not work correctly: use IcedTea (OpenJDK) instead</li>
+  <li>gecko-mediaplayer plugins are more prone to failure</li>
+  <li>When hovering over a tab thumbnail that extends over the plugin area, the plugin animation is not restarted after hover out when compositing is off</li>
+  <li>Typing in an auto-activated plugin is not working</li>
+  <li>Opera may crash on exit</li>
+</ul>
+
+<h4>Mac</h4>
+
+<ul>
+  <li>Hardware acceleration is off by default on the Mac</li>
+  <li>No IME support</li>
+  <li>Some content is invisible in transparent Flash</li>
+  <li>System dialogs may open behind the browser window</li>
+  <li>No context menu for Flash</li>
+  <li>The Flip4Mac plug-in may not play videos</li>
+  <li>You may get drawing artifacts while scrolling</li>
+  <li>Hardware acceleration is disabled by default, due to drawing issues with plug-ins</li>
+</ul>
+
+<h4>Windows</h4>
+
+<ul>
+  <li>You&#39;ll experience choppy scrolling on pages with embedded Flash</li>
+  <li>Scrolling inside windowed Flash is not working</li>
+  <li>WMP player plugin controls get corrupted after scrolling</li>
+  <li>Silverlight may have some issues</li>
+  <li>Opera may crash on resizing the plugin window</li>
+  <li>Minimal restart in Opera&#39;s crashlog dialog works as a full restart</li>
+  <li>You&#39;ll experience a temporary freeze when deleting plugin data</li>
+  <li>Some strings in 64bit Opera will suffer corrupted text substitutions</li>
+  <li>The Shockwave Director plugin is not detected under 64bit Opera</li>
+</ul>
+
+<p>Original text follows</p>
+
+<hr />
+
+<h2>Introduction</h2>
+
+<p>As the snow settles on the ground, and the elves draw close to finishing construction of all their toy orders, it may not surprise you to learn that Opera&#39;s little helpers have also been very busy, adding exciting new innovations to our desktop browser!</p> 
+
+ <p>As a last release before Christmas, we are bringing you a new labs release featuring two exquisitely wrapped presents:</p> 
+
+ <ul> 
+   <li>64-bit builds</li> 
+   <li>Out-of-process plug-ins</li> 
+ </ul> 
+
+ <p>Let&#39;s look at these features in more detail.</p> 
+
+ <h2>Out-of-process plug-ins</h2> 
+
+ <p>We monitor our built-in crash logger carefully to see what is still causing browser crashes, post release. One very common source of instability is one that we unfortunately can&#39;t fix ourselves: browser plug-ins. We fixed this problem for Opera on Linux and FreeBSD a long time ago by running plug-ins in a separate process. This allows us to control exactly what communication takes place between Opera and running plug-ins, improving security and stability in the process. If a plug-in accidentally crashes under this system, Opera will keep on running, and a simple page reload will correct the plug-in.</p> 
+
+ <p>This architecture is now coming to a Windows or Mac machine near you! This labs release provides an early preview of the new rewritten version for Mac/Win/Linux/FreeBSD, constructed to allow our code to work across all platforms.</p> 
+
+ <h2>64-bit builds</h2> 
+
+ <p>Bringing the out-of-process plug-in architecture across to Windows and Mac also brings another advantage: the ability to run plug-ins compiled for Intel 32-bit architecture from within a 64-bit Opera process. And 64-bit Opera is the other delightful gift we&#39;re giving you at Opera Labs this Christmas!</p> 
+
+ <p>64-bit Windows and Mac have been in the works for a while, but we didn&#39;t want to release them until we had a way of running all plug-ins that&#39;s completely transparent to the user: This is now possible with the out-of-process plug-in architecture, so here we are! The 64-bit versions of Opera offer performance improvements in some specific areas and allow Opera to have more freedom in allocating memory.</p> 
+
+ <h2 id="builds">Download Builds!</h2> 
+
+<ul>
+  <li><a href="http://snapshot.opera.com/labs/OOPP/Opera-Labs-OOPP-12.00-1293.i386.exe">Windows 32-bit</a></li>
+  <li><a href="http://snapshot.opera.com/labs/OOPP/Opera-Labs-OOPP-12.00-1293.x64.exe">Windows 64-bit</a></li>
+  <li><a href="http://snapshot.opera.com/labs/OOPP/Opera-Labs-OOPP-12.00-1293.dmg">Mac 32/64-bit</a></li>
+  <li><a href="http://snapshot.opera.com/labs/OOPP/Linux-FreeBSD/">Linux/FreeBSD builds directory</a></li>
+</ul>
+
+ <h2>Release notes and known issues</h2> 
+
+<p>Original issues removed as they are no longer relevant.</p>
+
+ <p class="note">Note on bug reporting: This build is based on Opera 12 (Wahoo) therefore it includes all the features from recent Opera Next snapshots, including hardware acceleration. When reporting plug-in bugs in this build, it&#39;s always interesting to know if hardware acceleration is on or off, and if toggling it makes a difference. You can turn off hardware acceleration by setting <a href="opera:config#UserPrefs|EnableHardwareAcceleration">opera:config#UserPrefs|EnableHardwareAcceleration</a> to 0 and restarting the browser.</p>
+
+<h2 id="readmore">Read more...</h2>
+<ul>
+  <li><a href="../the-opera-plug-in-interface/index.html">The Opera plug-in interface</a></li>
+</ul>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-77360062">
+      <a href="../../../author/glimps3d.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/82/166/0fc1d74ebe87564f2dbacb96218b48264e2." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/glimps3d.html">glimps3d</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>A Mac OS X Universal Binary app is an app that should run on both Intel and PPC platforms. It has nothing to do with it being 32 or 64 bit. Just sayin&#39;.</section>
+    </li>
+    <li id="comment-77360852">
+      <a href="../../../author/pafflick.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e9/4f7/7237cc4ee5cd37cded7782517a1a0d45a46.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/pafflick.html">Paweł Pawlak</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>These are good news, because the plugins (with Adobe Flash Player in the first place) are causing about 99% of all Opera crashes. On my PC at work it&#39;s so unstable, that Flash Player (especially on YouTube) is causing the blue screens... o_O But it happens only in Opera, so I will look into this new labs release for sure. Thanks! :)</section>
+    </li>
+    <li id="comment-77368192">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@glimps3d - good point; I&#39;ve updated the wording to suit.<br/><br/>@Paweł - glad you like the look of it ;-)</section>
+    </li>
+    <li id="comment-77369872">
+      <a href="../../../author/serious.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f5/6ef/3016ab3dc44e9a69dabdecfbb3aa9a28614.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/serious.html">serious</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><blockquote class="bbquote"><p>&gt; for 7 seconds</p></blockquote>but only 7 seconds exactly :D</section>
+    </li>
+    <li id="comment-77379012">
+      <a href="../../../author/suawekk.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1f/491/48332f8a5793a222709242bb0647fd749bb.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/suawekk.html">suawek</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Can&#39;t wait to see stable x64 build.<br/>Thanks for the good work!</section>
+    </li>
+    <li id="comment-77383052">
+      <a href="../../../author/Athlonite.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f0/3df/9a5e260e7aa139c9b47d322b2e5e829de0c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Athlonite.html">Athlonite</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>And a very merry Xmas to the Opera labs team and thanks for the early Chrissy present :D</section>
+    </li>
+    <li id="comment-77383562">
+      <a href="../../../author/bleicher.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fe/fd5/c6e6694db55183b9097e21efeb8e01c83da." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/bleicher.html">bleicher</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>add to issues: <br/>panel-switcher (this tiny line on the side) not working</section>
+    </li>
+    <li id="comment-77384042">
+      <a href="../../../author/CamisNet.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b6/b8f/76991bdcd0571279ffa0c59265406f57d27.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/CamisNet.html">Kamil Darczyński</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@bleicher<br/><br/>Confirm, not working on &quot;Opera 12 build 1191&quot; too.<br/><br/></section>
+    </li>
+    <li id="comment-77384262">
+      <a href="../../../author/nickelson.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/50/55f/ad0ced8e34c654a762ca0fac9ee0dcee47c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nickelson.html">nick_el_son</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Can I install it on existing 1191 build?<br/><br/></section>
+    </li>
+    <li id="comment-77384652">
+      <a href="../../../author/grotos.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/25/29b/6ec8587763ef3798911cd0a2e9000a7e4e9.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/grotos.html">grotos</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>64bit/Windows7: Switching through tabs causes slow refresh rate - you have to wait a while for site to be completely redrawn.<br/>I&#39;ve been using Opera 64 for about hour and generally it feels stable. good work!<br/></section>
+    </li>
+    <li id="comment-77385672">
+      <a href="../../../author/christoph142.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7a/d36/a1ef2d0ce7edb42a678ee38ac6b298f6819.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/christoph142.html">Christoph</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@bleicher: the panel-switcher-thing is the same as the scroll bar not being draggable and the Opera Labs-Button not reacting on the far left. This is an issue of the latest Next-build (far left and far right of the browser do not respond) and thus also a matter here ;)</section>
+    </li>
+    <li id="comment-77386672">
+      <a href="../../../author/highstream.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/af/678/de54f002119ace5040a5f120f88d556a6a4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/highstream.html">highstream</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Win 7/64-bit version looks good, but had a couple of initial problems.  Wand.dat copied from Opera Next wasn&#39;t recognized until I switched off Hardware Acceleration.  Now coming back to HA, it&#39;s recognized.  <br/><br/>Also, there&#39;s a site on my Speed Dial, real-debrid.com, that kept throwing up the same certificate box, something with &quot;static&quot; in it but I can&#39;t find the screenshot I thought I saved.  The box would appear, then disappear after a couple of seconds if I didn&#39;t click on something.  If I was fast enough, I&#39;d get to the Approve box on the second tab and click that, but the box would keep coming back up.  I&#39;d open another Speed Dial screen just to check and it would start all over again.  Finally, I decided to just click the Approve tab and that seemed to cool it down a lot, tho not completely.  It wasn&#39;t until I turned off HA that it stopped (or perhaps that was coincidental?).  Coming back to HA, there&#39;s no longer a problem with that site on the Speed Dial.<br/><br/>P.S.  After saving this post, the screen did not refocus on my message, but went to about halfway down the page.  After typing the previous sentence, it focused on the top of the page.</section>
+    </li>
+    <li id="comment-77386962">
+      <a href="../../../author/clashcityrocker.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f7/9e3/64363e9aa6b3240be9036dfd317ecdaa172.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/clashcityrocker.html">ClashCityRocker</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Would love to hear what Opera&#39;s thoughts in the benefits vs the downsides of 64bit-ness in a browser like Opera.<br/><br/>There are several upsides, and several downsides too ( swollen pointers, more memory bloat).  Do these downsides get offset by the gains of the 64bit architecture?<br/></section>
+    </li>
+    <li id="comment-77388182">
+      <a href="../../../author/highstream.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/af/678/de54f002119ace5040a5f120f88d556a6a4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/highstream.html">highstream</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>In Win 7/64, I set &quot;Use my current web browser,&quot; always Opera (Next), as the default in the Control Panel &gt; Program Defaults &gt; Set program access and computer defaults &gt; Custom.  Since this build is not listed there, there&#39;s no way to get it recognized and that&#39;s making it harder to use and test.  That is, if I click an email link, Opera Next opens.  Anyway around that?  This appears to be a very stable build and worthy of using/testing as a primary browser.  </section>
+    </li>
+    <li id="comment-77388432">
+      <a href="../../../author/mkr.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6b/5aa/e9661ffe70481a07d042a051319f6d21ceb.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mkr.html">mkr</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Win7/64 version crash when closing with :<br/><br/>r6025 -pure virtual function call</section>
+    </li>
+    <li id="comment-77388982">
+      <a href="../../../author/cyberrufus.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d2/955/870a9bec0c93659351fd3f2d86a483f9999.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cyberrufus.html">cyberrufus</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>No text in &quot;open with&quot; context menu.</section>
+    </li>
+    <li id="comment-77392842">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks for the feedback everyone! This is really useful.</section>
+    </li>
+    <li id="comment-77392952">
+      <a href="../../../author/nsivkov.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bd/929/edadf93ab7a2a8fb0f752d170e6a92b912c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nsivkov.html">Nikola Sivkov</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I just encountered a bug , When i played a video  ,  i closed it 30 seconds before the end , but the audio kept playing. it happened only once so far.</section>
+    </li>
+    <li id="comment-77397612">
+      <a href="../../../author/zeus2.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c5/d54/3bf3460545c6315b627417c9a285b089740.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/zeus2.html">ZeusII</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>ALso got a problem setting this version as default browser...</section>
+    </li>
+    <li id="comment-77397772">
+      <a href="../../../author/highstream.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/af/678/de54f002119ace5040a5f120f88d556a6a4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/highstream.html">highstream</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Skvov comment: I also experienced the audio continuing to play on the first video I tried (at yahoo.com), and had to close Opera to get it to stop.  When I went back, the video wasn&#39;t there and other videos from the same part of Yahoo didn&#39;t do it.  Nor have ones from elsewhere, so far.</section>
+    </li>
+    <li id="comment-77400382">
+      <a href="../../../author/simon-saint.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c8/fd3/7a120aaf51a26dca86808118a6550315c1d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/simon-saint.html">Michael Smith</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I am having problems to understand the difference between this software and the Opera Browser, or Opera Next Browser I am using right now. None can be updated at this moment, but I am defiantly running a 32-Bit version on a x64 System. So, is this here an add-on or ... yeah, I just don&#39;t get what this exactly is... *sorry*</section>
+    </li>
+    <li id="comment-77400912">
+      <a href="../../../author/nsivkov.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bd/929/edadf93ab7a2a8fb0f752d170e6a92b912c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nsivkov.html">Nikola Sivkov</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Michael Smith , then please close this page :) </section>
+    </li>
+    <li id="comment-77401652">
+      <a href="../../../author/nsivkov.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bd/929/edadf93ab7a2a8fb0f752d170e6a92b912c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nsivkov.html">Nikola Sivkov</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>another &quot;bug&quot; the Oper_plugin_wrapper.exe crashes every now and then when i&#39;m playing a youtube playlsit , the browser itself doesn&#39;t crash ( which is a good thing ) i press &quot;close&quot; on the crash report and the videos continue to play! WIN ! </section>
+    </li>
+    <li id="comment-77401692">
+      <a href="../../../author/cellist.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/28/518/557bcc424657f933f3ece3154e865d20219.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cellist.html">cellist</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Running openSUSE 12.1 and have been having problems with video tearing in recent Opera versions. I found this version does not exhibit this problem, but it seems to freeze my system after just a little time, requiring reboot. Disabling hardware acceleration causes the problem with video to recur. I haven&#39;t yet been able to confirm if disabling acceleration solves the stability issue, but will report back.</section>
+    </li>
+    <li id="comment-77401992">
+      <a href="../../../author/Chris260.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0d/ab7/90c55716854db982440712a2348dd28ecf5.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Chris260.html">Christian Rivest</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>From previous build of Opera 12 whenever i try to start Unite, Opera crash and the same thing with this one. </section>
+    </li>
+    <li id="comment-77402092">
+      <a href="../../../author/Khaled-Khalil.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b4/b1b/52b3d97fc8e0b87856501d5b29569005445.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Khaled-Khalil.html">Khaled Khalil</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>so will xt based plugins no more be supported fo Linux/FreeBSD due to the new cross-platform architecture ?<br/>or that is intended to be looked at and fixed after it gets stable ?</section>
+    </li>
+    <li id="comment-77403462">
+      <a href="../../../author/logytech.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/71/236/ba1beef8ec03773957c58ff14f57e2dc093.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/logytech.html">logytech</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@ Ricardo M. Rubert <br/>i think you miss point the purpose of 64 bit. the future will be a 64 bit. this only to make opera a future proof. a sort like that. the other function on opera. it is not get good promote. if it promote like chrome browser e.g demo or something useful to tryout. it maybe get the attention. it is not get enough example or demo the opera can do but the others can not do right now. till when the opera user hope the tryout the other browser  demo will compatible with this awesome browser. Do you Dev team make special page to introduce the awesome features available on opera to show out. i&#39;m so envy that the other browser like Firefox, Chrome and IE have this page.<br/>that just my 5 cent...</section>
+    </li>
+    <li id="comment-77407362">
+      <a href="../../../author/cellist.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/28/518/557bcc424657f933f3ece3154e865d20219.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cellist.html">cellist</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Disabling hardware acceleration seems to have resolved the stability issue, and it also seems that the video tearing is actually mostly eliminated except for one site in particular where it&#39;s still quite bad. <br/><br/>FWIW, running build 1191 with hardware acceleration successfully resolves the tearing everywhere I tested and seems stable on my machine. Using a Radeon card with ATI Catalyst drivers. </section>
+    </li>
+    <li id="comment-77409992">
+      <a href="../../../author/myzzkk.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/56/d81/6852a0a9436e3dd86bfebb3b604afb0becc." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/myzzkk.html">myzzkk</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Could you tell me, please, how long can we expect support for multi-core processors (or multi-processor systems)? Thanks.</section>
+    </li>
+    <li id="comment-77411822">
+      <a href="../../../author/hellspork.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/f9e/c91d697ff96e669005c7eaa7e79942aec76." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/hellspork.html">Cutting Spoon</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Ricardo: Different teams have different projects. 64-bit work has several benefits: Opera will not need Windows 32-bit compatibility support. Performance may be a little faster. Better memory model and MORE memory access, good for lots of tabs and GREAT for future 3D game support. This also sets a foundation for Windows 8, and for more Core improvements in Opera. Some of your feature suggestions are interesting, and many people have asked for them already. But mostly they are the responsibility of a different team, and will appear (or not) in accordance with relevant efforts.<br/><br/>This 64-bit Labs build seems overall quite nice. I have provided feedback already at <a href="http://my.opera.com/desktopteam/blog/2011/12/15/64-bit-and-out-of-process-plugins-builds-now-available-on-labs?cid=77410902&amp;startidx=50#comment77410902" target="_blank">http://my.opera.com/desktopteam/blog/2011/12/15/64-bit-and-out-of-process-plugins-builds-now-available-on-labs?cid=77410902&amp;startidx=50#comment77410902</a> . I will have to attach an email account, set up Link, run some heavy stress tests that will load the memory access.<br/><br/>Something that interests me: Opera.exe seems to use only one CPU core even now, however OperaPluginWrapper.exe can use another (single) core. This is acceptable, and improves plugin performance when in Power Saver mode on my laptop. However it would be nice for everyone if Web Workers could also be deferred to another process, as discussed when Workers were first introduced.</section>
+    </li>
+    <li id="comment-77416552">
+      <a href="../../../author/ae868186.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1e/858/5af6d3a09a6752ca65ff52c6f3431bb3c57.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ae868186.html">ae868186</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera-京剧哥 你太牛逼了，终于马力全开！！！三系统全跑64位！！！哇哈哈～</section>
+    </li>
+    <li id="comment-77423852">
+      <a href="../../../author/ozoratsubasa.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a3/8bd/89647c70b6c16c8e06945c6d42f7ad02a62.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ozoratsubasa.html">Tiago Wakabayashi</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>only to have a 964bit version shows that Opera is paying attention on wishlist forum</section>
+    </li>
+    <li id="comment-77426012">
+      <a href="../../../author/simon-saint.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c8/fd3/7a120aaf51a26dca86808118a6550315c1d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/simon-saint.html">Michael Smith</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Nikola Sivkov Oh, I&#39;m sorry that my programming skills, while I&#39;m a designer, obviously don&#39;t match your requirements to contribute my personal users experience to one of my favorite software vendors. I thought that every bit would make a difference and that the software intentionally was not only developed for the geeks. My bad.</section>
+    </li>
+    <li id="comment-77429012">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Michael Smith. Sorry for the confusion - I appreciate that it can be confusing having so many different types of browser building hanging around. The difference is this:<br/><br/>1. The Opera builds you download from opera.com/browser are our final, complete, stable, finished builds. Currently, this is 11.60.<br/><br/>2. The Opera Next builds you download from opera.com/browser/next are alpha or beta preview versions of the next version of the browser, after the finished stable one described above. These are mostly ok, but might have a few wrinkles to iron out. Currently, we are on Opera 12.00 alpha for the Opera Next version. <br/><br/>3. The Opera builds you will find here, at Opera labs, are pre-alpha, experimental versions to show case experimental new features that definitely aren&#39;t finished yet. These WILL have significant bugs present, and probably shouldn&#39;t be used as your primary browser, although we do make sure they won&#39;t eat your hard drive before release ;-)<br/><br/>Hope this helps - feel free to ask if you have any more questions. Designers are most welcome here, just as much as developers.  <br/><br/>Chris Mills<br/>dev.opera.com editor</section>
+    </li>
+    <li id="comment-77429222">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Khaled Khalil - oops, more confusion, sorry! We don&#39;t mean that we will no longer support these plugins, just that they don&#39;t work in this particular build.<br/><br/>Chris Mills<br/>dev.opera.com editor</section>
+    </li>
+    <li id="comment-77429322">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@myzzkk<br/><br/>I&#39;m not sure how long it will be before we see multi-core support. I will try to find out.<br/><br/>Chris Mills<br/>dev.opera.com editor</section>
+    </li>
+    <li id="comment-77432602">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chris Mills: I&#39;ve heard lots of people saying that the fact that Opera is using only one core is often advantage, because it keeps other applications responding. If you are going to add multi-core support, please give us option to use only one core. :)</section>
+    </li>
+    <li id="comment-77432692">
+      <a href="../../../author/ocky.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e4/bc4/545b4dc6773c3ada62d2373e249c7b7b15c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ocky.html">Ocky</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>On my Kubuntu 11.10 apparently the module canberra-gtk is needed. The tabs are covered.<br/>severin@severin-desktop:~$ /home/severin/.local/bin/opera-12.00<br/>Gtk-Message: Failed to load module &quot;canberra-gtk-module&quot;<br/>opera [crash logging]: CRASH!!<br/>/home/severin/.local/lib/opera-12.00/opera-12.00 got signal SIGSEGV at address 000000000071<br/><br/>Log was created here:<br/>/var/tmp/crash20111216121044.txt<br/>Killed<br/>severin@severin-desktop:~$ Gtk-Message: Failed to load module &quot;canberra-gtk-module&quot;<br/>Gtk-Message: Failed to load module &quot;canberra-gtk-module&quot;<br/>Gtk-Message: Failed to load module &quot;canberra-gtk-module&quot;<br/><br/><br/>When selecting &#39;Show menu bar&#39; the tabs can&#39;t be seen.</section>
+    </li>
+    <li id="comment-77447602">
+      <a href="../../../author/pafflick.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e9/4f7/7237cc4ee5cd37cded7782517a1a0d45a46.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/pafflick.html">Paweł Pawlak</a></p>
+      <p class="commentdate">Wednesday, December 21, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Unfortunately, this version crashes on YouTube too... :( Luckily for me it didn&#39;t cause the blue screen this time. I tried reinstalling the flash player plug-in, but it didn&#39;t change anything.<br/>11.52 / 11.60 freezes after watching a few YT videos (approx.. 5-10) and when I click on &quot;End process&quot; in the task manager, I get a blue screen.<br/>12.00 build 1191 - same as 11.60<br/>12.00 build 1113 - while watching a third video in a row, the whole system stopped working for about 5 min. I didn&#39;t do anything, but after a few minutes I got the blue screen.<br/>12.00 build 1211 (32bit) - stopped working on the first attempt to watch a random video on YouTube. The browser crashed. But I didn&#39;t get the blue screen when I closed the Opera.exe process using task manager. On Google Chrome YT works (but I can&#39;t resize the player, and Chrome becomes extremely slow on YouTube), on Firefoks it works well, but this browser is very slow. But Chrome and Firefox are my only options for youtube... :(<br/><br/>EDIT: I reported this before and it seems that someone was trying to fix that, but this bug is still in Opera. And this new release have this bug too. Please, could you take a look at this? <a href="http://www.pafflick.com/operabug/" target="_blank">http://www.pafflick.com/operabug/</a><br/><br/>EDIT2: Never mind about that YT issue, I get rid of the flash player plugin, since Google Chrome caused a blue screen too. It happened more than once, so I&#39;m pretty sure, that it&#39;s not a bug in Opera, must be something else...</section>
+    </li>
+    <li id="comment-77460842">
+      <a href="../../../author/cellist.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/28/518/557bcc424657f933f3ece3154e865d20219.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cellist.html">cellist</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I get the crashes at youtube - the window vanishes - on html5 video. Removing myself from the html5 program or viewing videos without signing in works pretty well. Checking webM and html5 video examples at other sites also causes the crash. Flash vids seem pretty stable. </section>
+    </li>
+    <li id="comment-77468442">
+      <a href="../../../author/DD64.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8f/ef6/04fb37b4851bddaad195edc074125b23912.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/DD64.html">Daniel</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera creates an icon on desktop and on the quick launch bar without user-agreement.<br/></section>
+    </li>
+    <li id="comment-77494642">
+      <a href="../../../author/DanielRS.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0e/d2f/3a94ff4e7ad9536c8690459c8420920ceee." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/DanielRS.html">Daniel</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera Unite on - CRASH</section>
+    </li>
+    <li id="comment-77496462">
+      <a href="../../../author/Chris260.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0d/ab7/90c55716854db982440712a2348dd28ecf5.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Chris260.html">Christian Rivest</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Daniel - Confirmed</section>
+    </li>
+    <li id="comment-77502372">
+      <a href="../../../author/highstream.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/af/678/de54f002119ace5040a5f120f88d556a6a4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/highstream.html">highstream</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Something different: at <a href="http://betanews.com/" target="_blank">http://betanews.com/</a>, with Opera Next and using an ad blocker called Ad Muncher, the Load More Articles link at the bottom brings up the next page. With the Labs version, the next page is blank. Wonder why?</section>
+    </li>
+    <li id="comment-77520512">
+      <a href="../../../author/movax.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c9/5e0/5a5ad42486e02a206acf0b282315413524c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/movax.html">Witold Baryluk</a></p>
+      <p class="commentdate">Saturday, December 17, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hey, I have similar problem to Nikola Sivkov.<br/><br/>I closed tab, which was playing some video with audio from youtube, using flash player (on reddit.com). I closed tab, but audio was still going for about 30 seconds (and it ended because video just was short).<br/><br/>32-bit Debian GNU Linux testing, HWA disabled.<br/></section>
+    </li>
+    <li id="comment-77532692">
+      <a href="../../../author/jeauxmoer.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2e/ab9/73469b8800c191a4daf600c0b08470cc6b6.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jeauxmoer.html">Jeaux Moer</a></p>
+      <p class="commentdate">Saturday, December 17, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Just starting, downloading the 64-bit version. One question: Somewhere I saw the Plug-in XHTML+Voice was not enabled, but the Extensions Gallery does not contain this plug-in. From where must one find this? Also, Google Reader&#39;s buttons are all over the place and require re-arrangement as they waste far too much screen space. I&#39;m on a Flatron W1934S at 1440x900 resolution!</section>
+    </li>
+    <li id="comment-77588862">
+      <a href="../../../author/CiroC.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2c/d0a/bc9734d8f9d278fc44fc5dd6a1188a247ba." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/CiroC.html">Ciro</a></p>
+      <p class="commentdate">Saturday, December 17, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I try in Windows 7 pro and Windows 8 wdp (16 Gb).<br/>Thank you for good job!</section>
+    </li>
+    <li id="comment-77671572">
+      <a href="../../../author/jgutierrez.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4c/c9b/940908d9a0f1fce5bf6150fd8f31f75dbfb." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jgutierrez.html">Javier Gutierrez</a></p>
+      <p class="commentdate">Sunday, December 18, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Nice!<br/><br/>I have been waiting for the Win64 builds, and plugin isolation for lots of time, and it is finally here.<br/><br/>BTW, x64 build feels quite stable, and reports about a 10% speed increase in PeaceKeeper comparing with its x86 counterparts.<br/><br/>Now waiting for CSS3 hardware accelerated animations, and Direct3D Vegas wrapper.</section>
+    </li>
+    <li id="comment-77808412">
+      <a href="../../../author/StratCasterJC07.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fd/c89/243a877f642a1ca0af13ced0086ea98d112." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/StratCasterJC07.html">Jorge Campos</a></p>
+      <p class="commentdate">Sunday, December 18, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I&#39;m excited to test this release! : ) Maybe in the future can you add the lightweight theming system, so the user can select the theme&#39;s background and use it on top of a skin from the speed dial configuration box??! PLEASE. THIS WOULD ROCK!! USERS CREATING THEIR OWN THEMES WOO!!</section>
+    </li>
+    <li id="comment-77808572">
+      <a href="../../../author/StratCasterJC07.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fd/c89/243a877f642a1ca0af13ced0086ea98d112." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/StratCasterJC07.html">Jorge Campos</a></p>
+      <p class="commentdate">Sunday, December 18, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I have noticed also.. that opera collects the cache ( if i browse from one website to the next, storing it for easy page loading when i press back ) and starts slowing down.. can you guys implement a new cache system for that.. say only remember 3 last pages out of the 20 so it doesn&#39;t conserve as much ram? i know it clears after i close it, but just saying... it slows down after a while and i have to restart the browser.. which is soo boring to do.</section>
+    </li>
+    <li id="comment-77808662">
+      <a href="../../../author/StratCasterJC07.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fd/c89/243a877f642a1ca0af13ced0086ea98d112." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/StratCasterJC07.html">Jorge Campos</a></p>
+      <p class="commentdate">Sunday, December 18, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>you should make it have an animation when the program starts and closes. like the o logo in the middle of the screen blowing up into the browser or something. you guys have the power. i believe in you. :)</section>
+    </li>
+    <li id="comment-77829952">
+      <a href="../../../author/jabakero.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ec/0b0/ada96b130a8565e37833ca2c0b0f0728e1b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jabakero.html">jabakero</a></p>
+      <p class="commentdate">Sunday, December 18, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Please make the plugin process using different CPU core than opera. Sometimes using flash (in some games), use 100% of one Thread, making opera waaaaaaaaaay slow.<br/><br/>Thanks :)</section>
+    </li>
+    <li id="comment-77907442">
+      <a href="../../../author/fisherman10.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6a/f3f/acae85d608efc2671dec96801a8c97c7cf2." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/fisherman10.html">fisherman10</a></p>
+      <p class="commentdate">Monday, December 19, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>gmail still very sluggish. win7 32-bit.<br/><br/>anyone can confirm?</section>
+    </li>
+    <li id="comment-77908342">
+      <a href="../../../author/windstory.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d1/775/269d24eb4d094e94fed36c433fb2bd3eee4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/windstory.html">windstory</a></p>
+      <p class="commentdate">Monday, December 19, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>how to import roboform installed opera x86?<br/><br/>any ideas?</section>
+    </li>
+    <li id="comment-77916042">
+      <a href="../../../author/TeamSDX.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6c/8fc/4271650c0db3e3d8a0694a1781489359c86.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/TeamSDX.html">Ricardo José Rodríguez Oronó</a></p>
+      <p class="commentdate">Monday, December 19, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Niceeee x86 .... </section>
+    </li>
+    <li id="comment-78066062">
+      <a href="../../../author/xeon0541.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/99/a30/231ff38632ed417ccee2cd833be2106a70f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/xeon0541.html">xeon0541</a></p>
+      <p class="commentdate">Wednesday, December 21, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>this version can&#39;t read local pdf file </section>
+    </li>
+    <li id="comment-78107702">
+      <a href="../../../author/qwz.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b4/085/82e1ea135ca7c0ce6866e4f72559849a1a4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/qwz.html">qwz</a></p>
+      <p class="commentdate">Wednesday, December 21, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Too many crashes, erratically and Crash Feedback window doesn&#39;t appear.<br/><br/></section>
+    </li>
+    <li id="comment-78137182">
+      <a href="../../../author/akajuoyi.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ff/615/3d11b071d1e463d4da4b913d399c1928e42.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/akajuoyi.html">Abuchi akajuoyi</a></p>
+      <p class="commentdate">Thursday, December 22, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi 2 all my friends happy xmas 2 u all ad God bls amen</section>
+    </li>
+    <li id="comment-78141622">
+      <a href="../../../author/KaiAnderssen.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/60/0b9/f4bc3e8ab422182f639402116bf22608adb.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/KaiAnderssen.html">Kai Anderßen</a></p>
+      <p class="commentdate">Thursday, December 22, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><br/>Thank you for &#39;OS x - Edition&#39;  . TXH so much for doing it now. Later than the &#39;Wind... Editon&#39; might look too ugly.<br/><br/>Much more THX for supporting  Linux and Unix(BSD) such a long time ago! LOL</section>
+    </li>
+    <li id="comment-78181092">
+      <a href="../../../author/vandal7.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fc/745/e6afafc4790cd4d7bf793428782630e17ed.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/vandal7.html">vandal7</a></p>
+      <p class="commentdate">Thursday, December 22, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>when you make opera system for kill the windows ????????????</section>
+    </li>
+    <li id="comment-78206082">
+      <a href="../../../author/spamer80.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ca/b57/90600a8aca851f82d75d565bd2a5cbed237.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spamer80.html">Sergei</a></p>
+      <p class="commentdate">Thursday, December 22, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Finally a native x64 build for windows! Thank you! Switching back from Forefox.</section>
+    </li>
+    <li id="comment-78212562">
+      <a href="../../../author/mbjun.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f1/9d9/bd86f6adf1749c26ff20c5e9a3d5192e324.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mbjun.html">mbjun</a></p>
+      <p class="commentdate">Friday, December 23, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Nice :), Now move it to Opera Next. :)</section>
+    </li>
+    <li id="comment-78273202">
+      <a href="../../../author/feienkde.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/34/663/efd5e124b8e1e0f9a8478ada87c9c1e9bf6.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/feienkde.html">Florin Eugen Ionescu</a></p>
+      <p class="commentdate">Friday, December 23, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>When it will be released Opera 12 both x86 &amp; x64? Any chance before Christmas?</section>
+    </li>
+    <li id="comment-78288642">
+      <a href="../../../author/remcolanting.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a9/cf0/c70f3ec4587d546f0ac6e58b15a9037a16c." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/remcolanting.html">Remco Lanting</a></p>
+      <p class="commentdate">Friday, December 23, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>-quote-On their dev build page it says &quot;Xt-based plugins are not supported, for example VLC and Adobe Reader.&quot;<br/>Could you get them to remove VLC from that list? It is no longer Xt-based ;)<br/>-/quote-<br/>* Remco looks at Chris Mills<br/><br/>P.S.: Quoting doesn&#39;t work :(</section>
+    </li>
+    <li id="comment-78300432">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Saturday, December 24, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@everyone - thanks for all the continued feedback! We won&#39;t get Opera next featuring this stuff out before Xmas, but soon in 2012!<br/><br/>@Remco - thanks for the comments. Have removed VLC! We&#39;ll fix comment quoting etc asap.</section>
+    </li>
+    <li id="comment-78708422">
+      <a href="../../../author/P2O2.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8c/e2c/c2d3bdc2ca194cc30f90bf2ddb29a5ab8fc." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/P2O2.html">P2O2</a></p>
+      <p class="commentdate">Thursday, December 29, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi,<br/>I&#39;m asking for a comparison table for Opera Lab, Opera Next and Opera (stable) with the most important records and fields. Reading three release notes and making notes on paper is a sort of regression. ;-)<br/>Do not forget to add a column &quot;done&quot; for the features to be implemented soon (+/- (done/worked on) would suffice).<br/>Regards<br/>Happy New Year for whole Opera Team!</section>
+    </li>
+    <li id="comment-78878422">
+      <a href="../../../author/GT500.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/21/8cc/81905fd89703ca9d5dafea6414180781112.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/GT500.html">Arthur Wilkinson</a></p>
+      <p class="commentdate">Sunday, January 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I like the idea of &quot;Out of Process Plugins&quot; (I attempted to pitch a similar idea to Opera Software many years ago in a forum topic that appears to be gone now as a way to run 32-bit plugins in a 64-bit browser, but was ignored at the time). I may have to see if I can still log in to Operawatch to post about this, or if Daniel has closed it down for good, as I consider both &quot;Out of Process Plugins&quot; and 64-bit builds to be very much worth blogging about.<br/><br/>Also, I have been having some thoughts lately about something else that should be &quot;Out of Process&quot;, and the idea is enhanced security. I figured I might as well post it here, since I don&#39;t really visit any of the development or labs blogs anymore.<br/><br/>The idea is quite simply that the layout engine should run as a separate process, and should always be executed with limited rights (even when the browser&#39;s UI is launched with admin rights). Theoretically this would add a layer of security, and may limit the number of possible security vulnerabilities. Especially if the plugin wrapper could also run with limited user rights (I&#39;m not sure if every plugin would work right when run as a limited user, but I would hope that there would be less security issues that way).<br/><br/>Obviously I haven&#39;t sat down and thought out every detail about how it would work, but I assume something like this would be possible:<ul class="bullets"><li> UI passes URL that user typed in address bar to the layout engine, and layout engine (running as a limited user) loads page, renders it, and sends result back to the UI to display for the user.</li><li> User interaction is sent to the layout engine by the UI, and all responses to user interaction are processed by the layout engine (once again running as a limited user).</li><li> The process that renders the UI can be running with admin rights, but the layout engine&#39;s process will always run with limited rights to minimize security risks.</li><li> All extensions are processed by the layout engine (running with limited rights), and results are sent back to the UI for it to display to the user.</li><li> Downloaded files to be saved are sent to the UI so that they can be saved with the same rights that the user launched the browser with.</li></ul><br/><br/>Obviously this would not prevent a lot of security vulnerabilities, however my thoughts are that this would help prevent some security vulnerabilities, and perhaps cut down on some of the risks of browsing on operating system where your web browser is running with admin rights. ;)</section>
+    </li>
+    <li id="comment-78882602">
+      <a href="../../../author/GT500.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/21/8cc/81905fd89703ca9d5dafea6414180781112.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/GT500.html">Arthur Wilkinson</a></p>
+      <p class="commentdate">Sunday, January 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Well, I guess I can forget about posting anything on Operawatch. I hadn&#39;t realized that Daniel had disabled it.<br/><br/>I guess this means it is time for me to disappear back in to whatever nothingness I came from. Thanks again for the new labs build. ;)</section>
+    </li>
+    <li id="comment-79308412">
+      <a href="../../../author/dilik1905.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/949/51735a268fdce9f755ff128dbae74b1ddd3.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dilik1905.html">dilshod</a></p>
+      <p class="commentdate">Friday, January 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>перевести на руский язык</section>
+    </li>
+    <li id="comment-79319482">
+      <a href="../../../author/jorrit273.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/05/f6b/aa2df74bab23dfdaa09c7ff8983bfaf67a5.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jorrit273.html">jorrit</a></p>
+      <p class="commentdate">Saturday, January 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>chriss plz make one for the fhone :LG cookie kp500 plz i think yes PS i&#39;m srry my engelisch is not good realy </section>
+    </li>
+    <li id="comment-79464052">
+      <a href="../../../author/greench.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/55/e98/9459ab63cbd6aa9b293bc4686a4dfbcc3d9.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/greench.html">Çağlar Yeşilyurt</a></p>
+      <p class="commentdate">Monday, January 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera x64 isn&#39;t pinned into taskbar on Windows 7 X64</section>
+    </li>
+    <li id="comment-79499702">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, January 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@P2O2<br/><br/>Thanks for the suggestion - yes, this is a good idea. I have suggested this to the team, and will see what we can come up with. </section>
+    </li>
+    <li id="comment-79500002">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, January 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Arthur Wilkinson thanks for the suggestion - I&#39;ve pointed the desktop developers to this thread so they can see it and consider it.<br/><br/>And sorry about operawatch - yes, there hasn&#39;t been much activity there since Daniel left Opera. If you are still interested in contributing, there are other places you could consider. Let me know what kinds of things you&#39;d like to do.</section>
+    </li>
+    <li id="comment-79533312">
+      <a href="../../../author/GT500.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/21/8cc/81905fd89703ca9d5dafea6414180781112.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/GT500.html">Arthur Wilkinson</a></p>
+      <p class="commentdate">Monday, January 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@ Chris Mills:<br/><br/>There would have been some activity at Operawatch after I saw this Opera Labs release, however when I log in I can no longer find a way to post articles. I&#39;d ask Daniel about it, but I don&#39;t think he&#39;s answering e-mails anymore. Not sure what happened to him.<br/><br/>As far as things I&#39;d like to do, computer security has been very important to me for many years, and recently I&#39;ve noticed that Opera&#39;s security feature where it blocks potentially dangerous websites does not protect against a lot of the stuff that I happen to come across (examples: <a href="http://www.virustotal.com/url-scan/report.html?id=367ebb40aa8dd708ad543bb32c24d99d-1318871964" target="_blank">[1]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=c388cf7c26a4871f1d99b8c889f8e4f1-1318871525" target="_blank">[2]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=6c634426784b74686aab9a3c49b4cc35-1318849503" target="_blank">[3]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=ce12d74ff060e771e90e5850eb519bf6-1318640423" target="_blank">[4]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=ca4b32859eb75dbc978471fcb8a1fedc-1318006497" target="_blank">[5]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=54e2d3624b9b061bba07612d8fba5cb6-1318006288" target="_blank">[6]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=21307881368cd55b47a7c0b3c9b493a8-1318006164" target="_blank">[7]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=6d06eeed227a438ab245ff057d9e2992-1318467955" target="_blank">[8]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=62351cf9df73597c4476f185ac08d97c-1318005549" target="_blank">[9]</a> / <a href="http://www.virustotal.com/url-scan/report.html?id=5104bd94ace8dd269e8ad16a59d3755e-1317752460" target="_blank">[10]</a> / etc). If it would be possible for me to be of some assistance making Opera Software&#39;s list of malicious websites/domains better, then that would be fun. I actually tried to e-mail David Story about that back in October, but I hadn&#39;t realized that he was no longer with Opera Software at the time.</section>
+    </li>
+    <li id="comment-79539562">
+      <a href="../../../author/P2O2.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8c/e2c/c2d3bdc2ca194cc30f90bf2ddb29a5ab8fc." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/P2O2.html">P2O2</a></p>
+      <p class="commentdate">Tuesday, January 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chris Mills, Monday, January 9, 2012:<br/><br/>Thanks. I understand you read my expanded suggestion in comments to WebGL and Hardware Acceleration (<a href="../labs-webgl-and-hardware-acceleration/index.html" target="_blank">http://dev.opera.com/articles/view/labs-webgl-and-hardware-acceleration/</a>), as well?<br/>Regards</section>
+    </li>
+    <li id="comment-79656042">
+      <a href="../../../author/jclins.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/91/f88/8c714caa7339f96a7d008b2d385194130cd." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jclins.html">jclins</a></p>
+      <p class="commentdate">Wednesday, January 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>i&#39;ve been using this build for my main browser ever since it&#39;s release.  i had one crash with the plugin wrapper but it didn&#39;t take down opera 64.  other than that, i don&#39;t foresee myself going back to 32-bit opera.  :)</section>
+    </li>
+    <li id="comment-79732922">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, January 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@ Arthur Wilkinson<br/><br/>&gt;  There would have been some activity at Operawatch after I saw this Opera Labs release, however<br/>&gt;  when I log in I can no longer find a way to post articles. I&#39;d ask Daniel about it, but I don&#39;t think he&#39;s<br/>&gt;  answering e-mails anymore. Not sure what happened to him.<br/><br/>I&#39;m not sure what happened to him either. I&#39;ll inquire inside Opera to see what has happened to operawatch, and if we are doing anything with it anymore. If you and a few other people are still interested in adding content, then I see no reason to close it down.<br/><br/>&gt;As far as things I&#39;d like to do, computer security has been very important to me for many years, and<br/>&gt; recently I&#39;ve noticed that Opera&#39;s security feature where it blocks potentially dangerous websites<br/>&gt; does not protect against a lot of the stuff that I happen to come across (examples: [1] / [2] / [3] / [4]<br/>&gt;  / [5] / [6] / [7] / [8] / [9] / [10] / etc). If it would be possible for me to be of some assistance making<br/>&gt; Opera Software&#39;s list of malicious websites/domains better, then that would be fun. I actually tried<br/>&gt;  to e-mail David Story about that back in October, but I hadn&#39;t realized that he was no longer with<br/>&gt; Opera Software at the time.<br/><br/>Yup, David has left for pastures new as well! If you e-mail me about this I can follow up. cmills [at] opera [dot] com.</section>
+    </li>
+    <li id="comment-79742542">
+      <a href="../../../author/GT500.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/21/8cc/81905fd89703ca9d5dafea6414180781112.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/GT500.html">Arthur Wilkinson</a></p>
+      <p class="commentdate">Thursday, January 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@ Chris Mills:<br/>Sending e-mail. ;-)</section>
+    </li>
+    <li id="comment-79753742">
+      <a href="../../../author/neo007jag.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c6/bee/69dbcc4d01859a0a22da1642dafcf9e1749." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/neo007jag.html">neo007jag</a></p>
+      <p class="commentdate">Thursday, January 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I have recently started using the 64 bit browser and after watching videos on You-tube and closing the window the sound bit of the video continues to play even after the browser is closed and after I watch long videos/movies on youtube when I try to loginto any other site then the browser does not respond and have to restart it....apart from these I love the way it works... </section>
+    </li>
+    <li id="comment-79785322">
+      <a href="../../../author/kmj1ak.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/19/b2b/7d889e9d880935e4dcfed2ca3cd313eb891.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/kmj1ak.html">Kevin Johnson</a></p>
+      <p class="commentdate">Friday, January 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great work on the 64 bit Opera Browser for Linux!! My favorite browser works great for Ubuntu again!! I sure missed it!! Works better than Firefox or Chrome. Chrome has been so riddled with bugs lately. And decided to try out Opera again. What a huge difference with the new Out of Process Plugins by running the plugins differently. Thanks for making Opera run so much better on LInux again!! It is now my default browser!! </section>
+    </li>
+    <li id="comment-79822442">
+      <a href="../../../author/Chas4.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f9/116/c4a4621700cfd6f9189d9f6a54c982513df.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Chas4.html">Charles Schloss</a></p>
+      <p class="commentdate">Friday, January 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Just reported DSK-355239 </section>
+    </li>
+    <li id="comment-81103502">
+      <a href="../../../author/Athlonite.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f0/3df/9a5e260e7aa139c9b47d322b2e5e829de0c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Athlonite.html">Athlonite</a></p>
+      <p class="commentdate">Wednesday, February 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>well SO far SO good I&#39;ve not had an error yet including with youtube videos although one little niggle is when scrolling a page with embedded the video disappears until clicked on  </section>
+    </li>
+    <li id="comment-81911062">
+      <a href="../../../author/Chas4.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f9/116/c4a4621700cfd6f9189d9f6a54c982513df.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Chas4.html">Charles Schloss</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The click to plug in needs to show the name of the plug in it is prevent from loading<br/><br/>That would help with knowing what plug in is prevented from loading automatically</section>
+    </li>
+    <li id="comment-81912792">
+      <a href="../../../author/Vasja72.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/df/52f/c7e7a1a1b8c9073ca429206dc5ac78285b9." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Vasja72.html">Vasja</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>On which build based this one? Judging by the comments above, it&#39;s previous laboratory build. Is there fixes from version 12 b.1289 included?</section>
+    </li>
+    <li id="comment-81913232">
+      <a href="http://dev.opera.com/author/AVL"><img src="../../../../../https/static.myopera.com/avatars/pool1/5f/12b/c816a4b98dd20ccab389e17ed887e163bf5.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="http://dev.opera.com/author/AVL">Arjan van Leeuwen</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Vasja: based on build 1239, so fixes in build 1289 are not included.</section>
+    </li>
+    <li id="comment-81915792">
+      <a href="../../../author/JackWagon.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8c/c1f/db58009905a1f13cd786a93b8150b314e83." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/JackWagon.html">JackWagon</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>HW Acceleration still feels sluggish; much better performance disabled.  W7 x64, Nvidia gt 430, WHQL drivers.   Strangely enough, the first few builds that were HW accel capable, released way back when, were by far the fastest - very snappy.    Also, on this very page in particular (Opera Labs), scrolling is very sluggish.<br/><br/>Thank you for your continued efforts!</section>
+    </li>
+    <li id="comment-81918152">
+      <a href="../../../author/QuHno.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0f/b9a/c0202066baeadb4b90136e1e8faaaa5b057.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/QuHno.html">QuHno</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>HWA might be a little bit sluggish sometimes, but it is rock solid for me for the first time :)</section>
+    </li>
+    <li id="comment-81919022">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>(You should have create new lab article .. too many comments here - just saying...)<br/><br/>The 64bit Opera is still about 20% slower than 32bit. I understand it will take time to fully use the advantage of x64, but I would expect at least same performance as 32 bit builds. As it is now, there is no reason to use 64bit version at all.</section>
+    </li>
+    <li id="comment-81932252">
+      <a href="../../../author/Dadanofficial.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/832/c6770f43dd3b62f71e7646f9e3845ee9fc7.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Dadanofficial.html">Tidan</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Impossible to open a photo on Facebook.fr, Opera closes all only <br/><br/>Configuration: Windows 7 pro X64</section>
+    </li>
+    <li id="comment-81937172">
+      <a href="../../../author/QuHno.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0f/b9a/c0202066baeadb4b90136e1e8faaaa5b057.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/QuHno.html">QuHno</a></p>
+      <p class="commentdate">Thursday, February 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I don&#39;t care if the 64 bit version is slower than the 32bit version (which I didn&#39;t test) - it likes my system and is faster than Chromium 18 <br/><a href="http://quhno.internetstrahlen.de/myopera/dhtml-test/results002.html#OLOOP2-64" target="_blank">http://quhno.internetstrahlen.de/myopera/dhtml-test/results002.html#OLOOP2-64</a><br/>and it is rock solid here, I couldn&#39;t provoke a crash so far :)</section>
+    </li>
+    <li id="comment-81957402">
+      <a href="../../../author/Ravindran.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/51/612/8f88012aa0f385c295aeff2cee76aea8383.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Ravindran.html">Ravindran Navaneethan</a></p>
+      <p class="commentdate">Friday, February 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is it possible to set this new build as default browser? <br/><br/>Earlier 64-bit preview build can&#39;t be set as default browser on Windows.</section>
+    </li>
+    <li id="comment-82168022">
+      <a href="../../../author/cozappz.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/52/eea/9e9d587fdbb973a30db6a9bc85fab0ecba3.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cozappz.html">Cosmin</a></p>
+      <p class="commentdate">Sunday, February 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>RSS Feeds not retained from 1211. All other settings seem ok. (Imported by renaming the AppData\Local\Opera\Opera Labs\ to AppData\Local\Opera\Opera Labs OOPP x64\)</section>
+    </li>
+    <li id="comment-82224592">
+      <a href="../../../author/DanielHendrycks.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/77/7a9/b407222a095ad98e21759846bbf13b94eba.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/DanielHendrycks.html">Daniel Hendrycks</a></p>
+      <p class="commentdate">Monday, February 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Peacekeeper<br/>Latest x86 Wahoo: 1345<br/>x64 build 1293: 1593<br/><br/>As I was using 64-bit Opera and it was not able to connect to anything. I restarted (after a crash (report sent)) and all was fine.</section>
+    </li>
+    <li id="comment-82362862">
+      <a href="../../../author/mv2000.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9e/83c/aa0b2a19e08c1c8e47b9aff5966109c6a43." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mv2000.html">V.M.</a></p>
+      <p class="commentdate">Tuesday, February 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>pinned into win7&#39;s taskbar as well ;)</section>
+    </li>
+    <li id="comment-82530442">
+      <a href="../../../author/Stilezy.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/83/ba1/d2141bb9a2b41bca2b7ee1fcbb7a1293a47." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Stilezy.html">Stilezy</a></p>
+      <p class="commentdate">Thursday, February 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I had to switch away from Opera last year - my current sessions are hitting 3.5 - 4GB and crashing/freezing.  Can&#39;t wait for Opera to be x64 and rock solid stable in future, this is a major step on the way. Thanks for the work guys!!<br/><br/>(Why I and some others *really* appreciate the work you&#39;re doing on Opera x64:   <a href="http://i.imgur.com/tck2I.png" target="_blank">http://i.imgur.com/tck2I.png</a> )</section>
+    </li>
+    <li id="comment-82531712">
+      <a href="../../../author/fred8615.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1b/81b/176f4290cbd1e526e92445e48aae8a0c6e2." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/fred8615.html">Frederick Barnett</a></p>
+      <p class="commentdate">Thursday, February 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Has anyone been able to use the e-mail part of these 64 bit builds? My ISP uses POP, and when I try to use e-mail, the whole program starts crashing on me. If I delete the e-mail account, the crashes stop. It did this in the 1211 build too.<br/><br/>FWIW, if I try using IMAP instead of the POP settings, it doesn&#39;t crash, but it doesn&#39;t load my mail either.</section>
+    </li>
+    <li id="comment-83017252">
+      <a href="../../../author/exzentrik.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f8/4ba/5d8bb8319d2d3ee09f1389a6080f919866a." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/exzentrik.html">exzentrik</a></p>
+      <p class="commentdate">Tuesday, February 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;Is it possible to set this new build as default browser? &quot;<br/><br/>Nope, it&#39;s not possible.</section>
+    </li>
+    <li id="comment-83907422">
+      <a href="../../../author/HeinrichP.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/81/6c8/7d19d2943b102ea0ba33c04c2b767cae750.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/HeinrichP.html">HeinrichP</a></p>
+      <p class="commentdate">Saturday, March 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I am looking sheerfully forward to this to be released as a stable release!</section>
+    </li>
+    <li id="comment-83987882">
+      <a href="../../../author/zx-wong.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/15/c2e/14c607ceca1b08d238bd4472bc23476bff1.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/zx-wong.html">ZX Wong</a></p>
+      <p class="commentdate">Sunday, March 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>it works fine until i enable email and opera link, especially email. crash crash crash crash even at the very starting.Win 7 64bit.</section>
+    </li>
+    <li id="comment-84079272">
+      <a href="../../../author/termi1uc1.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/98/ab5/0f14096fa521cf5472767f959b970869617.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/termi1uc1.html">Егор</a></p>
+      <p class="commentdate">Monday, March 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><a href="http://portal.wecreatestuff.com/portal.php" target="_blank">http://portal.wecreatestuff.com/portal.php</a><br/>This FLASH game freeze this build as well :(<br/>As in latest Chrome and FF</section>
+    </li>
+    <li id="comment-84552222">
+      <a href="../../../author/leojh44.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b5/f68/a2d38b55dd72cb332f449617bdc921d3031." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/leojh44.html">leojh44</a></p>
+      <p class="commentdate">Sunday, March 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>is that something like Opera will be 64-bit rather than the standard 32 bit one? Opera is currently in 32 bit, i guess it will be better if Opera will also have 64 bit version for 64 bit machines....<br/><br/>and by the way, please update Opera Gestures.... i am using it actually, opening new tabs, opening links in background tab, etc.... please re-arrange them because gestures location seems so confusing like closing tab was place under open gesture, (open - close?) and please include cycling / switching tabs.... thanks!!! :) keep on improving Opera!!! :)<br/><br/>facebook videocall, when will you come for Opera? Opera is the only browser i know and only Opera has no facebook videocall plug in support.... :(<br/><br/>hahah.... Cheers!</section>
+    </li>
+    <li id="comment-84890192">
+      <a href="../../../author/Athlonite.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f0/3df/9a5e260e7aa139c9b47d322b2e5e829de0c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Athlonite.html">Athlonite</a></p>
+      <p class="commentdate">Thursday, March 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Now if we can just get the Upload to skydrive bug fixed I&#39;d very happy I&#39;m just so peeved when it comes up with sorry you can&#39;t upload a folder msg all the time </section>
+    </li>
+    <li id="comment-85328212">
+      <a href="../../../author/ECM.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2d/2fc/929d401f3f0924d6df711123b4b299f116b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ECM.html">ECM</a></p>
+      <p class="commentdate">Tuesday, March 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This runs better on my machine than the current version of Opera, or the 32-bit version of Next. Please, please, in the next build allow setting to default.</section>
+    </li>
+    <li id="comment-85389552">
+      <a href="../../../author/andrhart.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/029/fe3cf4f06b9a7d569b5e3df770a5849c07e.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/andrhart.html">andrhart</a></p>
+      <p class="commentdate">Tuesday, March 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>HOW SET 64BIT AS DEFAULT.<br/>Open up the registry editor (Regedit.exe) as an administrator<br/>Under HKEY_CLASSES_ROOT, find the file extension you want to change! (for example http)<br/>Bye ;)</section>
+    </li>
+    <li id="comment-85458082">
+      <a href="../../../author/lloids.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e7/e34/76c6af60d6fe04ae53ebc2222b7b741c980." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lloids.html">lloids</a></p>
+      <p class="commentdate">Wednesday, March 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Why Content Blocker doesn&#39;t work? I have many pages listend, but opera allways load them! Using Win7 Prof. 64 Bit with Opera 64Bit V12.00alpha Build 1293. Great work! Thanks a lot! (I would buy a boxed version)</section>
+    </li>
+    <li id="comment-85625482">
+      <a href="../../../author/nocturnalYL.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/01/a67/cf36f13947b9500fcff102ab1c0d1e38090.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nocturnalYL.html">nocturnalYL</a></p>
+      <p class="commentdate">Tuesday, March 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Excellent! Dedicating plugins to a seperate process is a good idea. I&#39;d want to see each tab having its own process as well, since the Opera main program is using more CPU and memory than the plugin wrapper (according to Windows Task Manager).<br/><br/>Question: When I first run Opera OOPL and launched a Flash game, the 64-bit plugin wrapper is used. When I copied my user profile from Opera 10.63 (and thus using the saved tabs from my O10.63 session), I see that the 32-bit wrapper is used instead (I don&#39;t know why, maybe I have a 32-bit-only plugin like QuickTime used without knowing it). Is there any way to give the 64-bit wrapper a higher precedence? In other words, when Opera sees both 64-bit and 32-bit versions of the same plugin, it would use the 64-bit one?<br/><br/><b>MODIFY</b> - Nevermind, I found the solution: <a href="http://my.opera.com/desktopteam/blog/2011/12/15/64-bit-and-out-of-process-plugins-builds-now-available-on-labs?cid=85989322&amp;startidx=150#comment85989322" target="_blank">http://my.opera.com/desktopteam/blog/2011/12/15/64-bit-and-out-of-process-plugins-builds-now-available-on-labs?cid=85989322&amp;startidx=150#comment85989322</a></section>
+    </li>
+    <li id="comment-86487602">
+      <a href="../../../author/altbass.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/3d0/a492a6814a2f2e1bc2378c22e27f9025508." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/altbass.html">altbass</a></p>
+      <p class="commentdate">Tuesday, April 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I am experiencing some odd issues with Opera 12.00 x64 on Windows XP x64 Pro SP2. The interesting thing is that I was experiencing some of them with Opera 11.60 under Windows XP x86 Pro SP3.<br/><br/>Everything is fine after installation but some days later I start to notice strange things.<br/>1) Opera pauses loading the page from some server at some moment and it pauses at the same place every time I hit F5. Few minutes later the problem dosappears. I have awful connection to the internet but at the time Opera struggles the Internet Explorer and Firefox have no problems. This was noticed in opera 11.60 x86 also.<br/>2) Some times I can&#39;t refresh the page, every time I press F5 the old version appears. I have the similar problem with ReCaptcha, the ReCaptha frame, it showes the old code until I press the refresh button one or two times. This was noticed in opera 11.60 x86 also.<br/>3) Opera 12.00 x64 can crash unexpectively at the moment of opening the link in new tab, there were some crash reports submitted by the built-in system but no info was given on them by your system.<br/>4) Sometimes there&#39;s the strange lag in the tab bar, it shows the white shifted gosts of the tab icon frames and the gosts remain still when I close or open tabs. This artefact does not dissappear until I close the windows, containing it. This was also noticed in Opera 11.60 x86.<br/><br/>Mentione bugs became a bit less frquent with 12.00 x64 but they remain. I have like 5 windows opened all time and like 10-30 tabs in each window.<br/><br/>PC config is: Core2Duo overclocked by 65%, 4GB of RAM, Gigabyte 965P-DS4, Radeon HD4850 1GB. The VGA, memory and CPU survived the death of old mobo but they are working perfectly with all other software I have including hardware accelerated and 3D games. memtest86+  and  LinX were also used and showed no faults.<br/><br/>All these bugs appear inpedendently from the pugins installed or enabled. I have uploaded the copy of my current config file, the most settings very the same in Opera 11.60.<br/><a href="http://rghost.net/37386079" target="_blank">http://rghost.net/37386079</a><br/><br/>I have also sent you some screenshots through private messages.</section>
+    </li>
+    <li id="comment-90344402">
+      <a href="../../../author/statfact.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ee/2ce/731772894f7e46a23b2c35d2cec5e275558." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/statfact.html">statfact</a></p>
+      <p class="commentdate">Friday, June 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>We miss x64 bug fixes very very much. Please change focus to x64 development</section>
+    </li>
+    <li id="comment-103374562">
+      <a href="../../../author/operafan59.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1f/ae8/0d17ff89b1a76a9fcb7360571bd1437a0ad." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/operafan59.html">operafan59</a></p>
+      <p class="commentdate">Sunday, February 3, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you for the 64-bit Opera plugin update<a href="http://www.youtube.com/watch?v=TuDkXXKWm8Y" title="Récupération de données">.</a><a href="http://www.youtube.com/watch?v=sFRCPLn9wvU" title="Récupération de données"></a><a href="http://www.reparation-de-disque-dur.com" title="Réparation de disque dur"></a><a href="http://www.reparationdisquedur.org" title="Réparation disque dur"></a><a href="http://www.reparer-disque-dur.org" title="Réparer disque dur"></a> I will check it<a href="http://www.recuperation-dedonnees.com" title="Récupération de données">.</a><a href="http://www.recuperationde-donnees.com" title="Récupération de données"></a><a href="http://www.recuperationdedonneesdisquedur.com" title="Récupération de données disque dur"></a><a href="http://www.recuperationdonnees.org" title="Récupération données"></a><a href="http://www.r-a-i-d.fr" title="Récupération de données RAID"></a><a href="http://www.r-a-i-d.fr" title="Récupération de données RAID5"></a><a href="http://www.recuperationdefichiers.org" title="Récupération de fichiers"></a><a href="http://www.recuperation-fichiers.com" title="Récupération fichiers"></a></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, February 9, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/64-bit.html" rel="tag">64-bit</a></li>
+        <li><a href="../../tags/crashes.html" rel="tag">crashes</a></li>
+        <li><a href="../../tags/freebsd.html" rel="tag">freebsd</a></li>
+        <li><a href="../../tags/linux.html" rel="tag">linux</a></li>
+        <li><a href="../../tags/mac.html" rel="tag">mac</a></li>
+        <li><a href="../../tags/oopp.html" rel="tag">oopp</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/out-of-process.html" rel="tag">out-of-process</a></li>
+        <li><a href="../../tags/plugins.html" rel="tag">plugins</a></li>
+        <li><a href="../../tags/security.html" rel="tag">security</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Transition timing example</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+    	    h1 {
+    	    		font:  18px "Helvetica Neue", arial, sans-serif;
+    	    }
+    	    
+    	    body > p {
+    	    	border: 1px dashed silver;
+    	    	padding: 0.5em;
+    	    	border-radius: 0.5em;
+    	    	font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+    	    	background-color: rgb(254, 250, 218);
+    	    	max-width: 44em;
+    	    }
+    	    
+    	    #container {
+    	    	border: 1px solid silver;
+    	    	border-radius: 8px;
+    	    	width: 51em;
+    	    	box-shadow: inset 1px 1px 7px rgb(49, 49, 49);
+    	    	background-color: rgb(232, 232, 232);
+    	    	padding: 0 0 1em 1em;
+    	    	 
+    	    }
+    	    #container div {
+    		    width: 3em;
+    		    height: 3em;
+    		    border-radius: 0 5px 5px 0;
+    		    box-shadow: 0px 0px 3px rgb(49, 49, 49);
+    		    
+    		    -o-transition-property: width; -webkit-transition-property: width;
+                transition-property: width;
+                -o-transition-duration: 4s;  -webkit-transition-duration: 4s;
+                transition-duration: 4s;
+            }
+            #container p {
+            	line-height: 0;
+            	text-shadow: 1px 1px 1px black;
+            }
+  		    #container:hover div { width: 50em; }
+  		    
+  		    #container div:nth-of-type(1) {
+  		    	 -o-transition-timing-function: ease; -webkit-transition-timing-function: ease;
+  		    	 transition-timing-function: ease;
+  		    	 background-color: red;
+  		     }
+  		    	
+  		    #container div:nth-of-type(2) {
+  		    	 -o-transition-timing-function: linear; -webkit-transition-timing-function: linear;
+  		    	 transition-timing-function: linear;
+  		    	 background-color: blue;	 
+  		    }
+  		    #container div:nth-of-type(3) { 
+  		    	-o-transition-timing-function: ease-in; -webkit-transition-timing-function: ease-in;
+  		    	transition-timing-function: ease-in;
+  		    	background-color: green;	
+  		    }
+  		    #container div:nth-of-type(4) { 
+  		    	-o-transition-timing-function: ease-out; -webkit-transition-timing-function: ease-out;
+  		    	transition-timing-function: ease-out;
+  		    	background-color: purple;
+  		    }
+  		    #container div:nth-of-type(5) { 
+  		    	-o-transition-timing-function: ease-in-out; -webkit-transition-timing-function: ease-in-out;
+  		    	transition-timing-function: ease-in-out;
+  		    	background-color: orange;
+  		    }  		   
+
+      </style>
+  </head>
+  <body>
+  	<h1>An example showing the various kinds of transition-timing-functions</h1>
+  	<p>The <code>div</code>s below all transition over 4 seconds to 50ems. Each div has a different <code>transition-timing-function</code> so will accelerate and decelerate at different speeds. They will all reach 50 ems at the same time.</p>
+  	<div id="container">
+  		<p><code>ease</code>:</p>
+  		<div></div>
+  		<p><code>linear</code>:</p>
+  		<div></div>
+  		 <p><code>ease-in</code>:</p>
+  		<div></div>
+  		 <p><code>ease-out</code>:</p>
+  		<div></div>
+  		<p><code>ease-in-out</code>:</p>
+  		<div></div>
+  	</div>
+  </body>
+</html>

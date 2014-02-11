@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Simple transform transition example showing original position</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+        	h1 {
+	 			font:  18px "Helvetica Neue", arial, sans-serif;
+			}
+        	
+        	p {
+				border: 1px dashed silver;
+				padding: 0.5em;
+				border-radius: 0.5em;
+				font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+				background-color: rgb(254, 250, 218);
+				max-width: 44em;
+				margin-bottom: 0;
+			}
+			
+			div {
+				background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+			}
+    	    div:nth-of-type(1) {    
+    		    -o-transform: translate(50px, 100px); -webkit-transform: translate(50px, 100px);
+    		    transform: translate(50px, 100px);
+            }
+            div:nth-of-type(2) {
+            	opacity: 0.2;
+				position: relative;
+				top: -3em; /*moveup by the height of the previous div.*/
+			}
+            
+      </style>
+  </head>
+  <body>
+  		<h1>Simple CSS transform translate example highlighting original position</h1>
+  		<p>The solid red <code>div</code> element below would usually be displayed directly under this text, flush with the border. An <code>-o-transform: translate(50px, 100px);</code> transition is applied to move it 50px to the left and 100px down. A ghost element is shown to illustrate where the div would have been positioned if a transform wasn’t applied.</p>
+  		<div></div>
+  		<div></div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C/DTD XHTML+Voice 1.2/EN" "xhtml+voice.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xv="http://www.voicexml.org/2002/xhtml+voice"
+      xmlns:ev="http://www.w3.org/2001/xml-events">
+<head>
+  <link rel="stylesheet" href="male.css" title="Masculine"/>
+  <link rel="alternate stylesheet" href="female.css" title="Feminine"/>
+  <form xmlns="http://www.w3.org/2001/vxml" id="speak">
+    <block>
+      <prompt xv:src="#greetings"/>
+    </block>
+  </form>
+</head>
+<body>
+  <p id="greetings">Hello world!</p>
+  <input type="button" value="Greet by gender" ev:event="click" ev:handler="#speak"/>
+</body>
+</html>

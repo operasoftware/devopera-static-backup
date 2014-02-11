@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera extensions: publishing guidelines - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera extensions: publishing guidelines</h1>
+      <p class="print author">By Opera Software</p>
+
+      <p class="note">
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+</p>
+
+
+  <h2>Table of Contents</h2>
+  <ol class="toc">
+    <li><a href="index.html#intro">Introduction</a></li>
+    <li><a href="index.html#create">Create your extension</a></li>
+    <li><a href="index.html#prepare">Prepare your details before submission</a>  
+    <ul>
+        <li><a href="index.html#good-name">Pick a good name</a></li>
+        <li><a href="index.html#version-numbers">Choose a version number</a></li>
+        <li><a href="index.html#support-webpage">Create an extension support page (optional)</a></li>
+        <li><a href="index.html#categories">Choose a category</a></li>
+        <li><a href="index.html#chooselicense">Choose a license</a></li>
+        <li><a href="index.html#good-summary">Write a good summary</a></li>
+        <li><a href="index.html#good-description">Write a good description</a></li>
+        <li><a href="index.html#testing">Test your extension</a></li>
+        <li><a href="index.html#good-icons">Create a good icon</a></li>
+        <li><a href="index.html#good-screenshots">Take good screenshots</a></li>
+      </ul>
+    
+    </li>
+    <li><a href="index.html#submit">Submit your extension for review</a></li>
+    <li><a href="index.html#reviewed">Your extension is reviewed</a></li>
+    <li><a href="index.html#published">When the extension satisfies all criteria, it will be published</a></li>      
+  </ol>
+
+  <h2 id="intro">Introduction</h2>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/5012/publishingprocess.png" alt="overview of the publishing process - development, submission, testing, then publishing or rejection" /></p>
+  <p class="comment">Figure 1: Overview of the publishing process - the developer creates an extension and submits it to the <a href="https://addons.opera.com/addons/extensions/">Opera extensions repository</a>. The extension moderators then test the extension and publish it, or reject it and send it back to the developer to work on it more and submit it again.</p>
+
+  <p>This guide explains how to publish your extension, which is a multi-step process that begins when you <a href="https://addons.opera.com/developer/upload/">submit your extension for review</a>. We want published Opera extensions to be of a consistently high quality, so we have created the following guide for you to follow.</p>
+
+  <h2 id="create">1. Create your extension</h2>
+
+  <p>This article does not cover the technicalities of creating an extension. Consult our <a href="../opera-extensions-quick-documentation-overview/index.html">Opera extensions: quick documentation overview</a> for all technical details.</p>
+  
+  <h2 id="prepare">2. Prepare your details before submission</h2>
+  
+  <p>Before you submit your extension, you should do the following to prepare, and get all the details you need together. The following sections contain many hints and tips for creating effective descriptions, screenshots, etc. If you have been through all these before and just need a checklist to check your details against, go straight to the <a href="index.html#submit">Submit your extension for review</a> section.</p>
+  
+  <h3 id="good-name">Pick a good name</h3>
+
+  <p>Think about the name of your extension carefully. It needs to be memorable, short and appropriate, so it is easy for users to find and remember. A good example is <strong>Video downloader</strong>.</p>
+
+  <h3 id="version-numbers">Choose a version number</h3>
+
+  <p>The recommended version number for a new extension is &quot;1.0&quot;. Bear in mind that you will need to increase the number each time you upload a new version as this enables extensions to auto-update. An increase in the minor version number (e.g. 1.1 to 1.2) is generally recommended for minor fixes or for feature additions or modifications, whereas an increase in the major version number (e.g. 1.1 to 2.0) is recommended when there are major improvements in functionality and/or significant changes in the user interface. Note that version numbers are treated as being in dictionary order, so version 2.50 is the same as 2.5, which is more recent than 2.11, for example.</p>
+
+  <h3 id="support-webpage">Create an extension support page (optional)</h3>
+
+  <p>You should seriously consider creating a support page for your extension. We&#39;d recommend you include news of new releases and updates, detailed usage instructions, a portfolio of your other work, and contact details in case anyone needs to contact you with queries.</p>
+
+  <p>The support webpage should be relevant to your extension. If it is not, your extension may be rejected.</p>
+
+  <h3 id="categories">Choose a category</h3>
+
+  <p>Choose one of the following categories for your extension:</p>
+
+  <ul>
+    <li>News &amp; Blogging</li>
+    <li>Accessibility</li>
+    <li>Entertainment</li>
+    <li>Games</li>
+    <li>Music</li>
+    <li>Photos</li>
+    <li>Productivity</li>
+    <li>Reference</li>
+    <li>Appearance</li>
+    <li>Social</li>
+    <li>Tools</li>
+    <li>Travel</li>
+    <li>Weather</li>
+    <li>Web Development</li>
+  </ul>
+
+  <h3 id="chooselicense">Choose a license</h3>
+
+  <p>Choose the distribution license for your extension - the Opera Extensions site allows you to choose between two when uploading.</p>
+
+  <p>With the <a href="https://addons.opera.com//developer/license/hosting/">Opera hosting license</a> you keep all content rights, but allow Opera to make the extension available free of charge to users worldwide. Opera can make changes to the extension, if required to make it work properly.</p>
+
+  <p>Alternatively, if you prefer an Open Source license that allows anyone to build on your work, you can choose the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0 license</a>.</p>
+
+  <h3 id="good-summary">Write a good summary</h3>
+
+  <p>The summary should briefly explain what your extension does. This will be shown on the front page of the catalogue and in the extensions manager in the browser. If you can summarize it&#39;s purpose and functionality in one sentence, your extension concept is probably worthwhile.</p>
+
+  <p>Example: <strong>Block all the advertisements in web pages. Simply install this extension and all advertisements will disappear.</strong></p>
+
+  <h3 id="good-description">Write a good description</h3>
+
+  <p>The description provides more detail about your extension to supplement the summary. It shouldn&#39;t just be a copy of the summary: it should aim to describe what your extension looks like, what its purpose is, and how you use it. You could also choose to write about the main features, the target audience, and what is coming in future versions.</p>
+
+  <p>Example:</p>
+
+  <blockquote>
+    <p>Video Downloader is the most advanced tool to keep hold of your favorite videos.</p>
+
+    <p>With Video Downloader you can easily save all your favorite videos directly as .mov and .avi files, so they are ready to be watched on any device. Video Downloader also fetches subtitles for the video from different sources, and you can set it up to automatically download subtitles in any language. Video Downloader also lets you save a series of videos in bulk and turn them into a single file.</p>
+
+    <p>Video uploader works especially well on low bandwidth connections as it compresses the files before sending them, increasing the download speed up to 60%.</p>
+
+    <p>Simply click on the Video Downloader button when visiting the page that contains the video you want to download, then select advanced settings or just press &quot;Continue&quot; to download the single video file.</p>
+  </blockquote>
+
+  <h3 id="testing">Test your extension</h3>
+  
+  <p>You should test your extension on different operating systems and Opera versions. We&#39;d recommend the last two stable versions of Opera, on Windows, Mac and at least one Linux flavour. Note down the results.</p>
+
+  <h3 id="good-icons">Create a good icon</h3>
+  
+  <p>You also need to have a good icon prepared for your extension. For more information on creating a good icon, along with icon templates, read <a href="../creating-effective-opera-extension-icons/index.html">Creating effective Opera Extension icons</a>.</p>
+  
+    <h3 id="good-screenshots">Take good screenshots</h3>
+
+  <p>You need to provide screenshots of your extension. We recommend one screenshot to show how the extension works and one to show how it looks in the browser. Your screenshots should be tidy and clearly illustrate the main features of your extension. They should appeal to your potential users.</p>
+
+  <p>You <strong>should</strong>:</p>
+
+  <ul>
+    <li><p>Take your screenshots with a white background.</p></li>
+    <li><p>Disable other extensions you have installed, so that yours can take center stage.</p></li>
+    <li><p>Make sure to include the relevant part of your functionality.</p></li>
+    <li><p>Show the location of the extension in the browser UI. For example, if your extension has a button on the toolbar, focus the screenshot on this location (see Figure 2 for an example). Make a screenshot of the extension in action. In an image editor, center the image and crop the screenshot, leaving some whitespace if necessary.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/5012/active_crop.png" alt="Extension functionality explained via a screenshot with the area of interest roughly centered" /></p>
+  <p class="comment">Figure 2: Extension functionality explained via a screenshot. The screenshot is cropped and the area of interest is roughly centered.</p>
+</li>
+    <li><p>Show how the extension interacts with a webpage, if this is the case. Make sure the screenshot highlights the functionality of your extension and not merely the webpage.</p></li>
+    <li><p>Use the default UI of the browser (consider using a clean install.)</p></li>
+  </ul>
+
+  <p>You <strong>should not</strong>:</p>
+
+  <ul>
+    <li><p>Make the screenshots larger than 800x600 pixels; preferably less.</p></li>
+    <li><p>Show any page or background tab that is not relevant to the extension.</p></li>
+    <li><p>Include superfluous content.</p></li>
+    <li><p>Show other extensions or other customizations.</p></li>
+  </ul>
+
+  <p class="note">Note that Interlaced PNG-files are currently not supported, due to a <a href="http://www.pythonware.com/library/pil/handbook/format-png.htm">limitation of the image library</a> we&#39;re using. Avoid this effect in your screenshots.</p>
+
+  <h2 id="submit">3. Submit your extension for review</h2>
+
+  <p>To submit your extension, you need to head over to the <a href="https://addons.opera.com/addons/extensions/">Opera extensions repository</a>, make sure you are signed in, and then upload your extension and associated files and details using the <a href="https://addons.opera.com/developer/upload/">Upload Extensions form</a>. There are a quite a few options to look though on this multi-page process. The following are required (or strongly recommended):</p>
+
+<table>
+  <tr>
+    <th></th>
+    <th scope="col">Upload form page</th>
+    <th scope="col">Taken from <code>config.xml</code>?</th>
+    <th scope="col">Optional?</th>
+  </tr>
+  <tr>
+    <th scope="row">Extension Name</th>
+    <td>2nd</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+    <tr>
+    <th scope="row">Version number</th>
+    <td>2nd</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+      <tr>
+    <th scope="row">Category</th>
+    <td>2nd</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+      <tr>
+    <th scope="row">Extension support webpage</th>
+    <td>2nd</td>
+    <td>No</td>
+    <td>Yes</td>
+  </tr>
+      <tr>
+    <th scope="row">Hosting license</th>
+    <td>2nd</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+      <tr>
+    <th scope="row">Summary</th>
+    <td>3rd</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+      <tr>
+    <th scope="row">Description</th>
+    <td>3rd</td>
+    <td>Yes</td>
+    <td>No</td>
+  </tr>
+      <tr>
+    <th scope="row">Platforms tested on</th>
+    <td>4th</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+      <tr>
+    <th scope="row">Upload new icon</th>
+    <td>5th</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+      <tr>
+    <th scope="row">Upload screenshots</th>
+    <td>5th</td>
+    <td>No</td>
+    <td>No</td>
+  </tr>
+</table>
+
+  <p>The final page gives you a chance to review all your choices before submitting your extension.</p>
+
+  <h2 id="reviewed">4. Your extension is reviewed</h2>
+
+  <p>When you submit your extension, we will evaluate it according to a set of Acceptance criteria. If it doesn&#39;t satisfy all of them, the extension will be rejected, so read them carefully. You can track the status of your submitted extensions at the <a href="https://addons.opera.com/developer/">Submitted extensions</a> page.</p>
+
+  <h3 id="acceptance-criteria">Acceptance criteria</h3>
+
+  <p>Your extension must satisfy the following acceptance criteria:</p>
+
+  <ul>
+    <li>It must perform as described.</li>
+    <li>There should not be obvious bugs.</li>
+    <li>Icons of all sizes should be similar in style.</li>
+    <li>The icons, screenshots and graphic design must be of acceptable quality. Anti-aliasing PNGs with transparent backgrounds are preferred. Note that Interlaced PNG-files are currently not supported, due to a <a href="http://www.pythonware.com/library/pil/handbook/format-png.htm">limitation of the image library</a> we&#39;re using. Avoid this effect in your screenshots.</li>
+    <li>If defined, the support webpage must be relevant to the extension.</li>
+    <li>It must not collect private information without authorization from the user.</li>
+    <li>It must not send private data to an external store, for example by Ajax.</li>
+    <li>It must not unlawfully incorporate third party information, code or graphics.</li>
+    <li>It must not include &#39;Opera&#39; in the title or any other Opera branding that can indicate the extension was created by Opera Software.</li>
+    <li>It must comply with the <a href="https://addons.opera.com/developer/terms/">Terms of Service</a>.</li>
+    <li>No external JavaScript is allowed. All JavaScript code must be contained in the extension. External APIs are ok.</li>
+    <li>Values in <code>config.xml</code> must be sound and valid.</li>
+    <li>Speed Dial extensions cannot just be a static picture linking to a website. They must provide valuable functionality, such as e.g. just-in-time info.</li>
+    <li>Extensions cannot just consist of a button linking to a website. They must provide valuable functionality, such as e.g. a transformation applied on a page when a button is clicked.</li>
+    <li>We must be able to review the code in a reasonable manner. Code shouldn&#39;t be obfuscated. Binary code is not ok.</li>
+    <li>The summary must answer the question: what does your extension do? It must be composed of grammatically correct and complete sentences.</li>
+    <li>The description must answer: 1) How do you use the extension? 2) What does the extension look like?</li>
+  </ul>
+
+  <p>If the above criteria are satisfied, your extension undergoes additional testing, to see that it works on all platforms (Windows, Mac and Linux).</p>
+
+  <p>An extension that does not satisfy the criteria or fails the testing will be rejected, and you will be given information on the <a href="https://addons.opera.com/developer/">Submitted extensions</a> page. After you have fixed the problems, you can resubmit the extension by clicking the &quot;Upgrade&quot; button next to the package name.</p>
+
+
+  <h2 id="published">5. When the extension satisfies all criteria, it will be published</h2>
+
+  <p>The publisher adds a rating to your extension that defines its position on the recommended list. If your extension is outstanding, it may be placed in the &quot;Our Picks&quot; section.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=932802">My Opera</a>.</p>
+  <ul>
+    <li id="comment-93756012">
+      <a href="../../../author/nashworks.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3e/8a3/edd889605e8b154cbedb4d9e222f8719572.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nashworks.html">Nash Brooklyn</a></p>
+      <p class="commentdate">Tuesday, July 31, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>the extension has been accepted and published as marked in my uploads area but its not listed in opera extensions nor searchable - here is the supposed link to my extension: <a href="https://addons.opera.com/en/extensions/details/nashload/" target="_blank">https://addons.opera.com/en/extensions/details/nashload/</a> - could you tell me what gives?</section>
+    </li>
+    <li id="comment-94970282">
+      <a href="../../../author/orinoco.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f6/d54/400dcff31cf8e3ca251a7116f5c77f12be8.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/orinoco.html">orinoco</a></p>
+      <p class="commentdate">Sunday, August 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Trying to upload a new extension but I keep getting a connection closed by remote server error.</section>
+    </li>
+    <li id="comment-100983342">
+      <a href="../../../author/stormbind.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f6/6bb/f6edbe01594fe444b0afcc896df8ad9b54b.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/stormbind.html">Glen</a></p>
+      <p class="commentdate">Friday, December 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>What is the official Opera definition of &quot;private data&quot;?</section>
+    </li>
+    <li id="comment-101238922">
+      <a href="../../../author/tejasparmaed.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8b/6ac/5c450a0097bda5e45dc5fbe663659256a4a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tejasparmaed.html">TejasParmarD</a></p>
+      <p class="commentdate">Wednesday, December 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>way i on may profile add photo &amp; Upload</section>
+    </li>
+    <li id="comment-101238992">
+      <a href="../../../author/tejasparmaed.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8b/6ac/5c450a0097bda5e45dc5fbe663659256a4a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tejasparmaed.html">TejasParmarD</a></p>
+      <p class="commentdate">Wednesday, December 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Upload i can&#39;t may profil photos</section>
+    </li>
+    <li id="comment-101239042">
+      <a href="../../../author/tejasparmaed.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8b/6ac/5c450a0097bda5e45dc5fbe663659256a4a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tejasparmaed.html">TejasParmarD</a></p>
+      <p class="commentdate">Wednesday, December 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Eeras Upload</section>
+    </li>
+    <li id="comment-101344932">
+      <a href="../../../author/yutfhs.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/43/79b/18f81e9e1627c77945d0a756635b806005e." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/yutfhs.html">Flyhowk Sky</a></p>
+      <p class="commentdate">Friday, December 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>GOOD</section>
+    </li>
+    <li id="comment-101345132">
+      <a href="../../../author/yutfhs.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/43/79b/18f81e9e1627c77945d0a756635b806005e." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/yutfhs.html">Flyhowk Sky</a></p>
+      <p class="commentdate">Friday, December 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>O.K.GOOD</section>
+    </li>
+    <li id="comment-101992602">
+      <a href="../../../author/kaynchi69.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e1/098/997fde5e181d1cadcce806b8149029f114b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/kaynchi69.html">kayn chi</a></p>
+      <p class="commentdate">Thursday, January 3, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span> ممتازون لاكن المشكل قي بعض التطبقات  كلها بالانجليزية  وبهذا نجد صعوبة في فهمها و شكرا</section>
+    </li>
+    <li id="comment-102443212">
+      <a href="../../../author/ideltas.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/78/821/3c45a0afc7d04ce28b1c826f2d619d4c7d8.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ideltas.html">ideltas</a></p>
+      <p class="commentdate">Saturday, January 12, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>naon euy</section>
+    </li>
+    <li id="comment-103531302">
+      <a href="../../../author/tomihadia.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3f/8b1/3466a9b6a69c3b8418b2096522da564c5e8.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tomihadia.html">tomihadia</a></p>
+      <p class="commentdate">Thursday, February 7, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>speed turbo opera</section>
+    </li>
+    <li id="comment-104794772">
+      <a href="../../../author/khumzin.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d9/452/0df8532fbeff9ec803c1f9033aebba90ab1.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/khumzin.html">Sfiso khumalo</a></p>
+      <p class="commentdate">Friday, March 8, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I can&#39;t link my facebook to share with myopera account? Please help me! I am only sharing with twitter. </section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, March 31, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/description.html" rel="tag">description</a></li>
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/guidelines.html" rel="tag">guidelines</a></li>
+        <li><a href="../../tags/license.html" rel="tag">license</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/prepare.html" rel="tag">prepare</a></li>
+        <li><a href="../../tags/publishing.html" rel="tag">publishing</a></li>
+        <li><a href="../../tags/screenshots.html" rel="tag">screenshots</a></li>
+        <li><a href="../../tags/version.html" rel="tag">version</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-extensions-publishing-guidelines-ja/index.html">Japanese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera extensions docs</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-hello-world/index.html" >Saying hello world to Opera extensions!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../whats-in-an-opera-extension/index.html" >What's in an Opera extension?</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-developer-workflow/index.html" >Opera extensions developer workflow</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>API reference<ul >
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-config-xml/index.html" >config.xml</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-widget/index.html" >widget element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-name/index.html" >name element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-description/index.html" >description element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-author/index.html" >author element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-license/index.html" >license element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-icon/index.html" >icon element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-content/index.html" >content element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-preference/index.html" >preference element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-access/index.html" >access element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-span/index.html" >span element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-xml-lang/index.html" >xml:lang attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-dir/index.html" >dir attribute</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-widget-object/index.html" >Widget object</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-author/index.html" >widget.author</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authoremail/index.html" >widget.authorEmail</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authorhref/index.html" >widget.authorHref</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-description/index.html" >widget.description</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-id/index.html" >widget.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-name/index.html" >widget.name</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-preferences/index.html" >widget.preferences</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-shortname/index.html" >widget.shortName</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-version/index.html" >widget.version</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-browser-toolbar/index.html" >Button &amp; Badge API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-createitem/index.html" >opera.contexts. toolbar.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-additem/index.html" >opera.contexts. toolbar.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-removeitem/index.html" >opera.contexts. toolbar.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-length/index.html" >opera.contexts. toolbar.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-badge/index.html" >Button.badge</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-disabled/index.html" >Button.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-icon/index.html" >Button.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-onclick/index.html" >Button.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-popup/index.html" >Button.popup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-title/index.html" >Button.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-addeventlistener/index.html" >Button.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-removeeventlistener/index.html" >Button.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-backgroundcolor/index.html" >Badge.backgroundColor</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-color/index.html" >Badge.color</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-display/index.html" >Badge.display</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-textcontent/index.html" >Badge.textContent</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-popup/index.html" >Popup API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-height/index.html" >Popup.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-href/index.html" >Popup.href</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-width/index.html" >Popup.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-postmessage/index.html" >opera.extension. postMessage()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-windows-tabs/index.html" >Windows &amp; Tabs API</a>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Windows<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-create/index.html" >opera.extension. windows.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getall/index.html" >opera.extension. windows.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getlastfocused/index.html" >opera.extension. windows.getLastFocused()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-insert/index.html" >BrowserWindow.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-close/index.html" >BrowserWindow.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focus/index.html" >BrowserWindow.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-update/index.html" >BrowserWindow.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-id/index.html" >BrowserWindow.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-closed/index.html" >BrowserWindow.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focused/index.html" >BrowserWindow.focused</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-private/index.html" >BrowserWindow.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabgroups/index.html" >BrowserWindow.tabGroups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabs/index.html" >BrowserWindow.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-height/index.html" >BrowserWindow.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-width/index.html" >BrowserWindow.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-top/index.html" >BrowserWindow.top</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-left/index.html" >BrowserWindow.left</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tab Groups<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-create/index.html" >opera.extension. tabGroups.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-getall/index.html" >opera.extension. tabGroups.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-close/index.html" >BrowserTabGroup.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-focus/index.html" >BrowserTabGroup.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-insert/index.html" >BrowserTabGroup.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-update/index.html" >BrowserTabGroup.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-id/index.html" >BrowserTabGroup.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-closed/index.html" >BrowserTabGroup.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-collapsed/index.html" >BrowserTabGroup. collapsed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-browserwindow/index.html" >BrowserTabGroup. browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-tabs/index.html" >BrowserTabGroup.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-position/index.html" >BrowserTabGroup.position</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tabs<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-create/index.html" >opera.extension. tabs.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getall/index.html" >opera.extension. tabs.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getselected/index.html" >opera.extension. tabs.getSelected()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-close/index.html" >BrowserTab.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focus/index.html" >BrowserTab.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-update/index.html" >BrowserTab.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-id/index.html" >BrowserTab.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-closed/index.html" >BrowserTab.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-locked/index.html" >BrowserTab.locked</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-private/index.html" >BrowserTab.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-selected/index.html" >BrowserTab.selected</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-readystate/index.html" >BrowserTab.readyState</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-faviconurl/index.html" >BrowserTab.faviconUrl</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-title/index.html" >BrowserTab.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-url/index.html" >BrowserTab.url</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-browserwindow/index.html" >BrowserTab.browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-tabgroup/index.html" >BrowserTab.tabGroup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-position/index.html" >BrowserTab.position</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focused/index.html" >BrowserTab.focused</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-injected-scripts/index.html" >Injected scripts</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-addeventlistener/index.html" >opera.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-removeeventlistener/index.html" >opera.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicfunction/index.html" >opera.defineMagicFunction()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicvariable/index.html" >opera.defineMagicVariable()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-posterror/index.html" >opera.postError()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-urlfilter/index.html" >URL filter API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-add/index.html" >opera.extension. urlfilter.block.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-remove/index.html" >opera.extension. urlfilter.block.remove()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-allow-add/index.html" >opera.extension. urlfilter.allow.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-excludedomains/index.html" >RuleOptions.excludeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-includedomains/index.html" >RuleOptions.includeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-resources/index.html" >RuleOptions.resources</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-thirdparty/index.html" >RuleOptions.thirdParty</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-syntax/index.html" >URL Filter syntax</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-messaging/index.html" >Messaging API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-bgprocess/index.html" >opera.extension.bgProcess</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onconnect/index.html" >opera.extension.onconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-ondisconnect/index.html" >opera.extension.ondisconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-broadcastmessage/index.html" >opera.extension. broadcastMessage()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-speeddial/index.html" >Speed Dial API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-viewmodes/index.html" >viewmodes attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-param/index.html" >param element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-title/index.html" >opera.contexts.speeddial.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-url/index.html" >opera.contexts.speeddial.url</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-resourceloader/index.html" >Resource Loader API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-resourceloader-getfile/index.html" >opera.extension.getFile()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-screenshot/index.html" >Screenshot API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-screenshot-getscreenshot/index.html" >opera.extension.getScreenshot() and BrowserTab.getScreenshot()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-contextmenu/index.html" >Context Menu API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-createitem/index.html" >opera.contexts. menu.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-additem/index.html" >opera.contexts. menu.addItem() and MenuItem.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-item/index.html" >opera.contexts.menu.item() and MenuItem.item()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-removeitem/index.html" >opera.contexts. menu.removeItem() and MenuItem.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-length/index.html" >opera.contexts.menu.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-onclick/index.html" >opera.contexts.menu.onclick and MenuItem.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-contexts/index.html" >MenuItem.contexts</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-disabled/index.html" >MenuItem.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturlpatterns/index.html" >MenuItem. documentURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-icon/index.html" >MenuItem.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-id/index.html" >MenuItem.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-parent/index.html" >MenuItem.parent</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-targeturlpatterns/index.html" >MenuItem.targetURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-title/index.html" >MenuItem.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-type/index.html" >MenuItem.type</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturl/index.html" >MenuEvent.documentURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-iseditable/index.html" >MenuEvent.isEditable</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-linkurl/index.html" >MenuEvent.linkURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-mediatype/index.html" >MenuEvent.mediaType</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-pageurl/index.html" >MenuEvent.pageURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-selectiontext/index.html" >MenuEvent.selectionText</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-source/index.html" >MenuEvent.source</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcelement/index.html" >MenuEvent.srcElement</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcurl/index.html" >MenuEvent.srcURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-target/index.html" >MenuEvent.target</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Extension tutorials<ul >
+  <li class="sub-collection leaf">
+<a href="../config-xml-howto/index.html" >The ins and outs of config.xml</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-buttons-badges-and-popups/index.html" >Buttons, badges and popups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-messaging/index.html" >Messaging</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-options-page/index.html" >Options page</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../accessing-an-opera-extensions-background-process/index.html" >Accessing an Opera extension's background process</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-opera-speed-dial-extensions/index.html" >Creating Opera Speed Dial Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cookie-sharing-in-opera-extensions/index.html" >Cookie-sharing in Opera extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../site-blocking-with-operas-url-filter-api/index.html" >Site blocking with Opera’s URL Filter API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-multilingual-extensions/index.html" >Creating multilingual extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hands-on-building-an-opera-extension/index.html" >Hands-on tutorial: building an Opera extension</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-userjs-to-extensions/index.html" >Converting UserJS to Opera Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-widgets-to-opera-extensions/index.html" >Converting widgets to Opera Extensions: Things to keep in mind</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Templates and code samples<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extension-code-examples/index.html" >Opera extension code examples</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-prototypes-modifying-css/index.html" >Opera extensions prototypes for modifying CSS</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>UI guidelines and distribution<ul >
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Publishing guidelines</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-effective-opera-extension-icons/index.html" >Creating effective Opera Extension icons</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../distributing-opera-extensions-and-auto-updates/index.html" >Distributing Opera extensions and auto-updates</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

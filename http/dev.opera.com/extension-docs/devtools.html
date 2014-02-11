@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Extending DevTools - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Extending DevTools</h1>
+					
+					
+					
+    <div id="gc-pagecontent">
+	<div id="toc">
+		<ol>
+			<li>
+				<a href="devtools.html#overview">Overview</a>
+			</li>
+			<li>
+				<a href="devtools.html#devtools-page">The DevTools Page</a>
+			</li>
+			<li>
+				<a href="devtools.html#creating">Creating a DevTools Extension</a>
+			</li>
+			<li>
+				<a href="devtools.html#devtools-ui">DevTools UI Elements: Panels and Sidebar Panes</a>
+			</li>
+			<li>
+				<a href="devtools.html#solutions">Communicating Between Extension Components</a>
+				<ol>
+					<li>
+						<a href="devtools.html#injecting">Injecting a Content Script</a>
+					</li>
+					<li>
+						<a href="devtools.html#evaluating-js">Evaluating JavaScript in the Inspected Window</a>
+					</li>
+					<li>
+						<a href="devtools.html#selected-element">Passing the Selected Element to a Content Script</a>
+					</li>
+					<li>
+						<a href="devtools.html#content-script-to-devtools">Messaging from Content Scripts to the DevTools Page</a>
+					</li>
+					<li>
+						<a href="devtools.html#detecting-open-close">Detecting When DevTools Opens and Closes</a>
+					</li>
+				</ol>
+			</li>
+			<li>
+				<a href="devtools.html#more">More information</a>
+			</li>
+			<li>
+				<a href="devtools.html#examples">Examples</a>
+			</li>
+		</ol>
+	</div>
+	<h2 id="overview">
+		Overview
+	</h2>
+	<p>
+		A DevTools extension adds functionality to the Web Inspector included with Opera. It can add new UI panels and sidebars, interact with the inspected page, get information about network requests, and more. DevTools extensions have access to an additional set of DevTools-specific extension APIs:
+	</p>
+	<ul>
+		<li>
+			<code><a href="devtools.inspectedWindow.html">devtools.inspectedWindow</a></code>
+		</li>
+		<li>
+			<code><a href="devtools.network.html">devtools.network</a></code>
+		</li>
+		<li>
+			<code><a href="devtools.panels.html">devtools.panels</a></code>
+		</li>
+	</ul>
+	<p>
+		A DevTools extension is structured like any other extension: it can have a background page, content scripts, and other items. In addition, each DevTools extension has a DevTools page, which has access to the DevTools APIs.
+	</p>
+	<p>
+		<img src="static/images/devtools-extension.png" alt="Architecture diagram showing DevTools page communicating with the inspected window and the background page. The background page is shown communicating with the content scripts and accessing extension APIs. The DevTools page has access to the DevTools APIs, for example, creating panels.">
+	</p>
+	<h2 id="devtools-page">
+		The DevTools page
+	</h2>
+	<p>
+		An instance of the extension's DevTools page is created each time a DevTools window opens. The DevTools page exists for the lifetime of the DevTools window. The DevTools page has access to the DevTools APIs and a limited set of extension APIs. Specifically, the DevTools page can:
+	</p>
+	<ul>
+		<li>Create and interact with panels using the <code><a href="devtools.panels.html">devtools.panels</a></code> APIs.
+		</li>
+		<li>Get information about the inspected window and evaluate code in the inspected window using the <code><a href="devtools.inspectedWindow.html">devtools.inspectedWindow</a></code> APIs.
+		</li>
+		<li>Get information about network requests using the <code><a href="devtools.network.html">devtools.network</a></code> APIs.
+		</li>
+	</ul>
+	<p>
+		The DevTools page cannot use most of the extensions APIs directly. It has access to the same subset of the <code><a href="extension.html">extension</a></code> and <code><a href="runtime.html">runtime</a></code> APIs that a content script has access to. Like a content script, a DevTools page can communicate with the background page using <a href="tut_message_passing.html">Message Passing</a>. For an example, see <a href="devtools.html#injecting">Injecting a Content Script</a>.
+	</p>
+	<h2 id="creating">
+		Creating a DevTools extension
+	</h2>
+	<p>
+		To create a DevTools page for your extension, add the <code>devtools_page</code> field in the extension manifest:
+	</p>
+	<pre>
+{
+"name": ...
+"version": "1.0",
+"devtools_page": "devtools.html",
+...
+}
+</pre>
+	<p>
+		An instance of the <code>devtools_page</code> specified in your extension's manifest is created for every DevTools window opened. The page may add other extension pages as panels and sidebars to the DevTools window using the <code><a href="devtools.panels.html">devtools.panels</a></code> API.
+	</p>
+	<p class="note">
+		The <code>devtools_page</code> field must point to an HTML page. This differs from the <code>background</code> field, used for specifying a background page, which lets you specify JavaScript files directly.
+	</p>
+	<p>
+		The <code>chrome.devtools.*</code> API modules are available only to the pages loaded within the DevTools window. Content scripts and other extension pages do not have these APIs. Thus, the APIs are available only through the lifetime of the DevTools window.
+	</p>
+	<h2 id="devtools-ui">
+		DevTools UI elements: panels and sidebar panes
+	</h2>
+	<p>
+		In addition to the usual extension UI elements, such as browser actions, context menus and popups, a DevTools extension can add UI elements to the DevTools window:
+	</p>
+	<ul>
+		<li>A <em>panel</em> is a top-level tab, like the Elements, Sources, and Network panels.
+		</li>
+		<li>A <em>sidebar pane</em> presents supplementary UI related to a panel. The Styles, Computed Styles, and Event Listeners panes on the Elements panel are examples of sidebar panes. Currently your extension can only add sidebar panes to the Elements panel. (Note that the appearance of sidebar panes may not match the image, depending on the version of Opera you're using, and where the DevTools window is docked.)
+		</li>
+	</ul><img src="static/images/devtools-extension-ui.png" alt="DevTools window showing Elements panel and Styles sidebar pane.">
+	<p>
+		Each panel is its own HTML file, which can include other resources (JavaScript, CSS, images, and so on). Creating a basic panel looks like this:
+	</p>
+	<pre>
+chrome.devtools.panels.create("My Panel",
+"MyPanelIcon.png",
+"Panel.html",
+function(panel) {
+// code invoked on panel creation
+}
+);
+</pre>
+	<p>
+		JavaScript executed in a panel or sidebar pane has access to the the same APIs as the DevTools page.
+	</p>
+	<p>
+		Creating a basic sidebar pane for the Elements panel looks like this:
+	</p>
+	<pre>
+chrome.devtools.panels.elements.createSidebarPane("My Sidebar",  
+function(sidebar) {
+// sidebar initialization code here   
+sidebar.setObject({ some_data: "Some data to show" });
+});
+</pre>
+	<p>
+		There are several ways to display content in a sidebar pane:
+	</p>
+	<ul>
+		<li>
+			<p>
+				HTML content. Call <code><a href="devtools.panels.html#method-ExtensionSidebarPane-setPage">setPage</a></code> to specify an HTML page to display in the pane.
+			</p>
+		</li>
+		<li>
+			<p>
+				JSON data. Pass a JSON object to <code><a href="devtools.panels.html#method-ExtensionSidebarPane-setObject">setObject</a></code>.
+			</p>
+		</li>
+		<li>
+			<p>
+				JavaScript expression. Pass an expression to <code><a href="devtools.panels.html#method-ExtensionSidebarPane-setExpression">setExpression</a></code>. DevTools evaluates the expression in the context of the inspected page, and displays the return value.
+			</p>
+		</li>
+	</ul>
+	<p>
+		For both <code>setObject</code> and <code>setExpression</code>, the pane displays the value as it would appear in the DevTools console. However, <code>setExpression</code> lets you display DOM elements and arbitrary JavaScript objects, while <code>setObject</code> only supports JSON objects.
+	</p>
+	<h2 id="solutions">
+		Communicating between extension components
+	</h2>
+	<p>
+		The following sections describe some typical scenarios for communicating between the different components of a DevTools extension.
+	</p>
+	<h3 id="injecting">
+		Injecting a Content Script
+	</h3>
+	<p>
+		The DevTools page can't call <code><a href="tabs.html#method-executeScript">tabs.executeScript</a></code> directly. To inject a content script from the DevTools page, you must retrieve the ID of the inspected window's tab using the <code><a href="devtools.inspectedWindow.html#property-tabId">inspectedWindow.tabId</a></code> property and send a message to the background page. From the background page, call <code><a href="tabs.html#method-executeScript">tabs.executeScript</a></code> to inject the script.
+	</p>
+	<p class="note">
+		If a content script has already been injected, you can add additional context scripts using the <code>eval</code> method. See <a href="devtools.html#selected-element">Passing the Selected Element to a Content Script</a> for more information.
+	</p>
+	<p>
+		The following code snippets show how to inject a content script using <code>executeScript</code>.
+	</p>
+	<pre>
+// DevTools page -- devtools.js
+// Create a connection to the background page
+var backgroundPageConnection = chrome.runtime.connect({
+name: "devtools-page"
+});
+
+backgroundPageConnection.onMessage.addListener(function (message) {
+// Handle responses from the background page, if any
+});
+
+// Relay the tab ID to the background page
+chrome.runtime.sendMessage({
+tabId: chrome.devtools.inspectedWindow.tabId,
+scriptToInject: "content_script.js"
+});
+</pre>
+	<p>
+		Code for the background page:
+	</p>
+	<pre>
+// Background page -- background.js
+chrome.runtime.onConnect.addListener(function(devToolsConnection) {
+// assign the listener function to a variable so we can remove it later
+var devToolsListener = function(message, sender, sendResponse) {
+// Inject a content script into the identified tab
+chrome.tabs.executeScript(message.tabId,
+	{ file: message.scriptToInject });
+}
+// add the listener
+devToolsConnection.onMessage.addListener(devToolsListener);
+
+devToolsConnection.onDisconnect(function() {
+ devToolsConnection.onMessage.removeListener(devToolsListener);
+});
+}
+</pre>
+	<h3 id="evaluating-js">
+		Evaluating JavaScript in the Inspected Window
+	</h3>
+	<p>
+		You can use the <code><a href="devtools.inspectedWindow.html#method-eval">inspectedWindow.eval</a></code> method to execute JavaScript code in the context of the inspected page. You can invoke the <code>eval</code> method from a DevTools page, panel or sidebar pane.
+	</p>
+	<p>
+		By default, the expression is evaluated in the context of the main frame of the page. Use the <code>useContentScriptContext: true</code> option to evaluate the expression in the same context as the content scripts.
+	</p>
+	<p>
+		Calling <code>eval</code> with <code>useContentScriptContext: true</code> does not <em>create</em> a content script context, so you must load a context script before calling <code>eval</code>, either by calling <code>executeScript</code> or by specifying a content script in the <code>manifest.json</code> file.
+	</p>
+	<p>
+		Once the context script context exists, you can use this option to inject additional content scripts.
+	</p>
+	<p class="warning">
+		The <code>eval</code> method is powerful when used in the right context and dangerous when used inappropriately. Use the <code><a href="tabs.html#method-executeScript">tabs.executeScript</a></code> method if you don't need access to the JavaScript context of the inspected page. For detailed cautions and a comparison of the two methods, see <code><a href="devtools.inspectedWindow.html">devtools.inspectedWindow</a></code>.
+	</p>
+	<h3 id="selected-element">
+		Passing the Selected Element to a Content Script
+	</h3>
+	<p>
+		The content script doesn't have direct access to the current selected element. However, any code you execute using <code><a href="devtools.inspectedWindow.html#method-eval">inspectedWindow.eval</a></code> has access to the DevTools console and command-line APIs. For example, in evaluated code you can use <code>$0</code> to access the selected element.
+	</p>
+	<p>
+		To pass the selected element to a content script:
+	</p>
+	<ul>
+		<li>Create a method in the content script that takes the selected element as an argument.
+		</li>
+		<li>Call the method from the DevTools page using <code><a href="devtools.inspectedWindow.html#method-eval">inspectedWindow.eval</a></code> with the <code>useContentScriptContext: true</code> option.
+		</li>
+	</ul>
+	<p>
+		The code in your content script might look something like this:
+	</p>
+	<pre>
+function setSelectedElement(el) {
+// do something with the selected element
+}
+</pre>
+	<p>
+		Invoke the method from the DevTools page like this:
+	</p>
+	<pre>
+chrome.devtools.inspectedWindow.eval("setSelectedElement($0)",
+{ useContentScriptContext: true });
+</pre>
+	<p>
+		The <code>useContentScriptContext: true</code> option specifies that the expression must be evaluated in the same context as the content scripts, so it can access the <code>setSelectedElement</code> method.
+	</p>
+	<h3 id="content-script-to-devtools">
+		Messaging from Content Scripts to the DevTools Page
+	</h3>
+	<p>
+		Messaging between the DevTools page and content scripts is indirect, by way of the background page.
+	</p>
+	<p>
+		When sending a message <em>to</em> a content script, the background page can use the <code><a href="tabs.html#method-sendMessage">tabs.sendMessage</a></code> method, which directs a message to the content scripts in a specific tab, as shown in <a href="devtools.html#injecting">Injecting a Content Script</a>.
+	</p>
+	<p>
+		When sending a message <em>from</em> a content script, there is no ready-made method to deliver a message to the correct DevTools page instance associated with the current tab. As a workaround, you can have the DevTools page establish a long-lived connection with the background page, and have the background page keep a map of tab IDs to connections, so it can route each message to the correct connection.
+	</p>
+	<pre>
+// background.js
+var connections = {};
+
+chrome.runtime.onConnect.addListener(function (port) {
+
+var extensionListener = function (message, sender, sendResponse) {
+
+// The original connection event doesn't include the tab ID of the
+// DevTools page, so we need to send it explicitly.
+if (message.name == "init") {
+	connections[message.tabId] = port;
+	return;
+}
+
+// other message handling
+}
+
+// Listen to messages sent from the DevTools page
+port.onMessage.addListener(extensionListener);
+
+port.onDisconnect.addListener(function(port) {
+port.onMessage.removeListener(extensionListener);
+
+var tabs = Object.keys(connections);
+for (var i=0, len=tabs.length; i &lt; len; i++) {
+	if (connections[tabs[i]] == port) {
+	delete connections[tabs[i]]
+	break;
+	}
+}
+});
+});
+
+// Receive message from content script and relay to the devTools page for the
+// current tab
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+// Messages from content scripts should have sender.tab set
+if (sender.tab) {
+var tabId = sender.tab.id;
+if (tabId in connections) {
+connections[tabId].postMessage(request);
+} else {
+console.log("Tab not found in connection list.");
+}
+} else {
+console.log("sender.tab not defined.");
+}
+return true;
+});
+</pre>
+	<p>
+		The DevTools page (or panel or sidebar pane) establishes the connection like this:
+	</p>
+	<pre>
+// Create a connection to the background page
+var backgroundPageConnection = chrome.runtime.connect({
+name: "panel"
+});
+
+backgroundPageConnection.postMessage({
+name: 'init',
+tabId: chrome.devtools.inspectedWindow.tabId
+});
+</pre>
+	<h3 id="detecting-open-close">
+		Detecting When DevTools Opens and Closes
+	</h3>
+	<p>
+		If your extension needs to track whether the DevTools window is open, you can add an <a href="runtime.html#event-onConnect">onConnect</a> listener to the background page, and call <a href="runtime.html#method-connect">connect</a> from the DevTools page. Since each tab can have its own DevTools window open, you may receive multiple connect events. To track whether any DevTools window is open, you need to count the connect and disconnect events as shown below:
+	</p>
+	<pre>
+// background.js
+var openCount = 0;
+chrome.runtime.onConnect.addListener(function (port) {
+if (port.name == "devtools-page") {
+if (openCount == 0) {
+alert("DevTools window opening.");
+}
+openCount++;
+
+port.onDisconnect.addListener(function(port) {
+	openCount--;
+	if (openCount == 0) {
+	alert("Last DevTools window closing.");
+	}
+});
+}
+});
+</pre>
+	<p>
+		The DevTools page creates a connection like this:
+	</p>
+	<pre>
+// devtools.js
+
+// Create a connection to the background page
+var backgroundPageConnection = chrome.runtime.connect({
+name: "devtools-page"
+});
+</pre>
+</div>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/extensions/devtools.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

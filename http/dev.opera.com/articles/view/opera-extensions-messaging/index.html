@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera extensions: messaging - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera extensions: messaging</h1>
+      <p class="print author">By Shwetank Dixit</p>
+
+      <p class="note">
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+</p>
+
+<h2>Introduction</h2>
+
+<p>With extensions, you have the ability to create and add exciting new functionality to the Opera desktop browser. As mentioned in other articles, Opera extensions contain a background process, injected scripts, and sometimes popup script too. In this article, we will take a look at how to communicate between all three.</p>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="index.html#backgroundscript_injectedscript">Communicating between background process and injected script</a></li>
+<li><a href="index.html#popup_backgroundscript">Communicating between popup and background process</a></li>
+<li><a href="index.html#popup_injectedscript">Communicating between popup and injected script</a></li>
+<li><a href="index.html#conclusion">Wrapping it up</a></li>
+<li><a href="index.html#api">Further reading</a></li>
+</ul>
+
+<div class="note">
+<p>Before we continue, you should download the following three extensions and install them in the <a href="http://www.opera.com/">newest version of the Opera browser</a>. We&#39;ll explain everything with the help of the code in these extensions. <!--It would also be helpfull to check out the <a href="http://labs.opera.com/extensions-api/visual-guide/index.htm">'Visual Guide to the Opera Extensions API' reference.</a>--></p>
+
+<ol>
+  <li><a href="../../../../devfiles.myopera.com/articles/3952/message_example1.oex">Sample extension showing communication between background process and injected script</a></li>
+  <li><a href="../../../../devfiles.myopera.com/articles/3952/message_example2.oex">Sample extension showing communication between background process and popup</a></li>
+  <li><a href="../../../../devfiles.myopera.com/articles/3952/messaging_example_3.oex">Sample extension showing communication between popup and injected script (with a little initial help from background process)</a></li>
+</ol>
+</div>
+
+<h2 id="backgroundscript_injectedscript">Communicating between background process and injected script</h2>
+
+<p>Opera uses <code>postMessage()</code> to post a message, and we&#39;ll use that the majority of the time. However, if you want to post a message from the background process to <em>ALL</em> of the resources of that particular extension (like injected scripts, popup window, preference page etc), then you write the following in the background process:</p>
+
+<pre><code>opera.extension.broadcastMessage(&quot;Hello there&quot;);</code></pre>
+
+<p>Now you&#39;ve sent a message, the injected script needs to catch it, which is done like so:</p>
+
+<pre><code>opera.extension.onmessage = function(event){
+  var thecatch = event.data; // event.data in this case will contain the string &quot;Hello there&quot;
+}</code></pre>
+
+<p>It&#39;s as simple as that. In the above code, the background process is firing a message using <code>broadcastMessage</code> to the injected script, and the injected script is listening for it. When it gets the message, the stores it in a variable called <code>thecatch</code>. Keep in mind though, that using <code>broadcastMessage</code> will send the message to all injected scripts and popups, so it should be used sparingly. Normally, you&#39;ll want to communicate to just one popup or injected script (the one inside your own extension) using <code>postMessage</code> or message channels.</p>
+
+<p class="note"><code>broadcastMessage()</code> only takes one argument: a string or an object. For example, either <code>broadcastMessage(&quot;hi&quot;)</code> or <code>broadcastMessage({&#39;say&#39;: &#39;hi&#39;, &#39;to&#39;:&#39;adam&#39;})</code>. The same thing goes for <code>postMessage()</code> communication that we&#39;ll discuss in this article. However, for the sake of simplicity and consistency, we&#39;re only going to use strings in the examples being discussed below.</p>
+
+<p>Let&#39;s illustrate this further by taking a look at our first test example.</p>
+
+<p>The background process has an event listener for <code>load</code>, and all the code is inside the function call for it. You can read the <code>opera.postError</code> logs in <em>Tools &gt; Advanced &gt; Error Console</em>.</p>
+
+<p class="note">In Opera 11 beta onwards, you can easily open the Error Console by the keyboard shortcut [Cmd|Control]+Shift+O</p>
+
+<pre><code>window.addEventListener(&quot;load&quot;, setupConnection, false);
+
+function setupConnection(){
+   // When the injected script is activated, it connects with the background process.
+   opera.extension.onconnect = function(event){
+        // Post message to the source, that is, the thing which connected to us (in this case the injected script)
+ 	event.source.postMessage(&quot;something&quot;);
+        // Post this message in the opera error console
+	opera.postError(&quot;sent message to injected script&quot;);
+   }
+
+   // Listen for messages
+   opera.extension.onmessage = function(event){
+       	// Post a sentence (which includes the message received) to the opera error console
+       opera.postError(&quot;This is what I got from injected script: &quot;+event.data);
+   }
+}</code></pre>
+
+
+<p>Let&#39;s focus first on the following code snippet:</p>
+
+<pre><code>opera.extension.onconnect = function(event){
+   event.source.postMessage(&quot;something&quot;);
+   opera.postError(&quot;sent message to injected script&quot;);
+}</code></pre>
+
+<p><code>onconnect</code> is fired whenever something connects to the background process, in this case, when the injected script is activated on a document, thus creating a connection with the background process. So as soon as the injected script loads, the <code>onconnect</code> event is fired.</p>
+
+<p>The <code>onconnect</code> handler in the background contains a reference back to the injected script in <code>event.source</code>. This message port can then be used to directly communicate back to the injected script, which is done here by sending the string &quot;something&quot; as a message using <code>event.source.postMessage()</code>. We also send a small string to the error console, just to keep track of what&#39;s happening.</p>
+
+
+<p>Let&#39;s leave the background process for a while and focus instead now on the injected script:</p>
+
+<pre><code>opera.extension.onmessage = function(event){
+  // Get content of incoming message.
+  var message  = event.data;
+  opera.postError(&quot;background process sent: &quot; + message);
+
+  //  Replies back to background process.
+  var reply = &quot;background process&#39;s message only had &quot; + (message ? message.length : 0) + &quot; characters.&quot;;
+  event.source.postMessage(reply);
+};</code></pre>
+
+<p>Here, <code>onmessage</code> is invoked whenever the injected script receives a message. We store the content of the message in the variable <code>message</code>. Next we use <code>opera.postError</code> to display a sentence in the error console along with the message sent by the background process.</p>
+
+<p>To acknowledge receipt of the message, we post back a message to the background process using the <code>event.source</code> of the incoming message. This always holds true: a message <code>event.source</code> always points back to the sender.</p>
+
+<p>So now, we&#39;ve seen how messages are received by the injected script, and also how they can be transmitted back to the background process.</p>
+
+<p>The next step is for the background process to catch this message and do something with it. So let&#39;s focus on the background process again, this time on the other part of the script:</p>
+
+<pre><code>// Listen for injected script messages
+opera.extension.onmessage = function(event){
+   // Post a sentence (which includes the message received) to the opera error console.
+   opera.postError(&quot;This is what I got from the injected script: &quot; + event.data);
+}</code></pre>
+
+<p>Here, whenever a message is received, it posts a sentence containing that message data onto the error console.</p>
+
+<p>So in summary, this is what happens in the extension:<p>
+
+<ul>
+  <li>The background process sends a message to the injected scripts</li>
+  <li>The injected script catches that message and writes something on the error console, which includes the message given by the background process</li>
+  <li>The injected script then replies, sending a message back to background process</li>
+  <li>The background process writes a sentence into a string on the error console, which includes information about the message sent by the injected script.</li>
+</ul>
+
+<p>If you have installed the extension (reload the page for the injected script to take affect) then go to the error console. You should find the messages shown in Figure 1 written into it.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/3952/message_example1.png" alt="Image of Error console showing the messages sent to it by the extension" /></p>
+
+<p class="comment">Figure 1: The error console, showing the messages sent to it by the extension.</p>
+
+<p>So we&#39;ve now seen how both background process and injected script can post messages and catch messages. Next, we&#39;ll see how this is done with a popup.<p>
+
+
+<h2 id="popup_backgroundscript">Communicating between popup and background process</h2>
+
+<p>We&#39;ll be using the second extension example for this. Notice that there is no <code>includes/</code> folder or any injected scripts — it&#39;s just the background process, and the HTML files along with <code>config.xml</code> and an icon.</p>
+
+<p>You already know from previous articles <a href="../opera-extensions-buttons-badges-and-popups/index.html#create_buttons">how to create a <code>UIItem</code> like a button</a>, so we won&#39;t cover that. Let&#39;s focus on the following piece of code in <code>background.js</code>:</p>
+
+<pre><code>opera.extension.onconnect = function(event){
+  event.source.postMessage(&quot;sending something&quot;);
+  opera.postError(&quot;sent message to popup&quot;);
+}</code></pre>
+
+<p>As we know from the previous example, this will be run when something connects to the background process, in this case, the popup. The function sends the message &quot;sending something&quot; to the popup, and the message &quot;Sent message to popup&quot; to the error console.</p>
+
+<p>Let&#39;s go to the popup page now:</p>
+
+<pre><code>&lt;script&gt;
+    window.addEventListener(&quot;load&quot;, function(){
+    opera.extension.onmessage = function(event){
+    	event.source.postMessage(&quot;do whatever you want with this message&quot;);
+    	opera.postError(&quot;sent from popup to background process&quot;);
+    	}
+    }, false);
+&lt;/script&gt;</code></pre>
+
+<p>Here we listen for a message to arrive, and when it does we send a message back to the source. We also post something to the error console once again. So now the popup script receives a message, and sends a message back to the background process. All that&#39;s left now is for the background process to catch it.</p>
+
+<p>Let&#39;s go back to the background process again, and study the following code:</p>
+
+<pre><code>opera.extension.onmessage = function(event){
+   opera.postError(&quot;This is what I got from injected script: &quot; + event.data);
+}</code></pre>
+
+<p>Here the background process listens for a message, and when there is one, it posts something to the error console, with the content of the message received as part of the message. As you can see, we approximate and label the message as coming from an injected script here too.</p>
+
+<p>So in summary, this is what happens in the extension:</p>
+
+<ul>
+  <li>The background process sends a message to the popup script.</li>
+  <li>The popup script catches that message and writes something onto the error console, which includes the message given by background process.</li>
+  <li>The popup then sends a message back to the background process</li>
+  <li>The background process writes something into a string on the error console, which includes the message sent by the popup script.</li>
+</ul>
+
+<p>So the way it behaves is actually pretty similar to the previous example, its just that with this example, we did not have an injected script file at all in the <code>includes/</code> folder. Rather, we used a popup and the popup document&#39;s script communicated with the background process.</p>
+
+
+<p>If you install the extension, click the extension button to trigger the communication with the popup then open up the error console, you should see the messages shown in Figure 2.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/3952/message_example2.png" alt="Image of Error console showing the messages sent to it by the extension" /></p>
+<p class="comment">Figure 2: the error console showing the messages sent to it by the extension.</p>
+
+<h2 id="popup_injectedscript">Communicating between popup and injected script</h2>
+
+<p>Let&#39;s now look at how to communicate between a popup and an injected script. The background process will be used initially to make the connection, then both popup and injected script will talk without the background process.</p>
+
+<p>We achieve this by creating a message channel. You can learn more about message channels by looking at the <a href="http://dev.w3.org/html5/postmsg/#message-channels">HTML5 cross document messaging specifications</a>, which is what the messaging for extensions is closely based on.</p>
+
+<p>We&#39;ll explain this using the third test example, so fire up your text editor and have a look at the code. Let&#39;s first look at the background process. You&#39;ll notice some familiar things, like the code to add a button and a popup, etc. Let&#39;s delve into the interesting bit.</p>
+
+<p>Let&#39;s look at the <code>onconnect</code> event here:</p>
+
+<pre><code>opera.extension.onconnect = function( event ){
+	if( event.origin.indexOf(&quot;popup.html&quot;) &gt; -1 &amp;&amp; event.origin.indexOf(&#39;widget://&#39;) &gt; -1 ){
+		var tab = opera.extension.tabs.getFocused();
+		if( tab ){
+			tab.postMessage( &quot;Send a port&quot;, [event.source] );
+			opera.postError(&#39;sent a message to injected script&#39;);
+		} 
+	} 
+}</code></pre>
+
+<p>We first check whether the origin of the connection is the popup file (popup.html) and whether it is the same popup.html that is included in our extension file or not (by checking for &#39;widget://&#39;). If so, then it will send a message to the injected script, together with a reference to the source of the connect (the popup). </p>
+
+<p>Now look at the injected script:</p>
+
+<pre><code>var counter = 0;
+var background;
+
+opera.extension.onmessage = function( event ){
+	if( event.data == &quot;Send a port&quot; ){
+		background = event.source; // in case you need to send anything to background, just do background.postMessage()
+		var channel = new MessageChannel();
+		
+		event.ports[0].postMessage( &quot;Here is a port to the currently focused tab&quot;, [channel.port2] );
+		opera.postError(&#39;post sent from injected script&#39;);
+		
+		channel.port1.onmessage = handlePopupMessage;
+	}
+}</code></pre>
+
+<p>Here we initially set the counter to zero. The injected script listens to any message, and if the message if &#39;send a port&#39; (the same that the background message sends when the popup connects to it), then a message channel is set up.</p>
+
+<p>Essentially in message channels:</p>
+<ul>
+<li>MessageChannel.port1.postMessage -&gt; will fire MessageChannel.port2.onmessage</li>
+<li>MessageChannel.port2.postMessage -&gt; will fire MessageChannel.port1.onmessage</li>
+</ul>
+<p>So in this case, we want to send port2 to the popup. When the popup posts to port2, the injected script can listen to it on port1.</p>
+
+<p>When we recieve a message from the popup on port1, we check call the function &#39;handlePopupMessage&#39; (more on that later).</p>
+
+<p>The message sent by the background script also had a refernce to the popup. This reference to the popup is available as <code>event.ports[0]</code>. We now post a message to the popup, together with a reference to port 2 of the message channel. </p>
+
+<p>Now let&#39;s look at the popup file:</p>
+
+<pre><code>var theport;
+
+function handleMessageFromInjectedScript( event ){
+	opera.postMessage( &quot;Message received from the injected script: &quot; + event.data );
+}
+ 
+opera.extension.onmessage = function ( event ){
+	if( event.data == &quot;Here is a port to the currently focused tab&quot; ){
+		if(event.ports.length &gt; 0 ){
+		theport = event.ports[0];
+			theport.onmessage = handleMessageFromInjectedScript;
+		} 
+	}
+}
+
+
+function sendMessage(message){
+var sendstring = message;
+	if (theport){
+		theport.postMessage(sendstring);
+		opera.postError(&#39;the send sent is: &#39;+sendstring);
+	}
+}</code></pre>
+
+<p>Lets start from the <code>onmessage</code> part. Here it checks whether the message is the same one which is supposed to come from the background process. If so, it saves a reference to that port (port2) in the &#39;theport&#39; variable. Whenever a message a message is received on it, it calls the function &#39;handleMessageFromInjectedScript&#39;, which would post a message to the console. Then in the end we post a message back on this port, which will be received by the injected script.</p>
+
+<p>In the HTML, we have </p>
+<pre><code>&lt;p&gt;&lt;a href=&quot;javascript:sendMessage(&#39;change title&#39;);&quot;&gt;Change Title&lt;/a&gt;&lt;/p&gt;</code></pre>
+<p>This calls the <code>sendMessage()</code> function, which takes the string &#39;change title&#39; and sends it to the injected script.</p>
+
+<p>Finally, we come back to the injected script. Remember that we have a function to handle messages from the popup? Lets look into that function</p>
+
+<pre><code>function handlePopupMessage(e){
+			opera.postError( &quot;Message received from the popup: &quot; + event.data );
+			
+			if (event.data == &quot;change title&quot;){
+				document.title = &quot;You have clicked &quot; + counter + &quot; times&quot;;
+				counter++;
+			}
+
+
+		}</code></pre>
+
+<p>The function &#39;handlePopupMessage&#39; is called whenever a message is recieved from the popup on port1. It checks whether the message is &#39;change title&#39;, and if so, it changes the document title and increments the counter.</p>
+
+<p>So in summary, the following things happen:</p>
+
+<ul>
+<li>Background process loads</li>
+<li>The page loads, and so does the injected script.</li>
+<li>User clicks on popup, which connects to background process. The <code>onconnect</code> event is fired in the background process which fires a message to the injected script. The message which is sent to the injected script, also has a reference to the popup.</li>
+<li>The injected script listens to this message, and sets up a message channel. It takes the reference to the popup (which came along the message it has just recieved) and posts a message to it. That message has a reference to channel 2 of the message channel.</li>
+<li>The popup listens to this message and stores the reference to the second channel.</li>
+<li>Now whenever a message needs to be sent to injected script, the popup just sends a <code>postMessage</code> to it.</li>
+<li>That message sent on port2 by popup will be listened on port1 by injected script. When a message arrives, it checks which kind of message it is and performs the appropriate action (in the example&#39;s case it changes the document title)</li>
+</ul>
+
+<h2 id="conclusion">Wrapping it up</h2>
+
+<p>Communicating between various parts of an extension is pretty easy once you get to know how to use <code>postMessage</code> along with the <code>onconnect</code> and <code>onmessage</code> handlers. You can also use message channels, which is required when it comes to communicating between a popup and an injected script. This article has shed some light on how to pass around messages in three scenarios: between background process and injected script; between background process and popup; and between popup and injected script.</p>
+
+<h2 id="api">Further reading</h2>
+<ul>
+<li><a href="../accessing-an-opera-extensions-background-process/index.html">Accessing an Opera extension&#39;s background process</a></li>
+<li>Attributes and methods regarding the <a href="../extensions-api-injected-scripts/index.html">Injected script API reference</a></li>
+<li>Attributes and methods regarding the <a href="../extensions-api-popup/index.html">Popup process API reference</a></li>
+<!--<li>The <a href="http://labs.opera.com/extensions-api/visual-guide/index.htm">Visual Guide to the Opera Extensions API</a></li>-->
+</ul></p></p></p></p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=785022">My Opera</a>.</p>
+  <ul>
+    <li id="comment-91495632">
+      <a href="../../../author/vitorrd.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d0/8da/557fc45f1fe125af7e696dbb06067f22534." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/vitorrd.html">vitorrd</a></p>
+      <p class="commentdate">Friday, June 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The first example extension is an invalid extension.</section>
+    </li>
+    <li id="comment-92573272">
+      <a href="../../../author/christoph142.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7a/d36/a1ef2d0ce7edb42a678ee38ac6b298f6819.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/christoph142.html">Christoph</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I&#39;m not sure if I&#39;m doing something terribly wrong, but I can&#39;t get the injected script (/includes/injected.js) to communicate with the bgprocess (/background.js)<br/>opera.extension.onconnect does never fire over here in 12.50</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/shwetankdixit.html" rel="author">Shwetank Dixit</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, October 27, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/API.html" rel="tag">API</a></li>
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/messaging.html" rel="tag">messaging</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera extensions docs</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-hello-world/index.html" >Saying hello world to Opera extensions!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../whats-in-an-opera-extension/index.html" >What's in an Opera extension?</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-developer-workflow/index.html" >Opera extensions developer workflow</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>API reference<ul >
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-config-xml/index.html" >config.xml</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-widget/index.html" >widget element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-name/index.html" >name element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-description/index.html" >description element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-author/index.html" >author element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-license/index.html" >license element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-icon/index.html" >icon element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-content/index.html" >content element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-preference/index.html" >preference element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-access/index.html" >access element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-span/index.html" >span element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-xml-lang/index.html" >xml:lang attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-dir/index.html" >dir attribute</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-widget-object/index.html" >Widget object</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-author/index.html" >widget.author</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authoremail/index.html" >widget.authorEmail</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authorhref/index.html" >widget.authorHref</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-description/index.html" >widget.description</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-id/index.html" >widget.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-name/index.html" >widget.name</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-preferences/index.html" >widget.preferences</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-shortname/index.html" >widget.shortName</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-version/index.html" >widget.version</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-browser-toolbar/index.html" >Button &amp; Badge API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-createitem/index.html" >opera.contexts. toolbar.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-additem/index.html" >opera.contexts. toolbar.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-removeitem/index.html" >opera.contexts. toolbar.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-length/index.html" >opera.contexts. toolbar.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-badge/index.html" >Button.badge</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-disabled/index.html" >Button.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-icon/index.html" >Button.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-onclick/index.html" >Button.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-popup/index.html" >Button.popup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-title/index.html" >Button.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-addeventlistener/index.html" >Button.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-removeeventlistener/index.html" >Button.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-backgroundcolor/index.html" >Badge.backgroundColor</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-color/index.html" >Badge.color</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-display/index.html" >Badge.display</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-textcontent/index.html" >Badge.textContent</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-popup/index.html" >Popup API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-height/index.html" >Popup.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-href/index.html" >Popup.href</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-width/index.html" >Popup.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-postmessage/index.html" >opera.extension. postMessage()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-windows-tabs/index.html" >Windows &amp; Tabs API</a>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Windows<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-create/index.html" >opera.extension. windows.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getall/index.html" >opera.extension. windows.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getlastfocused/index.html" >opera.extension. windows.getLastFocused()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-insert/index.html" >BrowserWindow.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-close/index.html" >BrowserWindow.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focus/index.html" >BrowserWindow.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-update/index.html" >BrowserWindow.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-id/index.html" >BrowserWindow.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-closed/index.html" >BrowserWindow.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focused/index.html" >BrowserWindow.focused</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-private/index.html" >BrowserWindow.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabgroups/index.html" >BrowserWindow.tabGroups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabs/index.html" >BrowserWindow.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-height/index.html" >BrowserWindow.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-width/index.html" >BrowserWindow.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-top/index.html" >BrowserWindow.top</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-left/index.html" >BrowserWindow.left</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tab Groups<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-create/index.html" >opera.extension. tabGroups.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-getall/index.html" >opera.extension. tabGroups.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-close/index.html" >BrowserTabGroup.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-focus/index.html" >BrowserTabGroup.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-insert/index.html" >BrowserTabGroup.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-update/index.html" >BrowserTabGroup.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-id/index.html" >BrowserTabGroup.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-closed/index.html" >BrowserTabGroup.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-collapsed/index.html" >BrowserTabGroup. collapsed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-browserwindow/index.html" >BrowserTabGroup. browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-tabs/index.html" >BrowserTabGroup.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-position/index.html" >BrowserTabGroup.position</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tabs<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-create/index.html" >opera.extension. tabs.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getall/index.html" >opera.extension. tabs.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getselected/index.html" >opera.extension. tabs.getSelected()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-close/index.html" >BrowserTab.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focus/index.html" >BrowserTab.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-update/index.html" >BrowserTab.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-id/index.html" >BrowserTab.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-closed/index.html" >BrowserTab.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-locked/index.html" >BrowserTab.locked</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-private/index.html" >BrowserTab.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-selected/index.html" >BrowserTab.selected</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-readystate/index.html" >BrowserTab.readyState</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-faviconurl/index.html" >BrowserTab.faviconUrl</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-title/index.html" >BrowserTab.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-url/index.html" >BrowserTab.url</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-browserwindow/index.html" >BrowserTab.browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-tabgroup/index.html" >BrowserTab.tabGroup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-position/index.html" >BrowserTab.position</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focused/index.html" >BrowserTab.focused</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-injected-scripts/index.html" >Injected scripts</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-addeventlistener/index.html" >opera.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-removeeventlistener/index.html" >opera.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicfunction/index.html" >opera.defineMagicFunction()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicvariable/index.html" >opera.defineMagicVariable()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-posterror/index.html" >opera.postError()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-urlfilter/index.html" >URL filter API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-add/index.html" >opera.extension. urlfilter.block.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-remove/index.html" >opera.extension. urlfilter.block.remove()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-allow-add/index.html" >opera.extension. urlfilter.allow.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-excludedomains/index.html" >RuleOptions.excludeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-includedomains/index.html" >RuleOptions.includeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-resources/index.html" >RuleOptions.resources</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-thirdparty/index.html" >RuleOptions.thirdParty</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-syntax/index.html" >URL Filter syntax</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-messaging/index.html" >Messaging API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-bgprocess/index.html" >opera.extension.bgProcess</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onconnect/index.html" >opera.extension.onconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-ondisconnect/index.html" >opera.extension.ondisconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-broadcastmessage/index.html" >opera.extension. broadcastMessage()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-speeddial/index.html" >Speed Dial API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-viewmodes/index.html" >viewmodes attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-param/index.html" >param element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-title/index.html" >opera.contexts.speeddial.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-url/index.html" >opera.contexts.speeddial.url</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-resourceloader/index.html" >Resource Loader API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-resourceloader-getfile/index.html" >opera.extension.getFile()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-screenshot/index.html" >Screenshot API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-screenshot-getscreenshot/index.html" >opera.extension.getScreenshot() and BrowserTab.getScreenshot()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-contextmenu/index.html" >Context Menu API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-createitem/index.html" >opera.contexts. menu.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-additem/index.html" >opera.contexts. menu.addItem() and MenuItem.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-item/index.html" >opera.contexts.menu.item() and MenuItem.item()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-removeitem/index.html" >opera.contexts. menu.removeItem() and MenuItem.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-length/index.html" >opera.contexts.menu.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-onclick/index.html" >opera.contexts.menu.onclick and MenuItem.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-contexts/index.html" >MenuItem.contexts</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-disabled/index.html" >MenuItem.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturlpatterns/index.html" >MenuItem. documentURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-icon/index.html" >MenuItem.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-id/index.html" >MenuItem.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-parent/index.html" >MenuItem.parent</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-targeturlpatterns/index.html" >MenuItem.targetURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-title/index.html" >MenuItem.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-type/index.html" >MenuItem.type</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturl/index.html" >MenuEvent.documentURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-iseditable/index.html" >MenuEvent.isEditable</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-linkurl/index.html" >MenuEvent.linkURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-mediatype/index.html" >MenuEvent.mediaType</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-pageurl/index.html" >MenuEvent.pageURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-selectiontext/index.html" >MenuEvent.selectionText</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-source/index.html" >MenuEvent.source</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcelement/index.html" >MenuEvent.srcElement</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcurl/index.html" >MenuEvent.srcURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-target/index.html" >MenuEvent.target</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Extension tutorials<ul >
+  <li class="sub-collection leaf">
+<a href="../config-xml-howto/index.html" >The ins and outs of config.xml</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-buttons-badges-and-popups/index.html" >Buttons, badges and popups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Messaging</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-options-page/index.html" >Options page</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../accessing-an-opera-extensions-background-process/index.html" >Accessing an Opera extension's background process</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-opera-speed-dial-extensions/index.html" >Creating Opera Speed Dial Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cookie-sharing-in-opera-extensions/index.html" >Cookie-sharing in Opera extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../site-blocking-with-operas-url-filter-api/index.html" >Site blocking with Opera’s URL Filter API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-multilingual-extensions/index.html" >Creating multilingual extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hands-on-building-an-opera-extension/index.html" >Hands-on tutorial: building an Opera extension</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-userjs-to-extensions/index.html" >Converting UserJS to Opera Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-widgets-to-opera-extensions/index.html" >Converting widgets to Opera Extensions: Things to keep in mind</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Templates and code samples<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extension-code-examples/index.html" >Opera extension code examples</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-prototypes-modifying-css/index.html" >Opera extensions prototypes for modifying CSS</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>UI guidelines and distribution<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-publishing-guidelines/index.html" >Publishing guidelines</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-effective-opera-extension-icons/index.html" >Creating effective Opera Extension icons</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../distributing-opera-extensions-and-auto-updates/index.html" >Distributing Opera extensions and auto-updates</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.1"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="12em" height="12em" viewBox="0 0 240 240">
+<title>Clock with darts game numbers</title>     
+<!-- This is an adaptation of two SVG articles: 
+1. Playing SVG Darts: Target Practice (http://dev.opera.com/articles/view/playing-svg-darts-target-practice/)
+2. Animating your SVG  (http://dev.opera.com/articles/view/animating-your-svg/) 
+-->
+<style> .digits {fill: maroon; font-size: 2cm;}</style>
+
+<!-- Font definitions taken unchanged from SVG Darts-->
+<defs>
+      <font horiz-adv-x='140'>
+	  <font-face font-family='dartdigits' 
+	  	  units-per-em='1000'
+	      panose-1='0 0 4 0 0 0 0 0 0 0'
+		  ascent='1000'
+		  descent='-1000'
+		  alphabetic='0' />
+<glyph unicode="0" glyph-name="0" d="M 70,-110 C 36.981362,-110 10,-83.018638 10,-50 L 10,50 C 10,83.018638 36.981362,110 70,110 C 103.01863800000001,110 130,83.018638 130,50 L 130,15 L 130,5 L 110,5 L 110,15 L 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 L 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 L 110,-15 L 110,-5 L 130,-5 L 130,-15 L 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 z " />
+<glyph unicode="1" glyph-name="1" d="M 87.07,-110 L 87.07,-100 L 87.07,80 C 87.06913,84.072656 84.645193,87.691579 80.8825,89.25 C 77.119812,90.808421 72.88774,89.941871 70.0075,87.0625 L 49.22762,66.736381 L 42.945,60 L 28.78875,74.125 L 35.85125,81.21875 L 54.28875,101.21875 C 63.72922,109.7757 77.35672,112.3501 88.53875,107.71875 C 99.720775,103.08741 107.06741600000001,92.10318 107.07,80 L 107.07,-100 L 107.07,-110 L 87.07,-110 z "/>
+<glyph unicode="2" glyph-name="2" d="M 40,-110 C 27.896819999999998,-109.99742 16.912587000000002,-102.65077 12.28125,-91.46875 C 7.649915,-80.286725 10.224302000000002,-67.340782 18.78125,-58.78125 L 99.09375,21.53125 C 114.45808,37.287786 114.216818,62.062231 98.65625,77.625 C 83.095681,93.18777 58.196208999999996,93.362101 42.4375,78 L 27.90625,63.4375 L 20.84375,56.375 L 6.6875,70.53125 L 13.75,77.59375 L 28.40625,92.21875 L 28.4375,92.28125 L 28.5,92.3125 C 51.934283,115.157 89.672865,114.92416 112.8125,91.78125 C 135.952134,68.638343 136.191565,30.899802 113.34375,7.46875 L 113.28125,7.4375 L 113.25,7.375 L 32.9375,-72.9375 C 30.058132,-75.817738 29.191578999999997,-80.049806 30.75,-83.8125 C 32.308421,-87.575193 35.927344,-89.99913 40,-90 L 120,-90 L 130,-90 L 130,-110 L 120,-110 L 40,-110 z "/>
+<glyph unicode="3" glyph-name="3" d="M 63.09375,-109.65625 C 47.717729,-109.81281 32.292525,-104.11729 20.5,-92.5625 L 13.34375,-85.5625 L 27.34375,-71.28125 L 34.5,-78.28125 C 50.36465,-93.826071 75.5176772,-93.583399 91.0625,-77.71875 C 106.607324,-61.854101 106.364649,-36.701074 90.5,-21.15625 L 90.46875,-21.09375 L 90.40625,-21.0625 C 78.778454,-9.4311923 78.77845429999999,9.7124426 90.40625,21.34375 L 90.46875,21.375 L 90.5,21.4375 C 106.364649,36.982324 106.607324,62.135353 91.0625,78 C 75.5176761,93.864649 50.36465,94.107321 34.5,78.5625 L 27.34375,71.5625 L 13.34375,85.84375 L 20.5,92.84375 C 44.085049999999995,115.95333 82.23416399999999,115.58505 105.34375,92 C 128.453336,68.414951 128.085051,30.234586 104.5,7.125 C 100.512518,3.136314 100.575018,-2.9488137 104.5625,-6.9375 C 128.147551,-30.047086 128.45333399999998,-68.133699 105.34375,-91.71875 C 93.788957,-103.51128 78.469771,-109.49969 63.09375,-109.65625 z " />
+<glyph unicode="4" glyph-name="4" d="M 110,-110 L 110,-100 L 110,80 C 110.00108900000001,84.48325 107.114282,88.331131 102.8125,89.59375 C 98.510713,90.856368 94.015857,89.178904 91.59375,85.40625 L 31.59375,-8.03125 C 29.607024000000003,-11.123796 29.456643,-14.992932 31.21875,-18.21875 C 32.980855,-21.444566 36.324279,-23.438073 40,-23.4375 L 90,-23.4375 L 100,-23.4375 L 100,-43.4375 L 90,-43.4375 L 40,-43.4375 C 29.044514999999997,-43.439209 18.908209,-37.427051 13.65625,-27.8125 C 8.404291,-18.19795 8.828564,-6.4360808 14.75,2.78125 L 74.75,96.21875 C 81.920813,107.38795 95.70179,112.51931 108.4375,108.78125 C 121.173214,105.04318 130.003225,93.272964 130,80 L 130,-100 L 130,-110 L 110,-110 z " />
+<glyph unicode="5" glyph-name="5" d="M 10,-110 L 10,-90 L 20,-90 L 70,-90 C 92.209836,-90 110,-72.209836 110,-50 C 110,-27.790164 92.209836,-10 70,-10 L 40,-10 C 23.549903999999998,-10 10,3.5499039 10,20 L 10,80 C 10,96.450096 23.549903999999998,110 40,110 L 120,110 L 130,110 L 130,90 L 120,90 L 40,90 C 34.358706,90 30,85.641294 30,80 L 30,20 C 30,14.358706 34.358706,10 40,10 L 70,10 C 103.01863800000001,10 130,-16.981362 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 L 20,-110 L 10,-110 z " />
+<glyph unicode="6" glyph-name="6" d="M 70,-110 C 36.981362,-110 10,-83.018638 10,-50 L 10,50 C 10,83.018638 36.981362,110 70,110 C 103.01863800000001,110 130,83.018638 130,50 L 130,40 L 110,40 L 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 L 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 L 110,-20 C 110,-14.358706 105.641294,-10 100,-10 L 50,-10 L 40,-10 L 40,10 L 50,10 L 100,10 C 116.450096,10 130,-3.5499039 130,-20 L 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 z " />
+<glyph unicode="7" glyph-name="7" d="M 60,-110 L 60,-100 L 60,0 C 60,6.4896819 62.1061907,12.808254 66,18 L 108,74 C 110.285305,77.047074 110.640866,81.062017 108.9375,84.46875 C 107.234137,87.875476 103.808839,90 100,90 L 20,90 L 10,90 L 10,110 L 20,110 L 100,110 C 111.34204299999999,110 121.771436,103.55088 126.84375,93.40625 C 131.916064,83.261621 130.805225,71.073632 124,62 L 82,6 C 80.700924,4.2678988 80,2.1651267 80,0 L 80,-100 L 80,-110 L 60,-110 z " />
+<glyph unicode="8" glyph-name="8" d="M 70,-110 C 36.981362,-110 10,-83.018638 10,-50 C 9.998990999999997,-40.771631 14.376257000000003,-32.166024 21.59375,-26.5 L 21.53125,-26.4375 L 38.59375,-10.09375 L 45.78125,-3.1875 L 59.625,-17.625 L 52.40625,-24.53125 L 35.375,-40.875 L 34.84375,-41.40625 L 34.21875,-41.84375 C 31.560377000000003,-43.724235 29.999644000000004,-46.743751 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 C 110.000356,-46.743751 108.439625,-43.724237 105.78125,-41.84375 L 105.5,-41.65625 L 105.25,-41.4375 L 22.6875,25.5 L 22.15625,25.90625 L 22.1875,25.9375 C 14.573559000000003,31.58345 9.998961000000001,40.495902 10,50 C 10,83.018638 36.981362,110 70,110 C 103.01863800000001,110 130,83.018638 130,50 C 130.001009,40.771631 125.623742,32.166025 118.40625,26.5 L 118.46875,26.4375 L 101.40625,10.09375 L 94.21875,3.1875 L 80.375,17.625 L 87.59375,24.53125 L 104.625,40.875 L 105.15625,41.40625 L 105.78125,41.84375 C 108.439625,43.724237 110.000356,46.743751 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 C 29.999644000000004,46.743751 31.560377000000003,43.724235 34.21875,41.84375 L 34.5,41.65625 L 34.75,41.4375 L 117.3125,-25.5 L 117.84375,-25.90625 L 117.8125,-25.9375 C 125.42644,-31.583451 130.001039,-40.495902 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 z " />
+<glyph unicode="9" glyph-name="9" d="M 70,110 C 103.01863800000001,110 130,83.018638 130,50 L 130,-50 C 130,-83.018638 103.01863800000001,-110 70,-110 C 36.981362,-110 10,-83.018638 10,-50 L 10,-40 L 30,-40 L 30,-50 C 30,-72.209836 47.790164000000004,-90 70,-90 C 92.209836,-90 110,-72.209836 110,-50 L 110,50 C 110,72.209836 92.209836,90 70,90 C 47.790164000000004,90 30,72.209836 30,50 L 30,20 C 30,14.358706 34.358706,10 40,10 L 90,10 L 100,10 L 100,-10 L 90,-10 L 40,-10 C 23.549903999999998,-10 10,3.5499039 10,20 L 10,50 C 10,83.018638 36.981362,110 70,110 z " />
+</font>
+</defs>
+
+<!-- Unchanged from Animating your SVG -->
+<g transform="translate(120,120)">
+<g id="test">
+<text>test</text>
+</g>
+  <g>
+    <set attributeName="display" to="none" begin="b1.click" end="b2.click"/>
+      <circle r="108" fill="#6f6" stroke-width="4" stroke="#090" id="b1" />
+      <circle r="100" fill="none" stroke-width="3" stroke="black"
+         stroke-dasharray="2,8.471976" transform="rotate(-.873)"  />
+      <circle r="97" fill="none" stroke-width="9" stroke="white" 
+         stroke-dasharray="4,46.789082" transform="rotate(-1.5)"  />
+  </g>
+  
+  <g>
+    <set attributeName="display" to="none" begin="b2.click" end="b1.click"/>
+      <circle r="108" fill="white" stroke-width="4" stroke="#099" id="b2">
+        <animateColor attributeName="fill" values="white;red;black;blue;white" dur="10s" repeatCount="infinite"/>
+      </circle>
+      <circle r="97" fill="none" stroke-width="9" stroke="gold" 
+         stroke-dasharray="4,46.789082" transform="rotate(-1.5)" />
+      <circle r="100" fill="none" stroke-width="3" stroke="black"
+         stroke-dasharray="2,8.471976" transform="rotate(-.873)" >
+        <animateColor attributeName="stroke" values="white;black;white" dur="10s" repeatCount="infinite" />
+      </circle>
+  </g>
+ 
+ <!-- Adapting the numbers from SVG darts for a different disc -->
+    <g id="numbers">
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(30) translate(0,-80)">1</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(60) translate(0,-80)">2</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(90) translate(0,-80)">3</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(120) translate(0,-80) rotate(180)">4</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(150) translate(0,-80) rotate(180)">5</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(180) translate(0,-80) rotate(180)">6</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(210) translate(0,-80) rotate(180)">7</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(240) translate(0,-80) rotate(180)">8</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(270) translate(0,-80)">9</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(300) translate(0,-80)">10</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(330) translate(0,-80)">11</text>
+    <text font-family='dartdigits' text-anchor="middle" class="digits" transform="rotate(0) translate(0,-80)">12</text>
+  </g>
+  
+  <!-- Unchanged from Animating your SVG -->
+  <g id="c" transform="rotate(180)">
+    <g id="h">
+      <line stroke-width="5" y2="80" stroke="black" opacity=".5" />
+        <animateTransform attributeName="transform" type="rotate"
+           repeatCount="indefinite" dur="12h" by="360" />
+      <circle r="7" />
+    </g>
+    
+    <g id="m">
+      <line stroke-width="4" y2="95" stroke="red" opacity=".9" />
+        <animateTransform attributeName="transform" type="rotate"
+           repeatCount="indefinite" dur="60min" by="360" />
+      <circle r="6" fill="red"/>
+    </g>
+    
+    <g id="s">
+      <line stroke-width="2" y2="100" stroke="blue" />
+      <animateTransform attributeName="transform" type="rotate" additive="sum"
+          repeatCount="indefinite" dur="60s" by="360" />
+      <circle r="4" fill="blue"/>
+    </g>
+    
+  </g>
+</g>
+
+</svg>

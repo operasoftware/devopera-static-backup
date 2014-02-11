@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add-ons - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="feeds/atom/articles/addons">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="addons">
+    <header role="banner"  >
+      <div>
+        <a href="index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main">
+<section class="main">
+  
+  <ul class="articlelist sp2">
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/extensions-api-injected-scripts/index.html">Injected scripts</a>
+      </h2>
+    
+      <p>
+      By <a href="author/operadev.html">Opera Software</a> &middot;
+      Tuesday, December 6, 2011
+            
+        <a href="articles/view/extensions-api-injected-scripts/index.html#comments" class="com"
+         title="14 comments">
+           <span>14</span>
+        </a>
+      </p>
+    
+      <p>You can add JavaScript to a website using &quot;injected scripts&quot;. These are normal JavaScript files located inside the &quot;includes&quot; folder in the extension. Opera will execute the given scripts on either all pages, or certain sites and domains they have been targeted for.
+      <a class="readmore" href="articles/view/extensions-api-injected-scripts/index.html" title="Read more: Injected scripts">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/extensions-api-urlfilter-block-remove/index.html">opera.extension.urlfilter.block.remove()</a>
+      </h2>
+    
+      <p>
+      By <a href="author/operadev.html">Opera Software</a> &middot;
+      Tuesday, December 6, 2011
+            
+        <a href="articles/view/extensions-api-urlfilter-block-remove/index.html#comments" class="com"
+         title="2 comments">
+           <span>2</span>
+        </a>
+      </p>
+    
+      <p>
+      <a class="readmore" href="articles/view/extensions-api-urlfilter-block-remove/index.html" title="Read more: opera.extension.urlfilter.block.remove()">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/extensions-api-urlfilter-block-add/index.html">opera.extension.urlfilter.block.add()</a>
+      </h2>
+    
+      <p>
+      By <a href="author/operadev.html">Opera Software</a> &middot;
+      Tuesday, December 6, 2011
+            
+        <a href="articles/view/extensions-api-urlfilter-block-add/index.html#comments" class="com"
+         title="2 comments">
+           <span>2</span>
+        </a>
+      </p>
+    
+      <p>
+      <a class="readmore" href="articles/view/extensions-api-urlfilter-block-add/index.html" title="Read more: opera.extension.urlfilter.block.add()">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/extensions-api-urlfilter/index.html">URL filter API</a>
+      </h2>
+    
+      <p>
+      By <a href="author/operadev.html">Opera Software</a> &middot;
+      Tuesday, December 6, 2011
+            
+        <a href="articles/view/extensions-api-urlfilter/index.html#comments" class="com"
+         title="13 comments">
+           <span>13</span>
+        </a>
+      </p>
+    
+      <p>The URL Filter API for Opera extensions defines a DOM interface that allows extensions to add temporary rules to Opera&#39;s native content blocker. Rules added through this API are associated with an extension and apply as long as the extension is enabled. Once an extension is disabled or the browser is shut down, the temporary rules are discarded.
+      <a class="readmore" href="articles/view/extensions-api-urlfilter/index.html" title="Read more: URL filter API">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/operas-lightweight-themes/index.html">Opera's lightweight themes</a>
+      </h2>
+    
+      <p>
+      By <a href="author/chrismills.html">Chris Mills</a> &middot;
+      Thursday, October 13, 2011
+            
+        <a href="articles/view/operas-lightweight-themes/index.html#comments" class="com"
+         title="65 comments">
+           <span>65</span>
+        </a>
+      </p>
+    
+      <p>Opera 12 brings with it a new lightweight theme system, which sits on top of the default Opera theme/skin and makes simple customisations much easier to achieve. In this article we&#39;ll take a look at how this lightweight system works.
+      <a class="readmore" href="articles/view/operas-lightweight-themes/index.html" title="Read more: Opera's lightweight themes">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/cookie-sharing-in-opera-extensions/index.html">Cookie-sharing in Opera extensions</a>
+      </h2>
+    
+      <p>
+      By <a href="author/tagawa.html">Daniel Davis</a> &middot;
+      Friday, June 24, 2011
+            
+        <a href="articles/view/cookie-sharing-in-opera-extensions/index.html#comments" class="com"
+         title="11 comments">
+           <span>11</span>
+        </a>
+      </p>
+    
+      <p>Opera 11.50 for desktop introduces the ability for extensions to share cookies with the browser. As tempting as it is to dive into puns about milk and biscuits, we&#39;re going to look at how this new feature can help you make extensions that are easier for people to use. And this feature also just happens to be easy for developers to use as well.
+      <a class="readmore" href="articles/view/cookie-sharing-in-opera-extensions/index.html" title="Read more: Cookie-sharing in Opera extensions">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/creating-opera-speed-dial-extensions/index.html">Creating Opera Speed Dial Extensions</a>
+      </h2>
+    
+      <p>
+      By <a href="author/tagawa.html">Daniel Davis</a> &middot;
+      Tuesday, May 3, 2011
+            
+        <a href="articles/view/creating-opera-speed-dial-extensions/index.html#comments" class="com"
+         title="17 comments">
+           <span>17</span>
+        </a>
+      </p>
+    
+      <p>With the release of Opera 11.50 comes an exciting new enhancement to Opera Speed Dial: you can now write Opera extensions that will function inside Speed Dial windows, opening up a wealth of new possibilities! This article introduces you to the relevant concepts including the necessary config.xml updates, and the new SpeedDialContext API.
+      <a class="readmore" href="articles/view/creating-opera-speed-dial-extensions/index.html" title="Read more: Creating Opera Speed Dial Extensions">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+    <li>
+      <h2>
+        <a lang="en" href="articles/view/creating-multilingual-extensions/index.html">Creating multilingual extensions</a>
+      </h2>
+    
+      <p>
+      By <a href="author/patrickhlauke.html">Patrick H. Lauke</a> &middot;
+      Tuesday, April 12, 2011
+            
+        <a href="articles/view/creating-multilingual-extensions/index.html#comments" class="com"
+         title="20 comments">
+           <span>20</span>
+        </a>
+      </p>
+    
+      <p>This article shows you how to create multilingual Opera extensions, with resources for different languages contained in a single extension package.
+      <a class="readmore" href="articles/view/creating-multilingual-extensions/index.html" title="Read more: Creating multilingual extensions">Read more&hellip;</a>
+      </p>
+      <p class="clear"></p>
+    </li>
+  </ul>
+
+  <ul class="pagination">
+    <li class="first"><a rel="first" href="addons.1.html">1</a></li>
+    <li class="separator">&hellip;</li>
+    <li class="prev"><a rel="prev" href="addons%3Fpage=20.html">20</a></li>
+    <li class="active">21</li>
+    <li class="next"><a rel="next" href="addons%3Fpage=22.html">22</a></li>
+    <li class="separator">&hellip;</li>
+    <li class="last"><a rel="end" href="addons%3Fpage=32.html">32</a></li>
+  </ul>
+
+</section>
+  <aside>
+    <section class="tools">
+      <h2>Add-ons Tools</h2>
+      <ul>
+        <li><a href="http://www.opera.com/developer/">Opera Developer builds</a></li>
+        <li><a href="https://addons.opera.com/en/extensions/category/web-development/">Web development extensions</a></li>
+      </ul>
+      <h2>Add-ons Resources</h2>
+      <ul>
+        <li><a href="extension-docs/index.html">Opera 15+ extension docs</a></li>
+        <li><a href="https://addons.opera.com/">Add-ons Catalog</a></li>
+        <li><a href="http://my.opera.com/odin">Opera Developer News</a></li>
+        <li><a href="http://caniuse.com/#compare=opera+12.1,opera+15,opera+16,opera+17,opera+18,opera+19,op_mini+5.0-7.0,op_mob+12.1,op_mob+14,op_mob+15,op_mob+16,op_mob+17,op_mob+18,op_mob+19">Can I use... tables for Opera</a></li>
+        <li><a href="http://stackoverflow.com/questions/tagged/opera-extension">Opera extension questions on StackOverflow</a></li>
+        <li><a href="http://operasoftware.github.com/">GitHub repositories</a></li>
+        <li><a href="http://shinydemos.com/">Shiny Demos</a></li>
+      </ul>
+<h2>Contribute</h2>
+<ul>
+  <li><a href="articles/info.html">Submit articles</a></li>
+</ul>
+    </section>
+  </aside>
+</section>
+
+    <footer>
+      <section role="contentinfo">
+        <p class="copyright"><small>&copy; 2014 Opera Software ASA.</small></p>
+        <ul>
+          <li><a href="help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

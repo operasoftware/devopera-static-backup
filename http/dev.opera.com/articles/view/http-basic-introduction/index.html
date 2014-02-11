@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HTTP — an application-level protocol - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>HTTP — an application-level protocol</h1>
+      <p class="print author">By karlcow</p>
+
+      <h2>Introduction</h2>
+
+<p>In Bhutan, when people meet, they usually greet each other with “Is your body well?” In Japan they might bow, depending on the circumstances. In Oman, men often add give each other a kiss on the nose after shaking hands. In Cambodia and Thailand, they often join their hands as if praying. All of these are communication protocols, a simple sequence of codes that have meaning and prepare the two parties for a meaningful exchange.</p>
+
+<p>On the Web, we have a very effective application protocol that prepares computers the world over for meaningful exchanges: <a href="https://en.wikipedia.org/wiki/HTTP">Hypertext Transfer Protocol</a>, or HTTP. HTTP is an application-level protocol on top of <a href="https://en.wikipedia.org/wiki/TCP/IP_model">TCP/IP</a>, a communication protocol. HTTP often seems to get forgotten about when teaching web design and development, which is a shame: understanding it will help you to define better user interactions, achieve better site performance and create effective tools for managing information on the Web. </p>
+
+<p>This is the first of a series of articles that aims to teach HTTP basics, and how we can use it more effectively. In this article we will look at where the HTTP cog fits into the Internet machine.</p>
+
+<h2 id="protocol">What is a communication protocol?</h2>
+
+<p>Before looking at the specifics, let&#39;s consider a basic communication scenario. To be able to communicate, two parties (be they software, devices, people, etc.) need:</p>
+
+<ul>
+  <li>syntax (data format and coding)</li>
+  <li>semantics (control information and error handling)</li>
+  <li>timing (speed matching and sequencing)</li>
+</ul>
+
+<p>When two people meet, they engage using a communication protocol: for example, in Japan, a person will make a specific gesture with the body. One such gesture is a bow, which is the <strong>syntax</strong> used for the interaction. In Japanese customs, the gesture of the bow (among others) is associated with the <strong>semantics</strong> of greeting someone. Finally, when one person bows to another person, a sequence of events has been established between the two in a specific <strong>timing</strong>.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/8112/protocole-communication.png" alt="Protocol of communications" /></p>
+
+<p>An online communication protocol contains the same elements. The syntax will be the sequence of characters such as keywords we use for writing the protocols. The semantics is the meaning associated with each of these keywords and finally the timing is the order in which two or more entities exchange these keywords.</p>
+
+<h2 id="tcpip">Where does HTTP fit into the machine?</h2>
+
+<p>HTTP itself runs on top of other protocols. When connecting to a web site, for example at <code>www.example.org</code>, the user agent is using the TCP/IP suite of protocols. The <a href="http://en.wikipedia.org/wiki/TCP/IP_model">TCP/IP model</a> was designed in 1970 with <a href="http://tools.ietf.org/html/rfc1122">4 distinct layers</a>:</p>
+
+<ol>
+<li><strong>Link</strong> describes the access to physical media (e.g. using the network card)</li>
+<li><strong>Internet</strong> describes the envelope and routing of data — how it is packaged (IP)</li>
+<li><strong>Transport</strong> describes the way the data is delivered from the starting point to the final destination (TCP, UDP)</li>
+<li><strong>Application</strong> describes the meaning or format of the transferred messages (HTTP)</li>
+</ol>
+
+<p>HTTP is an <strong>application protocol</strong> that sits above the communication protocol. This is important to keep in mind. Separating the model into independent layers helps to evolve parts of the platform without having to rewrite everything. For example, TCP, a transport protocol, could evolve without having to modify HTTP, the application protocol. In practice, the details become a little bit uglier when we are striving for high performance communication. For the first few HTTP articles we will focus on the separation of layers as defined in the TCP/IP model. HTTP has been defined to communicate information between two pieces of software via HTTP messages. The way we shape and design these messages has consequences on the client (the browser for example), the server (web site) and their intermediaries (the proxy).</p>
+
+<h2 id="telnet">Let&#39;s reach a server</h2>
+
+<p>Port 80 is the default port for connecting to a Web server.  We can try this ourselves using the shell. Open your terminal/command line and try opening a connection to <code>www.opera.com</code> on port 80 using the following command:</p>
+
+<pre><code>telnet www.opera.com 80</code></pre>
+
+<p>You should get an output like so:</p>
+
+<pre><code>Trying 195.189.143.147...
+Connected to front.opera.com.
+Escape character is &#39;^]&#39;.
+Connection closed by foreign host.
+</code></pre>
+
+<p>We can see that the terminal is trying to communicate with the server located at IP address <code>195.189.143.147</code>. If we don&#39;t do anything else the server will close the connection by itself. It is entirely possible to use a different port and a different communication protocol, but these are the most common.</p>
+
+<h2 id="http">Let&#39;s speak a bit of HTTP</h2>
+
+<p>Let&#39;s try again to communicate with the server. Enter the following message into your terminal/command line:</p>
+
+<pre><code>telnet www.opera.com 80</code></pre>
+
+<p>Once this is done and the communication is established, type the following HTTP message quickly (before the connection automatically closes), then press enter/return twice:</p>
+
+<pre><code>GET / HTTP/1.1
+Host: www.opera.com</code></pre>
+
+<p>This message specifies:</p>
+
+<ul>
+  <li><code>GET</code>: That we wish to <code>GET</code> a representation of information.</li>
+  <li><code>/</code>: That the information we want to get at is stored at the root of the site.</li>
+  <li><code>HTTP/1.1</code>: We are speaking using <code>HTTP</code> version 1.1.</li>
+  <li><code>Host:</code>: I&#39;m trying to reach a specific site.</li>
+  <li><code>www.opera.com</code>: the name of the site is www.opera.com.</li>
+</ul>
+
+<p>Now it is time for the server to answer. You should see the terminal window fill up with content along these lines:</p>
+
+<pre><code>HTTP/1.1 200 OK
+Date: Wed, 23 Nov 2011 19:41:37 GMT
+Server: Apache
+Content-Type: text/html; charset=utf-8
+Set-Cookie: language=none; path=/; domain=www.opera.com; expires=Thu, 25-Aug-2011 19:41:38 GMT
+Set-Cookie: language=en; path=/; domain=.opera.com; expires=Sat, 20-Nov-2021 19:41:38 GMT
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+…</code></pre>
+
+<p>Here the server is saying: &quot;I speak <code>HTTP</code> version 1.1. Your request was successful, so I have responded with the code <code>200</code>.&quot; The <code>OK</code> string is optional and meant for explaining what this code means to humans — in this case, everything is ok and our message has been accepted. A series of <code>HTTP headers</code> are then sent to describe what the message is, and how it should be understood. Finally, the contents of the page located at the root of the site is included, beginning with <code>&lt;!DOCTYPE html&gt;</code>. The list of HTTP verbs and codes will be explained in the next few articles.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/8112/opera-http-intro-devopera-2.jpg" alt="HTTP request and response" /></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>We just talked HTTP — it is as simple as that! We sent a message (exactly like writing a letter) and we received an answer because our message was understood. Next time we will explore in detail what some of these headers mean and what they can be used for.</p>
+
+
+      <section id="author-info">
+        <h1><a href="../../../author/karlcow.html" rel="author">karlcow</a></h1>
+        <a href="../../../author/karlcow.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/40/66e/f3f1e886d929a8d880956b5cfaf3902947d.jpg" alt=""/></a>
+        <p>Karl is working from Montréal, Canada. It has been participating to the Web since its inception under different roles including Web designer, CTO, W3C staff, translations volunteer, bits pusher, http poet, …</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-81139162">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Wednesday, February 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>My biggest HTTP1.1 mystery are trailer headers. People always told me it is not possible to send more headers once the content begins to transfer, but trailer headers seem to neglect it. Also I haven&#39;t found a way to add trailer header in PHP. Luckily, there is at least a method to add trailer header in Node.js :) - Would be nice to know a way in PHP though.</section>
+    </li>
+    <li id="comment-82423442">
+      <a href="../../../author/vgrigory.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6f/354/9c79460ff8cecd5896b1ba519cb49eaf5c8.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/vgrigory.html">Vahagn Grigoryan</a></p>
+      <p class="commentdate">Wednesday, February 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>thanks for the article, waiting for next ones.</section>
+    </li>
+    <li id="comment-82823272">
+      <a href="../../../author/mwapechisenga.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e2/25a/e177cc46ea7ba0c24a0e157e7ee386fcae7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mwapechisenga.html">mwape solei chisenga</a></p>
+      <p class="commentdate">Sunday, February 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>its a great article.</section>
+    </li>
+    <li id="comment-84032232">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Sunday, March 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I  hope new HTTP article is coming soon :)</section>
+    </li>
+    <li id="comment-84053112">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, March 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>We will see what we can do, to get a new one up soon. Karl has been busy at a bunch of conferences recently...</section>
+    </li>
+    <li id="comment-87090402">
+      <a href="../../../author/idownload.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5e/409/acc6090236b02d5cd71d9af667c1e441176." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/idownload.html">idownload</a></p>
+      <p class="commentdate">Thursday, April 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><h1> good work </h1></section>
+    </li>
+    <li id="comment-88886512">
+      <a href="../../../author/allogarage.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ac/622/5dbec5b20f7f0c1911a29794d3663d87828.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/allogarage.html">Nicolas Chevallier</a></p>
+      <p class="commentdate">Monday, May 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Good introduction, I expect the following as many others :)</section>
+    </li>
+    <li id="comment-90224062">
+      <a href="../../../author/lollo10.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3e/c11/544a713c575cb26cabb872fe139af80cd35.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lollo10.html">Lollo Andersen</a></p>
+      <p class="commentdate">Tuesday, May 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>nice illustration :)</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/karlcow.html" rel="author">karlcow</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, February 1, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/client.html" rel="tag">client</a></li>
+        <li><a href="../../tags/HTTP.html" rel="tag">HTTP</a></li>
+        <li><a href="../../tags/httpbasic.html" rel="tag">httpbasic</a></li>
+        <li><a href="../../tags/protocol.html" rel="tag">protocol</a></li>
+        <li><a href="../../tags/server.html" rel="tag">server</a></li>
+        <li><a href="../../tags/tcp%252Fip.html" rel="tag">tcp/ip</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Working with downloads - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Working with downloads</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>With the <a href="downloads.html">downloads API</a>, you have the ability to initiate, close, search and monitor downloads. It also gives your extension the ability to open the downloads folder or even the downloaded file itself.</p>
+
+<h2 id="manifest_specifications">Manifest specifications</h2>
+
+<p>You need to list ‘downloads’ under permissions field in the manifest to enable the extension to work with the downloads API, like so :</p>
+<pre class='prettyprint'>{
+  ...
+  "permissions": ["downloads"],
+  ...
+}</pre>
+<h2 id="the_downloaditem_type">The DownloadItem type</h2>
+
+<p>Any downloaded item will be of the <a href="downloads.html#type-DownloadItem"><code>DownloadItem</code></a> type. This object will contain all pertinent information about the downloaded item such as its filename, URL, start time, the total bytes downloaded until now, and other information such as estimated time when the download will end, its MIME type, whether the download can be resumed or not, etc. See the documentation for detailed information on the <code>DownloadItem</code> type.</p>
+
+<h2 id="starting_a_new_download">Starting a new download</h2>
+
+<p>You can start a download by using the <a href="downloads.html#method-download"><code>download()</code></a> function. For example,</p>
+<pre class='prettyprint'>chrome.downloads.download({url: &quot;http://example.org/example.zip&quot;});
+</pre>
+<p>Of course, you can introduce more arguments to specify how exactly should the download operate, for example if you want the <em>Save As</em> download to appear then you can list it in the options. Also, you can have a callback function, like so:</p>
+<pre class='prettyprint'>
+chrome.downloads.download({
+  url: &quot;http://example.org/example.zip&quot;, 
+  filename: &#39;download.zip&#39;, 
+  saveAs: true}, 
+   function(downloadId){
+     if (typeof downloadId !== &quot;undefined&quot;){ // If &#39;downloadId&#39; is undefined, then there is an error - so making sure it is not so before proceeding.
+       console.log(&#39;Download initiated, id is: &#39;+downloadId);
+  }
+});</pre>
+<h2 id="searching_existing_downloads">Searching existing downloads</h2>
+
+<p>You can search existing downloads using the <a href="downloads.html#method-search"><code>search()</code></a> function. You can list various options to specify your search criteria. For example, to list the last 5 downloads descending order (that is, most recent at the top), we could write the following:</p>
+<pre class='prettyprint'>
+chrome.downloads.search(
+	{orderBy: [&#39;-startTime&#39;], limit: 5},
+	function (downloadedItem) {
+		for (var i =0; i&lt; downloadedItem.length; i++){
+			console.log(&quot;URL is: &quot;+downloadedItem[i].filename);
+		}
+	}
+);
+</pre>
+<p>You can use other criteria like the URL, filename, file size etc. One that is particularly useful is searching by the ID of the downloaded item, as the ID of the item is needed for executing other functions like <a href="downloads.html#method-pause">pausing</a>, <a href="downloads.html#method-cancel">cancelling</a> or <a href="downloads.html#method-resume">resuming</a> downloads. You can also <a href="downloads.html#method-show">open the folder</a> or <a href="downloads.html#method-open">open the actual downloaded file</a> provided you know the download id.</p>
+
+<h2 id="working_with_events">Working with events</h2>
+
+<p>You also have access to certain events that can be very helpful. In particular, <a href="downloads.html#event-onCreated"><code>onCreated</code></a> and <a href="downloads.html#event-onChanged"><code>onChanged</code></a>. You can use the <code>onCreated</code> event in the background script like so:</p>
+<pre class='prettyprint'>
+chrome.downloads.onCreated.addListener(function (e) {
+	console.log(&quot;New Download created. Id:&quot;+e.id+&quot;, URL: &quot;+e.url+&quot;, fileSize:&quot;+e.fileSize);
+});
+</pre>
+<p>You can monitor downloads and work on them whenever their state changes using the <code>onChanged</code> event. For example, to detect whenever a download completes, you can write the following in the background script:</p>
+<pre class='prettyprint'>
+chrome.downloads.onChanged.addListener(function (e) {
+	if (typeof e.state !== &quot;undefined&quot;) {
+		if (e.state.current === &quot;complete&quot; ){
+			console.log(&quot;download id&quot;+e.id+&quot; has completed.&quot;);
+		}
+	}
+});
+</pre>
+<p><a href="samples/DownloadsAPI.nex">Download our sample extension</a> which makes use of the API methods and events to show you the last five downloaded files as well as information about new downloads.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

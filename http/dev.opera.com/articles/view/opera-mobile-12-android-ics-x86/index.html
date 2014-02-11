@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Mobile 12 for x86 architectures - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Mobile 12 for x86 architectures</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <h2>Introduction</h2>
+
+<p>At the <a href="http://www.intel.com/content/www/us/en/intel-developer-forum-idf/idf-2012.html">Intel Developer Forum</a> in September 2011, Opera unveiled a first demo build of Opera Mobile for Android running on an Intel Oak Trail-powered (Atom Z670) Green Ridge tablet with Ice Cream Sandwich OS installed. This marked the first public viewing of a native Android application running on x86 architecture.</p>
+
+<p><a href="http://software.intel.com/en-us/videos/channel/android/opera-mobile-on-an-intel-atom-based-tablet-running-android-os-at-idf-2011/1211396084001">View a video demo of Opera&#39;s Phillip Grønvold demonstrating Opera Mobile on x86 Android</a>.</p>
+
+<h2>Introducing Opera Mobile 12 for x86 Android devices</h2>
+
+<p>We are now proud to release our experimental x86 Android build of Opera Mobile publicly. This has most of the features of our regular Android Opera Mobile, including:</p>
+
+<ul>
+  <li>Leading support for modern web standards, such as
+    <ul>
+      <li>A comprehensive set of CSS3 and HTML5 features</li>
+      <li>WebGL</li>
+      <li>getUserMedia</li>
+      <li>Device APIs</li>
+    </ul>
+  </li>
+  <li>No checker-boarding effect</li>
+  <li>Butter smooth scrolling</li>
+</ul>
+
+<h2>Download</h2>
+
+<p>To install this experimental Opera 12 build, browse your x86 Android device to <a href="http://www.opera.com/download/get.pl?sub=++++&amp;id=34411&amp;location=270&amp;nothanks=yes">Opera 12 for x86 Android devices</a>.</p>
+
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-88357212">
+      <a href="../../../author/Khaled-Khalil.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b4/b1b/52b3d97fc8e0b87856501d5b29569005445.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Khaled-Khalil.html">Khaled Khalil</a></p>
+      <p class="commentdate">Sunday, April 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is it possible to install it on a regular Linux desktop, Linux mint for example ?<br/>Or does it depend on libraries only available on Android ?</section>
+    </li>
+    <li id="comment-91059932">
+      <a href="../../../author/juebulb.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d1/b68/c295da5a5a72a43bfb34336bddcec198196.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/juebulb.html">JUE BULB</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Yah, could also work on mobile devices?<br/><br/>Just like the android mobiles.<br/><br/>cozailman.8m.com/project/almost_done.html<br/><br/>Jue Bulb.</section>
+    </li>
+    <li id="comment-91818392">
+      <a href="../../../author/wangliangmin.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2c/88e/2b7d628195ed3524ee973331480f611dd15." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/wangliangmin.html">wangliangmin</a></p>
+      <p class="commentdate">Wednesday, June 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I could install this app into a real x86 Android device, but I got this error when trying to install this app into x86 Android emulator (ICS).<br/>Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES]</section>
+    </li>
+    <li id="comment-96601412">
+      <a href="../../../author/megaf.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f5/5c4/585ac3dd746fbd13e1aa9b86463092a084a.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/megaf.html">Megaf</a></p>
+      <p class="commentdate">Sunday, September 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi, First things first, im running Android 4.0.4 on an EeePC 701 (Celeron @ 630 Mhz) 1 GB RAM, its running pretty fast and smooth,.<br/>Im able to download and install Opera Mobile, but when I try to run it, it show a white screen with Opera Mobile logo and then it closes. How can I help you?</section>
+    </li>
+    <li id="comment-98143402">
+      <a href="../../../author/hermanxp3.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b9/ae9/db55400665a1610c48eb1b4b303cac810d0.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/hermanxp3.html">Hermanxp</a></p>
+      <p class="commentdate">Tuesday, October 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>nice ...it.... ok on acer d260 with ics 4.04 rc2</section>
+    </li>
+    <li id="comment-100987642">
+      <a href="../../../author/purplet.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6b/faa/e0a0fa3f5e1a51def3fbaca66033e18b316." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/purplet.html">purplet</a></p>
+      <p class="commentdate">Friday, December 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thats getting opera on razr i from zero to hero!<br/>Thank you for the outstanding work and keep going with it!</section>
+    </li>
+    <li id="comment-104777262">
+      <a href="../../../author/darleenka.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d0/7c1/c748bd1bc19432472e4da447395c404797a." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/darleenka.html">Jane Derleenka</a></p>
+      <p class="commentdate">Friday, March 8, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera is the best folks.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, February 27, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/android.html" rel="tag">android</a></li>
+        <li><a href="../../tags/ice&#32;cream&#32;sandwich.html" rel="tag">ice cream sandwich</a></li>
+        <li><a href="../../tags/ics.html" rel="tag">ics</a></li>
+        <li><a href="../../tags/intel.html" rel="tag">intel</a></li>
+        <li><a href="../../tags/opera&#32;mobile&#32;12.html" rel="tag">opera mobile 12</a></li>
+        <li><a href="../../tags/x86.html" rel="tag">x86</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

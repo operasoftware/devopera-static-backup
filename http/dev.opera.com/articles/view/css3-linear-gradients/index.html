@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS3 linear gradients - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>CSS3 linear gradients</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <div class="note">
+<h2>Article update: 12th December 2012</h2>
+<p>The article has been updated to cover the gradient syntax covered in the (at the time of writing) latest <a href="http://dev.w3.org/csswg/css3-images/#linear-gradients">Image Values and Replaced Content Module Level 3</a> specification, dated June 12th 2012.</p>
+</div>	
+	<h2>Introduction</h2>
+	
+	<p>For as long as we can remember, we have used colour gradients on the Web to brighten things up, and add class to designs. If you want to create a fantastic looking button, panel, gauge, progress bar or other UI feature, a gradient is the way to go.</p>
+	
+	<p>Up until now, we have always used repeated background images to create gradient effects. The CSS is simple, and creating a gradient using Photoshop, Fireworks, or another graphics tool is not hard. However, doing it this way is rather inflexible, given that if you want to vary the colour scheme or other features of the gradient, you need to go back to your graphics tool and create another image! Wouldn&#39;t it be better if you had complete control over the gradients using CSS?</p>
+	
+	<p>CSS3 comes to the rescue with the <a href="http://www.w3.org/TR/2011/WD-css3-images-20110217/">CSS Image Values and Replaced Content Module Level 3</a>: part of this module defines CSS gradients, which allow us to create any gradients we want using only CSS. In this article I will explore how to use linear and repeated linear gradients, which are supported across Opera 11.10+, Firefox 3.6+, Safari 5.03+ and Chrome 7+.</p>
+	
+	<p class="note">Note: <a href="http://dev.w3.org/csswg/css3-images/#radial-gradients">Radial gradients</a> are covered in the article <a href="../css3-radial-gradients/index.html">CSS3 radial gradients</a>.</p>
+	
+	<h2>Creating gradients</h2>
+	
+	<p class="note">I have included some simple examples for you to play with in my <a href="../../../../devfiles.myopera.com/articles/5042/linear-gradient-demo.html">linear gradients demo</a>. Download this example and play with different values as you read through the sections below.</p>
+	
+	<p>To create a basic linear gradient, you need to provide a start point and an end point, like so:</p>
+	
+	<pre><code>background-image: linear-gradient(rgb(100,100,100),rgb(200,200,200));</code></pre>
+	
+	<p>This creates a simple gradient that goes from a darker grey at the top of the element the gradient is applied to, down to a lighter grey at the bottom, as seen in Figure 1. Here I&#39;m applying it to a simple article element, but you can apply it to any block level element you like.</p>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/5042/css-linear-gradient_example.png" alt="a really basic CSS3 linear gradient" /></p>
+	<p class="comment">Figure 1: A really basic CSS3 linear gradient.</p>
+	
+<p>So why is the gradient applied as a background image and not a background colour, which might seem more appropriate? This is because of flexibility and familiarity. We always used to apply gradients using CSS background images, plus now you can use CSS multiple backgrounds to layer multiple images on top of gradients, if you like.</p>
+
+<p>Because gradients are background images however, you can — and should — specify a fall back background-color. Imagine your page has a white background, and you have a button with a gradient background and white text above it. To prevent older browsers displaying white text on the white background of the page, you can give your button a <code>background-color: gray</code> so the text remains readable and the button doesn&#39;t appear broken.  In modern browsers, the gradient will hide the color.</p>
+	
+	<h3>Varying the gradient angle</h3>
+    
+    <p>In the first example, we didn&#39;t specify any kind of direction or angle, and the gradient went from the top of the block to the bottom. This is the default, and is equivalent to writing this:</p>
+    
+    <pre><code>background-image: linear-gradient(<strong>to bottom,</strong>rgb(100,100,100),rgb(200,200,200));</code></pre>
+    
+    <p>So the angle goes at the start of the gradient information, separated by the colours by a comma. You can make the gradient go across the block from the top, bottom, left or right, by changing the keywords appropriately as seen in figure 2.</p>
+    
+	<p><img src="../../../../devfiles.myopera.com/articles/5042/css-linear-gradient_angles.png" alt="Altering the angle keyword between to bottom, to top, to right, and to left, respectively" /></p>
+	<p class="comment">Figure 2: altering the angle keyword between <code>to bottom</code>, <code>to top</code>, <code>to right</code>, and <code>to left</code>, respectively.</p>
+	
+	<p>You can also use values of <code>to top left</code>, <code>to top right</code>, <code>to bottom left</code> and <code>to bottom right</code>: these make the gradient start from that corner, and run towards the opposite corner of the box.</p>
+	
+	<p>The other way to set gradient angles is through a degree value, for example:</p>
+	
+	<pre><code>background-image: linear-gradient(<strong>0deg,</strong>rgb(100,100,100),rgb(200,200,200));</code></pre>
+	
+	<ul>
+	  <li><code>0deg</code> is equivalent to <code>to top</code>.</li>
+	  <li><code>90deg</code> is equivalent to <code>to right</code>.</li>
+	  <li><code>180deg</code> is equivalent to <code>to bottom</code>.</li>
+	  <li><code>270deg</code> is equivalent to <code>to left</code>.</li>
+	  <li><code>360deg</code> brings you back to <code>to top</code> again.</li>
+	  </ul>
+	  
+	  <p>This gives you a good idea of how the degree values work. Try playing with them and seeing what you come up with!</p>
+	
+	<h2>Colour stops</h2>
+	
+	<p>A colour stop is simply a position along the gradient that has a specific colour. You can specify as many colours as you like along a gradient, and the browser will calculate all the colours between those stops. Let&#39;s look at an example, which creates a gradient running from top left to bottom right, changing colour from a lighter red to a darker red:</p>
+	
+	<pre><code>background-image: linear-gradient(to bottom right,rgb(255,0,0),rgb(150,0,0));</code></pre>
+	
+	<p>This is equivalent to the following:</p>
+	
+	<pre><code>background-image: linear-gradient(to bottom right,rgb(255,0,0) 0%,rgb(150,0,0) 100%);</code></pre>
+	
+	<p>So here we have one colour stop at 0%, and one at 100% of the way across the block the element is applied to. But there is no point writing these, as this is the default. Instead, it is a lot more useful to add colour stops in between the start and end. For example:</p>
+	
+	<pre><code>background-image: linear-gradient(to bottom right,rgb(255,0,0),rgb(100,0,0) 50%,rgb(50,0,0) 75%,rgb(150,0,0));</code></pre>
+	
+	<p>Here we are starting with a really light red, then going to a darker red at 50%, an even darker one at 75%, and then then a slightly lighter one at 100%. This gives us the result shown in Figure 3.</p>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/5042/css-linear-gradient_multiple-stops.png" alt="a linear CSS gradient with multple colour stops" /></p>
+	<p class="comment">Figure 3: A linear CSS gradient with multiple colour stops.</p>
+	
+	<p>Doing it with percentages is really cool, and shows how versatile CSS gradients are. The conditions in the code will always be true, even if you have a liquid layout where the box the gradient is applied to changes width or height as the browser window is resized.</p>
+	
+	<p>If you want to, you can also use pixels or other fixed CSS unit values instead of the percentages. For example:</p>
+	
+	<pre><code>background-image: linear-gradient(to bottom right,rgb(255,0,0),rgb(100,0,0) 100px,rgb(50,0,0) 200px,rgb(150,0,0));</code></pre>
+	
+	<p>This means the colour stops will always occur 100 and 200 pixels from the start of the gradient, regardless of how much you resize the browser window. You can vary the position of the beginning and end colour stops as well if you want - they don&#39;t need to appear at the beginning and end of the block! In such a case, the space before the beginning colour stop will be a solid block of that colour, and the space after the end colour stop will be a solid block of the end colour. For example, try something like:</p>
+	
+	<pre><code>background-image: linear-gradient(90deg,rgb(100,100,100) 50% ,rgb(200,200,200) 75%);</code></pre>
+	
+	<p>and you&#39;ll get something like Figure 4.</p>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/5042/css-linear-gradient_colour-stops.png" alt="Moving the start and end colour stops." /></p>
+	<p class="comment">Figure 4: Moving the start and end colour stops.</p>
+	
+	<h3>Transparency gradients</h3>
+	
+	<p>One really cool technique to consider is varying the alpha channel value of the colour along the gradient. For example:</p>
+	
+	<pre><code>background-image: linear-gradient(to right,rgba(100,100,100,1),rgba(100,100,100,0.5));</code></pre>
+	
+	<p>Here we are using RGBA colours, with an alpha channel value of 1 at the start of the gradient, and 0.5 at the end. I&#39;ve not touched the red, green and blue values, but I&#39;ve ended up with a really cool effect as shown in Figure 5.</p>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/5042/css-linear-gradient_transparency.png" alt="Varying transparency along a gradient to give a cool semi-seethrough effect." /></p>
+	<p class="comment">Figure 5: Varying transparency along a gradient to give a cool semi-seethrough effect.</p>
+	
+	<h2>Repeating linear gradients</h2>
+	
+	<p>Instead of <code>linear-gradient</code>, you can use <code>repeating-linear-gradient</code>: this takes the colour stop values and repeats them endlessly. It doesn&#39;t make much sense to do this with percentage values, but with pixels and other units, it can create some cool effects. For example:</p>
+	
+	<pre><code>background-image: repeating-linear-gradient(70deg,rgb(255,0,0),rgb(100,0,0) 20px, rgb(255,0,0) 40px);</code></pre>
+	
+	<p>Here we are starting at a bright full red, moving to a darker red after 20 pixels, then moving back to the full red at 40 pixels. Then, because it is a repeating gradient, it keeps repeating this pattern until the end of the block. The above example looks something like Figure 6.</p>
+	
+	<p><img src="../../../../devfiles.myopera.com/articles/5042/css-linear-gradient_repeating.png" alt="A repeating gradient example" /></p>
+	<p class="comment">Figure 6: A repeating gradient example.</p>
+
+              <h2>Browser support, and old syntax</h2>
+
+<p>Note that the newest versions of Opera, Firefox and IE all support the current syntax of linear gradients, without prefixes, while WebKit-based browsers still require the old syntax. For compatibility with older browser versions and -Webkit- versions, you should consider including vendor prefixes versions of the property, all including the older syntax. This is basically the same, except:</p>
+
+<ul>
+  <li>The direction keywords are the opposite way round and don&#39;t include the word <code>to</code>. So <code>top left</code> is equivalent to <code>to bottom right</code>, <code>bottom</code> is equivalent to <code>to top</code>, and so on.</li>
+  <li>When signifying angles for directions, you need to do some recalculation, as <code>0deg</code> used to mean horizontal towards the right (equivalent to <code>left</code>), and now it means vertical and upwards (equivalent to <code>to top</code>).
+</li></ul>
+
+<p>So a full cross browser block that also looks after older browser syntax would something like this:</p>
+
+<pre><code>background-image: -webkit-repeating-linear-gradient(20deg,rgb(255,0,0),rgb(100,0,0) 20px, rgb(255,0,0) 40px);
+  background-image: -moz-repeating-linear-gradient(20deg,rgb(255,0,0),rgb(100,0,0) 20px, rgb(255,0,0) 40px);
+  background-image: -ms-repeating-linear-gradient(20deg,rgb(255,0,0),rgb(100,0,0) 20px, rgb(255,0,0) 40px);
+  background-image: -o-repeating-linear-gradient(20deg,rgb(255,0,0),rgb(100,0,0) 20px, rgb(255,0,0) 40px);
+  background-image: repeating-linear-gradient(70deg,rgb(255,0,0),rgb(100,0,0) 20px, rgb(255,0,0) 40px);
+}</code></pre>	
+
+	<h2>More involved examples</h2>
+	
+	<p>My Opera team mate Vadim Makeev over in St. Petersburg has created a really cool <a href="http://people.opera.com/pepelsbey/experiments/apple-menu/">Apple button menu example</a>, see Figure 7.</p>
+	<p><img src="../../../../devfiles.myopera.com/articles/5042/css-linear-gradient_apple-menu-button.png" alt="Cool push buttons created using CSS dropshadows and gradients" /></p>
+	<p class="comment">Figure 7: Cool push buttons created using CSS drop shadows and gradients.</p>
+	
+	<p>The explanation he includes below the example makes it very easy to see how it&#39;s done, and this just shows what cool things we can now produce with nothing but a little bit of CSS sparkle.</p>
+	
+	<p class="note">Lea Verou also has some nice CSS gradient examples available, such as <a href="http://lea.verou.me/2010/12/checkered-stripes-other-background-patterns-with-css3-gradients/">Checkerboard, striped &amp; other background patterns with CSS3 gradients</a> and <a href="http://lea.verou.me/2011/03/beveled-corners-negative-border-radius-with-css3-gradients/">Beveled corners &amp; negative border-radius with CSS3 gradients</a>.</p>
+	
+	<h2>Summary</h2>
+	
+	<p>And thus ends our brief foray into linear CSS gradients. I hope you found this article useful, and I&#39;m looking forward to seeing how you make use of this great new feature!</p>
+
+<h2 id="readmore">Read more...</h2>
+<ul>
+  <li><a href="../css3-radial-gradients/index.html">CSS3 radial gradients</a></li>
+  <li><a href="../css3-border-background-boxshadow/index.html">CSS3 borders, backgrounds and boxes</a></li>
+</ul>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=935352">My Opera</a>.</p>
+  <ul>
+    <li id="comment-86748682">
+      <a href="../../../author/cartygades.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/30/2c5/ee3881e1ff8047dc7c30bcf3b0e8ae59a13." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cartygades.html">cartygades</a></p>
+      <p class="commentdate">Saturday, April 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi <br/>I used to look up much on Dev.Opera, but no matter what I use from it, nothing seems to work. Thus, I wonder what these tutorials are for... are they for &quot;Opera&quot; or any other browser?<br/><br/>Sorry, but these things do nothing, Opera is not displaying ANY gradients, nor does it follow the transition CSS !!<br/><br/>So when reading an &quot;A&quot; .. how shall I understand it ... as a B, or a G, maybe an X ???<br/><br/>I have no problem styling for any other Browser (even the nasty IE8) but no matter what Opera tutorial I follow .. - Opera seems to be as moody as my already 25 year long dead grandmother ;-) ... and that is as moody as moody can possibly get! <br/><br/>Cheers<br/><br/>PS:<br/>I am on a iMac 10.6.4 Snow Leopard and have Opera version 10, build 6652 installed. This is the best version so far all others have just far too many issues. I wonder if it&#39;s a good idea to promote Opera anyway. It&#39;s a nightmare to write CSS that works in 258 different Opera versions. My CSS works in almost every version of a Google Chrome, FireFox, Safari, even works in IE7 and 8... Just Opera - I&#39;d need to writhe hundreds of different CSS, for every version of Opera, I need a different Hack .... GOSH, that makes Opera No. 1 and then .................. there is a long way to go to No.2 !<br/><br/>It&#39;s funny that you talk about &quot;web-standards&quot;! The emphasis is in the single &quot;s&quot; that indicates the plural. So, apart from keeping yourselves busy... what&#39;s the philosophy behind creating 1000s of standards??? Confusion and Frustration? That would be right, then. <br/><br/>For me, a standard is something that is &quot;Unique&quot; and in &quot;my&quot; dictionary (I still use the old one, not the modern one like Mark and all the other self-announced Einsteins are using), &quot;unique&quot; would mean &quot;one single version&quot;! ;-) Hence, when talking standards, we stuffed ourselves already up since ether really shouldn&#39;t be more than one. But then again, I may use a too old dictionary.<br/><br/>Sorry Folks, but that&#39;s a fact!</section>
+    </li>
+    <li id="comment-86972132">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Tuesday, April 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@cartygades thanks for your comment. What examples exactly are you having a problem with? Opera supports all the same standards as the other browsers (we are slightly behind on 3D transforms, but catching up). I have retested all the gradient, transition, etc. examples we have published and they all work fine across browsers. Have you got any specific test cases you&#39;d like to share?<br/><br/>As for your comment on the meaning of &quot;web standards&quot; - there are multiple standards because they are different technologies that have different uses. The &quot;standard&quot; part refers to consistent implementations across all browsers.</section>
+    </li>
+    <li id="comment-93434512">
+      <a href="../../../author/the-Arioch.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/74/f35/0904aece5b50d636a55aebd89aa91959c83.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/the-Arioch.html">Burov Dmitry</a></p>
+      <p class="commentdate">Thursday, July 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>when would be browser-neutral liner-gradient implemented ?<br/><br/><a href="http://dev.w3.org/csswg/css3-images/#linear-gradients" target="_blank">http://dev.w3.org/csswg/css3-images/#linear-gradients</a><br/><a href="http://www.colorzilla.com/gradient-editor/" target="_blank">http://www.colorzilla.com/gradient-editor/</a></section>
+    </li>
+    <li id="comment-93775972">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Tuesday, July 31, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Burov - very soon! In a point release just around the corner ;-)</section>
+    </li>
+    <li id="comment-95255162">
+      <a href="../../../author/shreyg.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/10/ce8/93d8916c9f8e04e96e77be6e215984e8143." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/shreyg.html">shreyg</a></p>
+      <p class="commentdate">Friday, August 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@chris thanks for the article, really easy to understand and use.<br/><br/>@cartygades the reason you can&#39;t get these to work is because you are using Opera 10 which does not support linear gradients, they have only been supported from v11.10 onwards as it says at the start of the article.</section>
+    </li>
+    <li id="comment-103511492">
+      <a href="../../../author/rs79.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cc/9e8/ae250f7dcfb7f6da949b20aa09e29ce2bb4.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rs79.html">Richard Sexton</a></p>
+      <p class="commentdate">Thursday, February 7, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Where&#39;s the docs for how to alter gradient parameter in the DOM with js? Wherever it is it&#39;s not easily findable - I&#39;ve been looking all night to no avail.</section>
+    </li>
+    <li id="comment-103515512">
+      <a href="../../../author/rs79.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cc/9e8/ae250f7dcfb7f6da949b20aa09e29ce2bb4.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rs79.html">Richard Sexton</a></p>
+      <p class="commentdate">Thursday, February 7, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>There isn&#39;t one is there? It&#39;s just a string to _Background-image_ isn&#39;t it? <br/><br/>That is, there&#39;s nothing like<br/><br/>...style.gradient.color1<br/>...style.gradient.percent_opacity<br/><br/>is there?<br/><br/>That&#39;s really a little ugly. The while point of being able to alter one style element in the Dom at a time is what makes it so powerful. Having to compose that big ugly string is very inelegant. Or am I missing something?<br/><br/>Say you want some JavaScript change the first color only for example, what would be the clean way to do that?</section>
+    </li>
+    <li id="comment-113364712">
+      <a href="../../../author/rs79.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/cc/9e8/ae250f7dcfb7f6da949b20aa09e29ce2bb4.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rs79.html">Richard Sexton</a></p>
+      <p class="commentdate">Thursday, November 7, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hello? Is this thing on?<br/><br/>Do we know how to twiddle the gradient parameters in the DOM yet?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, March 17, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/11.10.html" rel="tag">11.10</a></li>
+        <li><a href="../../tags/CSS&#32;gradients.html" rel="tag">CSS gradients</a></li>
+        <li><a href="../../tags/css3.html" rel="tag">css3</a></li>
+        <li><a href="../../tags/gradients.html" rel="tag">gradients</a></li>
+        <li><a href="../../tags/linear.html" rel="tag">linear</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

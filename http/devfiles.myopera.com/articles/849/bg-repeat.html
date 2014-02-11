@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<!-- embedded and inline styles and scripts used for demo purposes and are not a best practice in actual site design and application development -->
+<style type="text/css">
+/* GENERIC RULES */
+body {
+	background:#eef;
+    color:#333;
+    font-family:'trebuchet ms', 'lucida grande', 'lucida sans unicode', arial, helvetica, sans-serif;
+    font-size:0.9em;
+	margin:20px;
+	padding:0;
+}
+a:link, a:visited {
+	color:#0082e0;
+	text-decoration:underline;
+}
+a:hover {
+	text-decoration:none;
+}
+div {
+	border:solid 1px #666;
+	font-family:arial;
+	font-weight:bold;
+	margin:5px 0;
+	padding:5px;
+	width:238px;
+}
+div p {
+	text-shadow:1px 1px 1px #fff, -1px 1px 1px #fff, 0px 1px -1px #fff, -1px -1px 1px #fff;
+}
+div code {
+	background:rgba(102, 102, 102, 0.8);
+	border:solid 1px #000;
+	color:#fff;
+	padding:0 3px;
+}
+
+/* BACKGROUND-REPEAT RULES */
+#content1 {
+	background:#fff url('http://devfiles.myopera.com/articles/849/brontosaurus.png') top left;
+	background-repeat:round;
+}
+#content2 {
+	background:#fff url('http://devfiles.myopera.com/articles/849/t-rex.png') top left;
+	background-repeat:space;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width:240px), screen and (max-device-width:240px) {
+	body {
+        margin:0;
+		width:240px;
+	}
+    p, ul {
+        margin:10px;
+    }
+    h1 {
+        font-size:1.4em;
+        margin:10px;
+    }
+    h2 {
+        font-size:1.2em;
+        margin:10px;
+    }
+}
+</style>
+<title>CSS3 Showcase - Demonstrating background-repeat</title>
+</head>
+<body>
+<header>
+	<h1>Demonstrating background-repeat</h1>
+</header>
+
+<section>
+	<div id="content1">
+		<code>background-repeat: round;</code>
+		<p>Apatosaurus was a tremendously large long-necked quadrupedal animal with a long whip-like tail. One measurement places the total length of Apatosaurus at 26 meters (85 ft) and its weight at 24-32 tons, roughly the weight of four elephants.</p>
+	</div>
+	
+	<p>Setting <code>background-repeat</code> to <code>round</code> results in the background image being resized to fit in the container a whole number of times. The above image is 100 pixels wide whereas the container is 238 pixels wide, so the image is automatically reduced in size so that it can fit in three times.</p>
+</section>
+
+<section>
+	<div id="content2">
+		<code>background-repeat: space;</code>
+		<p>Tyrannosaurus rex was one of the largest land carnivores of all time; the largest complete specimen, FMNH PR2081 ("Sue"), measured 12.8 metres (42 ft) long, and was 4.0 metres (13 ft) tall at the hips.</p>
+	</div>
+	
+	<p>Setting <code>background-repeat</code> to <code>space</code> results in whitespace being inserted between the background images to fit in the container a whole number of times. The above image is 100 pixels wide whereas the container is 238 pixels wide, so the image is displayed twice, equally spaced.</p>
+</section>
+
+<footer>
+	<h2>Credits</h2>
+	<ul>
+	<li>Interesting dinosaur facts from <a href="http://www.wikipedia.org">Wikipedia</a>.</li>
+	<li>Lovable dinosaur cartoons from Francesco "Architetto" Rollandin at <a href="http://openclipart.org">Open Clip Art</a>.</li>
+	</ul> 
+</footer>
+</body>

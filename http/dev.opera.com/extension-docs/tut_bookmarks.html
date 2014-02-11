@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Working with bookmarks - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Working with bookmarks</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>This article describes how to use the <a href="bookmarks.html">bookmarks API</a> to work with the browser’s bookmarks.</p>
+
+<h2 id="manifest">Manifest</h2>
+
+<p>To have access to the bookmarks, you first need to declare this in the manifest file by putting <em>bookmarks</em> in the <em>permissions</em> field, like so:</p>
+<pre class='prettyprint'>{
+  "name": "Bookmarks Extension",
+  ...
+  "permissions": [
+    "bookmarks"
+  ],
+  ...
+}</pre>
+<h2 id="the_bookmarks_api">The Bookmarks API</h2>
+
+<p>The bookmarks API can be accessed through <code>chrome.bookmarks.*</code> functions. These functions provide you with the ability to access the whole or part of the bookmarks tree, create, update or delete bookmarks, and even search for a part of the bookmarks tree depending on your search query.</p>
+
+<p>Note that you cannot remove or add anything from the root folder. In addition, there are two other folders, named ‘BookmarksBar’ and ‘Other Folder’, where you cannot rename, move or delete any entries.</p>
+
+<p>Before we dive into how to use the API functions, let’s take a look at an important object type we’ll need to work with.</p>
+
+<h3 id="the_bookmarktreenode_type">The BookmarkTreeNode Type</h3>
+
+<p>Think of the bookmarks system as a tree. If you’re familiar with a bit of computer science, then you will be knowing the concept of a <a href="http://en.wikipedia.org/wiki/Tree_%28data_structure%29">tree in relation to programming</a>.</p>
+
+<p>You can think of each node in the tree as a bookmark entry. This entry can be either an actual bookmark or a bookmark folder.</p>
+
+<p>Each node will have a certain set of properties. Some of these include the title, the URL (if it’s a bookmark), the date when it was added, etc. If it is a folder, then this node will have further children, so the subtree is exposed in these properties too.</p>
+
+<h3 id="listing_all_the_bookmarks">Listing all the bookmarks</h3>
+
+<p>Let’s see how to traverse the bookmarks tree and list all the bookmarks present in the browser. We will use the <code>chrome.bookmarks.getTree()</code> function to get the entire bookmarks tree and list the title and URL in a popup.</p>
+
+<p>Our popup.html page looks like:</p>
+<pre class='prettyprint'>
+var list = document.querySelector(&quot;#bookmarklist&quot;);
+
+chrome.bookmarks.getTree(function (bmTree) {
+	bmTree.forEach( function (node){
+		processNode(node);
+	});
+});
+
+
+function processNode(node) {
+	if (node.children){
+		if (node.parentId &amp;&amp; node.parentId != '0'){ /* We won't touch the root directory which has no parentId, as well as the 'BookmarkBar Folder' and the 'Other Folder' both of which have parentId as '0'. We'll cover everything else here */
+			list.innerHTML += &quot;&lt;li&gt;&quot;+node.title+&quot;(Folder)&lt;/li&gt;&lt;ul id=&quot;&quot;+node.id+&quot;&quot;&gt;&lt;/ul&gt;&quot;;
+		}
+		node.children.forEach(function(child){
+			processNode(child);
+		});
+	}
+	
+	if (node.url){
+		if (node.parentId){
+			var check = document.getElementById(node.parentId);
+		}
+		if (check){ /* If a folder exists with this id */
+			check.innerHTML += &quot;&lt;li&gt;&quot;+node.title+&quot;&lt;/li&gt;&quot;; /* Add the children as a list entry under that folder */
+		} else {
+			list.innerHTML += &quot;&lt;li&gt;&quot;+node.title+&quot;&lt;/li&gt;&quot;; /* Add a list entry under the main list */
+		}
+	}
+}
+</pre>
+<p>In the above code we have used a recursive function to go through all bookmark nodes. Whenever it finds a bookmark folder, it will go through its child nodes until it finds bookmark entries. It will keep adding the bookmark folders and bookmark entries along the way as it goes through them.</p>
+
+<p>You can <a href="samples/BookmarksAPI-1.nex">download the working extension</a> and have a play with it. A good exercise would be to add clickable links to the list so that a person could open that URL in a new tab when someone clicks on it.</p>
+
+<h3 id="creating_new_bookmark_entries">Creating new bookmark entries</h3>
+
+<p>You can create new bookmark entries (these can be either bookmarks or bookmark folders) by using the function <code>chrome.bookmarks.create()</code>. To create bookmarks on the first level, you will to have the specify the <code>parentId</code> as ‘1’. Let’s look at the following example:</p>
+<pre class='prettyprint'>
+chrome.browserAction.onClicked.addListener(function (tab)
+ chrome.bookmarks.create({"title": "Opera Extensions Resources", "parentId": "1"}, function (newEntry){
+  chrome.bookmarks.create({"title": "Opera Extensions Documentation", "url": "http://dev.opera.com/extension-docs/", "parentId": newEntry.id});
+   chrome.bookmarks.create({"title": "Opera Addons Gallery", "url": "http://addons.opera.com", "parentId": newEntry.id});
+		console.log("New Entry Added");
+   });	
+});
+</pre>
+<p>The above code will create a new folder called ‘Opera Extensions Resources’ and then create two bookmarks within that folder. Note that we mentioned the <code>parentId</code> as ‘1’ so that the folder is placed on the main quick access bar. Upon creation, a callback function is fired, where we can get the <code>id</code> of the newly created bookmark entry. In the above code we create two bookmarks and the set the <code>parentId</code> of it to the <code>id</code> of the bookmark folder we just created. This places the two bookmarks inside the newly created bookmark folder.</p>
+
+<p>You can <a href="samples/BookmarksAPI-2.nex">download the sample extension</a> for the above and tinker with the code yourself.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

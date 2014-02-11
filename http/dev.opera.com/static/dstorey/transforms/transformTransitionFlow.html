@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Simple transform transition example showing document flow</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+        	h1 {
+	 			font:  18px "Helvetica Neue", arial, sans-serif;
+			}
+        	
+        	p {
+				border: 1px dashed silver;
+				padding: 0.5em;
+				border-radius: 0.5em;
+				font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+				background-color: rgb(254, 250, 218);
+				max-width: 44em;
+				margin-bottom: 0;
+			}
+			
+			div {
+				background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+			}
+    	    div:nth-of-type(1) {    
+    		    -o-transform: translate(50px, 100px);  -webkit-transform: translate(50px, 100px);
+    		    transform: translate(50px, 100px);
+            }
+            
+            div:nth-of-type(2) {    
+    		    background-color: blue;
+            }
+
+            
+      </style>
+  </head>
+  <body>
+  		<h1>Simple CSS transform translate example highlighting document flow</h1>
+  		<p>This demo highlights how the document flow is not effected by a CSS transform. The red <code>div</code> has been moved 50px to the left and 100px down from its original position. The blue <code>div</code> clears the original position of the red <code>div</code> as it is a block level element. Although the red <code>div</code> has been moved, the blue <code>div</code> doesn't flow into the position vacated by the red <code>div</code>, as if the red <code>div</code> was in its original position.</p>
+  		<div></div>
+  		<div></div>

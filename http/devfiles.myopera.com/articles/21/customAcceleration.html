@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01//EN'>
+<html>
+<head>
+<title>Opera Animation Library: Acceleration profiles</title>
+<style type="text/css">
+div#outer {
+  position: relative;   
+}
+#accelerate {
+  position: absolute; 
+  left: 0px;
+  top: 0px;
+  background: red;
+  width: 50px;
+  height: 50px;
+}
+
+#linear {
+  position: absolute; 
+  left: 0;
+  top: 50px;
+  background: green;
+  width: 50px;
+  height: 50px;
+}
+
+#sine {
+  position: absolute; 
+  left: 0;
+  top: 100px;
+  background: blue;
+  width: 50px;
+  height: 50px;
+}
+
+</style>
+<script  type="text/javascript" src="http://devfiles.myopera.com/articles/21/animation.js" ></script>
+<script type="text/javascript">
+onload=function()
+{
+  var ele   = document.getElementById('accelerate');
+  var ele2 = document.getElementById('linear');  
+  var ele3 = document.getElementById('sine');
+  
+  var trans1 = ele.createAnimation();
+  var trans2 = ele2.createAnimation();
+  var trans3 = ele3.createAnimation();
+  trans1.speed = 1;
+  trans2.speed = 1;
+  trans3.speed = 1;
+  trans2.accelerationProfile = trans2.sine;
+  // add a custom acceleration profile
+  trans1.accelerationProfile=function(x){
+    var sp = 1/25;
+    if (x<25){
+      return sp+x/25;
+    } else {
+      return sp+1;;
+    }
+  };
+
+  document.getElementById('outer').onclick=function(){
+    if ((trans1.element.style.left == "") || (trans1.element.style.left=='0px' )){
+      trans1.addAnimation('left','0px', (document.getElementById('outer').offsetWidth-50)+'px').run();
+      trans2.addAnimation('left','0px', (document.getElementById('outer').offsetWidth-50)+'px').run();
+      trans3.addAnimation('left','0px', (document.getElementById('outer').offsetWidth-50)+'px').run();
+  } else {
+      trans1.addAnimation('left', (document.getElementById('outer').offsetWidth-50)+'px','0px').run();
+      trans2.addAnimation('left', (document.getElementById('outer').offsetWidth-50)+'px', '0px').run();
+      trans3.addAnimation('left', (document.getElementById('outer').offsetWidth-50)+'px','0px').run();
+    }
+  }
+}
+</script>
+</head>
+
+<body>
+<h1>Acceleration profiles</h1>
+    <p> is an accompanying example to the <a href="../../../dev.opera.com/libraries/animation/index.html">Opera Animation Library documentation</a>, demonstrating different acceleration profiles.</p>
+
+<p>Click on one of the squares to start a virtual race</p>
+<div id="outer">
+<div id="accelerate"></div>
+<div id="linear"></div>
+<div id="sine"></div>
+</div>
+</body>
+</html>

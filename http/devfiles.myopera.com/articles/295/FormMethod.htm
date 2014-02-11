@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <title>Form Help Method</title>
+    <link href="http://devfiles.myopera.com/articles/295/master.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="http://devfiles.myopera.com/articles/295/print.css" media="print" rel="stylesheet" type="text/css">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="Frank M. Palinkas, MCP, MCT, MCSE, MCDBA, A+" http-equiv="author">
+    <meta content="Microsoft MVP - Windows Help" name="affiliation">
+    <meta content="Senior Technical Communicator, Web Standards and Accessibility Designer" name="jobtitle">
+
+    <script type="text/javascript" src="http://devfiles.myopera.com/articles/295/formhelp.js"></script>
+
+</head>
+<body id="formmethod">
+    <div id="masthead">
+        <p id="header">
+            Calling Accessible Context-Sensitive Help with Unobtrusive DOM/JavaScript
+        </p>
+        <h1 id="topic">
+            Form Help Method</h1>
+    </div>
+    <div id="content">
+        <div class="border">
+            <h2>
+                Activating the Context-Sensitive Form Help</h2>
+            <h3>
+                Activate/Click the help icon to open form-level help in a popup window.</h3>
+            <h3>
+                Turn off scripting in your browser, refresh the web page, and then activate/click the same help icon again.</h3>
+            <h4>
+                The form-level help will open in a new browser window.</h4>
+            <form action="FormMethod.htm" method="post" id="enquiryform">
+                <fieldset>
+                    <legend>Enquiry Form</legend>
+                    <h3 class="form" title="help instructions">
+                        Activate/Click the icon to view help in a new window. <a rel="help" href="http://devfiles.myopera.com/articles/295/HelpExample.htm">
+                            <img src="http://devfiles.myopera.com/articles/295/help_small.gif" alt="help icon" title="Click to open help in a new window." width="16" height="16"></a></h3>
+                    <div>
+                        <label for="subject" title="Subject dropdown list">
+                            Subject <span class="req">(required)</span></label><br>
+                        <select name="subject" id="subject">
+                            <option value="">Select a Subject</option>
+                            <option value="Option 1">Help Authoring Tools</option>
+                            <option value="Option 2">Microsoft HTML Help</option>
+                            <option value="Option 3">Web-based Help</option>
+                            <option value="Option 4">Context-Sensitive Help</option>
+                        </select>
+                        <br>
+                        <label for="name" title="Name field">
+                            Name <span class="req">(required)</span></label><br>
+                        <input type="text" name="name" id="name"><br>
+                        <label for="email" title="Email field">
+                            Email <span class="req">(required)</span></label><br>
+                        <input type="text" name="email" id="email"><br>
+                        <label for="message" title="Message field">
+                            Message <span class="req">(required)</span></label><br>
+                        <textarea name="message" id="message" rows="6" cols="30"></textarea><br>
+                        <label for="updates" title="Updates checkbox">
+                            Send Me Updates <span class="req">(optional)</span>
+                        </label>
+                        <br>
+                        <input class="checkbox" type="checkbox" name="updates" id="updates" value="n">
+                    </div>
+                    <label for="submit" title="Click this button to submit your enquiry.">
+                        <input class="submit" type="submit" id="submit" value="Submit Enquiry"></label>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

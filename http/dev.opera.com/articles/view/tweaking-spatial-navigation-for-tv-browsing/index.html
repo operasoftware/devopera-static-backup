@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tweaking spatial navigation for TV browsing - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in TV - RSS 2.0 Feed" href="../../../feeds/rss/articles/tv">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in TV - Atom 1.0 Feed" href="../../../feeds/atom/articles/tv">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="tv">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Tweaking spatial navigation for TV browsing</h1>
+      <p class="print author">By Daniel Davis</p>
+
+      <p>One of the biggest challenges designing content for TVs is navigation. Not only are there several different methods that can be used to navigate a page, but none of them provide the perfect blend of convenience and practicality, at least not yet. At the time of writing, a user could be controlling their TV browsing session with any of the following devices:</p>
+
+<ul>
+    <li>A remote control with a D-pad (with keypad)</li>
+    <li>A remote control with a touchpad or similar (with full keyboard)</li>
+    <li>A gyroscopic mouse</li>
+    <li>An infrared pointer</li>
+    <li>A touchscreen mobile phone or tablet</li>
+</ul>
+
+<p>Currently the most widely used by far is the regular remote control with basic up, down, left, right and select buttons. Using directional controls like this is referred to as <dfn>spatial navigation</dfn> and is essential to understand to create a great TV experience. It is also the same navigational method used on mobile phones with keypads and non-touch devices such as Amazon&#39;s Kindle.</p>
+
+<h2>Testing spatial navigation</h2>
+
+<p>Beyond the browser on TVs and similar web-connected devices, spatial navigation is also available in Opera on its other popular platforms. Developers can easily test spatial navigation on their desktop machines:</p>
+
+<ul>
+    <li>In the <a href="http://www.opera.com/browser/">Opera desktop browser</a>, hold down the <kbd>Shift</kbd> button and press the arrow keys.</li>
+    <li>In the <a href="http://www.opera.com/developer/tools/mobile/">Opera Mobile emulator</a>, select <i>Keypad</i> in the launch settings window.</li>
+</ul>
+
+<p>An eye-opening exercise is to browse a few popular sites using only spatial navigation. Although it probably won&#39;t be impossible, it is likely to be frustrating with the cursor seeming to focus on elements at random. Television adds an extra layer of frustration and that&#39;s due to the infrared connection between the remote control and the TV. This causes a noticeable delay of up to half a second or so between pressing a button on the remote control and the cursor moving on the screen. Consequently, any mistake by the user or unexpected movement of the cursor is particularly expensive in terms of time wasted. Fortunately, we can alleviate a lot of this with CSS3.</p>
+
+<h2>Controlling navigation with CSS3</h2>
+
+<p>The <a href="http://www.w3.org/TR/css3-ui/#nav-dir">CSS3 Basic User Interface specification for directional focus navigation</a> is refreshingly simple both to explain and to implement. It&#39;s purpose is to enable you to specify which element should receive focus when a user presses one of the directional buttons. For example, if the user is focused on your copyright notice at the bottom of a page and presses the down arrow key, you could tell the cursor to focus on your logo at the top of the page. The CSS code for that would be something like this:</p>
+
+<pre><code>
+/* CSS */
+#copyright {
+    nav-down: #logo;
+}
+</code></pre>
+
+<p>Note that this can be applied to any CSS selector, but the property&#39;s value must be the <code>ID</code> of an element, i.e. preceded by #. Not surprisingly, other possible property names are <code>nav-up</code>, <code>nav-left</code> and <code>nav-right</code>. As you can see, it&#39;s a very straightforward enhancement to implement and although it won&#39;t be noticed by in a desktop or touchscreen environment, for users relying on D-pad to navigate, it can improve their experience remarkably. Just make sure you fully test it yourself before publishing, to avoid any nasty surprises.</p>
+
+<p class="note">Note: Often you will want to control the look of the spatial navigation highlight, or even suppress it completely. This can be done by manipulating the <code>outline</code> CSS property, so for example you could use <code>outline: 2px solid rgba(0,0,0,0.0);</code> to suppress the highlight.</p>
+
+<h2>Example</h2>
+
+<p>Here&#39;s an <a href="../../../static/articles/2011/tweaking-spatial-navigation-for-tv-browsing/index.html">example of spatial and CSS navigation</a>. It shows two identical groups of photos&#x2014;try using just the left and right arrows to move from photo to photo. The first group relies on the browser&#39;s spatial navigation algorithm whereas the second group uses CSS navigation, enabling the user to scroll through the photos with ease.</p>
+
+<h2>Conclusion</h2>
+
+<p>Particularly on devices with a simple set of directional keys, spatial navigation is a far more natural way of navigating a page than a simple &quot;jump to next/previous link&quot; approach – and with a sprinkling of CSS, developers can further tweak the order in which elements receive focus.</p>
+
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=1058342">My Opera</a>.</p>
+  <ul>
+    <li id="comment-80469692">
+      <a href="../../../author/Druid33.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c9/9c8/f6dbf689fe3b9d7f00ec704a0416b951f9d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Druid33.html">Druid33</a></p>
+      <p class="commentdate">Monday, January 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi,<br/><br/>thanks for documentation/manual about controling spatial navigation. Its very usefull for me, but...<br/><br/>i try to use css property nav-up,nav-left,... and i was stunned, that it doesn&#39;t work for me. But your example <a href="http://people.opera.com/danield/css3/navdir/" target="_blank">http://people.opera.com/danield/css3/navdir/</a> works fine. (I use opera 11.51 for linux)<br/>So i copy source from your example to my server and try it again. It works fine. <br/>I find diferent between my using of nav property and yours. You use css property float for img tag. And thats is important. It looks like, that without float property for img tag, css nav property doesnt work!<br/><br/>solution(for me):<br/>Add img tag in div and use css nav property on div like this: <br/>&lt;xmp&gt;&lt;div id=&quot;1&quot; style=&quot;nav-left:#8; nav-right:#2;&quot;&gt;&lt;img src=&quot;images/nasa1.jpg&quot; &gt;&lt;/a&gt;&lt;/div&gt;&lt;/xmp&gt;<br/><br/>div tag doesnt have other css properties</section>
+    </li>
+    <li id="comment-94240902">
+      <a href="../../../author/ArniArent.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e4/e72/94f7eab675be0b54a0671df70beae0573a8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ArniArent.html">ArniArent</a></p>
+      <p class="commentdate">Tuesday, August 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Ok, I have this working, but what is bothering me right now with this is the focus/hover/selection style of an image.<br/><br/>I can change how the selector looks for text links, but I cannot change the selector look for images, it&#39;s always blue border with a translucent blue fill.<br/><br/>Any ideas?<br/><br/>EDIT:<br/>Sorry, got it to work with:<br/>a img:hover { background: #f00; outline: rgba(0,0,0,0) thin solid; }<br/><br/>:) :) :)</section>
+    </li>
+    <li id="comment-100802812">
+      <a href="../../../author/lichangwei.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/34/e03/630ee2b26bbbb467125f8914de7b45edb94." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lichangwei.html">Li Chang Wei</a></p>
+      <p class="commentdate">Monday, December 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Can I let an element is focused automatically after loaded?</section>
+    </li>
+    <li id="comment-114068602">
+      <a href="../../../author/ahsanazam1234.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7f/632/18d309ae17954b021689561bc3ccd66cd0e." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ahsanazam1234.html">ahsanazam</a></p>
+      <p class="commentdate">Wednesday, December 18, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I just got to this amazing site not long ago. I was actually captured with the piece of resources you have got here. Big thumbs up for making such wonderful blog page! <br/><a href="http://cavemandietpaleo.com">Paleo</a><br/></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/tagawa.html" rel="author">Daniel Davis</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, July 25, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/css3.html" rel="tag">css3</a></li>
+        <li><a href="../../tags/devices.html" rel="tag">devices</a></li>
+        <li><a href="../../tags/tv.html" rel="tag">tv</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../tweaking-spatial-navigation-for-tv-browsing-ja/index.html">Japanese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

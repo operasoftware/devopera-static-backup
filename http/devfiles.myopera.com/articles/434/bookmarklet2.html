@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Bookmarklet example 2</title>
+</head>
+<body>
+    <h1>Bookmarklet example 2</h1>
+
+    <p><a href="javascript:(function(){var baseURL='http://steltenpower.com/feColorMatrix.svg';var values;if(location.href.substr(0,baseURL.length)==baseURL){values=document.getElementById('myFilterElement').getAttribute('values');}else{values='';}var defaultValues;if(values===''){defaultValues='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0';}else{defaultValues=values;}var newValues=prompt('matrix values for feColorMatrix please',defaultValues);if(newValues!=defaultValues){if(values===''){location.assign(baseURL+'?uri='+escape(location.href)+'&amp;values='+escape(newValues)+'&amp;title='+escape(document.title));}else{document.getElementById('myFilterElement').setAttribute('values',newValues);}}})();">Click me!</a></p>
+</body>
+</html>

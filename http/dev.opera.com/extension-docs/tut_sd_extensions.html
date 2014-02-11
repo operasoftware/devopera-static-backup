@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Speed Dial extensions - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Speed Dial extensions</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p><img alt='Speed Dial extensions' class='img-polaroid' src='static/images/Speed-Dial.jpg' /></p>
+
+<p>Back in 2007 we introduced the concept of <em>Speed Dial</em> to browsers. It has since turned out to be a hugely popular feature, so it makes sense to give extension authors the ability to add to it by giving them the ability to make Speed Dial extensions.</p>
+
+<p>Speed Dial extensions use an <em>opr.*</em> API instead of a <em>chrome.*</em> one. Also, they must be packaged in <em>.nex</em> format - if they are in any other format (including <em>.crx</em> they will not run).</p>
+
+<h2 id="manifest_specifications">Manifest specifications</h2>
+
+<p>The first thing to do is to specify in the manifest that you want the extension to be a Speed Dial extension. First you’ll need to mention “speeddial” in the “permissions” field. You also need to mention the Speed Dial page, which will also act as your background page. Another thing to note is that Speed Dial extensions, do <em>not</em> have permission to create other UI elements like a button or a popup etc.</p>
+
+<p>There is also a “speeddial” field in which you need to specify the title of the Speed Dial and the URL to which it will point to, like so:</p>
+<pre class='prettyprint'>{
+  "name": "Speed Dial Extension",
+  "developer": "John Doe",
+  ...
+  "permissions": ["speeddial"],
+  "background": {"page": "speeddial.html"},
+  "speeddial": {
+    "title": "Sample Speeddial",
+    "url": "http://www.opera.com",
+    "size_mode": "auto_zoom" //Set it to 'adapt' to adapt the size of speed dial according to various zoom levels
+    }
+    ...
+}</pre>
+<p><strong>Note</strong>: Opera will take string described in the “name” field of the manifest and use it as the title of the Speed Dial extension. You can of course then change the title using javascript, which is described later on in this article.</p>
+
+<h2 id="adapting_to_user_scaling_of_speed_dial_thumbnails">Adapting to user scaling of speed dial thumbnails</h2>
+
+<p>If the user scales down the size of the thumbnails of the speed dials, then speed dial extensions will be affected too. This may result in non-optimal text or graphics, depending on the size. From Opera 20 onwards, we are introducing a field called “size_mode” which will allow two values - “auto_zoom” (which is the default) and “adapt”.</p>
+
+<p>If you set he value of “size_mode” to “adapat” then the speed dial extension is rendered with viewport size of the current thumbnail size (no scaling) and the extension needs to adapt to the changing size. This gives you control of how the speed dial extension will look in different sizes.</p>
+
+<p>If the value is set to “auto_zoom”, then the extension is rendered with viewport size as for the original thumbnail (228px x 168px) and zoomed to fit the actual thumbnail size.</p>
+
+<p>The default value is “auto_zoom” so that all extension work out of the box. However, feel free to tweak your extensions by setting “size_mode” to “adapt” in the manifest and use responsive design techniques to further enahnce your speed dial displays.</p>
+
+<h2 id="the_speed_dial_page">The Speed Dial page</h2>
+
+<p>The Speed Dial page itself is just an HTML page, which will be displayed in the Speed Dial cell. A Speed Dial cell is 228px in width and 168px in height. Lets take an example Speed Dial extension, and see the HTML associated HTML page.</p>
+<pre class='prettyprint'>&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+		body{
+			background-color:  #333;
+			color: #fff;
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+	&lt;h1&gt;Hey, I&#39;m a Speed Dial extension&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>This will result in a Speed Dial extension which would look like the one below:</p>
+
+<p><img alt='first Speed Dial extension' class='img-polaroid' src='static/images/sdext-1.png' /></p>
+
+<p>Note that the text is there, but is in the top-left corner of the page. Let’s see how to change that so that elements can center nicely in the Speed Dial cell.</p>
+
+<h2 id="centering_elements_in_a_speed_dial_cell">Centering elements in a Speed Dial cell</h2>
+
+<p>One of the most common things in a Speed Dial cell is to place an element (whether it’s some piece of text or some image) in the center of the speed dial. Since Speed Dial pages are just normal HTML pages, you can use CSS to do this. Previous ways to center content were a bit hard to do if you wanted the content to be centered both vertically and horizontally.</p>
+
+<p>However, with CSS flexbox, its possible to do it very easily. Use <code>align-items: center</code> to center the content vertically and <code>justify-content: center</code> to do it horizontally. For now, we would also like you to include use flexboxes with prefixes as well as the standard version - this would allow the effect to work currently (using prefixes) and makes sure that will work in the future too (when flexbox is unprefixed, in which case, the unprefixed version will apply).</p>
+
+<p>An example of such an implementation is below:</p>
+<pre class='prettyprint'>&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+		body{
+			display: -webkit-flex;
+			display: flex;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div id=&quot;cont&quot;&gt;
+	&lt;img src=&quot;Opera-icon-low-res.png&quot; alt=&quot;Opera Icon&quot; /&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>Which will result in the image being positioned like so:</p>
+
+<p><img alt='Centering images in speeddial with flexbox' class='img-polaroid' src='static/images/sdext-2.png' /></p>
+
+<p>If you are not familiar with flexbox, you can learn more about it by reading Chris Mills’ great <a href="../articles/view/flexbox-basics/index.html">introductory flexbox article</a>, and then go on for a more <a href="../articles/view/advanced-cross-browser-flexbox/index.html">advanced article</a> too.</p>
+
+<h2 id="use_javascript_to_enhance_your_extension">Use JavaScript to enhance your extension</h2>
+
+<p>You can access the Speed Dial functions using JavaScript by using the <em>opr.speeddial.*</em> APIs. Your JS code can be simply be linked from the Speed Dial page, for example</p>
+<pre class='prettyprint'>...
+&lt;script src=&quot;sd.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+...</pre>
+<p>The most common things to do with a Speed Dial in an extension would be to</p>
+
+<ol>
+<li>Get details like the title and the URL of the Speed Dial.</li>
+
+<li>To update the title and URL to something different.</li>
+</ol>
+
+<p>For the former, you need to use the <code>get()</code> variable. A callback is triggered which gives you the required details. For example,</p>
+<pre class='prettyprint'>opr.speeddial.get(function(result) { 
+console.log("The URL is: " + result.url + " and the title is " + result.title); 
+});</pre>
+<p>To update the Speed Dial extension, you simply use the <code>update()</code> function. For example</p>
+<pre class='prettyprint'>opr.speeddial.update({ url: "http://dev.opera.com", title: "Dev Opera" });</pre>
+<p>Feel free to <a href="samples/SpeedDial-CenterContent.nex">download our sample Speed Dial extension</a> and have a look around the code.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

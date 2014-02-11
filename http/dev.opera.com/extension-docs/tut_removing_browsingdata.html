@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Removing browsing data - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Removing browsing data</h1>
+					
+					
+					
+    <h2>Introduction</h2>
+<p>You can use the <a href="browsingData.html">chrome.browsingData API</a> to remove browsing data from a user's local profile.</p>
+
+<h2 id="manifest">Manifest</h2>
+
+<p>
+You must declare the "browsingData" permission in the
+<a href="manifest.html">extension manifest</a> to use this API.
+</p>
+
+<pre class="prettyprint" data-filename="manifest.json">
+{
+"name": "My extension",
+...
+<b>"permissions": [
+"browsingData",
+]</b>,
+...
+}
+</pre>
+
+<h2 id="usage">Usage</h2>
+
+<p>
+The simplest use-case for the <a href="browsingData.html">chrome.browsingData API</a> is a a time-based mechanism for clearing a
+user's browsing data. Your code should provide a timestamp which indicates the
+historical date after which the user's browsing data should be removed. This
+timestamp is formatted as the number of milliseconds since the Unix epoch
+(which can be retrieved from a JavaScript <code>Date</code> object via the
+<code>getTime</code> method).
+</p>
+
+<p>
+For example, to clear all of a user's browsing data from the last week, you
+might write code as follows:
+</p>
+
+<pre class="prettyprint">var callback = function () {
+// Do something clever here once data has been removed.
+};
+
+var millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+var oneWeekAgo = (new Date()).getTime() - millisecondsPerWeek;
+chrome.browsingData.remove({
+"since": oneWeekAgo
+}, {
+"appcache": true,
+"cache": true,
+"cookies": true,
+"downloads": true,
+"fileSystems": true,
+"formData": true,
+"history": true,
+"indexedDB": true,
+"localStorage": true,
+"pluginData": true,
+"passwords": true,
+"webSQL": true
+}, callback);</pre>
+
+<p>
+The <code>chrome.browsingData.remove</code> method allows you to remove
+various types of browsing data with a single call, and will be much faster
+than calling multiple more specific methods. If, however, you only want to
+clear one specific type of browsing data (cookies, for example), the more
+granular methods offer a readable alternative to a call filled with JSON.
+</p>
+
+<pre class="prettyprint">var callback = function () {
+// Do something clever here once data has been removed.
+};
+
+var millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+var oneWeekAgo = (new Date()).getTime() - millisecondsPerWeek;
+chrome.browsingData.removeCookies({
+"since": oneWeekAgo
+}, callback);</pre>
+
+<p class="caution">
+<strong>Important</strong>: Removing browsing data involves a good deal of
+heavy lifting in the background, and can take <em>tens of seconds</em> to
+complete, depending on a user's profile. You should use the callback mechanism
+to keep your users up to date on the removal's status.
+</p>
+
+<h2 id="origin_types">Origin Types</h2>
+
+<p>
+Adding an <code>originTypes</code> property to the API's options object allows
+you to specify which types of origins ought to be effected. Currently, origins
+are divided into three categories:
+</p>
+<ul>
+<li>
+<code>unprotectedWeb</code> covers the general case of websites that users
+visit without taking any special action. If you don't specify an
+<code>originTypes</code>, the API defaults to removing data from unprotected
+web origins.
+</li>
+<li>
+<code>extension</code> covers origins under the
+<code>chrome-extensions:</code> scheme. Removing extension data is, again,
+something you should be very careful about.
+</li>
+</ul>
+<p>
+We could adjust the previous example to remove only data from unprotected
+websites as follows:
+</p>
+<pre class="prettyprint">var callback = function () {
+// Do something clever here once data has been removed.
+};
+
+var millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+var oneWeekAgo = (new Date()).getTime() - millisecondsPerWeek;
+chrome.browsingData.remove({
+"since": oneWeekAgo,
+<b>"originTypes": {
+"unprotectedWeb": true
+}</b>
+}, {
+"appcache": true,
+"cache": true,
+"cookies": true,
+"downloads": true,
+"fileSystems": true,
+"formData": true,
+"history": true,
+"indexedDB": true,
+"localStorage": true,
+"serverBoundCertificates": true,
+"pluginData": true,
+"passwords": true,
+"webSQL": true
+}, callback);</pre>
+
+<p class="caution">
+<strong>Seriously</strong>: Be careful when using this functionality. Your users will write you angry emails if they're not well-informed about what to
+expect when your extension removes data on their behalf.
+</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/extensions/browsingData.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>An introduction to CSS regions - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>An introduction to CSS regions</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <h2>Introduction</h2>
+
+<p>CSS3 brings with it many features to help us build complex, flexible layouts more easily and logically, without having to resort to JavaScript and painful hacks. One such feature is described in the <a href="http://dev.w3.org/csswg/css3-regions/">CSS Regions Module Level 3</a> — the basic idea here is that you write your content into some good old semantic HTML elements, and then also define a separate set of (non-semantic) containers that will serve as the scaffolding on which to hang your styles that  define layout, etc. You then flow your content into your layout containers using the straightforward regions properties. This is nice, as it means you can keep your content completely separate from your layout concerns, without duplicating semantics/data and affecting accessibility. And as an added bonus, providing intelligent alternatives using Modernizr is very straightforward. So let&#39;s move forward and have a look!</p>
+
+<p>Regions is currently in Editor&#39;s draft stage, so it could change a fair bit before its final publication. At the time of writing, it only works in Chrome Canary, IE10 (in a different way, <a href="http://msdn.microsoft.com/en-us/library/ie/hh673537%28v=vs.85%29.aspx#implementing_css_regions">involving IFrames</a>) and Opera 16, but it is still useful to play with such technologies early, so you can learn them ahead of time and provide valuable feedback to the spec writers. In Chromium/Opera, you&#39;ll need to enable the “Experimental WebKit features” flag (type about:flags into a new tab and search for it, or run the browser from the Terminal/command line with the <code>--enable-experimental-webkit-features</code> flag) for it to work.</p>
+
+<p class="note">To give feedback on Regions, <a href="http://lists.w3.org/Archives/Public/www-style/">contact the CSS working group via their mailing list</a>. </p>
+
+<h2>Introducing a regions example</h2>
+
+<p>To demonstrate how regions work, let&#39;s look at an example. You can <a href="../../../static/articles/2013/regions-intro/flexbox-regions-modernizr.html">test the regions example live</a>, or see what it looks like in Figure 1.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/11572/regions1.png" alt="a css regions example showing a complicated layout with content flowed into different boxes" /></p>
+<p class="caption">Figure 1: A complicated layout achieved using CSS regions.</p>
+
+<p>In effect, we are completely separating out our content from any kind of layout, bringing the original intention of CSS to a welcome extreme. The content can be flowed into your layout containers regardless of how they are sized and positioned, and will reflow when those containers change size. Try viewing the live example and changing the browser window size. Any content that doesn&#39;t fit in the first three region boxes will end up in the fourth box at the bottom, which I&#39;m using as a kind of overflow box (without this, the content would just messily overflow out of the third box and off the bottom of the screen). The content flows into the regions in the order they appear in the original source.</p>
+
+<p>The first thing to note in my example&#39;s HTML is the non-semantic layout structure I am going to flow the content into. In effect, these will be our regions:</p>
+
+<pre><code>&lt;div class=&quot;layout&quot;&gt;
+
+  &lt;div class=&quot;text-container&quot;&gt;&lt;!-- --&gt;&lt;/div&gt;
+  &lt;div class=&quot;text-container&quot;&gt;&lt;!-- --&gt;&lt;/div&gt;
+  &lt;div class=&quot;image-container&quot;&gt;
+      &lt;img src=&quot;../base-styles/grim-north.jpg&quot; alt=&quot;A map of the North of England&quot;&gt;  
+  &lt;/div&gt;
+  &lt;div class=&quot;text-container&quot;&gt;&lt;!-- --&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;text-overflow&quot;&gt;&lt;!-- --&gt;&lt;/div&gt;</code></pre>
+
+<p class="note">Note: the blank comments are there to get rid of a particularly strange layout bug, where <a href="http://css-discuss.incutio.com/wiki/Internet_Explorer_Win_Bugs#.22Empty.22_div">IE6 inserts blank lines when it encounters empty <code>&lt;div&gt;</code>s</a>.</p>
+
+<p>In the CSS, we can create as complex a layout as we want — be as fancy as you like! I did this:</p>
+
+<pre><code>/* positioning and styling for fancy containers */
+
+.layout {
+  height: 600px;
+  position: relative;
+}
+
+.text-container, .text-overflow {
+  background: -webkit-repeating-linear-gradient(top, rgba(150,150,150,0.3) 0px, rgba(150,150,150,0.3) 1px, transparent 2px, transparent 40px), -webkit-linear-gradient(top left, rgba(255,255,255,1), rgba(200,200,200,1));
+  background: -moz-repeating-linear-gradient(top, rgba(150,150,150,0.3) 0px, rgba(150,150,150,0.3) 1px, transparent 2px, transparent 40px), -moz-linear-gradient(top left, rgba(255,255,255,1), rgba(200,200,200,1));
+  background: -ms-repeating-linear-gradient(top, rgba(150,150,150,0.3) 0px, rgba(150,150,150,0.3) 1px, transparent 2px, transparent 40px), -ms-linear-gradient(top left, rgba(255,255,255,1), rgba(200,200,200,1));
+  background: repeating-linear-gradient(to bottom, rgba(150,150,150,0.3) 0px, rgba(150,150,150,0.3) 1px, transparent 2px, transparent 40px), linear-gradient(to bottom right, rgba(255,255,255,1), rgba(200,200,200,1));
+  padding: 2rem;
+  box-shadow: 0.5rem 0.5rem 20px black;
+}
+
+.layout .text-container {
+  position: absolute;
+  width: 25%;
+  height: 300px;
+  z-index: 2;
+}
+
+.layout .image-container {
+  position: absolute;
+}
+
+.layout div:nth-of-type(1) {
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+
+.layout div:nth-of-type(2) {
+  top: 2rem;
+  left: 30%;
+  -webkit-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -ms-transform: rotate(1deg);
+  transform: rotate(1deg);
+}
+
+.layout div:nth-of-type(3) {
+  display: block;
+  top: 15rem;
+  left: 50%;
+  border: 1px solid black;
+  -webkit-transform: rotate(4deg);
+  -moz-transform: rotate(4deg);
+  -ms-transform: rotate(4deg);
+  transform: rotate(4deg);
+}
+
+.layout div:nth-of-type(4) {
+  top: 25rem;
+  left: 67.5%;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+
+.text-overflow {
+  height: auto;
+}</code></pre>
+
+<p>Next, note that the actual content of the page is contained inside a nice set of semantic elements, as should be expected:</p>
+
+<pre><code>&lt;article class=&quot;content&quot;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Hello, dear readers…&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;article class=&quot;content&quot;&gt;
+  …
+&lt;/article&gt;</code></pre>
+
+<h2>Creating some regions</h2>
+
+<p>Now on to the actual regions code — this is really simple compared to what I showed above!. To specify that an element, or series of elements will contain the content you want to flow into your regions, you need to use the <code>flow-into</code> property:</p>
+
+<pre><code>.content {
+  -webkit-flow-into: article;
+  -moz-flow-into: article;
+  -ms-flow-into: article;
+  flow-into: article;
+}</code></pre>
+
+<p>Next, I&#39;ll specify the containers to flow the content into, using the <code>flow-from</code> property, which takes the same identifier specified above.
+
+<pre><code>.text-container  {
+  -webkit-flow-from: article;
+  -moz-flow-from: article;
+  -ms-flow-from: article;
+  flow-from: article;
+}
+
+.text-overflow {
+  -webkit-flow-from: article;
+  -moz-flow-from: article;
+  -ms-flow-from: article;
+  flow-from: article;  
+}</code></pre>
+
+<p class="note">Note: &quot;article&quot; can be anything you like — this is an identifier that you define, for an intermediary stage called a &quot;named flow&quot; — you flow your content into the named flow using <code>flow-into</code>, and flow it into your layout containers using <code>flow-from</code>.</p>
+
+<p>It&#39;s that simple — you will now see the content flowed into the layout containers.</p>
+
+<p class="note">Note: The available browser support is not perfect yet — you might find that a few things don&#39;t seem to work in regions. For example, I couldn&#39;t get multi-col to work on a region, although it is explicitly mentioned in the spec.</p>
+
+<h2>Regions fallbacks</h2>
+
+<p>Creating fallbacks for non-supporting browsers is pretty easy as far as regions are concerned. You can detect support for Regions using Modernizr (2.6 and above), and then in browsers that don&#39;t support it, provide some styling for the semantic content itself, not the layout containers. Let&#39;s look at how it was done in our example.</p>
+
+<p>First we need to create a version of Modernizr that has the regions feature detect test in it. To do so, we need to visit the <a href="http://modernizr.com/download/">Modernizr download page</a>, click &quot;non-core detects&quot; to expand the list of available options, check &quot;css-regions&quot;, then click &quot;Generate!&quot;, then &quot;Download&quot;.</p>
+
+<p>To add the regions detect to our example, it is just as you&#39;d expect:</p>
+
+<pre><code>&lt;script src=&quot;Modernizr.css-regions.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+<p>Next I can add in some alternative styling to provide a simplified layout to browsers that don&#39;t support regions. I&#39;ll do this using a descendant selector starting with <code>.feature-no-regions</code>, as Modernizr adds the <code>feature-no-regions</code> class to the <code>&lt;html&gt;</code> tag, when the site is rendered in browsers that don&#39;t support regions:</p>
+
+<pre><code>.feature-no-regions .layout, .feature-no-regions .text-overflow {
+  display: none;
+}
+.feature-no-regions .content {
+  float: left;
+  width: 48%;
+  padding: 1%;
+}</code></pre>
+
+<p>Here I&#39;ve simply hidden the layout containers using <code>display: none;</code>, and then provided the two articles with a float, width and padding, so that non-supporting browsers will be left with something usable that doesn&#39;t look too terrible (see Figure 2). You are of course welcome to produce something far more interesting!</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/11572/regions2.png" alt="a simple two column layout provided as a fallback for browsers that don&#39;t support CSS regions." /></p>
+<p class="caption">Figure 2: A simple two column layout, provided as a fallback for browsers that don&#39;t support CSS regions, via Modernizr.</p>
+
+
+<h2>Summary</h2>
+
+<p>And that concludes my rather short tour of CSS Regions. I hope you found this useful, and I&#39;ll look forward to see what you create using this rather interesting new technology. Don&#39;t forget to give the <a href="http://www.w3.org/Style/CSS/members.en.php3">CSS working group</a> any feedback you might have on how this feature works.</p></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, July 3, 2013
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css3.html" rel="tag">css3</a></li>
+        <li><a href="../../tags/layout.html" rel="tag">layout</a></li>
+        <li><a href="../../tags/modernizr.html" rel="tag">modernizr</a></li>
+        <li><a href="../../tags/regions.html" rel="tag">regions</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

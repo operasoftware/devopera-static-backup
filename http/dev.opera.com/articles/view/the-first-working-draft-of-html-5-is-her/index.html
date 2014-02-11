@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>The first working draft of HTML 5 is here! - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>The first working draft of HTML 5 is here!</h1>
+      <p class="print author">By Anne van Kesteren</p>
+
+      <ul class="seriesNav">
+<li><em>26th April 2010, minor update</em></li>
+</ul>
+
+<h2>Introduction</h2>
+
+<p>On January 22nd 2008 the W3C published the First Public Working Draft of <a href="http://www.w3.org/TR/html5/" title="HTML 5: A vocabulary and associated APIs for HTML and XHTML">HTML 5</a> - this is a great step forward, as this draft has been in the works for several years. It was initially just being developed the <a href="http://www.whatwg.org/">WHATWG</a>, with the <a href="http://www.w3.org/html/wg/">W3C HTML Working Group</a> coming on board to help out with it in March 2007. Alongside the HTML 5 draft a <a href="http://www.w3.org/TR/html5-diff/">HTML 5 differences from HTML 4</a> document has been published, which gives a high-level overview of what new functionality HTML 5 brings.</p>
+
+<h2>Why is HTML 5 important?</h2>
+
+<p>There are several reasons why lots of people are devoting a hefty chunk of their time to HTML 5; the following are the main ones to consider:</p>
+
+<ul>
+<li>HTML is the world&#39;s foremost markup language, and is basically &quot;the language of the Web&quot;, but it has been practically unmaintained since HTML 4 was released in 1997. Consequently, a lot of content published on the Web today can&#39;t be rendered across browsers if they implement the HTML 4 specification strictly, and HTML 4 also has a lot of ambiguities. HTML 5 is solving these problems.</li>
+ 
+<li>These days HTML is frequently used for web-based applications, even though it is a language primarily intended for use in static documents. Since HTML 4 was released more and more web applications have arisen and the great pains web developers go through using JavaScript to get their applications to work shows that there&#39;s a need for better application features. HTML 5 addresses this by adding native controls, storage and drawing APIs, and more.</li>
+ 
+<li>HTML is under threat of being usurped from its position as &quot;language of the Web&quot; by proprietary technologies. In order for HTML to stay competitive with proprietary technologies and to keep the Web open it needs new functionality and even better interoperability between the various browser vendors. HTML 5 adds new functionality and provides browser vendors with watertight definitions to follow.</li>
+</ul>
+
+<h2>Does HTML 5 have any cool stuff?</h2>
+
+<p>A lot of the new functionality of HTML 5 is described in the aforementioned <a href="http://www.w3.org/TR/html5-diff/" title="HTML 5 differences from HTML 4">differences</a> document, so I won&#39;t go into it in great detail here. HTML 5 will have new elements for defining more logical and semantically superior structure, such as <code>section</code>, <code>header</code>, and <code>footer</code>. It will also have new native controls, such as <code>progress</code>, <code>datagrid</code> and various new values for the <code>type</code> attribute of the <code>input</code> element. And it features a <code>canvas</code> element that can be used to dynamically create bitmap graphics using a sweet JavaScript API for 2D graphics (Opera has also created its own 3D Canvas! See below for a link to more information.)</p>
+
+<h2>What about Opera and HTML 5?</h2>
+
+<p>Opera already supports several features that are part of HTML 5:</p>
+<ul>
+<li>Cross-document messaging</li>
+<li>Server-sent events</li>
+<li>Web Forms 2.0</li>
+<li>The <code>canvas</code> element</li>
+<li>The <code>video</code> element</li>
+</ul>
+
+<p>There are various articles covering some of these subjects here on <a href="../../../index.html">dev.opera.com</a>:</p>
+
+<ul>
+ <li><a href="../blob-sallad-canvas-tag-and-javascrip/index.html">Blob Sallad - <code>canvas</code> tag and JavaScript physics simulation experiment</a></li>
+ <li><a href="../improve-your-forms-using-html5/index.html">Improve your forms using HTML5!</a></li>
+ <li><a href="../web-technologies-for-opera-web-applicati/index.html">Web Technologies for Opera web Applications</a></li>
+</ul>
+
+<p>Opera has previously released builds with support for the <code>video</code> element, the 3D <code>canvas</code>, and SVG video: <a href="../a-call-for-video-on-the-web-opera-vid/index.html">A call for video on the web - Opera <code>&lt;video&gt;</code> release on Labs</a> (old reference). As of Opera 10.50, the <a href="../introduction-html5-video/index.html">video element is now officially supported on Opera</a>. 
+</p>
+<h2>Where can I find even more information?</h2>
+<p>There are more HTML 5 resources outside <a href="../../../index.html">dev.opera.com</a> worth checking out:</p>
+
+<ul>
+ <li><a href="http://wiki.whatwg.org/wiki/FAQ">HTML 5 FAQ</a> (on the WHATWG wiki)</li>
+ <li><a href="http://www.w3.org/html/wg/">W3C HTML WG</a></li>
+ <li><a href="http://www.w3.org/html/planet/">Planet HTML5</a></li>
+ <li><a href="../../../../my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension.html">Information about the 3D canvas, from it&#39;s creator, Opera software developer Tim Johansson</a></li>
+ <li><a href="http://www.alistapart.com/articles/previewofhtml5">Preview of HTML 5 on A List Apart, written by Opera&#39;s Lachlan Hunt</a></li>
+</ul>
+          
+
+      <section id="author-info">
+        <h1><a href="../../../author/anne.html" rel="author">Anne van Kesteren</a></h1>
+        <a href="../../../author/anne.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/31c/9d3271b8679e17620609d35c10b249e1b23.png" alt=""/></a>
+        <p>Anne van Kesteren works for Opera Software from his home in the Netherlands. He also travels a fair bit to talk about standards. His goal is to keep the Web an open place and fix all the bugs in Web standards.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=221156">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/anne.html" rel="author">Anne van Kesteren</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, January 23, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/draft.html" rel="tag">draft</a></li>
+        <li><a href="../../tags/HTML&#32;5.html" rel="tag">HTML 5</a></li>
+        <li><a href="../../tags/html5.html" rel="tag">html5</a></li>
+        <li><a href="../../tags/resource.html" rel="tag">resource</a></li>
+        <li><a href="../../tags/working.html" rel="tag">working</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

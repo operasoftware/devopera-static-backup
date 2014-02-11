@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Tim Johansson - Taking the canvas to another dimension</title>
+<meta property="og:url" content="http://my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/timjoh/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/timjoh/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/timjoh/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/timjoh/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/timjoh/xml/rss/comments/1496523">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/timjoh/xml/atom/comments/1496523">
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://static.myopera.com/community/css/users/1/main.css" type="text/css">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="Tim Johansson - Taking the canvas to another dimension">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/Tl/GQK/VZgUP7S9tUqb4LL1pfJPvY/842247_l.jpg">
+<meta property="og:description" content="		The opera-3d context
+		
+		Opera's 3d context, unlike Mozilla's, is not a straight mapping 
+		to OpenGL. We keep it on a more abstract level. The main 
+		reasons for doing this are:
+		
+		
+		It makes it easier to implement on non-OpenGL platforms (such as D3D)
+		We wanted to have some form of collision detection available
+		
+		
+		
+		The main concept is that you work with 3D models. You create
+		3D models, add vertices and triangles to them and finally render
+		them to t ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2Ftimjoh%2Fblog%2Fshow.dml%2F1496523&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2"><h1><span>Tim's blog</span></h1></div>
+<div id="menu"><ul>
+<li id="menu_blog"><a href="http://my.opera.com/timjoh/blog/" id="selected"><span>Blog</span></a></li>
+<li id="menu_albums"><a href="http://my.opera.com/timjoh/albums/"><span>Photos</span></a></li>
+<li id="menu_friends"><a href="http://my.opera.com/timjoh/friends/"><span>Friends</span></a></li>
+<li id="menu_about"><a href="http://my.opera.com/timjoh/about/"><span>About</span></a></li>
+</ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title">Taking the canvas to another dimension</h2>
+<p class="postdate">Tuesday, November 13, 2007 4:38:34 PM</p>
+<p class="tags"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/3d" rel="tag">3d</a>, <a href="http://my.opera.com/timjoh/blog/index.dml/tag/opera" rel="tag">opera</a>, <a href="http://my.opera.com/timjoh/blog/index.dml/tag/canvas" rel="tag">canvas</a> </p>
+<div class="content">
+<div id="excerpt">		<p>
+		Recently Opera published an experimental build on <a href="http://labs.opera.com" rel="nofollow">Opera Labs</a>, with
+		support for the video element and video in SVG. This build also
+		includes an experimental addition to the canvas element, the 3d canvas.
+		In order to view the demos presented here you will need to <a href="http://snapshot.opera.com/windows/opera_950_9644_en_video.exe" rel="nofollow">get the Opera Labs
+		build</a>. The build is currently only available for Windows. Mac and Linux versions should be available soon.
+		</p>
+		<p>
+		Since this is my first post I guess I should introduce myself. 
+		My name is Tim Johansson, and I am a core technology developer 
+		at Opera Software. I am responsible for, among other things, 
+		canvas (including the underlying vector graphics library) and 
+		image decoding.
+		</p>
+		<p>
+		A new addition to <a href="http://www.whatwg.org/specs/web-apps/current-work" rel="nofollow">HTML5</a> is the canvas.
+		The canvas is more or less a bitmap that you can draw on using
+		JavaScript. The actual drawing is done by a (rendering) context.
+		The specification includes a 2d context that must be implemented,
+		but also allows browser vendors to add their own contexts. When
+		I first implemented the canvas tag in Opera I though it
+		would be cool to have a 3d context, so I added one.
+		</p>
+		<p>
+		In this post I will describe the 3d context I added, which is 
+		available in the recently released Opera Labs build. 
+		The context is called opera-3d and is basically Opera's version 
+		of the 3d canvas.
+		For those of you not familiar with the canvas tag here is a 
+		crash course in using it.
+		<ol>
+			<li>Add a &lt;canvas&gt;&lt;/canvas&gt; tag to your 
+			page</li>
+			<li>Get the canvas element from a JavaScript using <code>getElementById</code> or something similar.</li>
+			<li>Call <code>canvas.getContext(&lt;name&gt;);</code> to get the 
+			context</li>
+		</ol>
+		That's it. Once you have the context in your script you can just
+		call its rendering functions.
+		</p>
+</div>
+<br>		<h2>The opera-3d context</h2>
+		<p>
+		Opera's 3d context, unlike Mozilla's, is not a straight mapping 
+		to OpenGL. We keep it on a more abstract level. The main 
+		reasons for doing this are:
+		</p>
+		<ul>
+		<li>It makes it easier to implement on non-OpenGL platforms (such as D3D)</li>
+		<li>We wanted to have some form of collision detection available</li>
+		</ul>
+		
+		<p>
+		The main concept is that you work with 3D models. You create
+		3D models, add vertices and triangles to them and finally render
+		them to the canvas.  This is what the interface looks like.
+		</p>
+<pre style="background:#ddd;"><code>
+interface CanvasRenderingContextOpera3D {
+
+  // state
+  void save(); // push state on state stack
+  void restore(); // pop state stack and restore state
+
+  // scene/frame
+  void beginScene(); // start rendering a new frame
+  void endScene(); // finish rendering of the scene and present the result
+
+  // transformations
+  void translate(in float x, in float y, in float z);
+  void scale(in float x, in float y, in float z);
+  void rotateX(in float rotation);
+  void rotateY(in float rotation);
+  void rotateZ(in float rotation);
+
+  // rendering operation
+  void drawTriangle(in float x1, in float y1, in float z1, in float tex_s1, in float tex_t1, 
+      in float x2, in float y2, in float z2, in float tex_s2, in float tex_t2, 
+      in float x3, in float y3, in float z3, in float tex_s3, in float tex_t3);
+  void draw3DModel(in Canvas3DModel model);
+
+  // create objects
+  CanvasTexture createTexture(in Image img);
+  Canvas3DModel create3DModel();
+
+  // collision detection
+  string checkIntersection(in float x, in float y, in float z, in float radius, in Canvas3DModel model);
+
+  // rendering state
+  attribute CanvasTexture texture; // current texture or null for no texture, default is null
+  attribute string color; // current color, default is transparent black
+  attribute float fov; // field of view of the scene in degrees, default is 45
+  attribute float nearPlane; // distance to the near clipping plane, default is 0.1
+  attribute float farPlane; // distance to the far clipping plane, default is 100
+  attribute string ztest; // "none", "less", "lessequal", "greater", "greaterequal", "equal", "notequal". Default is "lessequal"
+  attribute string blend; // "replace", "add", "srcalpha", "multiply". Default is "replace"
+};
+
+interface Canvas3DModel {
+  void addVertex(in float x, in float y, in float z, in float s, in float t);
+  void addTriangle(in integer vertex1, in integer vertex2, in integer vertex3);
+};
+
+interface CanvasTexture{
+};
+</code></pre>
+		<p>
+		Let's go through the different functions in the order they 
+		appear above:
+		<ul>
+		<li>The <code>save</code> and <code>restore</code> functions save and restore the 
+		current rendering state. They are very similar to <code>save</code> and 
+		<code>restore</code> in the 2D context.</li>
+		<li>The <code>translate</code>, <code>scale</code> and <code>rotate</code> functions modify the 
+		transformation matrix. The current transformation matrix will transform all vertices rendered with the 3D canvas. This 
+		includes <code>Canvas3DModel</code> objects.</li>
+		<li>
+<code>beginScene</code> and <code>endScene</code> are used to distinguish a frame. The
+		canvas is only updated when <code>endScene</code> is called. When it is,
+		the rendered image is copied to the canvas. Only the commands
+		issued between <code>beginScene</code> and <code>endScene</code> are drawn to the 
+		canvas.</li>
+		<li>
+<code>drawTriangle</code> draws a single triangle. This method is 
+		usually slow and should not be used for rendering a lot of 
+		triangles.</li>
+		<li>
+<code>draw3DModel</code> renders a model previously created with 
+		<code>create3DModel</code> to the canvas. This function is much better 
+		suited for rendering large batches of triangles.</li>
+		<li>
+<code>createTexture</code> creates a texture object from an image 
+		object. This method will fail if the image object's dimensions 
+		are not powers of two (1, 2, 4, 8, 16, 32 etc.) As with the 
+		regular canvas you can create textures from images (including 
+		SVG) or other canvases.</li>
+		<li>
+<code>create3DModel</code> creates a <code>3DModel</code> object that can be built 
+		(by adding vertices and triangles) and rendered by the 
+		script.</li>
+		<li>
+<code>checkIntersection</code> is a simple sphere/model collision 
+		detection function. The parameters are the sphere (centre and 
+		radius) and the model to check for collisions with the 
+		sphere. The function returns the collision point as a string when a 
+		collision occurs (the point of deepest penetration is coosen as 
+		collision point).
+		If no collision was found the function returns an empty string 
+		instead.</li>
+		</ul>
+		The collision detection has some bugs in this build, and I would recomend that you do not use it yet. We will write more about collision detection when it is fixed.
+		</p>
+		<h2>Example - a rotating cube</h2>
+		<p>This is the first example ever written for the opera-3d 
+		context. It creates a model, adds vertices and triangles
+		for a cube and then renders it with different transforms.
+		If you are using an Opera build with 3d canvas enabled you can 
+		also <a href="http://people.opera.com/timj/canvas/canvas3d_example1.html" rel="nofollow">see the rotating cube in action</a>.
+		The files used for this example are the HTML file shown below and an image
+		to use as the texture (<a href="http://people.opera.com/timj/canvas/operalogo.png" rel="nofollow">operalogo.png</a> in this case).
+		</p>
+<pre style="background:#ddd;"><code>
+&lt;canvas id="canvas" width="200" height="200"&gt;
+  Canvas not supported!
+&lt;/canvas&gt;
+&lt;script&gt;
+  var canvas;
+  var context3d;
+  var rotation;
+  var texture;
+  var cube;
+  function render(){
+    context3d.beginScene();
+    context3d.translate(0,0,-5);
+    context3d.rotateY(rotation);
+    context3d.rotateX(rotation);
+    rotation += 2;
+    context3d.color = "white";
+    context3d.draw3DModel(cube);
+    context3d.endScene();
+  }
+  function onTick(){
+    render();
+  }
+  function onload(){
+    canvas = document.getElementById("canvas");
+    context3d = canvas.getContext("opera-3d");
+    if (!context3d)
+    {
+      alert("3d canvas not supported");
+      return;
+    }
+    logo = new Image();
+    logo.src = "operalogo.png";
+    texture = context3d.createTexture(logo);
+    context3d.texture = texture;
+
+    cube = context3d.create3DModel();
+    cube.addVertex(-1, 1, 1, 0, 0);
+    cube.addVertex(1, 1, 1, 1, 0);
+    cube.addVertex(-1, -1, 1, 0, 1);
+    cube.addVertex(1, -1, 1, 1, 1);
+    cube.addVertex(-1, 1, -1, 1, 1);
+    cube.addVertex(1, 1, -1, 0, 1);
+    cube.addVertex(-1, -1, -1, 1, 0);
+    cube.addVertex(1, -1, -1, 0, 0);
+
+    cube.addTriangle(0,1,2);
+    cube.addTriangle(2,1,3);
+    cube.addTriangle(4,5,6);
+    cube.addTriangle(6,5,7);
+    cube.addTriangle(0,4,2);
+    cube.addTriangle(2,4,6);
+    cube.addTriangle(1,5,3);
+    cube.addTriangle(3,5,7);
+    cube.addTriangle(0,4,1);
+    cube.addTriangle(1,4,5);
+    cube.addTriangle(2,6,3);
+    cube.addTriangle(3,6,7);
+
+    setInterval(onTick, 10);
+  }
+  document.onload = onload();
+&lt;/script&gt;
+</code></pre>
+		<h2>More advanced techniques</h2>
+		<p>
+		In the example above a plain textured cube, which was hard-coded
+		in the script, was rendered. It is possible to do much more than 
+		this using the opera-3d context. Below I will describe some 
+		techniques that can be used to make more advanced examples.
+		</p>
+		<h3>DOM3 Load and save</h3>
+		<p>
+		Hard-coding models is fine for small objects, but as the
+		objects grow it becomes more and more difficult to hard-code
+		them in the script. It is possible to get around this
+		by converting the models to an XML format and then loading them
+		into the script using DOM3 <code>load</code> and <code>save</code> to parse the XML.
+		<a href="http://people.opera.com/timj/canvas/canvas3d_example2.html" rel="nofollow">Here is a modified version of the rotating cube</a>.
+		</p>
+		<h3>Lightmapping</h3>
+		<p>
+		Lightmapping is one of the most famous lighting techniques.
+		It is used in many popular games, for example the quake series.
+		The principle is that you multiply each rendered pixel
+		with the light value at that pixel. The light value for each
+		pixel is pre-calculated and stored in a texture.
+		</p>
+		<p>
+		The opera-3d context does not have multi-texturing yet, so it
+		is not possible to do lightmapping in one step, but you can
+		achieve this effect by doing multi pass 
+		rendering. In the first pass the scene is rendered as usual.
+		In the second pass <code>ztest</code> is set to <code>equal</code> and <code>blend</code> is set to
+		<code>multiply</code>. The scene is now rendered with the lightmap instead
+		of the textures and the result is a lightmapped scene.
+		</p>
+<h2>Summary</h2>
+		<p>
+		That's it! This article has given you an introduction to the 
+		fundamentals of using the Opera 3d canvas. After reading all
+		of this you should know enough to create some
+		cool 3d-canvas demos. If you want to see a more advanced example
+		you can have a look at the <a href="http://people.opera.com/timj/canvas/3d_snake/" rel="nofollow">3d snake implementation</a> done by <a href="http://www.p01.org/" rel="nofollow">Mathieu 'p01' HENRI</a>.
+		I'm looking forward to seeing all the 
+		cool demos people will make! Get in touch with us to share 
+		your creations.
+		</p>
+</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2Ftimjoh%2Fblog%2F2007%2F11%2F13%2Ftaking-the-canvas-to-another-dimension&amp;title=Taking%20the%20canvas%20to%20another%20dimension" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=Taking%20the%20canvas%20to%20another%20dimension,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2Ftimjoh%2Fblog%2F2007%2F11%2F13%2Ftaking-the-canvas-to-another-dimension&amp;title=Taking%20the%20canvas%20to%20another%20dimension" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=Taking%20the%20canvas%20to%20another%20dimension','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2Ftimjoh%2Fblog%2F2007%2F11%2F13%2Ftaking-the-canvas-to-another-dimension&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="nxt"><a href="http://my.opera.com/timjoh/blog/2010/05/12/the-making-of-opera-10-50"><span>The making of Opera 10.50</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/timjoh/xml/rss/comments/1496523"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top">
+<p class="pagenav"><b>1</b> <a href="http://my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension?startidx=50#comments">2</a> <a href="http://my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension?startidx=50#comments" class="nxt">Next »</a></p>
+<br class="clear">
+</div>
+<div class="comment1" id="comment4029298">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4029298" class="permalink">#</a> Friday, November 16, 2007 4:33:17 PM</span></p>
+<div class="text">Anonymous writes:
+
+Ive always thought directly mapping OpenGL into HTML/JS land so that one could have the full power of the OpenGL API inside the browser and given it is the most common and familiar 3D API it would be the easiest to start using for the largest group of people, was a good idea.
+
+You mentioned that the 3D canvas is not a direct mapping to OpenGL? What does that exactly mean? Does this mean that some features of OpenGL are not available? I believe that not staying API compatable with OpenGL is a mistake and not rational, especially given there are open source implementations of OpenGL which can be ported to most platforms. As well, if there is an OpenGL feature that I use and depend on, its nice to know it will be there and available. Handicapping an implementation of the 3D canvas is not a good design decision at all. Remaining compatable with OpenGL makes sense since it allows the knowledge and familiarity many already have with OpenGL useful in their work in Opera. OpenGL APIs could be mapped onto native calls in an OS that does not support OpenGL. Most nearly all OSs have some kind of OpenGL support, OpenGL has become the most cross platform 3D API in use and it makes sense to support that rather than create yet another incompatable 3D API like microsoft has done. As well, you should provide the same non-persistant graphics mode as an option that OpenGL uses, in many cases keeping a state of graphics on screen and automatically refreshing them is not desired. An expose event for catching window expose events to trigger redraws would also be a good idea. </div>
+</div>
+<div class="comment2" id="comment4029329">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4029329" class="permalink">#</a> Friday, November 16, 2007 4:35:43 PM</span></p>
+<div class="text">Anonymous writes:
+
+It should also be noted Windows does have an OpenGL implementation.</div>
+</div>
+<div class="comment1" id="comment4030974">
+<div class="avatar"><a href="http://my.opera.com/profiT/"><img src="http://my.opera.com/community/users/avatar.pl/116327" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="profiT" href="http://my.opera.com/profiT/">Azamadt Smaguloff<span>profiT</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4030974" class="permalink">#</a> Friday, November 16, 2007 8:11:07 PM</span></p>
+<div class="text">Opera Video build uses SDL framework for showing video and, most probably, for 3D-canvas too.<br><br>SDL 3D module layer wraps around OpenGL to render graphics, so using SDL, Opera gets (almost) direct access for OpenGL.</div>
+</div>
+<div class="comment2" id="comment4034961">
+<div class="avatar"><a href="http://my.opera.com/grafio/"><img src="http://my.opera.com/community/users/avatar.pl/369651" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="grafio" href="http://my.opera.com/grafio/">grafio</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4034961" class="permalink">#</a> Saturday, November 17, 2007 12:51:51 PM</span></p>
+<div class="text">I'm not a 3d specialist, but I think a higher level syntax for 3D context like in the experimental Opera is better than simply mapping whole OpenGL directly, because:<br><br> - I think there will be (or maybe there are already?) devices without OpenGL but with D3D (based on Windows Mobile for example).<br><br> - I doubt Microsoft would ever implement 3D canvas with OpenGL syntax into IE. Implementing a "neutral" higher level solution (not OpenGL, nor D3D dependent) is at least a bit possible.<br><br> - As long as 3D canvas won't be implemented into IE, the whole 3D canvas will be dead for the Web except for some limited usage (extensions/widgets etc) and MS simply won't do it if it will be tied to OpenGL. I thought the point of WHATWG was to make a real world, not idealistic specifications.<br><br> - higher level syntax for the 3d context might actually work faster in JavaScript, because things which require more CPU can be hard coded + we can have some nice not 3d <i>rendering</i> features like collision detection.</div>
+</div>
+<div class="comment1" id="comment4037060">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4037060" class="permalink">#</a> Saturday, November 17, 2007 6:58:28 PM</span></p>
+<div class="text">I've been thinking about this vaguely for a while, so it's nice to see the work here! I'm trying to come up with some more detailed suggestions about canvas-3d (I'm not convinced I like either the Mozilla or Opera approaches), but in the meantime I have a few random comments and was wondering if you have any related plans.<br><br>* Lighting is essential. That means vertexes need normals. addVertex(x,y,z, u,v, nx,ny,nz, ...) isn't very scalable as more vertex parameters are added - GL-style vertex arrays seem more appropriate. Real people will make models in 3D modelling programs, and export them as e.g. COLLADA, so the model-creating API should be optimised for scripts that load COLLADA-like meshes rather than for programmers making cubes by hand. (I'm a cube person myself, but I'm happier when I can load art from artists instead <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">)<br><br>* Material properties are important. Everyone likes shiny things, so you need control over specular properties of objects, and there are probably other useful properties. GL-style lots-of-global-state-variables is a pain - maybe it'd be better to have 'material' objects that hold the rendering state. (Maybe OpenGL 3 has relevant ideas?)<br><br>* I'm not sure collision detection should be mixed in with the rendering API. Collision meshes are usually simplified shapes (e.g. a cylinder instead of a humanoid) because that works better, and must be closed (else you can't say whether a point is inside or outside) whereas rendered meshes often have holes. A new non-rendering API could be optimised for collision detection, improving performance and correctness (e.g. detecting intersections between moving objects), based on primitive shapes rather than assuming arbitrary meshes - see e.g. COLLADA Physics, which provides boxes/spheres/convex-meshes/capsules/etc.<br><br>* Double-sided triangles might be annoying. When you want a textured plane, e.g. a rotating billboard, you want different textures and texture coordinates on each side, and you'd probably get nasty z-fighting issues if everything is double-sided.<br><br>* rotate[XYZ] don't look great. rotate(axis_x,y,z, angle) is more useful and not more complex than rotate[XYZ](angle). Some people will want to use quaternions, since they work much better, so the API should accept transformation matrices rather than forcing everything into Euler angles.<br><br>I don't have any well-formed ideas now, but I'll try to come up with something in the near future <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment2" id="comment4043860">
+<div class="avatar"><a href="http://my.opera.com/-SPM-Mad/"><img src="http://my.opera.com/community/users/avatar.pl/17739" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="-SPM-Mad" href="http://my.opera.com/-SPM-Mad/">-SPM-Mad</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4043860" class="permalink">#</a> Sunday, November 18, 2007 5:43:22 PM</span></p>
+<div class="text">No, no, no, noooo x_x<br><br>It is not even part of the (in my opinion useless) canvas standard, and you add 3D support?<br><br><br>I understood the simple bittorent support - can live with it. I understood the <video>-tag support. It is good to have an open alternative to flash-stuff.
+
+But a (non-standard) 3D-Rendering engine? What has happened to the ideals of Opera being a really fast and resource-friendly and hi-quality browser?
+
+There are people who yell for all sorts of video/3D/musicplayer/instant-messenger etc. function in the browser, I am sadly aware of that. But so far Opera (mostly) managed to stick to only the important things. And alot of respect for your work mr Johansson.
+But now... seriously, in all those years I used and admired Opera, this is the first time I really disagree with the current development.
+
+Please choose if you want to be a small, fast, high-quality and VERY usable and very standard-compliant browser OR a feature-rich(overloaded?) internet-suit that does all sorts of tasks from within the browser with less performance*?
+
+
+Sincerely
+Michael
+
+
+
+*A script-driven (interpreted) interface to check mails (like google mail) or play music etc. and now also render 3D images with ASCII-markup-data can never be as resourcefriendly and fast as a compiled programm/plugin with optimized datastructures. 'web 2.0'-stuff can be very usefull sometimes, but the 2.0 does NOT stand for the cpu-cores I am suppoed to have to use it =(</video>
+</div>
+</div>
+<div class="comment1" id="comment4045542">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4045542" class="permalink">#</a> Sunday, November 18, 2007 11:20:06 PM</span></p>
+<div class="text">Anonymous writes:
+
+Oh god, not another 3D rendering engine. Why the hell couldn't you just support an existing standard, like, Collada, VRML or X3D?
+
+How many times does this wheel have to be re-invented?</div>
+</div>
+<div class="comment2" id="comment4045845">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4045845" class="permalink">#</a> Monday, November 19, 2007 12:25:13 AM</span></p>
+<div class="text">This doesn't overlap with COLLADA. I believe COLLADA should be encouraged as the standard way of importing models into canvas-3d (since it's decent, and fairly widely used, and well supported by modelling tools), but that should be done by external scripts that load the XML and call the API functions like addTriangle. Once you've loaded the models, you still need some way to animate them and draw them all in the scene and add various effects, which isn't what COLLADA is for.<br><br>As I understand it, there's more overlap with X3D, but it's quite similar to the overlap between canvas-2d and SVG: one is retained-mode while the other is immediate-mode, so they are quite different concepts and suit different tasks and require different compromises. (VRML is just an older version of X3D, so it's not very interesting now.)<br><br>X3D is large and complex and (I expect) it will never be implemented natively in browsers - it's too much code, and it'd be a nightmare to get interoperability between different browsers - so it will always rely on plugins. A thin wrapper over OpenGL/DirectX is much more likely to be implemented natively in browsers, given that Mozilla and Opera are already experimenting with exactly that. Native support beats plugins (for ease of deployment, security, portability, integration with the rest of the page, etc) - you have to give up X3D if you want native support, but for many cases that's a worthwhile tradeoff. (And you can always implement a subset of X3D on top of the canvas-3d API with scripts, which avoids the bloat and browser-interoperability problems of implementing X3D natively.)<br><br>I'd prefer to copy concepts from existing well-known immediate-mode APIs like Direct3D and OpenGL ES rather than reinvent a totally new way, though.</div>
+</div>
+<div class="comment1 ownercomment" id="comment4049309">
+<div class="avatar"><a href="http://my.opera.com/timjoh/"><img src="http://my.opera.com/community/users/avatar.pl/842247" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="timjoh" href="http://my.opera.com/timjoh/">Tim Johansson<span>timjoh</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4049309" class="permalink">#</a> Monday, November 19, 2007 1:39:30 PM</span></p>
+<div class="text">Regarding OpenGL:<br><br>What I mean about this not being direct mapping to OpenGL is that it is not pure OpenGL mappings for ecmascript. It is not intended as being a complete 3d api where you can do everything, it's ment to be a small light weight api for adding some (simple) 3d graphics or games on a web page.<br>The 3d canvas is no more persistant than OpenGL, it uses double buffering which is also very common when using OpenGL.<br><br>Excors:<br><br>I only added what I needed to do some simple demos. There are some things not included. I think you spotted a few things that would be nice to have in future versions <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br><br>You can do light mapping without vertex normals but dynamic lights would require normals.<br><br>COLLADA is an XML based format, so it would be possible to load COLLADA files using DOM3 load and save, you don't have to edit the XML files by hand <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br><br>Collision between dynamic objects is ususally done with simplified shapes, and that makes a lot of sense. Collision between objects and the static world is usually done with simplified shape colliding with triangle meshes though. In the case of static world it is a good idea to share the vertex/triangle array between the rendering code and the collision code, which is the reason the collision detection is in the canvas. (The current collision detection only supports spheres as simplified shapes, and has no dynamic object / dynamic object collision).<br><br>-SPM-Mad:<br><br>This is a build with some features we are experimenting with, not an official Kestrel build. Being really fast and resource friendly is of course important.<br>I think you might be overestimating the complexity of the 3d canvas. I would not call it a 3d engine, it's just bindings to the platforms 3d apis. If this build did not have video support you would probably not notice any increase in size at all, and it uses no resources unless you are viewing a page with 3d on it.<br>
+</div>
+</div>
+<div class="comment2" id="comment4049490">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4049490" class="permalink">#</a> Monday, November 19, 2007 2:19:54 PM</span></p>
+<div class="text">Cecile Muller writes:
+
+Actually X3D is implemented in by several vendors (and VRML has been for many years). As for it being complex, that's the reason why there are several profiles (Core, Interactive, etc) so that you're able to support only a subset, yet being fully compatible with the standard and the other browsers.
+
+Also X3D is a higer level language than what the Canvas3D plans to be (which imho, makes it easier for authors to create using X3D than Canvas3D, just like HTML was easier than writing a program for sockets or TCP/IP). Things like having to add triangles one by one is too much code just for describing a cube.
+
+In X3D that would be:
+&lt;Shape&gt;
+&lt;Box size="1 2 1"/&gt;
+&lt;/Shape&gt;
+
+No mess with adding triangles or specifying the points one by one. That makes 3D accessible to people who already know HTML, which is a large userbase.</div>
+</div>
+<div class="comment1" id="comment4049810">
+<div class="avatar"><a href="http://my.opera.com/grafio/"><img src="http://my.opera.com/community/users/avatar.pl/369651" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="grafio" href="http://my.opera.com/grafio/">grafio</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4049810" class="permalink">#</a> Monday, November 19, 2007 3:11:41 PM</span></p>
+<div class="text">Anything more complicated than a few cubes is hard to write by hand anyway.<br>IMO graphics is supposed to be made in graphics applications not written by hand in notepads. Then you can export it to any XML format and use in canvas (writing an import function is easy if it's a mesh of triangles).</div>
+</div>
+<div class="comment2" id="comment4057393">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4057393" class="permalink">#</a> Tuesday, November 20, 2007 2:46:06 PM</span></p>
+<div class="text">LionsPhil writes:
+
+Oh ye Gods. Please, no.
+
+There are bugs to be fixed. Put the shiny gimmicks away until you've squashed those, please. This kind of "HEY GUYS LOOK WHAT I HACKED UP" is why Firefox is such a festering pile of bodges.
+
+Also, OpenGL is the standard low-level 3D API. If you're going to provide low-level 3D graphics without using OpenGL, you may as well write a browser which doesn't use JavaScript, but instead this scripting language you came up with on the back of an envelope. It's better, because it provides ASPECT-ORIENTED PROGRAMMING, yay!
+
+Besides, a much higher-level API would make more sense, given the fact that it's going to be driven by a scripting language. You could lift Ogre (it's LGPL) wholesale for this...
+
+...once you can honestly say that there is nothing, _nothing_ more important to work on.
+
+(P.S.: Consider me trolled rotten that BROWSER DEVELOPERS have a comment board which abuses HTTP status code 400 for "Bad Captcha". GAH.)</div>
+</div>
+<div class="comment1" id="comment4057908">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4057908" class="permalink">#</a> Tuesday, November 20, 2007 3:46:13 PM</span></p>
+<div class="text">"Actually X3D is implemented in by several vendors (and VRML has been for many years)."<br><br>As far as I'm aware, not by any web browser vendors - people who download e.g. Opera or Firefox won't be able to see anything 3D, without downloading plugins. That means web developers can't assume their users will have that feature, and so most won't make content that relies on it. A native API in browsers would be usable in more situations, since there's a ready-built audience of tens of millions of users; but X3D won't be implemented natively, so a different (lower level, less featureful, easier to implement) API is required, which is what canvas-3d should aim for.<br><br>"As for it being complex, that's the reason why there are several profiles (Core, Interactive, etc) so that you're able to support only a subset, yet being fully compatible with the standard and the other browsers."<br><br>The subsets are still complex, compared to the bare minimum that browsers could implement while still providing equivalent power - e.g. the Interactive profile has various things (I see event model, non-triangular faces, skyboxes, interpolators, etc) that are not trivial and could be handled by scripting instead (so then browsers wouldn't have to worry about implementation cost or interoperability in those areas).<br><br>I assume it would be possible to develop a new minimal-but-still-useful profile, and to specify all the details and error-handling that are currently vague (since experience suggests that unspecified behaviour on the web is a major problem compared to less-open environments); but it seems better if the browsers just implement a minimal low-level interface and let JavaScript implement X3D viewers on top of that, since that makes browser interoperability more realistic while still allowing the easier-to-use high-level X3D support for those who want it.<br><br>"Things like having to add triangles one by one is too much code just for describing a cube."<br><br>I think integration with 3D modelling tools is critical for most non-trivial use cases, and then you're never writing any code to describe shapes. But some cases do just need a cube, and then you really do want some higher level interface, like "&lt;Box .../&gt;" or "var model = new c3d.Box(...)". I just think that should be implemented in JS, on top of a low-level API provided by the browser, because otherwise it won't be feasible for browser developers to do this at all. (But I could be convinced otherwise <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">)</div>
+</div>
+<div class="comment2" id="comment4059937">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4059937" class="permalink">#</a> Tuesday, November 20, 2007 8:33:41 PM</span></p>
+<div class="text">Anonymous writes:
+
+The hard dependency on DirectX 9 makes me sad.</div>
+</div>
+<div class="comment1 ownercomment" id="comment4060664">
+<div class="avatar"><a href="http://my.opera.com/timjoh/"><img src="http://my.opera.com/community/users/avatar.pl/842247" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="timjoh" href="http://my.opera.com/timjoh/">Tim Johansson<span>timjoh</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4060664" class="permalink">#</a> Tuesday, November 20, 2007 9:54:11 PM</span></p>
+<div class="text">"The hard dependency on DirectX 9 makes me sad."<br><br>For the 3d canvas itself there is no dependency on DirectX. There is an OpenGL implementation, which is actually the original implementation and much older than the D3D implementation. Linux and Mac builds will use the OpenGL implementation.<br>The problem with the OpenGL implementation was that many people did not install updated drivers from the graphics card manufacturer, which meant the 3d canvas would run in software. This problem is avoided by building with DirectX, since the drivers Microsoft ships with Windows supports Direct3D but not OpenGL.<br>If you are talking about this specific build requiring DirectX to run, this dependency is usually easier to resolve than the dependency on updated drivers we would have with OpenGL. If there is some problem with having DirectX as a dependency for the executable we will most likely deal with that some way if and when we include this in official builds.</div>
+</div>
+<div class="comment2" id="comment4061932">
+<div class="avatar"><a href="http://my.opera.com/p01/"><img src="http://my.opera.com/community/users/avatar.pl/240060" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="p01" href="http://my.opera.com/p01/">Mathieu 'p01' HENRI<span>p01</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4061932" class="permalink">#</a> Wednesday, November 21, 2007 2:11:36 AM</span></p>
+<div class="text">
+<strong>Anonymous:</strong><blockquote class="bbquote"><p>There are bugs to be fixed. Put the shiny gimmicks away until you've squashed those, please. This kind of "HEY GUYS LOOK WHAT I HACKED UP" is why Firefox is such a festering pile of bodges.</p></blockquote>
+<blockquote class="bbquote"><p>...once you can honestly say that there is nothing, _nothing_ more important to work on.</p></blockquote>JSYK, Tim implemented 3D Canvas 2-3 years ago and hasn't really had time to work on the API because, surprise, there was more important things to work on. Nonetheless 3D Canvas is neat and worth releasing to see what people think about it and come up with it.<br><br><br><br>As for the API itself, I know that OpenGL (ES) is THE multi-platform standard and doing a 1 on 1 mapping is, apparently, dead simple.<br>However I have two concerns with doing a 1 on 1 mapping of OpenGL (ES) or any other 3D API:<br><br>1. such 3D standards/APIs are still pretty big and not really web-ish. Web developers might have a hard time getting their head around their ~hundred(s) of methods.<br><br>2. bare in mind that Opera, and web browsers in general, exist on MANY platforms, some of which do not have OpenGL ... think Wii or set top boxes.<br><br><br>That's why I think a high level API is perfectly OK. Of course it needs to be more advanced than it is now ( for one, normal mapping  is a must have ). Which 3D API ( OpenGL, DirectX, ... ) is actually used internally is not important as long as it works reliably on all supported platforms.<br><br><br>As for the authoring tools, JavaScript libraries can be done to import different 3D scenes file formats and generate various primitives ( Cube, Sphere, Torus, Cylinder, Utah Teapot, Stanford Bunny, ... )</div>
+</div>
+<div class="comment1" id="comment4062266">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4062266" class="permalink">#</a> Wednesday, November 21, 2007 3:39:27 AM</span></p>
+<div class="text">Anonymous writes:
+
+"As I understand it, there's more overlap with X3D, but it's quite similar to the overlap between canvas-2d and SVG..."
+
+Yes, which is precisely why X3D needs to be implemented in the browser. SVG was pretty useless when it needed a plugin - might as well just use Flash - but now its built in to Opera, Firefox and Safari, its getting very interesting indeed. When IE implements it also it will really take off.
+
+"X3D is large and complex and (I expect) it will never be implemented natively in browsers" 
+
+Just use one of the existing open-source toolkits, or license code from one of the plugin makers. There's no need to re-invent the wheel here.
+
+</div>
+</div>
+<div class="comment2" id="comment4065155">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4065155" class="permalink">#</a> Wednesday, November 21, 2007 1:51:15 PM</span></p>
+<div class="text">"Just use one of the existing open-source toolkits, or license code from one of the plugin makers. There's no need to re-invent the wheel here."<br><br>Is there one that is recommended? I would assume the interoperability between different libraries is not good enough to make web browsers sufficiently happy (since when you have tens of millions of users, they will poke all the possible edge cases and rely on the behaviour in those cases), so it would only work decently if everyone built on the same library. It would have to be C++, portable, open source, and non-(L)GPL, which seems to limit the options significantly, but I don't know if there's anything left that would be suitable.<br><br>Looking at e.g. X3DToolKit as one example (under a licence that presumably Opera couldn't use), there's ~50K lines of code and the compiled library is ~400KB compressed - increasing a browser's download size by 10% for one feature is not acceptable. Are other X3D implementations much smaller? (Mozilla has about 5K lines for its OpenGL ES 1.1 and 2.0 wrappers combined, and I expect opera-3d is much smaller than that.)</div>
+</div>
+<div class="comment1" id="comment4069003">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4069003" class="permalink">#</a> Wednesday, November 21, 2007 11:23:24 PM</span></p>
+<div class="text">Anonymous writes:
+
+I guess non-(L)GPL will be an issue for Opera. (but maybe not for Mozilla?). The best bet would be to talk to the Web3D consortium.
+
+X3D is an open ISO standard for interactive 3D on the web. It's not just 'one feature'. You don't think that is worth 400kB?</div>
+</div>
+<div class="comment2" id="comment4069721">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4069721" class="permalink">#</a> Thursday, November 22, 2007 1:41:39 AM</span></p>
+<div class="text">"I guess non-(L)GPL will be an issue for Opera. (but maybe not for Mozilla?)."<br><br>It matters to Mozilla, since they want their code to be usable under the MPL licence - <a href="http://lists.freedesktop.org/archives/cairo/2004-August/001744.html" rel="nofollow" target="_blank">http://lists.freedesktop.org/archives/cairo/2004-August/001744.html</a> indicates problems with LGPL. (As far as I can tell, that was resolved by dual-licensing Cairo as MPL+LGPL.)<br><br>"You don't think that is worth 400kB?"<br><br>400kB becomes hundreds of terabytes given the number of users, so it's not a totally trivial cost <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">. I haven't seen a strongly compelling desire for 3D on the web, compared to e.g. video - I can imagine it being used largely in games and product adverts (like interactive demos of shiny iPhones) and maths visualisations, but I'm not convinced it would benefit a large proportion of users. I still think it'd be really nice to have, but don't see it as a major priority for browser developers.<br><br>(And I still think it'd be interesting to implement X3D in JS on top of a GL-like API - maybe I'll try that some time...)</div>
+</div>
+<div class="comment1" id="comment4100634">
+<div class="avatar"><a href="http://my.opera.com/haavard/"><img src="http://my.opera.com/community/users/avatar.pl/8366" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="haavard" href="http://my.opera.com/haavard/">Haavard<span>haavard</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4100634" class="permalink">#</a> Monday, November 26, 2007 2:41:26 PM</span></p>
+<div class="text">
+<p class="cite">Originally posted by -SPM-Mad:</p>
+<blockquote class="bbquote"><p>It is not even part of the (in my opinion useless) canvas standard, and you add 3D support?</p></blockquote>
+<br>In an experimental build. Why are you assuming that it cannot become part of a standard? <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br><br><blockquote class="bbquote"><p>What has happened to the ideals of Opera being a really fast and resource-friendly and hi-quality browser?</p></blockquote>
+<br>Did anything happen? Did it stop being resource-friendly?<br><br>I don't think support for a new Web technology automatically makes Opera slower and less resourse friendly, unless you are viewing a page which makes heavy use of these new technologies, of course.<br><br>Should we stop implementing CSS, HTML, SVG, etc. too (or perhaps remove support for something), to keep Opera smaller than it is now?</div>
+</div>
+<div class="comment2" id="comment4101372">
+<div class="avatar"><a href="http://my.opera.com/threetimes/"><img src="http://my.opera.com/community/users/avatar.pl/1146623" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="threetimes" href="http://my.opera.com/threetimes/">threetimes</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4101372" class="permalink">#</a> Monday, November 26, 2007 5:02:03 PM</span></p>
+<div class="text">where can i download opera with 3d canvas support?</div>
+</div>
+<div class="comment1" id="comment4101622">
+<div class="avatar"><a href="http://my.opera.com/grafio/"><img src="http://my.opera.com/community/users/avatar.pl/369651" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="grafio" href="http://my.opera.com/grafio/">grafio</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4101622" class="permalink">#</a> Monday, November 26, 2007 5:58:44 PM</span></p>
+<div class="text">threetimes, <a href="http://snapshot.opera.com/windows/opera_950_9644_en_video.exe" rel="nofollow" target="_blank">here</a>
+</div>
+</div>
+<div class="comment2" id="comment4102963">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4102963" class="permalink">#</a> Monday, November 26, 2007 11:17:25 PM</span></p>
+<div class="text">Ben writes:
+
+Can you please get the mac version released? I'm dead keen to play with it. :)
+
+bnolan@gmail.com</div>
+</div>
+<div class="comment1" id="comment4103528">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4103528" class="permalink">#</a> Tuesday, November 27, 2007 1:14:39 AM</span></p>
+<div class="text">
+<a href="http://blog.vlad1.com/2007/11/26/canvas-3d-gl-power-web-style/" rel="nofollow" target="_blank">http://blog.vlad1.com/2007/11/26/canvas-3d-gl-power-web-style/</a> is Mozilla's approach to this.</div>
+</div>
+<div class="comment2" id="comment4159492">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4159492" class="permalink">#</a> Tuesday, December 4, 2007 5:26:29 PM</span></p>
+<div class="text">Peter Strømberg writes:
+
+As long as you can draw onto the canvas via javascript, the underlying 3D format is really not so important, and no doubt developers and vendors will quickly offer javascript based interpreters to show many different formats, X3D (Excors is already thinking about it :), COLLADA, 3DS ASCII, whatever.
+
+Javascript libraries for animation, interaction etc. will surely also follow, the same way they've done for Flash/Flex (for example "tweener" classes). Infact most .as classes could readily be tweeked to run as .js
+
+Any API that's independent of input 3D format, and independent of output API (i.e. OpenGL, DirectX, mobile and software implementions) and is supported by ALL browser vendors should be welcomed with open arms.
+
+Myself I'm caught between X3D browsers, that are fast at rendering 3D, but useless for building apps, and Flash which is great for building apps but still "fairly limited" when it comes to 3D.
+
+A javascript interface to an SDL-like canvas sounds to me like the best of all worlds, not just for 3D, but all media. A great initiative Tim, bring it on I say!</div>
+</div>
+<div class="comment1" id="comment4162201">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4162201" class="permalink">#</a> Wednesday, December 5, 2007 2:40:25 AM</span></p>
+<div class="text">
+<blockquote>X3D browsers, that are fast at rendering 3D, but useless for building apps</blockquote>
+<br>What makes them useless for that? Is it just the lack of users who have X3D browsers installed, or is it some other aspect of the implementations, or some other aspect of X3D's design?</div>
+</div>
+<div class="comment2" id="comment4223778">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4223778" class="permalink">#</a> Saturday, December 15, 2007 1:46:32 AM</span></p>
+<div class="text">
+<a href="http://philip.html5.org/demos/canvas/3d/x3d/test.html" rel="nofollow">This demo</a> has some extremely primitive X3D capabilities, for loading the meshes and viewpoint from the scene (originally exported from Blender).<br><br>It can render with both Opera's and Firefox's systems. The main difference is lighting: in Firefox it's done per-pixel, and nicely and flexibly with fragment shaders; in Opera it's per-vertex (hence uglier) and a slightly nasty hack, with a precomputed 2D image of the diffuse+specular colours, and then (slow) dynamic calculation of per-vertex lighting which is mapped onto the texture coordinates to get smooth shading.</div>
+</div>
+<div class="comment1" id="comment4246478">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4246478" class="permalink">#</a> Tuesday, December 18, 2007 4:46:06 PM</span></p>
+<div class="text">kig writes:
+
+Please, don't try to think up your own simple 3D API. Implement OpenGL. It's not a big task to write OpenGL bindings for JavaScript.
+
+Writing your own immediate-mode 3D API is like writing your own version of Unicode. You start thinking: "who needs BiDi, screw that", "who needs umlauts, screw that", "who needs hanzi, screw that", "who needs glyph placement, screw that", etc.
+
+If you really do want to continue on this MySimple3DAPI path to destruction, here's a list of glaring omissions: no matrices (the real killer), no shaders, no multitexturing, only euclidean rotations, only perspective transform, only four blend modes, only 2^n * 2^n textures.</div>
+</div>
+<div class="comment2" id="comment4247206">
+<div class="avatar"><a href="http://my.opera.com/Excors/"><img src="http://my.opera.com/community/users/avatar.pl/1006106" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Excors" href="http://my.opera.com/Excors/">Excors</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4247206" class="permalink">#</a> Tuesday, December 18, 2007 7:47:11 PM</span></p>
+<div class="text">
+<blockquote>It's not a big task to write OpenGL bindings for JavaScript.</blockquote>
+<br>But is it a big task to write OpenGL ES bindings that are implemented on top of DirectX? (I'm not at all familiar with DX, so I don't know what problems would come up - I expect it has pretty much the same features, and maybe there are only a few rough edges where it wouldn't fit the GL API neatly, and we can try to fix those few issues instead of making a totally new API; or maybe there's a fundamental problem somewhere. (Programmable shaders might be a fundamental problem - translating GLSL to HLSL is not trivial). Maybe the OpenGL 3 API will solve some of the difficulties, too. I really don't know, though I'd like to <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">.)<br><br><blockquote>no matrices (the real killer)</blockquote>
+<br>I'm not sure exactly what you mean here. You can implement matrix maths in JavaScript easily, and you won't get much better performance by making a call across an API into the browser's C++ code because of the call overhead; so that's not a problem. The inability to use matrix transformations is a bit painful (it's not great fun decomposing matrices into scale/rotations/translation) - do you mean that, or something else?</div>
+</div>
+<div class="comment1" id="comment4290555">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4290555" class="permalink">#</a> Tuesday, December 25, 2007 10:15:13 AM</span></p>
+<div class="text">Anonymous writes:
+
+Please, the web has suffered more then enough from projects that thought they could produce something more efficient by removing everything the author thought would not be needed - and than, by the time, with every content author finding the need of more complex features, the efficient engine becomes a monster of extensions and features not considered in the original concept. We just escaped from the non-standard development wave in html-land, do not re-invent the blink-tag. If you want 3d and think about uses for it for some weeks, much more will have to be provided then triangles. It is not only about meshed - there is behaviour, navigation, communication between objects (in one scene or across scenes, maybe even servers and clients). So if you want to add a whole new dimension to a browser, do not worry about 400kB - choose a x3d profile and go with the standards. If you do not think that it is worth it, do not create a beast by inventing one more "standard" - if 3d is not necessary, do not implement it at all.</div>
+</div>
+<div class="comment2" id="comment4298106">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4298106" class="permalink">#</a> Wednesday, December 26, 2007 5:10:32 PM</span></p>
+<div class="text">kig writes:
+
+"But is it a big task to write OpenGL ES bindings that are implemented on top of DirectX?"
+
+I haven't written any D3D code, so I don't know. I guess your best bet would be to ask cross-platform games developers, as they end up having to write engines that run on both APIs?
+
+
+"The inability to use matrix transformations is a bit painful (it's not great fun decomposing matrices into scale/rotations/translation) - do you mean that, or something else?"
+
+Yes, what you would end up doing is: do all matrix math in JS, then do SVD when applying the matrices for each model / scenegraph node, then split the rotation matrices of the SVD into x-rot, y-rot and z-rot (does that work?), and, to apply the matrix: translate, rotate, rotate, rotate, scale, rotate, rotate, rotate. It will be hard, slow, and easily cause a lot of GC runs.
+</div>
+</div>
+<div class="comment1" id="comment4301621">
+<div class="avatar"><a href="http://my.opera.com/NoteMe/"><img src="http://my.opera.com/community/users/avatar.pl/315530" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="NoteMe" href="http://my.opera.com/NoteMe/">Øyvind Østlund<span>NoteMe</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4301621" class="permalink">#</a> Thursday, December 27, 2007 8:12:53 AM</span></p>
+<div class="text">I havn't read all the comments, I'm saving it for when I have some time on my hands but just wanted to answer this one.<br><br><blockquote class="bbquote"><p>"But is it a big task to write OpenGL ES bindings that are implemented on top of DirectX?"</p></blockquote>
+<br><br>It should be easy enough to do, but the biggest problem between DirectX and OpenGL would be that the coordinate system is left handed vs. right handed. So you would either have to turn it around in the wrapper or make sure the users are aware of it while using the wrapper.<br><br><br>- ØØ -</div>
+</div>
+<div class="comment2" id="comment4310515">
+<div class="avatar"><a href="http://my.opera.com/p01/"><img src="http://my.opera.com/community/users/avatar.pl/240060" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="p01" href="http://my.opera.com/p01/">Mathieu 'p01' HENRI<span>p01</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4310515" class="permalink">#</a> Friday, December 28, 2007 1:47:50 PM</span></p>
+<div class="text">
+<strong>NoteMe:</strong> The left-handed vs right-handed is a non issue. Render the scene to a texture and blit it upside down. Problem solved.<br><br>Also the problem is not just OpenGl - DirectX wrapper, that shouldn't be too huge a task, but proprietary 3D Api ( say on Wii and DS ) to OpenGl or whatever 3D Api a standard body agree on for 3D Canvas.</div>
+</div>
+<div class="comment1" id="comment4310868">
+<div class="avatar"><a href="http://my.opera.com/NoteMe/"><img src="http://my.opera.com/community/users/avatar.pl/315530" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="NoteMe" href="http://my.opera.com/NoteMe/">Øyvind Østlund<span>NoteMe</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4310868" class="permalink">#</a> Friday, December 28, 2007 2:33:00 PM</span></p>
+<div class="text">@p01:<br><br>How would that help? It is the Z axis that is turned around, not the X nor Y axis. And rendering to a back buffer before bit blocking would have a huge impact on FPS compared to just add an extra translation matrix to the world-&gt;view matrix. It's much better to push work up the 3d pipeline, than pushing it down ending up doing an other rendering pass. <br><br>- ØØ -<br>
+</div>
+</div>
+<div class="comment2" id="comment4318844">
+<div class="avatar"><a href="http://my.opera.com/p01/"><img src="http://my.opera.com/community/users/avatar.pl/240060" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="p01" href="http://my.opera.com/p01/">Mathieu 'p01' HENRI<span>p01</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4318844" class="permalink">#</a> Saturday, December 29, 2007 1:51:25 PM</span></p>
+<div class="text">Agreed but a render to texture ( or a similar operation ) is most likely necessary to blit the scene into a frame buffer in a format compatible with 2D Canvas and the other graphic APIs present in the browser. Beside ONE render to texture per frame is absolutely acceptable.</div>
+</div>
+<div class="comment1" id="comment4326626">
+<div class="avatar"><a href="http://my.opera.com/henryjames/"><img src="http://my.opera.com/community/users/avatar.pl/1238945" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="henryjames" href="http://my.opera.com/henryjames/">Henry James Wilkinson<span>henryjames</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4326626" class="permalink">#</a> Sunday, December 30, 2007 3:53:33 PM</span></p>
+<div class="text">I never thought I'd actualy say it but I must admit that I find the Opera canvas implementation so much better than the Mozilla one. </div>
+</div>
+<div class="comment2" id="comment4666529">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4666529" class="permalink">#</a> Tuesday, February 12, 2008 12:11:47 PM</span></p>
+<div class="text">Thank you very much for this article. I've been trying to find a decent tutorial on the canvas element in Opera and now I'll be able to check the true possibilities behind this feature.</div>
+</div>
+<div class="comment1" id="comment4666869">
+<div class="avatar"><a href="http://my.opera.com/annmacgiff/"><img src="http://my.opera.com/community/users/avatar.pl/1333438" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="annmacgiff" href="http://my.opera.com/annmacgiff/">annmacgiff</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4666869" class="permalink">#</a> Tuesday, February 12, 2008 1:12:29 PM</span></p>
+<div class="text">The canvas feature seems to be working really great in Opera. I've been dealing with it for some time and so far I'm very satisfied with its uses. I normally use more Opera than Firefox so I'm glad that the canvas element is well supported.</div>
+</div>
+<div class="comment2" id="comment4753317">
+<div class="avatar"><a href="http://my.opera.com/Ilgaz/"><img src="http://my.opera.com/community/users/avatar.pl/11236" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Ilgaz" href="http://my.opera.com/Ilgaz/">Ilgaz</a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment4753317" class="permalink">#</a> Sunday, February 24, 2008 7:26:50 PM</span></p>
+<div class="text">Relying on DirectX makes no sense. I think as a developer, not an end user, you don't update your drivers or assume anyone would spare time to download latest drivers. Believe me, they do. <br><br>All Nvidia, ATI, Matrox drivers have very good opengl functionality coming with them.<br><br>This implementation (if ships with direct3d) will get wasted because of thousands of "directx" postings and they won't be trolls.<br><br>No need to re-invent the wheel, use Shockwave Plugin example. It has a convenient menu.<br><br>1) Use Hardware OpenGL renderer<br>2) Use Hardware Direct3D renderer<br>3) Use Software rendering<br><br>I didn't use windows for ages so I can't remember exact sentences but, its settings are like that.<br><br>Direct3D has no place in any platform except Windows (CE). Remember how many platforms Opera has to run and there is opengl functionality even on phones, java.<br><br>
+</div>
+</div>
+<div class="comment1" id="comment5261409">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5261409" class="permalink">#</a> Saturday, May 10, 2008 1:55:47 AM</span></p>
+<div class="text">Alessandro writes:
+
+This is a Amazing feature !!!!
+
+Is possible to get the context object from a Java Applet ?</div>
+</div>
+<div class="comment2" id="comment5598359">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5598359" class="permalink">#</a> Thursday, July 3, 2008 4:52:43 PM</span></p>
+<div class="text">Lightning writes:
+
+I think the web does need better support for doing 2D/3D stuff.
+Probably OpenGL is the way to go, it's supported even on portable devices (OpenGL ES) and on the PS3, i don't know about Wii but OpenGL was built to be CrossPlatform and it is easy enough to port to most OSes that don't have it already, there's always MesaGL that is OpenSource and it's better to use it when the drivers are not installed. Most users install their drivers because it doesn't make sense to buy a new graphical card if you don't plan to use it. Vista now requires drivers to run decently, OSX uses OpenGL backend for quite some time and Linux is running nicely with Compiz fusion.
+However i do think 3D canvas requires extra support for helping with loading models, textures ... and by helping with everything OpenGL does not do, it becomes a helper toolkit such as SDL and still allows some parts to be done directly if one chooses to do so.
+So i would choose to do everything OpenGL doesn't do and some extra if needed but without hiding the OpenGL calls and extensions.
+Please join efforts with Mozilla, W3C and anyone that might be interested in a full 3D web standard with high performance, anyone can use.</div>
+</div>
+<div class="comment1" id="comment5686953">
+<div class="avatar"><a href="http://my.opera.com/chaals/"><img src="http://my.opera.com/community/users/avatar.pl/162910" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="chaals" href="http://my.opera.com/chaals/">Charles McCathieNevile<span>chaals</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5686953" class="permalink">#</a> Friday, July 18, 2008 1:59:57 PM</span></p>
+<div class="text">@lightning,<br><br>We will indeed work with anyone interested in a 3D standard with high performance, but when it is ready for that to happen. As you probably know, Opera is involved in a lot of standardisation work already in all kinds of areas.<br><br>But this stuff is really not yet ready for standardisation. The 2-D canvas API is in the process of standardisation because it has been implemented by several browsers, and is in real-world use.<br><br>Releasing an experimental version is a way to give people some idea of whether they have an application for it - and for us to see if people do or not. Because if they don't, then releasing something that our developers are playing aroudn with, so that other developers can play with it too, is better than sitting on it, and better than taking resources away from more urgently important work for something that is still experimental work.<br><br>That's why we have labs.opera <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink"><br><br>And for those who are wondering, this is not something designed to compete with X3D any more than our canvas implementation is designed to compete with our SVG implementation. Both of those are in the core of our browser, in release versions. They are complementary technologies that serve different purposes.</div>
+</div>
+<div class="comment2" id="comment5691106">
+<div class="avatar"><a href="http://my.opera.com/j_sk/"><img src="http://my.opera.com/community/users/avatar.pl/1145477" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="j_sk" href="http://my.opera.com/j_sk/">Jacques Dumas<span>j_sk</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5691106" class="permalink">#</a> Saturday, July 19, 2008 8:46:29 AM</span></p>
+<div class="text">Once more, it's a never ending admiration for Opera all teams work.<img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-love" alt="love"> </div>
+</div>
+<div class="comment1" id="comment5709173">
+<div class="avatar"><a href="http://my.opera.com/leoalassia/"><img src="http://my.opera.com/community/users/avatar.pl/926523" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="leoalassia" href="http://my.opera.com/leoalassia/">Leonardo Alassia<span>leoalassia</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5709173" class="permalink">#</a> Tuesday, July 22, 2008 6:41:24 PM</span></p>
+<div class="text">amazing!!! but it's a little slow...</div>
+</div>
+<div class="comment2" id="comment5709503">
+<div class="avatar"><a href="http://my.opera.com/leoalassia/"><img src="http://my.opera.com/community/users/avatar.pl/926523" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="leoalassia" href="http://my.opera.com/leoalassia/">Leonardo Alassia<span>leoalassia</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5709503" class="permalink">#</a> Tuesday, July 22, 2008 8:13:42 PM</span></p>
+<div class="text">I am trying to make an application to transform a 3dmax file to a canvas file, but I need to know what are the last two parameters (s and t) in the function addVertex()</div>
+</div>
+<div class="comment1" id="comment5709599">
+<div class="avatar"><a href="http://my.opera.com/p01/"><img src="http://my.opera.com/community/users/avatar.pl/240060" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="p01" href="http://my.opera.com/p01/">Mathieu 'p01' HENRI<span>p01</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5709599" class="permalink">#</a> Tuesday, July 22, 2008 8:50:14 PM</span></p>
+<div class="text">They are more commonly called u and v, and refer to the texture coordinates. Of course they are normalized.</div>
+</div>
+<div class="comment2" id="comment5709707">
+<div class="avatar"><a href="http://my.opera.com/leoalassia/"><img src="http://my.opera.com/community/users/avatar.pl/926523" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="leoalassia" href="http://my.opera.com/leoalassia/">Leonardo Alassia<span>leoalassia</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5709707" class="permalink">#</a> Tuesday, July 22, 2008 9:14:08 PM</span></p>
+<div class="text">ok... I have made this teatpot.xml <a href="http://www.leoalassia.com.ar/aes2opera/teatpot.xml" rel="nofollow" target="_blank">http://www.leoalassia.com.ar/aes2opera/teatpot.xml</a><br>but I can't place the camera in a correct position to see the teatpot!<br>if you place it in<br>context3d.translate(0,0,-150);<br>you can see something...<br><br>(copy the canvas3d_example2.htm and replace cube.xml by my teatpot.xml)<br><br>in <a href="http://www.leoalassia.com.ar/aes2opera/index.phpt" rel="nofollow" target="_blank">http://www.leoalassia.com.ar/aes2opera/index.phpt</a> you can see my code <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-p" alt="p"> , it's very stupid but it works...<br>(you have to export some 3d object to .AES file)</div>
+</div>
+<div class="comment1" id="comment5709725">
+<div class="avatar"><a href="http://my.opera.com/leoalassia/"><img src="http://my.opera.com/community/users/avatar.pl/926523" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="leoalassia" href="http://my.opera.com/leoalassia/">Leonardo Alassia<span>leoalassia</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5709725" class="permalink">#</a> Tuesday, July 22, 2008 9:18:28 PM</span></p>
+<div class="text">ups... I'm sorry... here is my own answer... <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-lol" alt="lol"> <br>context3d.translate(0,0,-300);<br><br>and add this line into onload function:<br>context3d.farPlane=500;<br><br><img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-yes" alt="yes"> </div>
+</div>
+<a name="lastcomment"></a><div class="comment2" id="comment5710872">
+<div class="avatar"><a href="http://my.opera.com/leoalassia/"><img src="http://my.opera.com/community/users/avatar.pl/926523" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="leoalassia" href="http://my.opera.com/leoalassia/">Leonardo Alassia<span>leoalassia</span></a></b> <span class="comment-date"><a href="http://my.opera.com/timjoh/blog/show.dml/1496523#comment5710872" class="permalink">#</a> Wednesday, July 23, 2008 3:14:42 AM</span></p>
+<div class="text">@p01<br>can you give me more information about u and v parameters? because what I know is that an UV map is applied to a face, so I don´t understand how to calculate it to a vertex</div>
+</div>
+</div>
+<p class="pagenav"><b>1</b> <a href="http://my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension?startidx=50#comments">2</a> <a href="http://my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension?startidx=50#comments" class="nxt">Next »</a></p>
+<p class="pagenav-info">
+               Showing comments 1 	- 
+
+               
+                 50 of 69.
+                  </p>
+<div id="newcomment" class="w100">
+<h3>Write a comment</h3>
+<p>New comments have been disabled for this post.</p>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<div class="sidebox" id="qp">
+<h2>Tim Johansson</h2>
+<div id="myphoto"><a href="http://my.opera.com/timjoh/"><img src="https://static.myopera.com/upic/pool1/Tl/GQK/VZgUP7S9tUqb4LL1pfJPvY/842247_l.jpg" width="220" height="165" alt="photo"></a></div>
+</div>
+<div id="blogsearch" class="sidebox">
+<label for="searchbox" class="h2">Blog search</label><form action="http://my.opera.com/timjoh/search/?" method="get"><div class="pad">
+<input type="text" name="search" value="" id="searchbox" maxlength="128"><input type="submit" value="search" id="submitsearch">
+</div></form>
+</div>
+<div class="sidebox" id="friendz">
+<h2>Friends (10)</h2>
+<div class="pad">
+<ul class="userlist nobullets">
+<li class="first"><a href="http://my.opera.com/chaals/"><img src="https://static.myopera.com/upic/pool1/vG/AXa/++7mwyYDJxB4DYj9eE3Ygw/162910_m.jpg" width="104" height="78" alt="chaals photo" title="chaals "><span class="block">chaals</span></a></li>
+<li><a href="http://my.opera.com/p01/"><img src="https://static.myopera.com/upic/pool1/gr/Vbh/PoXVzPaGsGa6ZjvUU16QKg/240060_m.jpg" width="104" height="78" alt="p01 photo" title="p01 "><span class="block">p01</span></a></li>
+<li class="first"><a href="http://my.opera.com/foolip/"><img src="https://static.myopera.com/upic/pool1/gL/WzD/dyIfieIlqKUL4oUs53fQYc/1667521_m.jpg" width="104" height="78" alt="foolip photo" title="foolip "><span class="block">foolip</span></a></li>
+<li><a href="http://my.opera.com/emoller/"><img src="https://static.myopera.com/upic/pool1/Ig/9WJ/d6mpRfpVkpAm7hxYuQvC40/4991201_m.jpg" width="104" height="78" alt="emoller photo" title="emoller "><span class="block">emoller</span></a></li>
+<li class="first"><a href="http://my.opera.com/gsnedders/"><img src="https://static.myopera.com/upic/pool1/ZR/Nvj/11+l9TIIBStZxQppaYCoks/3159517_m.jpg" width="104" height="78" alt="gsnedders photo" title="gsnedders "><span class="block">gsnedders</span></a></li>
+<li><a href="http://my.opera.com/fruxo/"><img src="https://static.myopera.com/upic/pool1/I3/M0k/yUNfsW8BgZtiO2K6ure45U/695539_m.jpg" width="104" height="78" alt="fruxo photo" title="fruxo "><span class="block">fruxo</span></a></li>
+</ul>
+<p><b><a href="http://my.opera.com/timjoh/friends/">Show all friends</a></b></p>
+</div>
+</div>
+<div class="sidebox" id="newcomments">
+<h2>Latest comments</h2>
+<div class="pad">
+<ul class="nobullets usercom">
+<li>
+<div class="userpic"><a href="http://my.opera.com/Swapnil99pro/"><img src="https://static.myopera.com/upic/pool1/3U/bec/FervlJgkiTGUww+nU_BHqg/71409502_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/Swapnil99pro/" class="username">Swapnil Rustagi</a></b></p>
+<p><a href="http://my.opera.com/timjoh/blog/2011/03/11/webgl-and-hardware-acceleration?cid=69775022#comment69775022" class="usertext"><text>It's been almost half a year now?
+I am also thinking about  ...</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/timjoh/blog/2011/03/11/webgl-and-hardware-acceleration?cid=67318832#comment67318832" class="usertext"><text>_ck_ writes:
+
+Any chance of an updated labs preview of webgl ...</text></a></p>
+</li>
+<li>
+<div class="userpic"><a href="http://my.opera.com/Slamdex/"><img src="https://static.myopera.com/upic/pool1/Fv/Yhx/zFh8FAF9OtfFnDKfKixL+8/32471022_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/Slamdex/" class="username">Chris</a></b></p>
+<p><a href="http://my.opera.com/timjoh/blog/2011/03/11/webgl-and-hardware-acceleration?cid=62050452#comment62050452" class="usertext"><text>By the way, why do we have to wait so long for ANY hardware  ...</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/timjoh/blog/2011/03/11/webgl-and-hardware-acceleration?cid=61862122#comment61862122" class="usertext"><text>Anonim writes:
+
+It would be nice to have working WebGL on Op ...</text></a></p>
+</li>
+<li>
+<div class="userpic"><a href="http://my.opera.com/xErath/"><img src="https://static.myopera.com/upic/pool1/7K/iuF/AcneEkVQHkZFEoFXx21I44/170834_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/xErath/" class="username">João Eiras</a></b></p>
+<p><a href="http://my.opera.com/timjoh/blog/2011/03/11/webgl-and-hardware-acceleration?cid=56778362#comment56778362" class="usertext"><text>
+   CSS based fullscreen mode
+oh... link ? </text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><a href="http://my.opera.com/chaals/"><img src="https://static.myopera.com/upic/pool1/vG/AXa/++7mwyYDJxB4DYj9eE3Ygw/162910_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/chaals/" class="username">Charles McCathieNevile</a></b></p>
+<p><a href="http://my.opera.com/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension?cid=54931321#comment54931321" class="usertext"><text>Xavier, this stuff was a demo idea. We, in particular Tim, a ...</text></a></p>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+<table id="calendar">
+<caption><a href="http://my.opera.com/timjoh/archive/monthly/?month=201402" id="calendarmonth">February 2014</a></caption>
+<thead><tr>
+<th scope="col" title="Monday" abbr="Monday">M</th>
+<th scope="col" title="Tuesday" abbr="Tuesday">T</th>
+<th scope="col" title="Wednesday" abbr="Wednesday">W</th>
+<th scope="col" title="Thursday" abbr="Thursday">T</th>
+<th scope="col" title="Friday" abbr="Friday">F</th>
+<th scope="col" title="Saturday" abbr="Saturday">S</th>
+<th scope="col" title="Sunday" abbr="Sunday">S</th>
+</tr></thead>
+<tfoot><tr><td colspan="7">
+<span id="prevmonth" class="left"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/timjoh/archive/monthly/?month=201401" title="January 2014">January 2014</a></span><span id="nextmonth" class="right"><a href="http://my.opera.com/timjoh/archive/monthly/?month=201403" title="March 2014">March 2014</a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span>
+</td></tr></tfoot>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+</tr>
+<tr>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+<td>23</td>
+</tr>
+<tr>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size5"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/3d" rel="tag">3d</a></li>
+<li class="size5"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/canvas" rel="tag">canvas</a></li>
+<li class="size1"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/evenes" rel="tag">evenes</a></li>
+<li class="size1"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/hardware%20acceleration" rel="tag">hardware acceleration</a></li>
+<li class="size5"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/opera" rel="tag">opera</a></li>
+<li class="size5"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/vega" rel="tag">vega</a></li>
+<li class="size1"><a href="http://my.opera.com/timjoh/blog/index.dml/tag/webgl" rel="tag">webgl</a></li>
+</ul></div>
+</div>
+<div class="sidebox" id="visitors">
+<h2>Recent visitors</h2>
+<div class="pad">
+<ul class="nobullets userlist">
+<li><a href="http://my.opera.com/mathiasbynens/"><img src="https://static.myopera.com/upic/pool1/ce/5Z8/EgNoEkFCkDdePgbDr6RQDM/208545_s.jpg" width="68" height="51" alt="mathiasbynens"><span class="block">mathiasbynens</span></a></li>
+<li class="mid"><a href="http://my.opera.com/mathiasbynens/"><img src="https://static.myopera.com/upic/pool1/ce/5Z8/EgNoEkFCkDdePgbDr6RQDM/208545_s.jpg" width="68" height="51" alt="mathiasbynens"><span class="block">mathiasbynens</span></a></li>
+<li><a href="http://my.opera.com/mathiasbynens/"><img src="https://static.myopera.com/upic/pool1/ce/5Z8/EgNoEkFCkDdePgbDr6RQDM/208545_s.jpg" width="68" height="51" alt="mathiasbynens"><span class="block">mathiasbynens</span></a></li>
+<li><a href="http://my.opera.com/centauro41/"><img src="https://static.myopera.com/upic/pool1/Dy/3nx/iyPcPNCh87Lnc3WUKqgk5Y/217389644_s.jpg" width="68" height="51" alt="centauro41"><span class="block">centauro41</span></a></li>
+<li class="mid"><a href="http://my.opera.com/raznemen0808/"><img src="https://static.myopera.com/upic/pool1/j4/vDd/BveQw1Aq5sJEp18iE+r+eE/203400974_s.jpg" width="68" height="51" alt="raznemen0808"><span class="block">raznemen0808</span></a></li>
+<li><a href="http://my.opera.com/ngducpha/"><img src="https://static.myopera.com/upic/pool1/Zg/C49/406VZLA3KOEWgc2qo5rnrI/77057832_s.jpg" width="68" height="51" alt="ngducpha"><span class="block">ngducpha</span></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a>| <a href="http://my.opera.com/timjoh/xml/foaf/"><acronym title="Friend of a friend">FOAF</acronym></a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/timjoh/blog/2007/11/13/taking-the-canvas-to-another-dimension"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392043276.myo.cDoyNzowNDowMA== -->

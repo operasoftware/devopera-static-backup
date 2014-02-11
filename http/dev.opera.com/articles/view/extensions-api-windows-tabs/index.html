@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Windows &amp; Tabs API - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Windows &amp; Tabs API</h1>
+      <p class="print author">By Opera Software</p>
+
+      <p class="note">
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+</p>
+
+<h2 id="windows">Windows</h2>
+<dl class="apicontents">
+   <dt><a href="../extensions-api-windows-create/index.html">opera.extension.windows.create()</a></dt>
+   <dd>Creates a new browser window.</dd>
+   
+   <dt><a href="../extensions-api-windows-getAll/index.html">opera.extension.windows.getAll()</a></dt>
+   <dd>Obtains a group of windows (window collection).</dd>
+   
+   <dt><a href="../extensions-api-windows-getLastFocused/index.html">opera.extension.windows.getLastFocused()</a></dt>
+   <dd>Obtains the currently selected browser window, if any.</dd>
+   
+   <dt><a href="../extensions-api-window-insert/index.html">BrowserWindow.insert()</a></dt>
+   <dd>Inserts a tab or tab group into a browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-close/index.html">BrowserWindow.close()</a></dt>
+   <dd>Closes a browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-focus/index.html">BrowserWindow.focus()</a></dt>
+   <dd>Gives focus to a browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-update/index.html">BrowserWindow.update()</a></dt>
+   <dd>Updates the properties of a browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-id/index.html">BrowserWindow.id</a></dt>
+   <dd>A unique identifier for the browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-closed/index.html">BrowserWindow.closed</a></dt>
+   <dd>Gets the closed state of the browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-focused/index.html">BrowserWindow.focused</a></dt>
+   <dd>Gets and sets the focused state of the browser window.</dd>
+   
+   <!--<dt><a href="/articles/view/extensions-api-window-parent">BrowserWindow.parent</a></dt>
+   <dd>Gets the parent window, if any.</dd>-->
+   
+   <dt><a href="../extensions-api-window-private/index.html">BrowserWindow.private</a></dt>
+   <dd>Gets and sets the private state of the browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-tabGroups/index.html">BrowserWindow.tabGroups</a></dt>
+   <dd>Gets a window tab group manager.</dd>
+   
+   <dt><a href="../extensions-api-window-tabs/index.html">BrowserWindow.tabs</a></dt>
+   <dd>Gets a window tab manager.</dd>
+   
+   <dt><a href="../extensions-api-window-height/index.html">BrowserWindow.height</a></dt>
+   <dd>Sets the height of a browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-width/index.html">BrowserWindow.width</a></dt>
+   <dd>Sets the width of a browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-top/index.html">BrowserWindow.top</a></dt>
+   <dd>Sets the top offset of a browser window.</dd>
+   
+   <dt><a href="../extensions-api-window-left/index.html">BrowserWindow.left</a></dt>
+   <dd>Sets the left offset of a browser window.</dd>
+</dl>
+    
+<h2 id="tabgroups">Tab Groups</h2>
+<dl class="apicontents">
+   <dt><a href="../extensions-api-tabGroups-create/index.html">opera.extension.tabGroups.create()</a></dt>
+   <dd>Creates a new tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroups-getAll/index.html">opera.extension.tabGroups.getAll()</a></dt>
+   <dd>Obtains a group of tab groups (tab group collection).</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-close/index.html">BrowserTabGroup.close()</a></dt>
+   <dd>Closes a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-focus/index.html">BrowserTabGroup.focus()</a></dt>
+   <dd>Gives focus to a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-insert/index.html">BrowserTabGroup.insert()</a></dt>
+   <dd>Inserts a tab into a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-update/index.html">BrowserTabGroup.update()</a></dt>
+   <dd>Updates the properties of a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-id/index.html">BrowserTabGroup.id</a></dt>
+   <dd>Gets a unique identifier for a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-closed/index.html">BrowserTabGroup.closed</a></dt>
+   <dd>Gets the closed state of a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-collapsed/index.html">BrowserTabGroup.collapsed</a></dt>
+   <dd>Gets or sets the collapsed state of a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-browserWindow/index.html">BrowserTabGroup.browserWindow</a></dt>
+   <dd>Gets a tab group&#39;s context window.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-tabs/index.html">BrowserTabGroup.tabs</a></dt>
+   <dd>Gets all open tabs within a tab group.</dd>
+   
+   <dt><a href="../extensions-api-tabGroup-position/index.html">BrowserTabGroup.position</a></dt>
+   <dd>Gets the position of a tab group.</dd>
+</dl>
+    
+<h2 id="tabs">Tabs</h2>
+<dl class="apicontents">
+   <dt><a href="../extensions-api-tabs-create/index.html">opera.extension.tabs.create()</a></dt>
+   <dd>Creates a new tab.</dd>
+   
+   <dt><a href="../extensions-api-tabs-getAll/index.html">opera.extension.tabs.getAll()</a></dt>
+   <dd>Obtains a group of tabs (tab collection).</dd>
+   
+   <dt>opera.extension.tabs.getFocused()</dt>
+   <dd>An alias for <a href="../extensions-api-tabs-getSelected/index.html">opera.extension.tabs.getSelected()</a></dd>
+   
+   <dt><a href="../extensions-api-tabs-getSelected/index.html">opera.extension.tabs.getSelected()</a></dt>
+   <dd>Obtains the currently selected tab, if any.</dd>
+   
+   <dt><a href="../extensions-api-tab-close/index.html">BrowserTab.close()</a></dt>
+   <dd>Closes a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-focus/index.html">BrowserTab.focus()</a></dt>
+   <dd>Gives focus to a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-update/index.html">BrowserTab.update()</a></dt>
+   <dd>Updates the properties of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-id/index.html">BrowserTab.id</a></dt>
+   <dd>Gets a unique identifier for a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-closed/index.html">BrowserTab.closed</a></dt>
+   <dd>Gets the closed state of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-locked/index.html">BrowserTab.locked</a></dt>
+   <dd>Gets and sets the locked state of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-private/index.html">BrowserTab.private</a></dt>
+   <dd>Gets and sets the privacy mode of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-selected/index.html">BrowserTab.selected</a></dt>
+   <dd>Gets the selected state of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-readyState/index.html">BrowserTab.readyState</a></dt>
+   <dd>Gets the <a href="http://www.w3.org/TR/html5/dom.html#current-document-readiness">current document readiness</a> of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-faviconUrl/index.html">BrowserTab.faviconUrl</a></dt>
+   <dd>Gets the URL of a tab&#39;s favicon.</dd>
+   
+   <dt><a href="../extensions-api-tab-title/index.html">BrowserTab.title</a></dt>
+   <dd>Gets the title of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-url/index.html">BrowserTab.url</a></dt>
+   <dd>Gets and sets the url of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-browserWindow/index.html">BrowserTab.browserWindow</a></dt>
+   <dd>Gets a tab&#39;s context window.</dd>
+   
+   <dt><a href="../extensions-api-tab-tabGroup/index.html">BrowserTab.tabGroup</a></dt>
+   <dd>Gets the tab group for a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-position/index.html">BrowserTab.position</a></dt>
+   <dd>Gets the position of a tab.</dd>
+   
+   <dt><a href="../extensions-api-tab-focused/index.html">BrowserTab.focused</a></dt>
+   <dd>Sets the focused state of a tab.</dd>
+</dl>
+
+<h2>Overview</h2>
+
+<p>A <b>browser window</b> is a graphical user-interface component that can contain zero or more browser tabs or browser tab groups. Each browser window has an associated tab collection and tab group collection. A browser window is the context window of each browser tab and browser tab group within its associated tab collection and tab group collection, respectively. A collection of browser windows is referred to as a window collection.</p>
+
+<p>A <b>browser tab group</b> is a graphical user-interface component contained within a browser window that can contain zero or more browser tabs. Each browser tab group has an associated tab collection and is associated with a context window. A browser tab group is the context tab group of each browser tab within its associated tab collection. A collection of browser tab groups is referred to as the tab group collection.</p>
+
+<p>A <b>browser tab</b> is a graphical user-interface component that represents a single page contained within a browser window. Each browser tab is associated with a browser window and might be associated with a browser tab group. A user can switch between browser tabs to access different pages. Selecting a browser tab brings that page into focus. A collection of browser tabs is referred to as the tab collection.</p>
+
+<h2>Example</h2>
+
+<p>The following example adds a button the browser toolbar. Clicking the button creates a tab group in a collapsed state containing two tabs. Each tab has a specified URL and one of them is a private tab.</p>
+
+<pre><code>&lt;!-- 
+  The configuration file (&#39;config.xml&#39;).
+--&gt;
+&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
+&lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot; id=&quot;http://example.com/testextension&quot; defaultlocale=&quot;en&quot;&gt;
+&lt;name&gt;Windows &amp; Tabs test extension&lt;/name&gt;
+  &lt;description&gt;A test extension that opens a tab group containing two tabs.&lt;/description&gt;
+  &lt;icon src=&quot;images/icon_64.png&quot;/&gt;
+  &lt;icon src=&quot;images/icon_18.png&quot;/&gt;
+&lt;/widget&gt;</code></pre>    
+
+<pre><code>//
+// The background process (e.g. index.html)
+//
+
+// Specify the properties of the button before creating it.
+var UIItemProperties = {
+  disabled: false,
+  title: &quot;Tab creation test&quot;,
+  icon: &quot;images/icon_18.png&quot;,
+  onclick: function() {
+    // Create two tabs with specified URLs
+    var tab1 = opera.extension.tabs.create({url: &#39;http://dev.opera.com/&#39;});
+    var tab2 = opera.extension.tabs.create({url: &#39;http://www.operamail.com/&#39;, private: true});
+    
+    // Create a tab group containing the above two tabs
+    var tabGroup = opera.extension.tabGroups.create([tab1, tab2], {collapsed: true});
+  }
+};
+
+// Create the button and add it to the toolbar.
+var button = opera.contexts.toolbar.createItem( UIItemProperties );    
+opera.contexts.toolbar.addItem(button);</code></pre>
+
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-88178212">
+      <a href="../../../author/spadija.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4b/3f6/d85c3e67155c8e42a6cf4189ca614ce7a71.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadija.html">Joel Spadin</a></p>
+      <p class="commentdate">Thursday, April 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Just as a warning to other developers, it is my experience that in Opera 12.00 build 1387 and prior, the tabs API does not behave properly when an extension is in developer mode and its popup is open. The two issues I have run into are:<br/><br/>opera.extension.tabs.getSelected() returns a tab object with undefined browserWindow, locked, position, selected, tabGroup, and title. The other properties appear to work normally.<br/><br/>opera.extension.tabs.getAll() returns an array containing one extra tab, which I assume belongs to the extension popup. Attempting to access this tab will fail with an &quot;Out of memory; script terminated&quot; error. I have not found any workaround for this, as try...catch does not catch the error.<br/><br/>I have reported this as DSK-362025.</section>
+    </li>
+    <li id="comment-88326392">
+      <a href="../../../author/spadija.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4b/3f6/d85c3e67155c8e42a6cf4189ca614ce7a71.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadija.html">Joel Spadin</a></p>
+      <p class="commentdate">Sunday, April 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is this API not yet fully implemented in Opera 12.00 beta? The &quot;private&quot;, &quot;selected&quot;, and &quot;locked&quot; properties of tabs cannot be set, and the &quot;focused&quot; property of a tab doesn&#39;t exist.<br/><br/>Edit: It looks like the &quot;focused&quot; property can only be set when creating a tab. The actual BrowserTab object has no such property, nor does calling update() with a new value for &quot;focused&quot; do anything. If this is the intended behavior, this page of documentation should be changed to reflect this, as right now it seems to be saying that BrowserTab objects should have a settable &quot;focused&quot; property.</section>
+    </li>
+    <li id="comment-88584342">
+      <a href="../../../author/mpkstroff.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2f/e7d/1362dfbbd61efe8dacd97f91b72c6e24cc2.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mpkstroff.html">Pablo Belluccia</a></p>
+      <p class="commentdate">Wednesday, May 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Any plans to fix DSK-327967 (Closing tabs opened in the background will activate the last active tab even if you have selected &quot;Activate the next tab&quot;) and DSK-333113 (Created tabs doesn&#39;t keep the zoom level)</section>
+    </li>
+    <li id="comment-88884332">
+      <a href="../../../author/spirobind.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6e/2d3/ba17c8024ede74520c1173110d64394400c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spirobind.html">Arnstein Teigene</a></p>
+      <p class="commentdate">Monday, May 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Joel: thanks for reporting the bugs with the tabs.getSelected() and tabs.getAll() issues. We&#39;re looking into it. <br/><br/>Regarding your second comment, private, selected, focused and locked are read only which is specified by the documentation. All of them except private can be set using update method. Focused not being present has been fixed and a bugfix will be ready in Opera 12 soon. <br/></section>
+    </li>
+    <li id="comment-88884432">
+      <a href="../../../author/spirobind.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6e/2d3/ba17c8024ede74520c1173110d64394400c.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spirobind.html">Arnstein Teigene</a></p>
+      <p class="commentdate">Monday, May 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Pablo: we&#39;re looking into those two bugs. </section>
+    </li>
+    <li id="comment-88993782">
+      <a href="../../../author/spadija.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4b/3f6/d85c3e67155c8e42a6cf4189ca614ce7a71.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadija.html">Joel Spadin</a></p>
+      <p class="commentdate">Tuesday, May 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Cool.<br/><br/>If private cannot be set using the update method, the documentation should be updated as it currently states &quot;BrowserTab.private » Gets and sets the privacy mode of a tab.&quot;<br/><br/>Also, another bug to watch out for: (DSK-363078) If you try to create a new group which contains tabs that are already part of a group, strange things happen. I&#39;ve provided a workaround (as well as a number of useful functions) <a href="https://github.com/ChaosinaCan/Windows-and-Tabs-API-Extensions" target="_blank">here on Github</a>.</section>
+    </li>
+    <li id="comment-89028302">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, May 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Joel<br/><br/>Thanks for the feedback Joel - we are working to fix that bug asap. As for private being read only, this is by design. So I&#39;m not sure if this needs an update? Or am I misunderstanding?</section>
+    </li>
+    <li id="comment-89074072">
+      <a href="../../../author/tagawa.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f5/4e9/7c71f564269733cd2930e567d97dfb97327.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tagawa.html">Daniel Davis</a></p>
+      <p class="commentdate">Thursday, May 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Joel: Regarding the &quot;private&quot; property, this is not readonly as it can be set when creating a new tab. In other words, it sets the property when used with the create() method but has no effect when used with the update() method. This is specified in the property&#39;s documentation page: <a href="../extensions-api-tab-private/index.html" target="_blank">http://dev.opera.com/articles/view/extensions-api-tab-private/</a></section>
+    </li>
+    <li id="comment-89219152">
+      <a href="../../../author/spadija.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4b/3f6/d85c3e67155c8e42a6cf4189ca614ce7a71.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadija.html">Joel Spadin</a></p>
+      <p class="commentdate">Saturday, May 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The documentation specific to the &quot;private&quot; property is fine. This page, however, states that BrowserTab.private &quot;Gets and sets the privacy mode of a tab.&quot;</section>
+    </li>
+    <li id="comment-90389862">
+      <a href="../../../author/pyrohacker.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/dd/b86/c49488581d57e4b7d06beda106e12a9b0f7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/pyrohacker.html">pyrohacker</a></p>
+      <p class="commentdate">Saturday, June 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is there any way to set the little blue pin/dot on a tab? I read that it changes when there is new content, but that doesn&#39;t seem to be the case with the Google Voice page, so I want to make an extension to notify the user of new texts.<br/><br/>And what does &quot;new content&quot; mean?</section>
+    </li>
+    <li id="comment-91211622">
+      <a href="../../../author/spadija.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4b/3f6/d85c3e67155c8e42a6cf4189ca614ce7a71.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadija.html">Joel Spadin</a></p>
+      <p class="commentdate">Sunday, June 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>As far as I can tell, setting opera.extension.tabs.oncreate irreversibly breaks tabs&#39; &quot;url&quot; and &quot;readyState&quot; properties. Both are undefined in the creation event and stay undefined even after the tab has fully loaded. I reported this as DSK-362845 a while back, and looks like it&#39;s still around in the Opera 12 release.</section>
+    </li>
+    <li id="comment-91211772">
+      <a href="../../../author/spadija.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/4b/3f6/d85c3e67155c8e42a6cf4189ca614ce7a71.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/spadija.html">Joel Spadin</a></p>
+      <p class="commentdate">Sunday, June 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Also, it would be nice if the tab creation event had a property to get the tab which created the new tab. This would also allow you to tell if the tab was created by the New Tab button or an external program, since it wouldn&#39;t have a creator tab in those cases.<br/><br/>My AutoStack extension currently assumes that the previously focused tab was the creator and that tabs with certain titles (Speed Dial, Extensions, etc.) aren&#39;t opened from other tabs and thus shouldn&#39;t be stacked. Knowing which tab created the new tab would make this much more robust.</section>
+    </li>
+    <li id="comment-91814042">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Wednesday, June 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi, what I miss most of all is &quot;tab&quot; property on message event object in background process. Right now there is no 100% reliable way to determine what tab sent the message to background process. Reported as DSK-368615. </section>
+    </li>
+    <li id="comment-91815312">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Wednesday, June 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;unstack&quot; method on tab group would be nice as well.</section>
+    </li>
+    <li id="comment-92195662">
+      <a href="../../../author/mwilco.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/53/6a8/f7fe65218c84b4e21908a3f0a82d2cbeb58.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mwilco.html">Matthew Wilcoxson</a></p>
+      <p class="commentdate">Thursday, July 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Do we have any control of how the window appears? In particular the ability to remove toolbars / statusbar/ tab bar etc..</section>
+    </li>
+    <li id="comment-92343222">
+      <a href="../../../author/SpShut.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e1/f4a/41c47d94592a30be8a82bec69869f38ec8d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/SpShut.html">Spadar Shut</a></p>
+      <p class="commentdate">Saturday, July 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Yes, agree with &quot;tab&quot; property on message event object in background process. Really need to focus a particular tab, but there&#39;s no way to get to it.</section>
+    </li>
+    <li id="comment-92600232">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Wednesday, July 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I would expect calling &quot;event.preventDefault()&quot; in tab group listener for &quot;oncreate&quot; would prevent creating the tab stack. (Same for creating tab/window)</section>
+    </li>
+    <li id="comment-93167312">
+      <a href="../../../author/DonySuXX.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/45/b14/8916079f6f041be3eeb1792703536db1f2d.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/DonySuXX.html">DonySuXX</a></p>
+      <p class="commentdate">Saturday, July 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>  var currentTab = opera.extension.tabs.getSelected();<br/>  if (currentTab) {<br/>   currentTab.postMessage(&quot;UPD_TAB&quot;);  &lt;----- DOESN&#39;T WORK in 12 !!!<br/>   }<br/></section>
+    </li>
+    <li id="comment-95493272">
+      <a href="../../../author/XAntares.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bc/5be/bbfb1581db17592221bf2edc1c5bf6d7b46.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/XAntares.html">XenoAntares</a></p>
+      <p class="commentdate">Tuesday, August 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>For 12.50 build 1577, first non-labs snapshot with SPDY support, there is a property <br/><br/>bool BrowserTab.loadedWithSPDY<br/><br/>(used in Opera&#39;s SPDY indicator extension).</section>
+    </li>
+    <li id="comment-98891252">
+      <a href="../../../author/shabl.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d9/240/d2fc376376351e867e4999d7d4399a3fe08.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/shabl.html">Tёm@ Shabs-from-UABS</a></p>
+      <p class="commentdate">Thursday, November 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is there a way to handle active tab changed event?</section>
+    </li>
+    <li id="comment-98950632">
+      <a href="../../../author/topdawg.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/46/d17/9b39b73aa2fd4adc89aa4c5c3736c1cfb80.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/topdawg.html">Amenel</a></p>
+      <p class="commentdate">Friday, November 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>All this is good but is it possible to thwart/circumvent the dreaded shrinking and left-shifting of locked/pinned tabs?</section>
+    </li>
+    <li id="comment-102602882">
+      <a href="../../../author/aluette.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/72/cfb/f874dfb7431e40c17456fca348f4af1a1be." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/aluette.html">Alouette</a></p>
+      <p class="commentdate">Wednesday, January 16, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Please , can anybody here explain  if there is any way to hide a tab without actually closing it?<br/>(i.e. still keeping in memory and in the autosave.win)<br/><br/>And it is possible to catch a &quot;new tab creation&quot; event from user?</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, April 26, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/extensions&#32;API.html" rel="tag">extensions API</a></li>
+        <li><a href="../../tags/Windows&#32;and&#32;Tabs.html" rel="tag">Windows and Tabs</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera extensions docs</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-hello-world/index.html" >Saying hello world to Opera extensions!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../whats-in-an-opera-extension/index.html" >What's in an Opera extension?</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-developer-workflow/index.html" >Opera extensions developer workflow</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>API reference<ul >
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-config-xml/index.html" >config.xml</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-widget/index.html" >widget element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-name/index.html" >name element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-description/index.html" >description element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-author/index.html" >author element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-license/index.html" >license element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-icon/index.html" >icon element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-content/index.html" >content element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-preference/index.html" >preference element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-access/index.html" >access element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-span/index.html" >span element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-xml-lang/index.html" >xml:lang attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-dir/index.html" >dir attribute</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-widget-object/index.html" >Widget object</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-author/index.html" >widget.author</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authoremail/index.html" >widget.authorEmail</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authorhref/index.html" >widget.authorHref</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-description/index.html" >widget.description</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-id/index.html" >widget.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-name/index.html" >widget.name</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-preferences/index.html" >widget.preferences</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-shortname/index.html" >widget.shortName</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-version/index.html" >widget.version</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-browser-toolbar/index.html" >Button &amp; Badge API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-createitem/index.html" >opera.contexts. toolbar.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-additem/index.html" >opera.contexts. toolbar.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-removeitem/index.html" >opera.contexts. toolbar.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-length/index.html" >opera.contexts. toolbar.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-badge/index.html" >Button.badge</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-disabled/index.html" >Button.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-icon/index.html" >Button.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-onclick/index.html" >Button.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-popup/index.html" >Button.popup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-title/index.html" >Button.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-addeventlistener/index.html" >Button.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-removeeventlistener/index.html" >Button.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-backgroundcolor/index.html" >Badge.backgroundColor</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-color/index.html" >Badge.color</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-display/index.html" >Badge.display</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-textcontent/index.html" >Badge.textContent</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-popup/index.html" >Popup API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-height/index.html" >Popup.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-href/index.html" >Popup.href</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-width/index.html" >Popup.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-postmessage/index.html" >opera.extension. postMessage()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="index.html"  class="current">Windows &amp; Tabs API</a>
+
+<ul  class="root">
+  <li class="sub-collection parent-collection">
+<span  class="descendant"></span>Windows<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-create/index.html" >opera.extension. windows.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getall/index.html" >opera.extension. windows.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getlastfocused/index.html" >opera.extension. windows.getLastFocused()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-insert/index.html" >BrowserWindow.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-close/index.html" >BrowserWindow.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focus/index.html" >BrowserWindow.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-update/index.html" >BrowserWindow.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-id/index.html" >BrowserWindow.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-closed/index.html" >BrowserWindow.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focused/index.html" >BrowserWindow.focused</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-private/index.html" >BrowserWindow.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabgroups/index.html" >BrowserWindow.tabGroups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabs/index.html" >BrowserWindow.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-height/index.html" >BrowserWindow.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-width/index.html" >BrowserWindow.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-top/index.html" >BrowserWindow.top</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-left/index.html" >BrowserWindow.left</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span  class="descendant"></span>Tab Groups<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-create/index.html" >opera.extension. tabGroups.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-getall/index.html" >opera.extension. tabGroups.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-close/index.html" >BrowserTabGroup.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-focus/index.html" >BrowserTabGroup.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-insert/index.html" >BrowserTabGroup.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-update/index.html" >BrowserTabGroup.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-id/index.html" >BrowserTabGroup.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-closed/index.html" >BrowserTabGroup.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-collapsed/index.html" >BrowserTabGroup. collapsed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-browserwindow/index.html" >BrowserTabGroup. browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-tabs/index.html" >BrowserTabGroup.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-position/index.html" >BrowserTabGroup.position</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span  class="descendant"></span>Tabs<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-create/index.html" >opera.extension. tabs.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getall/index.html" >opera.extension. tabs.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getselected/index.html" >opera.extension. tabs.getSelected()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-close/index.html" >BrowserTab.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focus/index.html" >BrowserTab.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-update/index.html" >BrowserTab.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-id/index.html" >BrowserTab.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-closed/index.html" >BrowserTab.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-locked/index.html" >BrowserTab.locked</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-private/index.html" >BrowserTab.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-selected/index.html" >BrowserTab.selected</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-readystate/index.html" >BrowserTab.readyState</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-faviconurl/index.html" >BrowserTab.faviconUrl</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-title/index.html" >BrowserTab.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-url/index.html" >BrowserTab.url</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-browserwindow/index.html" >BrowserTab.browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-tabgroup/index.html" >BrowserTab.tabGroup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-position/index.html" >BrowserTab.position</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focused/index.html" >BrowserTab.focused</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-injected-scripts/index.html" >Injected scripts</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-addeventlistener/index.html" >opera.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-removeeventlistener/index.html" >opera.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicfunction/index.html" >opera.defineMagicFunction()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicvariable/index.html" >opera.defineMagicVariable()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-posterror/index.html" >opera.postError()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-urlfilter/index.html" >URL filter API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-add/index.html" >opera.extension. urlfilter.block.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-remove/index.html" >opera.extension. urlfilter.block.remove()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-allow-add/index.html" >opera.extension. urlfilter.allow.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-excludedomains/index.html" >RuleOptions.excludeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-includedomains/index.html" >RuleOptions.includeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-resources/index.html" >RuleOptions.resources</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-thirdparty/index.html" >RuleOptions.thirdParty</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-syntax/index.html" >URL Filter syntax</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-messaging/index.html" >Messaging API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-bgprocess/index.html" >opera.extension.bgProcess</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onconnect/index.html" >opera.extension.onconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-ondisconnect/index.html" >opera.extension.ondisconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-broadcastmessage/index.html" >opera.extension. broadcastMessage()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-speeddial/index.html" >Speed Dial API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-viewmodes/index.html" >viewmodes attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-param/index.html" >param element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-title/index.html" >opera.contexts.speeddial.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-url/index.html" >opera.contexts.speeddial.url</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-resourceloader/index.html" >Resource Loader API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-resourceloader-getfile/index.html" >opera.extension.getFile()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-screenshot/index.html" >Screenshot API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-screenshot-getscreenshot/index.html" >opera.extension.getScreenshot() and BrowserTab.getScreenshot()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-contextmenu/index.html" >Context Menu API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-createitem/index.html" >opera.contexts. menu.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-additem/index.html" >opera.contexts. menu.addItem() and MenuItem.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-item/index.html" >opera.contexts.menu.item() and MenuItem.item()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-removeitem/index.html" >opera.contexts. menu.removeItem() and MenuItem.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-length/index.html" >opera.contexts.menu.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-onclick/index.html" >opera.contexts.menu.onclick and MenuItem.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-contexts/index.html" >MenuItem.contexts</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-disabled/index.html" >MenuItem.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturlpatterns/index.html" >MenuItem. documentURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-icon/index.html" >MenuItem.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-id/index.html" >MenuItem.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-parent/index.html" >MenuItem.parent</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-targeturlpatterns/index.html" >MenuItem.targetURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-title/index.html" >MenuItem.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-type/index.html" >MenuItem.type</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturl/index.html" >MenuEvent.documentURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-iseditable/index.html" >MenuEvent.isEditable</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-linkurl/index.html" >MenuEvent.linkURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-mediatype/index.html" >MenuEvent.mediaType</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-pageurl/index.html" >MenuEvent.pageURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-selectiontext/index.html" >MenuEvent.selectionText</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-source/index.html" >MenuEvent.source</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcelement/index.html" >MenuEvent.srcElement</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcurl/index.html" >MenuEvent.srcURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-target/index.html" >MenuEvent.target</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Extension tutorials<ul >
+  <li class="sub-collection leaf">
+<a href="../config-xml-howto/index.html" >The ins and outs of config.xml</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-buttons-badges-and-popups/index.html" >Buttons, badges and popups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-messaging/index.html" >Messaging</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-options-page/index.html" >Options page</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../accessing-an-opera-extensions-background-process/index.html" >Accessing an Opera extension's background process</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-opera-speed-dial-extensions/index.html" >Creating Opera Speed Dial Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cookie-sharing-in-opera-extensions/index.html" >Cookie-sharing in Opera extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../site-blocking-with-operas-url-filter-api/index.html" >Site blocking with Opera’s URL Filter API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-multilingual-extensions/index.html" >Creating multilingual extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hands-on-building-an-opera-extension/index.html" >Hands-on tutorial: building an Opera extension</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-userjs-to-extensions/index.html" >Converting UserJS to Opera Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-widgets-to-opera-extensions/index.html" >Converting widgets to Opera Extensions: Things to keep in mind</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Templates and code samples<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extension-code-examples/index.html" >Opera extension code examples</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-prototypes-modifying-css/index.html" >Opera extensions prototypes for modifying CSS</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>UI guidelines and distribution<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-publishing-guidelines/index.html" >Publishing guidelines</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-effective-opera-extension-icons/index.html" >Creating effective Opera Extension icons</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../distributing-opera-extensions-and-auto-updates/index.html" >Distributing Opera extensions and auto-updates</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

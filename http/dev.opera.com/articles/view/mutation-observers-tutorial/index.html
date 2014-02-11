@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting to know mutation observers - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Getting to know mutation observers</h1>
+      <p class="print author">By Tiffany Brown</p>
+
+      <p>As you develop more complex JavaScript-heavy applications or roll-your-own framework, you may find that you need to know when the DOM node tree has changed. You may want to know when a view has been loaded or unloaded. Or perhaps you are profiling an application, and want to measure how many nodes are affected by a DOM operation.</p>
+
+<p>We used to do this with mutation events. Introduced by the DOM, Level 2 specification, the MutationEvent interface defined several events &#8212; such as <code>DOMNodeInserted</code> and <code>DOMAttrModified</code> &#8212; that would be fired by the browser when a node was added, removed, or deleted. Mutation events, however, are not without their problems.</p>
+
+<h2>The problem with MutationEvents</h2>
+
+<p>Though an excellent idea in theory, in practice, mutation events had two major hurdles.</p>
+
+<ol style="list-style-type:decimal">
+	<li><b>MutationEvents are synchronous.</b> Events are fired when called, and may prevent other events in the queue from being fired.  Add or remove enough nodes, and the application could lag or hang.</li>
+
+	<li><b>Because they were events, they were implemented as events.</b> I know that reads like circular logic, but stick with me. Events must propagate through the DOM via capturing and sometimes bubbling. Capturing and bubbling can, in turn, trigger other event listeners that modify the DOM. And those can, in turn, cause more MutationEvents to fire, clogging the JavaScript thread &#8212; or worse, crashing the browser.</li>
+</ol>
+
+<p>Sounds messy, right?</p> 
+
+<p>Indeed, mutation events are messy enough to have been deprecated in the <a href="http://www.w3.org/TR/DOM-Level-3-Events/#events-mutationevents">DOM, Level 3 specification</a>. But if mutation events are deprecated, we need something to replace them. That&#39;s where mutation observers come in.</p>
+
+<h2> How Mutation Observers are different</h2>
+
+<p>Mutation observers are defined by the <a href="http://dom.spec.whatwg.org/#mutation-observers">DOM Standard</a>, and differ from mutation events one key way: they are asynchronous. They do not fire every time an event occurs. Instead they:</p>
+
+<ul>
+	<li>wait until other scripts or tasks complete; </li>
+	<li>report changes in a batch as an array of mutation records, rather than one-by-one; and</li>
+	<li>can observe all changes to a node, or only observe specific kinds of changes.</li>
+</ul>
+
+<p>What&#39;s more, because they <em>are not</em> events, they don&#39;t come with the implementation overhead of events. They&#39;re less likely to freeze the UI or cause a browser crash as a result.</p> 
+
+<p>Let&#39;s consider an example. In the code below, we&#39;re appending 2500 paragraphs to a document fragment, and then adding that fragment as a child of an article element.</p>
+
+<div id="DOMNodeInserted">
+<pre>var docFrag  = document.createDocumentFragment(),
+    thismany = 2500,
+    i=0,
+    a = document.querySelector(&#39;article&#39;),
+    p;
+
+while ( i &lt; thismany) {
+    // Creates a new p element if one doesn&#39;t exists. 
+    // Clones the existing element if it does.
+    p = (p === undefined) ? document.createElement(&#39;p&#39;) : p.cloneNode(false); 
+    docFrag.appendChild(p);
+    i++;
+}
+
+a.appendChild( docFrag );
+</pre>
+<p class="caption">Figure 1: Adding 2500 paragraph nodes to a document using a document fragment.</p>
+</div>
+
+<p>Even though we&#39;re adding 2500 paragraphs nodes, we&#39;ve batched them into one DOM update by using a document fragment. Still, this bit of code generates 2500 <code>DOMNodeInserted</code> events, one for each paragraph. Our <a href="../../../../devfiles.myopera.com/articles/12102/mutationobserver-mutationevent.html">DOMNodeInserted event handler</a> is invoked 2500 times. With a mutation observer, on the other hand, our callback is <a href="../../../../devfiles.myopera.com/articles/12102/mutationobserver-mutationobserver.html">invoked once</a>. One mutation observer can record multiple DOM operations.</p> 
+
+<h2> Okay, but can I use them now?</h2>
+
+<p>Support for isn&#39;t available everywhere just yet. Opera 15+, Firefox 14+ and Chrome 26+ support the <code>MutationObserver</code> interface. Internet Explorer 11 will also have support when it&#39;s released, as will Safari 6.1. Safari 6.0 and Chrome versions 18 through 25 also support <code>MutationObserver</code>, but with a WebKit prefix (<code>WebKitMutationObserver</code>). You can detect support with the code <a href="index.html#detectMutationObserverSupport">shown below</a>.</p>
+
+<div id="detectMutationObserverSupport">
+<pre>var canObserveMutation = &#39;MutationObserver&#39; in window;</pre>
+<p class="caption">Figure 2: Detecting mutation observer support.</p>
+</div>
+
+<h2> So how do I use &#39;MutationObserver&#39;?</h2>
+
+<p>The good news is that mutation observers are easy to use. First create an observer object using the MutationObserver constructor as shown in <a href="index.html#MutationObserver">Figure 3</a>. The constructor requires a single parameter, a callback function.</p>
+
+<div id="MutationObserver">
+<pre>var observer, callback;
+callback = function( recordqueue ){
+    // do something to each record in the recordqueue array.
+}
+observer = new MutationObserver( callback );</pre>
+<p class="caption">Figure 3: Creating a mutation observer.</p>
+</div>
+
+<p>Our callback function will receive an array of <code>MutationRecord</code> objects as an argument. Each <code>MutationRecord</code> object summarizes a change to the node tree. We&#39;ll discuss <a href="index.html#mutationrecords">mutation records</a> in more detail later.</p>
+
+<p>Next, you&#39;ll need to define a node to observe, and determine what kinds of DOM changes you&#39;d like to keep an eye on. For this, we use the <code>observe</code> method. Its first parameter must be a node, and its second must be a <a href="http://dev.w3.org/2006/webapi/WebIDL/#dfn-dictionary">dictionary</a> of options (<a href="index.html#usingobservefunction">Figure 4</a>). In the example below, we&#39;ll watch an article element for changes to its children or attributes.</p>
+
+<div id="usingobservefunction">
+<pre>var  options = {
+    &#39;childList&#39;: true,
+    &#39;attributes&#39;:true
+}, 
+article = document.querySelector( &#39;article&#39; );
+
+observer.observe( article, options );</pre>
+<p class="caption">Figure 4: Determining which node and mutation types to track</p>
+</div>
+
+<p>The options parameter may include the following properties and values.
+
+<dl>
+	<dt><code>childList</code></dt>
+		<dd>true or false; observe mutations to the target node&#39;s children. </dd>
+ 
+	<dt><code>attributes</code></dt>
+		<dd>true or false; observe changes to the attributes of a target node.</dd>
+
+	<dt><code>characterData</code></dt>
+		<dd>true or false; Observe changes to the data or text content of the target node. </dd>
+
+	<dt><code>subtree</code></dt>
+		<dd>true or false; observe mutations to all descendants of the target, including child nodes and &quot;grandchild nodes&quot; (or the child nodes of child nodes).</dd>
+
+	<dt><code>attributeOldValue</code></dt>
+		<dd>true or false; if the attributes property is true, and you&#39;d like to capture the value of the attribute before the mutation is recorded.</dd>
+
+	<dt><code>characterDataOldValue</code></dt>
+		<dd>true or false; if the characterData property is true, and you&#39;d like to capture the value of the data before the mutation is recorded.</dd>
+
+	<dt><code>attributeFilter</code></dt>
+	<dd>a list of attributes to observe, enclosed in square brackets (example: <code>[&#39;class&#39;,&#39;src&#39;]</code>);</dd>
+</dl>
+
+
+<p>Either the <code>childList</code>, <code>attributes</code>, or <code>characterData</code> property <em>must</em> be included, and set to <code>true</code> in order to observe a mutation.</p> 
+
+<p>To stop observing mutations, use the <code>disconnect()</code> method (<code>observer.disconnect()</code>). Using this method prevents further invocation of the callback function. The <code>takeRecord</code> method (<code>observer.takeRecord()</code>) clears the record queue. To resume watching mutations, just re-invoke the <code>observe</code> method.</p> 
+
+<p>I mentioned above that the mutation callback receives an array of mutation records as an argument. Let&#39;s take a look at what a mutation record is.</p>
+
+<h2 id="mutationrecords">Mutation records</h2>
+
+<p>A mutation record is an object that reports a single change to the document tree. Mutation record objects are defined by the <code>MutationRecord</code> interface, and contain the following items.</p> 
+
+<dl>
+	<dt><code>type</code></dt>
+		<dd>the type of of mutation observed, either <code>attribute</code>, <code>characterData</code> or <code>childList</code>.</dd>
+
+	<dt><code>target</code></dt>
+		<dd>the node affected by the mutation. </dd>
+
+	<dt><code>addedNodes</code></dt>
+		<dd>a NodeList of elements, attributes, and text nodes added to the tree.</dd>
+
+	<dt><code>removedNodes</code></dt>
+		<dd>a NodeList of elements, attributes, and text nodes removed from the tree.</dd>
+
+	<dt><code>previousSibling</code></dt>
+		<dd>returns the previous sibling node, or null if there is no previous sibling.</dd>
+
+	<dt><code>nextSibling</code></dt>
+		<dd>returns the next sibling node, or null if there is no next sibling.</dd>
+
+	<dt><code>attributeName</code></dt>
+		<dd>The name of the attribute or attributes changed. If <code>attributeFilter</code> option was set, it will only return the filtered node.</dd>
+	<dt><code>oldValue</code></dt>
+	<dd>the pre-mutation value in the case of attribute or <code>characterData</code> mutations, and <code>null</code> for <code>childList</code> mutations.</dd>
+</dl>
+
+<p>Now that we&#39;ve covered the syntax of mutation observers and mutation records, let&#39;s look at some examples.</p>
+
+<h2>Observing the addition or removal of child nodes</h2>
+
+<p>Observing the addition or removal of child nodes is pretty straightforward. We&#39;ll create a new object and pass a callback. We&#39;ll also observe our document&#39;s body, and all changes to its children. <a href="index.html#watchchildnodes">Figure 5</a> shows how.</p>
+
+<div id="watchchildnodes">
+<pre>var callback = function(allmutations){
+    
+    // Since allmutations is an array, we can use JavaScript Array methods.
+    allmutations.map( functions(mr){
+    	var mt = &#39;Mutation type: &#39; + mr.type;  // log the type of mutation
+    	mt += &#39;Mutation target: &#39; + mr.target; // log the node affected.
+    	console.log( mt );
+    });
+    
+},
+mo = new MutationObserver(callback),
+options = {
+    // required, and observes additions or deletion of child nodes.
+    &#39;childList&#39;: true, 
+    // observes the addition or deletion of &quot;grandchild&quot; nodes.
+    &#39;subtree&#39;: true
+}
+mo.observe(document.body, options);</pre>
+	<p class="caption">Figure 5: How to observe the addition or removal of child nodes to a document.</p>
+</div> 
+
+<p>Notice that we&#39;ve included the <code>subtree</code> option, and set it to <code>true</code>. Doing so captures when <a href="../../../../devfiles.myopera.com/articles/12102/mutationobserver-addchildren.html">children are appended</a> to the document body (example: <code>document.body.appendChild(el)</code>), <em>and</em> when they are appended to a child of the body (<code>document.getElementById(&#39;my_element&#39;).appendChild(el)</code>). If, instead, <code>subtree</code> was <code>false</code> or missing, the observer would only keep track of elements appended to the body.</p>
+
+<p>It&#39;s also possible to observe mutations to <a href="../../../../devfiles.myopera.com/articles/12102/mutationobserver-docfrag.html">document fragments</a>. Just pass the fragment as the first parameter to the <code>observe</code> method.</p>
+
+<h2>Observing changes to attributes</h2>
+
+<p>Observing changes to attributes works much the same way. The main difference is that you must add <code>&#39;attributes&#39;: true</code> to the options dictionary. If you also want to record the previous attribute value, set the <code>attributeOldValue</code> option to <code>true</code> (<a href="../../../../devfiles.myopera.com/articles/12102/mutationobserver-attributes.html">view a demo</a>).</p>
+
+<div id="watchchildnodes">
+<pre>var callback = function(allmutations){
+    // Since allmutations is an array, we can use array functions.
+    allmutations.map( functions(mr){
+        // log the previous value of the attribute.
+    	var attr = &#39;Previous attribute value: &#39; + mr.oldValue;  
+    	console.log(attr);
+    });
+},
+element = document.getElementById(&#39;my_el&#39;),
+mo = new MutationObserver(callback),
+options = {
+    &#39;attributes&#39;: true,        // required
+    &#39;attributeOldValue&#39;: true  // captures the previous attribute value. 
+}
+
+mo.observe(element, options);</pre>
+<p class="caption">Figure 6: How to observe the changes attribute values.</p>
+</div> 
+
+
+<p>The example above will capture all changes to any attribute of our target element, including deletions. As you can see <a href="../../../../devfiles.myopera.com/articles/12102/mutationobserver-attributes.html">in the demo</a>, each time the value of an attribute changes, a new mutation record gets added to the queue. But what if we only wanted to observe changes to <em>particular</em> attributes?</p>
+
+
+<h3>Filtering which attributes are observed</h3>
+
+<p>We can limit the which attributes we&#39;d like to observe by adding the <code>attributeFilter</code> property to our options (<a href="index.html#filteringattributes">Figure 7</a>). The value of <code>attributeFilter</code> must be a comma-separated list of attributes to track, enclosed in square brackets (<code>[</code> and <code>]</code>).</p> 
+
+<div id="watchchildnodes">
+<pre>var options = {
+    &#39;attributes&#39;: true,         
+    &#39;attributeOldValue&#39;: true,  
+    &#39;attributeFilter&#39;: [&#39;class&#39;] // only captures changes to the class attribute
+}
+
+mo.observe(element, options);</pre>
+<p class="caption">Figure 7: Filtering which attributes we observe.</p>
+</div> 
+
+<p>Setting that property means that a mutation record wil be generated <em>only</em> for changes to the value of the class attribute (<a href="../../../../devfiles.myopera.com/articles/12102/mutationobserver-attributes-filtered.html">view a demo</a>).</p>
+
+<h2>Learn More</h2>
+
+<p>To learn more about mutation observers, try the following resources.</p>
+
+<ul>
+   <li><a href="http://dom.spec.whatwg.org/#mutation-observers">Mutation observers from the WHATWG</a></li>
+   <li><a href="http://code.google.com/p/mutation-summary/wiki/DOMMutationObservers">Mutation Observers vs Mutation Events</a> from the Mutation Summary project.</li>
+   <li><a href="http://www.w3.org/2008/webapps/wiki/MutationReplacement">MutationReplacement</a>, from the W3C WebApps wiki, which offers historical and technical context</li>
+</ul>
+
+<p><em>Cover photo by <a href="http://www.flickr.com/photos/gerlos/3119891607">gerlos</a>. Used under a Attribution-ShareAlike 2.0 Generic license.</em></p></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/webinista.html" rel="author">Tiffany Brown</a></h1>
+        <a href="../../../author/webinista.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/0f/7d4/0b00e2e678d97b573d91a4c6a8e06f96139." alt=""/></a>
+        <p>Tiffany B. Brown is a freelance web developer based in Los Angeles. </p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/webinista.html" rel="author">Tiffany Brown</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, September 6, 2013
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/mutationobservers.html" rel="tag">mutationobservers</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

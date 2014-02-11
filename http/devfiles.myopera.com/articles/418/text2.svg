@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/)
+Created by ed@opera.com, 2007-07-05.
+-->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   viewBox="0 0 500 500"
+   id="svgroot">
+  <defs>
+    <linearGradient
+       id="linearGradient3270">
+      <stop
+         style="stop-color:#4c0000;stop-opacity:1"
+         offset="0"
+         id="stop3272" />
+      <stop
+         style="stop-color:#9b0000;stop-opacity:0.77319586"
+         offset="1"
+         id="stop3278" />
+    </linearGradient>
+    <filter
+       id="filter3246">
+      <feGaussianBlur
+         id="feGaussianBlur3248"
+         stdDeviation="5.3786588"
+         inkscape:collect="always" />
+    </filter>
+    <radialGradient
+       cx="75.110962"
+       cy="419.52441"
+       r="286.5"
+       fx="75.110962"
+       fy="419.52441"
+       id="radialGradient3276"
+       xlink:href="#linearGradient3270"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6032362,1.2076622,-1.5679002,0.7831777,700.96274,-211.40865)"
+       spreadMethod="pad" />
+  </defs>
+  <g>
+    <rect
+       width="500"
+       height="500"
+       style="fill:url(#radialGradient3276);stroke-width:30;stroke-linecap:round;"
+       id="bg" />
+	<g transform="translate(-120 -100)">
+    <path
+       d="M 362.85715,349.50504 C 358.12981,356.81092 350.67666,346.73714 350.71429,341.64789 C 350.81627,327.85633 367.22572,322.12645 378.57144,325.21933 C 398.86627,330.75175 406.26373,354.82622 399.28571,373.07648 C 389.04518,399.85947 356.42337,409.13291 331.42856,398.07645 C 298.1144,383.33994 286.92857,341.90419 302.14288,310.2193 C 321.28853,270.3471 371.65046,257.23526 410.00003,276.64791 C 456.4465,300.15923 471.49146,359.50501 447.85713,404.50506 C 420.00489,457.53607 351.64169,474.51851 299.99997,446.64787 C 240.37757,414.47011 221.45475,337.06819 253.57146,278.79071 C 290.06451,212.57214 376.51952,191.70688 441.42862,228.07649 C 514.24681,268.8777 537.05603,364.39597 496.42854,435.93365 C 451.32433,515.35404 346.73537,540.10836 268.57138,495.21929"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:30;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3246)"
+       id="path2160" />
+    <path 
+       d="M 362.85715,349.50504 C 358.12981,356.81092 350.67666,346.73714 350.71429,341.64789 C 350.81627,327.85633 367.22572,322.12645 378.57144,325.21933 C 398.86627,330.75175 406.26373,354.82622 399.28571,373.07648 C 389.04518,399.85947 356.42337,409.13291 331.42856,398.07645 C 298.1144,383.33994 286.92857,341.90419 302.14288,310.2193 C 321.28853,270.3471 371.65046,257.23526 410.00003,276.64791 C 456.4465,300.15923 471.49146,359.50501 447.85713,404.50506 C 420.00489,457.53607 351.64169,474.51851 299.99997,446.64787 C 240.37757,414.47011 221.45475,337.06819 253.57146,278.79071 C 290.06451,212.57214 376.51952,191.70688 441.42862,228.07649 C 514.24681,268.8777 537.05603,364.39597 496.42854,435.93365 C 451.32433,515.35404 346.73537,540.10836 268.57138,495.21929"
+       transform="translate(0.758,-1.533235)"
+       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:20;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3287" />
+    <text editable="simple" dy="5"
+       style="font-size:12px;font-family:Bitstream Vera Sans,sans-serif">
+	   <textPath xlink:href="#path3287">
+		Hello spiral text field Hello spiral text field 
+		Hello spiral text field Hello spiral text field 
+		Hello spiral text field Hello spiral text field 
+		Hello spiral text field Hello spiral text field
+	  </textPath>
+	  </text>
+  </g>
+	</g>
+</svg>

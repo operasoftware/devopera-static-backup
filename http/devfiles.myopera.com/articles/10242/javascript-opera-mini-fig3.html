@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>MouseEvents</title>
+	<style media="screen">
+	     body{font-family:helvetica,arial,sans-serif;}
+	     p{margin:.5em;}
+	</style>
+</head>
+<body>
+
+<h1>Mouse Events in Opera Mini</h1>
+
+<p id="targ">This paragraph has <code>mouseover</code>, <code>mouseout</code>, <code>mousedown</code>, and <code>mouseup</code> event listeners attached. Click or tap it to see how mouse events work.</p>
+
+<div id="events"></div>
+<script>
+var eventhandler = function(e){
+    var div  = document.getElementById('events'),
+        txt  = document.createTextNode(e.type+' event fired!');
+        graf = document.createElement('p');
+
+        graf.appendChild(txt);
+        div.appendChild(graf);
+}
+
+var events = 'mouseover,mousedown,mouseup,click'.split(','),
+    len = events.length,
+    x, p = document.getElementById('targ');
+
+for(x = 0; x < len; x++){
+    p.addEventListener(events[x],eventhandler,false);
+}
+
+
+
+</script>
+</body>
+</html>

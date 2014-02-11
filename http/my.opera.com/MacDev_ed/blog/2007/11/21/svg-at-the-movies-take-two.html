@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Erik Dahlström -  SVG at the movies - take two!</title>
+<meta property="og:url" content="http://my.opera.com/MacDev_ed/blog/2007/11/21/svg-at-the-movies-take-two">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/MacDev_ed/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/MacDev_ed/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/MacDev_ed/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/MacDev_ed/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/MacDev_ed/xml/rss/comments/1514035">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/MacDev_ed/xml/atom/comments/1514035">
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://static.myopera.com/community/css/users/117/main.css" type="text/css">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="Erik Dahlström -  SVG at the movies - take two!">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/qI/j_U/Cliv1DyiBWol4S0a9SBSYA/108375_l.jpg">
+<meta property="og:image" content="http://files.myopera.com/MacDev_ed/svgvideo/video.svg">
+<meta property="og:image" content="http://files.myopera.com/MacDev_ed/svgvideo/video2.svg">
+<meta property="og:description" content="Introduction
+As you may have already guessed one of the major new features introduced in the SVG Tiny 1.2 specification is the video element. It should be noted that while this is a major feature and a great leap forward, SVG Tiny 1.2 itself doesn't mandate any particular audio or video codecs. This topic is explored in the call for video on the web article on dev.opera.com. Of particular interest in that article are the svg video demos at the bottom.
+
+Prerequisites
+First, for maximum en ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2FMacDev_ed%2Fblog%2Fshow.dml%2F1514035&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2">
+<h1><span>ed.blog</span></h1>
+<p id="subtitle"><span>You will be vectorized.</span></p>
+</div>
+<div id="menu"><ul>
+<li id="menu_blog"><a href="http://my.opera.com/MacDev_ed/blog/" id="selected"><span>Blog</span></a></li>
+<li id="menu_albums"><a href="http://my.opera.com/MacDev_ed/albums/"><span>Photos</span></a></li>
+<li id="menu_links"><a href="http://my.opera.com/MacDev_ed/links/"><span>Links</span></a></li>
+<li id="menu_friends"><a href="http://my.opera.com/MacDev_ed/friends/"><span>Friends</span></a></li>
+<li id="menu_about"><a href="http://my.opera.com/MacDev_ed/about/"><span>About</span></a></li>
+</ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title"> SVG at the movies - take two!</h2>
+<p class="postdate">Wednesday, November 21, 2007 6:13:03 PM</p>
+<p class="tags"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/opera" rel="tag">opera</a>, <a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/svg" rel="tag">svg</a>, <a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/video" rel="tag">video</a> </p>
+<div class="content">
+<div id="excerpt">
+<object style="float:left;width:100px;height:100px" data="svg-at-the-movies-take-two.html" type="image/svg+xml"><img style="float:left;width:100px;height:100px" src="http://files.myopera.com/MacDev_ed/svg/dniezby_Scene_Slate.svg"></object><br>This article will show you how to present video on the web using open standards and SVG (Scalable Vector Graphics.)</div>
+<br><span style="font-size: 140%">Introduction</span><br>As you may have already guessed one of the major new features introduced in the SVG Tiny 1.2 specification is the <code>video</code> element. It should be noted that while this is a major feature and a great leap forward, SVG Tiny 1.2 itself doesn't mandate any particular audio or video codecs. This topic is explored in the <a href="../../../../../../dev.opera.com/articles/view/a-call-for-video-on-the-web-opera-vid/index.html" rel="nofollow">call for video on the web</a> article on <a href="../../../../../../dev.opera.com/index.html" rel="nofollow">dev.opera.com</a>. Of particular interest in that article are the <a href="../../../../../../dev.opera.com/articles/view/a-call-for-video-on-the-web-opera-vid/index.html#video" rel="nofollow">svg video demos</a> at the bottom.<br><br><span style="font-size: 140%">Prerequisites</span><br>First, for maximum enjoyment you need a way of viewing the examples in this article. I suggest the experimental <a href="http://my.opera.com/desktopteam/blog/2007/11/08/experimental-video-build-released-on-opera-labs" rel="nofollow">Opera 9.5 video build</a>, which can be downloaded <a href="http://my.opera.com/desktopteam/blog/2007/11/08/experimental-video-build-released-on-opera-labs" rel="nofollow">here</a>. At the moment there is only a Windows build, but *nix and OSX builds are in the works. Because of the beauty of open standards you can choose any SVG-supporting browser you like to view the content, such as <a href="http://www.bluishcoder.co.nz/2007/11/opera-has-new-video-enabled-build.html" rel="nofollow">Firefox</a>, although at the time of writing declarative animations are not supported in Firefox, so the demos below may not work as intended.<br><br>The experimental builds of Opera and Firefox both implement <a href="http://www.theora.org/" rel="nofollow">Ogg Theora</a> and <a href="http://www.vorbis.com/" rel="nofollow">Ogg Vorbis</a> as the baseline audio/video format, which means that it's implemented natively in the browsers and that it will work the same across all platforms and different browsers.<br><br><span style="font-size: 140%">Lights, camera, ACTION!</span><br>Examples first, explanations later. Note that this example requires support for declarative animation in SVG, and some other SVG 1.1 features, like styling with CSS and patterns.<br><br><object style="width:100%;height:320px" data="svg-at-the-movies-take-two.html" type="image/svg+xml"><img style="width:100%;height:320px" src="http://files.myopera.com/MacDev_ed/svgvideo/video.svg"></object><br><a href="http://files.myopera.com/MacDev_ed/svgvideo/video.svg" rel="nofollow">View live example.</a><br><br>Click the white rectangle - a short animation will play, and then a video will start playing.<br><br><span style="font-size: 140%">Animation in SVG</span><br>One of the coolest things about SVG is the previously-mentioned <a href="http://www.w3.org/TR/SVG11/animate.html" rel="nofollow">declarative animation</a>. With this you can create advanced animated SVG content without having to write a single line of JavaScript. Instead, you specify simple properties - for example properties to animate between two values during a particular amount of time. You can even add interactivity since events are supported in the declarative animation model. Here is an excerpt showing both how to listen for a click, and how to animate things using declarative animation:<br><br><pre>  &lt;g transform="matrix(0 -10 10 0 50 50)" style="fill: white"&gt;
+    &lt;g transform="translate(0 -2)"&gt;
+      &lt;path transform="matrix(1 0 0 1 -5 -5)" d="M10,10H4L0,6V0h10V10z"&gt;
+        &lt;animate id="ref" attributeName="d" to="M10,10H0L0,10V0h10V10z" 
+         begin="click" dur="1s" fill="freeze" /&gt;
+      &lt;/path&gt;
+      &lt;animateTransform attributeName="transform" type="translate" 
+       begin="ref.begin" dur="1s" fill="freeze" values="0 -2; 0 0" /&gt;
+    &lt;/g&gt;
+    ...</pre>
+<br><br>The above code does the animated morphing of the white rect shape in the above example. By animating the <code>d</code> attribute from one value to the next you don't have to worry about interpolating the values yourself, however, due to the design of path animation the paths must be compatible, which means they must have the same number of path commands and the path command types must be of the same type after normalization has taken place. This is illustrated by <a href="http://www.w3.org/Graphics/SVG/Test/20061213/htmlObjectHarness/full-animate-elem-83-t.html" rel="nofollow">this testcase</a>; to morph between any two shapes the best bet is to make all segments into Bezier curves. Kevin Lindsey made some tools for doing just that, and I recommend reading his <a href="http://kevlindev.com/tutorials/geometry/bezier/index.htm" rel="nofollow">introduction to Bezier curves article</a> and looking at the <a href="http://kevlindev.com/gui/utilities/bezierMorph/index.htm" rel="nofollow">path morphing</a> script API. Now let's look at some more code:<br><br><pre>   ...
+    &lt;animateTransform attributeName="transform" type="translate" 
+     begin="ref.end" dur="0.5s" fill="freeze" values="50 50;160 120" /&gt;
+    &lt;animateTransform attributeName="transform" type="rotate" 
+     begin="ref.end" dur="0.5s" fill="freeze" additive="sum" 
+     values="-90;0" /&gt;
+    &lt;animateTransform attributeName="transform" type="scale" 
+     begin="ref.end" dur="0.5s" fill="freeze" additive="sum" 
+     values="10 10;32 24" /&gt;
+    &lt;set attributeName="display" to="none" begin="ref.end+0.5s" 
+     fill="freeze" /&gt;
+  &lt;/g&gt;</pre>
+<br>Here we see what gives us the rotating and scaling rectangle. By using the <code>additive</code> attribute it's easy to use multiple transformations and animate them separately. First in the stack of animated transforms is a translation (a move) between the coordinates (50,50) and (160,120). We'll let the browser interpolate values between those two coordinates over the course of half a second. At the same time a rotation animation takes place, between -90 and 0 degrees. This <code>animateTransform</code> specifies <code>additive="sum"</code>, which means that it will not replace the previous transform, but be appended to it by doing a post-multiplication. Then we add a scaling transform - perhaps you only expected to see two values instead of four in the <code>values</code> attribute? That is of course possible, but sometimes you want to apply different scale factors to the x- and y-axis, and that is the case here. Finally the shape is hidden by animating the <code>display</code> property.<br><br><span style="font-size: 140%">How to do cheap video clipping</span><br>You might have been impressed with the non-rectangular clipping of the video (the smooth smooth curved shape that looks something like a tv-set.) The neat thing is that this is not really clipping - it's just drawing on top of the video, which can provide the faded edges due to SVG supporting opacity. The overlay has been optimized to use only fill (since stroking operations are usually more expensive in vector graphic engines), as we can see in the source below.<br><br><pre> &lt;g transform="translate(-15, -10)" style="display: none; fill: #fa9bce"&gt;
+    &lt;path style="fill-opacity: 0.4" d="M0,0v260h350V0H0z ..." /&gt;
+    &lt;path d="M0.5,0.5v260h350V0.5H0.5z M330.073,235.451 ..."/&gt;
+    &lt;path style="fill:none;" d="M0.5,0.5v260h350V0.5H0.5z ..."/&gt;
+  &lt;/g&gt;</pre>
+<br>There are drawbacks to this "poor man's" clipping. Say if you want an advanced background around the video frame - eg animated gradients - or something that is not a simple solid color? You can get around this by simply using the <a href="http://www.w3.org/TR/SVG11/masking.html" rel="nofollow">clipping features</a> of SVG 1.1 to do arbitrary shape clipping, then you can place your clipped video or graphics anywhere. For an example of using clipping and video together, <a href="http://people.opera.com/howcome/2007/video/svg/clip-move.svg" rel="nofollow">see here</a>.<br><br><span style="font-size: 140%">Action? I mean interaction</span><br>Now it's time for something a bit more interactive - here's an example that allows real-time transformation of video with a bit of JavaScript. Click to play the video, and then drag the corners of the video to transform it.<br><br><object style="width:100%;height:450px" data="svg-at-the-movies-take-two.html" type="image/svg+xml"><img style="width:100%;height:450px" src="http://files.myopera.com/MacDev_ed/svgvideo/video2.svg"></object><br><a href="http://files.myopera.com/MacDev_ed/svgvideo/video2.svg" rel="nofollow">View live example.</a><br><br><span style="font-size: 140%">Tweaking the examples</span><br>To get these examples to work in Opera, I had to do a bit of debugging, but this really was a small effort, basically consisting of applying the debugging techniques presented in the <a href="../../../../../../dev.opera.com/articles/view/debugging-svg-with-opera/index.html" rel="nofollow">debugging SVG with Opera</a> article. First, since the experimental video build doesn't support MPEG-4 (the format of the original videoclip) there is a choice of <a href="http://wiki.xiph.org/index.php/TheoraSoftwareEncoders" rel="nofollow">re-encoding the video</a> or simply using another video file, for example one of the growing selection of Theora videos available at <a href="http://commons.wikimedia.org/wiki/Category:Video" rel="nofollow">wikimedia</a>. Next, as is often the case with content authored mainly for the Adobe SVG plugin, some minor details needed to be changed in the scripts. What I did in order to keep the content mostly as-is was to include a wrapper script for the DOM methods <a href="http://www.w3.org/TR/SVGMobile12/svgudom.html#svg__SVGGlobal_getURL" rel="nofollow">getURL</a> and <a href="http://www.w3.org/TR/SVGMobile12/svgudom.html#svg__SVGGlobal_parseXML" rel="nofollow">parseXML</a>. These two methods are sometimes used in old svg content, and are also included in the SVG Tiny 1.2 specification, though there are some differences in how it is specified there versus what was implemented in the Adobe SVG plugin.<br><br>The rather simple <a href="http://files.myopera.com/MacDev_ed/svgvideo/udomImpl.js" rel="nofollow">wrapper script</a> uses <a href="http://www.w3.org/TR/XMLHttpRequest/" rel="nofollow">XMLHttpRequest</a> and <a href="http://developer.mozilla.org/en/docs/DOMParser" rel="nofollow">DOMParser</a> to provide the same functionality offered by the getURL and parseXML methods. <br><br>Many thanks to <a href="http://the.fuchsia-design.com/" rel="nofollow">Antoine Quint</a> and <a href="http://www.xml.com" rel="nofollow">xml.com</a> for letting me publish modified examples from the original <a href="http://www.xml.com/pub/a/2004/10/13/sacre.html" rel="nofollow">SVG at the movies</a> article.</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2FMacDev_ed%2Fblog%2F2007%2F11%2F21%2Fsvg-at-the-movies-take-two&amp;title=%20SVG%20at%20the%20movies%20-%20take%20two%21" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=%20SVG%20at%20the%20movies%20-%20take%20two%21,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2FMacDev_ed%2Fblog%2F2007%2F11%2F21%2Fsvg-at-the-movies-take-two&amp;title=%20SVG%20at%20the%20movies%20-%20take%20two%21" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=%20SVG%20at%20the%20movies%20-%20take%20two%21','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2FMacDev_ed%2Fblog%2F2007%2F11%2F21%2Fsvg-at-the-movies-take-two&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/MacDev_ed/blog/2007/11/20/svg-open-2007"><span>SVG Open 2007</span></a></span><span class="nxt"><a href="http://my.opera.com/MacDev_ed/blog/2007/11/27/upplysning"><span>UppLYSning</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/MacDev_ed/xml/rss/comments/1514035"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1 ownercomment" id="comment4096623">
+<div class="avatar"><a href="http://my.opera.com/MacDev_ed/"><img src="http://my.opera.com/community/users/avatar.pl/108375" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="MacDev_ed" href="http://my.opera.com/MacDev_ed/">Erik Dahlström<span>MacDev_ed</span></a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4096623" class="permalink">#</a> Sunday, November 25, 2007 9:49:38 PM</span></p>
+<div class="text">Recording video directly in Ogg Theora (in consumer products) is not here yet, but there have been some projects, like <a href="http://www.linuxdevices.com/articles/AT3888835064.html" rel="nofollow">this one</a>, that successfully made such a camera.<br><br>Judging from how people share video on the web today I don't think transcoding content is such a big problem. It's easy enough to do, and the <a href="http://www.videolan.org/vlc/" rel="nofollow">tools</a> are <a href="http://mediacoder.sourceforge.net/" rel="nofollow">already</a> <a href="http://xiph.org/quicktime/" rel="nofollow">out</a> <a href="http://www.v2v.cc/~j/ffmpeg2theora/" rel="nofollow">there</a>.</div>
+</div>
+<div class="comment2" id="comment4120837">
+<div class="avatar"><a href="http://my.opera.com/graouts/"><img src="http://my.opera.com/community/users/avatar.pl/244266" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="graouts" href="http://my.opera.com/graouts/">Antoine Quint<span>graouts</span></a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4120837" class="permalink">#</a> Thursday, November 29, 2007 5:18:32 PM</span></p>
+<div class="text">Love the examples <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"> Can't wait to be able to run video on Mac OS X, keep on blogging about SVG!</div>
+</div>
+<div class="comment1" id="comment4121088">
+<div class="avatar"><a href="http://my.opera.com/shikaka/"><img src="http://my.opera.com/community/users/avatar.pl/170046" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="shikaka" href="http://my.opera.com/shikaka/">andrew<span>shikaka</span></a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4121088" class="permalink">#</a> Thursday, November 29, 2007 6:21:13 PM</span></p>
+<div class="text">if you're on linux, there's a little tool called 'istanbul', it's basically a 1-click button for recording your desktop. doesn't take much cpu, but the end result is an incredibly tiny video file in ogg theora <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment2" id="comment4121440">
+<div class="avatar"><a href="http://my.opera.com/zoquete/"><img src="http://my.opera.com/community/users/avatar.pl/895209" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="zoquete" href="http://my.opera.com/zoquete/">zoquete</a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4121440" class="permalink">#</a> Thursday, November 29, 2007 7:25:53 PM</span></p>
+<div class="text">Zoquete writes:<br><br>Unbelievable, <br><br>I hear a czech singer - Ivan Mládek - in background.  Very poplular in the 70's - 80's<br><br>UNBELIEVABLE!!! <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-bigsmile" alt="bigsmile"> <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-bigsmile" alt="bigsmile"> <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-bigsmile" alt="bigsmile"><br><br>Zoquete (Czech Republic)<br>_____<br>Sorry I was not logged in</div>
+</div>
+<div class="comment1" id="comment4122715">
+<div class="avatar"><a href="http://my.opera.com/FataL/"><img src="http://my.opera.com/community/users/avatar.pl/25260" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="FataL" href="http://my.opera.com/FataL/">FataL</a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4122715" class="permalink">#</a> Friday, November 30, 2007 12:13:33 AM</span></p>
+<div class="text">Amazing demo of technology! <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-up" alt="up">
+</div>
+</div>
+<div class="comment2" id="comment4318895">
+<div class="avatar"><a href="http://my.opera.com/jonyellow/"><img src="http://my.opera.com/community/users/avatar.pl/1238839" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="jonyellow" href="http://my.opera.com/jonyellow/">jonyellow</a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4318895" class="permalink">#</a> Saturday, December 29, 2007 2:01:49 PM</span></p>
+<div class="text">Great article with decent and clear examples. I have already put the newly acquired knowledge to some use and I must say that I'm more than satisfied with results. SVG is a very resourceful tool and I hope to use more of it in future!</div>
+</div>
+<div class="comment1" id="comment4666539">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4666539" class="permalink">#</a> Tuesday, February 12, 2008 12:13:41 PM</span></p>
+<div class="text">Thanks for this wodnerful demonstration of SVG technology. I was searching for some nice tutorials about SVG and the one you've made became wery useful and allowed me to broaden my horizons as far as the subject of SVG is concerned.</div>
+</div>
+<div class="comment2" id="comment4666896">
+<div class="avatar"><a href="http://my.opera.com/annmacgiff/"><img src="http://my.opera.com/community/users/avatar.pl/1333438" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="annmacgiff" href="http://my.opera.com/annmacgiff/">annmacgiff</a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4666896" class="permalink">#</a> Tuesday, February 12, 2008 1:15:21 PM</span></p>
+<div class="text">I really appreciate the work you've made writing this article. It is really interesting with nice examples that make everything clear. I just started using SVG in my work so this tutorial was a real help to me. Thanks!</div>
+</div>
+<div class="comment1" id="comment4764928">
+<div class="avatar"><a href="http://my.opera.com/qwertzguy/"><img src="http://my.opera.com/community/users/avatar.pl/1239154" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="qwertzguy" href="http://my.opera.com/qwertzguy/">qwertzguy</a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4764928" class="permalink">#</a> Tuesday, February 26, 2008 12:28:24 PM</span></p>
+<div class="text">Hello,<br><br>I've just updated to Opera 9.26 and the first example only does the white box anymation but no video and the second example doesn't do anything at all.<br><br>Is this because of Opera 9.26?<br>Thanks</div>
+</div>
+<div class="comment2 ownercomment" id="comment4766336">
+<div class="avatar"><a href="http://my.opera.com/MacDev_ed/"><img src="http://my.opera.com/community/users/avatar.pl/108375" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="MacDev_ed" href="http://my.opera.com/MacDev_ed/">Erik Dahlström<span>MacDev_ed</span></a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment4766336" class="permalink">#</a> Tuesday, February 26, 2008 4:10:49 PM</span></p>
+<div class="text">@qwertzguy:<br>Yes, you need the experimental video build to see the video, like it says in the Prerequisites section.</div>
+</div>
+<div class="comment1" id="comment5689938">
+<div class="avatar"><a href="http://my.opera.com/chaals/"><img src="http://my.opera.com/community/users/avatar.pl/162910" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="chaals" href="http://my.opera.com/chaals/">Charles McCathieNevile<span>chaals</span></a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment5689938" class="permalink">#</a> Saturday, July 19, 2008 2:50:11 AM</span></p>
+<div class="text">Note that there is a <a href="svg-at-the-movies-take-two.html" rel="nofollow" target="_blank">New video build available</a> based on the 9.52 previwe version. And yes @graouts, this time it is on Mac too. (And even on linux - your videos are hard work for the processor, but I can indeed drg the corners and see the animation.</div>
+</div>
+<div class="comment2" id="comment10587582">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment10587582" class="permalink">#</a> Sunday, November 1, 2009 1:39:42 PM</span></p>
+<div class="text">Аноним writes:
+
+ни хрена не понял
+</div>
+</div>
+<div class="comment1" id="comment12182451">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment12182451" class="permalink">#</a> Wednesday, December 2, 2009 9:57:18 PM</span></p>
+<div class="text">JKPie writes:
+
+I've got the newest experimental Opera build installed, however i can not see the movies (just moving frames). Might it be possible that it's happening because of the Windows7? </div>
+</div>
+<div class="comment2" id="comment12500051">
+<div class="avatar"><a href="http://my.opera.com/chaals/"><img src="http://my.opera.com/community/users/avatar.pl/162910" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="chaals" href="http://my.opera.com/chaals/">Charles McCathieNevile<span>chaals</span></a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment12500051" class="permalink">#</a> Sunday, December 6, 2009 6:32:53 PM</span></p>
+<div class="text">@JKPie do you have the *video* build installed, or a new weekly? For the moment video is disabled in weeklies (due to extensive re-engineering of the backend). Hopefully soon we'll have it in the release path, which is where the weeklies come from.</div>
+</div>
+<div class="comment1" id="comment22314541">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment22314541" class="permalink">#</a> Tuesday, March 23, 2010 1:17:31 AM</span></p>
+<div class="text">ipay kurnain writes:
+
+good,i like this program.</div>
+</div>
+<a name="lastcomment"></a><div class="comment2" id="comment27365271">
+<div class="avatar"><a href="http://my.opera.com/nguyenthupk/"><img src="http://my.opera.com/community/users/avatar.pl/3371462" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="nguyenthupk" href="http://my.opera.com/nguyenthupk/">Nguyễn Thu<span>nguyenthupk</span></a></b> <span class="comment-date"><a href="http://my.opera.com/MacDev_ed/blog/show.dml/1514035#comment27365271" class="permalink">#</a> Tuesday, May 11, 2010 1:44:37 AM</span></p>
+<div class="text">Yes, verry good, I like this program</div>
+</div>
+</div>
+<div id="newcomment" class="w100">
+<h3>Write a comment</h3>
+<p>New comments have been disabled for this post.</p>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<div class="sidebox" id="qp">
+<h2>Erik Dahlström</h2>
+<div id="myphoto"><a href="http://my.opera.com/MacDev_ed/"><img src="https://static.myopera.com/upic/pool1/qI/j_U/Cliv1DyiBWol4S0a9SBSYA/108375_l.jpg" width="220" height="165" alt="photo"></a></div>
+</div>
+<div id="blogsearch" class="sidebox">
+<label for="searchbox" class="h2">Blog search</label><form action="http://my.opera.com/MacDev_ed/search/?" method="get"><div class="pad">
+<input type="text" name="search" value="" id="searchbox" maxlength="128"><input type="submit" value="search" id="submitsearch">
+</div></form>
+</div>
+<div class="sidebox" id="albumpix">
+<h2>Photos</h2>
+<div class="pad"><a href="http://my.opera.com/MacDev_ed/albums/showpic.dml?album=409940&amp;picture=5777213"><img src="http://files.myopera.com/MacDev_ed/albums/409940/thumbs/IMG_0048.jpg_thumb.jpg" width="240" height="180" alt="IMG_0048.jpg"></a></div>
+<p id="morephotos" class="more"><a href="http://my.opera.com/MacDev_ed/albums/show.dml?id=409940">more from this album</a></p>
+</div>
+<div class="sidebox" id="newcomments">
+<h2>Latest comments</h2>
+<div class="pad">
+<ul class="nobullets usercom">
+<li>
+<div class="userpic"><a href="http://my.opera.com/Frenzie/"><img src="https://static.myopera.com/upic/pool1/Ei/GQW/GYQBKzlBg94wBfVEg6rFCY/16944_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/Frenzie/" class="username">Frans</a></b></p>
+<p><a href="http://my.opera.com/MacDev_ed/blog/2011/01/25/on-mythbusting-and-the-web-and-why-svg-fonts-are-sometimes-useful?cid=64405292#comment64405292" class="usertext"><text>Here's another take on it: SVG fonts are great for headings, ...</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><a href="http://my.opera.com/MacDev_ed/"><img src="https://static.myopera.com/upic/pool1/qI/j_U/Cliv1DyiBWol4S0a9SBSYA/108375_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/MacDev_ed/" class="username">Erik Dahlström</a></b></p>
+<p><a href="http://my.opera.com/MacDev_ed/blog/2008/05/18/timetravel?cid=60641302#comment60641302" class="usertext"><text>@krit:
+I would consider Impact a rather common font to have ...</text></a></p>
+</li>
+<li>
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/MacDev_ed/blog/2009/01/21/getting-boundingbox-of-svg-elements?cid=60435312#comment60435312" class="usertext"><text>svgeditor writes:
+
+Thanks a bundle. Was creating an svg edit ...</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/MacDev_ed/blog/2008/05/18/timetravel?cid=59866682#comment59866682" class="usertext"><text>krit writes:
+
+Hello Erik, can you update the test to use a W ...</text></a></p>
+</li>
+<li>
+<div class="userpic"><a href="http://my.opera.com/hellspork/"><img src="https://static.myopera.com/upic/pool1/df/yoL/bgKPTCtuWwkO4Ljy4FW4jA/2002239_t.jpg" width="40" height="30" alt="photo"></a></div>
+<p><b><a href="http://my.opera.com/hellspork/" class="username">Cutting Spoon</a></b></p>
+<p><a href="http://my.opera.com/MacDev_ed/blog/2011/01/25/on-mythbusting-and-the-web-and-why-svg-fonts-are-sometimes-useful?cid=56773752#comment56773752" class="usertext"><text>Vectorizing as much as possible is ideal for the sake of qua ...</text></a></p>
+</li>
+<li class="even">
+<div class="userpic"><img src="https://static.myopera.com/upic/pool1/Wi/Skg/bJ0yCS9ojDtsly3leBU2AQ/17314_t.jpg" width="40" height="30" alt="photo"></div>
+<p><b>anonymous</b></p>
+<p><a href="http://my.opera.com/MacDev_ed/blog/2011/01/25/on-mythbusting-and-the-web-and-why-svg-fonts-are-sometimes-useful?cid=56742572#comment56742572" class="usertext"><text>Rick Graham writes:
+
+Zurich, 2002: In his keynote, Chris Lil ...</text></a></p>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size2"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/acid3" rel="tag">acid3</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/automata" rel="tag">automata</a></li>
+<li class="size2"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/bbox" rel="tag">bbox</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/brezel" rel="tag">brezel</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/browsers" rel="tag">browsers</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/element" rel="tag">element</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/filters" rel="tag">filters</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/firefox4" rel="tag">firefox4</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/first%20post" rel="tag">first post</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/fra" rel="tag">fra</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/games" rel="tag">games</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/Gedankenexperiment" rel="tag">Gedankenexperiment</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/gogi" rel="tag">gogi</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/graph" rel="tag">graph</a></li>
+<li class="size1"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/hit-testing" rel="tag">hit-testing</a></li>
+<li class="size4"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/news" rel="tag">news</a></li>
+<li class="size2"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/opera" rel="tag">opera</a></li>
+<li class="size4"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/presentations" rel="tag">presentations</a></li>
+<li class="size2"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/standards" rel="tag">standards</a></li>
+<li class="size5"><a href="http://my.opera.com/MacDev_ed/blog/index.dml/tag/svg" rel="tag">svg</a></li>
+</ul></div>
+</div>
+<div class="sidebox sidelinx">
+<h2>svg</h2>
+<div class="pad"><ul>
+<li>
+<a href="http://srufaculty.sru.edu/david.dailey/svg/intro/svg_intro.htm" target="_blank">SVG Basics</a><p>svg examples</p>
+</li>
+<li>
+<a href="http://www.carto.net/papers/svg/samples/" target="_blank">Carto.net</a><p>cartography and svg examples</p>
+</li>
+<li>
+<a href="http://www.clker.com/" target="_blank">clker.com</a><p>royaltyfree svg clipart</p>
+</li>
+<li>
+<a href="http://www.openclipart.org" target="_blank">openclipart.org</a><p>royaltyfree svg clipart</p>
+</li>
+<li>
+<a href="http://dahlstr%C3%B6m.net/links/bookmarks.php/ed/svg" target="_blank">my svg links</a><p>various svg examples</p>
+</li>
+<li>
+<a href="http://xn--dahlstrm-t4a.net" target="_blank">dahlström.net</a><p>my experimental site</p>
+</li>
+<li>
+<a href="http://svg-wow.org/" target="_blank">SVG Wow!</a><p>Public domain SVG demos</p>
+</li>
+</ul></div>
+</div>
+<div class="sidebox" id="visitors">
+<h2>Recent visitors</h2>
+<div class="pad">
+<ul class="nobullets userlist">
+<li><a href="http://my.opera.com/mathiasbynens/"><img src="https://static.myopera.com/upic/pool1/ce/5Z8/EgNoEkFCkDdePgbDr6RQDM/208545_s.jpg" width="68" height="51" alt="mathiasbynens"><span class="block">mathiasbynens</span></a></li>
+<li class="mid"><a href="http://my.opera.com/federicostrazzullo/"><img src="https://static.myopera.com/upic/pool1/wv/RgT/nB4dzsAzvv57HmRp2qDKp4/130353492_s.jpg" width="68" height="51" alt="federicostrazzullo"><span class="block">federicostrazzu</span></a></li>
+<li><a href="http://my.opera.com/brucelawson/"><img src="https://static.myopera.com/upic/pool1/xd/PCr/X7heuSZvzaEoss_L5mcY5I/1146592_s.jpg" width="68" height="51" alt="brucelawson"><span class="block">brucelawson</span></a></li>
+<li><a href="http://my.opera.com/jax/"><img src="https://static.myopera.com/upic/pool1/J1/yOt/O_ShchnURPHoel2vBgKQaQ/8418_s.jpg" width="68" height="51" alt="jax"><span class="block">jax</span></a></li>
+<li class="mid"><a href="http://my.opera.com/hkcslc/"><img src="https://static.myopera.com/upic/pool1/YA/lQb/r8538eN2y9GCm0gioxlE8Q/151975672_s.jpg" width="68" height="51" alt="hkcslc"><span class="block">hkcslc</span></a></li>
+<li><a href="http://my.opera.com/kaghazlu/"><img src="https://static.myopera.com/upic/pool1/PR/Kz0/i_fEWMtjzD5DGnxERg_75g/174438883_s.jpg" width="68" height="51" alt="kaghazlu"><span class="block">kaghazlu</span></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/MacDev_ed/blog/2007/11/21/svg-at-the-movies-take-two"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392043274.myo.cDoyNzowMTowMA== -->

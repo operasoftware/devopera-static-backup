@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MAMA: Document Encodings - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>MAMA: Document Encodings</h1>
+      <p class="print author">By Brian Wilson</p>
+
+      <ul class="seriesNav">
+<li class="prev"><a href="../mama-basic-document-structure/index.html" rel="prev" title="link to the previous article in the series">Previous article&#8212;MAMA: Basic document structure</a></li>
+<li class="next"><a href="../mama-character-entities/index.html" rel="next" alt="link to the next article in the series">Next article&#8212;MAMA: Character entities</a></li>
+<li><a href="../mama/index.html#tableofcontents" rel="index">Table of contents</a></li>
+</ul>
+
+<p><strong>Index:</strong></p>
+<ol>
+    <li><a href="index.html#intro">Introduction</a></li>
+    <li><a href="index.html#how">How encodings are specified</a></li>
+    <li><a href="index.html#agree">Can we agree to disagree?</a></li>
+</ol>
+
+<h2 id="intro">Introduction</h2>
+<p>A critical part of rendering a document lies in a browser discerning the proper 
+   character set encoding. MAMA tracked most of the methods that can be used to 
+   detect the encoding, but it did not attempt to declare a &quot;One, True Encoding&quot; 
+   in cases where discrepancies existed. In this section we will examine the usage 
+   of three of the main encoding sources and discover how/whether they overlapped, 
+   and whether they agreed with each other.</p>
+
+<h2 id="how">How encodings are specified</h2>
+<p>The <a href="../mama-http-headers/index.html#conttype">HTTP Headers</a> can 
+   provide the encoding through the &quot;Charset&quot; parameter of the Content-Type field. 
+   The Content-Type (and consequently the &quot;Charset&quot; parameter) can also be 
+   specified in HTML via the META element, and XML documents have an additional means to signal the document&#39;s encoding by 
+   using an &quot;encoding&quot; attribute on the XML 
+   prolog. The encoding was specified using at least one of these methods in 
+   2,626,228 URLs from MAMA (74.84%). As you can see, authors show a great 
+   preference for using the META element to specify a document&#39;s encoding over the 
+   other two methods.</p>
+
+<p class="note"><strong>Note:</strong> Region sizes are not to scale</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/567/venn-encodingsources.png" width="593" height="392" alt="Venn diagram for breakdown of encoding source specification methods" /></p>
+
+<h2 id="agree">Can we agree to disagree?</h2>
+<p>Having multiple encoding sources can quickly become a can of worms&#8212;what 
+   happens when those encodings do not agree with each other? Nothing is worse 
+   than a Web page having a schizophrenic argument with itself about its 
+   encoding identity. To compare encodings, the various values were all forced 
+   to lowercase and leading/trailing spaces were removed. Encoding variations 
+   like <span class="string">&quot;iso-8859-1&quot;</span>, <span class="string">&quot;iso_8859_1&quot;</span> 
+   and <span class="string">&quot;iso 8859-1&quot;</span> would all be considered 
+   different values using this scheme. The results of this comparison show that 
+   in the majority of encoding overlap situations, the values agree (72.96% of 
+   all overlap scenarios). However, values are <strong>expected</strong> to agree; 
+   another (negative) way to frame the results is that 133,968 URLs (27.04% of 
+   the overlap scenarios) have specified multiple encodings <strong>and they clash 
+   with each other</strong>. So in at least 1/4 of cases where a browser does not 
+   have a single encoding source, it must then resort to 
+   <a href="http://nikitathespider.com/articles/EncodingDivination.html" title="Nikita the Spiders Encoding Divination Flowchart">torturous 
+   gymnastics</a> to determine the outcome.</p>
+
+<table cellspacing="0" cellpadding="3">
+<caption class="comment" style="caption-side: bottom"><strong>Fig 3-1:</strong> 
+   Encoding agreement when specified by multiple sources</caption>
+   <tr valign="bottom">
+     <th>Encoding specification method</th>
+     <th>Total<br />quantity</th>
+     <th>Encodings<br />agree</th>
+     <th>Percentage<br />agrees</th>
+   </tr>
+   <tr class="r1">
+     <td>HTTP Header and META only</td>
+     <td class="num">417,113</td>
+     <td class="num">293,868</td>
+     <td class="num">70.45%</td>
+   </tr>
+   <tr class="r2">
+     <td>META and XML only</td>
+     <td class="num">49,115</td>
+     <td class="num">45,029</td>
+     <td class="num">91.68%</td>
+   </tr>
+   <tr class="r1">
+     <td>HTTP Header and XML only</td>
+     <td class="num">6,791</td>
+     <td class="num">4,553</td>
+     <td class="num">67.04%</td>
+   </tr>
+   <tr class="r2">
+     <td>All three: HTTP Header, META and XML</td>
+     <td class="num">22,500</td>
+     <td class="num">18,101</td>
+     <td class="num">80.45%</td>
+   </tr>
+</table>
+
+<ul class="seriesNav">
+<li class="prev"><a href="../mama-basic-document-structure/index.html" rel="prev" title="link to the previous article in the series">Previous article&#8212;MAMA: Basic document structure</a></li>
+<li class="next"><a href="../mama-character-entities/index.html" rel="next" alt="link to the next article in the series">Next article&#8212;MAMA: Character entities</a></li>
+<li><a href="../mama/index.html#tableofcontents" rel="index">Table of contents</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=256028">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/blooberry.html" rel="author">Brian Wilson</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, November 7, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/charset.html" rel="tag">charset</a></li>
+        <li><a href="../../tags/html.html" rel="tag">html</a></li>
+        <li><a href="../../tags/HTTP.html" rel="tag">HTTP</a></li>
+        <li><a href="../../tags/meta.html" rel="tag">meta</a></li>
+        <li><a href="../../tags/xml.html" rel="tag">xml</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.1"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="12em" height="12em" viewBox="0 0 240 240">
+<g transform="translate(120,120)">
+  <g>
+    <set attributeName="display" to="none" begin="b1.click" end="b2.click"/>
+      <circle r="108" fill="#6f6" stroke-width="4" stroke="#090" id="b1" />
+      <circle r="100" fill="none" stroke-width="3" stroke="black"
+         stroke-dasharray="2,8.471976" transform="rotate(-.873)"  />
+      <circle r="97" fill="none" stroke-width="9" stroke="white" 
+         stroke-dasharray="4,46.789082" transform="rotate(-1.5)"  />
+  </g>
+  <g>
+    <set attributeName="display" to="none" begin="b2.click" end="b1.click"/>
+      <circle r="108" fill="white" stroke-width="4" stroke="#099" id="b2">
+        <animateColor attributeName="fill" values="white;red;black;blue;white" dur="10s" repeatCount="infinite"/>
+      </circle>
+      <circle r="97" fill="none" stroke-width="9" stroke="gold" 
+         stroke-dasharray="4,46.789082" transform="rotate(-1.5)" />
+      <circle r="100" fill="none" stroke-width="3" stroke="black"
+         stroke-dasharray="2,8.471976" transform="rotate(-.873)" >
+        <animateColor attributeName="stroke" values="white;black;white" dur="10s" repeatCount="infinite" />
+      </circle>
+  </g>
+  <g id="c" transform="rotate(180)">
+    <g id="h">
+      <line stroke-width="5" y2="80" stroke="black" opacity=".5" />
+        <animateTransform attributeName="transform" type="rotate"
+           repeatCount="indefinite" dur="12h" by="360" />
+      <circle r="7" />
+    </g>
+    <g id="m">
+      <line stroke-width="4" y2="95" stroke="red" opacity=".9" />
+        <animateTransform attributeName="transform" type="rotate"
+           repeatCount="indefinite" dur="60min" by="360" />
+      <circle r="6" fill="red"/>
+    </g>
+    <g id="s">
+      <line stroke-width="2" y2="100" stroke="blue" />
+      <animateTransform attributeName="transform" type="rotate" additive="sum"
+          repeatCount="indefinite" dur="60s" by="360" />
+      <circle r="4" fill="blue"/>
+    </g>
+  </g>
+</g>
+</svg>

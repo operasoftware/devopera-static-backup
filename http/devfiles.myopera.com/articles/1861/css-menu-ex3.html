@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+   <title>Creating interactive expandable boxes using CSS: fade effects</title>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+   <style type="text/css">
+* {font-size: 100%; font-family: sans-serif;}
+      .show {display: none; }
+      .hide:focus + .show {display: inline; }
+      .hide:focus { display: none; }
+      .tran1 {
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+        -ms-transition: all 1s;
+        -o-transition: all 1s;
+        transition: all 1s;        
+      }
+      #secret {opacity: 0;}
+      .hide:focus ~ #secret {opacity: 1}
+
+   </style>
+</head>
+<body>
+<h1>Creating interactive expandable boxes using CSS</h1>
+<h2>Fade effects</h2>
+<p><a href="css-menu-ex3.html#" class="hide">[show]</a><a href="css-menu-ex3.html#" class="show">[hide]</a> <span id="secret" class="tran1">Peekaboo!<br />I know this isn't really a menu. But it's the same mechanism, and shows off the pretty fade! Notice that this works in the opposite direction to the other switches: I simply changed the classes around on the toggle.</span></p>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Audio Player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- http://www.archive.org/details/3_do_t1_20h_2-Bressers_a -->
+<script>
+    var audio = new Audio();
+    audio.setAttribute('src', '3_do_t1_20h_2-Bressers.ogg');
+
+    var init = function(){
+
+        // Get the play button and append the audio play method to on click
+        var play = document.getElementById('play');
+        play.addEventListener('click', function(){
+            audio.play();
+        }, false);
+
+        // Get the pause button and append the audio pause method to on click
+        var pause = document.getElementById('pause');
+        pause.addEventListener('click', function(){
+            audio.pause();
+        }, false);
+
+        // Get the HTML5 range input element and append audio volum adjustement on change
+        var volume = document.getElementById('volume');
+        volume.addEventListener('change', function(){
+            audio.volume = parseFloat(this.value / 10);
+        }, false);
+
+        // Duration
+        audio.addEventListener("timeupdate", function() {
+            var duration = document.getElementById('duration');
+            var s = parseInt(audio.currentTime % 60);
+            var m = parseInt((audio.currentTime / 60) % 60);
+            duration.innerHTML = m + '.' + s + 'sec';
+        }, false);
+
+    }
+</script>
+</head>
+<body onload="init();">
+<div>
+    <input id="play" type="button" value="Play" />
+    <input id="pause" type="button" value="Pause" />
+    <span id="duration"> </span>
+</div>
+<div>
+    Volume:
+    <input id="volume" type="range" min="0" max="10" value="5" />
+</div>
+<p>The audio is taken from <a href="http://www.archive.org/details/3_do_t1_20h_2-Bressers_a">archive.org</a>.</p>
+</body>
+</html>

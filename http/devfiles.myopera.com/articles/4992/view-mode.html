@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>view-mode demo [Speed Dial Enhancements Demos]</title>
+
+	<link rel=stylesheet type="text/css" href="http://devfiles.myopera.com/articles/4992/s.css">
+
+	<style>
+		.minimized{
+			display:none;
+		}
+
+		@media screen and (view-mode: minimized){
+			body{
+				color:#fff;
+				background:#b20000;
+			}
+			a:link,a:visited,a:hover,a:active{
+				color:#fff;
+			}
+			article, nav, header{ display:none; margin:0;}
+
+			.minimized{display:block; width:100%;}
+
+			.minimized h1{
+				font-size:36px;
+				color:#fff;
+				margin:1em auto;
+				width:100%;
+			}
+
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<hgroup>
+	<h1>Speed Dial Enhancements Demo Files</h1>
+	<h2><code>view-mode</code> Media Feature</h2>
+	</hgroup>
+</header>
+
+
+
+<section class="minimized">
+	<h1>This is the Speed Dial-tailored view.</h1>
+</section>
+
+
+<nav>
+<ul>
+	<li><a href="http://devfiles.myopera.com/articles/4992/index.html">Go to demos page</a></li>
+	<li><a href="../../../dev.opera.com/articles/view/opera-speed-dial-enhancements/index.html">Return to article</a></li>
+</ul>
+</nav>
+
+<article>
+
+	<p>Save this page as a Speed Dial entry. You will notice that the background color is red, the text color has changed, and the copy is different.</p>
+
+
+
+</article>
+
+</body>
+</html>

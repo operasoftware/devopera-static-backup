@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A labs release to get your SPDY senses tingling - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>A labs release to get your SPDY senses tingling</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <p>For many years now, we have relied on the marriage of the TCP and HTTP protocols for handling data request/response communication, and transporting the resulting data packets to where they need to go. In short, they are how we get things done on the Web. But they are not perfect. Websites are a lot bigger and more complicated than they used to be when these protocols were first designed. HTTP in particular has problems with latency, because:</p>
+
+<ul>
+  <li>It can only fetch a single resource at a time, per connection</li>
+  <li>Only the client can initiate requests under HTTP</li>
+  <li>HTTP request and response headers are uncompressed, and can become rather large. In addition, many header transmissions are redundant</li>
+  <li>Data transmitted via HTTP is not always compressed.</li>
+</ul>
+
+<p>In short, the web is slower than it could be, and the problem will get worse as web sites continue to increase in size and complexity. To mitigate this problem, the Google Chromium team set to work and developed a new networking protocol for the web, which would reduce latency and speed up page loading. The result is SPDY, which Google have put to work on most of their services (<a href="https://twitter.com/">Twitter</a> and <a href="http://en.wikipedia.org/wiki/SPDY#Server_support_and_usage">a number of other sites</a> are also using it), allowing much faster loading speeds, provided the web browser being used supports SPDY.</p>
+
+<p>The good news is that we&#39;ve been hard at work implementing SPDY support in Opera, so the big red O can also take advantage of these performance increases! Other advantages include better compatibility with all Google services (and other sites and applications that employ SPDY), and allowing developers to test their own SPDY based services with Opera.</p>
+
+<p>We are proud to present an experimental labs release that includes our SPDY support. Please try it out, and let us know what you think.</p>
+
+<h2>Further SPDY information</h2>
+
+<p>SPDY does not completely replace HTTP and TCP — it augments and works on top of those protocols. HTTP&#39;s communication semantics and TCP&#39;s congestion control, for example, are still used, but SPDY provides many advantages, such as multiple streams per connection, and more efficient connection management and data formats.</p>
+
+<p>SPDY doesn&#39;t force data compression, but SPDY user-agents MUST support gzip compression. Regardless of the <code>Accept-Encoding</code> header sent by the user-agent, the server may always send content encoded with gzip or deflate encoding.</p>
+
+<p>Currently there are two versions of SPDY that are deployed and used in the web: <a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft2">spdy/2</a> and <a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft3">spdy/3</a>. All Google services (using secure connection) and Twitter can be used with both of them - it&#39;s for the client to negotiate which version is to be used. The negotiation is being done by the <a href="https://technotes.googlecode.com/git/nextprotoneg.html">NPN protocol</a> during the SSL handshake. Of course, the client can also negotiate to use plain HTTP over SSL if desired.</p>
+
+<p>Google have prepared an <a href="http://code.google.com/p/mod-spdy/">SPDY module for Apache 2.2</a>, therefore anyone can deploy SPDY on their own Apache-based server and use it for creating web sites and applications.</p>
+
+<h2>Download our SPDY build</h2>
+
+<p>Please select a suitable build for your operating system:</p>
+
+<ul>
+  <li><a href="http://snapshot.opera.com/labs/spdy/Opera-Labs-SPDY-12.01-1495.i386.exe">Windows 32-bit</a> / <a href="http://snapshot.opera.com/labs/spdy/Opera-Labs-SPDY-12.01-1495.x64.exe">Windows 64-bit</a></li>
+  <li><a href="http://snapshot.opera.com/labs/spdy/Opera-Labs-SPDY-12.01-1495.dmg">Mac</a></li>
+  <li><a href="http://snapshot.opera.com/labs/spdy/Linux-FreeBSD/">Linux &amp; FreeBSD</a></li>
+</ul>
+
+<h3>Support notes</h3>
+
+<p>Opera&#39;s SPDY implementation currently supports all features of the spdy/2 and spdy/3 protocols, except for:</p>
+
+<ul>
+  <li><a href="http://www.chromium.org/spdy/link-headers-and-server-hint">PUSH and HINT</a>: There is no deployment of PUSH and HINT usage on the web (as far as we know), and no way to use it with mod_spdy, so we decided not to implement it for the time being, until we have something to test it on, and more evidence of actual usage.</li>
+  <li>The <code>Alternate-Protocol</code> header: Neither Chrome nor Firefox have implemented this in the way described in <a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft2">SPDY draft 2</a>, moreover <a href="http://www.chromium.org/spdy/spdy-protocol/spdy-protocol-draft3">SPDY draft 3</a> does not even mention that header anymore, so we decided to not support it.</li>
+  <li>Persisting SETTINGS values: Servers may request that the client persists some of the connection settings sent to it in the SETTINGS frame. In such cases the client should remember such settings, and use them in all future connections (the user should also be able to clear them when desired.) This isn&#39;t a key feature of the SPDY protocol, and SPDY works perfectly fine without it, but we&#39;ll probably implement it in a future build.</li>
+</ul>
+
+<h2>How fast is it?</h2>
+
+<p>Our rough performance tests ran on Windows with 50ms extra latency, and revealed that SPDY gave us a 38,67% performance boost (compared to normal HTTPS) in the network layer. That&#39;s great for a start!</p>
+
+<p>Google also has some <a href="http://www.chromium.org/spdy/spdy-whitepaper/#TOC-Preliminary-results">SPDY performance test results</a> available.</p>
+
+<h2>How do I know that Opera is using SPDY?</h2>
+
+<p>Use of the SPDY protocol is completely transparent for users. There is no additional scheme like <code>spdy://</code>, and we don&#39;t have any indicator saying <q>ATTENTION, page loaded with SPDY!</q>. There is an SPDY indicator extension available for Firefox and Chrome, and this should also be available for Opera, soon after we&#39;ve created the necessary API to make this possible.</p>
+
+<p>One way to recognise an SPDY site is by looking at the additional headers loaded with SPDY: Opera Dragonfly makes this easy. The spdy/2 additional headers are <code>method</code>, <code>scheme</code>, <code>url</code> and <code>version</code>. For spdy/3, the additional headers are <code>:method</code>, <code>:scheme</code>, <code>:host</code>, <code>:path</code> and <code>:version</code>.</p>
+
+<h2>Summary</h2>
+
+<p>SPDY is a useful new protocol that has already demonstrated significant performance increases over using HTTP/HTTPS alone, and Opera is proud to unveil support for it. Please let us know what you think of our experimental SPDY build, by leaving comments on this article or filing bugs through our <a href="https://bugs.opera.com/wizard/">bug wizard</a>.</p>
+
+<p>You can find much more detail about SPDY, including Google&#39;s own performance test results, at the <a href="http://www.chromium.org/spdy/spdy-whitepaper/">Chromium Team SPDY Whitepaper</a>.</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-92267902">
+      <a href="../../../author/bachokocho.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7e/0a9/450e9afa391854451c9f33ea15392f8c52d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/bachokocho.html">bachokocho</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Congratulations team! I see that the build&#39;s version number is only steps from the current Next build so will SPDY be part of 12.01?</section>
+    </li>
+    <li id="comment-92269032">
+      <a href="../../../author/ayrtonnadgel92.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/01/a04/1b176343446fafc97d45332466a7bd55de5.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ayrtonnadgel92.html">Ayrton Nádgel</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Congratulations, but is it just me or HTTPS pages Opera says that the connection is insecure.</section>
+    </li>
+    <li id="comment-92269512">
+      <a href="../../../author/kswitalski.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9f/98c/db3268bd1994d7ea82d22c9df72ae7adf96.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/kswitalski.html">Kajetan Świtalski</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Ayrton, I can&#39;t reproduce that issue, does it happen for all HTTPS pages or for some specific page for you?</section>
+    </li>
+    <li id="comment-92269862">
+      <a href="../../../author/blackcoder.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/41/4a6/b615f79769071e6a2e327d1456a65ddd1b5.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/blackcoder.html">blackcoder</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@ bachokocho<br/>Probably not. I think they just picked up some internal Opera 12.01 and integrated spdy. Opera 12.01 will probably be released in an not to far away future (that would be a really short time for testing spdy).</section>
+    </li>
+    <li id="comment-92269982">
+      <a href="../../../author/ahoj1234.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3f/98b/793b10cd82bb06cb30ab6d5e14877032d30.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ahoj1234.html">ahoj1234</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Kajetan Świtalski<br/><a href="https://www.strava.cz/istravne/" target="_blank">https://www.strava.cz/istravne/</a><br/>for example.. only because of this site is not signed or what.. :)</section>
+    </li>
+    <li id="comment-92270192">
+      <a href="../../../author/ayrtonnadgel92.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/01/a04/1b176343446fafc97d45332466a7bd55de5.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ayrtonnadgel92.html">Ayrton Nádgel</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Kajetan, all HTTPS pages. &quot;The server attempted to apply security measures, but failed.&quot; (Ubuntu 12.04 amd64)</section>
+    </li>
+    <li id="comment-92270472">
+      <a href="../../../author/ayrtonnadgel92.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/01/a04/1b176343446fafc97d45332466a7bd55de5.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ayrtonnadgel92.html">Ayrton Nádgel</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Facebook: <a href="http://files.myopera.com/ayrtonnadgel92/albums/11843282/Captura%20de%20tela%20de%202012-07-06%2008%3A16%3A50.png" target="_blank">http://files.myopera.com/ayrtonnadgel92/albums/11843282/Captura%20de%20tela%20de%202012-07-06%2008%3A16%3A50.png</a></section>
+    </li>
+    <li id="comment-92270632">
+      <a href="../../../author/ahoj1234.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3f/98b/793b10cd82bb06cb30ab6d5e14877032d30.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ahoj1234.html">ahoj1234</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Ayrton Nádgel<br/>On w7 x64 is FB secured and is displayed as secured.. here is not like on your screen..</section>
+    </li>
+    <li id="comment-92269902">
+      <a href="../../../author/christoph142.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7a/d36/a1ef2d0ce7edb42a678ee38ac6b298f6819.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/christoph142.html">Christoph</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><p class="cite">Originally posted by bachokocho:</p><blockquote class="bbquote"><p>Congratulations team! I see that the build&#39;s version number is only steps from the current Next build so will SPDY be part of 12.01?</p></blockquote><br/>No, that means that the current Next build was used as a basis for the Labs build. It always used to be like this. No indication at all for a release date<br/><br/><p class="cite">Originally posted by ayrtonnadgel92:</p><blockquote class="bbquote"><p>is it just me or HTTPS pages Opera says that the connection is insecure</p></blockquote><br/>Confirmed. Happens over here as well. Connections that use SPDY are shown secure for a moment and then fall back to insecure<br/><strong>EDIT:</strong> Happens with Google Viewer, but not with Facebook on my end...</section>
+    </li>
+    <li id="comment-92271722">
+      <a href="../../../author/marjancek.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d9/658/33acbd7d88f6a39303ed70d6cd59a50d82a.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/marjancek.html">marjancek</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I&#39;m not sure the real-.time speed-up will be very noticeable, but hearing it improves the compatibility with google services sounds great!</section>
+    </li>
+    <li id="comment-92271762">
+      <a href="../../../author/ruario.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3e/cda/a07dc5500f12235ac032c62eef349e2b1e9.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ruario.html">Ruarí Ødegaard</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>It will not be part of 12.01. Version numbers for Labs builds are irrelevant.</section>
+    </li>
+    <li id="comment-92272902">
+      <a href="../../../author/vux777.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/93/027/2ed687b4584c5d66f4f7dbeccf102c6d560.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/vux777.html">vux777</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Google img. search not improved. Still needs masking as Firefox.</section>
+    </li>
+    <li id="comment-92274712">
+      <a href="../../../author/Chas4.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f9/116/c4a4621700cfd6f9189d9f6a54c982513df.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Chas4.html">Charles Schloss</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot; but is it just me or HTTPS pages Opera says that the connection is insecure.&quot; Yep as seen on <a href="https://twitter.com/" target="_blank">https://twitter.com/</a>    OS X 10.7.4 x64</section>
+    </li>
+    <li id="comment-92274982">
+      <a href="../../../author/Chas4.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f9/116/c4a4621700cfd6f9189d9f6a54c982513df.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Chas4.html">Charles Schloss</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>opera:plugins Not showing all the plug ins on first load, have to refresh to show them all</section>
+    </li>
+    <li id="comment-92275392">
+      <a href="../../../author/Chas4.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f9/116/c4a4621700cfd6f9189d9f6a54c982513df.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Chas4.html">Charles Schloss</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>What is the minimum font size (pixels) supposed to be?  Here I see it at 0<br/><br/>OS X 10.7.4</section>
+    </li>
+    <li id="comment-92277832">
+      <a href="../../../author/kswitalski.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9f/98c/db3268bd1994d7ea82d22c9df72ae7adf96.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/kswitalski.html">Kajetan Świtalski</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The support for spdy/2 and spdy/3 can be disabled with appropriate preferences in opera:config (Network|Use Spdy2, Network|Use Spdy3). Is the &#39;insecure&#39; issue reproducible after disabling it (one or both)?</section>
+    </li>
+    <li id="comment-92283542">
+      <a href="../../../author/OME.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fc/920/b59f6e23f696199442b5d2b7cd5ecc305b3." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/OME.html">OME</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>First impressions: Twitter has behaved perfectly with this build. I used to get stalled loading and blank pages regularly, and SPDY seems to have solved this (unless I&#39;m just extremely lucky today).<br/><br/>I usually middle click the profile names in Twitter to open them in background tabs (thus skipping the left-click pop-up mini profile step), and doing this with several profiles in quick succession used to cause problems (stalling). Also closing one Twitter tab while another was loading used to affect the one that was loading and stall it until I reloaded manually. I have yet to see any of these issues with this SPDY build, so it seems very promising. I hope it won&#39;t be too long before it&#39;s ready to be added to the Next branch/channel.<br/><br/>PS. Twitter says &quot;Trusted&quot; here, so I haven&#39;t seen this &quot;insecure issue&quot; others are reporting. Win7 x64.<br/><br/>EDIT: I did however get a &quot;R6025 pure virtual function call&quot; dialog followed by a crash while a few of my speed dials were reloading with Opera minimized just now, which I haven&#39;t seen since the 12.00 betas a couple of months ago.</section>
+    </li>
+    <li id="comment-92299842">
+      <a href="../../../author/toyotabedzrock.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d2/80b/14f74ba72892bdd5872556afc4ef5b7add3.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/toyotabedzrock.html">Jim</a></p>
+      <p class="commentdate">Friday, July 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>It won&#39;t work on Google+ :-(</section>
+    </li>
+    <li id="comment-92349372">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Saturday, July 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Charles Schloss: The 0 for minimum font size is default for some time already. It used to cause often more problems than benefits.</section>
+    </li>
+    <li id="comment-92387712">
+      <a href="../../../author/olak.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/da/7aa/e55b308f7f8834fbb31446dbab394e354e6.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/olak.html">Ola P. Kleiven</a></p>
+      <p class="commentdate">Sunday, July 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Charles: Minimum font size was changed for 11.60: <a href="http://my.opera.com/desktopteam/blog/2011/10/07/ragnarok-css3-radial-gradients" target="_blank">http://my.opera.com/desktopteam/blog/2011/10/07/ragnarok-css3-radial-gradients</a><br/><br/>@vux777: not at all related to spdy</section>
+    </li>
+    <li id="comment-94068602">
+      <a href="../../../author/hopelost.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/97/f2d/0b212db57152f07838997354974344014df." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/hopelost.html">jimmy johnston</a></p>
+      <p class="commentdate">Sunday, August 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>how can i down load it to my opera can iny one help me please thx u</section>
+    </li>
+    <li id="comment-94499412">
+      <a href="../../../author/rschan35.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/39/9e4/abeb484dc2baf9122921ad5a198c0222937." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rschan35.html">rschan35</a></p>
+      <p class="commentdate">Saturday, August 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I have been using the latest Opera Labs since it became available and I love it.  The only thing is that I cannot make it my &#39;Default browser&#39;.  There is no button for me to make it my default browser.  Anyone out there who can help me with this dilemma?  </section>
+    </li>
+    <li id="comment-95184182">
+      <a href="../../../author/dr-flay.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/84/684/90ace54fb7d2912b9496326a67df5607e48.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dr-flay.html">Doc Flay™</a></p>
+      <p class="commentdate">Thursday, August 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>12.01 came and went. 12.02 is almost here.<br/>Is SPDY already spent, or will it move up a gear?</section>
+    </li>
+    <li id="comment-95185232">
+      <a href="../../../author/Swapnil99pro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/524/8595f6063949c4abc7369cac0d44b87a24f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Swapnil99pro.html">Swapnil Rustagi</a></p>
+      <p class="commentdate">Thursday, August 23, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>^^ SPDY would come in Opera 12.50 (if it&#39;s not hit by any major problems).</section>
+    </li>
+    <li id="comment-97460572">
+      <a href="../../../author/csredrat.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2b/84a/58a5ec372567e7d56ded16cd78f3f20289b." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/csredrat.html">CSRedRat</a></p>
+      <p class="commentdate">Wednesday, October 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>But SPDY would come in Opera 12.10?</section>
+    </li>
+    <li id="comment-97529072">
+      <a href="../../../author/Swapnil99pro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/524/8595f6063949c4abc7369cac0d44b87a24f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Swapnil99pro.html">Swapnil Rustagi</a></p>
+      <p class="commentdate">Thursday, October 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>^^ When I wrote the comment above, Opera hadn&#39;t decided to release 12.10, directly releasing 12.50. Yes, now it would come in 12.10 and above.</section>
+    </li>
+    <li id="comment-114010492">
+      <a href="../../../author/rcssen.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/55/7bd/9154591b29621eda9b3ba55104af7f13054." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rcssen.html">sen</a></p>
+      <p class="commentdate">Saturday, December 14, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks for such a wonderful tribute to Mando, Marissa. Such a sad day, but such a beautiful person. <a href="http://adoptadogorcats.org">Visit Adopt A Dog Or Cats</a></section>
+    </li>
+    <li id="comment-114010532">
+      <a href="../../../author/rcssen.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/55/7bd/9154591b29621eda9b3ba55104af7f13054." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rcssen.html">sen</a></p>
+      <p class="commentdate">Saturday, December 14, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This article has some great and useful information about this subject. Thank you for sharing it in an easy to read and understandable format. Thanks for sharing this great information. <a href="http://inetfreakz.com">Visit Inet Freakz</a><br/></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, July 6, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/communication.html" rel="tag">communication</a></li>
+        <li><a href="../../tags/labs.html" rel="tag">labs</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/performance.html" rel="tag">performance</a></li>
+        <li><a href="../../tags/protocol.html" rel="tag">protocol</a></li>
+        <li><a href="../../tags/spdy.html" rel="tag">spdy</a></li>
+        <li><a href="../../tags/speed.html" rel="tag">speed</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

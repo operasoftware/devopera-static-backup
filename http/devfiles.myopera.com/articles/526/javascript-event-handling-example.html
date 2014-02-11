@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>JavaScript event handling example</title>
+	<script src="http://devfiles.myopera.com/articles/526/events.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		addEvent(window, "load", function () {
+			var contactForm = document.getElementById("contact-form");
+			if (contactForm) {
+				addEvent(contactForm, "submit", function (evt) {
+					var firstName = document.getElementById("first-name");
+					var lastName = document.getElementById("last-name");
+					if (firstName && lastName) {
+						if (firstName.value.length === 0 || lastName.value.length === 0) {
+							alert("You have to fill in all fields, please.");
+							evt.preventDefault();
+						}
+					}
+				});
+			}
+		});
+	</script>
+</head>
+
+<body>
+	
+	<div id="container">
+		
+		<form id="contact-form" action="http://devfiles.myopera.com/articles/526/" method="get">
+			<p>
+				<label for="first-name">First Name:</label>
+				<input type="text" id="first-name">
+			</p>
+			<p>
+				<label for="first-name">Last Name:</label>
+				<input type="text" id="last-name">
+			</p>
+			<p>
+				<input type="submit" value="Send">
+			</p>
+		</form>
+				
+	</div>
+	
+	
+</body>	
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>David Storey - Upcoming CSS3 support in Opera</title>
+<meta property="og:url" content="http://my.opera.com/dstorey/blog/show.dml/701902">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/dstorey/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/dstorey/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/dstorey/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/dstorey/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/dstorey/xml/rss/comments/701902">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/dstorey/xml/atom/comments/701902">
+<link rel="stylesheet" href="http://static.myopera.com/community/css/themes/users-shared.css" type="text/css">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://files.myopera.com/dstorey/user.css" type="text/css" media="screen,projection,tv,print" charset="utf-8">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="David Storey - Upcoming CSS3 support in Opera">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/Ni/OtM/uE30nUfmr2cbT_6AA6lgAU/241852_l.jpg">
+<meta property="og:description" content="CSS3 development work is going full steam ahead for most browsers.  At Opera this is no exception.  Most people don't have the privilege of testing out our latest internal builds, which will go into a future release of our browser, so I thought I'd share with you some of the great work our developers have been up to in regards to CSS3.
+
+A lot of work is going into selectors, and there is a quite extensive list of extra support added to those already implemented in Opera 9.1.  New i ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2Fdstorey%2Fblog%2Fshow.dml%2F701902&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2"><h1><span>Slightly ajar</span></h1></div>
+<div id="menu"><ul><li id="menu_blog"><a href="http://my.opera.com/dstorey/blog/" id="selected"><span>Blog</span></a></li></ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title">Upcoming CSS3 support in Opera</h2>
+<p class="postdate">Monday, January 22, 2007 1:44:15 PM</p>
+<p class="tags"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Opera" rel="tag">Opera</a>, <a href="http://my.opera.com/dstorey/blog/index.dml/tag/selectors" rel="tag">selectors</a>, <a href="http://my.opera.com/dstorey/blog/index.dml/tag/css3" rel="tag">css3</a> </p>
+<div class="content">
+<p>CSS3 development work is going full steam ahead for most browsers.  At Opera this is no exception.  Most people don't have the privilege of testing out our latest internal builds, which will go into a future release of our browser, so I thought I'd share with you some of the great work our developers have been up to in regards to CSS3.</p>
+
+<p>A lot of work is going into selectors, and there is a quite extensive list of extra support added to those <a href="http://www.css3.info/selectors-test/test.html" rel="nofollow">already implemented in Opera 9.1</a>.  New in the latest builds include:</p>
+
+<ul>
+    <li>:root</li>
+    <li>:not()</li>
+    <li>:nth-child()</li>
+    <li>:nth-of-type()</li>
+    <li>:first-of-type</li>
+    <li>:target (still buggy at present)</li>
+</ul>
+
+<p>As well as those above, the following are implemented in our core engine, but not currently enabled due to various issues:</p>
+
+<ul>
+    <li>:empty</li>
+    <li>:nth-last-child</li>
+    <li>:nth-last-of-type</li>
+    <li>:last-child</li>
+    <li>:last-of-type</li>
+    <li>:only-child</li>
+    <li>:only-of-type</li>
+</ul>
+
+<p>It is planned that these will be enabled by the time the other selectors are included in a release version of Opera.  Having all these selectors supported will allow designers to be able to have much more control over their designs without adding extra class attributes to the HTML or using JavaScript to allow certain effects.</p>
+
+<p>One example is :nth-child.  With this it is possible to add alternating style using :nth-child(odd) and nth-child(even).  This can be useful on data tables, so that each row has an alternating background colour, making it easier to scan through the information.  A lot of blogs use a similar approach (currently using extra mark-up) to make alternating rows of comments styled differently.  Using different values in the parentheses allows endless options to be used. nth-child(4) will match the 4<sup>th</sup> child of the element it is applied to, while something more complex like nth-child(4n)  will match <em>every</em> 4<sup>th</sup> child (such as a row in a table), and nth-child(4n+6) will do the same, but has an offset of 6, which means it wont be applied until the 6<sup>th</sup> child has been reached.</p>
+
+<p>Another example is :first-of-type.  This could be used to slim down the CSS code that is used on this blog.  Instead of using all sorts of selectors to apply the drops cap to the first paragraph in a post, using p:first-of-type would enable the first p element to be matched in a blog post, then first-letter could be chained to this, such as p:first-of-type:first-letter.  It wouldn't matter if a Div element was before the first paragraph, it would ignore everything until it reaches the first p tag.</p>  
+
+<p>With all these changes, where does this leave selector support in Opera once the new additions get released in an official build?  Well apart from bugs in any of the implementations, all the selectors will be supported, and the only thing currently lacking is support for the ::selection pseudo-element. Of course there is still a lot of work to do on the other CSS3 goodies that aren't currently supported.</p>
+
+<p>For a much more comprehensive look at CSS3 selectors, take a look at Roger Johansson's excellent <a href="http://www.456bereastreet.com/archive/200601/css_3_selectors_explained/" rel="nofollow">article</a> on the subject.  Away from selectors, I can also confirm that text-shadow has been implemented in internal builds.  As the name suggests, this allows shadows to be applied to text, allowing some nice effects.</p>
+</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fdstorey%2Fblog%2Fshow.dml%2F701902&amp;title=Upcoming%20CSS3%20support%20in%20Opera" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=Upcoming%20CSS3%20support%20in%20Opera,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fdstorey%2Fblog%2Fshow.dml%2F701902&amp;title=Upcoming%20CSS3%20support%20in%20Opera" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=Upcoming%20CSS3%20support%20in%20Opera','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2Fdstorey%2Fblog%2Fshow.dml%2F701902&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/dstorey/blog/show.dml/695964"><span>Multi column layout using CSS</span></a></span><span class="nxt"><a href="http://my.opera.com/dstorey/blog/2007/01/22/web-chat-with-yours-truely"><span>Web chat with yours truly</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/dstorey/xml/rss/comments/701902"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1" id="comment2475129">
+<div class="avatar"><a href="http://my.opera.com/Fyrd/"><img src="http://my.opera.com/community/users/avatar.pl/303073" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Fyrd" href="http://my.opera.com/Fyrd/">Alexis Deveria<span>Fyrd</span></a></b> <span class="comment-date"><a href="701902.html#comment2475129" class="permalink">#</a> Monday, January 22, 2007 3:23:56 PM</span></p>
+<div class="text">Wow, excellent news! Can't wait to see some of this in action.<br><br>I take it "New in the latest builds" does not actually refer to the weekly builds that are publicly available?</div>
+</div>
+<div class="comment2 ownercomment" id="comment2475154">
+<div class="avatar"><a href="http://my.opera.com/dstorey/"><img src="http://my.opera.com/community/users/avatar.pl/241852" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dstorey" href="http://my.opera.com/dstorey/">David Storey<span>dstorey</span></a></b> <span class="comment-date"><a href="701902.html#comment2475154" class="permalink">#</a> Monday, January 22, 2007 3:34:59 PM</span></p>
+<div class="text">No, The weekly builds are on the Merlin branch of our code.  These are developed on the code branch code named Peregrine.  This is where most of the new development takes place.  </div>
+</div>
+<div class="comment1" id="comment2475172">
+<div class="avatar"><a href="http://my.opera.com/Fyrd/"><img src="http://my.opera.com/community/users/avatar.pl/303073" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Fyrd" href="http://my.opera.com/Fyrd/">Alexis Deveria<span>Fyrd</span></a></b> <span class="comment-date"><a href="701902.html#comment2475172" class="permalink">#</a> Monday, January 22, 2007 3:44:47 PM</span></p>
+<div class="text">Aah, very interesting. So I guess we (the web developing public) will have to start looking forward to upcoming 9.5 or 10 alphas. <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment2" id="comment2475206">
+<div class="avatar"><a href="http://my.opera.com/Kildor/"><img src="http://my.opera.com/community/users/avatar.pl/53902" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Kildor" href="http://my.opera.com/Kildor/">Kostia Romanov<span>Kildor</span></a></b> <span class="comment-date"><a href="701902.html#comment2475206" class="permalink">#</a> Monday, January 22, 2007 3:54:38 PM</span></p>
+<div class="text">text-shadow???<br>Excellent news ;-)<br>And, what`s about border-radius?</div>
+</div>
+<div class="comment1" id="comment2475251">
+<div class="avatar"><a href="http://my.opera.com/robodesign/"><img src="http://my.opera.com/community/users/avatar.pl/112520" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="robodesign" href="http://my.opera.com/robodesign/">Mihai Sucan<span>robodesign</span></a></b> <span class="comment-date"><a href="701902.html#comment2475251" class="permalink">#</a> Monday, January 22, 2007 4:08:18 PM</span></p>
+<div class="text">Great guys! Keep up the good work!<br>+1 <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment2" id="comment2475290">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2475290" class="permalink">#</a> Monday, January 22, 2007 4:23:18 PM</span></p>
+<div class="text">Peter Gasston writes:
+
+Great news! I look forward to getting my hands on a build.
+
+BTW, did you know your RSS feed is behaving strangely? It's fine when I use Opera, but not on Firefox; when I click on the link in the address bar to subscribe, the name of the feed comes up as this:
+
+Slightly ajar
+
+And all the latest post is from Aug 26, 2006. Is this done on purpose so non-Opera users don't get the latest content?!</div>
+</div>
+<div class="comment1" id="comment2475293">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2475293" class="permalink">#</a> Monday, January 22, 2007 4:24:18 PM</span></p>
+<div class="text">Peter Gasston writes:
+
+Sorry; the name of the feed comes up like this:
+
+&lt;div xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr"&gt;Slightly ajar
+
+</div>
+</div>
+<div class="comment2" id="comment2475308">
+<div class="avatar"><a href="http://my.opera.com/jdevalk/"><img src="http://my.opera.com/community/users/avatar.pl/636657" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="jdevalk" href="http://my.opera.com/jdevalk/">Joost de Valk<span>jdevalk</span></a></b> <span class="comment-date"><a href="701902.html#comment2475308" class="permalink">#</a> Monday, January 22, 2007 4:28:18 PM</span></p>
+<div class="text">Great news David, looking forward to seeing those build!!</div>
+</div>
+<div class="comment1 ownercomment" id="comment2475354">
+<div class="avatar"><a href="http://my.opera.com/dstorey/"><img src="http://my.opera.com/community/users/avatar.pl/241852" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dstorey" href="http://my.opera.com/dstorey/">David Storey<span>dstorey</span></a></b> <span class="comment-date"><a href="701902.html#comment2475354" class="permalink">#</a> Monday, January 22, 2007 4:48:32 PM</span></p>
+<div class="text">Peter: No, the feed issue isn't done on purpose, and I wasn't aware of it.  I'll report it to our web guys to see what the issue is.  </div>
+</div>
+<div class="comment2 ownercomment" id="comment2475421">
+<div class="avatar"><a href="http://my.opera.com/dstorey/"><img src="http://my.opera.com/community/users/avatar.pl/241852" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dstorey" href="http://my.opera.com/dstorey/">David Storey<span>dstorey</span></a></b> <span class="comment-date"><a href="701902.html#comment2475421" class="permalink">#</a> Monday, January 22, 2007 5:09:40 PM</span></p>
+<div class="text">Joost: I've downloaded the latest (as of today) builds of both Firefox (version 3.0a2pre) and WebKit (Revision 19024), and used your selector test.  The results are as follows:<br><br>Opera:<br><br><q>From the 43 selectors 34 have passed, 2 are buggy and 7 are unsupported (Passed 460 out of 578 tests)</q><br><br>Firefox:<br><br><q>From the 43 selectors 32 have passed, 4 are buggy and 7 are unsupported (Passed 369 out of 578 tests)</q><br><br>Safari:<br><br><q>From the 43 selectors 25 have passed, 9 are buggy and 9 are unsupported (Passed 355 out of 578 tests)</q><br><br>IE7 (this is a bit unfair as I don't have access to the latest builds):<br><br><q>From the 43 selectors 13 have passed, 4 are buggy and 26 are unsupported (Passed 355 out of 578 tests)</q><br><br>The seven that fail in Opera are the ones that are implemented but not enabled. For Firefox and Safari, I'm not aware if there are any later builds that fix further issues or if they have features disabled like we do.  IE7 is obviously behind here, but we all had a head start on them so I don't expect comprehensive CSS selectors support until later versions.<br><br>For those that are interested I've made a screen shots of how the test is shown in Opera (the poor rendering is because of the JPEG compression, not how Opera displays the page).  <a href="http://files.myopera.com/dstorey/images/css3test.jpg" rel="nofollow">First half of the page</a>, and <a href="http://files.myopera.com/dstorey/images/css3test2.jpg" rel="nofollow">below the fold</a>.</div>
+</div>
+<div class="comment1" id="comment2475429">
+<div class="avatar"><a href="http://my.opera.com/Daedalus/"><img src="http://my.opera.com/community/users/avatar.pl/46607" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Daedalus" href="http://my.opera.com/Daedalus/">Lars Andersson<span>Daedalus</span></a></b> <span class="comment-date"><a href="701902.html#comment2475429" class="permalink">#</a> Monday, January 22, 2007 5:11:02 PM</span></p>
+<div class="text">Yay for :nth-child, just what I wanted <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-bigsmile" alt="bigsmile"><br><br>The other stuff is very nice too, of course. Can't wait to see Peregrine.</div>
+</div>
+<div class="comment2" id="comment2475709">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2475709" class="permalink">#</a> Monday, January 22, 2007 6:58:17 PM</span></p>
+<div class="text">Anonymous writes:
+
+This is great, but like Kildor, I'm wondering about border-radius... I've heard a few websites talking about -o-broder-radius, and -opera-border-radius, but from what I understood, it is not supported anymore...?
+
+Round corners really are nice, and there is no simple alternative, which works for all designs... I don't care much about having IE users seeing square corners, so it would be great if Opera supported it, just like Gecko supports it from quite some time now... (and while it is a recent addition, and still not present in the latest release of Konqueror -it's in Safari, though-, KHTML supports it too).
+
+Keep up the good job!</div>
+</div>
+<div class="comment1" id="comment2475728">
+<div class="avatar"><a href="http://my.opera.com/quiris/"><img src="http://my.opera.com/community/users/avatar.pl/15384" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="quiris" href="http://my.opera.com/quiris/">Robert Błaut<span>quiris</span></a></b> <span class="comment-date"><a href="701902.html#comment2475728" class="permalink">#</a> Monday, January 22, 2007 7:05:00 PM</span></p>
+<div class="text">
+<blockquote class="bbquote"><p>(the poor rendering is because of the JPEG compression, not how Opera displays the page)</p></blockquote>
+<br>Try PNG format for it. Much better results.<br><br>BTW. It's a really great news <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br>
+</div>
+</div>
+<div class="comment2" id="comment2475773">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2475773" class="permalink">#</a> Monday, January 22, 2007 7:27:05 PM</span></p>
+<div class="text">pauldwaite writes:
+
+Great stuff.
+
+I have wondered whether XPath could be brought in wholesale to replace the current selector syntax in CSS, rather than extending the current syntax. I guess the CSS syntax is a bit nicer than XPath.</div>
+</div>
+<div class="comment1" id="comment2475796">
+<div class="avatar"><a href="http://my.opera.com/Darken/"><img src="http://my.opera.com/community/users/avatar.pl/32414" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Darken" href="http://my.opera.com/Darken/">Steve Darken<span>Darken</span></a></b> <span class="comment-date"><a href="701902.html#comment2475796" class="permalink">#</a> Monday, January 22, 2007 7:34:12 PM</span></p>
+<div class="text">Wow, great news! <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-up" alt="up">
+</div>
+</div>
+<div class="comment2" id="comment2475819">
+<div class="avatar"><a href="http://my.opera.com/Yahia/"><img src="http://my.opera.com/community/users/avatar.pl/178177" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Yahia" href="http://my.opera.com/Yahia/">Yahia</a></b> <span class="comment-date"><a href="701902.html#comment2475819" class="permalink">#</a> Monday, January 22, 2007 7:44:14 PM</span></p>
+<div class="text">Excellent! These are giant steps towards  standard and pure CSS web design!!</div>
+</div>
+<div class="comment1" id="comment2476216">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2476216" class="permalink">#</a> Monday, January 22, 2007 10:30:21 PM</span></p>
+<div class="text">Seamus writes:
+
+  nth-child(4+6)
+
+Is that suppose to be, "nth-child(4n+6)" ?</div>
+</div>
+<div class="comment2 ownercomment" id="comment2476286">
+<div class="avatar"><a href="http://my.opera.com/dstorey/"><img src="http://my.opera.com/community/users/avatar.pl/241852" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dstorey" href="http://my.opera.com/dstorey/">David Storey<span>dstorey</span></a></b> <span class="comment-date"><a href="701902.html#comment2476286" class="permalink">#</a> Monday, January 22, 2007 11:21:30 PM</span></p>
+<div class="text">Seamus: Yes, it was a typo when I was editing the post.  It has been corrected now.  </div>
+</div>
+<div class="comment1" id="comment2476296">
+<div class="avatar"><a href="http://my.opera.com/Rijk/"><img src="http://my.opera.com/community/users/avatar.pl/8375" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Rijk" href="http://my.opera.com/Rijk/">Rijk</a></b> <span class="comment-date"><a href="701902.html#comment2476296" class="permalink">#</a> Monday, January 22, 2007 11:27:52 PM</span></p>
+<div class="text">For completeness, here are the 'supported' numbers for the Opera 9.1x releases that are currently available:<br><br><blockquote class="bbquote"><p>From the 43 selectors 25 have passed, 3 are buggy and 15 are unsupported (Passed 346 out of 578 tests)</p></blockquote>
+<br>
+</div>
+</div>
+<div class="comment2" id="comment2477062">
+<div class="avatar"><a href="http://my.opera.com/Zajec/"><img src="http://my.opera.com/community/users/avatar.pl/35739" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Zajec" href="http://my.opera.com/Zajec/">Rafał Miłecki<span>Zajec</span></a></b> <span class="comment-date"><a href="701902.html#comment2477062" class="permalink">#</a> Tuesday, January 23, 2007 6:59:20 AM</span></p>
+<div class="text">Great news, it is quite everything I asked for on wish-list =) Thank you!</div>
+</div>
+<div class="comment1" id="comment2478016">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2478016" class="permalink">#</a> Tuesday, January 23, 2007 2:29:46 PM</span></p>
+<div class="text">johnoyler writes:
+
+Impressive. I'd be curious to know whether box-shadow has also made the cut or not...</div>
+</div>
+<div class="comment2 ownercomment" id="comment2478111">
+<div class="avatar"><a href="http://my.opera.com/dstorey/"><img src="http://my.opera.com/community/users/avatar.pl/241852" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dstorey" href="http://my.opera.com/dstorey/">David Storey<span>dstorey</span></a></b> <span class="comment-date"><a href="701902.html#comment2478111" class="permalink">#</a> Tuesday, January 23, 2007 2:55:29 PM</span></p>
+<div class="text">box-shadow is not supported yet, but as these are fairly early development builds, there will be a while before the finally supported features will be set in stone.  <br><br>As these features are included in our browser core, any extra standards support will also eventually end up in a number of our other products, not just Opera Desktop.  </div>
+</div>
+<div class="comment1" id="comment2478577">
+<div class="avatar"><a href="http://my.opera.com/Kildor/"><img src="http://my.opera.com/community/users/avatar.pl/53902" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Kildor" href="http://my.opera.com/Kildor/">Kostia Romanov<span>Kildor</span></a></b> <span class="comment-date"><a href="701902.html#comment2478577" class="permalink">#</a> Tuesday, January 23, 2007 5:53:42 PM</span></p>
+<div class="text">BTW, how about old CSS1 (sic) bug, with rounding of fractional percent numbers?<br>(where width:50.9% equal width: 50%)</div>
+</div>
+<div class="comment2" id="comment2478767">
+<div class="avatar"><a href="http://my.opera.com/_Grey_/"><img src="http://my.opera.com/community/users/avatar.pl/178430" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="_Grey_" href="http://my.opera.com/_Grey_/">_Grey_</a></b> <span class="comment-date"><a href="701902.html#comment2478767" class="permalink">#</a> Tuesday, January 23, 2007 7:29:06 PM</span></p>
+<div class="text">Wonderful! More than I ever expected.<br><br>Even the (imho important) :not() and the (imho not too useful) :target selectors are in! That's absolutely great!<br><br>Also, I seen you have fixed bugs with the already implemented selectors, which is even more fantastic. Kildor is refering to <a href="http://www.brunildo.org/test/emarg.pl" rel="nofollow" target="_blank">this bug</a> as far as I can tell.<br><br>One question though: Is full CSS2.1 implementation a goal for Peregrine? Including bug-smashing etc. ?</div>
+</div>
+<div class="comment1" id="comment2479786">
+<div class="avatar"><a href="http://my.opera.com/Kildor/"><img src="http://my.opera.com/community/users/avatar.pl/53902" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Kildor" href="http://my.opera.com/Kildor/">Kostia Romanov<span>Kildor</span></a></b> <span class="comment-date"><a href="701902.html#comment2479786" class="permalink">#</a> Wednesday, January 24, 2007 5:13:52 AM</span></p>
+<div class="text">_Grey_, no, I tell about other bug, easy to repeating
+<div>
+width:1000px
+<div>width: 509px;</div>
+<div>width: 50.9%; </div>
+First div (width:509px) must be equal with second (width: 50.9%<img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink">
+</div>
+This bug only affect width, not margin, i/e/
+<div>
+<div> margin-left:109px;</div>
+<div> margin-left:10.9%;</div>
+</div>
+show correct behaviour.</div>
+</div>
+<div class="comment2" id="comment2480494">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2480494" class="permalink">#</a> Wednesday, January 24, 2007 10:35:12 AM</span></p>
+<div class="text">Anonymous writes:
+
+I did the CSS3 selector test in Konqueror, it reported that...
+From the 43 selectors 37 have passed, 6 are buggy and 0 are unsupported (Passed 570 out of 578 tests)</div>
+</div>
+<div class="comment1 ownercomment" id="comment2480785">
+<div class="avatar"><a href="http://my.opera.com/dstorey/"><img src="http://my.opera.com/community/users/avatar.pl/241852" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dstorey" href="http://my.opera.com/dstorey/">David Storey<span>dstorey</span></a></b> <span class="comment-date"><a href="701902.html#comment2480785" class="permalink">#</a> Wednesday, January 24, 2007 12:54:39 PM</span></p>
+<div class="text">Kildor : That renders the same for me in opera 9.10, our internal build, Firefox and Safari.<br><br>Anonymous:  I don't run Linux so couldn't test KHTML/Konqueror, but I know they've been doing some great work on selectors too.  There results are probably around where ours are when the rest are enabled in the code.  I heard the KHTML team is thinking of moving over to WebKit, so I wonder if they'll be able to merge these changes upstream or if the difference between WebKit and KHTML has grown too big to make the changes easy.  </div>
+</div>
+<div class="comment2" id="comment2480899">
+<div class="avatar"><a href="http://my.opera.com/Kildor/"><img src="http://my.opera.com/community/users/avatar.pl/53902" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Kildor" href="http://my.opera.com/Kildor/">Kostia Romanov<span>Kildor</span></a></b> <span class="comment-date"><a href="701902.html#comment2480899" class="permalink">#</a> Wednesday, January 24, 2007 1:33:50 PM</span></p>
+<div class="text">dstorey, there are something strange with my code.<br><a href="http://xhtml.ru/experiment/browser_day/" rel="nofollow" target="_blank">http://xhtml.ru/experiment/browser_day/</a> — in russian.<br><a href="http://kildor.gorodok.net/Opera/divbug.htm" rel="nofollow" target="_blank">http://kildor.gorodok.net/Opera/divbug.htm</a> — is right code<br><a href="http://kildor.gorodok.net/Opera/ieVSopera.png" rel="nofollow" target="_blank">http://kildor.gorodok.net/Opera/ieVSopera.png</a> — my screenshot (O9/12 and IE6)<br>
+</div>
+</div>
+<div class="comment1" id="comment2481725">
+<div class="avatar"><a href="http://my.opera.com/FataL/"><img src="http://my.opera.com/community/users/avatar.pl/25260" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="FataL" href="http://my.opera.com/FataL/">FataL</a></b> <span class="comment-date"><a href="701902.html#comment2481725" class="permalink">#</a> Wednesday, January 24, 2007 5:55:36 PM</span></p>
+<div class="text">Kildor, I think that's famous Opera long standing <a href="http://steve.pugh.net/test/test73.html" rel="nofollow" target="_blank">rounding error</a>.<br>That's why Opera still doesn't pass (in other words doesn't render correctly) <a href="http://www.w3.org/Style/CSS/Test/CSS1/current/test5526c.htm" rel="nofollow" target="_blank">ACID 1 test</a>.<br><img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-sad" alt="sad">
+</div>
+</div>
+<div class="comment2" id="comment2482338">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2482338" class="permalink">#</a> Wednesday, January 24, 2007 10:37:06 PM</span></p>
+<div class="text">arzafen writes:
+
+Konqueror 3.5.5 fully pasts this css3 test. 
+
+From the 43 selectors 43 have passed, 0 are buggy and 0 are unsupported (Passed 578 out of 578 tests)ç It is cool. </div>
+</div>
+<div class="comment1" id="comment2482395">
+<div class="avatar"><a href="http://my.opera.com/FataL/"><img src="http://my.opera.com/community/users/avatar.pl/25260" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="FataL" href="http://my.opera.com/FataL/">FataL</a></b> <span class="comment-date"><a href="701902.html#comment2482395" class="permalink">#</a> Wednesday, January 24, 2007 11:12:51 PM</span></p>
+<div class="text">Konqueror's progress is cool indeed.<br>I wish next Opera supports all this without bugs too. Also I would like that current Opera 9 has fixed 3 buggy selectors: E[attribute=value], :first-child, :lang().</div>
+</div>
+<div class="comment2" id="comment2482400">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2482400" class="permalink">#</a> Wednesday, January 24, 2007 11:16:28 PM</span></p>
+<div class="text">Anonymous writes:
+
+I'm happy with just the math operators for width:100px+10px; because it makes dynamic generation work well with static css.
+
+Fractional percentage rounding is also quite an issue.</div>
+</div>
+<div class="comment1" id="comment2524284">
+<div class="avatar"><a href="http://my.opera.com/xErath/"><img src="http://my.opera.com/community/users/avatar.pl/170834" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="xErath" href="http://my.opera.com/xErath/">João Eiras<span>xErath</span></a></b> <span class="comment-date"><a href="701902.html#comment2524284" class="permalink">#</a> Tuesday, February 6, 2007 11:03:54 PM</span></p>
+<div class="text">David, does Opera supports the :contains selector ?!?<br>Why can't I find info about this one at w3c ?</div>
+</div>
+<div class="comment2" id="comment2524395">
+<div class="avatar"><a href="http://my.opera.com/_Grey_/"><img src="http://my.opera.com/community/users/avatar.pl/178430" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="_Grey_" href="http://my.opera.com/_Grey_/">_Grey_</a></b> <span class="comment-date"><a href="701902.html#comment2524395" class="permalink">#</a> Wednesday, February 7, 2007 12:10:01 AM</span></p>
+<div class="text">@xErath: An <a href="http://www.w3.org/TR/2001/CR-css3-selectors-20011113/#content-selectors" rel="nofollow">older version of the selectors module</a> features the pseudo-class. And I think this <a href="http://lists.w3.org/Archives/Public/www-style/2001Oct/0252.html" rel="nofollow">mailing list post</a> could give a clue as to the "why" (although it seems Bjoern suffers from Schizophrenia on this one)...<br><br>What we really want is a "&lt;" combinator or ":parent" (":hasDescendants()") pseudo-class, which would allow us to select parent elements that contain certain child elements. At the moment, that is imho <strong>the</strong> biggest limitation of CSS.<br><br>E.g. to select a &lt;p&gt; with both &lt;del&gt; and &lt;ins&gt; somewhere in the descendant chain...<br><br>p:parent(del):parent(ins) { color: green; }<br><br>I even would suggest to make things like that possible (&lt;p&gt; that have direct children &lt;del&gt; and &lt;ins&gt;):<br><br>p:parent(&gt; del):parent(&gt; ins) { color: green; }</div>
+</div>
+<div class="comment1" id="comment2534257">
+<div class="avatar"><a href="http://my.opera.com/johnoyler/"><img src="http://my.opera.com/community/users/avatar.pl/535059" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="johnoyler" href="http://my.opera.com/johnoyler/">johnoyler</a></b> <span class="comment-date"><a href="701902.html#comment2534257" class="permalink">#</a> Friday, February 9, 2007 3:28:07 PM</span></p>
+<div class="text">A parent selector has been talked about before, and all the old arguments against it still apply. Basically it breaks incremental rendering or some such.<br><br>More to the point, it shows (in most cases) that you just haven't designed the markup and style all that well, anything that you think requires a parent selector can usually be turned around to only require descendant or sibling selectors.</div>
+</div>
+<div class="comment2" id="comment2535029">
+<div class="avatar"><a href="http://my.opera.com/_Grey_/"><img src="http://my.opera.com/community/users/avatar.pl/178430" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="_Grey_" href="http://my.opera.com/_Grey_/">_Grey_</a></b> <span class="comment-date"><a href="701902.html#comment2535029" class="permalink">#</a> Friday, February 9, 2007 8:14:51 PM</span></p>
+<div class="text">
+<p class="cite">Originally posted by johnoyler:</p>
+<blockquote class="bbquote"><p>Basically it breaks incremental rendering [...]</p></blockquote>
+<br>I have to admit, that's a valid point. Probably the experience wouldn't be all too good if you were to heavily rely on ":parent()" selectors...<br><br>I do not think, though, that I like the idea of adding classes server-side in order to achieve the same effect too much...</div>
+</div>
+<div class="comment1" id="comment2540894">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="701902.html#comment2540894" class="permalink">#</a> Sunday, February 11, 2007 6:41:41 PM</span></p>
+<div class="text">Anonymous writes:
+
+I'm not sure this would 'break' incremental rendering. It could only cause the rendering to change due to new content coming in on a slow connection. But that's already how Opera works, and to a lesser extent every browser exhibits this behaviour when rendering some css or table structures.
+
+It's an inherent consequence of the design choice to use a parent selector and not necessarily detrimental, nor would it be a bug.
+
+BTW, wouldn't the 'only-child' and 'only-of-type' break incremental rendering in the same way? I mean: if your page loads slowly, it may well be that a div first contains only one paragraph, a second later it contains two. How does Opera 10 solve this with these selectors?</div>
+</div>
+<div class="comment2" id="comment2559261">
+<div class="avatar"><a href="http://my.opera.com/xErath/"><img src="http://my.opera.com/community/users/avatar.pl/170834" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="xErath" href="http://my.opera.com/xErath/">João Eiras<span>xErath</span></a></b> <span class="comment-date"><a href="701902.html#comment2559261" class="permalink">#</a> Saturday, February 17, 2007 9:07:47 AM</span></p>
+<div class="text">parent and previous sibling selectors where reject due to the incremental rendering thing, but the anonymous poster above made a good point with only-child and so forth.<br><br>However, some people suggested the :matches() selector, which is evaluated in a context element, and matches the complex selector it has, although it does not navigate to it. So the p ins del problem would be done like this<br>p:matches(ins,del)<br>and this one cover all use cases and much more <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br>
+</div>
+</div>
+<div class="comment1" id="comment2787082">
+<div class="avatar"><a href="http://my.opera.com/amphi/"><img src="http://my.opera.com/community/users/avatar.pl/685134" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="amphi" href="http://my.opera.com/amphi/">amphi</a></b> <span class="comment-date"><a href="701902.html#comment2787082" class="permalink">#</a> Tuesday, April 17, 2007 9:01:54 PM</span></p>
+<div class="text">:nth-child() and :target are really neat imo.<br><br>:target is already used on a few sites. Over at Wikipedia for example. It's one of the few things that really make it (noticeably) nicer for the user. Well, if it's supported.<br><br>:nth-child() appears to be great for data tables. Even with compact markup (a single letter class for 1 out of 5 columns) you can easily gain a ~7% markup reduction. It's surely possible that it could even peel over 25% off in extreme cases. (Yea, I know... it's just a nice side effect. <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink">)<br><br>I'm really looking forward using that stuff.</div>
+</div>
+<div class="comment2" id="comment4666472">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="701902.html#comment4666472" class="permalink">#</a> Tuesday, February 12, 2008 11:58:28 AM</span></p>
+<div class="text">That's really some great news to hear. I can't wait to see it finally released and to try and test it in real action. Thanks for the interesting article, it sure did come in handy.</div>
+</div>
+<div class="comment1" id="comment4666745">
+<div class="avatar"><a href="http://my.opera.com/annmacgiff/"><img src="http://my.opera.com/community/users/avatar.pl/1333438" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="annmacgiff" href="http://my.opera.com/annmacgiff/">annmacgiff</a></b> <span class="comment-date"><a href="701902.html#comment4666745" class="permalink">#</a> Tuesday, February 12, 2008 12:57:19 PM</span></p>
+<div class="text">The new CSS3 is definitelly something I'm looking forward to. Thanks for giving us a small insight into what is waiting for web designers in near future. I'd really like to be able to see what CSS3 is able to do.</div>
+</div>
+<a name="lastcomment"></a><div class="comment2" id="comment41893852">
+<div class="avatar"><a href="http://my.opera.com/TinRam/"><img src="http://my.opera.com/community/users/avatar.pl/411073" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="TinRam" href="http://my.opera.com/TinRam/">TinRam</a></b> <span class="comment-date"><a href="701902.html#comment41893852" class="permalink">#</a> Monday, September 27, 2010 9:45:55 AM</span></p>
+<div class="text">All good things.  Any ideas roughy when the public can expect an update?  <br><br>I'm also very interested in when you plan to have 'column-rule' under way, which direction will you take with gradients, the web-kit way or the mozilla way?  Mozilla actually offers slightly more control but either would be good.<br><br>Will you be doing transitions anytime soon?  <br><br>Why are your UTF-8 characters different from the others?</div>
+</div>
+</div>
+<div id="newcomment" class="w100">
+<h3>Write a comment</h3>
+<p>New comments have been disabled for this post.</p>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<table id="calendar">
+<caption><a href="http://my.opera.com/dstorey/archive/monthly/?month=201402" id="calendarmonth">February 2014</a></caption>
+<thead><tr>
+<th scope="col" title="Sunday" abbr="Sunday">S</th>
+<th scope="col" title="Monday" abbr="Monday">M</th>
+<th scope="col" title="Tuesday" abbr="Tuesday">T</th>
+<th scope="col" title="Wednesday" abbr="Wednesday">W</th>
+<th scope="col" title="Thursday" abbr="Thursday">T</th>
+<th scope="col" title="Friday" abbr="Friday">F</th>
+<th scope="col" title="Saturday" abbr="Saturday">S</th>
+</tr></thead>
+<tfoot><tr><td colspan="7">
+<span id="prevmonth" class="left"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/dstorey/archive/monthly/?month=201401" title="January 2014">January 2014</a></span><span id="nextmonth" class="right"><a href="http://my.opera.com/dstorey/archive/monthly/?month=201403" title="March 2014">March 2014</a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span>
+</td></tr></tfoot>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+</tr>
+<tr>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size3"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/CSS" rel="tag">CSS</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/css3" rel="tag">css3</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/developer%20tools" rel="tag">developer tools</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/kestrel" rel="tag">kestrel</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/market%20share" rel="tag">market share</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Media%20Queries" rel="tag">Media Queries</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Mini" rel="tag">Mini</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Mobile" rel="tag">Mobile</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Mozilla" rel="tag">Mozilla</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/music" rel="tag">music</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Open%20the%20Web" rel="tag">Open the Web</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/OpentheWeb" rel="tag">OpentheWeb</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Opera" rel="tag">Opera</a></li>
+<li class="size4"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Opera%20Dragonfly" rel="tag">Opera Dragonfly</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Opera%20Mini" rel="tag">Opera Mini</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Safari" rel="tag">Safari</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/standards" rel="tag">standards</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/SVG" rel="tag">SVG</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Web%20Standards" rel="tag">Web Standards</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Wii" rel="tag">Wii</a></li>
+</ul></div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/dstorey/blog/show.dml/701902"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392046038.myo.cDoyNzowNjowMA== -->

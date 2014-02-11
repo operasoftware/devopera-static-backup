@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>XHR 2 Demo: Sending FormData</title>
+	<link rel="stylesheet" href="http://devfiles.myopera.com/articles/9482/xhr2.css" media="screen">
+	<style media="screen"></style>
+</head>
+<body>
+<nav><a href="../../../dev.opera.com/articles/view/xhr2/index.html">Return to article</a></nav>
+
+<h1>XMLHttpRequest Demo: Sending <code>FormData</code> Objects</h1>
+
+
+<section id="demo">
+<p>Enter some data in the field below, and click the button to trigger the FormData request</p>
+
+
+<form action="xhr-formdata.html#">
+    <p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="John Q. Public" placeholder="John Q. Public">
+    </p>
+
+    <p>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="52" placeholder="52" size="5">
+    </p>
+
+    <p>
+        <label for="hobby">Hobby:</label>
+        <input type="text" id="hobby" name="hobby" value="knitting" placeholder="knitting">
+    </p>
+
+	<button type="submit" id="trigger">Send FormData</button>
+</form>
+
+<div id="results"></div>
+
+</section>
+
+<script>
+var makeRequest = function(event){
+	event.preventDefault();
+
+	var xhr = new XMLHttpRequest(),
+	    dataToSend = new FormData(event.target),
+	    onLoadHandler = function(){
+	        results.innerHTML = this.response;
+	    };
+
+	xhr.onload = onLoadHandler;
+
+	xhr.open('POST', 'http://people.opera.com/tiffanyb/devopera/xhr2/formdata/index.php', true);
+	xhr.send(dataToSend);
+}
+</script>
+
+<script src="http://devfiles.myopera.com/articles/9482/xhr2.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Debugging SVG - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Debugging SVG</h1>
+      <p class="print author">By Charles McCathieNevile</p>
+
+      <div id="content">
+  <p> Opera 9 has a lot of new features to help developing content. Here is an example of debugging SVG. </p><p> The basic plan is to have an HTML page that has a clock in it. If you look at the <a href="../../../../devfiles.myopera.com/articles/6792/operalabs_svg_clock_broken.svg"> broken clock </a> it simply doesn&#39;t appear due to bugs in the code. This might seem frustrasting, but it is a good reminder that you need to get at least the minimum right or browsers will have to include megabyutes of bug correction, and spend their developers&#39; time fixing authors&#39; bugs instead of making a better browser. </p><p><a href="../../../../devfiles.myopera.com/articles/6792/error_console.gif"> <img alt="The error console; it&#39;s the idea that counts." src="../../../../devfiles.myopera.com/articles/6792/error_console.gif" width="100%" /> </a></p><p> So what&#39;s wrong, and how do we fix it? First, let&#39;s check for warnings. Sure enough, if you open the Error Console (menu Tools » Advanced » Error Console) we get two messages. One is that there is a failed attribute in SVG – the value <code> “preserve” </code> for <code> preserveAspectRatio </code> isn&#39;t what the browser likes. Who is right here? Does Opera 9 even support <code> preserveAspectRatio </code> ? </p><p> Luckily, we can check that. Have a look at the table of <a href="http://www.opera.com/docs/specs/opera9/svg/"> Opera 9&#39;s supported SVG </a> elements, attributes, and DOM methods, and we see that <code> preserveAspectRatio </code> is supported. So it is likely that we have an error in our code. Either look for a tutorial on SVG, or look at the <a href="http://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute"> specification </a> . Then we can see that there are various effects we can get. Since our clock makes sense so long as we can see the middle of it, looking at the pictures in the spec, or even from reading the text shows that we want to set the value as “ <code> XmidYMid slice </code> ”. </p><p> So now we know what we want to do, how do we change it? Easily enough... look at the source in Opera 9&#39;s built-in source editor. Make the edit we want in place. To check that it works, press “reload from cache”. If we were working on a locally saved file, this would save our version. When we have downloaded the page, we can also save a local copy (you guessed it, press the “save” button). </p><p> So that&#39;s the first error dealt with. There is also a JavaScript error – we have used <code> …Date()… </code> in the last statement of the script where we should have used <code> new Date()… </code> (or a variable, as earlier in the script). Opera actually works out how to make sense of this by forcing a type change, but good programming style is worth having, so we should make the second change too. </p><p>
+    <object class="svg left" data="index.html" type="image/svg+xml">
+    </object> And Lo! and Behold! We have a <a href="../../../../devfiles.myopera.com/articles/6792/operalabs_svg_clock.svg"> simple SVG clock </a> in our page. Being in a space that can&#39;t fit it exactly (the object where the clock is has width 20% and height 50%), we can at least see the middle of the clock and so tell the time… <div class="clear2">
+  </div>
+  </p><p>
+    <br /><b> NOTE: </b> This article shows the features of Opera 9. While all the code is standards-compliant, it may not work in a non-compliant browser <br />
+</p></div>
+
+
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chaals.html" rel="author">Charles McCathieNevile</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, May 10, 2006
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

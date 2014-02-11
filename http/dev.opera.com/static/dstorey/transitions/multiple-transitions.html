@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Multiple Transitions</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+    	    h1 {
+    	    		font:  18px "Helvetica Neue", arial, sans-serif;
+    	    }
+    	    
+    	   p {
+    	    	border: 1px dashed silver;
+    	    	padding: 0.5em;
+    	    	border-radius: 0.5em;
+    	    	font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+    	    	background-color: rgb(254, 250, 218);
+    	    	max-width: 44em;
+    	    }
+    	    
+    	    div {
+    		    background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+    		    -o-transition-property: background-color, width, height; 
+    		    -webkit-transition-property: background-color, width, height; 
+    		    transition-property: background-color, width, height;
+    		    
+                -o-transition-duration: 4s, 8s, 5s;
+                -webkit-transition-duration: 4s, 8s, 5s;
+                transition-duration: 4s, 8s, 5s;
+                
+                -o-transition-delay: 0s, 0s, 2s;
+                -webkit-transition-delay: 0s, 0s, 2s;
+                transition-delay: 0s, 0s, 2s;
+
+            }
+  		    div:hover { 
+  		    	background-color: blue;
+  		    	width: 15em;
+  		    	height: 10em;
+   		    }
+      </style>
+  </head>
+  <body>
+  		<h1>An example showing multiple transitions</h1>
+  		<p>Hover over the <code>div</code> below. The background colour will instantly start changing to change to blue over 4 seconds. The width will also start increasing to 15 em over 8 seconds. After a 2 second delay the height will start to increase to 10 em over 5 seconds.</p>
+  		<div></div>
+  </body>
+</html>

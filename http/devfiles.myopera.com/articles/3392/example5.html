@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Corey's scrolling site of green</title>
+<meta name="author" content="Corey Mwamba" />
+<meta name="description" content="this page shows how to create a horizontal scrolling interface, just using CSS3" />
+<meta name="keywords" content="CSS3,target" />
+<meta name="language" content="en" />
+<meta charset="utf-8" />
+<style type="text/css">
+body { font-size: 76%; font-family:  freesans, helvetica, "liberation sans", arial, sans-serif; background-image:url(http://devfiles.myopera.com/articles/3392/271.jpg);}
+section, article {display: block;}
+a:link {
+color: rgba(255, 255, 255, 1); 
+text-decoration: underline; 
+font-size: 1.4em; 
+z-index: 100; 
+font-weight: 100;
+text-decoration: underline;
+text-shadow: 2px 1px 2px #000;
+}
+a:hover {color: #cfd; background-color: rgb(100, 110, 10); text-decoration: none; }
+a:visited {color: rgba(255, 255, 255, 1); text-decoration: none;}
+#tabs, #apps, #welcome, span {display: none;}
+
+div ul {
+list-style-type: none; 
+font-size: 1em;
+}
+section p {font-size: 1.1em;}
+
+@media not all and (-webkit-min-device-pixel-ratio: 0) {
+#nav {display: none;}
+#skip {display: none;}
+#tabs, #apps, #welcome {height: 1em; 
+display: inline-block;
+position: relative; left: 40em; top: -2.05em;
+padding: 1ex; 
+border: 1px solid #230; border-bottom: none; 
+width: auto;
+font-size: 1.4em; 
+text-decoration: none;  
+background-color: rgba(127, 154, 102, 0.6); 
+
+-moz-border-radius: 2ex 2ex 0ex 0ex;
+border-radius: 2ex 2ex 0ex 0ex;
+
+-moz-box-shadow: inset -2px 1px 2px 0px rgba(157, 184, 122, 0.5) ;
+box-shadow: inset -2px 1px 2px 0px rgba(157, 184, 122, 0.5);
+
+-moz-transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s; 
+-ms-transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s; 
+-o-transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s;
+transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s; 
+}
+
+#tabs:hover, #apps:hover, #welcome:hover {
+background-color: rgba(158, 192, 65, 0.6); 
+top: -3.05em; 
+height: 2em;
+
+-moz-box-shadow: inset -2px 1px 2px 0px rgba(187, 214, 152,  0.3);
+box-shadow: inset -2px 1px 2px 0px rgba(187, 214, 152,  0.3);
+
+-moz-transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s; 
+-ms-transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s; 
+-o-transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s;
+transition: box-shadow 2.5s, background-color 2s, top 1s, height 1s; 
+}
+
+#tabs:target, #apps:target, #welcome:target {
+background-color: rgba(158, 192, 65, 1); 
+top: -4.05em;  
+height: 3em;
+
+-moz-box-shadow: -2px 1px 2px 0px rgba(217, 244, 182,  0.6) inset;
+box-shadow: -2px 1px 2px 0px rgba(217, 244, 182,  0.6) inset;
+}
+
+div > h1 { width: 80em; padding: 1.5ex;  background-color: rgba(10, 10, 10, 0.8); color: #efe; font-size: 2.5em; margin: 0em;}
+div > h2 {display: inline;}
+div {
+position: fixed; 
+left:0em; top: 0em; 
+}
+
+div > article {
+width: 300em; height: 80em; 
+position:absolute; 
+left: 0em; top: 0em; 
+background-image:url(http://devfiles.myopera.com/articles/3392/271.jpg);
+background-size: 300em 80em; 
+-moz-background-size: 300em 80em; 
+background-repeat: no-repeat; 
+z-index: -100; 
+list-style-type: none; 
+font-size: 2em;
+margin: 0; padding: 0;
+-o-transition: top 1.5s 1.5s, left 1.5s 1s; 
+-moz-transition: top 1.5s 1.5s, left 1.5s 1s; 
+transition: top 1.5s 1.5s, left 1.5s 1s; 
+}
+
+article > section {
+width: 100em; height: 80em; margin: 0em; padding: 0em; 
+float:left; 
+opacity: 0; 
+color: #250; 
+-o-transition: all 1.5s; 
+-moz-transition: all 1.5s;
+transition:all 1.5s; 
+}
+
+
+
+section[id^="s"] > p {width: 36em; padding-left: 2ex; font-size: 0.7em;}
+section[id^="s"] > h2, section[id^="s"] > h3 {padding-left: 1ex; margin-bottom: 0.1ex; margin-top: 3em;}
+
+#tabs:target ~ article > section#s1 {opacity:1;}
+#apps:target ~ article > section#s2 {opacity:1;}
+
+section#s0 {opacity: 1;}
+#tabs:target ~ article > section#s0, #apps:target ~ article > section#s0 {opacity: 0; }
+
+#welcome:target ~ article {left: 0em; top: 0em;} 
+#tabs:target ~ article {left: -100em; top: 0em;}
+#apps:target ~ article  {left: -200em; top: 0em;}
+}
+
+
+/*bits for styling code - not important */
+p code {color: #c0b; font-weight: 900;}
+p var {color: #000;} 
+</style>
+</head>
+
+<body>
+<div>
+<h1>Corey's scrolling site of green</h1>
+
+<h2 id="skip"><span>non-functioning links for graphical browser users</span> [<a href="example5.html#nav">skip to menu</a>]</h2>
+<span>{</span><a id="welcome" href="example5.html#welcome">Welcome</a><span>}</span> <span>{</span><a id="tabs" href="example5.html#tabs">Tab styling</a><span>}</span> <span>{</span><a id="apps" href="example5.html#apps">Applications</a><span>}</span>
+<article>
+
+<section id="s0">
+<h2>Welcome</h2>
+<p>This is a basic study in green, in HTML5. I've decided to use a collection of <code>section</code> elements housed within an <code>article</code>, but I could have used a generic container (<abbr title="id est" lang="la">i.e.</abbr> a <code>div</code>). As long as the outer container (in this case <code>article</code>) holds the background image and is fixed, then you can get a scrollable background!</p>
+</section>
+
+<section id="s1">
+<h2>Tab styling</h2>
+<p>It's all rounded corners, and an inset <var>box-shadow</var> to create a three-dimensional effect. It perhaps is not as good as a drawing - but it's quicker.</p>
+</section>
+
+<section id="s2">
+<h2>Applications</h2>
+<p>You could use this for a kiosk or information terminal; and bearing in mind that you don't only have to scroll horizontally, a very creative person could create an accessible web-comic where the reader was guided to each frame, with the art rendered in SVG, or text with <var>:content</var> generated images.</p>
+</section>
+</article>
+<ul id="nav">
+<li><a href="example5.html#s0">Welcome</a></li>
+<li><a href="example5.html#s1">Tab styling</a></li>
+<li><a href="example5.html#s2">Applications</a></li>
+</ul>
+</div>
+</body>
+</html>

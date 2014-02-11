@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>XHR 2 Demo: Overriding the MIME Type</title>
+	<link rel="stylesheet" href="http://devfiles.myopera.com/articles/9482/xhr2.css" media="screen">
+	<style media="screen"></style>
+</head>
+<body>
+<nav><a href="../../../dev.opera.com/articles/view/xhr2/index.html">Return to article</a></nav>
+<h1>XMLHttpRequest 2 Demo: Overriding the MIME Type</h1>
+
+
+<section id="demo">
+<p>Click the button to trigger the <code>overrideMimeType()</code> demo.</p>
+
+<p>Notice that the <code>Content-Type:</code> response header is <code>text/html; charset=UTF-8</code>, but we have actually requested an <a href="http://devfiles.myopera.com/articles/9482/xhr-overridemimetype.xml">XML file</a>. We are going to force the browser to treat the response as XML.</p>
+
+<p>Compare this with <a href="http://devfiles.myopera.com/articles/9482/xhr-no-overridemimetype.html">the empty value</a> of <code>responseXML</code> when <code>overrideMimeType()</code> isn't used.</p>
+
+
+<form action="xhr-overridemimetype.html#">
+	<button type="submit" id="trigger">Make request</button>
+</form>
+
+<h2>Response headers</h2>
+<pre id="headers"></pre>
+
+<h2><code>responseXML</code></h2>
+<div id="results"></div>
+
+
+</section>
+
+<script>
+function makeRequest(event){
+	event.preventDefault();
+
+	var xhr, onLoadHandler, results, headers;
+
+	headers = document.querySelector('#headers');
+	results = document.querySelector('#results');
+
+	onLoadHandler = function(event){
+		var i, xhr = event.target;
+		headers.innerHTML = xhr.getAllResponseHeaders();
+		results.innerHTML = xhr.responseXML;
+	}
+
+	xhr = new XMLHttpRequest();
+	xhr.open('GET','xhr-no-overridemimetype.data.html',true);
+	xhr.onload = onLoadHandler;
+
+    // forces this to be XML instead of HTML
+	xhr.overrideMimeType('text/xml');
+	xhr.send(null);
+}
+</script>
+
+<script src="http://devfiles.myopera.com/articles/9482/xhr2.js"></script>
+</body>
+</html>
+

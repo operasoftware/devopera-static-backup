@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:wairole="http://www.w3.org/2005/01/wai-rdf/GUIRoleTaxonomy#"
+      xml:lang="en" lang="en">
+	<head>
+		<title>Selectors API Demo</title>
+		<meta name="author" content="David Storey"/>
+		<meta charset=UTF-8 />
+		<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/751/selectors.css" media="screen"/>
+		<script type="text/javascript" src="http://devfiles.myopera.com/articles/751/selectors.js"></script>
+	</head>
+	<body>
+		<article>
+		<h1>Selectors API Demo</h1>
+	
+		<p>These simple demos each use two methods to select paragraphs, or relevant elements, below the buttons. The <q>Highlight by DOM</q> button finds the element(s) using the regular DOM approach, and sets a class of <code>dom-active</code>. This gives the element(s) a yellow highlight.  The <q>Highlight by Selectors API</q> button finds the element(s) using either the <code>querySelector</code> or <code>querySelectorAll</code> methods from the Selectors API, and sets a class of <code>select-active</code>. This gives the element(s) a green highlight. It is possible to use any selector as an argument for both methods, and they can also be chained (accept multiple comma-separated selectors). The methods used below for selecting the elements via regular DOM and Selectors API methods are only for demo purposes and are not necessarily the most efficient way to select the elements in question.</p>
+		<section>
+			<h2>Select by ID</h2>
+				<button id="id-dom">Highlight by DOM</button>
+				<button id="id-select">Highlight by Selectors API</button>
+				<p id="id-test">This element has an ID of <code>id-test</code>. Click on either of the buttons above to highlight this element. This element is selected via the DOM using <code>getElementById("id-test");</code>, and via the Selectors API using <code>querySelector("#id-test");</code>.</p>
+		</section>
+		<section>
+			<h2>Select by class</h2>
+			<button id="class-dom">Highlight by DOM</button>
+			<button id="class-select">Highlight by Selectors API</button>
+			<p class="class-test">This element has a class of <code>class-test</code>. Click on either of the buttons above to highlight this element.  This element is selected via the DOM using <code>getElementsByClassName("class-test");</code>, and via the Selectors API using <code>querySelector(".class-test");</code>.</p>
+		</section>
+		<section>	
+			<h2>Select by tag name and position</h2>
+			<button id="tagname-dom">Highlight by DOM</button>
+			<button id="tagname-select">Highlight by Selectors API</button>
+			<p>This element has no class or ID. Click on either button above to highlight this element.  This element is selected via the DOM using <code>getElementsByTagName("section");</code>, choosing the 3rd element that is returned, then selecting its first <code>p</code> child element. It is selected via the Selectors API using <code>querySelector("section:nth-of-type(3) p");</code>.</p>
+		</section>
+		<section>
+			<h2>Select by attribute</h2>
+			<button id="attribute-dom">Highlight by DOM</button>
+			<button id="attribute-select">Highlight by Selectors API</button>
+			<p aria-disabled="true">This element has an <code>aria-disabled</code> attribute. Click on either of the buttons above to highlight this element. This element is selected via the DOM using <code>getElementsByTagName("p")</code> and testing for <code>getAttribute('aria-disabled') == "true")</code> to check the attribute exists. It is selected via the Selectors API using <code>querySelector('p[aria-disabled="true"]');</code>.</p>
+		</section>
+		<section>
+			<h2>Select by multiple pseudo-classes</h2>
+			<button id="pseudo-dom">Highlight by DOM</button>
+			<button id="pseudo-select">Highlight by Selectors API</button>
+			<p>Click on either of the buttons above to highlight this element and the last paragraph. They are selected via the DOM using <code>getElementsByTagName("section");</code>, choosing the 5th element that is returned, then selecting the first and last (using length - 1) child <code>p</code> elements. This elements are selected via the Selectors API using <code>querySelectorAll('section:nth-of-type(5) p:first-of-type, section:nth-of-type(5) p:last-of-type')</code>. Notice how <code>querySelectorAll</code> can use more than one selector as an argument.</p>
+			<p>Another paragraph that <em>shouldn't</em> be selected</p>
+			<p>Another paragraph that <em>shouldn't</em> be selected</p>
+			<p>The last paragraph that <em>should</em> be selected.</p>
+		</section>	
+		<section>
+			<h2>Select all elements matching pseudo-class</h2>
+			<button id="pseudo-all-dom">Highlight by DOM</button>
+			<button id="pseudo-all-select">Highlight by Selectors API</button>
+			<p>Click on either button above to select all the odd list items in the unordered list below. They are selected via the DOM using <code>getElementsByTagName("section");</code>, choosing the 6th element that is returned, then selecting all <code>li</code>s and looping through every other item, starting on the first one. They are selected via the Selectors API using <code>document.querySelectorAll('section:nth-of-type(6) li:nth-child(odd)')</code>, and looping through all of the results.</p>
+			<ul>
+				<li>odd</li>
+				<li>even</li>
+				<li>odd</li>
+				<li>even</li>
+				<li>odd</li>
+				<li>even</li>
+				<li>odd</li>
+				<li>even</li>
+				<li>odd</li>
+				<li>even</li>
+				<li>odd</li>
+				<li>even</li>
+				<li>odd</li>
+				<li>even</li>
+			</ul>
+		</section>
+	</article>
+	</body>
+</html>

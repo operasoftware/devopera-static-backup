@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Love your devices: adaptive web design with media queries, viewport and more - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Love your devices: adaptive web design with media queries, viewport and more</h1>
+      <p class="print author">By Chris Mills</p>
+
+      	    <h2>Introduction</h2>
+	    	    
+	    <p>It&#39;s time again to reflect on happiness and well being: that of yourselves and the members of the public who consume the web content and services you create. Today we are going to talk about getting more satisfaction from battery-powered devices...</p>
+	    
+	    <p>...no silly, I&#39;m talking about the vast profusion of alternative browsing devices sweeping through our society like wildfire. A lot of us used to deal with support for mobile browsers with very short-sighted expressions of duality, such as completely separate mobile and desktop sites, or <code>handheld</code> media type stylesheets to provide separate styling to mobile. Or we&#39;d detect the <abbr title="User Agent">UA</abbr> string and serve suitable content for the browser.</p> 
+	    
+	    <p>But designing for specific browsers hasn&#39;t been cool since IE and Netscape were slugging it out in the mid to late 90&#39;s, and it sucked even more back then because we pretty much had to create separate site versions if we wanted to support both contenders. Designing for specific platforms is not much better: these days it&#39;s not just mobile phones versus desktop any more — there are a vast number of portable devices of varying sizes in use, with different screen sizes, resolutions and other attributes.</p>
+	    
+	   <p>What we need is a different way of thinking. We need to accept the inherent variability and unpredictability of the Web, and design sites that can breathe a little and adapt to such variations as resolution and screen size. This is generally called &quot;adaptive design&quot; or &quot;responsive design&quot;: below I will explore some techniques for creating such sites, using technologies such as media queries and viewport, and techniques like sizing your UI using percentages.</p>
+	    
+	    <p>Sit back and enjoy the ride.</p>
+	    
+	    <h2>The tools of adaptive design</h2>
+	    
+	    <p>The main tools we have for adaptive design are as follows, loosely speaking:</p>
+	    
+	    <ul>
+	      <li><strong>Fluid dimensions</strong>: Mainly fluid grids and images, achieved through percentages. We also have things like <code>object-fit</code>, a new CSS3 property that allows more control over how images are displayed.</li>
+	      <li><strong>Media queries</strong>: Control layouts by selectively applying CSS depending on media attributes such as screen and browser width. We also have a new <code>media</code> attribute that you can use on the HTML5 video <code>&lt;source&gt;</code> element to serve tailored video files to say, narrow-screen devices that don&#39;t need or want huge videos.</li>
+	      <li><strong>Viewport</strong>: Allows you to control how mobile devices display web apps. As well as the HTML-based viewport meta tag, Opera has also introduced a <code>@-o-viewport</code> CSS container to do the same thing inside CSS instead.</li>
+	    </ul>
+	    
+	    <p>We&#39;ll look at all these chunks of loveliness in more detail later on, but for now, let&#39;s introduce an example I&#39;ve written to demonstrate all of this to you.</p>
+	    
+	    <h2>Tantric obstacles - a psychedelic joyride</h2>
+	    
+	    <p>I have always been a big fan of psychedelic imagery and music, so I went ahead and created a site called Tantric obstacles, named after an album by awesome psychedelic British band <a href="http://en.wikipedia.org/wiki/Ozric_Tentacles">The Ozric Tentacles</a>. Check out the <a href="http://people.opera.com/cmills/mediaquery/">Tantric Obstacles site</a>, and the accompanying <a href="http://people.opera.com/cmills/mediaquery/video.html">Tantric video page</a> running live before you read further. Garish? Obnoxious? I actually thought I was fairly restrained, given what I could&#39;ve done with the psychedelic theme.</p>
+	    
+	   <p>The site is written in HTML5, with a typical structure of <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code> bar, <code>&lt;section&gt;</code> elements for the different columns and <code>&lt;article&gt;</code> elements for the different image and video items. It is laid out using floats for the columns and articles, and mostly percentage dimensions, giving it ultra-flexibility. I have used very little CSS3, save for the media queries and Web Fonts, so it even looks ok in older IE versions (more on browser compatibility later on).</p>
+	    
+	    <p>I have used a total of five media queries to provide reasonable layouts at different screen widths, and a viewport <code>&lt;meta&gt;</code> tag to make the display look better on small screen devices. The different layouts are as follows:</p>
+	    
+	     	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout1.jpg" alt="The standard layout before any media queries come into play" /></p>
+	       <p class="comment">Figure 1: The standard layout before any media queries come into play.</p>	     	    
+	     	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout2.jpg" alt="The standard layout before any media queries come into play" /></p>
+	       <p class="comment">Figure 2: The expanded widescreen layout, which kicks in when the browser width increases beyond 1500 pixels. You might want to instead set a max-width on your <code>&lt;body&gt;</code> content, depending on your situation. Just beware that lines of content don&#39;t get too long, as they become hard to read at wider widths.</p>	    	    
+	     	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout3.jpg" alt="The standard layout before any media queries come into play" /></p>
+	       <p class="comment">Figure 3: A narrower layout ideal for smaller resolution laptops and monitors, and tablets in landscape mode: it kicks in when the browser width gets below 1000 pixels.</p>	    	    
+	     	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout4.jpg" alt="The standard layout before any media queries come into play" /></p>
+	       <p class="comment">Figure 4: The first single column layout, which comes into action at a browser width of below 700 pixels. This might be good for tablets in portrait mode, perhaps?</p>	    	    
+	     	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout5.jpg" alt="The standard layout before any media queries come into play" /></p>
+	       <p class="comment">Figure 5: Identical to the last layout, but with the heading and navigation set to slightly less than 680 pixels wide, so that the layout doesn&#39;t break. Slightly cheaty, but it works.</p>	    	    
+	     	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout6.jpg" alt="The standard layout before any media queries come into play" /></p>
+	       <p class="comment">Figure 6: the narrowest layout, for smaller/typical mobile phones. It comes into play at 560 pixels or lower, and again makes the heading smaller so it will stay on one line, while changing the navigation to a 2 x 2 grid.</p>	 
+	       
+	       <p class="note">You might think that this is a lot of media queries for one example, but I&#39;m deliberately showing a fairly complex example, to illustrate what is possible. Each media query simply builds on and overrides what has come before it in the style sheet.</p>
+	          	    
+	    <h2>Flexible layout units: fluid grids and fluid images</h2>
+	    	    
+	    <p class="note">Note: throughout the article I&#39;ve cut out the CSS rules and properties that aren&#39;t directly interesting to the immediate discussion, to make things clearer and cut down on space. Check out the live examples for the full code.</p>
+	    
+	    <p>The premise behind flexible layout units is using percentages for your layout dimensions (such as column and image widths.) If I&#39;m doing a fixed width layout, I usually set a specific percentage for the <code>font-size</code> (usually <a href="http://clagnut.com/blog/348/">Mr Rutter&#39;s magic 62.5%</a>), and then set all dimensions in ems, so the whole layout is manipulated proportionally to that size. However, recently I&#39;ve started playing more and more with flexible layouts. In my psychedelic example, I have used the body as the wrapper for the page, and set margins to 0, plus a <code>min-width</code> so things don&#39;t break at really low widths when the media queries are put in place.
+
+<pre><code>body {
+  margin: 0;
+  min-width: 320px;
+}</code></pre>
+
+<p class="note">Note that Firefox and Chrome automatically apply a minimum width to pages, even if you don&#39;t specify it in the CSS.</p>
+
+<p>I have then floated the left and right columns left and right and given them percentage widths that total a little less than 100% to form a natural gutter in the middle:</p>
+	    
+<pre><code>section#main {
+  width: 33%;
+  float: left;
+  margin-left: 2%;
+}
+    
+section#features {
+  width: 62%;
+  float: right;
+  margin-bottom: 3%;
+}</code></pre>
+
+<p>This is mundane really, but things start to get more interesting when you look at using percentages for the different contents of the columns. The <code>&lt;article&gt;</code> elements that contain the &quot;psychedelic features&quot; are all floated left, meaning that they will fit comfortably across the width of the container, nearly regardless of what that width might be. In addition, I have set <code>max-width: 100%;</code> on the images, so they will never expand outside the width of their containers, even when the containers are reduced in width.</p>
+
+<pre><code>article {
+  float: left;
+  width: 30%;
+  height:22em;
+  margin: 0 1% 0 1%;
+}
+    
+img {
+  max-width: 100%;
+}</code></pre>
+
+<p>The below screenshot illustrates what effect these rules have when the container width is reduced:</p>
+
+ 	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout7.jpg" alt="max-width means that the images always sit comfortably inside their containers" /></p>
+	       <p class="comment">Figure 7: <code>max-width</code> means that the images always sit comfortably inside their containers.</p>	    
+<h3>object-fit</h3>
+
+<p>If you look at the final live code, you&#39;ll see some additional properties present in the <code>img</code> rule:</p>
+
+<pre><code>img {
+  max-width: 100%;
+  <strong>-o-object-fit: none;
+  overflow: hidden;</strong>
+}</code></pre>
+
+<p><code>object-fit</code> is a CSS property introduced in the CSS3 <a href="http://dev.w3.org/csswg/css3-images/">CSS Image Values and Replaced Content module</a>, which allows you to control how the content of replaced elements behaves. By default, the image will break out of its container and display full size, unless constrained by settings such as <code>width</code>, <code>height</code>, or <code>max-width</code>, as in the case above. <code>object-fit</code> overrides this default and can give some useful advantages, if your browser supports it (it is currently only supported by Opera 11+, and WebKit nightlies, with vendor prefixes). For example, in this case I am using <code>object-fit: none</code>, which makes the image completely ignore any kind of resizing efforts and display full size, regardless. I am then using <code>overflow: hidden;</code> to hide the overflowing image portion, which will differ in size depending on the width of the container. So now, instead of the image resizing to fit the container, it stays the same size, and a different amount of it is cut off by the <code>overflow: hidden;</code>:</p>
+
+ 	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout8.jpg" alt="overflow-hidden in combination with object-fit: none; means that the image will be cropped by a different amount as the image size changes" /></p>
+	       <p class="comment">Figure 8: <code>overflow: hidden;</code> in combination with <code>object-fit: none;</code> means that the image will be cropped by a different amount as the image size changes.</p>	    
+	       
+<p>This has a definite advantage — image resizing can look ugly, especially on Windows, so cropping instead could definitely be preferred in many situations. There are other <code>object-fit</code> options too, for example if you always want your differently-sized images all to fit inside <code>&lt;img&gt;</code> elements of exactly the same size but maintain aspect ratio, you could use <code>object-fit: contain;</code> along with <code>width</code> and <code>height</code> settings to cause wrongly-sized images to letterbox inside the <code>&lt;img&gt;</code> element. There is also a closely-related property available called <code>object-position</code>, which allows you to change the display position of the media inside the replaced element in the same way that <code>background-position</code> does for background images.</p>
+
+<p>To find out more about these properties and their use cases, read my article <a href="../css3-object-fit-object-position/index.html">The CSS3 object-fit and object-position properties</a>.</p>
+
+<h3>Other thoughts on fluid layouts</h3>
+
+<p>There are a couple more points worthy of note here, before we move on. For a start, I have used a very long image for the header, so that as the header size increases, you still get an image spanning all the way across it. Well, up until the point the browser reaches 1920 pixels wide, anyway! This is a useful technique to consider with adaptive layouts, although of course you need to optimize such images as much as possible in a real production environment so that it doesn&#39;t adversely affect mobile users/low bandwidth users too much.</p>
+
+<p>Second, the CSS3 <a href="http://www.w3.org/TR/css3-multicol/">multi-column layout module</a> has some uses in this area. <a href="http://people.opera.com/cmills/multi-col/multi-columns3b.html">Look at my multi-col example</a> that uses fixed widths for the columns. When you resize the browser window, the number of columns changes because the browser is able to fit different multiples of that column width into the container. For more on multi-col, read <a href="../css3-multi-column-layout/index.html">CSS3 Multi-column layout</a> by Molly Holzschlag.</p>
+
+	    <h2>The heavy hitter: media queries</h2>
+	    
+<p>Media queries are awesome. They are quite simply my favourite CSS3 feature — they fill a real need, are supported well across all modern browsers and degrade gracefully. To sum it up, media queries allow you to specify a condition for a block of CSS - if that condition is met, the block is applied to your HTML. If not, it is completely ignored. The conditions tend to look like this — <code>all and (max-width: 1000px)</code> — which means &quot;apply this CSS to all media types if the browser window width is 1000 pixels or smaller&quot;. You can set these conditions on entire external stylesheets like this:</p>
+
+<pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;core.css&quot; media=&quot;all and (max-width: 1000px)&quot;&gt;</code></pre>
+
+<p>or, as I have done in my examples, you can apply them to specific blocks of CSS inside a stylesheet:</p>
+
+<pre><code>@media all and (max-width: 1000px) {
+
+ /* CSS rules go here */
+
+}</code></pre>
+
+<p>You can also add further conditions to a media query rule like this:</p>
+
+<pre><code>all and (max-width: 1000px) and (min-height: 600px)</code></pre>
+
+<p>Or chain together multiple media queries so that the CSS will be applied if any are met, like this:</p>
+
+<pre><code>screen and (max-width: 1000px), print and (max-width: 29.7cm)</code></pre>
+	    
+	    <h3>The obvious - width media queries</h3>
+	    
+<p>The most common media query you&#39;ll use is one that alters your design when browser width gets below or above a certain amount, and this is what I&#39;ve done a lot in my example. I won&#39;t go through everything, but for example, I have changed the percentage width that the <code>&lt;article&gt;</code> elements span across their containing <code>&lt;section&gt;</code> when width gets below 1000 pixels, so that the layout goes from three per row to two per row. They are initially styled like this:</p>
+
+<pre><code>article {
+    ...  
+  width: 30%;
+  margin: 0 1% 0 1%;
+    ...
+}</code></pre>
+
+And the media query then styles them like this:
+
+<pre><code>@media all and (max-width: 1000px) {
+  article {
+    width: 40%;
+    margin: 0 5% 0 1%;
+  }
+}</code></pre>
+
+<p>As another example, I also have an extra-wide layout that kicks in at 1500 pixels and above, for wide monitors. This changes the percentage width again so that all six &quot;psychedelic features&quot; fit on one row:</p>
+
+<pre><code>article {
+  width: 14%;
+  margin: 0 1% 0 1%;
+}</code></pre>
+
+<p>I also used a media query to get rid of the <code>&lt;section&gt;</code> floats, to make the 2-column layout turn to 1-column, when the browser width is 700 pixels or less. I think that&#39;s enough examples - the rest of them work in the same way.</p>
+	    
+	    <h3>Other uses</h3>
+	    
+<p>Media queries aren&#39;t just limited to setting rules based on widths and heights. You can also set rules based on many other variables, such as resolution, aspect ratio, whether the screen is monochrome or not, orientation (portrait or landscape?) and more. For example, you could bump up the font size on high resolution devices such as the iPhone 4, so the text isn&#39;t teeny tiny (although be aware that some such devices tend to automatically bump up text size for the same reason).</p>
+
+<pre><code>@media screen and (resolution: 163dpi) {
+  p { font-size: 200%; }
+}</code></pre>
+
+<p class="note">You could use <code>min-pixel-ratio: 2</code> in place of <code>resolution: 163dpi</code>, for a similar result.</p>
+
+<p>For a full list of the media features you can create rules based on, look them up on the <a href="http://www.w3.org/TR/css3-mediaqueries/#media1">media queries specification</a>.</p>
+	    
+	    <h3>The media attribute on video</h3>
+	    
+<p>And that&#39;s not all, folks. Recently, the HTML5 specification was changed to allow the <code>media</code> attribute to be used on the video <code>&lt;source&gt;</code> attribute. This means that you can serve different video files to different devices — for example, my &quot;psychedelic video&quot; page contains the following player code:</p>
+	    
+<pre><code>&lt;article&gt;   
+  &lt;video controls&gt;
+    &lt;source type=&quot;video/mp4&quot; src=&quot;video/windowsill_small.mp4&quot; media=&quot;all and (max-width: 480px), all and (max-device-width: 480px)&quot;&gt;
+    &lt;source type=&quot;video/webm&quot; src=&quot;video/windowsill_small.webm&quot; media=&quot;all and (max-width: 480px), all and (max-device-width: 480px)&quot;&gt;
+    &lt;source type=&quot;video/mp4&quot; src=&quot;video/windowsill.mp4&quot;&gt;
+    &lt;source type=&quot;video/webm&quot; src=&quot;video/windowsill.webm&quot;&gt;
+	  &lt;!-- proper fallback content goes here --&gt;
+  &lt;/video&gt;
+&lt;/article&gt;</code></pre>
+
+<p>Here, the first two <code>&lt;source&gt;</code> attributes contain a media query rule that is passed if the browser or device screen width is 480 pixels or less, i.e., probably some kind of mobile device. If the rule is passed, then the browser will load the video from one of those <code>&lt;source&gt;</code> attributes (depending on which video format it understands). If not, the browser will skip down the list and load the video from the third or fourth <code>&lt;source&gt;</code> attribute. This is great, as mobile browser users with small screen widths don&#39;t need a large video file, so you might as well serve them a smaller-sized version and save them a bit of bandwidth. This works on all the latest versions of modern browsers.</p>
+	    
+	    <p class="note">Note: You may notice that Chrome does something odd with my weird aspect ratio video, seemingly wanting to make it look more normal and less deviant: I&#39;m not sure why this is.</p>
+	    
+	    <p class="note">Note#2: To get Firefox to play the video, I needed to include an <code>.htaccess</code> file in the root of my example, containing the line <code>AddType video/webm webm</code>. Firefox is a bit more stringent about the video mime types than other browsers.</p>
+	    
+	    <h2>Mobile browsers lie</h2>
+	    
+	    <p>If I just had the media queries present in my example as they are, the view on an average smart phone browser would look like so:</p>
+	    
+	     	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout9.jpg" alt="The layout on Opera Mobile 11, with just the media queries in place" /></p>
+	       <p class="comment">Figure 9: The layout on Opera Mobile 11 on a phone, with just the media queries in place.</p>	    	
+	           
+	    <p>This is a bit strange - the device is only 480 pixels wide, so how come it is still showing a two column layout, when the media query to switch it into a one column layout kicks in at 700 pixels? The answer is that mobile browsers lie - most of them don&#39;t render web pages at their true browser width. Instead, they pretend that the browser is a lot wider than it really is, render the page at that width, and then shrink the result down to display it on the mobile screen; Opera Mobile for example uses 850 pixels for its rendering width. It is not hard to see why they might do this — a lot of your favourite sites would probably look pretty crappy if you viewed them at say, 320 pixels wide — but it is annoying for us when we&#39;ve used media queries to create tailored narrow layouts for such devices, and the site is presented to mobile browser users in a very small unreadable way (at least initially).</p>
+	    
+	    <p>So what do we do? Well, there are a couple of approaches we could use, either separately, or in combination.</p>
+	    
+	    <h3>max-device-width</h3>
+	    
+	    <p>Instead of just including <code>max-width</code> in your media query, you could chain together two media queries to test for <code>max-width</code> <em>and</em> <code>max-device-width</code>, like I did in the video source <code>media</code> attribute. For example:</p>
+	    
+<pre><code>@media all and (max-width: 700px), all and (max-device-width: 700px) {
+  ...
+}</code></pre>
+	    
+	    <p>So here we are saying we want the CSS block to kick in if either the browser width is 700 pixels wide or less (the one the mobile browsers lie about), or the actual device screen is 700 pixels of less (the mobile browsers find it harder to lie about this). I do however find this a bit messy to deal with on all your media queries: can&#39;t we just make those mobile browsers tell the truth?</p>
+	    
+	    <h2>Viewport</h2>
+	    
+	    <p>There is a way: Apple invented the viewport meta tag with the aim of giving developers more control over how their web apps display on the iPhone. Other browser vendors thought it was a good idea, and so it was also adopted by the Opera Mobile browsers, Android, and more. The viewport meta tag I have included in my pages looks like so:</p>
+	    
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code></pre>
+
+        <p>This tells the mobile browsers that support it to render the page assuming a browser width equal to the physical pixel width of the device, and not their default lying width. Our layout now looks like so on modern mobile browsers:</p>
+        
+         	      <p><img src="../../../../devfiles.myopera.com/articles/6262/layout10.jpg" alt="The layout on Opera Mobile 11, with viewport in action" /></p>
+	       <p class="comment">Figure 10: The layout on Opera Mobile 11, with viewport in action (I&#39;ve scrolled down a bit to illustrate a bit more what the text looks like).</p>	            
+        <p>Viewport allows you to do more that just specify rendering screen widths. You can also specify initial zoom level, whether the users can zoom at all or not (handle with care &#x2014; this could create accessibility issues), maximum and minimum allowed zoom levels, and more besides. You can also chain multiple viewport values together, separating them with commas inside the <code>content</code> attribute:</p>
+        
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=2&quot;&gt;</code></pre>
+	    
+	    <h3>Coming soon to a browser near you — @viewport</h3>
+	    
+<p>Us lovely folks at Opera like the viewport meta tag, but we thought it strange that it is implemented as a meta tag at all, when what it is doing is really quite, well, <em>CSS-ish</em>. So we decided to create a new implementation of viewport, reformulated as a CSS at-rule. If you look near the top of my CSS, you&#39;ll find this construct, commented out:</p>
+
+<pre><code>@-o-viewport {
+  width: device-width;
+}</code></pre>
+
+<p>This does the same thing as the viewport meta tag we discussed above. Try swapping the comments around from one to the other and loading the page in Opera Mobile 11 (or later), and you&#39;ll see the same effect as before. We are hoping this will catch on in other browsers soon. The CSS version has been submitted to the W3C as an editor&#39;s draft — see the <a href="http://dev.w3.org/csswg/css-device-adapt/">CSS device adaptation</a> spec.</p>
+
+<p><code>@viewport</code> has equivalents for all the things you can do with the viewport meta tag. For a much deeper, more complete treatment of viewport, read <a href="../an-introduction-to-meta-viewport-and-viewport/index.html">An introduction to meta viewport and @viewport</a> by Andreas Bovens.</p>
+
+     <h3>Tablets and viewport</h3>
+
+<p>The recent growth in popularity of tablet devices has given us even more to think about in terms of adaptive web design, to be sure. Generally there are not too many horrors to consider, but one thing to bear in mind is that some tablet browsers behave like mobile browsers and therefore follow viewport rules, and some don&#39;t. As an example, I originally had my viewport rule set to <code>width=320</code>, to give a more consistent small screen layout that would blow up the text to be as big and readable as possible (bear in mind that my layout has a <code>min-width</code> of 320 pixels set, as it looks awful if set to thinner than this). The layout did look great across most smartphone browsers I tested it on.</p>
+
+<p>Then it came to tablets. I tested the layout on my Samsung Galaxy 10.1. On the default Webkit-based browser it looked fine, as it doesn&#39;t pay attention to viewport. However, on Opera Mobile 11 it rendered at 320 pixels and then blew the result up, which looked dreadful:</p>
+
+ 	      <p><img src="../../../../devfiles.myopera.com/articles/6262/tablet1.jpg" alt="The layout on Opera Mobile 11, on an Android tablet, with viewport width set to 320 pixels" /></p>
+	       <p class="comment">Figure 11: The layout on Opera Mobile 11, on an Android tablet, with viewport width set to 320 pixels: not good.</p>	    	    
+<p>To fix this, I used a viewport width of <code>device-width</code> instead. With this set, Opera Mobile 11 now behaves itself:</p>
+
+ 	      <p><img src="../../../../devfiles.myopera.com/articles/6262/tablet2.jpg" alt="The layout on Opera Mobile 11, on an Android tablet, with viewport width set to device width" /></p>
+	       <p class="comment">Figure 12: The layout on Opera Mobile 11 on an Android tablet in landscape mode, with viewport width set to device-width: much better.</p>	    	    
+<p>And now it works nicely in portrait mode too:</p>
+
+ 	      <p><img src="../../../../devfiles.myopera.com/articles/6262/tablet3.jpg" alt="The layout on Opera Mobile 11 on an Android tablet in portait mode, with viewport width set to device width" /></p>
+	       <p class="comment">Figure 13: The layout now works nicely in portrait mode too!</p>	    
+
+	    	    
+	    <h2>Slaying the IE dragon</h2>
+
+<p>Looking at my default layout in older versions of IE, it actually looks pretty darn good by default. I&#39;ve used very little in the way of CSS3 bling for this one, apart from web fonts, which IE handles very well due to EOT support going back a long way. And even IE6 can be coaxed into coping with floats and percentages without too much special treatment. The main place we start to run into problems here is with <code>max-width</code>/<code>min-width</code>, and the media queries themselves. Let&#39;s look at these two in turn.</p>
+
+<p>IE6 doesn&#39;t support <code>max-width</code> and <code>min-width</code>, therefore our images would start to spill out of their containers if we didn&#39;t do anything about it. In addition, once you get down below 320 pixels — the <code>min-width</code> we have set on the layout — it breaks horribly. As a final stab in the back, IE before 9 doesn&#39;t support our lovingly-crafted media queries. So what to do?</p>
+
+<p>We could just have an IE fix stylesheet inside a conditional comment that sets the body to a fixed width for older versions of IE. That would work - IE users would get a layout that works, and wouldn&#39;t need to know about all the media query cleverness. To be honest, I think this is what most of us will do in these situations.</p>
+
+<p>However, some of you will want to explore the possibility of introducing responsiveness into older versions of IE, so for you guys, I went the extra mile. I&#39;ve actually gone with setting <code>width: 100%;</code> as the width for the images in the IE stylesheet, so that the image effect will still work on old IE versions. You need to be careful here — this works for my demo, but it could go horribly wrong for images that are significantly narrower than their container. Resizing them all to 100% would make them look nasty. You need to select your images to apply this to carefully.</p>
+
+<p>I also made use of the <a href="http://code.google.com/p/css3-mediaqueries-js/">css3-mediaqueries.js</a> library, which adds support for media queries to older browsers, including IE5-8. It isn&#39;t perfect, and you&#39;ll notice a lag when resizing your browser, but it is nice to know there is a way.</p>
+
+<p>Oh wait, one more thing - I haven&#39;t implemented a fallback for users of browsers that don&#39;t support HTML5 <code>&lt;video&gt;</code>. You can read about how to do that in <a href="../simple-html5-video-flash-fallback-custom-controls/index.html">Simple HTML5 video player with Flash fallback and custom controls</a>, by Bruce Lawson and Vadim Makeev.</p>
+	    
+	    <h2>Summary</h2>
+	    
+<p>So that&#39;s it for now folks — hope you&#39;ve found my little foray into adaptive/responsive/awesome/[insert your own groovy word here] design useful. For a whole boatload of inspiringly cool sites that use media queries, look at <a href="http://mediaqueri.es/">mediaqueri.es</a>.</p>
+
+        <h2>Read more...</h2>
+        
+        <ul>
+            <li><a href="../css3-object-fit-object-position/index.html">The CSS3 object-fit and object-position properties</a></li>
+            <li><a href="../css3-multi-column-layout/index.html">CSS3 Multi-column layout</a></li>
+            <li><a href="../an-introduction-to-meta-viewport-and-viewport/index.html">An introduction to meta viewport and @viewport</a></li>
+        </ul>
+	    
+	    <h3>Credits</h3>
+	    
+	    <ul>
+	  <li><a href="http://www.flickr.com/photos/burningmax/4955905625/">psychedelic header background</a> by Burningmax</li>
+	  <li><a href="http://www.flickr.com/photos/sterneck/5684323006/">third eye</a> by Sterneck</li>
+	  <li><a href="http://www.flickr.com/photos/dejahthoris/164384971/">psychedelic flower</a> by dejathoris</li>
+	  <li><a href="http://www.flickr.com/photos/tonythemisfit/4869280504/">60&#39;s psyche music mural</a> by Tony the Misfit</li>
+	  <li><a href="http://www.flickr.com/photos/maynard/3105909533/">Fish</a> by Nemo&#39;s great uncle</li>
+	  <li><a href="http://www.flickr.com/photos/27289736@N00/1056961804/">psychedelic art</a> by move-at-light-speed</li>
+	  <li><a href="http://en.wikipedia.org/wiki/Psychedelic">Psychedelic text courtesy of Wikipedia</a></li>
+	  <li>Awesome web fonts: Cowboy Hippie Pro by <a href="http://www.cheapprofonts.com/">www.CheapProFonts.com</a>, and Bell Bottom Laser (can&#39;t find the font creator, sorry - let me know if you need credit! I did download it from a free font site, and the license says it is ok to use for non-commercial projects.)</li>    
+	  <li>Video by <a href="http://www.splintered.co.uk/">Patrick Lauke</a></li>
+	  <li>Article review provided by <a href="http://twitter.com/#!/rudyrigot">Rudy Rigot</a> and <a href="http://goetter.fr/">Raphael Goetter</a>. Thank you so much guys!</li>
+	</ul></p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-80354592">
+      <a href="../../../author/gadgetto.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/74/398/f6f12317805e4b4a3f182b0eac8039128ef." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/gadgetto.html">Martin Gartner</a></p>
+      <p class="commentdate">Saturday, January 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Nice article - but the whole example is based on a wrong usage of the SECTION element!<br/><br/>&quot;The section element represents a generic document or application section…The section element is not a generic container element. When an element is needed for styling purposes or as a convenience for scripting, authors are encouraged to use the div element instead.&quot;<br/><br/>Source: <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-section-element" target="_blank">http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-section-element</a></section>
+    </li>
+    <li id="comment-88325562">
+      <a href="../../../author/justguy.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d9/4b0/333a430c1308e7e90108b79d5d5d6e62b6f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/justguy.html">justguy</a></p>
+      <p class="commentdate">Sunday, April 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great Work, Thanks Chris<br/><a href="http://mobilephonestracker.blogspot.com" target="_blank">http://mobilephonestracker.blogspot.com</a></section>
+    </li>
+    <li id="comment-88885542">
+      <a href="../../../author/yuryn1961.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9a/8aa/a72a2da8933c3552e41af3626b9d75a1526.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/yuryn1961.html">Yury N.</a></p>
+      <p class="commentdate">Monday, May 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Excellent article, thank You Chris!<br/>I&#39;d like to ask a question. Say I use /media=&quot;all and (max-width: 1000px)&quot;/. Is it spoken about logical or physical 1000 pixels?<br/>Thanks again</section>
+    </li>
+    <li id="comment-88903252">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, May 7, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Yury N. media queries always refer to logical/device pixels, not physical pixels. They can be the same thing if the device has a low PPI/pixel density, but on devices like the iPhone 4, you can have 2 physical pixels per device pixel, or possibly more.<br/><br/>If you want to force one device pixel to equal one physical pixel all the time, you can use<br/><br/>&lt;meta name=&quot;viewport&quot; content=&quot;target-densitydpi=device-dpi&quot;&gt;<br/><br/>Andreas has written a nice article about viewport, including dealing with high resolution device issues, at <br/><br/><a href="../an-introduction-to-meta-viewport-and-viewport/index.html" target="_blank">http://dev.opera.com/articles/view/an-introduction-to-meta-viewport-and-viewport/</a></section>
+    </li>
+    <li id="comment-90219602">
+      <a href="../../../author/lollo10.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3e/c11/544a713c575cb26cabb872fe139af80cd35.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lollo10.html">Lollo Andersen</a></p>
+      <p class="commentdate">Tuesday, May 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Excellent article!</section>
+    </li>
+    <li id="comment-90224302">
+      <a href="../../../author/lollo10.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3e/c11/544a713c575cb26cabb872fe139af80cd35.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lollo10.html">Lollo Andersen</a></p>
+      <p class="commentdate">Tuesday, May 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks Chris</section>
+    </li>
+    <li id="comment-95859152">
+      <a href="../../../author/gbilotta.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/14/350/73a31dbb3b4e01090203561ab1260093bb5.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/gbilotta.html">Giuseppe Bilotta</a></p>
+      <p class="commentdate">Tuesday, September 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks for the nice write-up. It&#39;s notably missing reference to the viewport-based units (vh, vw), but I guess that since very few browsers support them yet (and Opera is not among them ;-)) it might make sense to not talk about them to much ;-)</section>
+    </li>
+    <li id="comment-105112012">
+      <a href="../../../author/finfiniti.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/43/0a8/141217a129247cdbda225743b715fb24590." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/finfiniti.html">giuliano antola</a></p>
+      <p class="commentdate">Friday, March 15, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great article, <br/>j want just to segnalize an error of a tag not closed correctly.<br/>It&#39;s the small tag that include this text &quot;Awesome web fonts: Cowboy Hippie Pro by <a href="http://www.cheapprofonts.com">www.CheapProFonts.com</a>, and Bell Bottom Laser (can&#39;t find the font creator, sorry - let me know if you need credit! I did download it from a free font site, and the license says it is ok to use for non-commercial projects.)&quot;</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, November 24, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/adaptive.html" rel="tag">adaptive</a></li>
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/media&#32;queries.html" rel="tag">media queries</a></li>
+        <li><a href="../../tags/mobile.html" rel="tag">mobile</a></li>
+        <li><a href="../../tags/multi-col.html" rel="tag">multi-col</a></li>
+        <li><a href="../../tags/percentage.html" rel="tag">percentage</a></li>
+        <li><a href="../../tags/responsive.html" rel="tag">responsive</a></li>
+        <li><a href="../../tags/tablet.html" rel="tag">tablet</a></li>
+        <li><a href="../../tags/viewport.html" rel="tag">viewport</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

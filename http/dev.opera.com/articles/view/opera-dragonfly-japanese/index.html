@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Dragonfly 入門 (Japanese) - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>Opera Dragonfly 入門 (Japanese)</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <p class="note">This article is <strong>deprecated</strong>; instead, consult our <a href="http://www.opera.com/dragonfly/documentation/">Opera Dragonfly 1.0 Field Guide</a> for up-to-date information.</p>
+
+<p>この記事は「<a href="../introduction-to-opera-dragonfly/index.html">Introduction to Opera Dragonfly</a>」の日本語訳です。<br />【翻訳：利部直、上廣剛、アンドレアス・ボーヴェンス】</p>
+
+<h2>はじめに</h2>
+<p>エキサイティングなニュースです！Opera Dragonfly が発表されました！Opera Dragonfly は Opera の提供する全く新しいウェブ開発ツールです。このアプリケーションは、ウェブ標準のデバック環境と問題解決のための効果的な仕組みを開発者に提供する軽快でパワフルなアプリケーションです。現在、以下の機能が提供されています：</p>
+
+<ol>
+<li>JavaScript デバッガ</li>
+<li>DOM インスペクタ</li>
+<li>CSS インスペクタ</li>
+<li>コマンドラインからのコマンド入力</li>
+<li>ページに関連する CSS と JavaScript の検証エラーと警告を出力するエラーコンソール</li>
+<li>モバイル端末上でのダイレクトなデバッグを可能にするプロキシ</li>
+</ol>
+
+<p>現在のリリースバージョンはアルファ版なので、まだ少し荒削りなところが残っています。私たちはまず最も重要な機能を実装しましたが、今後さらに機能を発展させていく予定です。この開発ツールのための大きな計画が現在進行しており、数ヶ月以内にさらにすばらしい機能が追加されることを期待していてください。
+このツールはオープンソース BSD ライセンスの基にリリースされます。</p>
+
+<p>本稿の構成は以下のとおりです：</p>
+
+<ul>
+<li><a href="index.html#gettingdragonfly">Opera Dragonfly はどこから入手できますか</a></li>
+<li><a href="index.html#installingdragonfly">Opera Dragonfly にアクセスするには</a></li>
+<li><a href="index.html#UIoverview">ユーザインタフェースの概要</a></li>
+<li><a href="index.html#basictasks">基本操作の実行方法</a>
+<ul>
+ <li><a href="index.html#script">Script タブ</a>
+ <ul>
+  <li><a href="index.html#callstack">Call Stack パネル</a></li>
+  <li><a href="index.html#threadlog">Call Stack パネル</a></li>
+  <li><a href="index.html#frameinspection">Frame Inspection パネル</a></li>
+  <li><a href="index.html#commandline">Command Line</a></li>
+ </ul>
+ </li>
+ <li><a href="index.html#dom">DOM タブ</a></li>
+ <li><a href="index.html#stylesheetstab">Stylesheets タブ</a>
+ <ul>
+  <li><a href="index.html#stylestab">Styles タブ</a></li>
+  <li><a href="index.html#domattributestab">DOM Attributes タブ</a></li>
+  <li><a href="index.html#layouttab">Layout タブ</a></li>
+ </ul>
+ </li>
+ <li><a href="index.html#console">Console タブ</a></li>
+</ul>
+</li>
+<li><a href="index.html#summary">まとめ</a></li>
+</ul>
+
+
+<h2 id="gettingdragonfly">Opera Dragonfly はどこから入手できますか</h2>
+
+<p>入手方法はいたってシンプルです。最近のバージョン(最新はバージョン 9.5)の Opera は  Scope と呼ばれるコードベースを提供しています。
+これはブラウザによってレンダリングされるすべてのページのコード構造を、インスペクション、出力、検証可能にするモニタリングシステムです。
+Scope が実装されていれば、どの Opera のバージョンでも新しい Opera Dragonfly クライアントを実行できます。新しい <a href="http://labs.opera.com/news/2008/04/25/">Kestrel ベータ2</a> も同様に、ブラウザをインストールさえすれば準備完了となります。
+
+ご注意： Mac 版において OS X 上のビデオメモリの破損が原因でクラッシュするというバグが発見されました。この不具合を回避するための対策を施した新しいビルド <a href="http://snapshot.opera.com/mac/o950s_4808.dmg">http://snapshot.opera.com/mac/o950s_4808.dmg</a> が提供されています。
+</p>
+
+<h2 id="installingdragonfly">Opera Dragonfly にアクセスするには</h2>
+
+<p>図1のように ツール → 詳細ツール → 開発者用ツール というメニューオプションを選択してください。Opera Dragonfly の UI がロードされます。</p>
+
+<img alt="Opera Dragonfly クライアントを起動するメニューオプション" src="../../../../devfiles.myopera.com/articles/376/menuoptionsja.png" />
+
+<p class="comment">図1：Opera Dragonfly クライアントの起動</p>
+
+<p>注：何らかの理由で別のバージョンの Opera Dragonfly クライアントにリバートしたいことがあるかも知れません。Opera 設定ページから、開発者用セクションを見つけ、必ず図2に示すように設定してください。開発者用ツール URL フィールドの URL は Opera Dragonfly クライアントの場所を指しています。ここにクライアントのバージョンを切り替えるにはこのURLを変更します。</p>
+
+<img alt="開発者用ツール設定セクション" src="../../../../devfiles.myopera.com/articles/376/configscreenja.png" />
+
+<p class="comment">図2：opera:config 開発者用ツール設定セクション</p>
+
+<p>設定を更新して保存したら、更新が有効になるように Opera を再起動する必要があります。</p>
+
+<h2 id="UIoverview">ユーザインタフェースの概要</h2>
+
+<p>クライアントはデフォルトでは図3のような概観をしています。さあ、探検してみましょう。</p>
+
+<img alt="Opera Dragonfly のユーザインタフェース" src="../../../../devfiles.myopera.com/articles/369/dragonflyui.gif" />
+
+<p class="comment">図3：デフォルトの Opera Dragonfly UI</p>
+
+<p>それぞれの領域は以下のように対応しています：</p>
+
+<ol>
+<li>Script 、DOM 、Console タブ：ユーザインタフェースからこれらの主な機能をタブで選択します。Opera ブラウザに読み込まれたウェブサイトを様々な角度から検査することができます。</li>
+<li>サイトインフォメーション・ウインドウ：どのサイトが今 Opera ブラウザに読み込まれているか、そしてどの JavaScript と CSS ファイルがそれらに適用されているか等の情報を表示します。ドロップダウンメニューは現在読み込まれているサイトを表示し、どれか1つを選択すると、その下に選択されたサイトの情報が表示されます。もしくは、Environment タブが選択されていると、ブラウザが実行されているシステムについての情報が表示されます。（図4を参照）</li>
+<li>コンテクスト依存ツール：これらの領域にはスクリプト、DOM 、Console タブのうちどれが選択されているかに依存して、別々のツールが表示されます。各ツールの詳細は後ほど見ていきます。</li>
+<li>検索ボックス／クイック検索：内部の領域にあるすべての語句を検索できます。</li>
+<li>メインインフォメーション・ウィンドウ：サイトインフォメーション・ウィンドウから選択された別々のスクリプトや CSS 等のファイルのコンテンツを表示します。コンテンツは現在どのメインタブがアクティブかによって異なります。それぞれのコンテンツについては後ほど見ていきます。</li>
+<li>Command Line：JavaScript コマンドを入力して実行することができます。</li>
+<li>インフォメーション・パネル：このパネルはどのメインタブが選択されているかによって変化します。検査しているスクリプト、スタイル等についての情報を表示します。これも後半で見ていきます。</li>
+<li>このインジケータはデバッガとデバッグしているウェブサイトの状態を表示します。</li>
+
+</ol>
+
+<img alt="Environment タブは現在実行しているシステムについての詳細を提供します" src="../../../../devfiles.myopera.com/articles/369/runningenvironment.gif" />
+
+<p class="comment">図4：Environment タブは現在実行しているシステムについての詳細を提供します。</p>
+
+<p>Opera Dragonfly の基礎を理解しましたか？さあ、それぞれのコンテクストで何ができるかを見ていきましょう！</p>
+
+<h2 id="basictasks">基本的なタスクの実行方法</h2>
+
+<p>それでは Opera Dragonfly を実行して、好きなウェブサイトをロードしてください。図5のように見えるでしょう。</p>
+
+<img alt="Opera で開いた筆者のお気に入りウェブサイト" src="../../../../devfiles.myopera.com/articles/376/websitesinoperaja.png" />
+
+<p class="comment">図5：Kestrel ベータ2で開いた筆者のお気に入りウェブサイト</p>
+
+<p>開いたサイトは図6のように、 Opera Dragonfly UI のなかのドロップダウンメニューに表示されます。</p>
+
+<img alt="Opera Dragonfly サイトインフォメーション・ウィンドウに表示されたウェブサイト" src="../../../../devfiles.myopera.com/articles/369/sitesindragonfly.gif" />
+
+<p class="comment">図6：Opera Dragonfly サイトインフォメーション・ウィンドウに表示されたウェブサイト</p>
+
+<h3 id="script">Script タブ</h3>
+
+<p>Script タブを選択し、ドロップダウンメニューからどれか１つのサイトを選択してください。サイトインフォメーション・ウィンドウのサイト URL の下にある黒い行をクリックしてください。図7のように画面が更新されます。ここでは同僚の実験サイトを選択していますが、どのようなサイトを選んでもかまいません。</p>
+
+<img alt="Opera Dragonfly で Javascript ファイルを検査します" src="../../../../devfiles.myopera.com/articles/369/javascriptviewer.gif" />
+
+<p class="comment">図7：Opera Dragonfly で Javascript ファイルを検査します</p>
+
+<p>行番号をクリックしてブレークポイントを設定できます。図8の例を参照してください。</p>
+
+<img alt="JavaScript にブレークポイントを設定します" src="../../../../devfiles.myopera.com/articles/369/breakpoints.gif" />
+
+<p class="comment">図8：JavaScript にブレークポイントを設定します</p>
+
+<p>ブレークポイントを設定した後でスクリプトを実行すると（例えば、ボタンクリックなど、あなたがブレークポイントを設定した部分のスクリプトが実行される操作により）、ブレークポイントでスクリプトが停止し、その時点で環境がどのようになっているか（例えば、各変数がどのような値を持っているか等）分析できます。 図9はボタンをクリックして <code>playSong()</code> を実行させた際の結果です。矢印はコードが停止したブレークポイントを示しています。</p>
+
+<img alt="スクリプトの実行が停止したブレークポイント" src="../../../../devfiles.myopera.com/articles/369/activebreakpoint.gif" />
+
+<p class="comment">図9：矢印はスクリプトの実行が停止したブレークポイントを示している</p>
+
+<p>ウィンドウ下部の HTML DOM パンくずリストは、検査されているアイテムが DOM ツリーのどこに位置しているかを指摘します。これは全てのビューで表示されます。また、このタブの左上に「Reload selected window in the host」というボタンがあります。これは、現在ブラウザで選択されているウェブページを初期状態にリフレッシュするために再度読み込みます。</p>  
+
+<img alt="スクリプトビューのメインボタン・コントロール" src="../../../../devfiles.myopera.com/articles/369/jsbuttons.gif" />
+
+<p class="comment">図10：スクリプトビューのメインボタン・コントロール</p>
+
+<p>メインボタン（図10参照）は左から右の順に以下の機能を提供します：</p>
+
+<ul>
+<li>Continue (F8)：現在選択されているスクリプトを、ブレークポイントで停止した後、継続実行します</li>
+<li>Step into (F11)：ブレークポイントが含まれている現在の関数の後に、スタック上の次の関数に移動します。</li>
+<li>Step over (F10)：ブレークポイントが設定されている行の次の行に移動します。連続して使うことでスクリプトの実行パスを追跡できます。</li>
+<li>Step out (Shift + F11)： 関数を抜けます。</li>
+<li>Stop at new thread：スクリプトが実行したとき次のスレッドで停止するかどうかを指定します。</li>
+<li>Stop at error：スクリプトが実行したとき次のエラーで停止するかどうかを指定します。</li>
+<li>Log threads：スレッドを Thread パネルでロギングするかどうかを指定します。</li>
+</ul>
+
+<h4 id="callstack">Call Stack パネル</h4>
+
+<p>コールスタックは特定の関数コールの実行時、現在の環境がどうなっているか（どの関数ががどの順序でコールされたか等）を表示します。例えば、関数AがBをコールし、それがCをコールしたとします。最初にCが、次にB、そしてAの順にリターンします。各関数コールは、たとえば変数値を変えるなど、環境に何らかの変化をもたらします。 図11は最初のブレークポイントまで実行し、その後スタック上の次の関数にステップインしたときコールスタックがどのように見えるかを例示しています。</p>
+
+<img alt="Call Stack パネル" src="../../../../devfiles.myopera.com/articles/369/callstack.gif" />
+
+<p class="comment">図11：Call Stack パネルが様々な関数コール表示しています</p>
+
+<p>ここでスタック中のそれぞれのコールをクリックすると、スクリプトウィンドウの中の識別矢印がそのコールの位置に表示されます。試してみてください!</p>
+
+<h4 id="threadlog">Thread Log パネル</h4>
+
+<p>Thread Log パネルは現在検査しているスクリプトを実行している最中にそれぞれのスレッドの詳細を記録します。ただし、Log threads ボタンを押しておく必要があります（上記参照）。
+図12はコードを実行した後のスレッドログウィンドウです。</p>
+
+<img alt="実行中の Thread Log パネル" src="../../../../devfiles.myopera.com/articles/369/threads.gif" />
+
+<p class="comment">図12：実行中の Thread Log パネル</p>
+
+<p>Thread Log パネルには以下の2つのボタンがあります：</p>
+
+<ul>
+<li>Clear thread log：ログを消去します。</li>
+<li>Export thread log：現在のスレッドログを新しいブラウザウィンドウにテキスト形式で出力します。</li>
+</ul>
+
+<h4 id="frameinspection">Frame Inspection パネル</h4>
+
+<p>Frame Inspection パネルは図13に示すように現在のコールスタックの全てのプロパティ値等を表示します。フレームはコールスタックの一部分です。Call Stack パネルからコールを選択して一連のフレームを変更することができます。</p>
+
+<img alt="Frame Inspection パネル" src="../../../../devfiles.myopera.com/articles/369/frameinspection.gif" />
+
+<p class="comment">図13：Frame Inspection パネル、スタックから選択されたコールの全てのプロパティ値を表示している</p>
+
+<p>Frame Inspection パネルの左上のボタン「Hide default properties in global scope」は多くの場合必要のないデフォルトプロパティを隠します。試してみてください。</p>
+
+<h4 id="commandline">コマンドライン</h4>
+
+<p>JavaScript コードのテストを行なうために、Command Line パネルから JavaScript コマンドを入力して実行できます。一例として、次のようなシンプルなコマンドを入力してみてください：</p>
+
+<pre>var a = 1;
+var b = 2;
+var c = a + b;</pre>
+
+<pre>document.getElementsByTagName(&#39;div&#39;);</pre>
+
+
+<h3 id="dom">DOM タブ</h3>
+
+<p>さて、DOM タブを選択してウェブサイトを選んでみてください。画面は選択されたサイトの DOM を展開可能なビュー形式で表示します。加えて、Styles 、DOM Attributes、 Layout タブが右側に表示されますが、これについては後に触れます（図14を参照）。上のパネルの下にくっついる２列目のタブを Document から Stylesheets に切り替えると、サイトインフォメーション・ウィンドウの画面がそれぞれのウェブページにどの CSS が適用されているのかを表示します。今はタブを Document のままにしておきましょう。</p>
+
+<img alt="Opera Dragonfly でサイトの DOM を検査します" src="../../../../devfiles.myopera.com/articles/369/domviewer.gif" />
+
+<p class="comment">図14：Opera Dragonfly でサイトの DOM を検査します</p>
+
+<p>異なる要素を選択すると表示がどう変化するか、しばらく DOM ツリーで遊んでみてください。緑色の強調表示は現在選択されている要素を指定していることに注意してください。</p>
+
+<img alt="DOM ボタン" src="../../../../devfiles.myopera.com/articles/369/dombuttons.gif" />
+
+<p class="comment">図15：DOM ビューのメインボタン・コントロール</p>
+
+<p>DOMビューのメインボタン (図15参照) は左から右に以下の機能を提供します：</p>
+
+<ul>
+<li>Expand the DOM tree：ボタンをクリックすると全ての DOM ツリーを展開します。</li>
+<li>Export current DOM view：ボタンをクリックすると閉じられているノードを除く現在の DOM ビューを「Export」という新規タブに表示します。</li>
+<li>Find element by clicking：このボタンが押されていると、ページのどこでもクリックすることで DOM インスペクター上の要素を選択することができます。</li>
+<li>Highlight by mouse hover：このボタンが押されていると、マウスが要素を通過すると、選択要素が DOM インスペクター上で輪郭強調表示されます。</li>
+<li>Update DOM when a node is removed： このボタンが押されているときだけ、JavaScript コマンドが DOM からプログラミング的にノードを削除した際、その結果が反映されます。例えば、このようなコマンド　<code>div.parentNode.removeChild(div);</code> を Opera Dragonfly コマンドラインから実行したときです。</li>
+<li>Show comment nodes：このボタンを押すと HTML と CSS のコメント行が表示されます。</li>
+<li>Show whitespace nodes：このボタンを押すと、空ノードが表示示されます。</li>
+<li>Show DOM in tree view：このボタンを押すと、DOM ツリー階層をより良く把握するために、それぞれのノードがツリーの枝状に表示されます。どのビュースタイルを使うかは個人の好みによります。</li>
+<li>Help： ブラウザで Opera Dragonfly ドキュメントページを開きます。</li>
+</ul>
+
+<h3 id="stylesheetstab">Stylesheets タブ</h3>
+
+<p>さあ、Stylesheets タブをクリックしてみましょう。サイトインフォメーション・ウィンドウにロードされたウェブサイトに関連した各々のスタイルシートの情報を呼び出します。図16に示すように、異なるスタイルシートを選択すると、ビューが変わって Stylesheets タブの下部にスタイルシートのコンテンツを表示します。</p>
+
+<img alt="スタイルシートを検査します" src="../../../../devfiles.myopera.com/articles/369/CSSViewer.gif" />
+
+<p class="comment">図16：Opera Dragonfly でスタイルシートを検査します。</p>
+
+<p>Stylesheets タブの左上に Use shortcuts for properties ボタンがあり、全ての CSS プロパティを展開する一般表示と簡略表示を切り替えることができます。</p>
+
+<p>ここまでで、画面の左側で何が起こっているのか見てきました。右側にも注意を向けてみましょう。</p>
+
+<h4 id="stylestab">Style タブ</h4>
+
+<p>Style タブは図17に示すように、&quot;Computed Style&quot; と &quot;Styles&quot; の2つのセクションから構成されます。</p>
+
+<img alt="the styles tab" src="../../../../devfiles.myopera.com/articles/369/stylestab.gif" />
+
+<p class="comment">図17：Styles タブの2つのセクション：Computed style と Styles</p>
+
+<p>Styles セクションは今選択されている DOM ノードに適用されている全ての CSS を表示し、Computed style セクションは今選択されている DOM ノードに適用されている実際の計算された値を表示します。図17に見られるように、各々のスタイルは当該 DOM ノードに直接適用されているものと、親ノードから継承されているものに分割され効果的に表示されます。</p>
+
+<p>図18に示すように、このタブは左上に2つのボタンを持ちます。これらは左から右に：</p>
+
+<ul>
+<li>Hide initial values in computed styles：計算の初期値が表示・非表示されます。</li>
+<li>Hide shorthands in computed styles：実際の計算された値の簡略値が表示・非表示されます。</li>
+</ul>
+
+<img alt="Styles タブのボタン" src="../../../../devfiles.myopera.com/articles/369/stylesbuttons.gif" />
+
+<p class="comment">図18：Styles タブのボタン</p>
+
+<h4 id="domattributestab">DOM Attributes タブ</h4>
+
+<p>このタブは選択されている要素に対応する DOM オブジェクトの全ての属性を表示します。これらは選択された要素の HTML 属性とは異なることに注意してください。例えば<code>img</code> 要素を選択すると、図19に示すように <code>src</code> DOM 属性の完全 URL が取得できます。</p>
+
+<img alt="DOM Attributes タブ" src="../../../../devfiles.myopera.com/articles/369/DOMattributestab.gif" />
+
+<p class="comment">図19：DOM Attributes タブ</p>
+
+<p>このタブの左上にある Hide empty strings and null values ボタンを押すと、空行とnull値は表示されません。
+</p>
+
+<h4 id="layouttab">Layout タブ</h4>
+
+<p>図20のように、この便利なタブは現在選択されている DOM ノードのボックスモデルとしてのビジュアル表現、当該ノードと親子ノードの関連を表すパンくずリスト、一連のオフセット値を表示します。</p>
+
+<img alt="Layout タブ" src="../../../../devfiles.myopera.com/articles/369/layouttab.gif" />
+
+<p class="comment">図20：Layout タブ</p>
+
+
+<h3 id="console">コンソール</h3>
+
+<p>最後に Console タブをクリックしてください。図21に示すように、画面が CSS と JavaScript における検証エラーや警告を表示します。</p>  
+
+<img alt="コンソールビューは CSS と JavaScript における検証エラーや警告を表示します" src="../../../../devfiles.myopera.com/articles/369/consoleview.gif" />
+
+<p class="comment">図21：コンソールビューは CSS と JavaScript における検証エラーや警告を表示します。</p>
+
+<img alt="The console buttons" src="../../../../devfiles.myopera.com/articles/369/consolebuttons.gif" />
+
+<p class="comment">図22：コンソール・ビューのメインボタン</p>
+
+<p>コンソール・ビューのボタン（図22参照）は左から右に以下のように機能します：</p>
+<ul>
+<li>Clear log：Content タブの現在のコンテンツをクリアします。</li>
+<li>Use selected runtime as filter：全ランタイムの代わりに、選択されたランタイムに対応するコンソール出力のみを表示します。</li>
+</ul>
+
+<h2 id="summary">まとめ</h2>
+
+<p>本稿ではインストール方法を含む Opera Dragonfly の基礎を掲載し、基本操作のガイドツアーを提供しました。より詳しく知りたい場合は <a href="http://www.opera.com/dragonfly/">Opera Dragonfly ウェブサイト</a>をご覧ください。質問やご意見があれば、<a href="../../../../my.opera.com/community/forums/forum.dml%3Fid=11057.html">Opera Dragonfly フォーラム</a>に投稿して下さい！</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=232614">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, May 15, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/debugger.html" rel="tag">debugger</a></li>
+        <li><a href="../../tags/deprecated.html" rel="tag">deprecated</a></li>
+        <li><a href="../../tags/DOM.html" rel="tag">DOM</a></li>
+        <li><a href="../../tags/dragonfly.html" rel="tag">dragonfly</a></li>
+        <li><a href="../../tags/japanese.html" rel="tag">japanese</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/tools.html" rel="tag">tools</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

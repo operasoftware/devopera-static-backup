@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Raphaël: a JavaScript API for SVG - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Raphaël: a JavaScript API for SVG</h1>
+      <p class="print author">By Dmitry Baranovskiy</p>
+
+                   <h2>Introduction</h2>
+        
+        <p>The first time I saw SVG in 2000–2001, I was blown away by the power it has, and the simplicity of the language, but I was also dismayed that I couldn&#39;t really make use of it, because browsers didn&#39;t support it. These days all major browsers (with one <strong>I</strong>mportant <strong>E</strong>xception) support SVG to a reasonable extent. This means we can now start to play with it and make use of it on some sites, but Flash is still more popular for vector graphics among front end developers. Why? Because few people know how to work with SVG; In general people coding dynamic applications are much more familiar with JavaScript (or ActionScript).</p>
+        
+        <p>To solve both the compatibility issues and the knowledge gap, I decided to create <strong>Raphaël</strong>. This is a JavaScript library that provides an API for manipulating SVG, and SVG support for Internet Explorer. It achieves the latter by emulating SVG in Internet Explorer using VML. You don&#39;t need to know SVG to work with this library, but SVG knowledge is certainly a bonus, so I&#39;d suggest you get up to speed with the basics if you find the time.</p>
+        
+        <h2>A simple first example</h2>
+        
+        <p>Lets see how it all works by looking at a simple example - let&#39;s create a typical &quot;progress <a href="http://en.wikipedia.org/wiki/Throbber">throbber</a>&quot;, as seen in Apple interfaces, and copied by many. It is often used in collaboration with Ajax, or complex calculations on the client side. A progress throbber usually looks like that seen in Figure 1:</p>
+        
+        <img src="../../../../devfiles.myopera.com/articles/613/spin2.png" width="150" height="150" alt="Spin2" />
+        <p class="comment">Figure 1: A typical progress throbber.</p>
+        
+        <p>Let&#39;s recreate such a throbber without using any images - just SVG via Raphaël.</p>
+        
+        <h3>The HTML</h3>
+        
+        <p>First things first - the HTML file for our example (spinner.html in the <a href="../../../../devfiles.myopera.com/articles/613/raphael_code.zip">code download</a>) is very simple:</p>
+        
+<pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+    &lt;title&gt;Spinner&lt;/title&gt;
+    &lt;script src=&quot;raphael.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;spinner.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;holder&quot;&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        
+        <p>The <code>body</code> contains a simple <code>div</code>, which in turn will contain our spinner. The only other thing to note about it is that I have linked it to the library file, <code>raphael.js</code>, using a <code>script</code> element in the <code>head</code>, and then done the same for <code>spinner.js</code>. <code>spinner.js</code> is our custom script, and I will cover it below.</p>
+        
+        <p>I prefer to create the container for such graphics in HTML, because it is easier to control it later with CSS, fitting it into layouts nicely, etc. Feel free to add some CSS to make the example look prettier.</p>
+        
+        <h3>Coding</h3>
+        
+        <p>Next, let&#39;s take a look at our <code>spinner.js</code> code:</p>
+        
+<pre><code>window.onload = function () {
+  var r = Raphael(&quot;holder&quot;, 600, 600),
+  sectorsCount = 12,  // number of dashes in spinner
+  color = &quot;#000&quot;,     // throbber colour
+  width = 15,         // width of the dashes
+  r1 = 35,            // inner radius of the spinner
+  r2 = 60,            // outer radius of the spinner
+  cx = 300,           // x and y of the centre of the spinner
+  cy = 300,</code></pre>
+        
+        <p>The script is placed inside a <code>window.onload</code> event handler. At the start of it we create a couple of useful variables. Most are self-explanatory (see the comments above); <code>r</code> is an instance of Raphaël, created inside the &quot;holder&quot; <code>div</code> and given dimensions of 600 x 600 pixels.</p>
+        
+        <p>The next part of <code>spinner.js</code> is as follows:</p>
+        
+<pre><code>sectors = [],            // array for dashes
+opacity = [],                       // array for the opacity of the dashes
+beta = 2 * Math.PI / sectorsCount,  // angle between dashes</code></pre>
+       
+       <p>Here we have defined two arrays to help us manage the dashes of the spinner and calculate the angle between dashes so we don&#39;t need to calculate it again later.</p>
+       
+<pre><code>pathParams = {stroke: color, &quot;stroke-width&quot;: width, &quot;stroke-linecap&quot;: &quot;round&quot;};</code></pre>
+        
+        <p>The last variable stores properties for each dash: stroke colour, stroke width and stroke line cap. Now we get to the real business code:</p>
+        
+<pre><code>for (var i = 0; i &lt; sectorsCount; i++) {
+  var alpha = beta * i - Math.PI / 2, // angle between current dash and initial state
+  cos = Math.cos(alpha),
+  sin = Math.sin(alpha);
+  opacity[i] = 1 / sectorsCount * i;  // initial opacity for current dash
+  sectors[i] = r.path(pathParams)     // new path in Raphaël
+  .moveTo(cx + r1 * cos, cy + r1 * sin)   // move to point on inner radius
+  .lineTo(cx + r2 * cos, cy + r2 * sin);  // line to point on outer radius
+}</code></pre>
+        
+        <p>In a simple cycle we calculate all the future dashes to be displayed. Depending on the dash count we calculate the angle of the current dash and its trigonometric values, then we calculate the appropriate opacity, so the opacity of the dashes degrades from 1 to 0 as we go round the circle. Finally, in the <code>sectors</code> array we add the newly created path. In the case of this example it quite simple - it is a straight line from each angle on the inner circle to the same point on the same angle on the outer circle. By this point the code produces something like Figure 2.</p>
+        
+        <img src="../../../../devfiles.myopera.com/articles/613/spin1.png" width="150" height="150" alt="The dashes are now created" />
+        <p class="comment">Figure 2: The dashes are now created, but we still have to animate them and add the opacity.</p>
+        
+        <p>As you can see, opacity is currently stored in the array, but it hasn&#39;t yet been applied to our dashes. Let&#39;s do this, then animate our spinner:</p>
+        
+<pre><code>(function ticker() {
+  opacity.unshift(opacity.pop());
+  for (var i = 0; i &lt; sectorsCount; i++) {
+    sectors[i].attr(&quot;opacity&quot;, opacity[i]); // set new opacity attribute
+  }
+  r.safari();     // temporary (hopefully) fix for Safari
+  setTimeout(ticker, 1000 / sectorsCount);
+})();</code></pre>
+        
+        <p>In this code we create a function called <code>ticker</code> and run it immediately. The first line of the function shifts elements in the opacity array forward. We then run over dashes stored in the <code>sectors</code> array and apply an <code>opacity</code> attribute to each of them. Doing this continuously will make an illusion of animation. <code>r.safari();</code> fixes some rendering bugs in Safari.</p>
+        
+        <p>At the end of the function we set <code>timeout</code> to run it again after a small amount of time, giving the appearence of the spinner&#39;s continuous rotation. It will make it run forever like a clock.</p>
+       
+        <p>The only thing left to do is to close the function, like so:</p>
+       
+       <pre><code>};</code></pre>
+       
+        <p>The complete code example looks like this:</p>
+        
+<pre><code>window.onload = function () {
+  var r = Raphael(&quot;holder&quot;, 600, 600),
+  sectorsCount = 12,
+  color = &quot;#000&quot;,
+  width = 15,
+  r1 = 35,
+  r2 = 60,
+  cx = 300,
+  cy = 300,
+
+  sectors = [],
+  opacity = [],
+  beta = 2 * Math.PI / sectorsCount,
+
+  pathParams = {stroke: color, &quot;stroke-width&quot;: width, &quot;stroke-linecap&quot;: &quot;round&quot;};
+  for (var i = 0; i &lt; sectorsCount; i++) {
+    var alpha = beta * i - Math.PI / 2,
+    cos = Math.cos(alpha),
+    sin = Math.sin(alpha);
+    opacity[i] = 1 / sectorsCount * i;
+    sectors[i] = r.path(pathParams)//.attr(&quot;stroke&quot;, Raphael.getColor())
+    .moveTo(cx + r1 * cos, cy + r1 * sin)
+    .lineTo(cx + r2 * cos, cy + r2 * sin);
+  }
+  (function ticker() {
+    opacity.unshift(opacity.pop());
+    for (var i = 0; i &lt; sectorsCount; i++) {
+      sectors[i].attr(&quot;opacity&quot;, opacity[i]);
+    }
+    r.safari();
+    setTimeout(ticker, 1000 / sectorsCount);
+  })();
+};</code></pre>
+        
+        <p>This is pretty short and simple. The benefit of this method is that you can change foreground and background colours easily as you wish (foreground colour is specified in the script via the <code>color</code> variable, and background colour is just the background of the HTML page), and the throbber has true opacity, so you can put it seamlessly on top of anything you like. As a bonus try uncommenting the commented line. <a href="../../../../devfiles.myopera.com/articles/613/spinner.html">Check out the live demo</a> right now, if you fancy.</p>
+        
+        <p>
+            If you wanted to recreate the same example in pure SVG it would look like this:
+        </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; &quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;
+&lt;svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&gt;
+    &lt;g stroke-width=&quot;15&quot; stroke-linecap=&quot;round&quot; stroke=&quot;#000&quot; transform=&quot;translate(100, 100)&quot;&gt;
+        &lt;animateTransform attributeName=&quot;transform&quot; attributeType=&quot;XML&quot; calcMode=&quot;discrete&quot;
+            additive=&quot;sum&quot; type=&quot;rotate&quot; values=&quot;30;60;90;120;150;180;210;240;270;300;330;360&quot;
+            dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(30, 0, 0)&quot; opacity=&quot;.08&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(60, 0, 0)&quot; opacity=&quot;.16&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(90, 0, 0)&quot; opacity=&quot;.25&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(120, 0, 0)&quot; opacity=&quot;.33&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(150, 0, 0)&quot; opacity=&quot;.42&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(180, 0, 0)&quot; opacity=&quot;.5&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(210, 0, 0)&quot; opacity=&quot;.58&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(240, 0, 0)&quot; opacity=&quot;.67&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(270, 0, 0)&quot; opacity=&quot;.75&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(300, 0, 0)&quot; opacity=&quot;.83&quot;/&gt;
+        &lt;line x1=&quot;0&quot; y1=&quot;-35&quot; x2=&quot;0&quot; y2=&quot;-60&quot; transform=&quot;rotate(330, 0, 0)&quot; opacity=&quot;.9&quot;/&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+        <p>
+            All the parameters are hard coded into the SVG markup, so it wouldn&#39;t be as easy to change the number of dashes from say 12 to 16, but you will probably agree that this example is simpler to create using pure SVG than Raphaël JS (well, provided you know SVG syntax). The only serious problem with this example is that it wouldn&#39;t work in Internet Explorer and Firefox (at the time of writing Firefox doesn&#39;t support animation in SVG). Raphaël code however will work everywhere.
+        </p>
+        
+        <h2>Summary</h2>
+        
+        <p>So that&#39;s it for your short initial look into the world of Raphaël - I hope this has demonstrated why this is a useful project to check out. For more examples, go to <a href="http://raphaeljs.com/">the official Raphaël web site</a> - feel free to hack some of the demos and cook your own coolness.</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/DmitryBaranovskiy.html" rel="author">Dmitry Baranovskiy</a></h1>
+        <a href="../../../author/DmitryBaranovskiy.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/78/69b/08e778194005eb876f77d140197c06c232c.jpg" alt=""/></a>
+        <p>Dmitry has over 8 years experience in creating web applications. Having started as a back end developer, more recently he has changed his orientation to front end development and even pure design. These days he spends his working hours trying to embrace a wide range of front end technologies while working as a JavaScript Developer for Atlassian.<br/>He is also the creator of Optimus, the Microformats transformer, as well as a Raphaël, JavaScript library for vector graphics. At any given moment he is always working on three secret projects, though no one knows where he gets the time for any of this.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=263774">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/DmitryBaranovskiy.html" rel="author">Dmitry Baranovskiy</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, January 15, 2009
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/animation.html" rel="tag">animation</a></li>
+        <li><a href="../../tags/html.html" rel="tag">html</a></li>
+        <li><a href="../../tags/IE.html" rel="tag">IE</a></li>
+        <li><a href="../../tags/trigonometry.html" rel="tag">trigonometry</a></li>
+        <li><a href="../../tags/VML.html" rel="tag">VML</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Persisting widget data across platforms and devices using Opera's XML store - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Persisting widget data across platforms and devices using Opera's XML store</h1>
+      <p class="print author">By Morten Haraldsen</p>
+
+      <div class="note">
+ <h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">16th December 2011: This article is obsolete</h2>
+
+<p>This technology is obsolete: it is no longer supported and therefore shouldn&#39;t be used.</p>
+
+ </div>
+
+<h2>Introduction</h2>
+<p>
+Opera widgets often have the need to persist data - this is usually saved locally using <code>preferenceForkey</code> preferences. This works well, but it has the limitation that the data is only available to that single browser installation. To let widgets have access to the same data across different platforms and devices the idea of a simple <a href="http://en.wikipedia.org/wiki/REST">RESTful</a> XML store came to mind, and this thought motivated us to releasing the Opera XML Store, which does just that - persists widget data across different platforms and devices using XML, in a RESTful manner. This article gives you an introduction to using it in your widgets.
+</p>
+
+<p>Note that the Opera XML Store requires that you have a <a href="http://my.opera.com">My.Opera</a> username and password for authentication. If you are not already a member, please <a href="http://my.opera.com/community/signup/">sign up here</a>.</p>
+
+<h2>Try it out for yourself</h2>
+<p>
+To get started, first try out some of our widgets that make use of the storage service:
+</p>
+<ul>
+<li><a href="http://widgets.opera.com/widget/9032">Notes widget</a></li>
+<li><a href="http://widgets.opera.com/widget/9042">Shopping list widget</a></li>
+<li><a href="http://widgets.opera.com/widget/9082">Hello Opera XML Store</a></li>
+</ul>
+<p>
+Your stored data is even available as plain HTML, and can be browsed in any browser. Go to the <a href="http://xmlstore.labs.opera.com">Opera XML Store</a> home page and click browse. You will be able to browse your own data as well as other users&#39; data if they have given you the permission to do so. Go to the <a href="http://xmlstore.labs.opera.com/help.jsp">XML Store help section</a> to find more details on how to make use of the XML Store, including technical reference, documentation, and more.
+</p>
+
+<p>
+The data you store is validated against the <a href="http://xmlstore.labs.opera.com/help/datamodelinfo/">data models schema</a> and will not allow you to store malformed or invalid XML. As the data store cares about its format and doesn&#39;t just store any old chunks of text, you can perform <a href="http://www.w3.org/TR/xpath">XPath</a> operations against a data collection or a document, allowing you to extract just the data you need.
+</p>
+
+<h2>Resources</h2>
+<ul>
+<li><a href="http://xmlstore.labs.opera.com/">Opera XML Store homepage</a></li>
+<li><a href="http://xmlstore.labs.opera.com/help.jsp">Opera XML Store help section</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=222630">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/Xaer.html" rel="author">Morten Haraldsen</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, February 7, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/store.html" rel="tag">store</a></li>
+        <li><a href="../../tags/widget.html" rel="tag">widget</a></li>
+        <li><a href="../../tags/xml.html" rel="tag">xml</a></li>
+        <li><a href="../../tags/xpath.html" rel="tag">xpath</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../persisting-widget-data-across-platforms-ko/index.html">Korean</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

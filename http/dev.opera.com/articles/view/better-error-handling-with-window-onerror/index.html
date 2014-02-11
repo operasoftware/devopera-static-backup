@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Better error handling with window.onerror - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Better error handling with window.onerror</h1>
+      <p class="print author">By karlcow</p>
+
+      <h2>Introduction</h2>
+
+<p><code>onerror</code> is a <a href="../handling-events-with-JavaScript/index.html">DOM event handler</a>. It is started when an error occurs during object loading. While <a href="http://www.w3.org/wiki/DOM/window.onerror"><code>window.onerror</code></a> is an event handler, there is no error event being fired: instead, when there is an uncaught exception or compile-time error, the <code>window.onerror</code> event handler is called with contextual information about the error, making for some more powerful error handling opportunities.</p>
+
+<dl>
+<dt>uncaught exceptions</dt>
+<dd><code>throw &quot;some messages&quot;</code></dd>
+<dd><code>call_something_undefined();</code></dd>
+<dd><code>cross_origin_iframe.contentWindow.document;</code>, a security exception</dd>
+<dt>compile error</dt>
+<dd><code>&lt;script&gt;{&lt;/script&gt;</code> </dd>
+<dd><code>&lt;script&gt;for(;)&lt;/script&gt;</code> </dd>
+<dd><code>&lt;script&gt;&quot;oops&lt;/script&gt;</code> </dd>
+<dd><code>setTimeout(&quot;{&quot;, 10);</code>, it will attempt to compile the first argument as a script</dd>
+</dl>
+
+<p>Scripts are first compiled and then they are run. If the compile is successful the first time, it is not compiled again later on. However, a script or a function that compiled successfully might have runtime errors when it is run, and a function can be called multiple times.</p>
+
+<p>In this article we will look at when and how to use <code>window.onerror</code>, along with some examples to get you started.</p>
+
+<h2 id="use">When should we use <code>window.onerror</code>?</h2>
+
+<p>Usually when there is an error in our JavaScript code we open the browser error console to check what errors are being thrown. This can become cumbersome when developing complex web applications using a lot of JavaScript code. How nice would it be to be able to deal with these errors in a programmatic way through JavaScript?</p>
+
+<p><code>window.onerror</code> allows us to do just this, allowing us to  <a href="http://dev.w3.org/html5/spec/webappapis.html#report-the-error">report error messages</a> in a more convenient fashion that suits our context. We will cover a few ways to use <code>window.onerror</code> next.</p>
+
+<h2 id="simple">A very simple message</h2>
+
+<p>To understand what is happening, let&#x2019;s create a JavaScript <code>debug.js</code> with this simple script.</p>
+
+<pre><code>window.onerror = function(message, url, linenumber) {
+  alert(&quot;JavaScript error: &quot; + message + &quot; on line &quot; + linenumber + &quot; for &quot; + url);
+}</code></pre>
+
+<p>The arguments accepted by our function are:</p>
+
+<ul>
+<li><code>message</code>: the error message (<strong>DOMString</strong>)</li>
+<li><code>url</code>: the URL of the file containing the error  (<strong>DOMString</strong>)</li>
+<li><code>linenumber</code>: the line number where the error occurred (<strong>unsigned long</strong>)</li>
+</ul>
+
+<p class="note">If the return value is true, then the error is handled, else it is not handled.</p>
+
+<p>Now let&#39;s create a second script &#x2014; <code>clumsy.js</code>:</p>
+
+<pre><code>document.alert(&quot;Ooops, I&#39;m bad with paranthesis!&quot;</code></pre>
+
+<p>Finally we&#39;ll create an HTML page that calls these two scripts:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Demo of window.onerror&lt;/title&gt;
+    &lt;script src=&quot;debug.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;clumsy.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;This should throw an alert message.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>When accessed by a <a href="index.html#browser">browser that supports <code>window.onerror</code></a>, a pop-up will appear displaying the type of error, the line number where the error occurs and in which file &#x2014; see Figure 1. This is very useful for debugging.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/8102/error-message.jpg" alt="Error message in Opera" /></p>
+<p class="caption">Figure 1: Our simple error massage shown in Opera.</p>
+
+<p><code>onerror</code> has been attached to <code>window</code> for historical reasons. It could be defined anywhere and would still be working the same way. Script errors might occur in places that have no relation to the document tree at all, such as <code>setTimeout(&quot;oops()&quot;, 10)</code>.</p>
+
+<p class="note"><a href="../../../../devfiles.myopera.com/articles/8102/simple_error.html">Try the simple error example</a>.</p>
+
+<p>You could also have used a very simple <code>onerror</code> on the document <code>&lt;body&gt;</code>:</p>
+
+<pre><code>&lt;body onerror=&quot;alert([event, source, lineno].join(&#39;\n&#39;))&quot;&gt;</code></pre>
+
+<p><code>body onerror</code> sets window.onerror just like <code>body onload</code> sets <code>window.onload</code>. Some event handlers on body are reflected on window. So by using <code>body onerror</code>, <code>window.onerror</code> gets a value assigned. When trying to set both in the same context, <strong>the last one wins</strong> (just like when we assign a value to <code>window.onerror</code> twice).</p>
+
+<p class="note"><strong>semantics</strong>: The <code>window.onerror</code> reports the error at the script source URL, with the problematic line number, in the script&#39;s origin, using the <code>onerror</code> event handler of the script&#39;s global object. If the error is still not handled after this, then the error may be reported to the user.</p>
+
+<h2 id="fancy">Fancy error messages</h2>
+
+<p>If you prefer having a fancier style for the error message than the usual common chrome of the browser.</p>
+
+<pre class="javascript"><code>var fancyerror = function(message, url, linenumber) {
+  var errorbox = document.createElement(&quot;div&quot;);
+  errorbox.className = &#39;fancyerror&#39;;
+  errorbox.innerHTML = &#39;JS: &lt;span class=&quot;errmsg&quot;&#39; + message.replace(&#39;&lt;&#39;, &#39;&amp;lt;&#39;).replace(&#39;&gt;&#39;, &#39;&amp;gt;&#39;) + &#39;&lt;/span&gt;&lt;br&gt;line number: &#39; + linenumber + &#39;&lt;br&gt;located: &#39; + url;
+  document.body.appendChild(errorbox);
+  return false;
+}
+
+window.onerror = function(message, url, linenumber) {
+  return fancyerror(message, url, linenumber);
+}</code></pre>
+
+<p class="note"><a href="../../../../devfiles.myopera.com/articles/8102/simple_error2.html">Try the fancy error example</a>. You should try playing with the styling on the <code>fancyerror</code> and <code>errmsg</code> classes to see what you can come up with.</p>
+
+<h2 id="noerror">Suppressing errors: a dangerous feature?</h2>
+
+<p>When focusing on other things during development work, you might want to suppress all JavaScript error messages to start off with, until you are ready to do a proper round of debugging. This can be done like so:</p>
+
+<pre><code>function noErrorMa() {
+  return true;
+}
+
+window.onerror = noErrorMa;</code></pre>
+
+<h2 id="logging">A better error handling with server logging</h2>
+
+<p>A pop-up window is not very useful, specifically if there is a lot of opportunities for errors. It would also be neat to be able to collect all these errors in a single file so we can inspect them later on. <a href="http://dev.w3.org/2006/webapi/XMLHttpRequest/">XMLHttpRequest</a> offers an elegant way to record messages on a server. On the client side, the JavaScript will look something like this:</p>
+
+<pre><code>window.onerror = function(message, url, linenumber) {
+  if (window.XMLHttpRequest) {
+
+    var xhr = new XMLHttpRequest();
+    var scripturl = &quot;http://yourdomain.example.com/log&quot;;
+    var log = linenumber + message + url;
+    xhr.open(&quot;POST&quot;, scripturl);
+    xhr.setRequestHeader(&quot;Content-Type&quot;, &quot;text/plain;charset=UTF-8&quot;);
+    xhr.send(log);
+  }
+  return true;
+}
+</code></pre>
+
+<p>Then as usual when dealing with XMLHttpRequest, you just need to create a script which will parse the XMLHttpRequest data and save it locally.</p>
+
+<h2 id="security">Security</h2>
+
+<p>To prevent information leaking from one server to the other, it is important to be careful with scripts that have two different origins. If the script URL is has a different origin to the document then the three arguments returned by <code>window.onerror</code> are always <code>‘Script error.’, ‘’, 0</code>. Read <a href="http://www.schemehostport.com/2011/10/x-script-origin-we-hardly-knew-ye.html">X-Script-Origin, we hardly knew ye</a> for more details.</p>
+
+<h2 id="browser">Browsers supporting window.onerror</h2>
+
+<ul>
+<li>Chrome 13+</li>
+<li>Firefox 6.0+</li>
+<li>Internet Explorer 5.5+</li>
+<li>Opera 11.60+</li>
+<li>Safari 5.1+</li>
+</ul>code, 
+
+      <section id="author-info">
+        <h1><a href="../../../author/karlcow.html" rel="author">karlcow</a></h1>
+        <a href="../../../author/karlcow.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/40/66e/f3f1e886d929a8d880956b5cfaf3902947d.jpg" alt=""/></a>
+        <p>Karl is working from Montréal, Canada. It has been participating to the Web since its inception under different roles including Web designer, CTO, W3C staff, translations volunteer, bits pusher, http poet, …</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-77275922">
+      <a href="../../../author/Thiemo.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/69/4b6/d02d955d82303c67a747770880573977848." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Thiemo.html">Thiemo</a></p>
+      <p class="commentdate">Wednesday, December 14, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This is funny. Do you see the &quot;/code /code&quot; at the end of the article? This is a bug in Opera 11.60 (Build 1185) with textareas. Same thing happened to me in my own web application. I was looking for an error in my regular expressions but it&#39;s the browser. Just to let you know.</section>
+    </li>
+    <li id="comment-77299652">
+      <a href="../../../author/SailorMax.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8f/be0/679eb996539c2703d1ad9c6d83627459403.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/SailorMax.html">Maxim</a></p>
+      <p class="commentdate">Wednesday, December 14, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Some other browsers require &quot;return false&quot; to let browser handle same error. Do your solution is right?</section>
+    </li>
+    <li id="comment-77349452">
+      <a href="../../../author/Swapnil99pro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/524/8595f6063949c4abc7369cac0d44b87a24f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Swapnil99pro.html">Swapnil Rustagi</a></p>
+      <p class="commentdate">Thursday, December 15, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Excuse me but there is no version as Firefox 6.1. Might be Firefox 6.0, because 6.0.1 was just a small security/maintenance update. <br/>Kudos to Microsoft. Internet Explorer, surprisingly was the only browser to support window.onerror prior to 2011 if this article is correct.</section>
+    </li>
+    <li id="comment-77444942">
+      <a href="../../../author/Swapnil99pro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0b/524/8595f6063949c4abc7369cac0d44b87a24f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Swapnil99pro.html">Swapnil Rustagi</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><p class="cite">Originally posted by chrismills:</p><blockquote class="bbquote"><p>Are you sure? If you Google Firefox 6.1, you see such a version talked about in a lot of posts.</p></blockquote><br/><br/>Oh yes, I am 100% sure. There is no Firefox 6.1 at <a href="http://www.mozilla.org/en-US/firefox/releases/" target="_blank">http://www.mozilla.org/en-US/firefox/releases/</a><br/><br/>Also the page <a href="http://www.mozilla.org/en-US/firefox/6.1/releasenotes/" target="_blank">http://www.mozilla.org/en-US/firefox/6.1/releasenotes/</a> does not exist indicating that there was never a Firefox 6.1. The only releases were 6.0.1 and 6.0.2 both of which were maintenance/security updates. <br/><br/>Don&#39;t blindly trust search results. If you search Windows 10, you will even find several results for that too.</section>
+    </li>
+    <li id="comment-77445342">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, December 16, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Swapnil Rustagi<br/><br/>ok, I&#39;ll update it ;-)</section>
+    </li>
+    <li id="comment-77932482">
+      <a href="../../../author/timwright12.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8f/a64/ef9e28219f39230128d3b0af0b56a5b788c." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/timwright12.html">timwright12</a></p>
+      <p class="commentdate">Monday, December 19, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Any word on this outputting multiple errors? Unless I&#39;m mistaken, it looks like it&#39;s stopping at the 1st. Maybe the console does that too... I guess I&#39;d have to check.</section>
+    </li>
+    <li id="comment-78630362">
+      <a href="../../../author/vgrigory.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6f/354/9c79460ff8cecd5896b1ba519cb49eaf5c8.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/vgrigory.html">Vahagn Grigoryan</a></p>
+      <p class="commentdate">Wednesday, December 28, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>thanks for the article</section>
+    </li>
+    <li id="comment-79251112">
+      <a href="../../../author/nk0de.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/51/e4c/ca91c3da5382d894318aab53d8c05f65402.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/nk0de.html">Isuru Nanayakkara</a></p>
+      <p class="commentdate">Friday, January 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>great article! I was looking for something like this. Thanks. </section>
+    </li>
+    <li id="comment-90224132">
+      <a href="../../../author/lollo10.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3e/c11/544a713c575cb26cabb872fe139af80cd35.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/lollo10.html">Lollo Andersen</a></p>
+      <p class="commentdate">Tuesday, May 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>thanks!</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/karlcow.html" rel="author">karlcow</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, December 14, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/ajax.html" rel="tag">ajax</a></li>
+        <li><a href="../../tags/DOM.html" rel="tag">DOM</a></li>
+        <li><a href="../../tags/error&#32;message.html" rel="tag">error message</a></li>
+        <li><a href="../../tags/event.html" rel="tag">event</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/security.html" rel="tag">security</a></li>
+        <li><a href="../../tags/window.onerror.html" rel="tag">window.onerror</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

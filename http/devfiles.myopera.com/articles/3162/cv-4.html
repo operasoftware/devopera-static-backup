@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Advanced Timeline</title>
+<style type="text/css">
+/*TABLE*/
+#timeline	{width:960px; overflow:hidden; overflow-x:scroll; position:relative; border:1px solid #4f6b72; -webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.5); -moz-box-shadow:1px 1px 3px rgba(0,0,0,0.5); box-shadow:1px 1px 3px rgba(0,0,0,0.5); background:#e5d6ca;}
+#main	{width:2470px; margin:10px; height:210px;}
+
+
+/*CONTAINERS AND HEADER*/
+.year	{padding:0; margin-left:-1px; border: 1px solid #000; background:#fff; float:left; height:210px; width:300px;}
+.year:nth-child(even) {background:#f9f6f3;}
+.year:first-child	{border-radius:30px 0 0 30px; -moz-border-radius:30px 0 0 30px;}
+.year:last-child	{border-radius:0 30px 30px 0; -moz-border-radius:0 30px 30px 0;}
+.year:first-child h2{border-radius:29px 0 0 0; -moz-border-radius:26px 0 0 0;}
+.year:last-child h2	{border-radius:0 29px 0 0; -moz-border-radius:0 26px 0 0;}
+
+h2		{font:bold 18px Verdana, sans-serif; color:#fff; text-align:center; background:#291200; margin:0 0 20px 0; padding:10px 0; border: 1px solid #000;}
+.gap	{display:block; margin-right:22px;}
+.gap h2::after	{content:"..."; position:absolute; margin-left:125px; color:#000;}
+
+
+/*ELEMENTS*/
+.year div		{float:left; height:0; width:100%; position:relative;}
+.year div p, #legend div	{margin:0; position:relative; z-index:1; text-align:center; cursor:default; border:1px solid #402607; font:18px Georgia, serif; padding:2px;  -moz-border-radius:4px; border-radius:4px;
+-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.5),
+inset 0 10px rgba(255,255,255,0.2),
+inset 0 10px 10px rgba(255,255,255,0.25),
+inset 0 -3px 20px rgba(0,0,0,0.3);
+-moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.5),
+inset 0 10px rgba(255,255,255,0.2),
+inset 0 10px 20px rgba(255,255,255,0.25),
+inset 0 -3px 30px rgba(0,0,0,0.3);
+box-shadow: 1px 1px 2px rgba(0,0,0,0.5),
+inset 0 10px rgba(255,255,255,0.2),
+inset 0 10px 10px rgba(255,255,255,0.25),
+inset 0 -3px 20px rgba(0,0,0,0.3);
+}
+.year div:hover, .year div:focus	{z-index:2;}
+.education p, #legend .education	{background:#fff5b7; color:#523100;}
+.work p, #legend .work				{background:#deae2d; color:#000;}
+
+
+/*INDIVIDUAL ELEMENTS*/
+#school p	{width:88%;}
+#college p	{width:365%;}
+#intel p	{width:150%;}
+#clean p	{width:32%;}
+#wendys p	{width:47%;}
+#ihop p		{width:41%;}
+#dq p		{width:41%;}
+#birth:hover p, #birth:focus p	{width:50px;}
+#redc:hover p, #redc:focus p 	{width:140px;}
+#award:hover p, #award:focus p	{width:120px;}
+#stalin:hover p, #stalin:focus p{width:100px;}
+#marry:hover p, #marry:focus p	{width:100px;}
+
+
+/*TIPS*/
+.year div p span	{position:relative; height:0; opacity:0; display:block; overflow:hidden;}
+.year div:hover p span, .year div:focus p span {opacity:1;}
+.year div.one-row:hover p span, .year div.one-row:focus p span {height:1.2em;}
+.year div.two-rows:hover p span, .year div.two-rows:focus p span {height:2.4em;}
+
+
+/*VERTICAL POSITION*/
+.level2 {top:42px;}
+.level3 {top:84px;}
+
+
+/*ANIMATIONS*/
+.year div, .year div p, .year div p span	{
+-webkit-transition: opacity .4s .25s, width .2s, z-index .2s, height .2s;
+-o-transition: opacity .4s .25s, width .2s, height .2s;
+-moz-transition: opacity .4s .25s, width .2s, height .2s;
+transition: opacity .4s .25s, width .2s, height .2s;}
+
+
+/*LEGEND*/
+#legend		{margin-top:20px;}
+#legend div	{display:inline; margin:0 6px;}
+</style>
+</head>
+  <body>
+<h1>My timeline CV:</h1>
+<div id="timeline">
+	<div id="main">
+	    <div class="year gap">
+			<h2>1986</h2>
+		</div>
+	    <div class="year gap">
+			<h2>2001</h2>
+			<div id="school" class="education one-row vevent" tabindex="2">
+				<p class="summary">
+					Ohio High School
+					<span>Studied business and economics</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2005</h2>
+			<div id="college" class="education one-row vevent" tabindex="4">
+				<p class="summary">
+					State University College
+					<span>graduated with 3.88 GPA, Psychology Major</span>
+				</p>
+			</div>
+			<div id="clean" class="work level2 two-rows vevent" tabindex="3">
+				<p class="summary">
+					House cleaner
+					<span>in a small firm</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2006</h2>
+			<div id="wendys" class="work level2 one-row vevent" tabindex="6">
+				<p class="summary">
+					Cashier
+					<span>at Wendy's</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2007</h2>
+			<div id="ihop" class="work level2 one-row vevent" tabindex="8">
+				<p class="summary">
+					Busser
+					<span>at IHOP</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2008</h2>
+			<div id="dq" class="work level2 one-row vevent" tabindex="9">
+				<p class="summary">
+					Ice-cream seller
+					<span>at DQ</span>
+				</p>
+			</div>
+		</div>
+	    <div class="year">
+			<h2>2009</h2>
+			<div id="intel" class="work one-row vevent" tabindex="11">
+				<p class="summary">
+					Intel - HR Assistant
+					<span>Production technology division</span>
+				</p>
+			</div>
+		  
+		</div>
+	    <div class="year">
+			<h2>2010</h2>
+		</div>
+	</div>
+</div>
+  <div id="legend">Legend:<div class="work">Work experience</div><div class="education">Education</div></div>
+
+  </body>
+</html>

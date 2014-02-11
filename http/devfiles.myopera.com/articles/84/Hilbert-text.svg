@@ -1,0 +1,49 @@
+<svg width='100%' height='100%' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' style='cursor:crosshair;'  >
+
+<path id='a' d='M25 175,75 175,75 125,25 125,25 25,75 25,75 75,125 75,125 25,175 25,175 125,125 125,125 175,
+                         
+                 200 175,275 175,275 125,225 125,225 25,275 25,275 75,325 75,325 25,375 25,375 125,325 125,325 175,
+                  
+                 375 175,375 225,375 275,325 275,325 225,225 225,225 275,275 275,275 325,225 325,225 375,
+
+                 325 375,325 325,375 325,375 375,375 425,25 425,25 375,25 325,75 325,75 375,125 375,175 375,
+
+                 175 325,125 325,125 275,175 275,175 225,75 225,75 275,25 275,25 225,25 175' 
+                 
+                 fill='white' stroke='white' stroke-width='1' />
+
+
+<text font-family="Verdana" font-size="12" fill="red" >
+<textPath xlink:href="#a"> We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness. That to secure these rights, Governments are instituted among Men, deriving their just powers from the consent of the governed, That whenever any Form of Government becomes destructive of these ends, it is the Right of the People to alter or to abolish it, and to institute new Government, laying its foundation on such principles and organizing its powers in such form, as to them shall seem most likely to effect their Safety and Happiness. Prudence, indeed, will dictate that Governments long established should not be changed for light and transient causes...</textPath>
+</text>
+
+<circle cx='0' cy='0' r='15' fill='none' stroke='yellow' stroke-width='5' >       
+<animateMotion dur='60s' fill='freeze' repeatCount='indefinite' >        
+<mpath xlink:href='#a' />
+</animateMotion >   
+</circle >
+
+<text font-family="Verdana" font-size="40" fill="red" >S
+<animateMotion begin='10s' dur='50s' fill='freeze' repeatCount='indefinite' >        
+<mpath xlink:href='#a' />
+</animateMotion >   
+</text>
+
+<text font-family="Verdana" font-size="40" fill="blue" >V
+<animateMotion begin='20s' dur='40s' fill='freeze' repeatCount='indefinite' >        
+<mpath xlink:href='#a' />
+</animateMotion >   
+</text>
+
+<text font-family="Verdana" font-size="40" fill="lime" >G
+<animateMotion begin='30s' dur='30s' fill='freeze' repeatCount='indefinite' >        
+<mpath xlink:href='#a' />
+</animateMotion >   
+</text>
+</svg>
+
+
+
+
+
+

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Optional permissions - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Optional permissions</h1>
+					
+					
+					
+    <h2>Introduction</h2>
+<p>You can use the <a href="permissions.html"><code>chrome.permissions</code> API</a> to request <a href="tut_optional_permissions.html#manifest">declared optional permissions</a> at run time rather than install time, so users understand why the permissions are needed and grant only those that are necessary.</p>
+
+
+<h2 id="types">
+Step 1: Decide which permissions are required and which are optional
+</h2>
+
+<p>
+An extension can declare both required and optional permissions. In general, you should:
+<ul>
+<li>Use required permissions when they are needed for your extension’s basic functionality.</li>
+<li>Use optional permissions when they are needed for optional features in your extension.</li>
+</ul>
+</p>
+
+<p>
+Advantages of <em>required</em> permissions:
+<ul>
+<li><strong>Fewer prompts:</strong>
+An extension can prompt the user once to accept all permissions.</li>
+<li><strong>Simpler development:</strong>
+Required permissions are guaranteed to be present.</li>
+</ul>
+</p>
+
+<p>
+Advantages of <em>optional</em> permissions:
+<ul>
+<li><strong>Better security:</strong>
+Extensions run with fewer permissions since users only enable permissions that are needed.</li>
+<li><strong>Better information for users:</strong>
+An extension can explain why it needs a particular permission when the user enables the relevant feature.</li>
+<li><strong>Easier upgrades:</strong>
+When you upgrade your extension, Opera will not disable it for your users if the upgrade adds optional rather than required permissions.</li>
+</ul>
+</p>
+
+<h2 id="manifest"> Step 2: Declare optional permissions in the manifest </h2>
+<p>
+Declare optional permissions in your <a href="manifest.html">extension
+manifest</a> with the <code>optional_permissions</code> key, using the
+same format as the <a href="declare_permissions.html#manifest">permissions</a>
+field:
+</p>
+
+<pre class="prettyprint" data-filename="manifest.json">
+{
+"name": "My extension",
+...
+<b>"optional_permissions": [ "tabs", "http://www.example.com/" ],</b>
+...
+}
+</pre>
+
+<p>
+You can specify any of the following as optional
+<a href="declare_permissions.html">permissions</a>:
+<ul>
+<li><i>host permissions</i></li>
+<li>background</li>
+<li>bookmarks</li>
+<li>clipboardRead</li>
+<li>clipboardWrite</li>
+<li>contentSettings</li>
+<li>contextMenus</li>
+<li>cookies</li>
+<li>debugger</li>
+<li>history</li>
+<li>idle</li>
+<li>management</li>
+<li>notifications</li>
+<li>pageCapture</li>
+<li>tabs</li>
+<li>topSites</li>
+<li>webNavigation</li>
+<li>webRequest</li>
+<li>webRequestBlocking</li>
+</ul>
+</p>
+
+<h2 id="request"> Step 3: Request optional permissions </h2>
+<p>
+Request the permissions from within a user gesture using
+<code>permissions.request()</code>:
+<pre class="prettyprint">
+document.querySelector('#my-button').addEventListener('click', function (event) {
+	// Permissions must be requested from inside a user gesture, like a button's
+	// click handler.
+	chrome.permissions.request({
+		permissions: ['tabs'],
+		origins: ['http://www.example.com/']
+	}, function (granted) {
+		// The callback argument will be true if the user granted the permissions.
+		if (granted) {
+			doSomething();
+		} else {
+			doSomethingElse();
+		}
+	});
+});
+</pre>
+</p>
+
+<p>
+Opera prompts the user if adding the permissions results in different warning messages than the user has
+already seen and accepted.
+
+<h2 id="contains"> Step 4: Check the extension's current permissions </h2>
+<p>
+To check whether your extension has a specific permission or set of
+permissions, use <code>permission.contains()</code>:
+</p>
+
+<pre class="prettyprint">
+chrome.permissions.contains({
+	permissions: ['tabs'],
+	origins: ['http://www.google.com/']
+}, function (result) {
+	if (result) {
+		// The extension has the permissions.
+	} else {
+		// The extension doesn't have the permissions.
+	}
+});
+</pre>
+
+<h2 id="remove"> Step 5: Remove the permissions </h2>
+<p>
+You should remove permissions when you no longer need them.
+After a permission has been removed, calling
+<code>permissions.request()</code> usually adds the permission back without
+prompting the user.
+</p>
+
+<pre class="prettyprint">
+chrome.permissions.remove({
+	permissions: ['tabs'],
+	origins: ['http://www.google.com/']
+}, function (removed) {
+	if (removed) {
+		// The permissions have been removed.
+	} else {
+		// The permissions have not been removed (e.g., you tried to remove
+		// required permissions).
+	}
+});
+</pre>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/extensions/permissions.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

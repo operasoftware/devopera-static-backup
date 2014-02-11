@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Creating multilingual extensions - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Creating multilingual extensions</h1>
+      <p class="print author">By Patrick H. Lauke</p>
+
+      <p class="note">
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+</p>
+
+<p>Localising an Opera extension is done, broadly speaking, in two parts:</p>
+<ul>
+  <li>Adding translations of your extension&#39;s title, description, etc. in the <a href="index.html#config-xml">config.xml file</a></li>
+  <li>Putting localised files and resources in <a href="index.html#files">language-specific folders</a></li>
+</ul>
+<p>Read on for an in-depth explanation, including an <a href="index.html#example">example extension</a> showing localisation in practice.</p>
+
+<div class="note">
+<p>Please Note: the <a href="https://addons.opera.com/">Opera addons catalog</a> supports all standard language and country codes defined in the <a href="http://site.icu-project.org/">ICU project</a>, and our processing and interpretation via <a href="http://pyicu.osafoundation.org/">pyICU</a>: a Python ICU wrapper. We support all standard language codes, but not script codes, variants and keywords as mentioned in the <a href="http://userguide.icu-project.org/locale">ICU user guide</a>, except codes that we&#39;ve made an exception for. Examples of non-supported codes are as follows:</p>
+<ul>
+  <li><code>es-419</code>: not a standard language code format, although we are aiming to support such codes in the future.</li>
+  <li><code>iw</code>: An old code for Hebrew; <code>he</code> should be used instead.</li>
+</ul>
+
+<p>If you find that a code you are using is not supported, and you feel that it should be, please let us know, by commenting on this article comment thread.</p>
+</div>
+
+<h2>Contents</h2>
+
+<ul>
+    <li><a href="index.html#intro">Introduction</a></li>
+    <li><a href="index.html#switching">Switching Opera to a different locale</a></li>
+    <li><a href="index.html#example">Our extension</a></li>
+    <li><a href="index.html#techniques">Localisation techniques</a></li>
+    <li><a href="index.html#config-xml">Localising config.xml metadata</a></li>
+    <li><a href="index.html#organising">Organising files inside an extension</a></li>
+    <li><a href="index.html#files">Localising files and resources</a></li>
+    <ul>
+        <li><a href="index.html#algorithm">Folder-based localisation algorithm step by step walkthrough</a></li>
+    </ul>
+    <li><a href="index.html#result">End result</a></li>
+</ul>
+
+<h2 id="intro">Introduction</h2>
+
+<p>Authors who want to provide their extensions in different languages don&#39;t have to create separately packaged versions of their <code>.oex</code> file. Opera&#39;s extensions use the same packaging and configuration as <a href="http://www.w3.org/TR/widgets/">W3C Widgets</a>, which includes built-in mechanisms for providing multilingual resources, all wrapped up in a single self-contained archive.</p>
+
+<p class="note">Make sure you grab all the <a href="../../../../devfiles.myopera.com/articles/5292/multilingual-extensions.zip">source files for this article</a>, wrapped up for your convenience in a single zip archive. It contains the packaged <code>.oex</code> extensions - as well as separate folders with all the uncompressed files – to make it easy to follow the recommended <a href="../opera-extensions-developer-workflow/index.html">Opera extensions developer workflow</a> and take advantage of our <em>Developer Mode</em>.</p>
+
+<p class="note">Although this article deals specifically with Opera extensions, the general concepts and techniques outlined here will also apply to the localisation of traditional W3C Widgets.</p>
+
+<h2 id="switching">Switching Opera to a different locale</h2>
+
+<p>By default, the version of Opera that you installed will be set to match the locale of your operating system. In order to test that our localised extension works correctly, we&#39;ll need to explicitly switch Opera to different locales.</p>
+
+<p>In Windows and Linux, this is achieved by going to <em>Menu &gt; Settings &gt; Preferences...</em> and changing the <em>Language</em> option in the <em>General</em> tab. If you installed the international version of Opera, this will – for the most common languages – also change the language of the browser&#39;s user interface itself (including menus, dialog boxes, etc). For non-international versions, it will inform you that you don&#39;t have the appropriate language file available, but it will still send that language preference to websites to serve you content in that language if available, and it will switch the language on multilingual extensions.</p>
+
+<p class="note">After changing Opera&#39;s locale, even if the user interface language changes immediately you will need to close and reopen the browser for the change to affect extensions.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig1.png" alt="The language preferences dialogs on Windows" width="640" height="320" />
+<p class="comment">Figure 1: The language preferences dialogs on Windows.</p>
+</div>
+
+<p>Beyond choosing the primary language for the browser, on Windows/Linux we can also define a series of fallback locales, which will be used when content is not available for a specific language. This is done by selecting the <em>Details...</em> button next to the language dropdown and modifying the <em>Preferred languages for webpages</em> list.</p>
+
+<p class="note">The browser locale affects more than just the user interface. Information about the user&#39;s preferred locale(s) is sent as part of the browser&#39;s request headers. For instance, if the list of preferred locales was comprised of British English, English and German, Opera&#39;s <code>Accept-Language</code> header would contain something like <code>en-GB,en;q=0.9,de;q=0.8</code>. Websites can use this information in the request header to serve content to the browser in different languages, according to the user&#39;s preference.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig2.png" alt="Language &amp;amp; Text preferences dialog in OS X" width="640" height="624" />
+<p class="comment">Figure 2: <em>Language &amp; Text</em> preferences dialog in OS X.</p>
+</div>
+
+<p>In OS X, Opera follows the platform convention, which is slightly different: instead of providing a way to change the locale and the list of preferred languages in the browser&#39;s preferences, it follows the OS-wide settings in <em>System Preferences... &gt; Language &amp; Text</em> (<em>System Preferences... &gt; International &gt; Language</em> in older versions of OS X). For changes made in this dialog to take effect in Opera, you will need to close and reopen the browser.</p>
+
+<h2 id="example">Our extension</h2>
+
+<p>To illustrate the localisation process, in this article we&#39;ll be localising a fairly basic extension. To keep things simple, all this extension does is add a button to the browser&#39;s toolbar which brings up a pop-up containing some short text.</p>
+
+<p>Our first version can be found in <a href="../../../../devfiles.myopera.com/articles/5292/l18n-1.oex">Localisation test &#x2014; version 1.1</a>.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig3.png" alt="Our example extension in action" width="345" height="184" />
+<p class="comment">Figure 3: Our example extension in action.</p>
+</div>
+
+<p>This version of the extension contains the following files, all placed in the root of the archive:</p>
+
+<ul>
+<li><code>button.png</code></li>
+<li><code>config.xml</code></li>
+<li><code>general.css</code></li>
+<li><code>icon.png</code></li>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul>
+
+<p>And here&#39;s the <code>config.xml</code>:</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot; version=&quot;1.1&quot;&gt;
+    &lt;name&gt;Localization test&lt;/name&gt;
+    &lt;description&gt;Localization test&lt;/description&gt;
+    &lt;author href=&quot;http://dev.opera.com&quot;
+            email=&quot;patrickl@opera.com&quot;&gt;Patrick H. Lauke&lt;/author&gt;
+&lt;/widget&gt;</code></pre>
+
+<p>In its current state, this extension is unlocalised – there are no provisions for different languages, and no information has been given in the configuration file as to what the current language being used is. So, from this simple starting point, let&#39;s get cracking and turn this into a localised, multilingual extension.</p>
+
+<h2 id="techniques">Localisation techniques</h2>
+
+<p>The <a href="http://www.w3.org/TR/widgets/">W3C Widget Packaging and Configuration</a> specification defines two complementary methods that are used to provide extension content in different languages: <a href="http://www.w3.org/TR/widgets/#element-based-localization">element-based localisation</a>, which takes care of the extension metadata, and <a href="http://www.w3.org/TR/widgets/#folder-based-localization">folder-based localisation</a>, which lets us provide different versions of our content for specific languages.</p> 
+
+<h2 id="config-xml">Localising <code>config.xml</code> metadata</h2>
+
+<p>The <code>config.xml</code> file contains metadata that describes an extension &#x2014; information about the name of the extension, who the author is, a short description, licensing, etc. This information is presented to the user in the extension manager and any browser dialogs relating to that extension.</p>
+
+<p class="note">For a more in-depth look at the contents and purpose of <code>config.xml</code>, see our extensive guide on <a href="../config-xml-howto/index.html"><em>The ins and outs of <code>config.xml</code></em></a>.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig4.png" alt="config.xml metadata used in the extension manager" width="640" height="365" />
+<p class="comment">Figure 4: <code>config.xml</code> metadata used in the extension manager.</p>
+</div>
+
+<p>Our first step in localising our extension is to provide part of this metadata in different languages through <a href="http://www.w3.org/TR/widgets/#element-based-localization">element-based localisation</a>. In our configuration file, we simply need to add multiple versions of our elements, specifying their respective language &#x2014; using the standard <a href="http://www.iana.org/assignments/language-subtag-registry">IANA language subtags</a> &#x2014; with an <code>xml:lang</code> attribute.</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot; version=&quot;1.2&quot;&gt;
+    &lt;name&gt;Localization test&lt;/name&gt;
+    &lt;name xml:lang=&quot;en-gb&quot;&gt;Localisation test&lt;/name&gt;
+    &lt;name xml:lang=&quot;fr&quot;&gt;Test de localisation&lt;/name&gt;
+    &lt;name xml:lang=&quot;it&quot;&gt;Test di localizzazione&lt;/name&gt;
+    &lt;name xml:lang=&quot;de&quot;&gt;Lokalisierungstest&lt;/name&gt;
+    &lt;name xml:lang=&quot;ru&quot;&gt;тест локализации&lt;/name&gt;
+    &lt;name xml:lang=&quot;ja&quot;&gt;ローカリゼーションテスト&lt;/name&gt;
+    &lt;description&gt;Localization test&lt;/description&gt;
+    &lt;description xml:lang=&quot;en-gb&quot;&gt;Localisation test&lt;/description&gt;
+    &lt;description xml:lang=&quot;fr&quot;&gt;Test de localisation&lt;/description&gt;
+    &lt;description xml:lang=&quot;it&quot;&gt;Test di localizzazione&lt;/description&gt;
+    &lt;description xml:lang=&quot;de&quot;&gt;Lokalisierungstest&lt;/description&gt;
+    &lt;description xml:lang=&quot;ru&quot;&gt;тест локализации&lt;/description&gt;
+    &lt;description xml:lang=&quot;ja&quot;&gt;ローカリゼーションテスト&lt;/description&gt;
+    &lt;author href=&quot;http://dev.opera.com&quot;
+                    email=&quot;patrickl@opera.com&quot;&gt;Patrick H. Lauke&lt;/author&gt;
+&lt;/widget&gt;</code></pre>
+
+<p>The only elements that allow this form of localisation are:</p>
+
+<ul>
+<li><code>name</code></li>
+<li><code>description</code></li>
+<li><code>license</code></li>
+</ul>
+
+<p>To keep things neat and tidy, I want to explicitly set the language of our default elements to <code>xml:lang=&quot;en&quot;</code> as well. When doing this, we need to also include the <code>defaultlocale</code> attribute to our <code>&lt;widget&gt;</code> element, so the browser knows what the default/fallback is.</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot; defaultlocale=&quot;en&quot; version=&quot;1.2&quot;&gt;
+    &lt;name xml:lang=&quot;en&quot;&gt;Localization test&lt;/name&gt;
+    &lt;name xml:lang=&quot;en-gb&quot;&gt;Localisation test&lt;/name&gt;
+    &lt;name xml:lang=&quot;fr&quot;&gt;Test de localisation&lt;/name&gt;
+    &lt;name xml:lang=&quot;it&quot;&gt;Test di localizzazione&lt;/name&gt;
+    &lt;name xml:lang=&quot;de&quot;&gt;Lokalisierungstest&lt;/name&gt;
+    &lt;name xml:lang=&quot;ru&quot;&gt;тест локализации&lt;/name&gt;
+    &lt;name xml:lang=&quot;ja&quot;&gt;ローカリゼーションテスト&lt;/name&gt;
+    &lt;description xml:lang=&quot;en&quot;&gt;Localization test&lt;/description&gt;
+    &lt;description xml:lang=&quot;en-gb&quot;&gt;Localisation test&lt;/description&gt;
+    &lt;description xml:lang=&quot;fr&quot;&gt;Test de localisation&lt;/description&gt;
+    &lt;description xml:lang=&quot;it&quot;&gt;Test di localizzazione&lt;/description&gt;
+    &lt;description xml:lang=&quot;de&quot;&gt;Lokalisierungstest&lt;/description&gt;
+    &lt;description xml:lang=&quot;ru&quot;&gt;тест локализации&lt;/description&gt;
+    &lt;description xml:lang=&quot;ja&quot;&gt;ローカリゼーションテスト&lt;/description&gt;
+    &lt;author href=&quot;http://dev.opera.com&quot;
+        email=&quot;patrickl@opera.com&quot;&gt;Patrick H. Lauke&lt;/author&gt;
+&lt;/widget&gt;</code></pre>
+
+<p>You can find this updated version of <code>config.xml</code> in <a href="../../../../devfiles.myopera.com/articles/5292/l18n-2.oex">Localisation test &#x2014; version 1.2</a>.</p>
+
+<p>Now, when installing the extension, the browser will attempt to find the version of each element that most closely matches the user&#39;s selected locale and language preference, with a series of fallback steps:</p>
+<ol>
+<li>First, the browser will try to find an exact match for the user&#39;s locale. For instance, if I have set my browser to <code>en-gb</code>, Opera will first attempt to find elements that are marked as <code>xml:lang=&quot;en-gb&quot;</code>.</li>
+<li>If no exact match is found, the browser will attempt to find any other elements from within the same language range. In our case, it would start to look for anything marked as simply <code>xml:lang=&quot;en&quot;</code>.</li>
+<li>The above two steps are repeated for each language/locale that the user may have set in their preferences.</li>
+<li>If all else fails, the browser will fall back to the default content &#x2014; the elements matching the default locale or, if <code>defaultlocale</code> was not defined in the <code>widget</code> element, any unlocalised elements.</li>
+</ol>
+
+<p>Note that if <code>config.xml</code> contains multiple versions of the same element localised for a specific language, or multiple versions of an unlocalised element, only the first one of those (in source order) will be processed. For example, if our configuration contained</p>
+
+<pre><code>
+&lt;description xml:lang=&quot;en&quot;&gt;Localization test&lt;/description&gt;
+&lt;description xml:lang=&quot;en&quot;&gt;Some other description&lt;/description&gt;
+…
+&lt;description xml:lang=&quot;en&quot;&gt;Yet another description&lt;/description&gt;</code></pre>
+
+<p>only the first <code>description</code> would be used.</p>
+
+<p>We&#39;re off to a good start. Now, if you switch your browser to different locales, you&#39;ll notice that the metadata (when installing or managing the extension) is presented in different languages.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig5.png" alt="Our extension now shows properly localised metadata in the install, management and uninstall dialogs, but the icon is still the same" width="640" height="523" />
+<p class="comment">Figure 5: Our extension now shows properly localised metadata in the install, management and uninstall dialogs, but the icon is still the same.</p>
+</div>
+
+<p>However, element-based localisation doesn&#39;t allow us to set different, language-specific icons and most importantly, the actual functionality of our extension is still only available in the default English version. We&#39;ll tackle this more fundamental part of localisation in a moment but first, let&#39;s organise our files a little better &#x2014; this will hopefully make things clearer as we proceed.</p>
+
+<h2 id="organising">Organising files inside an extension</h2>
+
+<p>The way extensions are packaged gives authors a lot of flexibility in how they want to organise their files. At the simplest level, we can keep all our files in the root of the <code>.oex</code> archive and, if we stick to some <a href="http://www.w3.org/TR/widgets/#reserved-file-and-folder-names">basic naming conventions</a>, the browser will automatically find standard components like our <code>index.html</code> start file and <code>icon.png</code>. However, we can also be a lot more methodical and structured, adding any number of subdirectories to our extensions to better organise our content. Personally, I like to keep a separate folder for <code>images</code> and <code>styles</code>. So, let&#39;s tidy up our extension as follows:</p>
+
+<ul>
+<li><code>images</code>
+<ul>
+<li><code>button.png</code></li>
+<li><code>icon.png</code></li>
+</ul></li>
+<li><code>styles</code>
+<ul>
+<li><code>general.css</code></li>
+</ul></li>
+<li><code>config.xml</code></li>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul>
+
+<p>Jumping into our extension&#39;s HTML files for a moment, we now obviously need to change the references to our toolbar icon in <code>index.html</code></p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script&gt;
+    window.addEventListener(&quot;load&quot;, function(){
+      var theButton;
+      var ToolbarUIItemProperties = {
+        title: &quot;Localization test&quot;,
+          icon: &quot;/images/button.png&quot;,
+          popup: {
+            href: &quot;popup.html&quot;,
+              width: 300,
+              height: 100
+          }
+      }
+      theButton = opera.contexts.toolbar.createItem(ToolbarUIItemProperties);
+      opera.contexts.toolbar.addItem(theButton);
+  }, false);
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>and our stylesheet in <code>popup.html</code></p>
+
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Localization test&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;/styles/general.css&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Localization test&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p class="note">As with regular web pages, references to external resources (like the <code>src</code> attribute on an <code>&lt;img&gt;</code> element, or the <code>href</code> pointing a stylesheet on a <code>&lt;link&gt;</code> element) can be relative to the current file, or relative to the root of the extension itself (starting the reference with a slash, e.g. <code>/images/button.png</code>), as we&#39;ve done in our example above.</p>
+
+<p>As our <code>icon.png</code> has now moved from its default location at the root of the extension to the <code>images</code> subfolder, we need to edit the <code>config.xml</code> file to explicitly tell the browser where to find it. Once again, I&#39;ve opted for a reference that&#39;s relative to the root of the extension:</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot; defaultlocale=&quot;en&quot; version=&quot;1.3&quot;&gt;
+    …
+    &lt;icon src=&quot;images/icon.png&quot;/&gt;
+&lt;/widget&gt;</code></pre>
+
+<p>You can find these further organizational updates in <a href="../../../../devfiles.myopera.com/articles/5292/l18n-3.oex">Localisation test &#x2014; version 1.3</a>.</p>
+
+<p>You might now think that, in order to provide a custom icon for a specific language, we can just add separate <code>icon</code> elements with different <code>xml:lang</code> attributes but unfortunately <code>icon</code> does not allow for element-based localisation.</p>
+
+<p>For this, as well as for more fundamental needs such as localising <code>index.html</code> (which sets the <code>title</code> tooltip associated with the button that appears in the toolbar) and <code>popup.html</code>, and having language-specific resources like the <code>button.png</code>, we need to use a different method &#x2014; folder-based localisation.</p>
+
+<h2 id="files">Localising files and resources</h2>
+
+<p><a href="http://www.w3.org/TR/widgets/#folder-based-localization">Folder-based localisation</a> is used when we want to provide completely separate files and resources, depending on the user&#39;s locale and language settings.</p>
+
+<p>First, we need to create a special <code>locales</code> folder in the root of our extension.</p>
+
+<p class="note"><code>locales</code> is a reserved folder name, as it serves the specific purpose of containing content for folder-based localisation. It must not be used for any other type of content.</p>
+
+<p>In this folder we then create subfolders that match the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA language subtags</a> for each locale that we want to provide localised content for.</p>
+
+<p class="note">Although language tags don&#39;t usually need to be in any particular case (uppercase, lowercase, or even mixed), these folder names must all be lowercase to account for differences in case-sensitive file handling on different operating systems.</p>
+
+<p>So, after we set up our various folders and create the separate, localised versions of our files, our extension is now structured as follows:</p>
+
+<ul>
+<li><strong><code>locales</code></strong>
+<ul>
+<li><code>de</code>
+<ul>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul></li>
+<li><code>en</code>
+<ul>
+<li><code>images</code>
+<ul>
+<li><code>button.png</code></li>
+<li><code>icon.png</code></li>
+</ul></li>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul></li>
+<li><code>en-gb</code>
+<ul>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul></li>
+<li><code>fr</code>
+<ul>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul></li>
+<li><code>it</code>
+<ul>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul></li>
+<li><code>ja</code>
+<ul>
+<li><code>images</code>
+<ul>
+<li><code>button.png</code></li>
+<li><code>icon.png</code></li>
+</ul></li>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul></li>
+<li><code>ru</code>
+<ul>
+<li><code>images</code>
+<ul>
+<li><code>button.png</code></li>
+<li><code>icon.png</code></li>
+</ul></li>
+<li><code>index.html</code></li>
+<li><code>popup.html</code></li>
+</ul></li>
+</ul></li>
+<li><code>styles</code>
+<ul>
+<li><code>general.css</code></li>
+</ul></li>
+<li><code>config.xml</code></li>
+</ul>
+
+<p>You can find this version inside <a href="../../../../devfiles.myopera.com/articles/5292/l18n-4.oex">Localisation test &#x2014; version 1.4</a>.</p>
+
+<p>Notice that I didn&#39;t make separate copies for every individual file in the various language subfolders. For instance, I only provided different <code>icon.png</code> and <code>button.png</code> images for the English (default locale), Russian and Japanese versions (the word &quot;Test&quot; that appears in the English version works fine for all the other languages I want to cater for as well). Also, as my stylesheet for the popup doesn&#39;t do anything locale-specific and applies to all languages, I only have a single copy of it outside of the <code>locales</code> folder, meaning that it&#39;s regarded as unlocalised content.</p>
+
+<p>This works because when the browser needs to find a particular file or resource, it will apply the same language-matching algorithm we saw above:</p>
+
+<ol>
+<li>First, it will try to find an exact match for the user&#39;s locale. If I&#39;ve set my preference to <code>en-gb</code>, Opera will look for a <code>/locales/en-gb/</code> folder, and use this folder as a new root context. Unless otherwise specified in <code>config.xml</code>, it will start to look for default files like <code>index.html</code> and <code>icon.png</code> in this folder. Any references relative to the location of the <code>config.xml</code> file in the root of the extension, like <code>images/icon.png</code>, are internally translated to be relative to this locale folder, e.g. <code>/locales/en-gb/images/icon.png</code>.</li>
+<li>If no exact match is found (the folder or file doesn&#39;t exist), the browser will try to find it inside any <code>locales</code> subfolders in the same language range. In the case of our icon, it would start to look in <code>/locales/en/images/icon.png</code>.</li>
+<li>If there is still no match, the above two steps are repeated for each language/locale defined in the preferences.</li>
+<li>If all else fails, the browser will try and find the file in the <code>locales</code> subfolder matching the <code>defaultlocale</code> value, or failing that in the actual root of the <code>.oex</code> archive as unlocalised content (as is the case with <code>/styles/general.css</code>).</li>
+</ol>
+
+<h3 id="algorithm">Folder-based localisation algorithm step by step walkthrough</h3>
+
+<p>This may appear confusing at first, so let&#39;s work through this algorithm for all the files that are being referenced. Let&#39;s assume that I&#39;ve set my preference to <code>en-gb</code>. First of all, the browser will need to find the icon for our extension:</p>
+
+<ol>
+  <li><code>config.xml</code> says the icon should be found in <code>&lt;icon src=&quot;images/icon.png&quot;/&gt;</code>. As there is a <code>locales</code> folder, let&#39;s use our preferred locale as a root context and see if <code>/locales/en-gb/images/icon.png</code> exists.</li>
+  <li>Moving up in the language range, let&#39;s check <code>/locales/en/images/icon.png</code>.</li>
+</ol>
+
+<p>Next, the default <code>index.html</code> file:</p>
+
+<ol>
+  <li><code>config.xml</code> doesn&#39;t mention any custom location for the start file, so let&#39;s begin by looking in <code>/locales/en-gb/index.html</code>.</li>
+</ol>
+
+<p>In <code>index.html</code>, our JavaScript references <code>/images/button.png</code> for the toolbar button:</p>
+
+<ol>
+  <li>Let&#39;s start with <code>/locales/en-gb/images/button.png</code>.</li>
+  <li>Again, we move up the language range and see if the image is in <code>/locales/en/images/button.png</code>.</li>
+</ol>
+
+<p>When the user presses the toolbar button, the JavaScript in <code>index.html</code> will try to open the <code>popup.html</code> file:</p>
+
+<ol>
+  <li>As this is a relative reference to our index file, let&#39;s look in <code>/locales/en-gb/popup.html</code>.</li>
+</ol>
+
+<p>Lastly, <code>popup.html</code> references a stylesheet at <code>/styles/general.css</code>:</p>
+
+<ol>
+  <li>We start with <code>/locales/en-gb/styles/general.css</code>.</li>
+  <li>Moving up, we look in <code>/locales/en/styles/general.css</code>.</li>
+  <li>At this point, we loop through each individual fallback language defined in our preferences &#x2014; for instance, if my list of preferred locales was comprised of <code>en-gb</code>, <code>de</code> and <code>it</code>, the above steps would be repeated to look for the stylesheet in <code>/locales/de/styles/general.css</code> and in <code>/locales/it/styles/general.css</code>.</li>
+  <li>Ok, so the stylesheet doesn&#39;t appear to be in any of the preferred locales. Did the <code>widget</code> definition in <code>config.xml</code> contain a <code>defaultlocale</code> attribute? Yes, it&#39;s set to <code>defaultlocale=&quot;en&quot;</code>, but we already checked there and <code>/locales/en/styles/general.css</code> doesn&#39;t exist. As a last resort, let&#39;s see if the stylesheet can be found from the root of the widget as unlocalised content, at <code>/styles/general.css</code>.</li>
+</ol>
+
+<p>Admittedly, this algorithm may seem quite daunting at first, and there are certain complex situations where (particularly because of the third step, which loops through the various fallback locales first before resorting to default/unlocalised versions) Opera will behave in apparently unexpected ways.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig6.png" alt="Opera is set to French, but the extension shows the Japanese version of the icon due to the language fallback list in our preferences" width="640" height="651" />
+<p class="comment">Figure 6: Opera is set to French, but the extension shows the Japanese version of the icon due to the language fallback list in our preferences.</p>
+</div>
+
+<div class="note">
+<p>If you&#39;re getting strange results after changing the <em>Language</em> settings a few times, check the list of fallback locales and make sure the order of those locales is still correct – see the <em>Preferred languages for webpages</em> dialog on Windows/Linux, or the <em>Languages &amp; Text</em> preference in OS X.</p>
+<p>In the example shown in Figure 6, our <em>Language</em> is set to French, but the browser is showing the localised icon of the Japanese version. Looking at the <em>Preferred languages...</em> list (after an extensive round of testing different locales), we see that the fallback stack now contains <code>fr</code>, <code>ja</code>, <code>ru</code>, <code>it</code>, <code>en-gb</code>, <code>en</code>. When looking for the icon, the browser will first try to locate it in <code>/locales/fr/images/icon.png</code>, and after that it will loop through the remaining languages in the stack <strong>before</strong> resorting to the default. As the next language in our stack <strong>does</strong> have an icon at <code>/locales/ja/images/icon.png</code>, it&#39;s the Japanese icon that is displayed.</p>
+<p>Very few users are likely to have this sort of overloaded fallback list of languages, but if you&#39;re testing your extensions, you can quickly end up in these strange situations &#x2014; at which point I&#39;d recommend simply deleting (on Windows/Linux) or unchecking (using the <em>Edit List...</em> option in OS X) the majority of those fallbacks to more closely match what &quot;real&quot; users are likely to have.</p>
+</div>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig7.png" alt="Our finished extension now shows both localised text and a locale-specific icon in the various extension installation, management and uninstall dialogs" width="640" height="523" />
+<p class="comment">Figure 7: Our finished extension now shows both localised text and a locale-specific icon in the various extension installation, management and uninstall dialogs.</p>
+</div>
+
+<p>Once you manage to wrap your head around this algorithm, you&#39;ll be able to keep your multilingual extensions lean and minimal, without unnecessary duplication &#x2014; only &quot;patching in&quot; those files that are actually different from language to language.</p>
+
+<h2 id="result">End result</h2>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/5292/fig8.png" alt="Our finished extension, showing appropriately localised buttons, tooltips and content for Japanese, German and Russian locales" width="640" height="371" />
+<p class="comment">Figure 8: Our finished extension, showing appropriately localised buttons, tooltips and content for Japanese, German and Russian locales.</p>
+</div>
+
+<p>And there we have it. Using the two complementary techniques of element-based and folder-based localisation, we now have a single <code>.oex</code> extension file that works in a variety of different languages. The dialog shown when the extension is first installed, the listing in the extension manager, the button in the browser&#39;s toolbar, and of course the popup that is shown when the button is activated, are all available in localised flavours. So what are you waiting for? If you&#39;ve already created your own extension, why not try to make it work even better for your international users?</p>
+
+<p class="note">Did you create a great multilingual extension and are planning to submit it to <a href="http://addons.opera.com">Opera&#39;s extensions catalogue</a>? Then make sure that you also add multilingual descriptions as part of the submission process.</p>code
+
+      <section id="author-info">
+        <h1><a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></h1>
+        <a href="../../../author/patrickhlauke.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/311/e211c5a9704ba8411d0a0694fbb961d97ad.jpg" alt=""/></a>
+        <p>Web Evangelist in the Developer Relations Team at Opera Software ASA.<br/>Product manager for Opera Dragonfly – Opera&#39;s built-in web developer tools.<br/><a href="http://www.opera.com/dragonfly/" target="_blank">http://www.opera.com/dragonfly/</a></p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=959662">My Opera</a>.</p>
+  <ul>
+    <li id="comment-96810562">
+      <a href="../../../author/RRR14.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d9/7ee/364bf0a37f920f985e6ce83cdb641951f28.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/RRR14.html">Robert Rotariu</a></p>
+      <p class="commentdate">Thursday, September 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This crap doesn&#39;t work.<br/>And I&#39;ve been bashing my brains out, trying to figure why AutoStack ( <a href="https://addons.opera.com/en/extensions/details/autostack/?display=en" target="_blank">https://addons.opera.com/en/extensions/details/autostack/?display=en</a> ) localization doesn&#39;t work properly.<br/>All this time, the problem was that localization does not work well at all in extensions.<br/>Fix the damn localization mechanism!<br/><br/>Opera 12.02 x64 on Windows 7 x64 (localization doesn&#39;t work in Opera 32-bit version either)</section>
+    </li>
+    <li id="comment-98275242">
+      <a href="../../../author/christoph142.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7a/d36/a1ef2d0ce7edb42a678ee38ac6b298f6819.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/christoph142.html">Christoph</a></p>
+      <p class="commentdate">Friday, October 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>For all of you guys seeking for a way to localize injected scripts, here&#39;s your tutorial ;)<br/><a href="http://my.opera.com/christoph142/blog/2012/10/19/localizing-injectedscripts" target="_blank">http://my.opera.com/christoph142/blog/2012/10/19/localizing-injectedscripts</a></section>
+    </li>
+    <li id="comment-105106902">
+      <a href="../../../author/rica0421.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5c/dc5/c722328939bfe3b1df8bdd7b7d50c34e2d0." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rica0421.html">Ricardo Jose</a></p>
+      <p class="commentdate">Friday, March 15, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>bueno iba a colaborar pero como veo que el idioma español no les interesa ya que  en ese preambulo ni siquiera se tomaron la molestia de colocarlo pues suerte con usstedes y regreso a firefox, intente usar este explorador pero una despcion tras otra</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, April 12, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/extensions.html" rel="tag">extensions</a></li>
+        <li><a href="../../tags/international.html" rel="tag">international</a></li>
+        <li><a href="../../tags/l10n.html" rel="tag">l10n</a></li>
+        <li><a href="../../tags/localization.html" rel="tag">localization</a></li>
+        <li><a href="../../tags/multilingual.html" rel="tag">multilingual</a></li>
+        <li><a href="../../tags/translation.html" rel="tag">translation</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera extensions docs</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-hello-world/index.html" >Saying hello world to Opera extensions!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../whats-in-an-opera-extension/index.html" >What's in an Opera extension?</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-developer-workflow/index.html" >Opera extensions developer workflow</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>API reference<ul >
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-config-xml/index.html" >config.xml</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-widget/index.html" >widget element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-name/index.html" >name element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-description/index.html" >description element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-author/index.html" >author element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-license/index.html" >license element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-icon/index.html" >icon element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-content/index.html" >content element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-preference/index.html" >preference element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-access/index.html" >access element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-span/index.html" >span element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-xml-lang/index.html" >xml:lang attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-config-dir/index.html" >dir attribute</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-widget-object/index.html" >Widget object</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-author/index.html" >widget.author</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authoremail/index.html" >widget.authorEmail</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-authorhref/index.html" >widget.authorHref</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-description/index.html" >widget.description</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-id/index.html" >widget.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-name/index.html" >widget.name</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-preferences/index.html" >widget.preferences</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-shortname/index.html" >widget.shortName</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-widget-version/index.html" >widget.version</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-browser-toolbar/index.html" >Button &amp; Badge API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-createitem/index.html" >opera.contexts. toolbar.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-additem/index.html" >opera.contexts. toolbar.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-removeitem/index.html" >opera.contexts. toolbar.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-toolbar-length/index.html" >opera.contexts. toolbar.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-badge/index.html" >Button.badge</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-disabled/index.html" >Button.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-icon/index.html" >Button.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-onclick/index.html" >Button.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-popup/index.html" >Button.popup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-title/index.html" >Button.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-addeventlistener/index.html" >Button.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-button-removeeventlistener/index.html" >Button.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-backgroundcolor/index.html" >Badge.backgroundColor</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-color/index.html" >Badge.color</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-display/index.html" >Badge.display</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-badge-textcontent/index.html" >Badge.textContent</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-popup/index.html" >Popup API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-height/index.html" >Popup.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-href/index.html" >Popup.href</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-width/index.html" >Popup.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-postmessage/index.html" >opera.extension. postMessage()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-popup-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-windows-tabs/index.html" >Windows &amp; Tabs API</a>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Windows<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-create/index.html" >opera.extension. windows.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getall/index.html" >opera.extension. windows.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-windows-getlastfocused/index.html" >opera.extension. windows.getLastFocused()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-insert/index.html" >BrowserWindow.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-close/index.html" >BrowserWindow.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focus/index.html" >BrowserWindow.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-update/index.html" >BrowserWindow.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-id/index.html" >BrowserWindow.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-closed/index.html" >BrowserWindow.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-focused/index.html" >BrowserWindow.focused</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-private/index.html" >BrowserWindow.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabgroups/index.html" >BrowserWindow.tabGroups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-tabs/index.html" >BrowserWindow.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-height/index.html" >BrowserWindow.height</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-width/index.html" >BrowserWindow.width</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-top/index.html" >BrowserWindow.top</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-window-left/index.html" >BrowserWindow.left</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tab Groups<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-create/index.html" >opera.extension. tabGroups.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroups-getall/index.html" >opera.extension. tabGroups.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-close/index.html" >BrowserTabGroup.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-focus/index.html" >BrowserTabGroup.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-insert/index.html" >BrowserTabGroup.insert()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-update/index.html" >BrowserTabGroup.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-id/index.html" >BrowserTabGroup.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-closed/index.html" >BrowserTabGroup.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-collapsed/index.html" >BrowserTabGroup. collapsed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-browserwindow/index.html" >BrowserTabGroup. browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-tabs/index.html" >BrowserTabGroup.tabs</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabgroup-position/index.html" >BrowserTabGroup.position</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Tabs<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-create/index.html" >opera.extension. tabs.create()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getall/index.html" >opera.extension. tabs.getAll()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tabs-getselected/index.html" >opera.extension. tabs.getSelected()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-close/index.html" >BrowserTab.close()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focus/index.html" >BrowserTab.focus()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-update/index.html" >BrowserTab.update()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-id/index.html" >BrowserTab.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-closed/index.html" >BrowserTab.closed</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-locked/index.html" >BrowserTab.locked</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-private/index.html" >BrowserTab.private</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-selected/index.html" >BrowserTab.selected</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-readystate/index.html" >BrowserTab.readyState</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-faviconurl/index.html" >BrowserTab.faviconUrl</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-title/index.html" >BrowserTab.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-url/index.html" >BrowserTab.url</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-browserwindow/index.html" >BrowserTab.browserWindow</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-tabgroup/index.html" >BrowserTab.tabGroup</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-position/index.html" >BrowserTab.position</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-tab-focused/index.html" >BrowserTab.focused</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-injected-scripts/index.html" >Injected scripts</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-addeventlistener/index.html" >opera.addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-removeeventlistener/index.html" >opera.removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicfunction/index.html" >opera.defineMagicFunction()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-definemagicvariable/index.html" >opera.defineMagicVariable()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-opera-posterror/index.html" >opera.postError()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-urlfilter/index.html" >URL filter API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-add/index.html" >opera.extension. urlfilter.block.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-block-remove/index.html" >opera.extension. urlfilter.block.remove()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-allow-add/index.html" >opera.extension. urlfilter.allow.add()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-excludedomains/index.html" >RuleOptions.excludeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-includedomains/index.html" >RuleOptions.includeDomains</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-resources/index.html" >RuleOptions.resources</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-ruleoptions-thirdparty/index.html" >RuleOptions.thirdParty</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-urlfilter-syntax/index.html" >URL Filter syntax</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-messaging/index.html" >Messaging API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-bgprocess/index.html" >opera.extension.bgProcess</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onconnect/index.html" >opera.extension.onconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-ondisconnect/index.html" >opera.extension.ondisconnect</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-onmessage/index.html" >opera.extension.onmessage</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-addeventlistener/index.html" >opera.extension. addEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-removeeventlistener/index.html" >opera.extension. removeEventListener()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-messaging-broadcastmessage/index.html" >opera.extension. broadcastMessage()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-speeddial/index.html" >Speed Dial API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-viewmodes/index.html" >viewmodes attribute</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-feature/index.html" >feature element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-param/index.html" >param element</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-title/index.html" >opera.contexts.speeddial.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-speeddial-url/index.html" >opera.contexts.speeddial.url</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-resourceloader/index.html" >Resource Loader API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-resourceloader-getfile/index.html" >opera.extension.getFile()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-screenshot/index.html" >Screenshot API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-screenshot-getscreenshot/index.html" >opera.extension.getScreenshot() and BrowserTab.getScreenshot()</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+
+<span ></span><a href="../extensions-api-contextmenu/index.html" >Context Menu API</a>
+
+<ul >
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-createitem/index.html" >opera.contexts. menu.createItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-additem/index.html" >opera.contexts. menu.addItem() and MenuItem.addItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-item/index.html" >opera.contexts.menu.item() and MenuItem.item()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-removeitem/index.html" >opera.contexts. menu.removeItem() and MenuItem.removeItem()</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-length/index.html" >opera.contexts.menu.length</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-onclick/index.html" >opera.contexts.menu.onclick and MenuItem.onclick</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-contexts/index.html" >MenuItem.contexts</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-disabled/index.html" >MenuItem.disabled</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturlpatterns/index.html" >MenuItem. documentURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-icon/index.html" >MenuItem.icon</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-id/index.html" >MenuItem.id</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-parent/index.html" >MenuItem.parent</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-targeturlpatterns/index.html" >MenuItem.targetURLPatterns</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-title/index.html" >MenuItem.title</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-type/index.html" >MenuItem.type</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-documenturl/index.html" >MenuEvent.documentURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-iseditable/index.html" >MenuEvent.isEditable</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-linkurl/index.html" >MenuEvent.linkURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-mediatype/index.html" >MenuEvent.mediaType</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-pageurl/index.html" >MenuEvent.pageURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-selectiontext/index.html" >MenuEvent.selectionText</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-source/index.html" >MenuEvent.source</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcelement/index.html" >MenuEvent.srcElement</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-srcurl/index.html" >MenuEvent.srcURL</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../extensions-api-contextmenu-target/index.html" >MenuEvent.target</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Extension tutorials<ul >
+  <li class="sub-collection leaf">
+<a href="../config-xml-howto/index.html" >The ins and outs of config.xml</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-buttons-badges-and-popups/index.html" >Buttons, badges and popups</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-messaging/index.html" >Messaging</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-options-page/index.html" >Options page</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../accessing-an-opera-extensions-background-process/index.html" >Accessing an Opera extension's background process</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-opera-speed-dial-extensions/index.html" >Creating Opera Speed Dial Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cookie-sharing-in-opera-extensions/index.html" >Cookie-sharing in Opera extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../site-blocking-with-operas-url-filter-api/index.html" >Site blocking with Opera’s URL Filter API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Creating multilingual extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hands-on-building-an-opera-extension/index.html" >Hands-on tutorial: building an Opera extension</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-userjs-to-extensions/index.html" >Converting UserJS to Opera Extensions</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../converting-widgets-to-opera-extensions/index.html" >Converting widgets to Opera Extensions: Things to keep in mind</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Templates and code samples<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extension-code-examples/index.html" >Opera extension code examples</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-prototypes-modifying-css/index.html" >Opera extensions prototypes for modifying CSS</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>UI guidelines and distribution<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-extensions-publishing-guidelines/index.html" >Publishing guidelines</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../creating-effective-opera-extension-icons/index.html" >Creating effective Opera Extension icons</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../distributing-opera-extensions-and-auto-updates/index.html" >Distributing Opera extensions and auto-updates</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

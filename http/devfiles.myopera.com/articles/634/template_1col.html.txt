@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Single column markup: bare bones</title>
+
+<!-- The stylesheet assumes that the primary navigation will run from left to
+     right within the header; the two and three column examples will offer
+     different approaches. All numeric values chosen are arbitrary. -->
+
+<style type="text/css">
+
+/* ******** */
+/* DOCUMENT */
+/* ******** */
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+#main {
+	width: 67.429em;
+		/* i.e., 944px */
+	margin: 0 auto 0 auto;
+}
+
+/* ******************* */
+/* HEADER & SITE TITLE */
+/* ******************* */
+
+#header {
+	position: relative;
+		/* reset the positioning context for the sake of the logo/title and
+		   primary nav */
+	height: 6.857em;
+	overflow: hidden;
+		/* without this producers will gleefully play hob with the layout */
+}
+
+h1 {
+	position: absolute;
+		/* left: 0; top: 0; are defaults */
+	width: 192px;
+	background-image: url(/images/logotype.png);
+	background-position: 6px 6px;
+		/* create a gutter since left and top are set to zero */
+}
+
+h1 a {
+	display: block;
+		/* Ensure that the active footprint of the link swallows up the entire
+		   footprint of the logo */
+	width: 186px;
+	height: 60px;
+	margin: 6px 0 0 6px;
+		/* make the active footprint of the link flush with the edge of the
+		   h1's background image */
+	text-indent: -10000px;
+		/* Enhanced Fahrner Image Replacement in action */
+		/* these units in pixels because of the image replacement */
+}
+
+/* ****************** */
+/* PRIMARY NAVIGATION */
+/* ****************** */
+
+#nav {
+	position: absolute;
+	bottom: 0;
+		/* The goal is to take the nav out of the document flow, yet make it
+		   flush with the bottom of #header */
+	width: 100%;
+		/* i.e., 960px; */
+	height: 1%;
+	overflow: auto;
+		/* Ensure that this element expands to the height of its contents */
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+		/* resets */
+}
+
+#nav li {
+	height: 1.286em;
+	width: 192px;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#nav li a {
+	display: block;
+	width: 183px;
+	height: 1em;
+	border-left: 1px;
+	padding: .143em 0 .143em 8px;
+}
+
+/* remove the left border from the first nav item */
+
+#nav li:first-child a {
+	border-left: 0;
+	width: 184px;
+}
+
+/* *************** */
+/* PRIMARY CONTENT */
+/* *************** */
+
+#bodyCopy {
+	padding-bottom: 2em;
+		/* placed arbitarily, just in case */
+}
+
+/* ************************ */
+/* FOOTER AND SECONDARY NAV */
+/* ************************ */
+
+#footer {
+	clear: both;
+		/* in case there are things like images within #bodyCopy that are
+		   assigned a value of float: left */
+}
+
+#secondaryNav {
+	list-style-type: none;
+	margin: 0;
+		/* resets */
+}
+
+#secondaryNav li {
+	display: inline;
+	margin-right: 1.429em;
+		/* cause these to behave like unembellished text, and provide a gutter
+		   between each */
+}
+
+#copyrightStatement {
+	text-align: center;
+		/* arbitrary */
+}
+
+</style>
+</head>
+
+<body>
+	<div id="main">
+
+		<div id="header">
+			<h1><a href="/"></a></h1>
+			<ul id="nav">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+		<div id="bodyCopy">
+		</div>
+
+		<div id="footer">
+			<ul id="secondaryNav">
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<p id="copyrightStatement">&hellip;</p>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

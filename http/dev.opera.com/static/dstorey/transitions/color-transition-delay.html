@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Transition delay example</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+    	    h1 {
+    	    		font:  18px "Helvetica Neue", arial, sans-serif;
+    	    }
+    	    
+    	    p {
+    	    	border: 1px dashed silver;
+    	    	padding: 0.5em;
+    	    	border-radius: 0.5em;
+    	    	font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+    	    	background-color: rgb(254, 250, 218);
+    	    	max-width: 44em;
+    	    }
+  
+    	    div {
+    		    background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+    		    -o-transition-property: background-color; -webkit-transition-property: background-color;
+                transition-property: background-color;
+                -o-transition-duration: 4s;  -webkit-transition-duration: 4s;
+                transition-duration: 4s;
+                -o-transition-delay: 1s; -webkit-transition-delay: 1s;
+                transition-delay: 1s;
+            }
+  		    div:hover { background-color: blue; }
+      </style>
+  </head>
+  <body>
+  		<h1>An example showing a transition-delay</h1>
+  		<p>The <code>div</code> element below is initially red. If you hover over the element it will transition to blue over 4 seconds after 1 second delay.</p>
+  		<div></div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>:target based transitions: 1</title>
+<meta charset="utf-8" />
+<style type="text/css">
+@import url(http://devfiles.myopera.com/articles/3392/general.css);
+body {
+margin: 0;
+padding: 0;
+font-size: 100%;
+font-family: freesans;
+}
+p[id^="s"] {width: 5em; height: 5em; position: absolute; font-size: 4em;  }
+p#s1 {
+  left: 21em;
+  top: 2em;
+  -webkit-transition: all 4s;
+  -moz-transition: all 4s;
+  -ms-transition: all 4s;
+  -o-transition: all 4s;
+  transition: all 4s;
+  opacity: 0;
+}
+
+p#s2 {
+  left: 1em;
+  top: 2em;
+  -webkit-transition: all 4s;
+  -moz-transition: all 4s;
+  -ms-transition: all 4s;
+  -o-transition: all 4s;
+  transition: all 4s;
+  opacity: 0;
+}
+
+p#s1:target, p#s2:target {left: 14em; top: 2em; opacity: 1;}
+</style>
+</head>
+<body>
+<ul>
+<li><a href="try1.html#s1" id="l1">S1</a></li>
+<li><a href="try1.html#s2" id="l2">S2</a></li>
+</ul>
+<p id="s1">hello</p>
+<p id="s2">bye</p>
+</ul>
+</body>
+</html>

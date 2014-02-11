@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title>Dynamic style: Manipulating CSS with JavaScript Examples - Changing Element Styles Example </title>
+	<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/621/example_styles.css">
+</head>
+<body>
+	<h1>
+		Dynamic style: Manipulating CSS with JavaScript Examples
+	</h1>
+
+	<p>Note: Some of the example code shown below is not the full code being executed. To make things as simple as possible I wanted to just show the critical code pertaining to style manipulation, thus the code that deals with browser differences is not shown.  To see the full code one can view the source code.</p>
+	<hr>
+	<div>
+		<h2>Changing Element Styles example</h2>
+		<p>
+			This example demonstrates how to change an specific element's style.
+		</p>
+
+			<input id="ml" class='button' type='button' value="makeLarger()" />
+			<input id="ms" class='button' type='button' value="makeSmaller()" />
+			<input id="mr" class='button' type='button' value="makeRed()" />
+			<div class="example">
+				<span id='someMoreText' style='font-size: 20px'>Some More Text</span>
+			</div>
+		<div class="code_css">
+			<h4>CSS Code</h4>
+			<pre>
+&lt;style&gt;
+	#styleText {
+		font-size: 20px;
+	}
+&lt;/style&gt;
+				</pre>
+				<style>
+					#someMoreText {
+						font-size: 20px;
+					}
+				</style>
+			</div>
+			<div class="code_js">
+				<h4>JavaScript Code</h4>
+				<pre>
+var size = 20;
+function makeLarger() {
+	var element = document.getElementById('someMoreText');
+	size+=5;
+	element.style.fontSize = size+"px";
+}
+function makeSmaller() {
+	var element = document.getElementById('someMoreText');
+	size-=5;
+	element.setAttribute('style', 'font-size: '+size+'px');
+}
+function makeRed() {
+	var element = document.getElementById('someMoreText');
+	element.style.color = "red";
+}
+				</pre>
+				<script>
+					var size = 20;
+					function makeLarger() {
+						var element = document.getElementById('someMoreText');
+						size+=5;
+						element.style.fontSize = size+"px";
+					}
+					function makeSmaller() {
+						var element = document.getElementById('someMoreText');
+						size-=5;
+						element.setAttribute('style', 'font-size: '+size+'px');
+					}
+					function makeRed() {
+						var element = document.getElementById('someMoreText');
+						element.style.color = "red";
+					}
+				</script>
+			</div>
+
+			<script>
+				function addOnClick(el, func) {
+					if(el.addEventListener) {
+						el.addEventListener('click', func, false);
+					} else {
+						el.attachEvent('onclick', func);
+					}
+				}
+				addOnClick(document.getElementById('ml'), makeLarger);
+				addOnClick(document.getElementById('ms'), makeSmaller);
+				addOnClick(document.getElementById('mr'), makeRed);
+			</script>
+		</div>
+	</div>
+</body>
+</html>

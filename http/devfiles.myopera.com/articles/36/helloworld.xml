@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//VoiceXML Forum//DTD XHTML+Voice 1.2//EN"
+"http://www.voicexml.org/specs/multimodal/x+v/12/dtd/xhtml+voice12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ev="http://www.w3.org/2001/xml-events">
+
+<head>
+  <title>Example 1: "Hello, World"</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="sayHello">
+    <block>Hello World!</block>
+  </form>
+</head>
+
+<body ev:event="load" ev:handler="#sayHello">
+  <h1>"Hello World!" example</h1>
+  <p>If your browser is voice enabled, you will hear it say "Hello, world!".</p>
+
+<h2>Source code</h2>
+<pre><code><![CDATA[
+<head>
+  <title>Example 1: "Hello, World"</title>
+  <form xmlns="http://www.w3.org/2001/vxml" id="sayHello">
+    <block>Hello World!</block>
+  </form>
+</head>
+
+<body ev:event="load" ev:handler="#sayHello">
+  <h1>"Hello World!" example</h1>
+  <p>If your browser is voice enabled, you will hear it say "Hello, world!".</p>
+]]>
+</code></pre>
+</body>
+</html>

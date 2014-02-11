@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Characteristics of widgets on mobile phones - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Widgets - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/widgets">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Widgets - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/widgets">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="widgets">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Characteristics of widgets on mobile phones</h1>
+      <p class="print author">By Opera Software</p>
+
+      <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">24th April 2012: Please note</h2>
+
+<p>Starting with Opera 12, Opera Widgets will <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">be turned off for new users and completely removed in a later release</a>. If you&#39;re interested in building addons for Opera, we recommend going with our extensions platform — check out <a href="../../../addons/extensions/index.html">our extensions documentation</a> to get started.</p>
+</div>
+
+
+<h2>Introduction</h2>
+
+<p>This document describes what considerations developers need to take into account when developing for mobiles, due to the characteristics specific to those devices. See the article on <a href="../cross-device-development-techniques-for/index.html">techniques for cross-device development</a> for more practical solutions. The various sections of this article links to the article on techniques. The article is structured as follows:</p>
+
+<p>Table of contents:</p>
+
+<ol>
+<li><a href="index.html#context">The mobile use context and the need for services</a></li>
+<li><a href="index.html#usability">Usability and different input devices</a></li>
+<li><a href="index.html#screen">Small screen size, resolution, and varying DPI</a></li>
+<li><a href="index.html#power">Less power: CPU, memory, and battery</a></li>
+<li><a href="index.html#connection">Slow and unstable internet connections</a></li>
+<li><a href="index.html#resources">Resources</a></li>
+</ol>
+
+<h2 id="context">The mobile use context and the need for services</h2>
+
+<p>Consider for a moment the different devices that people use to access the internet. The desktop computer is usually stationary and has a large screen surface and easily manageable input devices. It is great for working on over a prolonged period of time. The laptop gives the user more mobility, but it still has many of the characteristics of the desktop computer. The TV is used for entertainment and is often located in the living room of a house.</p>
+
+<p>The mobile phone is designed to be used by people on the move. It has evolved beyond its original intent as a mobile telephone device to include text messaging, cameras, MP3 players, and internet access. This last feature means the phone can be a source of comprehensive information just like a desktop computer, but at the same time, it provides a considerably different user experience. For example, it is not suitable for reading large amounts of text, and its controls are very different.</p>
+
+<p>Services developed for mobile devices (including widgets) need to take into account how the user interacts with the device, the situation he or she is in when using it and what information needs the user has in that situation.</p>
+
+<p>Here are some examples of good mobile services:</p>
+
+<ul>
+<li>Public transport information: The user is on the move and wishes to get from point A to B. A widget can retrieve information about the local transport system and display departure times, allowing travel planning and so on.</li>
+<li>Allowing the user to jot down quick notes: Examples may be shopping lists and general notes. The user is able to add small snippets of text easily in the situation he or she is in.</li>
+<li>Synchronizing data on the mobile phone with other devices: Examples include calendars data and music playlists. Being on the move should not restrict the user’s access to his or her data.</li>
+</ul>
+
+<h2 id="usability">Usability and different input devices</h2>
+
+<p>Different mobile phones come with different mechanisms for inputting data, for example:</p>
+
+<ul>
+<li>Numerical keypads: The user taps the number keys repeatedly to get letters and symbols. Keys for alternative symbols or caps are usually available. It is comparable to a normal keyboard, though more cumbersome to type on. Certain number keys may be mapped to moving a virtual cursor or moving focus to activate-able elements of a Web page.</li>
+<li>QWERTY keyboards: Some mobiles come with full keyboards as used as on a desktop computer. The keys are smaller, making typing slightly more difficult than on a desktop.</li>
+<li>Menu controls and special keys: Phones have a range of menu keys and shortcut keys. Some, such as controls for the camera, are hardwired into the phone, but soft keys will take on different meanings in different applications. Others serve as shortcuts to particular applications such as the Web browser.</li>
+<li>Joysticks: Joysticks can either be used to control virtual cursors on the screen or navigate focusable elements on the web page or widget.</li>
+<li>Touch screens and styluses: Touch screens allow the user to point and click using a stylus or a finger. They also often give the user a virtual keyboard to touch or supply a way for the user to use handwriting to input text. At the same time, the mechanism has no concept of hovering or mouse overs.</li>
+</ul>
+
+<p>These input mechanisms can be mapped to three primary ways of interacting with a widget or Web page:</p>
+
+<ul>
+<li>Spatial navigation: Spatial Navigation is an Opera feature whereby each element available for activation is put into a collection. When the user moves a joystick or clicks specific keys, the focus is moved to the next element in the collection. This element is typically highlighted with a blue or black border. Links, form controls, and elements with <code>onclick</code> handlers are added to the collection.</li>
+<li>Virtual cursors: A virtual cursor is a cursor on the screen, usually controlled by a joystick. Moving the joystick in any direction moves the cursor. Such cursors could be controlled with the keypad as well.</li>
+<li>Touch screens: An element such as a link is activated when the user taps the relevant part of the screen with a finger or a stylus. As there is no notion of moving a cursor, hover effects are not available when using this method.</li>
+</ul>
+
+<p>These different characteristics, make it difficult to make a Web page or widget as usable on all variations of devices. Virtual cursors allow hovering effects when the user hits an important object on the page, while this will not work on touch screens. In both cases, large click surfaces make it easier for the user to navigate. This is even more important if the user is using his or her fingers on the touch screen, as this has less precision than a stylus.</p>
+
+<p>The keyboard on a mobile is often small or otherwise cumbersome to use. In some cases one can use the stylus on a virtual keyboard, but this is generally slower than typing on a desktop computer. As a result, developers should not require the user to have to input lots of text. Instead, one should turn text input into a list of selectable options or at least prefill the text fields with something sensible.</p>
+
+<p>This leads to the following recommendations:</p>
+
+<ul>
+<li><a href="../cross-device-development-techniques-for/index.html#uxsimple">Keep the widget simple</a>: Avoid clutter and too many choices in each view.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#uxclick">Offer larger click surfaces</a> to make clickable elements easy to hit with a low precision input method.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#uxtext">Enhance or replace text input</a> with autocompletion and lists of options.</li>
+<li>Use hover effects to improve usability and make it clear to the user what is activatable, <a href="../cross-device-development-techniques-for/index.html#uxhover">but do not rely only on such effects</a>.</li>
+</ul>
+
+<h2 id="screen">Small screen size, resolution, and varying DPI</h2>
+
+<p>Mobile screens are becoming larger and better but are still behind their desktop counterparts. Resolutions and DPI are typically quite high, which means images and pixel-sized elements that look normal on desktop may look tiny on a mobile. With TVs and set-top boxes, the challenge is to design for a big screen viewed from a distance, whereas with mobile phones it is more a case of designing for a small screen, viewed from half an arm’s length. This, combined with the use context of being on the move and needing information quickly, means mobile applications need to be laid out differently to desktop applications.</p>
+
+<p>This leads to the following recommendations:</p>
+
+<ul>
+<li><a href="../cross-device-development-techniques-for/index.html#layoutmq">Use the media type handheld for backward compatibility, but do not rely on it</a>.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#layoutmq">Use media queries to detect screen size and other screen capabilities</a> and tailor the layout.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#layoutfullscreen">Resize to fullscreen</a> if the widget doesn’t fit the screen.</li>
+<li><a href="../optimizing-opera-widget-graphics-for-mob/index.html#limit">Use a minimum amount of graphics</a>.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#effects">Optimize image compression and colors</a>.</li>
+</ul>
+
+<h2 id="power">Less power: CPU, memory, and battery</h2>
+
+<p>Hardware keeps getting smaller and more powerful, but mobiles are still generally weaker than PCs – they usually have weaker CPUs and less memory. This is also connected to the battery, which drains faster if the CPU is used a lot. Efficient code and good architecture becomes more important than on the desktop. Graphical effects create aesthetically pleasing widgets, but should be used sparringly on mobiles.</p>
+
+<p>This leads to the following recommendations:</p>
+
+<ul>
+<li><a href="../cross-device-development-techniques-for/index.html#arch-mvc">Use MVC, separate data from the view</a></li>
+<li><a href="../cross-device-development-techniques-for/index.html#arch-views">Rebuild views rather than hide and show them</a>.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#javascript-optimize">Optimize JavaScript code</a>.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#dom">Optimize DOM usage</a>.</li>
+<li><a href="../cross-device-development-techniques-for/index.html#effects-trans">Use transparency sparingly</a></li>
+</ul>
+
+<h2 id="connection">Slow and unstable internet connections</h2>
+
+<p>The following are some common properties of network connections on mobiles:</p>
+
+<ul>
+<li>Low bandwidth</li>
+<li>High latency</li>
+<li>Unstable connections</li>
+<li>Data transfer costs money</li>
+<li>Battery intensive</li>
+</ul>
+
+<p>Mobiles use a variety of ways to connect to the internet, ranging from GPRS to WiFi. Expect a mobile internet connection to be slower than the broadband connections with which computer users are familiar. Additionally, the connection may be unstable as the user moves in and out of cell coverage or chooses to temporarily disable the net connection altogether. The user is often paying for the downloaded data, which means one should strive for concise downloads. Furthermore, network activity is draining on the battery, which means that developers should aim for quick and rare connections, pooling together connections from different widgets if possible.</p>
+
+<p>This leads to the following recommendations:</p>
+
+<ul>
+<li><a href="../cross-device-development-techniques-for/index.html#network-concise">Ensure that data retrieved over XMLHttpRequest is as concise as possible</a>.</li>
+<li>Design for unstable connections: <a href="../cross-device-development-techniques-for/index.html#network-timeout">Handle timeouts in XMLHttpRequests</a>.</li>
+<li>Pool requests to avoid setting up and tearing down network connections frequently.</li>
+<li>Cache data sensibly, try to predict what the user will want to look at next, and avoid refetching data already viewed.</li>
+<li>Design for infrequent connections: <a href="../cross-device-development-techniques-for/index.html#network-timeout">Make the widget work offline</a>.</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="http://yuiblog.com/blog/2007/10/02/challenges-of-interface-design-for-mobile-devices/">Challenges of Interface Design for Mobile Devices</a></li>
+<li><a href="../cross-device-development-techniques-for/index.html">Cross-device development techniques for widgets</a></li>
+</ul>
+
+<ul class="seriesNav">
+<li><a href="../opera-widgets-sdk/index.html" rel="index">Opera Widgets SDK table of contents</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=233226">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, February 9, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/characteristics.html" rel="tag">characteristics</a></li>
+        <li><a href="../../tags/input.html" rel="tag">input</a></li>
+        <li><a href="../../tags/mobile.html" rel="tag">mobile</a></li>
+        <li><a href="../../tags/usability.html" rel="tag">usability</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

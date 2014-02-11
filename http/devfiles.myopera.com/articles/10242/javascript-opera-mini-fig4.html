@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Form Test</title>
+	<link rel="stylesheet" href="http://devfiles.myopera.com/articles/10242/s.css" media="screen">
+	<style media="screen">
+	     body{font-family:helvetica,arial,sans-serif;}
+	     p{margin:.5em;}
+	</style>
+</head>
+<body>
+<h1>Focus, change, and blur events in Opera Mini</h1>
+
+<p>Enter some text in the field below then submit the form.</p>
+
+	<form action="http://devfiles.myopera.com/articles/10242/form.php" method="post" id="form" enctype="application/x-www-form-urlencoded">
+	    <p>
+	        <label for="fielda">Field A</label>
+	        <input type="text" id="fielda" name="Field_A" value="">
+        </p>
+
+        <button type="submit">Send it!</button>
+	</form>
+<script>
+
+    var f = document.getElementById('form'),
+        a = document.getElementById('fielda');
+
+
+    eventhandler = function(e){
+        // e.preventDefault();
+        var node, p;
+        p = document.createElement('p');
+        node = document.createTextNode('A '+e.type+' event was triggered.');
+        p.appendChild(node);
+        document.body.appendChild(p);
+    }
+
+    f.addEventListener('submit', eventhandler, false);
+    a.addEventListener('focus', eventhandler,false);
+    a.addEventListener('blur', eventhandler,false);
+    a.addEventListener('change', eventhandler,false);
+    a.addEventListener('click', eventhandler,false);
+    a.addEventListener('mouseover',eventhandler,false);
+    a.addEventListener('mouseout', eventhandler,false);
+    a.addEventListener('mouseenter', eventhandler,false);
+    a.addEventListener('mouseleave', eventhandler,false);
+
+
+</script>
+</body>
+</html>

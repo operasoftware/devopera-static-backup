@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Dev.Opera articles</title>
+<link rel="alternate" href="http://dev.opera.com/" />
+<content>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</content>
+<rights>Opera Software ASA</rights>
+<updated>2013-10-18T12:15:10Z</updated>
+<entry>
+<title type="text">Creating game-style parallax scrolling: Zombie Edition</title>
+<link href="http://dev.opera.com/articles/view/creating-game-style-parallax-scrolling-zombie-edition" />
+<author>
+<name>Elli Bishop</name>
+</author>
+<content>Ready to enter the world of parallax scrolling websites? Yes, scrolling sites are absolutely everywhere. Sadly, sometimes they do little more than distract and disorient a user in an attempt to show off, but when done correctly, they can make the web a more exceptional place. At its best, parallax scrolling can help users explore content in an immersive and engaging way. </content>
+<id>http://dev.opera.com/articles/view/creating-game-style-parallax-scrolling-zombie-edition</id>
+<updated>2013-10-18T12:15:10Z</updated>
+</entry>
+<entry>
+<title type="text">Media Capture in mobile browsers</title>
+<link href="http://dev.opera.com/articles/view/media-capture-in-mobile-browsers" />
+<author>
+<name>Francesco Iovine</name>
+</author>
+<content>Media Capture is one of the most interesting features in web applications, especially for mobile devices. Surprisingly capturing media on the spot is quite a new thing for browsers in general, until recently always being delegated to browser plugins such as Flash or Silverlight. In this article we will explore how to use the Media Capture APIs, their compatibility across mobile browsers and the current state of the W3C specifications that define them.</content>
+<id>http://dev.opera.com/articles/view/media-capture-in-mobile-browsers</id>
+<updated>2013-09-26T12:13:11Z</updated>
+</entry>
+<entry>
+<title type="text">Getting to know mutation observers</title>
+<link href="http://dev.opera.com/articles/view/mutation-observers-tutorial" />
+<author>
+<name>Tiffany Brown</name>
+</author>
+<content>In this article, Tiffany Brown has a look at mutation observers, how they are different from mutation events, and how you can use them in your web applications.</content>
+<id>http://dev.opera.com/articles/view/mutation-observers-tutorial</id>
+<updated>2013-09-06T00:18:20Z</updated>
+</entry>
+<entry>
+<title type="text">CSS viewport units: vw, vh, vmin and vmax</title>
+<link href="http://dev.opera.com/articles/view/css-viewport-units" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>CSS viewport units allow us to size lengths on web pages relative to the viewport size, which has some interesting applications for responsive design. In this article we&#39;ll explore the fundamentals of this topic.</content>
+<id>http://dev.opera.com/articles/view/css-viewport-units</id>
+<updated>2013-07-03T09:08:21Z</updated>
+</entry>
+<entry>
+<title type="text">An introduction to CSS regions</title>
+<link href="http://dev.opera.com/articles/view/an-introduction-to-css-regions" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>CSS regions is a nascent CSS feature that provides a way for us to completely decouple our content from our layout, flowing specified content containers into layout containers to give us a lot of flexible power. This article provides a basic introduction to using regions and serving fallbacks to non-supporting browsers.</content>
+<id>http://dev.opera.com/articles/view/an-introduction-to-css-regions</id>
+<updated>2013-07-03T09:06:07Z</updated>
+</entry>
+<entry>
+<title type="text">Understanding 3D Transforms</title>
+<link href="http://dev.opera.com/articles/view/understanding-3d-transforms" />
+<author>
+<name>Tiffany Brown</name>
+</author>
+<content>In this article we&#39;ll dig in to 3D transforms in detail, looking at the fundamental differences between 3D and 2D transforms, the 3D transforms available, and some demos that show how these work.</content>
+<id>http://dev.opera.com/articles/view/understanding-3d-transforms</id>
+<updated>2013-06-12T06:55:33Z</updated>
+</entry>
+<entry>
+<title type="text">Better performance with requestAnimationFrame</title>
+<link href="http://dev.opera.com/articles/view/better-performance-with-requestanimationframe" />
+<author>
+<name>Luz Caballero</name>
+</author>
+<content>This article discusses how you can (and should) improve the performance of your animations, using the requestAnimationFrame API instead of the old setInterval/setTimeout methods, and how requestAnimationFrame is used.</content>
+<id>http://dev.opera.com/articles/view/better-performance-with-requestanimationframe</id>
+<updated>2013-06-12T06:54:44Z</updated>
+</entry>
+<entry>
+<title type="text">Animating flexboxes: the lowdown</title>
+<link href="http://dev.opera.com/articles/view/animating-flexboxes-the-lowdown" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>In this article, Chris Mills explores what can be achieved by using animations and transitions — along with a little JavaScript — in conjunction with Flexbox.</content>
+<id>http://dev.opera.com/articles/view/animating-flexboxes-the-lowdown</id>
+<updated>2013-04-17T09:29:56Z</updated>
+</entry>
+<entry>
+<title type="text">Advanced cross-browser flexbox</title>
+<link href="http://dev.opera.com/articles/view/advanced-cross-browser-flexbox" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>The CSS Flexible box module level 3 brings with it a lot of power and some very exciting possibilities for web development, allowing us to put together complex site layouts easily and rapidly, and dispensing with some of the illogical hacks and kludges that we&#39;ve traditionally used. In this article Chris Mills goes beyond the basics, showing some more interesting uses of flexbox, and how Modernizr can be employed to serve different styles to browsers with differing levels of flexbox support to provide the best level of cross browser support available.</content>
+<id>http://dev.opera.com/articles/view/advanced-cross-browser-flexbox</id>
+<updated>2013-04-10T12:45:35Z</updated>
+</entry>
+<entry>
+<title type="text">Adding Geolocation metadata, with microformats, datasets, microdata and RDFa Lite</title>
+<link href="http://dev.opera.com/articles/view/geolocation-html-api" />
+<author>
+<name>karlcow</name>
+</author>
+<content>In September 2011, I needed to mark up location data in an HTML document and it became more complicated than I initially thought it would be. I started to think about this topic again recently and explored some possibilities. In this article I will share my findings, looking at how I used microformats, datasets, microdata and RDFa Lite to mark up this data, and discussing what the best option might be.</content>
+<id>http://dev.opera.com/articles/view/geolocation-html-api</id>
+<updated>2013-01-16T10:12:15Z</updated>
+</entry>
+</feed>

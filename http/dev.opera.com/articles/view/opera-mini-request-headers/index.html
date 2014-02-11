@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Mini request headers - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Mini request headers</h1>
+      <p class="print author">By Opera Software</p>
+
+      <h2 id="introduction">Introduction</h2>
+
+<p>Opera Mini uses a number of custom, unregistered HTTP headers. Most of these are specific to Mini, and are sent in addition to the regular HTTP headers sent by Opera on any platform. The purpose of these headers is to give site owners information about the user&#39;s handset and its capabilities/features.</p> 
+
+<h2>User-Agent</h2>
+
+<p>The User-Agent header contains the browser <abbr title="User Agent">UA</abbr> string information, divided up into tokens. To start with, here is an example of an User-Agent header:</p>
+
+<pre><code>User-Agent: Opera/9.80 (J2ME/MIDP; Opera Mini/6.1.25378/25.692; U; en)
+Presto/2.5.25 Version/10.54</code></pre>
+
+This is broken up into tokens, as follows:
+
+<pre><code>User-Agent: Opera/9.80 ($PLATFORM_NAME$; $PRODUCT_NAME$/$CLIENT_VERSION$/
+$SERVER_VERSION$;U; $LOCALE$) $PRESTO_VERSION$ $EQUIV_DESKTOP_VERSION$</code></pre>
+
+<p>The tokens are as follows:</p>
+
+<h3>$PLATFORM_NAME$</h3>
+
+<p><code>$PLATFORM_NAME$</code> contains the name of the platform on which the client is running. It can be one of the following:</p>
+
+<ul>
+  <li>Android</li>
+  <li>BlackBerry</li>
+  <li>BREW</li>
+  <li>J2ME/MIDP</li>
+  <li>iPhone</li>
+  <li>iPad</li>
+  <li>MTK</li>
+  <li>Series 60</li>
+  <li>Windows Mobile</li>
+</ul>
+
+<h3>$PRODUCT_NAME$</h3>
+
+<p><code>$PRODUCT_NAME$</code> contains the name of the product, which is always <code>Opera Mini</code>.</p>
+
+<h3>$CLIENT_VERSION$</h3>
+
+<p><code>$CLIENT_VERSION$</code> contains the version number of the Opera Mini client being used.</p>
+
+<h3>$SERVER_VERSION$</h3>
+
+<p><code>$SERVER_VERSION$</code> contains the version number of the transcoder being used on the Opera Mini server.</p>
+
+<h3>$LOCALE$</h3>
+
+<p><code>$LOCALE$</code> contains the language code for the locale of the current Opera Mini client, for example <code>en</code> for English.</p>
+
+<h3>$PRESTO_VERSION$</h3>
+
+<p><code>$PRESTO_VERSION$</code> contains the version number of the Presto rendering engine being used by the transcoder on the Opera Mini server.</p>
+
+<h3>$EQUIV_DESKTOP_VERSION$</h3>
+
+<p><code>$EQUIV_DESKTOP_VERSION$</code> contains an indication of the equivalent desktop version. This was added to provide a similar UA syntax to desktop, rather than indicate capabilities, so it is not to be used for definite capability detection .</p>
+
+<h2 id="x-operamini-features">X-OperaMini-Features</h2>
+
+<p>This header contains a comma-separated list of features supported by the phone. This can be used for capability detection before serving content.</p>
+
+<h3>Format</h3>
+
+<pre>X-OperaMini-Features: &lt;feature&gt; *[ , &lt;feature&gt; ]</pre>
+
+<h3>Example</h3>
+
+<pre>X-OperaMini-Features: advanced, camera, folding, secure</pre>
+
+<h3>Possible values</h3>
+
+<ul>
+
+<li><code>advanced</code> (Opera Mini 4 and later): The client is the MIDP 2 version of Mini (also referred to as the high memory version). See the <a href="http://www.operamini.com/help/faq/" alt="The Opera Mini FAQ page">Opera Mini FAQ page</a> for a description of the differences between the MIDP1 and MIDP2 versions of Opera Mini.</li>
+
+<li><code>basic</code>: the client is the MIDP 1 version of Mini (also referred to as the low memory version).</li>
+
+<li><code>camera</code> (Opera Mini 3 and below): Camera support detected. The user will be able to upload a photo when Mini encounters a file input element (<code>&lt;input type=&quot;file&quot;&gt;</code><code>).</code></li>
+
+<li><code>download</code> (Opera Mini 4 and later): The device supports native downloading.</li>
+
+<li><code>file_system</code> (Opera Mini 4 and later): File system support detected. The user will be able to save files on the device that are not handled natively by Opera Mini, and upload files when Mini encounters a file input element (<code>&lt;input type=&quot;file&quot;&gt;</code><code>).</code></li>
+
+<li><code>folding</code>: Content folding is supported and enabled.</li>
+
+<li><code>routing</code>: Means that the client is able to send traffic to different transcoders based on client side rules. This is used in different operator integrations like zero rated traffic to specific domains.</li>
+
+<li><code>secure</code>: The connection between Mini&#39;s client and proxy server is encrypted. All versions of Mini support SSL encryption between proxy server and web server, but only 3.0 and later supports client to proxy encryption.</li>
+
+<li><code>skindownload</code> (Opera Mini 4 only): The Opera Mini version can download new skins 
+
+<li><code>touch</code>: The device is a touchscreen device.</li>
+
+<li><code>viewport</code>: The Opera Mini version supports viewport, which allows web developers to specify optimized rendering information for mobile browsers. For more information on this feature, read <a href="../an-introduction-to-meta-viewport-and-viewport/index.html">An introduction to meta viewport and @viewport</a>by Andreas Bovens.</li>
+
+</li></ul>
+
+<h2 id="x-operamini-phone-ua">X-OperaMini-Phone-UA</h2>
+
+<p>This header contains the user-agent string of the client that downloaded the <code>.jad</code> file (if available - otherwise it contains the user-agent reported to the client by the device.) If this information is not known to us at all, the value is often reported as <code>?</code>.</p>
+
+<p class="note">Note that this header is only present if we have some reasonable evidence that our data is true.</p>
+
+
+<h3>Format</h3>
+
+<pre>X-OperaMini-Phone-UA: &lt;user-agent&gt;</pre>
+
+<h3>Example</h3>
+
+<pre>X-OperaMini-Phone-UA: SonyEricssonK750i/R1AA Browser/
+SEMC-Browser/4.2 Profile/MIDP-2.0 Configuration/CLDC-1.1</pre>
+
+<h2 id="x-operamini-phone">X-OperaMini-Phone</h2>
+
+<p>This contains the manufacturer and model name/number of the device, provided the device makes this information available to Opera Mini. If this information is not known to us, the value is often reported as <code>?</code>.</p>
+
+<p class="note">Note that this header is only present if we have some reasonable evidence that our data is true.</p>
+
+<h3>Format</h3>
+
+<pre>X-OperaMini-Phone: &lt;manufacturer&gt; # &lt;model&gt;</pre>
+
+<h3>Example</h3>
+
+<pre>X-OperaMini-Phone: SonyEricsson # K750i</pre>
+
+<h2 id="x-forwarded-for">X-Forwarded-For</h2>
+
+<p>This contains a comma-separated list of the proxy servers the request has passed on its way from the device to the Mini proxy. The first item in the list that is not an internal IP will always be the IP address that connects to the Mini proxy, hence it is the most reliable source of information about the origin of the request, and is suitable for geolocation etc.</p>
+
+<h3>Format</h3>
+
+<pre>X-Forwarded-For: &lt;IP address&gt; *[ , &lt;IP address&gt; ] </pre>
+
+<h3>Example</h3>
+
+<pre>X-Forwarded-For: 127.0.0.1, 192.168.0.100, 195.189.143.147, 130.236.236.80</pre>
+ 
+<p>In this case, 195.189.143.147 is the IP address that connects to the Mini proxy, as it is the first item in the list which is not an internal IP address.</p>
+
+<h2 id="accept-language">Accept-Language</h2>
+
+<p><code>Accept-Language</code> specifies what language(s) the browser would prefer the response to be written in. You can specify multiple languages in a comma-delimited list using standard language tags, and each language can be given a quality value that indicates the user&#39;s ability in those languages (this value defaults to 1 if not specified, which is the highest - the values range from 0 to 1.) For example, the actual example given at the bottom of this section means &quot;I&#39;d prefer to be sent old (bokmal) or new Norwegian, but I am also pretty good at English...I&#39;ll also try French if you&#39;ve not got the other two languages available, but I&#39;m not very good at that.&quot; If <code>Accept-Language</code> is not specified, then the server should assume that all languages are acceptable to the user.</p>
+
+<h3>Format</h3>
+
+<pre>Accept-Language: &lt;language tag&gt; [;q=&lt;quality value&gt;], ...</pre>
+
+<h3>Example</h3>
+
+<pre>Accept-Language: no-bok, no-nyn, en;q=0.8, fr;q=0.4</pre>
+
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=1084762">My Opera</a>.</p>
+  <ul>
+    <li id="comment-78064322">
+      <a href="../../../author/defza.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ea/859/4f33a042d425cc20a2124cabb6189fcc57d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/defza.html">David</a></p>
+      <p class="commentdate">Wednesday, December 21, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>There is one feature not mentioned here, &#39;routing&#39;, what does that value represent? Routing to another data centre? Or routing via a known proxy like blackberry&#39;s BIS?</section>
+    </li>
+    <li id="comment-86889552">
+      <a href="../../../author/moparisthebest.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/ce2/5a15809c610d97e1262b8e2786836428eb6." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/moparisthebest.html">moparisthebest</a></p>
+      <p class="commentdate">Monday, April 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>No one can trust the contents of &#39;X-Forwarded-For&#39; if you don&#39;t give us a list of IP ranges to trust that header from.  For example, this is what CloudFlare (a reverse proxy) gives us:<br/><a href="https://www.cloudflare.com/wiki/What_are_the_CloudFlare_IP_address_ranges" target="_blank">https://www.cloudflare.com/wiki/What_are_the_CloudFlare_IP_address_ranges</a><br/><br/>In addition, we also need a header containing exactly what the user&#39;s IP would have been if not for connecting through Opera&#39;s browser, so that we can set up our web servers to display and use the correct IP, like so:<br/><a href="http://www.cloudflare.com/wiki/Lighttpd" target="_blank">http://www.cloudflare.com/wiki/Lighttpd</a><br/><br/>This would enable website hosts to treat opera mini users the exact same as any other user, the way it is now, if a malicous user uses opera mini, they might get an opera mini server banned, resulting in the banning of many legitimate users.<br/><br/>Could anything like this be implemented?</section>
+    </li>
+    <li id="comment-104352432">
+      <a href="../../../author/javadepro.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b4/526/88cf34f8469237e3fcf2c29ae751227387f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/javadepro.html">javadepro</a></p>
+      <p class="commentdate">Tuesday, February 26, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi,<br/>    I am having problem with detecting MSISDN with opera-mini mobile. Where can I find the solution? I have looked into request Headers but it doesn&#39;t contain any field named like &quot;msisdn&quot;...   How to detect it?? Please provide me the solution!! </section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, August 29, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/headers.html" rel="tag">headers</a></li>
+        <li><a href="../../tags/HTTP.html" rel="tag">HTTP</a></li>
+        <li><a href="../../tags/Opera&#32;Mini.html" rel="tag">Opera Mini</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

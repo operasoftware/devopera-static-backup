@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Simple transform skew example</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+        	h1 {
+	 			font:  18px "Helvetica Neue", arial, sans-serif;
+			}
+        	
+        	p {
+				border: 1px dashed silver;
+				padding: 0.5em;
+				border-radius: 0.5em;
+				font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+				background-color: rgb(254, 250, 218);
+				max-width: 44em;
+			}
+    	    div {
+    		    background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+    		    -o-transform: skew(10deg, 20deg); -webkit-transform: skew(10deg, 20deg);
+    		    transform: skew(10deg, 20deg);	    
+            }
+      </style>
+  </head>
+  <body>
+  		<h1>Simple CSS transform example using the skew transform function</h1>
+  		<p>The <code>div</code> element below is skewed 10 degree on the X axis and 20 degrees on the Y axis. This is performed using <code>-o-transform: skew(10deg, 20deg);</code>. It is skewed around the centre point of the element.</p>
+  		<div></div>
+  </body>
+</html>

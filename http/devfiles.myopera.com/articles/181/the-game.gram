@@ -1,0 +1,40 @@
+#ABNF 1.0 utf-8;
+
+language en;
+mode voice;
+tag-format <semantics/1.0>;
+root $command;
+
+$src_shapes =
+	object   {$ = -1;} |
+	circle   {$ =  0;} |
+	square   {$ =  1;} |
+	triangle {$ =  2;};
+
+$src_colors =
+	red    {$ = 0;} |
+	yellow {$ = 1;} |
+	blue   {$ = 2;};
+
+$dest_shapes = $src_shapes {$ = $$;};
+$dest_colors = $src_colors {$ = $$;};
+
+/*
+
+Just a reminder:
+$rule_name = [optional] tokens [the] (user | visitor) can say
+  [and] (repeat)<2-4> [of course] you can also
+  $reference $<external.gram> files;
+
+$rule_name2 = anything {$ = "this is semantic interpretation tag, which is
+  actually ECMAScript";};
+
+*/
+
+// root rule
+public $command = change [the]
+    [$src_colors  {$.src_color  =  $src_colors;}]
+	[$src_shapes  {$.src_shape  =  $src_shapes;}] to [a]
+	[$dest_colors {$.dest_color = $dest_colors;}]
+	[$dest_shapes {$.dest_shape = $dest_shapes;}];
+

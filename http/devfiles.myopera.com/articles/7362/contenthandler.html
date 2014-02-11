@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<title>Cheeseburgers</title>
+<style>
+h1 {font-family: Helvetica, sans-serif;text-align:center;font-size:4em;}
+a {text-decoration:none}
+</style>
+<h1><a href="http://devfiles.myopera.com/articles/7362/single.cheeseburger">Cheeseburger</a></h1>
+<h1><a href="http://devfiles.myopera.com/articles/7362/double.cheeseburger">Double Cheeseburger</a></h1>
+<script>
+  if (navigator.registerContentHandler){
+    navigator.registerContentHandler("text/x-cheeseburger", "cb.html?cb=%s", "Cheeseburger Parser");
+  }
+</script>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera TV Store 向けアプリケーションの構築 - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in TV - RSS 2.0 Feed" href="../../../feeds/rss/articles/tv">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in TV - Atom 1.0 Feed" href="../../../feeds/atom/articles/tv">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="tv">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>Opera TV Store 向けアプリケーションの構築</h1>
+      <p class="print author">By Go Uehiro</p>
+
+      <ul class="toc">
+<li><a href="index.html#introduction">はじめに</a></li>
+<li><a href="index.html#building">アプリケーションの構築</a></li>
+<li><a href="index.html#requirements">Opera TV Store アプリケーションに特化した要件</a>
+<ul>
+<li><a href="index.html#requirements-resolution">解像度</a></li>
+<li><a href="index.html#requirements-api">Opera TV Store API</a></li>
+<li><a href="index.html#requirements-navigation">ナビゲーションと機能キー</a></li>
+<li><a href="index.html#requirements-closing">アプリケーションの終了</a></li>
+<li><a href="index.html#requirements-limitations">現在の実装における制限</a></li>
+</ul></li>
+<li><a href="index.html#submitting">Opera TV Store への提出</a></li>
+</ul>
+
+<h2 id="introduction">はじめに</h2>
+
+<p>Opera TV Store は、Opera が審査を行い提供する、テレビ専用の Web アプリケーションのカタログです。開発者はこのポータルを通して、開発したアプリケーションの提出と共有を行えます。ポータルはストアフロント（Web ベースのアプリケーション）によりエンドユーザーにアプリケーションを提示し、ユーザーはアプリケーションに素早く簡単にアクセスすることができます。</p>
+
+<div>
+  <img src="../../../../devfiles.myopera.com/articles/8352/sample-views.png" alt="Opera TV Store およびアプリケーションのサンプル" />
+  <p class="caption">Opera TV Store および天気予報アプリケーションのサンプル</p>
+</div>
+
+<p>Opera TV Store のアプリケーションはダッシュボードでは静的なサムネイル画像として表示されます。ユーザーは TV Store カタログをブラウズして、好きなアプリケーションをインストールし、ダッシュボードに追加することができます。アプリケーションを選択すると、フルスクリーンモードで表示されます。</p>
+
+<div>
+  <img src="../../../../devfiles.myopera.com/articles/8352/architecture.png" alt="Opera TV Store アーキテクチャダイアログ" />
+  <p class="caption">Opera TV Store のアーキテクチャの概要</p>
+</div>
+
+<p>フルスクリーンで表示された Web アプリケーションは Opera のサーバーにより直接提供されているわけではありません。Opera TV Store は、アプリケーションの URL が参照可能なディレクトリとしてのみ機能します。</p>
+
+<h2 id="building">アプリケーションの構築</h2>
+
+<p>Opera TV Store 向けのアプリケーションは本質的には一般的な Web アプリケーションであり、ユーザーのテレビ上のカスタマイズされた <a href="http://www.opera.com/business/devices/">Opera Devices SDK</a> のブラウジング環境によりレンダリングされます。このため、開発者は Opera ブラウザでサポートされている従来の Web テクノロジー（HTML5、CSS 3、JavaScript、SVG）をすべて利用できます。詳細に関しては、<a href="http://www.opera.com/docs/specs/">Opera でサポートされる Web 仕様</a>（特に <a href="http://www.opera.com/docs/specs/productspecs/">Opera の各製品におけるサポートの比較</a>）のドキュメントを参照してください。</p>
+
+<p>Opera Devices SDK は、デスクトップ版 Opera ブラウザと同じコアレンダリングをベースとしていますが、プラットフォーム特有の API があり、微妙なインテグレーションの違いがあります。このため開発者の方々には、Opera TV Store が動作する実際のテレビ上で（また / あるいは <a href="http://www.opera.com/developer/tools/">Opera TV Emulator</a> を使用して）開発しているアプリケーションをテストされることをお勧めします。</p>
+
+<p>テレビ向けの Web コンテンツの開発には、ユーザー操作における違いから、デバイスの機能やパフォーマンスの最適化の考慮まで、さまざまな取り組みが伴います。必要とされる調整や技術に関しては、<a href="../creating-web-content-for-tv/index.html">テレビ向け Web コンテンツの作成</a> および <a href="../../../tv/index.html">TV セクション</a> 内の各記事をご覧ください。</p>
+
+<h2 id="requirements">Opera TV Store アプリケーションに特化した要件</h2>
+
+<p>アプリケーションの Opera TV Store への実装方法、また Opera TV Store からの起動方法により、以下の要件について留意する必要があります。</p>
+
+<h3 id="requirements-resolution">解像度</h3>
+<p>TV Store アプリケーションは、1280×720 の解像度をサポートすること。そのほかの一般的なテレビの解像度（1920×1080、960×540）は現在サポートされていません。TV Store のブラウザ自体は通常のスクロールをサポートしますが、アプリケーションはスクロールの必要性がないようにデザインしなければなりません。また場合によっては、アイテムやコンテンツの長いリストを表示する独自のメカニズムを提供する必要があります。</p>
+
+<h3 id="requirements-api">Opera TV Store API</h3>
+<p>TV Store アプリケーションは Opera TV Store API を使用しなければなりません。API には <em>リモートコントロールの機能キー</em> を使用しやすくしたり、<em>アプリケーションの終了</em> のコントロールを提供するヘルパー機能が含まれています。この API は、以下の <code>script</code> 要素を含めることで簡単にアプリケーションに追加できます。</p>
+<pre><code>&lt;script src=&quot;https://apps.tvstore.opera.com/js-api/api.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+<h3 id="requirements-navigation">ナビゲーションと機能キー</h3>
+<p>Opera TV Store は、リモートコントロールにある基本的な 4 方向キーを空間ナビゲーションに使用するようにデザインされています。アプリケーションが Opera TV Store ブラウザに組み込まれたデフォルトの空間ナビゲーションを使用して問題なく機能するかどうかをテストしてください。また、アプリケーション作成者は、リモートコントロールでのキー操作を取得し、アプリケーションのナビゲーションをアプリ側でハンドリングするようにすることもできます。リモートコントロールの機能キーのキーコードはデバイスによって異なるため、Opera TV Store ブラウザはあらかじめ組み込まれた定数（TV Store を実行できるデバイス向けにカスタマイズされた）を提供しています。詳細に関しては、<a href="../functional-key-handling-in-opera-tv-store-applications/index.html">Opera TV Store アプリケーションでの機能キーのハンドリング</a> の記事をご覧ください。</p>
+
+<h3 id="requirements-closing">アプリケーションの終了</h3>
+<p>アプリケーションがダッシュボードから起動すると、新しいウィンドウにフルスクリーンモードで表示されます。Opera TV Store ブラウザ（Opera Devices SDK をベースとし、アプリケーションと TV Store 自体のレンダリングを担う）は、ユーザーに対して標準のインターフェイス要素を提示することはなく、アドレスバーや「戻る」ボタンなどのクロームが一切ないブラウザとして実行されます。ユーザーはリモートコントロールの <em>終了</em> および/あるいは <em>戻る</em> キーを通してアプリケーションを終了したり、ダッシュボードに戻ることができます。必須ではありませんが、Opera TV Store API の一部として提供されているカスタムの <code>opera.app.close()</code> メソッドを使用して、アプリケーションを終了するための明示的なオプションやボタンを提供することを推奨します。</p>
+
+<h3 id="requirements-limitations">現在の実装における制限</h3>
+
+<p>現在市場に出回っている Opera TV Store を搭載するデバイスには、メーカーが一定の機能をどのようにデバイスに実装したか、また、使用されている TV Store ソフトウェアのバージョンにより、いくつかの制限があります。</p>
+<ul>
+<li><a href="../dom-access-control-using-cross-origin-resource-sharing/index.html">CORS （クロスオリジンリソースシェアリング）</a> サポートの不足： アプリケーションが CORS に依存している場合（特に <code>XMLHttpRequest</code> を使用している場合）、他のドメインからのリソースをリレーするには、ある形式のプロキシをアプリケーションの元のドメインに実装する必要があります。</li>
+<li>一定のデバイスでは外部のメディア再生フレームワークがインテグレートされているため、複数の <code>audio</code> あるいは <code>video</code> 要素の同時再生は保証されない場合があります。</li>
+</ul>
+
+<h2 id="submitting">Opera TV Store への提出</h2>
+
+<p>アプリケーションが完成しましたら、Opera TV Store に提出することができます。<a href="http://publish.tvstore.opera.com/">Opera TV Store - Submission portal</a> にアクセスし、ダイアログに表示される手順に従ってください。</p>
+<p class="note">この記事は Opera TV Store 向けのアプリケーションに求められる最重要のガイドラインについてまとめたものです。詳しい制限や要件は、<strong>acceptance criteria （承認基準）</strong> / <a href="https://publish.tvstore.opera.com/guidelines/">Opera TV Store application publishing guidelines</a> を参照してください。アプリケーションを提出する前に、これらの基準を満たしているか、また記事内の実践方法や提案に沿って作成されているかを必ず確認してください。</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/mopera.html" rel="author">Go Uehiro</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, July 27, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/opera&#32;tv&#32;store.html" rel="tag">opera tv store</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../building-applications-for-the-opera-tv-store/index.html">English</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

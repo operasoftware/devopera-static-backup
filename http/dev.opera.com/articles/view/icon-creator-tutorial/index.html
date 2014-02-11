@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Icon Creator tutorial - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Widgets - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/widgets">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Widgets - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/widgets">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="widgets">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Icon Creator tutorial</h1>
+      <p class="print author">By Opera Software</p>
+
+        <p>Table of contents:</p>
+
+  <ul>
+    <li><a href="index.html#introduction">Introduction</a></li>
+    <li><a href="index.html#getting-started">Getting started</a>
+      <ul>
+        <li><a href="index.html#ready-motif">Example 1: Creating an icon with a ready-made motif</a></li>
+        <li><a href="index.html#load-from-file">Example 2: Loading a motif from a file</a></li>
+        <li><a href="index.html#load-from-picture">Example 3: Creating an icon from a picture</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#adding">Adding icons to your widget</a></li>
+    <li><a href="index.html#summary">Summary</a></li>
+  </ul>
+
+  <h2 id="introduction">Introduction</h2>
+
+  <p>There are many tasks in web development that are tedious and time consuming but absolutely essential to ensure that the product comes across as professional and looks finished. Icon creation is one of them. An application with a badly-designed icon will look amateurish to its potential users, no matter how fantastic the underlying functionality is.</p>
+
+  <p>This is never more true than in the case of Opera widgets. Not only are icons displayed in a number of important places (status bars, managers, widget lists), creating that all-important first impression about your widget, but a good icon is also a major criteria for acceptance at <a class="external" href="http://widgets.opera.com/">widgets.opera.com</a>.</p>
+
+  <p>That&#39;s right. No icon or a bad icon = no acceptance.</p>
+
+  <p>The <a href="http://widgets.opera.com/widget/17371/">Icon Creator</a> has been created to ease the pain of creating widget icons, saving you a lot of time whether you are a graphic designer or a developer. Even better, the Icon Creator is itself a widget, meaning it&#39;s easy to install and use.</p>
+
+  <p class="note">Note: there is a <a class="internal" href="../custom-opera-widget-icons/index.html">widget icon tutorial</a> available which describes how to make a widget icon based on ready-made templates. This is a useful reference but there is still a certain amount of graphic design skill and work needed when going down this route. The Icon Creator widget abstracts a lot of that work away from you.</p>
+
+  <h2 id="getting-started">Getting started</h2>
+
+  <p>The application is really simple and straightforward — see Figure 1 for an overview of the UI.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/1701/startup0.png" alt="Icon Creator startup window" /></p>
+
+    <p class="comment">Figure 1: The start-up window of the Icon Creator.</p>
+
+  <p>In the following sections I&#39;ll go through two real-world examples that will cover most of its functionality. Let&#39;s begin — first of all I&#39;d like you to <a href="http://widgets.opera.com/widget/17371/">download and install the Icon Creator</a>. Keep it open as you read through the rest of the article.</p>
+
+  <h3 id="ready-motif">Example 1: Creating an icon with a ready-made motif</h3>
+
+  <p>There are some pre-installed motifs included in the Icon Creator. The cogwheel you see when you open the application is just one of them. See the arrow button lurking on the left hand side of Figure 1 (<img src="../../../../devfiles.myopera.com/articles/1701/arrow000.png" alt="right-pointing arrow button that opens the pre-installed motifs panel" style="vertical-align: bottom;" />)? Click it to have the pre-installed motifs slide into view, as seen in Figure 2.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/1701/motifs00.png" alt="Icon Creator pre-installed motifs" /></p>
+
+    <p class="comment">Figure 2: Pre-installed motifs.</p>
+
+  <p>When you&#39;ve chosen one you like, you can save your icon in different sizes using the <em>Export</em> buttons on the right of the Icon Creator (see Figure 3). Icons are saved in <code>.png</code> format.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/1701/export.png" alt="The icon export buttons" /></p>
+
+    <p class="comment">Figure 3: The icon export buttons.</p>
+
+    <p>You can also easily alter the widget&#39;s background color and motif/symbol color, turn background gradients on and off, and select from four overall icon styles using the controls shown in Figure 4.</p>
+
+    <p><img src="../../../../devfiles.myopera.com/articles/1701/toolbar.png" alt="The main icon toolbar" /></p>
+
+    <p class="comment">Figure 4: The main icon toolbar.</p>
+    
+    <p>First of all, try clicking on the color controls to the right of the <q>Bg color</q> text — these will allow you to change the color of the icon background — see Figure 5 for an example. Figure 5 also illustrates the difference that the <em>Use BG gradient</em> checkbox makes. 
+
+ <p><img src="../../../../devfiles.myopera.com/articles/1701/icon_gre.png" alt="widget icon with gradient" />
+
+    <img src="../../../../devfiles.myopera.com/articles/1701/icon_grf.png" alt="widget icon with no gradient" /></p>
+
+    <p class="comment">Figure 5: Icons usually look better <em>with</em> a background gradient.</p>
+
+    <p>There are three ways you can define a new color:</p>
+
+  <ul>
+    <li>Choose one of the predefined colors in the toolbar.</li>
+    <li>Type the color in hex format in the input box.</li>
+    <li>Use the color picker that pops up when you click or focus on the input box.</li>
+  </ul>
+
+<p>Now try clicking on the <q>Symbol color</q> text — this will result in the color controls for the symbol/motif being displayed, as seen in in Figure 6.</p>
+
+   <p><img src="../../../../devfiles.myopera.com/articles/1701/toolbar_alt.png" alt="The main icon toolbar with Symbol color controls displayed" /></p>
+
+    <p class="comment">Figure 6: The main icon toolbar with Symbol color controls displayed.</p>
+
+   <p>These controls work just the same as the background color controls. Altering them results in a change in the color of the symbol/motif, as seen in Figure 7.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/1701/icon_grf.png" alt="widget icon with gradient" />
+
+    <img src="../../../../devfiles.myopera.com/articles/1701/icon_symbolcolor.png" alt="widget icon with gradient and changed symbol color" /></p>
+
+    <p class="comment">Figure 7: Changing the icon symbol color.</p>
+
+    <p>At this point, take a minute or two to have a play with these controls before moving on. You&#39;ll find them pretty intuitive and easy to grasp.</p>
+
+  <h3 id="load-from-file">Example 2: Loading a motif from a file</h3>
+
+  <p>This is all well and good, but it is likely that you won&#39;t want to use one of our preset motifs. You might already have your own brand icon to use, or maybe you&#39;ve found a free one online that suits your widget. I&#39;m not a great designer myself, so I&#39;m going to take advantage of the fantastic <a href="http://openiconlibrary.sourceforge.net/">Open Icon Library</a>. I particularly liked the icon shown in Figure 6.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/1701/applicat.png" width="128" height="128" alt="motif example" /></p>
+
+    <p class="comment">Figure 6: Example motif from the Open Icon Library.</p>
+
+  <p>Let&#39;s make a widget icon from this (feel free to use one of your own icons if you prefer). Click the <em>Open Image</em> button in the top right of the Widget Icon Creator interface and select your chosen icon image file in the file chooser dialog box that pops up.</p>
+
+  <p>The moment your image is opened, your icons will be created in the preview section of the interface, ready to be saved! Their dimensions are set to the four commonly used sizes seen in Figure 7: 128 x 128, 64 x 64, 32 x 32 and 16 x 16 pixels.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/1701/icon_128.png" width="128" height="128" alt="sample 128 by 128 pixel icon" />
+    <img src="../../../../devfiles.myopera.com/articles/1701/icon_640.png" width="64" height="64" alt="sample 64 by 64 pixel icon" />
+    <img src="../../../../devfiles.myopera.com/articles/1701/icon_320.png" width="32" height="32" alt="sample 32 by 32 pixel icon" />
+    <img src="../../../../devfiles.myopera.com/articles/1701/icon_160.png" width="16" height="16" alt="sample 16 by 16 pixel icon" /></p>
+
+    <p class="comment">Figure 7: Icon previews, ready to be saved.</p>
+
+    <p>Again, have a go at defining different icon styles using the available controls. When you&#39;re done, save your icons to somewhere suitable on your hard disk again using the <em>Export</em> buttons.</p>
+
+  <h3 id="load-from-picture">Example 3: Creating an icon from a picture</h3>
+
+  <p>What if you can&#39;t find a motif that satisfies you? What if you want your icon to be more unique? You can use any picture you like — just load it into the Widget Icon Creator using the <em>Open image</em> button as in the previous example (the icon creator supports <code>.png</code>, <code>.jpg</code>, <code>.gif</code> and <code>.tiff</code> images).</p>
+
+  <p>I chose a photo by <a class="external" href="http://www.freedigitalphotos.net/images/view_photog.php?photogid=345">Carlos Porto</a> that he kindly published on the <a class="external" href="http://www.freedigitalphotos.net/">http://www.freedigitalphotos.net</a> site — see Figure 8.</p>
+
+  <p><img src="../../../../devfiles.myopera.com/articles/1701/screensh.png" width="600" height="493" alt="Widget Icon Creator screenshot" /></p>
+
+  <p class="comment">Figure 8: Making an icon from a custom picture.</p>
+
+  <p>One important tool we haven&#39;t yet covered is the crop square — this is the dashed square with the small white boxes (handles) at regular intervals around its edge, as seen in Figures 1, 2, and 8. This lets you grab exactly the part of the image you want to use for your icon. It has two functions:</p>
+
+  <ul>
+    <li>You can move the crop square around the image by holding down the left mouse button inside the square and dragging it.</li>
+    <li>You can resize the crop square by holding down the mouse button over any of the white handles around the edge and dragging.</li>
+  </ul>
+
+  <p class="note">Note that unless your picture uses transparency, background tools (color and gradient) will have no effect.</p>
+
+  <h2 id="adding">Adding icons to your widget</h2>
+
+  <p>In order for your widget to use the icons you&#39;ve made, you need to put them in your widget package and add their paths to the <code>&lt;widget&gt;</code> element in your <code>config.xml</code> file:</p>
+
+  <pre><code>&lt;widget&gt;
+    ...
+    &lt;icon&gt;icons/128_widget_icon_mywidget.png&lt;/icon&gt;
+    &lt;icon&gt;icons/64_widget_icon_mywidget.png&lt;/icon&gt;
+    &lt;icon&gt;icons/32_widget_icon_mywidget.png&lt;/icon&gt;
+    &lt;icon&gt;icons/16_widget_icon_mywidget.png&lt;/icon&gt;
+    ...
+  &lt;/widget&gt;</code></pre>
+
+  <h2 id="summary">Summary</h2>
+
+  <p>So that&#39;s it — our tour of the Icon Creator has come to an end. I hope you found it useful. There are only two things I&#39;d like to re-emphasize:</p>
+
+  <ul>
+     <li>It&#39;s very important for your widget to have proper icons.</li>
+     <li>The Icon Creator helps you make nice icons even if you&#39;re no graphic designer.</li>
+  </ul>
+
+  <p>So, no excuses any more! See you at <a class="external" href="http://widgets.opera.com/">widgets.opera.com</a>.</p></p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=557161">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, May 5, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/icons.html" rel="tag">icons</a></li>
+        <li><a href="../../tags/opera&#32;widgets.html" rel="tag">opera widgets</a></li>
+        <li><a href="../../tags/widget&#32;icon&#32;creator.html" rel="tag">widget icon creator</a></li>
+        <li><a href="../../tags/widgets.html" rel="tag">widgets</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../widget-modes-docked-widget-and-more/index.html" >Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

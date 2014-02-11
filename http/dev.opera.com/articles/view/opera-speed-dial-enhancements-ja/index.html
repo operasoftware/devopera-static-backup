@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>作成したサイトを Speed Dial 内で際立たせるには - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>作成したサイトを Speed Dial 内で際立たせるには</h1>
+      <p class="print author">By Opera Software</p>
+
+      <p class="note">The mechanisms to optimize Speed Dial icons covered in this article are only supported in Opera 11.10 to 12.16, and do not work in Opera 15 and later.</p>
+
+<h2>目次</h2>
+
+<ul>
+	<li><a href="index.html#intro">はじめに</a></li>
+	<li>
+		<a href="index.html#use-logo">ロゴの使用</a>
+		<ul>
+			<li><a href="index.html#html5icons">HTML5 でのアイコン</a></li>
+			<li><a href="index.html#setanicon">Speed Dial のアイコンを指定する</a></li>
+			<li><a href="index.html#multipleicons">複数のアイコンを使用する</a></li>
+		</ul>
+	</li>
+	<li>
+		<a href="index.html#content">Speed Dial のエントリで独自のコンテンツを提供する</a>
+		<ul>
+			<li><a href="index.html#viewmode"><code>view-mode:minimized</code> の使用</a></li>
+			<li><a href="index.html#with-x-purpose">X-Purpose ヘッダの使用</a></li>
+			<li><a href="index.html#preview-refresh">一定の間隔でコンテンツを自動に読み込む</a></li>
+		</ul>
+	</li>
+
+
+	<li><a href="index.html#sdpriority">Speed Dial での優先順位</a></li>
+	<li><a href="index.html#productsupport">Opera プロダクトのサポート</a></li>
+</ul>
+
+
+
+	<h2 id="intro">はじめに</h2>
+
+	<p>デスクトップ版 Opera 11.10 以降では、コンテンツ作成者が Speed Dial 内でサイトをコントロールすることができるようになりました。Speed Dial はデフォルトでは Web サイトの画面の取り込みを行いますが、サイトの所有者はアイコンを特定したり、Speed Dial に特化した CSS やコンテンツを提供することができます。</p>
+
+
+	<h2 id="use-logo">ロゴの使用</h2>
+
+	<p>ここでは、カスタマイズしたロゴやアイコンを Speed Dial でどのように使用するかを見ていきましょう。</p>
+
+
+	<h3 id="html5icons">HTML5 でのアイコン</h3>
+
+	<p>ブックマークアイコンは私達にはお馴染みのものですが、これらは、1999 年に Internet Explorer 5 により初めて導入されました。<a href="http://www.w3.org/2005/10/howto-favicon">ショートカットアイコンの実装</a> は HTML4 の仕様には含まれていませんでしたが、ブラウザ開発者達は、<code>link</code> 要素の <code>rel</code> 属性に対する値として <code>icon</code> をサポートすることに最終的に同意しました。Apple 社は、これを <a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html"><code style="word-wrap:none">apple-touch-icon</code></a> を通してタッチデバイスに拡張しました。HTML5 の仕様では、<code>icon</code> は現在、<code>rel</code> 属性に対して<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">有効で標準的な値</a>となっています。</p>
+
+
+	<h3 id="setanicon">Speed Dial のアイコンを指定する</h3>
+
+	<p>Speed Dial アイコンの指定は、ショートカットアイコンを指定するのと同じような方法で行えます。<code>&lt;link&gt;</code> タグをドキュメントの <code>head</code> セクションに追加するだけで簡単に行えます。</p>
+
+	<pre>
+<code>&lt;head&gt;
+    &lt;title&gt;My Opera&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/logo.png&quot;&gt;
+&lt;/head&gt;</code>
+	</pre>
+
+
+	<p>Speed Dial のアイコンに対する条件：</p>
+
+	<ul>
+		<li>アイコンのサイズが少なくとも、横 114 ピクセル × 縦 114 ピクセルであること。これはデフォルトでの最小サイズで、これより小さいサイズのアイコンは無視され取り扱われません。</li>
+
+		<li>画像が、PNG、JPEG、GIF 形式であること。SVG 画像はまだサポートされていません。アニメーション画像の場合は、先頭のフレームのみが使用されます。</li>
+	</ul>
+
+	<p>デフォルトでは、アイコンの最大サイズは横 256 ピクセル × 縦 160 ピクセルです。このサイズを超えるアイコンの場合、適合するようにサイズが変更されます (<a href="../../../../devfiles.myopera.com/articles/5472/icon.html">サンプルデモ</a>)。ユーザーは、opera:config のメニューから、デフォルトの最小・最大サイズの設定を変更することができます。</p>
+
+	<p>Opera 11.10 では、従来の <code>apple-touch-icon</code>、<code>apple-touch-icon-precomposed</code>、<code>image_src</code> もサポートしています。</p>
+
+	<h3 id="multipleicons">複数のアイコンを使用する</h3>
+
+	<p>複数のアイコンを指定することも可能です。これは、ユーザーがページをブックマークする際に一つのアイコンを適用し、もう一つを Speed Dial に追加する際に適用できるため大変便利です。</p>
+
+	<pre>
+<code>&lt;head&gt;
+    &lt;title&gt;My Opera&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/128x128image.png&quot;&gt;
+    &lt;!-- This will be the speed dial icon --&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/200x200image.png&quot;&gt;
+&lt;/head&gt;</code>
+	</pre>
+
+
+	<p>アイコンが一つ以上指定されている場合、Speed Dial はサイズの大きい方をエントリ用として選択します (<a href="../../../../devfiles.myopera.com/articles/5472/multiple-icons-diff-sizes.html">サンプルデモ</a>) 。アイコンのサイズが同じ場合は、先頭のアイコンリンクが優先されます (<a href="../../../../devfiles.myopera.com/articles/5472/multiple-icons-same-size.html">サンプルデモ</a>) 。</p>
+
+
+<h2 id="content">Speed Dial のエントリで独自のコンテンツを提供する</h2>
+
+<h3 id="viewmode"><code>view-mode:minimized</code> の使用</h3>
+
+<p><img src="../../../../devfiles.myopera.com/articles/5472/view-mode.png" width="664" height="445" alt="The Speed Dial screen in Opera 11.10" /></p>
+<p class="comment">図 1: Opera 11.10 での Speed Dial 画面</p>
+
+<p><a href="http://www.w3.org/TR/view-mode/"><code>view-mode</code></a> メディア機能は、表示モードでスタイルを指定する方法を定義します。<code>view-mode: minimized</code> を使用して異なるスタイルを提供したり、Speed Dial 用に作成したコンテンツを表示することができます。<code>view-mode</code> は、<code>device-width</code> のようなメディア機能と同じように機能します。メディアクエリと同様に、スタイルは <code>@media</code> ブロックに含まれるべきでしょう。</p>
+
+
+<pre>
+<code>@media screen and (view-mode: minimized) {
+    body {
+        color: #fff;
+        background: #b20000;
+    }
+}</code>
+</pre>
+
+
+<p>あるいは、外部のスタイルシートにリンクして、media 属性の値を <code>(view-mode: minimized)</code> に設定します。</p>
+
+<pre>
+<code>&lt;link rel=stylesheet type=&quot;text/css&quot; href=&quot;minimizedstyles.css&quot; media=&quot;(view-mode:minimized)&quot;&gt;</code>
+</pre>
+
+<p><a href="../../../../devfiles.myopera.com/articles/5472/view-mode.html"><code>view-mode: minimized</code> の例</a> をご覧下さい。</p>
+
+
+<p>因みに、<code>view-mode: minimized</code> は、<strong>横 256 ピクセル × 縦 160 ピクセル</strong>の Speed Dial ビューポートを表示します。</p>
+
+<h3 id="with-x-purpose">X-Purpose ヘッダの使用</h3>
+
+<p>Speed Dial のエントリには異なる URL を提供することも可能です。これは、Speed Dial のリクエストには、必ず <code>X-Purpose: preview</code> ヘッダが追加で含まれているためです。</p>
+
+<pre>
+<code>GET / HTTP/1.1
+Host: www.bbc.co.uk/news
+X-Purpose: preview
+User-agent: Opera/9.80 (Macintosh; Intel Mac OS X 10.6.6; U; en) Presto/2.8.99 Version/11.10</code>
+</pre>
+
+<p>そのヘッダを検知して、異なる URL を提供するか、Speed Dial に送信するファイルを限定するか、異なるコンテンツを表示するかなどを選択することができます。これにより、ユーザーが Speed Dial のエントリをクリックする際に起動する URL が影響されるというようなことはありません。</p>
+
+<p>以下の例では、Apache の mod_rewrite を使用して、あらゆる URL に対する Speed Dial のリクエストすべてを <code>/preview.html</code> にリダイレクトしています（実際には、これより高度なものが必要になるでしょう）。</p>
+
+<pre>
+<code>RewriteEngine On
+RewriteCond %{HTTP:X-Purpose} ^preview$
+RewriteRule ^(.*) /preview.html
+</code>
+</pre>
+
+<p>あるいはサーバー側の言語を使用して、同じ URL で異なるコンテンツを条件に応じて提供するということも考えられます。以下の例では PHP を使用しています。</p>
+
+<pre>
+<code>&lt;?php
+if ($_SERVER[&#39;HTTP_X_PURPOSE&#39;] == &#39;preview&#39;) {
+    // Send Speed Dial content
+} else {
+    // Send regular content
+}
+?&gt;</code>
+</pre>
+
+<h3 id="preview-refresh">一定の間隔でコンテンツを自動に読み込む</h3>
+
+<p>Speed Dial のコンテンツをさらに動的にするために、自動読み込みの動作を定義して、ユーザーが Speed Dial に新しくエントリを追加した場合に適用することができます。これには以下のように 2 通りの方法があります。</p>
+<ol><li><p><code>meta</code> タグを使用する。</p>
+<pre>&lt;meta http-equiv=&quot;preview-refresh&quot; content=&quot;3600&quot;&gt;</pre></li>
+<li><p><code>Preview-Refresh</code> をレスポンスヘッダとして設定する。</p>
+<pre>Preview-Refresh:3600</pre>
+</li></ol>
+<p>上記の値は秒で設定して下さい。値が 3600 の場合、Speed Dial のエントリは一時間毎に自動更新されます。</p>
+
+<p class="note">現在の Opera では、Preview-Refresh ヘッダを使用した自動更新間隔の設定が利用できません。しかし、<code>meta</code> タグを使用することは可能です。</p>
+
+<h2 id="sdpriority">Speed Dial での優先順位</h2>
+
+<p>Speed Dial では、CSS の <code>view-mode: minimized</code> がまず優先されます。スタイルが有効ではない場合、ブラウザは代わりにアイコンをさがします。アイコンの指定が無い、ファイルが無い ・壊れている、というような場合、Speed Dial はデフォルトの動作として Web サイトのスクリーンショットを使用します。</p>
+
+
+<h2 id="productsupport">Opera プロダクトのサポート</h2>
+<p>現時点では、これらの拡張は Opera Desktop のユーザーにのみ提供されています。</p>
+
+<h2>さらに詳しく知りたい方へ</h2>
+
+<ul>
+	<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">Links from the WHATWG HTML5 specification</a></li>
+
+	<li><a href="http://www.w3.org/TR/view-mode/">View mode media feature specification</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=976832">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/webinista.html" rel="author">Tiffany Brown</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, April 26, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/html.html" rel="tag">html</a></li>
+        <li><a href="../../tags/japanese.html" rel="tag">japanese</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/speed&#32;dial.html" rel="tag">speed dial</a></li>
+        <li><a href="../../tags/view-mode.html" rel="tag">view-mode</a></li>
+        <li><a href="../../tags/x-purpose.html" rel="tag">x-purpose</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-speed-dial-enhancements-zh-cn/index.html">Chinese Simplified</a>,
+        <a href="../opera-speed-dial-enhancements/index.html">English</a>,
+        <a href="../opera-speed-dial-enhancements-de/index.html">German</a>,
+        <a href="../opera-speed-dial-enhancements-id/index.html">Indonesian</a>,
+        <a href="../opera-speed-dial-enhancements-ru/index.html">Russian</a>,
+        <a href="../opera-speed-dial-enhancements-es/index.html">Spanish</a>,
+        <a href="../opera-speed-dial-enhancements-tr/index.html">Turkish</a>,
+        <a href="../opera-speed-dial-enhancements-vi/index.html">Vietnamese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

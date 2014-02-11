@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Dragonfly の基本設計 - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>Opera Dragonfly の基本設計</h1>
+      <p class="print author">By edvakf</p>
+
+      <h2>はじめに</h2>
+ 
+<p>この文書では Opera Dragonfly の基本設計について、個々の構成要素の挙動を見ながら詳しく説明していきます。</p>
+ 
+<ul>
+<li><a href="index.html#archoverview">基本設計の概観</a></li>
+<li><a href="index.html#scenarios">デバッグのシナリオ</a>
+<ul>
+<li><a href="index.html#scenariosintegrated">統合</a></li>
+<li><a href="index.html#scenariosremote">リモート</a></li>
+</ul>
+</li>
+<li><a href="index.html#components">構成要素</a>
+<ul>
+<li><a href="index.html#componentruntime">ランタイム</a></li>
+<li><a href="index.html#componentdebugged">デバッグのホスト</a></li>
+<li><a href="index.html#componentScope">Scope モジュール</a>
+<ul>
+<li><a href="index.html#Scope-protocol">Scope プロトコル</a></li>
+</ul>
+</li>
+<li><a href="index.html#componentproxy">プロキシ</a></li>
+<li><a href="index.html#componentdebugger">デバッグ・クライアント</a></li>
+</ul>
+</li>
+</ul>
+ 
+ 
+<h2 id="archoverview">基本設計の概観</h2>
+ 
+<p>Opera Software の開発ツールである Opera Dragonfly は、デスクトップコンピューターと並び携帯電話などのいろいろな端末でデバッグができるように設計されています。</p>
+ 
+<p>Scope モジュールはランタイム（デバッグの行われている、Opera インスタンス内のウェブページとアプリケーション）に関する情報を見えるようにしてくれるものです。この Opera インスタンスはデバッグのホストとして動き、この情報はデバッグのクライアントに供給されます。通信されるデータの形式は Scope プロトコルによって定義されています。</p>
+ 
+<p>ファイアーウォールによる問題の可能性を防ぐために、プロキシがブラウザとデバッグの間を取り持ちます。ひとつの例としては、携帯電話用のアプリケーションやウェブページを通常のデスクトップコンピュータからデバッグする場合です。 </p>
+ 
+<p>デバッグ用アプリケーションであるクライアントは、情報を可視化させて、ユーザーがランタイムを操作できるようにします。 </p>
+ 
+<p>ホストとクライアントは別々の機器で動いていてもよく、プロキシがどちらかの機器の中や別のサーバーで動いていることがあります。</p>
+ 
+ 
+<p><img alt="Dragonfly 基本設計の概観" src="../../../../devfiles.myopera.com/articles/388/overviewja.png" />
+</p>
+ 
+ 
+ 
+ 
+<h2 id="scenarios">デバッグのシナリオ</h2>
+ 
+<p>デバッグには二つの基本的な方法があります。</p>
+ 
+<ul>
+<li>統合: Scope 、プロキシ、デバッガが同じ Opera インスタンス内で動いている場合。</li>
+<li>リモート: Scope とデバッガが別々の Opera インスタンス（例えば 別々の機器上）で動き、プロキシがもしあれば、そのどちらかの機器かあるいはまた別のコンピューター上で動いている場合。</li>
+</ul>
+ 
+<h3 id="scenariosintegrated">統合</h3>
+ 
+<p>典型的なシナリオは次のとおりです。開発者はウェブアプリケーションを普通の Opera ブラウザで操作していて、デバッガは同じ Opera インスタンス内の別のページ（タブ）やパネルで開いています。</p>
+ 
+<p><img alt="統合デバッグの一例です。デバッグ用のホスト、プロキシ、クライアントはすべて同じコンピューター上で動作しています。" src="../../../../devfiles.myopera.com/articles/388/integratedja.png" title="統合デバッグの一例です。デバッグ用のホスト、プロキシ、クライアントはすべて同じコンピューター上で動作しています。" />
+</p>
+ 
+<p>この場合、デバッグのホストとプロキシとクライアントはすべて同じ Opera インスタンス内で走ります。プロキシは Opera によって無作為に選ばれたポートで動作し、Scope モジュールとデバッガに自動接続します。</p>
+ 
+<h3 id="scenariosremote">リモート</h3>
+ 
+<p>このシナリオの例は、携帯電話用のウェブページやアプリケーションをデバッグする場合です。携帯電話は画面が小さく開発には向いていないときがあるので、代わりにデスクトップコンピュータをデバッグに使います。</p>
+ 
+<p>もう一つの例は、ある機器上のひとつの Opera インスタンスを、同じ機器で動いているもうひとつの Opera インスタンスからデバッグする場合です。この方法は、デバッグのホストのクラッシュを伴う恐れのあるときに便利です。</p>
+ 
+<p>リモートデバッグはさらに二つの主なシナリオに分けられます。</p>
+ 
+<ul>
+<li>プロキシがどちらかのインスタンスの中で動いている場合。</li>
+<li>プロキシが両方のインスタンスの外で動いている場合（例えばパブリックサーバー内）。</li>
+</ul>
+ 
+<p><img alt="リモートデバッグの一例です。プロキシがクライアントと統合されています。" src="../../../../devfiles.myopera.com/articles/388/localja.png" title="リモートデバッグの一例です。プロキシがクライアントと統合されています。" />
+</p>
+ 
+<p>二つ目のシナリオはデバッグの行われている Opera インスタンスとデバッガが両方ともファイアーウォールの内側で動いているときに使われます。</p>
+ 
+<p><img alt="リモートデバッグの一例です。デバッグ用のホスト、プロキシ、クライアントは別のコンピューターで動作しているかもしれません。" src="../../../../devfiles.myopera.com/articles/388/remoteja.png" title="リモートデバッグの一例です。デバッグ用のホスト、プロキシ、クライアントは別のコンピューターで動作しているかもしれません。" />
+</p>
+ 
+<h2 id="components">構成要素</h2>
+ 
+<p>Opera Dragonfly の基本設計は以下の構成要素から成り立っています。</p>
+ 
+<ul>
+<li><a href="index.html#componentruntime">ランタイム</a></li>
+<li><a href="index.html#componentdebugged">デバッグ・ホスト</a></li>
+<li><a href="index.html#componentScope">Scope モジュール</a></li>
+<li><a href="index.html#Scopeprotocol">Scope プロトコル</a></li>
+<li><a href="index.html#componentproxy">プロキシ</a></li>
+<li><a href="index.html#componentdebugger">デバッグ・クライアント</a></li>
+</ul>
+ 
+<h3 id="componentruntime">ランタイム</h3>
+ 
+<p>ECMAScript 環境ひとつひとつがランタイムです。各 HTML ドキュメントには一つのランタイムが付随します。フレームとインラインフレーム内のドキュメントはまたそれぞれのランタイムを持っています。</p>
+ 
+<h3 id="componentdebugged">デバッグ・ホスト</h3>
+ 
+<p>Scope モジュールが有効であり、プロキシに接続されている Opera イン スタンスはどれもデバッグ・ホストとなります。これは複数の<a href="index.html#component-runtime">ランタイム</a>を含むことができます。</p>
+ 
+<h3 id="componentScope">Scope モジュール</h3>
+ 
+<p>Scope モジュールは Opera アプリケーションの一部です。これが有効になると、Scope モジュールはプロキシ URLへの接続を確立し、デバッグ・ホストのランタイムをすべて調べます。その後 Scope モジュールは情報をデバッガに送ります。また、Scope モジュールは、選択したノードに対する DOM をダウンロードするといった、デバッガからの特定の命令に反応したりもします。</p>
+ 
+<h3 id="Scopeprotocol">Scope プロトコル</h3>
+ 
+<p>Scope プロトコルはホストとクライアントがランタイムについての情報をやりとりするための形式やルールです。例えば、<a href="index.html#component-runtime">ランタイム</a>から DOM ドキュメント構造や計算の初期値を取得します。</p>
+ 
+<p class="note">Scope プロトコルはまだ開発段階にあり、完了と同時に公開される予定です。ソフトウェアメーカーはそれを元にデバッグクライアントを作成したり、IDEなどのアプリケーションに組み込むことができます。こういったクライアントは、Scope プロトコルを使って Opera ブラウザのランタイムについての情報を得ることができます。</p>
+ 
+<h3 id="componentproxy">プロキシ</h3>
+ 
+<p>プロキシはブラウザとデバッガの間のメッセージを通す役割を果たします。これはホストとクライアントが同一コンピューター上にないリモートデバッグのシナリオでは特に重要です。</p>
+ 
+<p>Opera はデバッガの動いている Opera インスタンス内でプロキシを提供しますが、プロキシはパブリックサーバで動いていてもかまいません。このため、デバッグの行われている Opera インスタンスとデバッガの両方ともファイアーウォールの内側にいてもかまいません。</p>
+
+
+<h3 id="componentdebugger">デバッグクライアント</h3>
+ 
+<p>デバッガとはプロキシを通してデバッグのホストの Scope モジュールに接続するクライアントのことです。これは Opera インスタンスのランタイムの状況情報を受け取ります。デバッガはランタイムを可視化し、ユーザーが修正できるようにします。これは <a href="index.html#Scope-protocol">Scope プロトコル</a>を使って Scope モジュールに要求を送り返すことで行われます。</p>
+ 
+<p>現在のデバッガの実装は完全にウェブ技術（HTML/XML、CSS、JavaScript）を用いて作成されています。</p>
+ 
+<p><img alt="www.opera.com 上の ECMAScript デバッガ" src="../../../../devfiles.myopera.com/articles/370/dragonfly-script.png" title="www.opera.com 上の ECMAScript デバッガ" />
+</p>
+ 
+<p><img alt="www.opera.com 上の DOM インスペクタ" src="../../../../devfiles.myopera.com/articles/370/dragonfly-dom.png" title="www.opera.com 上の ECMAScript デバッガ" />
+</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=233924">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/For_d.html" rel="author">Hans S. Tømmerholt</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/edvakf.html" rel="author">edvakf</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, May 27, 2008
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/debugger.html" rel="tag">debugger</a></li>
+        <li><a href="../../tags/DOM.html" rel="tag">DOM</a></li>
+        <li><a href="../../tags/dragonfly.html" rel="tag">dragonfly</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/tools.html" rel="tag">tools</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-dragonfly-architecture/index.html">English</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<html>
+<head>
+	<title>Dynamic style: Manipulating CSS with JavaScript Examples - Accessing Style Sheets Example </title>
+	<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/621/example_styles.css">
+</head>
+<body>
+	<h1>
+		Dynamic style: Manipulating CSS with JavaScript Examples
+	</h1>
+
+	<p>Note: Some of the example code shown below is not the full code being executed. To make things as simple as possible I wanted to just show the critical code pertaining to style manipulation, thus the code that deals with browser differences is not shown.  To see the full code one can view the source code.</p>
+	<hr>
+	
+		<h2>Accessing style sheets example</h2>
+		<p>
+			This example demonstrates how to access, create, and remove style sheets. Press the button to add and remove stylesheets!
+		</p>
+		
+		<input id="tss" class='button' type='button' value="toggleStyleSheet()" />
+		<div id='e1' class="example">
+			Number of style sheets on page: <span id="numOfStyleSheets"></span>
+		</div>
+<div>
+		<div class="code_css">
+			<h4>CSS Code</h4>
+			<pre>
+&lt;style id='e1_style'&gt;
+	#e1 {
+		font-weight: bold;
+		font-size: 115%;
+		color: green;
+	}
+&lt;/style&gt;
+Or (only one added at a time)
+&lt;style id='e1_style'&gt;
+	#e1 {
+		border: 2px solid black;
+		background-color: blue;
+	}
+&lt;/style&gt;
+			</pre>
+			<style id='e1_style'>
+				#e1 {
+					font-weight: bold;
+					font-size: 115%;
+					color: green;
+				}
+			</style>
+		</div>
+		<div class="code_js">
+			<h4>JavaScript Code</h4>
+			<pre>
+var e1_toggle = true;
+function toggleStyleSheet() {
+	var node = document.getElementById('e1_style');
+	node.parentNode.removeChild(node);
+	var sheet = document.createElement('style')
+	sheet.id = 'e1_style';
+	if(e1_toggle) {
+		sheet.innerHTML = "#e1 {border: 2px solid black; background-color: blue;}";
+	} else {
+		sheet.innerHTML = "#e1 {font-weight: bold; font-size: 115%; color: green;}";
+	}
+	document.body.appendChild(sheet);
+	e1_toggle = ! e1_toggle;
+	updateNumberOfStyleSheets();
+}
+function updateNumberOfStyleSheets(){
+	document.getElementById('numOfStyleSheets').innerHTML
+		= document.styleSheets.length;
+}
+			</pre>
+			<script>
+			var e1_toggle = true;
+			function toggleStyleSheet() {
+				var node = document.getElementById('e1_style');
+				node.parentNode.removeChild(node);
+				var sheet = document.createElement('style')
+				sheet.id = 'e1_style';
+				if(e1_toggle) {
+					sheet.innerHTML = "#e1 {border: 2px solid black; background-color: blue;}";
+				} else {
+					sheet.innerHTML = "#e1 {font-weight: bold; font-size: 115%; color: green;}";
+				}
+				document.body.appendChild(sheet);
+				e1_toggle = ! e1_toggle;
+				updateNumberOfStyleSheets();
+			}
+			function updateNumberOfStyleSheets(){
+				document.getElementById('numOfStyleSheets').innerHTML = document.styleSheets.length;
+			}
+			</script>
+		</div>
+
+		<script>
+			function addOnClick(el, func) {
+				if(el.addEventListener) {
+					el.addEventListener('click', func, false);
+				} else {
+					el.attachEvent('onclick', func);
+				}
+			}
+			addOnClick(document.getElementById('tss'), toggleStyleSheet);
+		</script>
+	</div>
+</body>
+<script>
+	updateNumberOfStyleSheets();
+</script>
+</html>

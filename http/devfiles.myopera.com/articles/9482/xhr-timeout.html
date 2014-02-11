@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<title>XHR 2 Demo: timeout</title>
+	<link rel="stylesheet" href="http://devfiles.myopera.com/articles/9482/xhr2.css" media="screen">
+	<style>
+	    ul{list-style-type:square;}
+	</style>
+</head>
+<body>
+<nav><a href="../../../dev.opera.com/articles/view/xhr2/index.html">Return to article</a></nav>
+<h1>XMLHttpRequest Demo: Setting timeouts</h1>
+<section id="demo">
+<p>In this example, we have a script on the server that will take 5 seconds to return a JSON file. We have set a timeout of 3 seconds, after which a <code>timeout</code> event will be fired.</p>
+
+<p>If your browser supports XHR timeouts, the <code>timeout</code> event handler will:
+
+<ul>
+	<li>alert the user that this is taking longer than it should;</li>
+	<li>initiate a new request for the data</li>
+	<li>set a longer timeout limit for the second request.</li>
+</ul>
+
+<p>Otherwise, you will see the data after it has been parsed.</p>
+
+<h3>Results</h3>
+<div id="results"></div>
+
+</section>
+
+<script>
+var results = document.querySelector('#results');
+
+var makeRequest = function(event){
+	event.preventDefault();
+
+	var xhr = new XMLHttpRequest(),
+	    url = 'http://people.opera.com/tiffanyb/devopera/xhr2/data/links.json';
+
+	xhr.ontimeout = function(event){
+	    var p = document.createElement('p'),
+	        msg = document.createTextNode('Just a little while longer!');
+	    p.setAttribute('class','error');
+	    p.appendChild(msg);
+	    results.appendChild(p);
+
+        // Restarts the request.
+	    event.target.open('GET',url);
+
+	    // Sets a longer timeout to override the original
+	    event.target.timeout = 6000;
+	    event.target.send();
+	}
+
+    xhr.onload = function(event){
+       var i, ul, len, a, li, responseObj = JSON.parse( event.target.responseText );
+
+       len = responseObj['bookmarks'].length;
+
+       ul = document.createElement('ul');
+       a = document.createElement('a');
+       li = document.createElement('li');
+
+       a.href = responseObj['bookmarks'][0].url;
+       a.innerHTML = responseObj['bookmarks'][0].sitename;
+       li.appendChild(a);
+       ul.appendChild(li);
+
+       for(i = 1; i < len; i++ ){
+            b = a.cloneNode(false);
+            b.href = responseObj['bookmarks'][i].url;
+            b.innerHTML = responseObj['bookmarks'][i].sitename;
+
+            l = li.cloneNode(false);
+            l.appendChild(b);
+            ul.appendChild(l);
+       }
+
+       if( results.firstElementChild )
+            results.removeChild(results.firstElementChild);
+            results.appendChild(ul);
+
+    }
+
+	xhr.open('GET', url);
+	xhr.timeout = 3000;
+	xhr.send();
+}
+
+window.addEventListener('load', makeRequest, false);
+
+</script>
+
+<script src="http://devfiles.myopera.com/articles/9482/xhr2.js"></script>
+
+
+</body>
+</html>

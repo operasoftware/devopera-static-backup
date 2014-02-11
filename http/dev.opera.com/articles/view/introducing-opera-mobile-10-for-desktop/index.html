@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera Mobile 10 and the Opera Widgets Mobile Emulator on your desktop - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera Mobile 10 and the Opera Widgets Mobile Emulator on your desktop</h1>
+      <p class="print author">By Patrick H. Lauke</p>
+
+      <p class="note">DEPRECATED: This article is deprecated, and a newer article with updated information is available at <a href="../opera-mobile-emulator/index.html">Opera mobile emulator for desktop</a>. You should read this one if you want updated information.</p>
+
+<div class="right">
+<img src="../../../../devfiles.myopera.com/articles/1571/1-opera-mobile-10.png" alt="Opera Mobile 10" width="336" height="518" />
+<p class="comment">Figure 1: Opera Mobile 10 on Windows</p>
+</div>
+
+<p>Making sure that your site looks great and works exactly as it should in mobile browsers can often be a tedious process.</p>
+
+<p>Previously, if you wanted to test and debug your mobile-friendly sites in Opera Mobile, you either needed a physical phone or some form of virtual machine emulating the whole mobile operating system. With <a href="http://www.opera.com/developer/tools/#operamobile">Opera Mobile 10 for Windows, Linux and Mac </a> we hope to provide you with the simplest solution: a small, native application that&#39;s easy to install on your desktop machine, which runs exactly the same code as its mobile phone version — so you can be assured that what you&#39;re seeing on your test environment closely relates to the experience your end users will get.</p>
+
+<p>In addition to the Web browser, our package also includes the Opera Widgets Mobile Emulator, a desktop version of our <a href="http://labs.opera.com/news/2010/02/18/">Opera Widgets manager</a> for Symbian and Windows Mobile.</p>
+
+<p>This article covers:</p>
+<ul>
+<li><a href="index.html#screensizes">Screen sizes</a></li>
+<li><a href="index.html#controls">Controls</a></li>
+<li><a href="index.html#featuressettingsbrowser">Features and settings of the browser</a></li>
+<li><a href="index.html#uastring">User Agent string</a></li>
+<li><a href="index.html#widgetsemulator">Opera Widgets Mobile Emulator overview</a></li>
+<li><a href="index.html#widgetssettings">Widgets settings</a></li>
+<li><a href="index.html#widgetinstall">Installing widgets</a></li>
+<li><a href="index.html#debugging">&quot;Local&quot; remote debugging</a></li>
+<li><a href="index.html#conclusion">Conclusion</a></li>
+</ul>
+
+<p class="note">Download <a href="http://www.opera.com/developer/tools/#operamobile">Opera Mobile 10 for Windows, Linux and Mac</a></p>
+
+<h2 id="screensizes">Screen sizes</h2>
+
+<p>Mobile phones come in varying shapes and sizes. By default, the Opera Mobile 10 emulator will start in touchscreen mode at a resolution of 480x800 (the most common portrait WVGA screen size on modern smartphones). The size and input mode can be changed by starting the application from the command-line, using various configuration options. The most important are:</p>
+
+<ul>
+  <li><code>-geometry <var>width</var>x<var>height</var></code></li>
+  <li><code>-notouch</code> — disables touchscreen mode and switches to keypad</li>
+  <li><code>-notouchwithtouchevents</code> — same as <code>-notouch</code> (the interface switches to keypad mode), but it&#39;s still possible to use the mouse for easier debugging</li>
+  <li><code>-widgetmanager</code> — starts Opera Widgets</li>
+</ul>
+
+<p>So, if we wanted to run Opera Mobile 10 as a keypad device with FWVGA (Full-WVGA with 16:9 aspect ratio) in portrait orientation, we&#39;d use the following commands:</p>
+
+<p>On Windows:</p>
+<pre><code>OperaMobile.exe -geometry 854x480 -notouch</code></pre>
+
+<p>On Linux and Mac:</p>
+<pre><code>./operamobile -geometry 854x480 -notouch</code></pre>
+
+<p>The default location where you can find the <code>operamobile</code> executable will depend on your operating system. By default, you should find it in</p>
+
+<ul>
+<li>Windows: <code>C:\Program Files\Opera Mobile 10\</code></li>
+<li>Linux: <code>/usr/bin/</code></li>
+<li>Mac: <code>/Applications/Opera Mobile.app/Contents/MacOS/</code></li>
+</ul>
+
+<p class="note">On Windows, there are ready-made shortcuts in the <cite>Start</cite> menu that launch the application in full-, half- and quarter-VGA, with the various permutations of portrait/landscape and touchscreen/keypad.</p>
+
+<p>By design, it&#39;s also possible to run multiple standalone instances of the program for quick testing on different mobile phone screen dimensions, orientations and input modes.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/2-multiple-opera-mobile-10s.png" alt="Multiple Opera Mobile 10" width="640" height="606" />
+<p class="comment">Figure 2: Multiple instances of Opera Mobile 10 with different screen sizes and input modes</p>
+</div>
+
+<p class="note">There are further options that let you tweak the behaviour of the application. For a full list of command-line arguments, <!-- Placeholder: see our documentation or --> see the application&#39;s help text with <code>operamobile --help</code>.</p>
+
+<h2 id="controls">Controls</h2>
+
+<p>In touch mode, you use the mouse as if it was a finger on an actual touchscreen device. A short click activates links and controls, double-click zooms in and out of a page, while clicking for more than a second (<q>tap-and-hold</q>) brings up the context menu. Scrolling is achieved by clicking and dragging. Any text entry (for instance typing a URL into the address bar) will bring up the touchscreen keyboard, but you can of course use your regular keyboard. If you&#39;d like to suppress the virtual keyboard (to simulate a mobile device with its own physical keyboard), use <kbd>F6</kbd> to toggle it on/off.</p>
+
+<p>In keypad mode, the primary controls are:</p>
+
+<ul>
+<li>Cursor keys for spatial navigation around the Speed Dial, address bar and search field. On a Web page, the cursor keys move the virtual mouse pointer.</li>
+<li><kbd>F1</kbd> and <kbd>F2</kbd> mapped to top left and right soft keys, which activate the functions at the bottom of the screen (such as <cite>Menu</cite> and <cite>Exit</cite>).</li>
+<li><kbd>Enter</kbd> and <kbd>F5</kbd> to activate a control, zoom into the page, etc. (there is actually a subtle distinction between the functionality of the two keys — in general usage they&#39;re equivalent, but <kbd>Enter</kbd> is also used for newline/linebreak characters, such as when entering information into a <code>textarea</code> field).</li>
+</ul>
+
+<p class="note">If you started the application with the <code>-notouchwithtouchevents</code>, you&#39;ll still be able to use your mouse for all these functions, which can make testing on your desktop machine more efficient but will give you a different experience from using the &quot;proper&quot; keypad controls.</p>
+
+<p>In both modes, <kbd>CTRL+R</kbd> is used to simulate a device rotation, switching between portrait and landscape mode.</p>
+
+<p>Although at its core Opera Mobile 10 on desktop contains exactly the same code as its mobile phone version, it behaves like any other native application. As a result, you can cut, copy and paste using the standard OS clipboard and shortcut keys (such as <kbd>CTRL+X</kbd>, <kbd>CTRL+C</kbd>, <kbd>CTRL+V</kbd>). As an additional time saver, if you have a URL copied to your clipboard, you can &quot;paste and go&quot; in one swift action by using <kbd>CTRL+E</kbd>.</p>
+<p class="note">Currently, the copy/paste functionality is not working on the Mac version of Opera Mobile 10. This will be resolved in a future release of the package.</p>
+
+<!-- Placeholder: for a full list of keyboard shortcuts, see the documentation -->
+
+<h2 id="featuressettingsbrowser">Features and settings of the browser</h2>
+
+<p>In general usage, the desktop version of the Opera Mobile 10  Web browser offers developers the same functionality available on mobile phones, including integration of <a href="http://www.opera.com/browser/turbo/">Opera Turbo</a> — our transparent compression proxy — and <a href="http://www.opera.com/link/">Opera Link</a> — synchronisation of bookmarks, Speed Dials and settings between different Opera browsers. See our overview of <a href="http://www.opera.com/mobile/features/">Opera Mobile&#39;s user experience and features</a> and our recent <a href="../opera-mobile-10-developers-introduction/index.html"><cite>Opera Mobile 10 developer&#39;s introduction</cite></a>.</p>
+
+<p class="note">Although of limited use for testing, Opera Mobile 10 for Windows, Linux and Mac retains the ability to download files and save pages in <a href="http://en.wikipedia.org/wiki/MHTML">MHTML</a> archive format. The default location where these files are saved will vary depending on your OS.<!-- Placeholder: see the FAQ --></p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/3-opera-mobile-10-browser-settings2.png" alt="Settings, Privacy and User Agent dialog windows" width="612" height="314" />
+<p class="comment">Figure 3: Changing settings in Opera Mobile 10</p>
+</div>
+
+<p>As with <a href="http://www.opera.com/mobile/">Opera Mobile 10</a> on mobile phones, the <cite>Settings</cite> dialog gives quick access to toggle certain features (like <cite>Mobile view</cite>, which reflows a page&#39;s layout to a single column) and, under <cite>Privacy</cite>, to clear the history, passwords, cookies and the cache.</p>
+
+<p>Power-users can enter the <code>opera:config</code> internal URL into the address bar for complete access to all configuration options.</p>
+
+<h2 id="uastring">User Agent string</h2>
+
+<p>The default <abbr title="User Agent">UA</abbr> strings for Opera Mobile 10 on Windows, Linux and Mac are:</p>
+
+<pre><code>Opera/9.80 (Windows NT 6.0; Opera Mobi/[BUILD_NR]; U; en) Presto/2.4.18 Version/10.00
+Opera/9.80 (Linux i686; Opera Mobi/[BUILD_NR]; U; en) Presto/2.4.18 Version/10.00
+Opera/9.80 (Macintosh; Intel Mac OS X; Opera Mobi/[BUILD_NR]; U; en) Presto/2.4.18 Version/10.00
+</code></pre>
+
+<p>Unique to the desktop version is the ability to modify this in the <cite>User Agent</cite> settings dialog to mimic the Nokia/S60, Windows Mobile and Android versions of the browser:</p>
+
+<pre><code>Opera/9.80 (S60; SymbOS; Opera Mobi/[BUILD_NR]; U; en-GB) Presto/2.4.18 Version/10.00
+Opera/9.80 (Windows Mobile; WCE; Opera Mobi/[BUILD_NR]; U; en) Presto/2.4.18 Version/10.00
+Opera/9.80 (Android; Linux; Opera Mobi/[BUILD_NR]; U; en) Presto/2.4.18 Version/10.00</code></pre>
+
+<h2 id="widgetsemulator">Opera Widgets Mobile Emulator overview</h2>
+
+<p>Opera Widgets provides a complete runtime environment for widgets on mobile devices.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/4-opera-widgets-notification.png" alt="Opera Widgets and its Notifications window" width="640" height="492" />
+<p class="comment">Figure 4: Opera Widgets and its <cite>Notifications</cite> window</p>
+</div>
+
+<p>This includes the ability found in most common widget platforms to run minimised applications in the background (with a live updating icon, to provide things like status information) and having a separate notification area (which background widgets can use to send information to the user). <a href="http://labs.opera.com/news/2010/02/18/">Opera Widgets is available for mobile phones as a separate download</a>, and is included in Opera Mobile 10 for Windows, Linux and Mac for easy testing and debugging of mobile widgets in a phone-like environment.</p>
+
+<h2 id="widgetssettings">Widgets settings</h2>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/5-opera-widgets-settings.png" alt="Opera Widgets settings for Privacy and Developer tools" width="612" height="314" />
+<p class="comment">Figure 5: Opera Widgets settings for <cite>Privacy</cite> and <cite>Developer tools</cite></p>
+</div>
+
+<p>The <cite>Settings</cite> dialog for Opera Widgets provides access to the <cite>Privacy</cite> options (related to the built-in password manager) and the emulator&#39;s <cite>Developer tools</cite>.</p>
+
+<h2 id="widgetinstall">Installing widgets</h2>
+
+<p>As on a mobile device, there are two ways to install widgets.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/6-opera-widgets-add.png" alt="Add widgets from widgets.opera.com" width="640" height="585" />
+<p class="comment">Figure 6: Add widgets from <a href="http://widgets.opera.com/">widgets.opera.com</a></p>
+</div>
+
+<p>Selecting the <cite>Add widgets</cite> button on the main interface loads our <a href="http://widgets.opera.com/">Opera Widgets online repository</a>.</p>
+<p>Of more interest to developers, though, is the ability to install widgets directly from their machine. In contrast to our old <a href="../widget-emulator/index.html"><cite>Widget Emulator</cite></a>, this allows for more accurate testing and debugging in an environment that closely matches an actual mobile device.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/7-opera-widgets-install-local.png" alt="Installing a widget file" width="640" height="587" />
+<p class="comment">Figure 7: Installing a <code>wgt</code> widget file</p>
+</div>
+
+<p><cite>Settings</cite> &gt; <cite>Developer tools</cite> &gt; <cite>Install widget</cite> allows you to browse folders on your local filesystem, locate the <code>wgt</code> widget file, and install it.</p>
+
+<p class="note">The specific &quot;root&quot; folder used by the emulator will vary depending on your operating system. For instance, on Linux this will be the current user&#39;s <code>/home/[username]/</code> folder.</p>
+<p class="note">For more information on widget development, see our series of articles for the <a href="../opera-widgets-sdk/index.html"><cite>Opera Widgets <abbr title="Software Development Kit">SDK</abbr></cite></a>.</p>
+
+
+<h2 id="debugging">&quot;Local&quot; remote debugging</h2>
+
+<p>With <a href="http://www.opera.com/dragonfly/">Opera Dragonfly</a> you can check pages running in Opera Mobile 10 directly from within your main browser, giving you access to the full power of our debugging tool.</p>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/8-opera-mobile-10-debugging.png" alt="Opera Dragonfly (undocked in a separate window) debugging a Web page in Opera Mobile 10" width="640" height="450" />
+<p class="comment">Figure 8: Remote debugging with Opera Dragonfly (undocked in a separate window)</p>
+</div>
+
+<p>As demonstrated in Daniel&#39;s blog post (with added video goodness) <a href="http://my.opera.com/ODIN/blog/opera-mobile-10-and-its-remote-debugging-party-trick"><cite>Opera Mobile 10 and its remote debugging party trick</cite></a>, the process involves:</p>
+
+<ul>
+<li>Setting Opera Dragonfly to listen for remote connections.</li>
+<li>Establishing a connection from Opera Mobile 10 to Opera Dragonfly by going to the <code>opera:debug</code> internal address.</li>
+</ul>
+
+<div>
+<img src="../../../../devfiles.myopera.com/articles/1571/9-opera-widgets-dragonfly.png" alt="Opera Dragonfly (undocked in a separate window) debugging a widget running in the Opera Widgets Mobile Emulator" width="640" height="394" />
+<p class="comment">Figure 9: Remotely debugging a widget with Opera Dragonfly</p>
+</div>
+
+<p>Debugging widgets running in the Opera Widgets Mobile Emulator is similarly easy. Once Opera Dragonfly is set to listen for remote connections, simply go to the <cite>Settings</cite> &gt; <cite>Developer tools</cite> &gt; <cite>Remote access</cite> dialog to establish the connection, as outlined in our previous <a href="../remote-debugging-of-widgets-on-mobile-devices/index.html"><cite>Remote debugging of widgets on mobile devices</cite></a> article.</p>
+
+<p>As Opera Mobile 10 for desktop and the Opera Widgets Mobile Emulator both run on the same machine as Opera Dragonfly, there&#39;s no messing around with IP-addresses and port numbers — the default loopback/localhost address of <var>127.0.0.1</var> and standard port of <var>7001</var> should always work fine.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>We hope that with <a href="http://www.opera.com/developer/tools/#operamobile">Opera Mobile 10 for Windows, Linux and Mac</a> and the Opera Widgets Mobile Emulator we&#39;ve made it easy and straightforward for developers to optimise their sites and widgets for mobile delivery. So what are you waiting for? Happy testing and debugging!</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></h1>
+        <a href="../../../author/patrickhlauke.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/311/e211c5a9704ba8411d0a0694fbb961d97ad.jpg" alt=""/></a>
+        <p>Web Evangelist in the Developer Relations Team at Opera Software ASA.<br/>Product manager for Opera Dragonfly – Opera&#39;s built-in web developer tools.<br/><a href="http://www.opera.com/dragonfly/" target="_blank">http://www.opera.com/dragonfly/</a></p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=536481">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, April 22, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/deprecated.html" rel="tag">deprecated</a></li>
+        <li><a href="../../tags/emulator.html" rel="tag">emulator</a></li>
+        <li><a href="../../tags/mobile.html" rel="tag">mobile</a></li>
+        <li><a href="../../tags/mobile10.html" rel="tag">mobile10</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/widgets.html" rel="tag">widgets</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Using capability detection - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Using capability detection</h1>
+      <p class="print author">By  Hallvord R. M. Steen</p>
+
+      <p>Browser name <dfn>sniffing</dfn>, using scripts figure out which browser is used and then provide different content to them, is a widespread practice with a long history. Unfortunately these scripts are usually static, while browsers keep evolving.</p>
+
+<p>This makes these scripts extremely fragile whenever an unexpected new browser or a new version happens to load the page. Simply put: <b class="m">Sniffing browser names can seriously damage the future health of your script</b>.</p>
+
+<h2>So why do we sniff?</h2>
+
+<p>Virtually every script out there needs to know a few essential things about the browser it runs in. There are three main goals of browser name sniffing:</p>
+
+<ul><li>Detecting features - support for things like DOM, ActiveX or Java, XMLHttpRequest</li>
+<li>Detecting APIs - where the browsers have named the same feature slightly differently, say whether you must use <code>event.target</code> or <code>event.srcElement</code></li>
+<li>Working around bugs - when a browser simply doesn&#39;t behave correctly, and you can not pretend you forgot to test the site in that browser</li>
+</ul>
+
+<h2>The better approaches</h2>
+
+<p>The goal is after all detecting the capabilities of the browser that shows your page - so rather than looking at browser names and versions we should dive right into capability or feature detection!</p>
+
+<p>JavaScript has several built-in features that let you check how things work - without looking at browser names at all. If we think in terms of capability detection, it turns out to be relatively simple to avoid browser sniffing.</p>
+
+<p>To use capability detection, start by getting an overview of which features are required for your script. Then you can use object detection to check if the features exist. I recommend that you also try calling a few selected functions to verify as in-depth as possible that the feature really exists in the visiting browser.</p>
+
+<h3>Proper feature detection</h3>
+
+<h4>How not to do it</h4>
+
+<p>Do not check for one object and assume others are available. For instance, it is common to check for document.all and assume your visitor uses IE and all IE-proprietary functions can be used.</p>
+
+<h4>How to do it</h4>
+
+<ol>
+	<li>Document what you need</li>
+	<li>Look for selected API functions from features that your script depends on</li>
+	<li>Don&#39;t take shortcuts</li>
+	<li>Check if they work by using them on a known element/feature</li>
+</ol>
+
+<h4>Example</h4>
+<h5>DOM support</h5>
+<p>A major site uses the following function to check if the browser has advanced DOM support:</p>
+
+<pre><code>     isDOM = false;
+     if (document.getElementById &amp;&amp;   
+         document.getElementById(&quot;assessDomNode&quot;)) {
+             if (document.getElementById(&quot;assessDomNode&quot;).cloneNode &amp;&amp;
+                 document.getElementById(&quot;assessDomNode&quot;).cloneNode(true)) {
+                 isDOM = true;
+             }
+         }</code></pre>
+
+<p>Note how they check whether functions are available with <code class="sfunc">if(document.getElementById)</code>, then proceed to actually calling that function and finally test if the browser supports the fairly advanced W3C DOM compatible cloneNode method.</p>
+
+<p>Some features are not so straightforward to test, but with some creativity very few things are outright impossible. For instance, if you wanted to test if the browser supported try .. catch blocks you could include a separate JavaScript file or SCRIPT tag with the following code:</p>
+
+<pre><code>var trycatchsupported = false;
+eval(  &#39;try{trycatchsupported = true;}catch(e){}&#39;  ); </code></pre>
+
+<p>It needs to be in a separate tag or at the end of a script if you want to prevent syntax errors caused by the try .. catch from stopping your main script.</p>
+
+<h5><code>hasFeature()</code></h5>
+<p>The DOM standard has added a method for feature detection, <code class="sfunc">document.implementation.hasFeature()</code>. It is called with a feature name and a version number, for example <code class="sfunc">document.implementation.hasFeature(&#39;HTML&#39;, &#39;4.0&#39;)</code>. However, JavaScript&#39;s object detection feature gives you much more detailed, cross-browser and reliable information about what is supported.</p>
+
+<h3>Proper API detection</h3>
+
+<p>Handling API differences is often done by writing wrapper functions for the APIs that differ. One very common scenario is getting a reference to a specific element in a page.</p>
+
+<h4>How not to do it</h4>
+<ul>
+<li>As far as possible avoid making assumptions about what parts of any API is supported.</li>
+<li>For example, do not detect <code>HTMLElement</code> and assume that <code>__defineGetter__</code> is available for your wrapper function</li>
+<li>Avoid setting properties that may be read-only in some browsers. For example, if you handle keyboard events and try setting the <code>event.which</code> property without checking if it exists, browsers that <em>do</em> support <code>event.which</code> will throw an error</li>
+</ul>
+
+<h4>How to do it</h4>
+<ul>
+<li>Use object detection to find the right API</li>
+<li>Within the wrapper function, start with the most standards-compatible method.</li>
+</ul>
+
+<h4>Examples</h4>
+<p>
+The classic example is using a function to get a reference to an element in the page.</p>
+
+<pre><code>function findElement(id){
+	if(document.getElementById){ <span class="comment">// standardised method first</span>
+		return document.getElementById(id);
+	}else if(document.all){
+		return document.all[id];
+	}else if(document.layers){
+		return document.layers[id];
+	}else{
+		return null;
+	}
+}</code></pre>
+
+<p>Remember to use it correctly, by checking that it actually returns something useful:</p>
+
+<pre><code>
+var elm=findElement(&#39;navigation&#39;);
+if(elm){
+    <span class="comment">// do what you need</span>
+}else{
+    <span class="comment">// very old browser without any DOM support. </span>
+}
+</code></pre>
+
+<h3>Proper bug handling</h3>
+
+<p>Name-based browser detection may be a part of the toolkit for working around bugs in specific browsers and versions, but you should also consider whether the script simply can <b>test if the bug exists</b>.</p>
+
+<h4>Examples</h4>
+<p>Here are two examples of how you can check if an incompatibility exists, rather than checking by browser name and version.</p>
+
+<h5>Array length incompatibility</h5>
+<p>An early version of a very popular DHTML menu script contained the following code:</p>
+
+<pre><code>if((navigator.userAgent.indexOf(&quot;Gecko&quot;)!=-1)){top_menu[top_menu.length] = null;}
+if((navigator.userAgent.indexOf(&quot;Konqueror&quot;)!=-1)){top_menu[top_menu.length] = null;}
+if(Nav4){top_menu[top_menu.length] = null;}</code></pre>
+
+<p>The reason for that block of sniffing is that they created arrays that ended with a comma. According to the ECMAScript standard, the array <code>[ &#39;something&#39; , ]</code> has only one item in it, while in IE it will have two. To work around this browser difference the script adds an extra array element if it detects certain specific browsers.</p>
+
+<p>This could have been done much simpler by checking the length of an array literal to see what the browser does:</p>
+
+<pre><code>if( [&#39;&#39;,].length == 1 ){top_menu[top_menu.length] = null;}</code></pre>
+
+<h5><code>cloneNode()</code> and user data</h5>
+<p>A very popular blogging site contains the following code:</p>
+
+<pre><code>    if (Detect.SAFARI() || Detect.OPERA()) {
+      <span class="comment">// cloneNode isn&#39;t capturing node attributes or values for some browsers</span>
+      this.textarea.value = this.textarea_orig.value;
+      this.textarea.name = this.textarea_orig.name;
+      this.textarea.id = this.textarea_orig.id;
+</code></pre>
+
+<p>The problem is that using cloneNode on a form element does not clone any changes the user has made to the text in the element. The following replacement looks for the bug rather than the browser:</p>
+
+<pre><code>    if ( this.textarea.value != this.textarea_orig.value ) {
+      <span class="comment">// cloneNode isn&#39;t capturing node attributes or values for some browsers</span>
+      this.textarea.value = this.textarea_orig.value;
+      this.textarea.name = this.textarea_orig.name;
+      this.textarea.id = this.textarea_orig.id;
+</code></pre>
+
+
+<h2>Towards capability detection - a script to get you started</h2>
+
+<p>To write scripts that will handle future browsers and new versions well you must try to leave behind the mindset of browser detection wherever possible. The good news is that sniffing the name of the browser rarely is necessary. Most of the time, it is much easier to detect whether the functions and features we need are supported.</p>
+
+<p>To get you started, a <a href="../../../../devfiles.myopera.com/articles/46/capabilitydetection-test.htm">capability detection demonstration script</a>. Some features:</p>
+
+<ul>
+<li>Detects various levels of DOM support</li>
+<li>Detects VBScript support</li>
+<li>Detects text selection/WYSIWYG editing capabilities</li>
+<li>Adds custom attributes to the <code>navigator</code> object rather than creating global variables or a specific sniffer object. The <code>navigator</code> object is meant to provide information about the script&#39;s environment, so lets make good use of it.</li>
+</ul>
+<p>You are encouraged to use and alter the script. Consider the features your JavaScript application needs and remove the parts of the script that you do not use.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=168017">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/hallvors.html" rel="author"> Hallvord R. M. Steen</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, November 27, 2006
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/capability&#32;detection.html" rel="tag">capability detection</a></li>
+        <li><a href="../../tags/sniffing.html" rel="tag">sniffing</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

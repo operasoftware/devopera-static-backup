@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>Simple transform scale example</title>
+        <meta charset=UTF-8 />
+        <style type="text/css">	
+        	h1 {
+	 			font:  18px "Helvetica Neue", arial, sans-serif;
+			}
+        	
+        	p {
+				border: 1px dashed silver;
+				padding: 0.5em;
+				border-radius: 0.5em;
+				font:  12px/1.5 "Helvetica Neue", arial, sans-serif;
+				background-color: rgb(254, 250, 218);
+				max-width: 44em;
+			}
+    	    div {
+    		    background-color: red;
+    		    width: 3em;
+    		    height: 3em;
+    		   	-o-transform: scale(2.5); -webkit-transform: scale(2.5);
+    		   	transform: scale(2.5);
+    		    -o-transform-origin: left top; -webkit-transform-origin: left top;
+    		    transform-origin: left top;
+            }
+      </style>
+  </head>
+  <body>
+  		<h1>Simple CSS transform example using the translate scale function</h1>
+  		<p>The <code>div</code> element below would usually be a 3em square. A <code>-o-transform: scale(2.5x);</code> scale is applied to scale the element up two and a half times, or 7.5em. The scale origin is set to <code>-o-transform-origin: left top;</code> so the element scales from the top left corner of the element. If the <code>transform-origin</code> was left at the default <code>50% 50%</code> (the centre point of the element), the element would have scaled out from the centre point so that the <code>div</code> would overlap this paragraph and be displayed partially off the left hand side of the page.</p>
+  		<div></div>
+  </body>
+</html>

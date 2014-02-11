@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:wairole="http://www.w3.org/2005/01/wai-rdf/GUIRoleTaxonomy#"
+      xml:lang="en" lang="en">
+	<head>
+		<title>Mock up UI using CSS 3, HTML5, SVG and JavaScript</title>
+		<meta name="author" content="David Storey"/>
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/751/ui.css" media="screen"/>
+		<script type="text/javascript" src="http://devfiles.myopera.com/articles/751/ui.js"></script>
+	</head>
+	<body>
+		<ul role="wairole:menubar">
+			<li role="wairole:menuitem"><a href="http://opera.com/developer/" rel="home">Opera</a>
+			<li role="wairole:menuitem">File
+				<ul role="wairole:group">
+					<li role="wairole:menuitem"><a href="user-interface.html">New</a></li>						
+					<li role="wairole:menuitem"><a href="user-interface.html">Open</a></li>
+					<li role="wairole:menuitem" aria-disabled="true"><a href="user-interface.html">Print</a></li>
+					<li role="wairole:menuitem"><a href="user-interface.html">Close Window</a></li>
+					<li role="wairole:menuitem"><a href="user-interface.html">Get Info</a></li>
+					<li role="wairole:menuitem"><a href="user-interface.html">Find</a></li>
+				</ul>
+			</li>
+			<li role="wairole:menuitem">Edit</li>
+			<li role="wairole:menuitem">View</li>
+			<li role="wairole:menuitem">Go
+				<ul role="wairole:group">
+					<li role="wairole:menuitem"><a href="http://www.opera.com/">Opera</a></li>
+					<li role="wairole:menuitem"><a href="http://www.opera.com/developer">Opera Developer Network</a></li>
+					<li role="wairole:menuitem"><a href="../../../dev.opera.com/index.html">Dev Opera</a></li>
+					<li role="wairole:menuitem"><a href="http://my.opera.com/">My Opera</a></li>
+					<li role="wairole:menuitem"><a href="http://www.css3.info/">CSS3.info</a>
+					<li role="wairole:menuitem"><a href="http://www.html5doctor.com/">HTML 5 Doctor</a>
+					<li role="wairole:menuitem"><a href="http://webstandards.org/">WaSP</a></li>
+					<li role="wairole:menuitem"><a href="http://webstandardsgroup.org/">Web Standards Group</a></li>
+				</ul>
+			</li>
+			<li role="wairole:menuitem">Window</li>
+			<li role="wairole:menuitem">Help</li>
+		</ul>
+		<div id="terminal" class="active" role="wairole:application" draggable="true" aria-grabbed="false">
+			<header role="wairole:heading" tabindex="0">
+				<div id="window-controls">
+                	<button id="close">Close</button>
+              	   	<button id="min">Minimise</button>
+             	   	<button id="max">Maximise</button>
+           	    </div>
+				<h2>Terminal — bash</h2>
+			</header>
+			<div class="content" contenteditable="true" role="wairole:textbox" tabindex="0">
+				<p>Last login: Wed Jul 18 21:32:05 on console</p>
+				<p>Welcome to the Opera Developer Network!</p>
+			</div>
+		</div>
+		<div id="textedit" role="wairole:application" draggable="true" aria-grabbed="false">
+			<header role="wairole:heading" tabindex="0">
+				<div id="window-controls">
+                	<button id="close">Close</button>
+              	   	<button id="min">Minimise</button>
+             	   	<button id="max">Maximise</button>
+           	    </div>
+				<h2>Notebook</h2>
+			</header>
+			<div class="content" contenteditable="true" lang="zh-cn" xml:lang="zh-cn" role="wairole:textbox" tabindex="0">
+				<p>发现于云南元谋的猿人化石表明，距今170万年前的“元谋人”是中国境内已知最早的原始人类。距今近60万年前居住在北京周口店一带的“北京人”，能直立行走，能制造、使用简单的工具，并知道了用火。距今一万年前后的新石器时代遗址，遍布中国各地。在距今六七千年的浙江余姚河姆渡和西安半坡遗址，发现了人工栽培的稻谷和粟粒及农耕工具。</p>
+
+				<p>最古老的王朝夏朝开始于公元前2070年。夏王朝的中心地区，在今河南省西部和山西南部一带，其势力和影响已达到黄河南北，并开始进入奴隶社会。继夏而兴起的商、西周进一步发展了奴隶制度。之后是王室势力衰微，诸侯争霸的春秋战国时期，这一时期被认为是由奴隶社会向封建社会过渡的阶段。</p>
+			
+				<p>大约在5000年前，中国人已知道了冶炼铜的技术。3000多年前的商代，开始使用铁器；在制陶方面，有了白陶和彩陶；丝织生产也相当发达，产生了世界上最早的提花丝织技术。到了春秋时期，制钢技术已经出现。春秋战国时期思想学术空前活跃，涌现出对后世产生深远影响的著名的哲学家老子、孔子、孟子和军事学家孙武等人物。</p>
+			</div>
+		</div>
+
+	</body>
+</html>

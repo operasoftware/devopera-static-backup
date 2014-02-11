@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Yngve Nysæter Pettersen - A first look at EV in Opera</title>
+<meta property="og:url" content="http://my.opera.com/yngve/blog/show.dml/1095339">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/yngve/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/yngve/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/yngve/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/yngve/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/yngve/xml/rss/comments/1095339">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/yngve/xml/atom/comments/1095339">
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://static.myopera.com/community/css/users/102/main.css" type="text/css">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="Yngve Nysæter Pettersen - A first look at EV in Opera">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/tf/++v/7EYs9UW0UGvsLG+ic9bpYw/9165_l.jpg">
+<meta property="og:image" content="http://files.myopera.com/yngve/blog/ev-19062007a.PNG">
+<meta property="og:description" content='Here is a first look at Opera 9.5 ("Kestrel") with full support for Extended Validation (EV) certificates enabled.
+
+This is the implementation in its current form, although the design may be slightly modified before release.
+
+
+(Click for larger image)'>
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2Fyngve%2Fblog%2Fshow.dml%2F1095339&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2">
+<h1><span>Implementer's notes</span></h1>
+<p id="subtitle"><span>What might get caught in the gears under the hood?</span></p>
+</div>
+<div id="menu"><ul>
+<li id="menu_blog"><a href="http://my.opera.com/yngve/blog/" id="selected"><span>Blog</span></a></li>
+<li id="menu_about"><a href="http://my.opera.com/yngve/about/"><span>About</span></a></li>
+</ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title">A first look at EV in Opera</h2>
+<p class="postdate">Tuesday, June 19, 2007 2:16:03 PM</p>
+<p class="tags"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Opera" rel="tag">Opera</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/browsers" rel="tag">browsers</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/SSL" rel="tag">SSL</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Extended%20Validation" rel="tag">Extended Validation</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/User%20Interface" rel="tag">User Interface</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Certificates" rel="tag">Certificates</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Security" rel="tag">Security</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/TLS" rel="tag">TLS</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/browser" rel="tag">browser</a> </p>
+<div class="content">Here is a first look at Opera 9.5 (<a href="http://my.opera.com/desktopteam/blog/show.dml/759403" rel="nofollow" target="_blank">"Kestrel"</a>) with full support for <a href="../2007/06/12/extended-validation-v1-0-approved.html" rel="nofollow" target="_blank">Extended Validation</a> (EV) certificates enabled.<br><br>This is the implementation in its current form, although the design may be slightly modified before release.<br><br><a href="http://files.myopera.com/yngve/files/ev-19062007a.PNG" rel="nofollow" target="_blank"><span class="imgcenter"><img alt="" src="http://files.myopera.com/yngve/blog/ev-19062007a.PNG"></span><br><span class="aligncenter">(Click for larger image)</span></a>
+</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2Fshow.dml%2F1095339&amp;title=A%20first%20look%20at%20EV%20in%20Opera" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=A%20first%20look%20at%20EV%20in%20Opera,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2Fshow.dml%2F1095339&amp;title=A%20first%20look%20at%20EV%20in%20Opera" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=A%20first%20look%20at%20EV%20in%20Opera','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2Fshow.dml%2F1095339&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/yngve/blog/2007/06/15/51-2-bit-banks"><span>(51)2-bit banks</span></a></span><span class="nxt"><a href="../2007/06/19/it-aint-ev-til-its-ev-all-ev.html"><span>It ain't EV 'til it's EV, all EV</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/yngve/xml/rss/comments/1095339"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1" id="comment3045792">
+<div class="avatar"><a href="http://my.opera.com/WildEnte/"><img src="http://my.opera.com/community/users/avatar.pl/22010" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="WildEnte" href="http://my.opera.com/WildEnte/">WildEnte</a></b> <span class="comment-date"><a href="1095339.html#comment3045792" class="permalink">#</a> Tuesday, June 19, 2007 9:11:05 PM</span></p>
+<div class="text">hmmm yahoo in the search field? does this mean that opera switches to yahoo in the "google box" too now?</div>
+</div>
+<div class="comment2" id="comment3046483">
+<div class="avatar"><a href="http://my.opera.com/ResearchWizard/"><img src="http://my.opera.com/community/users/avatar.pl/289485" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="ResearchWizard" href="http://my.opera.com/ResearchWizard/">Christian<span>ResearchWizard</span></a></b> <span class="comment-date"><a href="1095339.html#comment3046483" class="permalink">#</a> Wednesday, June 20, 2007 2:16:54 AM</span></p>
+<div class="text">Wildente, sure they will - and I'll change it back :-)</div>
+</div>
+<div class="comment1" id="comment3048231">
+<div class="avatar"><a href="http://my.opera.com/_Grey_/"><img src="http://my.opera.com/community/users/avatar.pl/178430" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="_Grey_" href="http://my.opera.com/_Grey_/">_Grey_</a></b> <span class="comment-date"><a href="1095339.html#comment3048231" class="permalink">#</a> Wednesday, June 20, 2007 12:04:18 PM</span></p>
+<div class="text">Wildente, I'm actually happy about it... Google ignoring Opera on their projects and Opera being dependent on them still was an awful situation. At least most of yahoo's stuff works now (Opera is A-Grade browser).</div>
+</div>
+<div class="comment2" id="comment3048288">
+<div class="avatar"><a href="http://my.opera.com/ResearchWizard/"><img src="http://my.opera.com/community/users/avatar.pl/289485" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="ResearchWizard" href="http://my.opera.com/ResearchWizard/">Christian<span>ResearchWizard</span></a></b> <span class="comment-date"><a href="1095339.html#comment3048288" class="permalink">#</a> Wednesday, June 20, 2007 12:20:25 PM</span></p>
+<div class="text">Grey, that's something I also do not really understand - maybe it's just the philosophy of Google  to give the money but something completly different to develop products. Or it's politics went crazy.<br>Anyway, Yahoo doesn't help me as it delivers pretty bad search results.</div>
+</div>
+<div class="comment1" id="comment3048496">
+<div class="avatar"><a href="http://my.opera.com/borg/"><img src="http://my.opera.com/community/users/avatar.pl/21267" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="borg" href="http://my.opera.com/borg/">Johan Borg<span>borg</span></a></b> <span class="comment-date"><a href="1095339.html#comment3048496" class="permalink">#</a> Wednesday, June 20, 2007 1:19:05 PM</span></p>
+<div class="text">Maybe Yngve just is a Yahoo fan <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-p" alt="p"><br><br>The Yahoo field doesn't signify anything, but it's always fun with some conspiracy theories...</div>
+</div>
+<div class="comment2" id="comment3052433">
+<div class="avatar"><a href="http://my.opera.com/DjiXas/"><img src="http://my.opera.com/community/users/avatar.pl/293903" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="DjiXas" href="http://my.opera.com/DjiXas/">Fav<span>DjiXas</span></a></b> <span class="comment-date"><a href="1095339.html#comment3052433" class="permalink">#</a> Thursday, June 21, 2007 11:25:12 AM</span></p>
+<div class="text">Yahoo makes some very "strange" and bad decssions in past few months... Their stocks also goes down most of the time... Time to leave yahoo and be with a big G :-)</div>
+</div>
+<div class="comment1" id="comment3053712">
+<div class="avatar"><a href="http://my.opera.com/Meneldor/"><img src="http://my.opera.com/community/users/avatar.pl/29615" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Meneldor" href="http://my.opera.com/Meneldor/">Meneldor</a></b> <span class="comment-date"><a href="1095339.html#comment3053712" class="permalink">#</a> Thursday, June 21, 2007 5:26:58 PM</span></p>
+<div class="text">Google doesn't really deserve a place of default search in Opera. I don't use Google services just because most of them ignore my favorite brower, and I'd better switch to other services than to some silly Gecko child.</div>
+</div>
+<div class="comment2" id="comment3088304">
+<div class="avatar"><a href="http://my.opera.com/PKO/"><img src="http://my.opera.com/community/users/avatar.pl/126677" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="PKO" href="http://my.opera.com/PKO/">PKO</a></b> <span class="comment-date"><a href="1095339.html#comment3088304" class="permalink">#</a> Friday, June 29, 2007 3:33:48 AM</span></p>
+<div class="text">Why does everyone have the crazy idea that the quality of a search engine is directly related to the value of the stock of the company?  Yahoo, is a very accurate search engine and as someone that uses both Yahoo and Google equally, I can honestly say that it isn't that uncommon for Yahoo to actually return better results than Google.<br><br>Anyway, I am glad to see that the Opera team still has security as a top priority.</div>
+</div>
+<div class="comment1" id="comment3093592">
+<div class="avatar"><a href="http://my.opera.com/ResearchWizard/"><img src="http://my.opera.com/community/users/avatar.pl/289485" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="ResearchWizard" href="http://my.opera.com/ResearchWizard/">Christian<span>ResearchWizard</span></a></b> <span class="comment-date"><a href="1095339.html#comment3093592" class="permalink">#</a> Saturday, June 30, 2007 1:40:40 AM</span></p>
+<div class="text">I haven't tested Yahoo very often but I got the strong impression that results for Germany were much worse than Google's a few months ago.</div>
+</div>
+<div class="comment2" id="comment3098812">
+<div class="avatar"><a href="http://my.opera.com/_Grey_/"><img src="http://my.opera.com/community/users/avatar.pl/178430" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="_Grey_" href="http://my.opera.com/_Grey_/">_Grey_</a></b> <span class="comment-date"><a href="1095339.html#comment3098812" class="permalink">#</a> Sunday, July 1, 2007 10:21:01 AM</span></p>
+<div class="text">@ResearchWizard: You're probably right about that. From a US- (or even english-speaking world) perspective, though, I can't see any fault with Yahoo's engine whatsoever.</div>
+</div>
+<div class="comment1" id="comment3196158">
+<div class="avatar"><a href="http://my.opera.com/falsifikator/"><img src="http://my.opera.com/community/users/avatar.pl/913492" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="falsifikator" href="http://my.opera.com/falsifikator/">Marko Kowalski<span>falsifikator</span></a></b> <span class="comment-date"><a href="1095339.html#comment3196158" class="permalink">#</a> Friday, July 20, 2007 4:01:12 PM</span></p>
+<div class="text">We are losing the point here:) Personally, I don't like Yahoo at all, but you can search with Opera's "Create search" option from any God damn input field you find on Internet, OK, from 99%. One of the best Opera things. So, it's not really important what will default search engine will be in the future Opera releases...</div>
+</div>
+<div class="comment2" id="comment3866810">
+<div class="avatar"><a href="http://my.opera.com/_Grey_/"><img src="http://my.opera.com/community/users/avatar.pl/178430" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="_Grey_" href="http://my.opera.com/_Grey_/">_Grey_</a></b> <span class="comment-date"><a href="1095339.html#comment3866810" class="permalink">#</a> Wednesday, October 24, 2007 11:27:46 AM</span></p>
+<div class="text">
+<blockquote class="bbquote"><p>So, it's not really important what will default search engine will be in the future Opera releases...</p></blockquote>
+<br>Yes, it is. If it wouldn't, a constrained amount of search engines wouldn't change anything either. The <strong>default</strong> search engine is special, because that is what all new/novice users will be using (unless they bother to change, which, quite often, they don't).<br><br>You are right about one thing though: This discussion doesn't belong here <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink">
+</div>
+</div>
+<a name="lastcomment"></a><div class="comment1" id="comment4666501">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="1095339.html#comment4666501" class="permalink">#</a> Tuesday, February 12, 2008 12:05:18 PM</span></p>
+<div class="text">I must admitt that I truly like what I'm seeing here. Hope it will be released soon, as I find Kestrel really useful and Opera is my favourite web browser.</div>
+</div>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<div class="sidebox" id="qp">
+<h2>Yngve Nysæter Pettersen</h2>
+<div id="myphoto"><a href="http://my.opera.com/yngve/"><img src="https://static.myopera.com/upic/pool1/tf/++v/7EYs9UW0UGvsLG+ic9bpYw/9165_l.jpg" width="220" height="165" alt="photo"></a></div>
+</div>
+<div id="blogsearch" class="sidebox">
+<label for="searchbox" class="h2">Blog search</label><form action="http://my.opera.com/yngve/search/?" method="get"><div class="pad">
+<input type="text" name="search" value="" id="searchbox" maxlength="128"><input type="submit" value="search" id="submitsearch">
+</div></form>
+</div>
+<table id="calendar">
+<caption><a href="http://my.opera.com/yngve/archive/monthly/?month=201402" id="calendarmonth">February 2014</a></caption>
+<thead><tr>
+<th scope="col" title="Sunday" abbr="Sunday">S</th>
+<th scope="col" title="Monday" abbr="Monday">M</th>
+<th scope="col" title="Tuesday" abbr="Tuesday">T</th>
+<th scope="col" title="Wednesday" abbr="Wednesday">W</th>
+<th scope="col" title="Thursday" abbr="Thursday">T</th>
+<th scope="col" title="Friday" abbr="Friday">F</th>
+<th scope="col" title="Saturday" abbr="Saturday">S</th>
+</tr></thead>
+<tfoot><tr><td colspan="7">
+<span id="prevmonth" class="left"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/yngve/archive/monthly/?month=201401" title="January 2014">January 2014</a></span><span id="nextmonth" class="right"><a href="http://my.opera.com/yngve/archive/monthly/?month=201403" title="March 2014">March 2014</a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span>
+</td></tr></tfoot>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+</tr>
+<tr>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/browser" rel="tag">browser</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/browsers" rel="tag">browsers</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Certificates" rel="tag">Certificates</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/cookies" rel="tag">cookies</a></li>
+<li class="size1"><a href="http://my.opera.com/yngve/blog/index.dml/tag/CRL" rel="tag">CRL</a></li>
+<li class="size4"><a href="http://my.opera.com/yngve/blog/index.dml/tag/encryption" rel="tag">encryption</a></li>
+<li class="size4"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Extended%20Validation" rel="tag">Extended Validation</a></li>
+<li class="size1"><a href="http://my.opera.com/yngve/blog/index.dml/tag/HTTP" rel="tag">HTTP</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Kestrel" rel="tag">Kestrel</a></li>
+<li class="size3"><a href="http://my.opera.com/yngve/blog/index.dml/tag/OCSP" rel="tag">OCSP</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Opera" rel="tag">Opera</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/protocols" rel="tag">protocols</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/published" rel="tag">published</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/revocation" rel="tag">revocation</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Security" rel="tag">Security</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/SSL" rel="tag">SSL</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/standards" rel="tag">standards</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/TLS" rel="tag">TLS</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/User%20Interface" rel="tag">User Interface</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/weak%20encryption" rel="tag">weak encryption</a></li>
+</ul></div>
+</div>
+<div class="sidebox" id="visitors">
+<h2>Recent visitors</h2>
+<div class="pad">
+<ul class="nobullets userlist">
+<li><a href="http://my.opera.com/mathiasbynens/"><img src="https://static.myopera.com/upic/pool1/ce/5Z8/EgNoEkFCkDdePgbDr6RQDM/208545_s.jpg" width="68" height="51" alt="mathiasbynens"><span class="block">mathiasbynens</span></a></li>
+<li class="mid"><a href="http://my.opera.com/Frenzie/"><img src="https://static.myopera.com/upic/pool1/Ei/GQW/GYQBKzlBg94wBfVEg6rFCY/16944_s.jpg" width="68" height="51" alt="Frenzie"><span class="block">Frenzie</span></a></li>
+<li><a href="http://my.opera.com/rif/"><img src="https://static.myopera.com/upic/pool1/TM/2qa/c6nJwcuww8PYx8bVfmu9DI/23319_s.jpg" width="68" height="51" alt="rif"><span class="block">rif</span></a></li>
+<li><a href="http://my.opera.com/greench/"><img src="https://static.myopera.com/upic/pool1/Uj/vda/1orrbYcy7y26UlGATvy3Xc/174006_s.jpg" width="68" height="51" alt="greench"><span class="block">greench</span></a></li>
+<li class="mid"><a href="http://my.opera.com/bohwaz/"><img src="https://static.myopera.com/upic/pool1/K7/Gmd/UHY4QDcd_79UXZ9a3ymGjQ/45849_s.jpg" width="68" height="51" alt="bohwaz"><span class="block">bohwaz</span></a></li>
+<li><a href="http://my.opera.com/catgroup/"><img src="https://static.myopera.com/upic/pool1/9i/zkP/uvblDFNI4VfAXg1_hTdwVA/153641222_s.jpg" width="68" height="51" alt="catgroup"><span class="block">catgroup</span></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/yngve/blog/show.dml/1095339"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392046107.myo.cDoyNzowMjowMA== -->

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HTML5 audio/video support in Opera TV Store applications - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in TV - RSS 2.0 Feed" href="../../../feeds/rss/articles/tv">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in TV - Atom 1.0 Feed" href="../../../feeds/atom/articles/tv">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="tv">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>HTML5 audio/video support in Opera TV Store applications</h1>
+      <p class="print author">By Patrick H. Lauke</p>
+
+      <div class="note">
+<p>Update history:</p>
+<ul>
+<li>Article updated on 30 March 2012 to suggest explicit <code>&lt;source …&gt;</code> workaround.</li>
+<li>Article updated on 18 April 2012 to include MPEG-1/MPEG-2 Audio Layer 3 audio codec for video and clarification on limitation of single <code>audio</code>/<code>video</code> element playback on some of the current devices.</li>
+</ul>
+</div>
+
+<p>The Opera TV Store browser comes with built-in support for the HTML5 <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code>
+elements, allowing developers to include multimedia content in their applications without any need for plugin-based solutions.</p>
+<p>At its simplest, this means that multimedia elements can be included in a TV Store application by simply using markup such as:</p>
+
+<pre><code>&lt;video src=&quot;/path/to/video.mp4&quot;&gt;&lt;/video&gt;
+&lt;audio src=&quot;/path/to/audio.mp3&quot;&gt;&lt;/audio&gt;</code></pre>
+
+<div class="note">
+<p>Due to limitations in how multimedia content is handled on certain current devices, there are situations in which the type of audio/video content being used is not automatically inferred by file extensions or MIME types. For this reason, we suggest to use the more explicit, though slightly more wordy, variant:</p>
+<pre><code>&lt;video&gt;
+    &lt;source src=&quot;/path/to/video.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+&lt;audio&gt;
+    &lt;source src=&quot;/path/to/audio.mp3&quot; type=&quot;audio/mp3&quot;&gt;
+&lt;/audio&gt;</code></pre>
+</div>
+
+<p>In contrast to the desktop version of Opera – where multimedia decoding and playback is handled directly by the browser) – the specifics of which codecs are supported on devices can vary considerably, as this depends on the underlying platform and integration work carried out by device manufacturers, as well as the specific version of the Opera TV Store that may be running on the device.</p>
+
+<p>Additionally, due to the way some of the current devices have integrated audio and video support on their platform via an external media playback framework, it may not be possible to guarantee simultaneous playback of more than a single <code>audio</code> or <code>video</code> element.</p>
+
+<p>At the time of publication, the following container formats and codecs are supported for Opera TV Store applications:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Media</th>
+<th>MIME</th>
+<th>Container</th>
+<th>Video codec</th>
+<th>Audio codec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="3">Video</th>
+<td rowspan="3">AVC</td>
+<td rowspan="3">video/mp4</td>
+<td rowspan="3">MP4</td>
+<td rowspan="3">MPEG-4 AVC(H.264)<br />
+Main and High Profiles<br />
+Up to Level 4(inclusive)</td>
+<td>MPEG-1/MPEG-2<br />
+Audio Layer 3<br />
+Mono/Stereo<br />
+16-320kbps; SBR/VBR<br />
+32kHz/44.1kHz/48kHz</td>
+</tr>
+<tr>
+<td>AAC-LC<br />
+Mono/Stereo<br />
+16-320kbps; SBR/VBR<br />
+32kHz/44.1kHz/48kHz</td>
+</tr>
+<tr>
+<td>HE-AAC<br />
+Mono/Stereo<br />
+16-320kbps; SBR/VBR<br />
+32kHz/44.1kHz/48kHz</td>
+</tr>
+<tr>
+<th rowspan="4" style="border-top:1px black solid;">Audio</th>
+<td rowspan="2">MP3</td>
+<td>audio/mp3</td>
+<td rowspan="2">MP3</td>
+<td rowspan="2"></td>
+<td rowspan="2">MPEG-1/MPEG-2<br />
+Audio Layer 3<br />
+Mono/Stereo<br />
+16-320kbps; SBR/VBR<br />
+32kHz/44.1kHz/48kHz</td>
+</tr>
+<tr>
+<td>audio/mpeg</td>
+</tr>
+<tr>
+<td>AAC-LC</td>
+<td>audio/mp4</td>
+<td>MP4</td>
+<td></td>
+<td>AAC-LC<br />
+Mono/Stereo<br />
+16-320kbps; SBR/VBR<br />
+32kHz/44.1kHz/48kHz</td>
+</tr>
+<tr>
+<td>HE-AAC</td>
+<td>audio/mp4</td>
+<td>MP4</td>
+<td></td>
+<td>HE-AAC<br />
+Mono/Stereo<br />
+16-320kbps; SBR/VBR<br />
+32kHz/44.1kHz/48kHz</td>
+</tr>
+</tbody>
+</table>
+
+<p class="note">If you are testing your applications in the Opera TV Emulator, please note that – because of licensing reasons – the H.264 codecs are not installed by default. See the emulator&#39;s user guide for information of how to install these codecs separately.</p>
+
+<p class="note">For more on the basics of HTML5 <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code>, read <a href="../introduction-html5-video/index.html">
+Introduction to HTML5 video</a>.</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></h1>
+        <a href="../../../author/patrickhlauke.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/311/e211c5a9704ba8411d0a0694fbb961d97ad.jpg" alt=""/></a>
+        <p>Web Evangelist in the Developer Relations Team at Opera Software ASA.<br/>Product manager for Opera Dragonfly – Opera&#39;s built-in web developer tools.<br/><a href="http://www.opera.com/dragonfly/" target="_blank">http://www.opera.com/dragonfly/</a></p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-86104882">
+      <a href="../../../author/naveenkumark.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0c/9bd/c30f303f747a962ff15b5a0bfe24902d5ed." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/naveenkumark.html">Naveen Kumar K</a></p>
+      <p class="commentdate">Thursday, March 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi, Does Opera browser for the TV supports &quot;DivX Web Player&quot; (or) any plugins available for the same ?</section>
+    </li>
+    <li id="comment-86200892">
+      <a href="../../../author/patrickhlauke.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/311/e211c5a9704ba8411d0a0694fbb961d97ad.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/patrickhlauke.html">Patrick H. Lauke</a></p>
+      <p class="commentdate">Friday, March 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi Naveen. No, as far as I&#39;m aware Opera on devices (and certainly the Opera TV Store specifically) doesn&#39;t support plugins.</section>
+    </li>
+    <li id="comment-90249372">
+      <a href="../../../author/mpontigg.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/85/0a6/d40c11922a0a629a88ea8796c586fd64506.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mpontigg.html">mpontigg</a></p>
+      <p class="commentdate">Wednesday, May 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi, Does Opera browser for the TV supports MP3 Shoutcast and AAC+ Streaming (ADTS)  ?</section>
+    </li>
+    <li id="comment-91104362">
+      <a href="../../../author/naveenkumark.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/0c/9bd/c30f303f747a962ff15b5a0bfe24902d5ed." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/naveenkumark.html">Naveen Kumar K</a></p>
+      <p class="commentdate">Friday, June 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks Patrick for your reply.<br/>Does any one know whether Opera TV browser can support .JPS and .MPO file formats ?</section>
+    </li>
+    <li id="comment-99627562">
+      <a href="../../../author/mytvdev.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/57/74f/0e052e8beb2864de1237ac38df0e65a0f8d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mytvdev.html">myTV Developer</a></p>
+      <p class="commentdate">Thursday, November 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi there,<br/>I am trying to run the player in Opera Emulator TV, but they are all unseccessfull. Ive tried m3u8 (HLS) and mp4. The thing is that I am trying to develop an app to sony devices using opera SDK3.3. I am in final stages finalizing the player. the problem is that I cannot play anything in the emulator. <br/>1- Does opera supports m3u8? HLS? H264? <br/>2- Is there any other alternative method that i can test the player on other device? <br/>3- what if my app doesn&#39;t work on any sony device because it doesnt support certain codecs?<br/>4- Is these problem will be solved in SDK3.4? and when it is planned to be launched?<br/>Any help or hint will be greatly appreciated.</section>
+    </li>
+    <li id="comment-100283892">
+      <a href="../../../author/rynkydynky.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b5/124/2fbaa4877cf7ef198221909ecc5fa251d28.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rynkydynky.html">Fabian Marino</a></p>
+      <p class="commentdate">Thursday, November 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi there. I&#39;m trying to support opera tv, I got an app wich plays audio using soundmanager2 (<a href="http://www.schillmania.com/projects/soundmanager2/" target="_blank">http://www.schillmania.com/projects/soundmanager2/</a>) .In Opera browser 12.11 everything works fine but in the opera tv emulator, app can&#39;t reproduce multiple sounds at same time. So App can&#39;t play ambient music and fx sounds simultaneously. Do you know if is this possible? Is there an API for that? I would like tu submit my app. thanks in advance.</section>
+    </li>
+    <li id="comment-100312442">
+      <a href="../../../author/rightster.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ee/dd9/4ef6f5e460febc684750deffda487d84ce3." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rightster.html">Edward Hunton</a></p>
+      <p class="commentdate">Friday, November 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Further to myTV Developers comment i need to find out if HLS is supported for apps in the Opera TV Store (sony devices)<br/><br/>looking at this doc: <a href="http://media.opera.com/media/b2b/tv/201201/Opera_Media_Streaming.pdf" target="_blank">http://media.opera.com/media/b2b/tv/201201/Opera_Media_Streaming.pdf</a><br/><br/>it suggests this is the case, but where can i find out more info on this?</section>
+    </li>
+    <li id="comment-103278882">
+      <a href="../../../author/cmiessner.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/9e2/63c1a0c3cc79c5657bd1662293d91cc86f5." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cmiessner.html">cmiessner</a></p>
+      <p class="commentdate">Friday, February 1, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Any idea why the Youtube HTML5 test page <a href="http://www.youtube.com/html5" target="_blank">http://www.youtube.com/html5</a> states that h.264 is not supported by the Opera TV platform (both on the Opera TV emulator and real devices)? I am still looking for a way to play Youtube videos on the Opera TV platform :-(</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, February 10, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/opera&#32;tv&#32;store.html" rel="tag">opera tv store</a></li>
+        <li><a href="../../tags/tv.html" rel="tag">tv</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

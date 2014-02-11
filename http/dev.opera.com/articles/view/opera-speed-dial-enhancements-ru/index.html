@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Выделите свой сайт в Экспресс-панели - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ru">
+      <h1>Выделите свой сайт в Экспресс-панели</h1>
+      <p class="print author">By Stepan Mednikov</p>
+
+      <p class="note">The mechanisms to optimize Speed Dial icons covered in this article are only supported in Opera 11.10 to 12.16, and do not work in Opera 15 and later.</p>
+
+<h2>Table of Contents</h2>
+
+<ul>
+	<li><a href="index.html#intro">Введение</a></li>
+	<li>
+		<a href="index.html#uselogo">Логотип</a>
+		<ul>
+			<li><a href="index.html#html5icons">Значки в HTML5</a></li>
+			<li><a href="index.html#setanicon">Объявление значка для Экспресс-панели</a></li>
+			<li><a href="index.html#multipleicons">Использование нескольких значков</a></li>
+		</ul>
+	</li>
+	<li>
+		<a href="index.html#content">Экспресс-панель с учетом содержимого</a>
+		<ul>
+			<li><a href="index.html#viewmode">Использование <code>view-mode:minimized</code></a></li>
+			<li><a href="index.html#with-x-purpose">Использование HTTP-заголовка <code>X-Purpose</code></a></li>
+			<li><a href="index.html#preview-refresh">Автообновление через определенный интервал</a></li>
+		</ul>
+	</li>
+	<li><a href="index.html#sdpriority">Система приоритетов</a></li>
+	<li><a href="index.html#productsupport">Поддержка в продуктах Opera</a></li>
+</ul>
+
+<h2 id="intro">Введение</h2>
+
+<p>Настольная версия браузера Opera, начиная с версии 11.10, позволяет владельцам сайтов определять, как их сайт будет отображаться в миниатюрах Экспресс-панели. По-умолчанию, для отображения используется скриншот целой веб-страницы. Теперь появилась возможность указывать значок через CSS или в теле веб-страницы.</p>
+
+<h2 id="uselogo">Логотип
+
+<p>Этот раздел посвящен тому, как использовать собственный логотип или значок в Экспресс-панели.</p>
+
+<h3 id="html5icons">Значки в HTML5</h3>
+
+<p>Вы, возможно, знакомы со значками закладок. Впервые они были представлены в 5-й версии Internet Explorer в 1999 году. Хотя, они и не были включены в спецификацию HTML4, производители браузеров в конце концов <a href="http://www.w3.org/2005/10/howto-favicon">согласились включить поддержку</a> значков как значение атрибута <code>rel</code> элемента <code>&lt;link&gt;</code>. Компания Apple позже расширила поддержку значков в своих сенсорных устройствах через <a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html"><code style="word-wrap:none">apple-touch-icon</code></a>. Согласно спецификации HTML5, в настоящее время <code>icon</code> является <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">валидным стандартизированным значением</a> атрибута <code>rel</code>.</p>
+
+<h3 id="setanicon">Объявление значка для Экспресс-панели</h3>
+
+<p>Объявление значка для Экспресс-панели во многом схоже с объявлением значка сайта. Необходимо лишь добавить элемент <code>&lt;link&gt;</code> в секцию <code>head</code> веб-страницы:</p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;My Opera&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/logo.png&quot;&gt;
+&lt;/head&gt;</code></pre>
+
+<p>Значок для Экспресс-панели должен быть:</p>
+
+<ul>
+	<li>Размером минимум 114 &#xD7; 114 пикселов. Значки меньшего размера будут игнорироваться;</li>
+	<li>файл должен быть формата PNG, JPG или GIF. Файлы формата SVG пока не поддерживаются. В случае использования анимированных изображений, будет отображаться только первый кадр.</li>
+</ul>
+
+<p>По-умолчанию, максимальный размер значка составляет 256 &#xD7; 160 пикселов. Значки большего размера будут уменьшены до подходящих размеров (<a href="../../../../devfiles.myopera.com/articles/4992/icon.html">демо</a>). Изменить значения по-умолчанию минимального и максимального размера значка можно в меню настроек браузера в opera:config.</p>
+
+<p>Также Opera 11.10 поддерживает <code>apple-touch-icon</code>, <code>apple-touch-icon-precomposed</code> и <code>image_src</code>.</p>
+
+<h3 id="multipleicons">Использование нескольких значков</h3>
+
+<p>Вы также можете указать несколько иконок. Это очень удобно, если хотите, чтоб пользователь использовал одну иконку при добавлении страницы в закладки, а другую при добавлении сайта в Экспресс-панель.</p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;My Opera&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/128x128image.png&quot;&gt;
+    &lt;!-- Это будет иконка Экспресс-панели --&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/200x200image.png&quot;&gt;
+&lt;/head&gt;</code></pre>
+
+<p>Если объявить несколько значков, на Экспресс-панели будет отображаться больший по размеру (<a href="../../../../devfiles.myopera.com/articles/4992/multiple-icons-diff-sizes.html">демо</a>). Если значки одинакового размера, использоваться будет тот, который объявлен первым (<a href="../../../../devfiles.myopera.com/articles/4992/multiple-icons-same-size.html">демо</a>).</p>
+
+<h2 id="content">Экспресс-панель с учетом содержимого</h2>
+<p>Данный раздел описывает несколько новых способов получения содержимого для Экспресс-панели:</p>
+<ul>
+	<li>Использование <code>view-mode:minimized</code> в CSS;</li>
+	<li>испольхзование HTTP-заголовка <code>X-Purpose</code>;</li>
+	<li>автоматическая перезагрузка.</li>
+</ul>
+
+<h3 id="viewmode">Использование <code>view-mode:minimized</code></h3>
+
+<p><img src="../../../../devfiles.myopera.com/articles/4992/view-mode.png" width="542" height="292" alt="Рисунок 1: Экспресс-панель в Opera 11.10" /></p>
+<p class="comment">Рисунок 1: Экспресс-панель в Opera 11.10</p>
+
+<p>Параметр <a href="http://www.w3.org/TR/view-mode/"><code>view-mode</code></a> определяет то, как будет указываться стили в зависимости от режима просмотра. Используя <code>view-mode:minimized</code>, вы можете определять альтернативные стили отображения содержимого, предназначенного для Экспресс-панели. Свойство <code>view-mode</code> работает аналогично <code>device-width</code>. Стили должны содержаться в блоке <code>@media</code>.</p>
+
+<pre><code>@media screen and (view-mode: minimized) {
+    body {
+        color: #fff;
+        background: #b20000;
+    }
+}</code></pre>
+
+<p>Вы также можете подключить CSS-файл и выставить значение аттрибута <code>media</code> так:</p>
+
+<pre><code>&lt;link rel=stylesheet type=&quot;text/css&quot; href=&quot;minimizedstyles.css&quot; media=&quot;(view-mode:minimized)&quot;&gt;</code></pre>
+
+<p>Пример с использованием <code>view-mode:minimized</code> <a href="../../../../devfiles.myopera.com/articles/4992/view-mode.html">здесь</a>.</p>
+<p>Помните, что <code>view-mode:minimized</code> переключает окно просмотра в Экспресс-панели на <strong>256 &#xD7; 160</strong> пикселов.</p>
+
+<h3 id="with-x-purpose">Использование HTTP-заголовка <code>X-Purpose</code></h3>
+<p>Также есть возможность использовать различные URL для Экспресс-панели, каждый запрос которой содержит дополнительный HTTP-заголовок <code>X-Purpose: preview</code>.</p>
+
+<pre><code>GET / HTTP/1.1
+Host: www.bbc.co.uk/news
+X-Purpose: preview
+User-agent: Opera/9.80 (Macintosh; Intel Mac OS X 10.6.6; U; en) Presto/2.8.99 Version/11.10</code></pre>
+
+<p>При обнаружении данного HTTP-заголовкка вы можете выбрать, какой URL будет использоваться, определить файлы, которые отправятся на Экспресс-панель, или вывести специально заготовленное для Экспресс-панели содержимое. Заметьте, что такого же эффекта не будет, когда пользователь перейдет на сайт из Экспресс-панели.</p>
+
+<p>В примере ниже, мы используем директиву <code>mod_rewrite</code> сервера Apache для перенаправления всех запросов Экспресс-панели на адрес <code>/preview.html</code> (вам, возможно, захочется конкретизировать запросы в конкретной ситуации):</p>
+
+<pre><code>RewriteEngine On
+RewriteCond %{HTTP:X-Purpose} ^preview$
+RewriteRule ^(.*) /preview.html</code></pre>
+
+<p>Или быть может вы предпочтёте использовать серверную обработку запросов на каком-либо языке. Ниже приведен пример на PHP: </p>
+
+<pre><code>&lt;?php
+if ($_SERVER[&#39;HTTP_X_PURPOSE&#39;] == &#39;preview&#39;) {
+    // Send Speed Dial content
+} else {
+    // Send regular content
+}
+?&gt;</code></pre>
+
+<h3 id="preview-refresh">Автообновление через определенный интервал</h3>
+<p>Чтобы сделать содержимое Экспресс-панели более динамичным, вы можете установить интервал для обновления, который будет использоваться после добавления сайта в Экспресс-панель. Это можно сделать двумя способами:</p>
+
+<ol>
+	<li>
+		<p>используя элемент <code>&lt;meta&gt;</code>:</p>
+		<pre>&lt;meta http-equiv=&quot;preview-refresh&quot; content=&quot;3600&quot;&gt;</pre>
+	</li>
+	<li>
+		<p>возвращая HTTP-ответ <code>Preview-Refresh</code>:</p>
+		<pre>Preview-Refresh:3600</pre>
+	</li>
+</ol>
+
+<p>Данный интервал указывается в секундах, т.е. значение 3600 будет равно 1 часу.</p>
+
+<h2 id="sdpriority">Система приоритетов</h2>
+
+<p>Приоритет в первую очередь отдается свойству <code>view-mode:minimized</code> в CSS. Если стили недоступны, браузер будет искать объявление значка для страницы. Если ничего не будет объявлено либо файл будет не доступен или поврежден, будет использоваться стандартный метод — добавление снимка целой страницы.</p>
+
+<h2 id="productsupport">Поддержка в продуктах Opera</h2>
+
+<p>Пока эти улучшения доступны только для пользователей настольной версии браузера Opera.</p>
+
+<h4>Для справки</h4>
+<ul>
+	<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">Ссылки из спецификации HTML5 WHATWG</a></li>
+	<li><a href="http://www.w3.org/TR/view-mode/">Спецификация view-mode</a></li>
+</ul></h2>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=955532">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/webinista.html" rel="author">Tiffany Brown</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/x-steff.html" rel="author">Stepan Mednikov</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, April 7, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/site&#32;logo.html" rel="tag">site logo</a></li>
+        <li><a href="../../tags/speed-dial.html" rel="tag">speed-dial</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-speed-dial-enhancements-zh-cn/index.html">Chinese Simplified</a>,
+        <a href="../opera-speed-dial-enhancements/index.html">English</a>,
+        <a href="../opera-speed-dial-enhancements-de/index.html">German</a>,
+        <a href="../opera-speed-dial-enhancements-id/index.html">Indonesian</a>,
+        <a href="../opera-speed-dial-enhancements-ja/index.html">Japanese</a>,
+        <a href="../opera-speed-dial-enhancements-es/index.html">Spanish</a>,
+        <a href="../opera-speed-dial-enhancements-tr/index.html">Turkish</a>,
+        <a href="../opera-speed-dial-enhancements-vi/index.html">Vietnamese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

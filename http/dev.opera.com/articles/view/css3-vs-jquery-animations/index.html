@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS3 vs jQuery Animations - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>CSS3 vs jQuery Animations</h1>
+      <p class="print author">By Siddharth Rao</p>
+
+      			<h2>Introduction</h2>
+			
+<p>Flash originally paved the way for us to feature more than just text and images on web pages. It allowed developers to include animations and other rich effects on web pages, leading to a much more colourful and varied user experience. However, Flash was plagued by a number of issues like security, long loading times on mediocre networks, etc. Then came JavaScript libraries like jQuery, Prototype and MooTools, which got around a lot of Flash&#39;s issues by running natively in the browser, plus they made it easier for the average developer to use JavaScript to create rich effects and animations. Fast forward a few more years, and we&#39;ve now got animation capabilities available in CSS3, which offers additional advantages, such as potential speed increases due to being rendered directly by the browser.</p>
+			
+			<p>But what animation solution is really best for us to use? In this article, we shall look at how to create animations in jQuery and CSS3, and how they perform against each other.</p>
+			
+			<h2>Introduction to Animation in jQuery</h2>
+			
+			<p>The jQuery library abstracts a lot of complexity away from the developer. As a case in point, here is how to create a simple <code>&lt;div&gt;</code> that is animated after a button is clicked.</p>
+			
+			<ol>
+			<li>
+			<p>Include the jQuery library in your page, for example:</p>
+			
+<pre><code class="html">// It&#39;s recommended that you use a CDN to use the jQuery library. Here&#39;s a link to Google&#39;s CDN:
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js?ver=1.8.1&quot;&gt;&lt;/script&gt;</code></pre>
+			</li>
+			<li>
+			<p>Create the <code>&lt;div&gt;</code> element, and give it some basic style.</p>
+			
+<pre><code class="html">&lt;div&gt;&lt;/div&gt;</code></pre>
+
+<pre><code class="css">div {
+  margin-left:10px;
+  margin-bottom:10px;
+  background-color:red;
+  opacity:1;
+  float:left;
+  width:100px;
+  height:1px;
+}</code></pre>
+            </li>
+            <li>
+			
+			<p>Create the button to click that triggers a function to animate the <code>&lt;div&gt;</code></p>
+			
+<pre><code class="html">&lt;button id=&quot;start&quot;&gt;Start Animation&lt;/button&gt;</code></pre>
+            </li>
+            <li>
+			<p>Write some jQuery code to select the <code>&lt;div&gt;</code> element and apply the effects once the button is clicked. On click, the <code>&lt;div&gt;</code>&#39;s height is increased to 25px and opacity is decreased from 1 to 0.5 over a period of 2000 milliseconds or 2 seconds.</p>
+			
+<pre><code class="javascript">$(&quot;#start&quot;).click(function(){
+  $(&quot;div&quot;).animate({
+    opacity: 0.5,
+    height:&quot;25px&quot;,
+  } , 2000);
+});</code></pre>
+
+			</li>
+			</ol>
+
+			<p>It&#39;s pretty easy to animate an element with jQuery using very little code, and the best thing about jQuery is that your code will work across older browsers, even as far back as IE6!</p>
+			
+			<h2>Introduction to Animation in CSS3</h2>
+								
+			<p>To create an animation in CSS3, you need to specify two different constructs in your CSS. First of all, you need to specify what form the animation will take using the <code>@keyframes</code> at-rule, which looks something like this:</p>
+			
+<pre><code class="css">@keyframes my-animation {
+  0%   {height:0px; opacity:1; }
+  100% {height:25px; opacity:0.5; }
+}</code></pre>
+
+			<p><code>my-animation</code> is the name your animation will be identified by, and the different lines are different keyframes. In each case, the properties inside the curly braces say what value the animated properties will have at each stage of the animation, and the percentages dictate how far through the animation each stage is — in this particular case our animation is pretty simple, so we are only defining the start and end of the animation. Then, to apply your animation to an element on your page, you need to refer to it using the <code>animation</code> property:</p>
+
+<pre><code class="css">div {
+  margin-left:10px;
+  margin-bottom:10px;
+  background-color:red;
+  opacity:0.5;
+  float:left;
+  width:100px;
+  height:25px;
+  <strong>animation: my-animation 2s;</strong>
+}</code></pre>
+
+			<p>This is functionally identical to the jQuery example earlier: the <code>&lt;div&gt;</code> is animated over a period of 2 seconds, with its height increasing to 25px and its opacity decreasing from 1 to 0.5. Sounds pretty simple, huh? Unfortunately browser support is not as good for CSS3 animations — IE versions below 10 don&#39;t support it, and although all other major browsers support animations well, and the animation spec is now stable, most of them haven&#39;t dropped their vendor prefixes yet, so to ensure support just for the moment you&#39;ll have to include prefixed versions of the two blocks, for <code>-webkit-</code>, <code>-moz-</code>, <code>-ms-</code> and <code>-o-</code>. The Opera blocks would look like this, for example:</p>
+					
+<pre><code class="css">@-o-keyframes my-animation {
+  0%   {height:0px; opacity:1; }
+  100% {height:25px; opacity:0.5; }
+}</code></pre>
+
+<p>and</p> 
+
+<pre><code class="css">div {
+    ...
+  <strong>-o-animation: my-animation 2s;</strong>
+}</code></pre>	
+
+<p>This instantly makes the code base a lot more daunting, although if you wanted to reduce the code back to one block, you could use a solution like a preprocessor. Here are a couple of solutions that you could use to add the right prefix at runtime, or during a site build process:</p>
+			
+			<ol>
+				<li><a href="http://www.sass-lang.com">SASS</a> — A CSS preprocessor that allows you to include variables, functions, and other features, meaning faster more efficient CSS in some cases. Using SASS shouldn&#39;t affect the performance of your site.</li>
+				<li><a href="http://leaverou.github.com/prefixfree/">Prefixfree</a> — A JavaScript library that simple adds the right prefixes to your CSS for the browser accessing it, at runtime. This does mean executing more JavaScript on the client machine, which could lead to a slight performance hit, but this should be relatively minor. The downside is that the layout of the webpage will be broken if the user has JavaScript disabled.</li>
+			</ol>
+									
+			<p>So at the moment, it looks like jQuery is the best way to go, especially in terms of browser support. If you want your site to still be usable in older browsers that don&#39;t support the animation, it is advisable to make the default settings of the properties that are animated equal to the end state of the animation, for example above you can see that <code>height</code> is set to 25px and <code>opacity</code> is set to 0.5, so if the animation isn&#39;t available, the element just defaults at its end state. This may be acceptable for your site, or it may not — it really depends on what you are trying to do, and what your client or boss is happy with.</p>			
+
+			<p class="note">Note: for a lot more detail on CSS animations, read <a href="../css3-animations/index.html">Making a move with CSS3 animations</a> by Chris Mills.</p>
+
+
+			<h2>Animation Wars: CSS3 vs jQuery</h2>
+			
+			<p>To test the performance of CSS3 animations against jQuery animations, let&#39;s set up a test. We will use the code we have already shown above, but in each case we will animate 300 <code>&lt;div&gt;</code>s simultaneously, so that it is easier to actually measure the time taken for the animation to run.</p>
+			 
+			<h3>CSS3 Animations</h3>
+			
+			<p>The execution graph for the <a href="../../../../devfiles.myopera.com/articles/10262/CSS3-300-boxes.html">CSS3 animation test</a> looks like Figure 1, which also links through to a larger version of the image for clarity. This graph was created using the Opera Dragonfly profiler tool, and the browser used was Opera 12 on Mac OS X.</p>
+			
+			<p><a href="../../../../devfiles.myopera.com/articles/10262/css3-300-boxes-speed-large.jpg"><img src="../../../../devfiles.myopera.com/articles/10262/css3-300-boxes-speed-small.jpg" alt="Image illustrating the time taken to animate 300 divs with CSS animations in Opera 12" /></a></p>
+			<p class="comment">Figure 1: The time taken to animate 300 <code>&lt;div&gt;</code>s with CSS animations.</p>
+			
+			<p>As seen in Figure 1, the entire animation is completed in around 2.9 seconds.</p>
+			
+			<p>Next, let&#39;s look at memory usage — see Figure 2, which links through to a larger image for clarity. This graph was created using the Memory option inside the Timeline tab of Chrome 21&#39;s Developer Tools.</p>
+			
+			<p><a href="../../../../devfiles.myopera.com/articles/10262/css3-300-boxes-memory-large.jpg"><img src="../../../../devfiles.myopera.com/articles/10262/css3-300-boxes-memory-small.jpg" alt="Image illustrating the heap memory used to animate 300 divs with CSS animations in Chrome 21" /></a></p>
+			<p class="comment">Figure 2: The memory used in animating 300 <code>&lt;div&gt;</code>s with CSS animations.</p>
+			
+			<p>The memory used during the CSS3 animation is very small — around 1.5MB, with only about 100 actions required. The final data for this test is:</p>
+			
+			<ul>
+			  <li>Number of actions performed to finish the animation: 100</li>
+              <li>Time taken to finish executing the animation: 2.9 seconds</li>
+              <li>Memory consumed at the end of the animation: 1.5 MB</li>
+			</ul>		
+
+			<p>Now let us proceed to see how the jQuery animations fare.</p>
+
+			<h3>jQuery Animations</h3>
+			
+			<p>The execution graph for the <a href="../../../../devfiles.myopera.com/articles/10262/jQuery-300-boxes.html">jQuery animation test</a> looks like Figure 3, which links through to a larger version for clarity. This graph was created using the Opera Dragonfly profiler tool, and the browser used was Opera 12 on Mac OS X.</p>
+			
+			<p><a href="../../../../devfiles.myopera.com/articles/10262/jquery-300-boxes-speed-large.jpg"><img src="../../../../devfiles.myopera.com/articles/10262/jquery-300-boxes-speed-small.jpg" alt="Image illustrating the time taken to animate 300 divs with jQuery in Opera 12" /></a></p>
+			<p class="comment">Figure 3: The time taken to animate 300 <code>&lt;div&gt;</code>s with jQuery.</p>			
+						
+			<p>The entire operation takes just over 5 seconds — a much longer time right? The actual animation doesn&#39;t take much longer, but there is all the extra overhead of the JavaScript being loaded (notice a slight delay between the button being clicked and the animation starting.) Also, the number of actions performed by the browser is more than 2000, enormous compared to just 100 for the same animation done using CSS3. Even without using developer tools, you will notice that once the &#39;Start Animation&#39; button is clicked, there is a slight delay before the animation starts.</p>
+			
+			<p>Now onto memory usage — see Figure 4, which links through to a larger image for clarity. This graph was created using the Memory option inside the Timeline tab of Chrome 21&#39;s Developer Tools.</p>	
+			
+			<p><a href="../../../../devfiles.myopera.com/articles/10262/jquery-300-boxes-memory-large.jpg"><img src="../../../../devfiles.myopera.com/articles/10262/jquery-300-boxes-memory-small.jpg" alt="Image illustrating the heap memory used to animate 300 divs with jQuery in Chrome 21" /></a></p>
+			<p class="comment">Figure 4: The memory used in animating 300 <code>&lt;div&gt;</code>s with jQuery.</p>	
+
+			
+			<p>When it comes to memory, this animation is a lot hungrier, using close to 6 MB! The final data for this test is:</p>
+			
+			<ul>
+			  <li>Number of actions performed to finish the animation: 2119</li>
+			  <li>Time taken to finish executing the animation: 5 seconds</li>
+			  <li>Memory consumed at the end of the animation: 6 MB</li>
+			</ul>
+			
+			<p>It is also worth noting that the above animations will give different test results across different browsers on different computers, but at least they provide a usable comparison. Currently, Chrome has the fastest JavaScript processor and executes the jQuery animation a few hundred milliseconds faster than its competitors. However it&#39;s an entirely different story when it comes to CSS3 animations. Opera 12 blasts ahead giving a smooth animation, as Opera currently leads the way when it comes to DOM manipulation and processing CSS. Firefox 14 and Safari 6 do a very good job at both the areas. The developer&#39;s nightmare, IE (the latest stable version being IE 9) doesn&#39;t support CSS3 animations but executes jQuery animations decently.</p>
+
+			<h2>And the winner is...</h2>
+			
+			<p>CSS3! Clearly, CSS3 wins the race by lengths. The huge difference in performance is because the browser&#39;s CSS processor is written in C++ and native code executes very fast whereas jQuery (JavaScript) is an interpreted language and the browser can&#39;t predict JavaScript ahead in time, in terms of what event will occur next.</p>
+
+			<p>Although the results above indicate that you should use CSS3 for animations, you should bear in mind the advantages and disadvantages we discussed earlier on in the article. You need to keep in mind that a fair amount of people still use Internet Explorer 7 and 8, so you should use jQuery if your animations absolutely need to work the same in those older browsers.</p>
+			
+			<p>Alternatively, you might be able to live with your animations gracefully degrading in non-supporting browsers, in which case CSS3 animations are the best option.</p>
+
+<p class="note">Note that for simple animations, such as the trivial one shown in this test example, you could probably use less CSS if you did it as a <a href="../css3-transitions-and-2d-transforms/index.html">transition</a> instead of an animation. It really is up to you what to use — transitions are quicker to set up but rely on state changes, whereas animations are arguably more flexible and powerful. Choose what is best for your particular situation.</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/siddharthrao.html" rel="author">Siddharth Rao</a></h1>
+        <a href="../../../author/siddharthrao.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/9b/c31/fa00577a1d48f741a647a3a9c1dfca3aed7." alt=""/></a>
+        <p>I tweet around as @awesomesid :)</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-97098972">
+      <a href="../../../author/Necroman.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fc/322/5949657dfff3a401061343293aa94368ace.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Necroman.html">Necroman</a></p>
+      <p class="commentdate">Wednesday, September 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>When speaking of animations, what about supporting <a href="http://www.w3.org/TR/animation-timing/#requestAnimationFrame" target="_blank">http://www.w3.org/TR/animation-timing/#requestAnimationFrame</a> ?</section>
+    </li>
+    <li id="comment-97110012">
+      <a href="../../../author/maysundays.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/15/78f/243f316d91bdb68e90aaa7f8cf028eb7fdc.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/maysundays.html">Mason Brown</a></p>
+      <p class="commentdate">Wednesday, September 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>NIce read. CSS for the win!<br/><br/>Another case supporting for CSS animations vs jQuery is that it&#39;s helpful to separate &quot;interface design&quot; from &quot;application logic&quot;. As a designer/front-end dev, I find it&#39;s much easier to hone animations in CSS (presentation), rather than having to manipulate jQuery animations intermingled within the app logic.</section>
+    </li>
+    <li id="comment-97111142">
+      <a href="../../../author/sjstrutt.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a4/3b4/bd114808238de7238390f01fa07f20b366a." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/sjstrutt.html">sjstrutt</a></p>
+      <p class="commentdate">Wednesday, September 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Why are you measuring performance using an arbitrary (and old) version of jQuery (1.5.1, released February 2011), rather than the current version?  The current version is 1.8.2 (and if you insist on using the latest on Google&#39;s CDN, use 1.8.1).<br/><br/>The result may still be the same with 1.5.1 vs 1.8.1, but the head-to-head is still deceptive (though I assume this was unintentional).</section>
+    </li>
+    <li id="comment-97149672">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, September 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Necroman - last I heard, we were working on it. I&#39;ll have a dig and see if I can find any updates.<br/><br/>@Mason Brown - yup, certainly makes sense. Although surely even if you are doing both view and controller in JS, you could separate them into different files/directories? Not quite as pure, granted, but even so?<br/><br/>@sjstrutt You are so damn right - I have updated it in the article. I don&#39;t know how I missed that...</section>
+    </li>
+    <li id="comment-97218842">
+      <a href="../../../author/jackdoyle.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b8/662/83bc0ca1c1ddbb2683722b9fe00a70364e9." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jackdoyle.html">Jack Doyle</a></p>
+      <p class="commentdate">Friday, September 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great points, although I worry that jQuery gives JavaScript animation a bad rap. The GreenSock Animation Platform, for example, is not only MUCH faster than jQuery (not even close), but it even beats out Zepto&#39;s CSS3-based transitions (at least on all the devices I&#39;ve tested). Here&#39;s a simple interactive tool that lets you compare performance among jQuery, Dojo, YUI, MooTools, TweenJS, Zepto and GreenSock&#39;s TweenLite: <a href="http://www.greensock.com/js/speed.html" target="_blank">http://www.greensock.com/js/speed.html</a><br/><br/>Let&#39;s face it: jQuery just isn&#39;t optimized for animation.<br/><br/>For relatively simple animations, CSS3 animations (and/or transitions) are great. However, they have some pretty significant limitations that make them ill-suited for a complex professional-grade animation workflow. For example, there are no event callbacks (onComplete, onUpdate, onStart, etc.), easing options aren&#39;t nearly as flexible, and what if I wanted to set up a bunch of staggered animations that use different eases (like Elastic.easeOut and Back.easeIn) and then jump to exactly 0.7425 seconds into the sequence and pause? What if I want to build out an entire sequence with overlapping animations and then attach a slider to that, giving the user the ability to zip through it interactively? What if in the middle of the animation, the user clicks a button and I want to smoothly make the entire animation decelerate to half-speed? What if I need to animate along a Bezier path? And of course, as you mentioned, browser support is always an issue with new CSS3 stuff, but JS can much more easily implement workarounds for missing features. <br/><br/>You did a nice job pointing out some of the key factors to consider, and I know you weren&#39;t trying to position jQuery as the gold standard in JavaScript animation - I just wanted to point out that the performance of a JS solution doesn&#39;t have to be as terrible as jQuery&#39;s (no offense to the jQuery folks - I think it&#39;s an awesome tool, just not for professional grade animation). <br/><br/>More info about the GreenSock toolset can be found at <a href="http://www.greensock.com/v12/" target="_blank">http://www.greensock.com/v12/</a></section>
+    </li>
+    <li id="comment-97225532">
+      <a href="../../../author/ocampesato.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e7/f5c/6802d0406eae175a7ac1feceff005ec284f." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ocampesato.html">ocampesato</a></p>
+      <p class="commentdate">Friday, September 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>You might enjoy some of these eye-candy code samples:<br/><a href="http://code.google.com/p/css3-graphics/" target="_blank">http://code.google.com/p/css3-graphics/</a><br/><a href="http://code.google.com/p/jquery-css3-graphics/" target="_blank">http://code.google.com/p/jquery-css3-graphics/</a><br/><a href="http://code.google.com/p/css-shaders-graphics/" target="_blank">http://code.google.com/p/css-shaders-graphics/</a><br/></section>
+    </li>
+    <li id="comment-97276202">
+      <a href="../../../author/aardrian.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/66/71d/b6e1a6434f5c2d71b35708c238789173a35.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/aardrian.html">Adrian Roselli</a></p>
+      <p class="commentdate">Saturday, September 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The link to the jQuery animation test is 404.</section>
+    </li>
+    <li id="comment-97280532">
+      <a href="../../../author/siddharthrao.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9b/c31/fa00577a1d48f741a647a3a9c1dfca3aed7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/siddharthrao.html">Siddharth Rao</a></p>
+      <p class="commentdate">Saturday, September 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Adrian: I just noticed that. I will let you know once the link&#39;s working.<br/><br/>@ocampesato: Thanks :)<br/></section>
+    </li>
+    <li id="comment-97280752">
+      <a href="../../../author/siddharthrao.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9b/c31/fa00577a1d48f741a647a3a9c1dfca3aed7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/siddharthrao.html">Siddharth Rao</a></p>
+      <p class="commentdate">Saturday, September 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Jack Doyle:Greensock is totally cool. But let&#39;s face the truth, only a few thousand developers would be aware of that platform, whereas nearly 50% of the websites use jQuery in some way or the other. jQuery is the go to JavaScript library and talk about animations, jQuery will be the first thought in a developer&#39;s mind. CSS3 is still an infant but it is very promising and one can learn how to implement just by taking a glance at it. It also works for the users that have disabled JavaScript. Given that the browsers are getting faster and faster in processing JavaScript, there will be a day when jQuery animations will be lighter and faster and the gap between CSS3 and jQuery animations will only reduce. And does GreenSock support IE6 and IE7?</section>
+    </li>
+    <li id="comment-97313842">
+      <a href="../../../author/jackdoyle.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b8/662/83bc0ca1c1ddbb2683722b9fe00a70364e9." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jackdoyle.html">Jack Doyle</a></p>
+      <p class="commentdate">Sunday, September 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Yep, GreenSock supports IE6 and IE7. In fact, you can even rotate, skew, and scale things and use transformOrigin in those old browsers! Try that with jQuery :)<br/><br/>You&#39;re absolutely right about jQuery being much more popular than GreenSock right now. Likewise, IE was by far the most popular browser many years ago. Doesn&#39;t mean it&#39;s better :) Times change. GreenSock is still in beta, yet thousands of developers are using it in major sites like in the latest Batman movie site, MountainDew.com, and many more. Momentum is building.<br/><br/>GreenSock became an industry standard in Flash, and now that it has come to JavaScript (with the same API), there&#39;s a good chance it&#39;ll do likewise there within a few years. Or not. But either way, I&#39;d encourage folks to take a peek. It&#39;s pretty unique and it absolutely destroys jQuery in terms of performance, feature set, flexibility, etc. </section>
+    </li>
+    <li id="comment-97315982">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Sunday, September 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Link to jQuery animation example fixed. Sorry about that folks!</section>
+    </li>
+    <li id="comment-97332372">
+      <a href="../../../author/c69.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/6a/d33/0533b078035063c59d40751470361dbd365.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/c69.html">Constantine Vesna</a></p>
+      <p class="commentdate">Sunday, September 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Don&#39;t want to sound like a party-pooper, but - our tests in May showed that CSS3 transitions are actually slower and uglier than jQuery animations ... We were animating top, left and background-position properties. For opacity - maybe css is faster now, but you must check it for yourself.<br/><br/>p.s: Greensock is very impressive. Animation is smooth and fast.</section>
+    </li>
+    <li id="comment-97362512">
+      <a href="../../../author/siddharthrao.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9b/c31/fa00577a1d48f741a647a3a9c1dfca3aed7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/siddharthrao.html">Siddharth Rao</a></p>
+      <p class="commentdate">Monday, October 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Constantine Vesna: Can you please give me the source code or send  me a link where I can see those animations? I would love to take a look :)</section>
+    </li>
+    <li id="comment-97407142">
+      <a href="../../../author/bobbudd.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/bc/29f/0c987d1612c09e385408699a44aa1e83bd1." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/bobbudd.html">bobbudd</a></p>
+      <p class="commentdate">Monday, October 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I love GreenSock, been using it in flash since &#39;03, looking forward to seeing what it can do in JS - but in the interests of full disclosure, Jack Doyle IS greensock.</section>
+    </li>
+    <li id="comment-97463862">
+      <a href="../../../author/albertocascione.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/88/597/2efda96127f462121ef49a081e87c5829e8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/albertocascione.html">alberto</a></p>
+      <p class="commentdate">Wednesday, October 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is CSS3 a faster and a better way then jquery/javascript, ecc... animation? Yes, sure it is. Is CSS3 a better mobile-friendly language then other client-side languages? Yes it is, and i can understand why Google, Apple and Telenor are supporting it. Ok, everything is good, and Opera developers are doing a great job writing tutorials. <br/>But, we should use CSS3 for production site? OH LORD NO!<br/>please, we have to keep in mind that we MUST NOT use CSS3 rules for our websites, but just for test. I&#39;m writing this message because i hear around a lots of people who propose their clients HTML5 and CSS3 sites, and i&#39;m asking myself: haven&#39;t we spent last 10 years praying for a standard web based on CSS?<br/>Isn&#39;t Opera one of the most standard-compliant browser?<br/>So, CSS3 transition will rock, yes, sure, but it WILL rock, in the future!</section>
+    </li>
+    <li id="comment-97501712">
+      <a href="../../../author/mbin.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e6/b50/cff31d2d0ab9a3ad9a81951118e343c2a9b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mbin.html">Michał Biniek</a></p>
+      <p class="commentdate">Wednesday, October 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you for this really nice comparsion - and also presentation of new debugging parts in dragonfly. However I&#39;m not sure if memory profiler in chrome should be really used here - at least comparing usage of memory in memory profiler and on task manager sometimes generates completely different (as memory usage in profiler is close connected to js process not other internal stuff especially not images).<br/>Anyway I&#39;m also interested in comparsion CSS3 to Vanilla JS (<a href="http://vanilla-js.com/" target="_blank">http://vanilla-js.com/</a>) aka pure JS as sometimes jQuery could make big overhead especially when is caching data (which of course cause bigger memory usage etc but faster access to elements in future actions).</section>
+    </li>
+    <li id="comment-97776692">
+      <a href="../../../author/siddharthrao.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9b/c31/fa00577a1d48f741a647a3a9c1dfca3aed7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/siddharthrao.html">Siddharth Rao</a></p>
+      <p class="commentdate">Tuesday, October 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Jack Doyle:<br/><br/>Are you the REAL Jack Doyle? ;) I will give GreenSock a try this weekend and something tells me it will win me over :) How in the world could have I missed something this big? I HAVE to spread word about GreenSock, after I try it :) <br/><br/>@bobbudd:<br/>Thanks for opening my eyes, I didn&#39;t know that @Jack Doyle IS GreenSock :P<br/><br/>@Alberto:<br/>Many have saved tons of money just by not developing for IE6, 7 and 8! So the future is nearly here and I hope the process only accelerates :) And yes, when it comes to being standard-compliant, Opera rocks!<br/><br/><br/>@Michal Biniek:<br/>You&#39;re welcome :) Dragonfly is still a kid, I can&#39;t wait to see it grow up. Yes, you are right but then these results might vary in a month or so because JavaScript engines are becoming better and better, to a point where they just can&#39;t get any significantly more better. The comparision was to give you an idea that CSS3 is processed faster than JS. You will be able to get a proper result when you design games, that is when the real potential of CSS3 can be seen. :)</section>
+    </li>
+    <li id="comment-97908902">
+      <a href="../../../author/jackdoyle.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b8/662/83bc0ca1c1ddbb2683722b9fe00a70364e9." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jackdoyle.html">Jack Doyle</a></p>
+      <p class="commentdate">Thursday, October 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Ha ha - yes, I&#39;m the &quot;real&quot; Jack Doyle. Dang, my cover is blown. <br/><br/>Enjoy your test-drive of the GreenSock Animation Platform over the weekend. And you might want to check out the new JavaScript-focused GSAP page launched today: <a href="http://www.greensock.com/gsap-js/" target="_blank">http://www.greensock.com/gsap-js/</a> - it has a little teaser animation at the top that shows a few capabilities, several of which would be virtually impossible with CSS3 animations. <br/><br/>Happy tweening!</section>
+    </li>
+    <li id="comment-98204072">
+      <a href="../../../author/siddharthrao.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/9b/c31/fa00577a1d48f741a647a3a9c1dfca3aed7." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/siddharthrao.html">Siddharth Rao</a></p>
+      <p class="commentdate">Wednesday, October 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Haha :) I was so successful :P<br/><br/>Sure thing :) I am giving greensock  a round now :) I will get back to you once I have made it bend like Beckham. ;)</section>
+    </li>
+    <li id="comment-98492181">
+      <a href="../../../author/mjohnson21.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ba/7cd/f9631572f8480ec50cd3878bffc2cd0be2e." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mjohnson21.html">mjohnson21</a></p>
+      <p class="commentdate">Wednesday, October 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hey Constantine, we discovered the same thing when trying to animate background position. It performs poorly, and IIRC was causing redraws at every frame. <br/><br/>The solution is not animating background-position. Instead, animate the position of the element. Framerate improved significantly. </section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/siddharthrao.html" rel="author">Siddharth Rao</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, September 26, 2012
+      </p>
+
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera TV Store アプリケーションにおけるファンクションキーの取り扱い - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in TV - RSS 2.0 Feed" href="../../../feeds/rss/articles/tv">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in TV - Atom 1.0 Feed" href="../../../feeds/atom/articles/tv">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="tv">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>Opera TV Store アプリケーションにおけるファンクションキーの取り扱い</h1>
+      <p class="print author">By Go Uehiro</p>
+
+      <p>Opera TV Store は、リモートコントロールにある基本的な 4 方向キーを空間ナビゲーションに使用するようにデザインされています。アプリケーションが Opera TV Store ブラウザに組み込まれたデフォルトの空間ナビゲーションを使用して問題なく機能するかどうかをテストしてください。</p>
+<p>Opera の空間ナビゲーション機能は、ほとんどのブラウザで利用可能な、<kbd>TAB</kbd> をベースとした従来のキーボードアクセスと似たような方法で機能し、ユーザーはこの機能を使用して、フォーカスできる要素（リンク、フォームコントロール、画像マップ領域など）の間を移動することができます。また、空間ナビゲーション機能は、<code>click</code> および <code>mouseover</code> の JavaScript イベントが付与されている任意の要素にフォーカスすることができます。さらに名前からも推測できるように、Opera の空間ナビゲーション機能は、（<kbd>TAB</kbd> ナビゲーションのように）ソース順ではなく、画面の空間上での関連性をベースとした要素間の移動を可能にします。</p>
+<p>ほとんどの場合、作成者はアプリケーションのコントロールのハンドリングを、単に Opera の空間ナビゲーションに依存するだけで行えます。さらに CSS3 を使用することで、シンプルなメカニズムを用いて <a href="../tweaking-spatial-navigation-for-tv-browsing/index.html">TV ブラウジング向けに空間ナビゲーションを調整する</a> ことができます。</p>
+<p>また、アプリケーション作成者は、リモートコントロールでのキー操作を取得し、アプリケーションのナビゲーションをアプリ側でハンドリングするようにすることもできます。この場合、基本的な方向ボタン（<kbd>上</kbd>、<kbd>右</kbd>、<kbd>下</kbd>、<kbd>左</kbd>）のみに反応するだけでなく、機能をさまざまなショートカット・機能キー（<kbd>戻る</kbd>、<kbd>情報</kbd>、<kbd>オプション</kbd>、<kbd>赤</kbd> ボタンなど）に関連付けることができます。リモートコントロールキーのキーコードはデバイスによって異なるため、Opera TV Store ブラウザは、現在のデバイスで使用されているハードウェア固有のコードにマップされた組み込みの <strong>グローバル定数</strong> を提供しています。</p>
+
+<h2>利用可能な機能ボタンの一覧</h2>
+<table>
+<thead>
+<tr>
+<th>ハードウェアキー</th>
+<th>キーコードの定数</th>
+<th>備考</th>
+</tr>
+<tbody>
+<tr>
+<td>↑</td>
+<td>VK_UP</td>
+<td>常に利用可能*</td>
+</tr>
+<tr>
+<td>→</td>
+<td>VK_RIGHT</td>
+<td>常に利用可能*</td>
+</tr>
+<tr>
+<td>↓</td>
+<td>VK_DOWN</td>
+<td>常に利用可能*</td>
+</tr>
+<tr>
+<td>←</td>
+<td>VK_LEFT</td>
+<td>常に利用可能*</td>
+</tr>
+<tr>
+<td>Confirm/Select/OK</td>
+<td>VK_ENTER</td>
+<td>常に利用可能*</td>
+</tr>
+<tr>
+<td>Opera を終了</td>
+<td>表示なし</td>
+<td>常に利用可能（ネイティブのファームウェアによりハンドルされる）</td>
+</tr>
+<tr>
+<td>Back/Return</td>
+<td>VK_BACK_SPACE</td>
+<td>オプションではあるが推奨</td>
+</tr>
+<tr>
+<td>BLUE</td>
+<td>VK_BLUE</td>
+<td>オプションではあるが推奨</td>
+</tr>
+<tr>
+<td>RED</td>
+<td>VK_RED</td>
+<td>オプションではあるが推奨</td>
+</tr>
+<tr>
+<td>GREEN</td>
+<td>VK_GREEN</td>
+<td>オプションではあるが推奨</td>
+</tr>
+<tr>
+<td>YELLOW</td>
+<td>VK_YELLOW</td>
+<td>オプションではあるが推奨</td>
+</tr>
+<tr>
+<td>メニュー</td>
+<td>VK_MENU</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>0</td>
+<td>VK_0</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>1</td>
+<td>VK_1</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>2</td>
+<td>VK_2</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>3</td>
+<td>VK_3</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>4</td>
+<td>VK_4</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>5</td>
+<td>VK_5</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>6</td>
+<td>VK_6</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>7</td>
+<td>VK_7</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>8</td>
+<td>VK_8</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>9</td>
+<td>VK_9</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>PLAY</td>
+<td>VK_PLAY</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>PAUSE</td>
+<td>VK_PAUSE</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>STOP</td>
+<td>VK_STOP</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>NEXT</td>
+<td>VK_TRACK_NEXT</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>PREV</td>
+<td>VK_TRACK_PREV</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>FF (Fast-Forward)</td>
+<td>VK_FAST_FWD</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>REWIND</td>
+<td>VK_REWIND</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>SUBTITLE</td>
+<td>VK_SUBTITLE</td>
+<td>オプション</td>
+</tr>
+<tr>
+<td>INFORMATION</td>
+<td>VK_INFO</td>
+<td>オプション</td>
+</tr>
+</tbody>
+</thead></table>
+<p><strong>ご注意： </strong> <kbd>CONFIRM</kbd>、<kbd>EXIT</kbd>、方向ボタンはデバイスメーカーにより必ず実装されなければならないため、エンドユーザーは、Opera TV Store が搭載されたデバイスのリモートコントロールを使用して常に利用することができます。各アプリケーションを終了できるように、<kbd>EXIT</kbd> キーはOpera TV Store ブラウザによりハンドリングされます。このため、<kbd>VK_EXIT</kbd> はアプリケーションには送信されません。</p>
+
+<h2><code>keypress</code> イベントのハンドリング</h2>
+<p>キーイベントは、以下のように <code>onkeypress</code> 属性を要素に付与することでハンドリングできます（keypress は要素が実際にフォーカスを受け取った時にのみハンドリングされる点にご注意ください）。</p>
+
+<pre><code>&lt;ELEMENT onkeypress=&quot;handler&quot;&gt;</code></pre>
+
+<p>これはもちろん、直接 JavaScript を使用しても行えます。以下のように、<code>onkeypress</code> プロパティを追加するか、<code>addEventListener</code> を使用してください。</p>
+<pre><code>object.onkeypress = handler;
+object.addEventListener(&quot;keypress&quot;, handler, useCapture);</code></pre>
+
+<p><code>handler</code> 関数では、<code>event.keyCode</code> と Opera TV Store で提供される機能キー用のグローバル定数のセットを照合します。</p>
+
+<pre><code>function handler(event){
+	…
+	if (VK_RED == event.keyCode){
+		/* VK_RED was pressed … do something useful */
+	}
+	…
+}</code></pre>
+
+<p>アプリケーションによっては、ページ内の多数の要素に対して、それぞれ異なる多くのイベントハンドラを含めないようにした方がよいでしょう。イベントキャプチャと Event Delegation メカニズムを利用する代わりに、<code>keypress</code> ハンドラをトップレベルの要素（例： <code>body</code>）あるいはオブジェクト（<code>window</code> など）に設定します。</p>
+
+<pre><code>window.addEventListener(&quot;keypress&quot;, handler, useCapture);</code></pre>
+
+<p>この場合 <code>handler</code> 関数では、イベントが発生した要素を特定する必要があります。リファレンスは <code>event.target</code> から簡単に取得することができます。</p>
+
+<pre><code>function handler(event){
+	…
+	var target = event.target;
+	…	
+}</code></pre>
+
+<h2>デフォルトの空間ナビゲーションの回避</h2>
+
+<p>キーイベントを直接ハンドリングする場合、Opera TV Store ブラウザが通常の空間ナビゲーションを用いて要素をアクティブにすることを止めたいと思われるかもしれません。このような場合には、以下のように <code>handler</code> 関数を使用して抑制することができます。</p>
+
+<pre><code>function handler(event){
+	…
+	event.preventDefault();
+	…	
+}</code></pre>
+
+<h2>特定の機能キーのサポートを判定する</h2>
+
+<p>アプリケーションの作成者は、シンプルな JavaScript を使用して特定の機能キーがデバイスで定義されているかを確認することができます。ボタンがサポートされている場合、定数はデバイス固有のボタンのキーコードを含んでいます。さもなければ、定数は <code>null</code> の値を返します。例として、以下のように <kbd>VK_RED</kbd> キーをテストできます。</p>
+
+<pre><code>if (VK_RED !== null) {
+	/* VK_RED is supported */
+	…
+}</code></pre>
+
+<p>Opera TV Store を実行するすべてのデバイスには、上に定義されたすべてのグローバル定数がありますが（デバイスのリモートコントロールに特定のボタンがない場合、値が <code>null</code> が返るでしょう）、<code>Unhandled Error: Undefined variable</code> の JavaScript エラーを避けるため、定数を利用する前に該当するものが存在しているかどうかを確認することをお勧めします。</p>
+
+<pre><code>if ((&#39;VK_RED&#39; in window)&amp;&amp;(VK_RED !== null)) {
+	/* VK_RED is supported */
+	…
+}</code></pre>
+
+<p>以下のように定数に対して <code>event.keyCode</code> の値を確認する場合にも同じことが言えます。</p>
+
+<pre><code>function handler(event){
+	…
+	if ((&#39;VK_RED&#39; in window)&amp;&amp;(VK_RED == event.keyCode)){
+		/* VK_RED was pressed … do something useful */
+	}
+	…
+}</code></pre>
+
+<p class="note"><code>VK_*</code> で示されるグローバル定数の一覧は、OEM がインテグレーションを行う際に Opera TV Store の一部として同梱する、<code>user.js</code> ファイルに設定されています。デバイスメーカーは、デバイスと共に出荷される標準のリモートコントロールをベースとした、ボタンと関連するキーコードを同梱します。この場合、サードパーティあるいは代替となるリモートコントロールが、標準のリモートコントロールの機能ボタンと一致しない可能性があります。定数が定義され存在していても、リモートコントロールに物理的なキーがない場合があります。このため、注意を払い、最低限の <em>常に利用可能な</em> キーのセットでアプリケーションが機能するように設計することをお勧めします。</p>td
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/patrickhlauke.html" rel="author">Patrick H. Lauke</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/mopera.html" rel="author">Go Uehiro</a></p>
+      <p>
+        <strong>Date</strong>
+        Friday, July 27, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/opera&#32;tv&#32;store.html" rel="tag">opera tv store</a></li>
+        <li><a href="../../tags/tv.html" rel="tag">tv</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../functional-key-handling-in-opera-tv-store-applications/index.html">English</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Haz brillar tu sitio en el Acceso Rápido de Opera - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="es">
+      <h1>Haz brillar tu sitio en el Acceso Rápido de Opera</h1>
+      <p class="print author">By zbzm</p>
+
+      <p class="note">The mechanisms to optimize Speed Dial icons covered in this article are only supported in Opera 11.10 to 12.16, and do not work in Opera 15 and later.</p>
+
+<h2>
+Tabla de Contenidos
+</h2>
+<ul>
+<li><a href="index.html#intro">Introducción</a></li>
+<li>
+	<a href="index.html#uselogo">Usando logos</a>
+	<ul>
+		<li><a href="index.html#html5icons">Iconos en HTML5</a></li>
+		<li><a href="index.html#setanicon">Especificando un ícono para el Acceso Rápido</a></li>
+		<li><a href="index.html#multipleicons">Usando varios iconos</a></li>
+	</ul>
+</li><li>
+	<a href="index.html#content">Proporcionando contenido a la medida en su entrada de Acceso Rápido </a>
+		<ul>
+		<li><a href="index.html#viewmode">Usando el modo de vista minimizado</a></li>
+		<li><a href="index.html#with-x-purpose">Usando el encabezado para X Propósito</a></li>
+		<li><a href="index.html#preview-refresh">Recargando automáticamente el contenido a intervalos regulares de tiempo</a></li>
+		</ul>
+<li><a href="index.html#sdpriority">Prioridad  en el Acceso Rápido</a></li>
+<li><a href="index.html#productsupport">Asistencia para productos de Opera</a></li>
+</li></ul>
+
+<h2 id="intro">Introducción</h2>
+
+<p>A partir de la versión 11.10, Opera para PC de escritorio permite a los desarrolladores de contenido controlar como lucirán sus sitios en el Acceso Rápido. Antes, por defecto, el Acceso Rápido  utilizaba una captura de pantalla del sitio web, sin que este pudiera ser modificado. A partir de ahora, el propietario del sitio podrá también especificar un icono, o bien, servir al Acceso Rápido tanto contenido específico como código CSS.</p>
+
+<p class="note">Acceso Rápido es el nombre en español de la función <a href="http://www.opera.com/browser/tips/?feature=speeddial">Speed Dial</a> del navegador Opera.</p>
+
+<h2 id="uselogo">Usando logos</h2>
+
+<p>Esta sección explica cómo usar un logo personalizado o un icono, para mostrar en el Acceso Rápido.</p>
+
+<h3 id="html5icons">Iconos en HTML5</h3>
+
+<p>Usted probablemente está familiarizado con los iconos de los marcadores ó ‘favoritos’ ya que fueron introducidos con Internet Explorer 5 en 1999. Aunque estos no  están comprendidos dentro de las especificaciones del HTML 4, los desarrolladores de navegadores accedieron después e <a href="http://www.w3.org/2005/10/howto-favicon">implementaron iconos para los accesos directos</a>, agregando soporte para que el atributo <code>rel</code>, dentro del elemento <code>link</code>, pudiera tomar el valor <code>icon</code>. Después, Apple extendió esto a los dispositivos de control táctil, a través del <a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html"><code style="word-wrap:none">apple-touch-icon</code></a>. De acuerdo a las especificaciones de HTML5, <code>icon</code> es ahora un <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">valor estándar válido</a> para el atributo <code>rel</code>.</p>
+
+<h3 id="setanicon">Especificando un icono para el Acceso Rápido</h3>
+
+<p>Especificar un ícono para el Acceso Rápido es muy similar a especificar un icono de acceso directo o marcador. Solo agregue una etiqueta <code>&lt;link&gt;</code> en la sección de encabezado de su documento web.</p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;My Opera&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/logo.png&quot;&gt;
+&lt;/head&gt;</code></pre>
+
+<p>El icono para el Acceso Rápido deberá reunir las siguientes características:</p>
+
+<ul>
+<li>Al menos 114 pixels de ancho por 114 pixels de alto. Este es el mínimo por defecto, iconos más pequeños serán ignorados por Opera.</li>
+<li>Imagen de tipos PNG, JPEG o GIF. Las imágenes de tipo ‘Scalable Vector Graphics’ (SVG) no se encuentran aún soportadas. Solo el primer cuadro de las imágenes animadas será mostrado.</li>
+</ul>
+
+<p>Por defecto, el máximo tamaño de icono aceptado es 256 pixels de ancho por 160 pixels de alto. Iconos más grandes serán redimensionados a
+este máximo&quot; (<a href="../../../../devfiles.myopera.com/articles/4992/icon.html">demo</a>). El usuario puede cambiar los mínimos y máximos por defecto desde el menú opera:config.</p>
+
+<p>Nota: Opera 11.10 es compatible con los sistemas preexistentes <code>apple-touch-icon</code>, <code>apple-touch-icon-precomposed</code> e <code>image_src</code>.</p>
+
+<h3 id="multipleicons">Usando varios íconos</h3>
+
+<p>Usted puede especificar múltiples iconos. Esta característica es muy buena si usted desea que sus usuarios visualicen un icono cuando agregan el sitio a sus marcadores y otro cuando lo hacen en el Acceso Rápido.</p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;My Opera&lt;/title&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/128x128image.png&quot;&gt;
+    &lt;!-- This will be the speed dial icon --&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;http://path/to/200x200image.png&quot;&gt;
+&lt;/head&gt;</code></pre>
+
+<p>Si usted especifica más de un icono, Opera Acceso Rápido seleccionará el más grande para la entrada (<a href="../../../../devfiles.myopera.com/articles/4992/multiple-icons-diff-sizes.html">demo</a>). Si ambos iconos tienen igual dimensión, el primer elemento link tiene preferencia sobre el otro (<a href="../../../../devfiles.myopera.com/articles/4992/multiple-icons-same-size.html">demo</a>).</p>
+
+<h2 id="content">Proporcionando contenido a la medida en su entrada de Acceso Rápido</h2>
+
+<p>Hay varias y novedosas maneras de proporcionar contenido y formato a las entradas del  Acceso Rápido: Modo de vista minimizado; encabezado para X Propósito y  Recarga automática de contenido a intervalos regulares. Esta sección abarca a todos ellos.</p>
+
+<h3 id="viewmode">Usando el modo de vista minimizado</h3>
+
+<p><img src="../../../../devfiles.myopera.com/articles/4992/view-mode.png" width="542" height="292" alt="Opera 11.10 Speed Dial screen" /></p>
+<p class="comment">Figura 1: La pantalla del Acceso Rápido en Opera 11.10</p>
+
+<p>El atributo <a href="http://www.w3.org/TR/view-mode/"><code>view-mode</code></a> define la especificación del modo o estilo de visualización. Al utilizar <code>view-mode: minimized</code>, usted puede proporcionar estilos alternativos o contenidos a medida, adaptados para su visualización en la pequeña pantalla del Acceso Rápido. El atributo <code>view-mode</code> trabaja de la misma manera que otras características para ajuste de medios, como por ejemplo <code>device-width</code> y también deberá estar contenido en un bloque <code>@media</code>.</p>
+
+<pre><code>@media screen and (view-mode: minimized) {
+    body {
+        color: #fff;
+        background: #b20000;
+    }
+}</code></pre>
+
+<p>O usted puede enlazar a una hoja de estilos externa donde haya situado el valor del atributo <code>(view-mode: minimized)</code></p>
+
+<pre><code>&lt;link rel=stylesheet type=&quot;text/css&quot; href=&quot;minimizedstyles.css&quot; media=&quot;(view-mode:minimized)&quot;&gt;</code></pre>
+
+<p>Ver un <a href="../../../../devfiles.myopera.com/articles/4992/view-mode.html">ejemplo de uso de <code>view-mode: minimized</code> funcionando</a>.</p>
+
+<p>Tenga en cuenta que <code>view-mode: minimized</code> muestra una pantalla de Acceso Rápido de 256 pixeles de ancho por 160 pixeles de alto.</p>
+
+<h3 id="with-x-purpose">Usando el encabezado para X Propósito</h3>
+
+<p>También es posible servir diferentes URL’s a su entrada de Acceso Rápido. Esto es posible porque cada solicitud desde Acceso Rápido incluye un encabezado <code>X-Purpose: preview</code>  adicional.</p>
+
+<pre><code>GET / HTTP/1.1
+Host: www.bbc.co.uk/news
+X-Purpose: preview
+User-agent: Opera/9.80 (Macintosh; Intel Mac OS X 10.6.6; U; en) Presto/2.8.99 Version/11.10</code></pre>
+
+<p>Detectando este encabezado, usted puede seleccionar diferentes URL’s a direccionar, limitando cuales archivos deben ir al Acceso Rápido, o mostrando contenidos diferentes. Note que esto no afecta a la URL que se cargará cuando el usuario haga clic.</p>
+ 
+<p>En el ejemplo que sigue, hemos utilizado el mod_rewrite de Apache para redirigir todas las solicitudes del Acceso Rápido a cualquier variante de una URL hacia la página  <code>/preview.html</code> (usted probablemente querrá ser más específico en el mundo real.)</p>
+
+<pre><code>RewriteEngine On
+RewriteCond %{HTTP:X-Purpose} ^preview$
+RewriteRule ^(.*) /preview.html</code></pre>
+
+<p>O tal vez prefiera utilizar un lenguaje del lado del servidor para enviar diferentes contenidos bajo la misma URL. En el ejemplo siguiente se utiliza PHP.</p>
+
+<pre><code>&lt;?php
+if ($_SERVER[&#39;HTTP_X_PURPOSE&#39;] == &#39;preview&#39;) {
+    // Send Speed Dial content
+} else {
+    // Send regular content
+}
+?&gt;</code></pre>
+
+<h3 id="preview-refresh">Recargando automáticamente el contenido a intervalos regulares de tiempo</h3>
+
+<p>Para hacer el contenido del Acceso Rápido más dinámico, usted puede definir un comportamiento de recarga automática, que se utilizará si el usuario agrega el sitio en una entrada de su Acceso Rápido. Usted puede hacer aquello de dos formas:</p>
+
+<ol>
+<li><p>Usando una etiqueta <code>meta</code>:</p>
+<pre>&lt;meta http-equiv=&quot;preview-refresh&quot; content=&quot;3600&quot;&gt;</pre></li>
+<li><p>Estableciendo un valor para el atributo <code>Preview-Refresh</code> como tiempo de respuesta:</p>
+<pre>Preview-Refresh:3600</pre>
+</li>
+</ol>
+
+<p>Tenga en cuenta que el valor se establece en segundos. El número 3600 provocará que Acceso Rápido recargue la entrada dentro de una hora.</p>
+
+<h2 id="sdpriority">Prioridades en el Acceso Rápido</h2>
+
+<p>Acceso Rápido le da prioridad al atributo CSS view-mode: minimized. En caso de no haber estilos disponibles el navegador buscará iconos. Si no se ha especificado un icono o el archivo no se encuentra presente o está corrupto, Acceso Rápido utilizará una captura de pantalla del sitio, como está previsto por defecto.</p>
+
+<h2 id="productsupport">Soporte para productos de opera</h2>
+
+<p>Estas mejoras solo están disponibles para usuarios de Opera Browser versión PC de escritorio.</p>
+<h2>Lea más</h2>
+<ul>
+	<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#rel-icon">Enlaces a la especificación HTML 5 WHATWG</a></li>
+<li><a href="http://www.w3.org/TR/view-mode/">Especificaciones del atributo View mode</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=955472">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/webinista.html" rel="author">Tiffany Brown</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/zoebrillante.html" rel="author">zbzm</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, April 7, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/Acceso&#32;Rápido.html" rel="tag">Acceso Rápido</a></li>
+        <li><a href="../../tags/css.html" rel="tag">css</a></li>
+        <li><a href="../../tags/html.html" rel="tag">html</a></li>
+        <li><a href="../../tags/iconos.html" rel="tag">iconos</a></li>
+        <li><a href="../../tags/mejoras.html" rel="tag">mejoras</a></li>
+        <li><a href="../../tags/modo&#32;de&#32;visualización.html" rel="tag">modo de visualización</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/x&#32;propósito.html" rel="tag">x propósito</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-speed-dial-enhancements-zh-cn/index.html">Chinese Simplified</a>,
+        <a href="../opera-speed-dial-enhancements/index.html">English</a>,
+        <a href="../opera-speed-dial-enhancements-de/index.html">German</a>,
+        <a href="../opera-speed-dial-enhancements-id/index.html">Indonesian</a>,
+        <a href="../opera-speed-dial-enhancements-ja/index.html">Japanese</a>,
+        <a href="../opera-speed-dial-enhancements-ru/index.html">Russian</a>,
+        <a href="../opera-speed-dial-enhancements-tr/index.html">Turkish</a>,
+        <a href="../opera-speed-dial-enhancements-vi/index.html">Vietnamese</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

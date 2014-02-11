@@ -1,0 +1,76 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	font-family: Palatino,'Palatino Linotype',Georgia, sans-serif;
+}
+
+#main {
+	margin: 0 auto 0 auto;
+}
+
+p {
+	margin: 0;
+	text-align: justify;
+	text-indent: 1.429em;
+	line-height: 1.5;
+}
+
+q {
+	letter-spacing: .143em;
+}
+
+q:before,
+ q:after {
+
+	content: "";
+}
+
+h1 {
+	margin: 0 0 1em 0;
+	border-bottom: 1px solid rgb(153,153,153);
+	padding: .5em 0 .5em 0;
+	font-size: x-large;
+	font-family: Helvetica,Arial,sans-serif;
+	font-style: italic;
+}
+
+blockquote {
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+blockquote p {
+	text-align: left;
+	text-indent: 0;
+}
+
+.sectionNote {
+	font-size: medium;
+	font-style: normal;
+}
+
+.attribution {
+	margin: 0 0 1.5em 0;
+	font-size: small;
+	line-height: 1.5;
+}
+
+.author {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.source a {
+	text-decoration: none;
+}
+
+.pullQuote {
+	margin: auto 0 1em 1em;
+	border: 1px solid rgb(153,153,153);
+	padding: .5em;
+	word-spacing: .143em;
+}
+
+.opening {
+	font-variant: small-caps;
+}

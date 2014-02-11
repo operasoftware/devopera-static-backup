@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Designing With Opera Mini in Mind - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Mobile - RSS 2.0 Feed" href="../../../feeds/rss/articles/mobile">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Mobile - Atom 1.0 Feed" href="../../../feeds/atom/articles/mobile">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="mobile">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Designing With Opera Mini in Mind</h1>
+      <p class="print author">By Opera Software</p>
+
+      <div class="note">
+ <h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">16th December 2011: This article is obsolete</h2>
+
+<p>This article is obsolete/out of date, so should no longer be treated as a current or reliable source of information. Please consult the <a href="../opera-mini-web-content-authoring-guidelines/index.html">Opera Mini: web content authoring guidelines</a> for more up-to-date information:</p>
+ </div>
+
+<p>Designing for Opera Mini is a special case of designing for mobile devices, you should have a look at the article <a href="../making-small-devices-look-great/index.html">Making Small Devices Look Great</a> first, as well as the note on <a href="../the-phone-factor-2/index.html">Phone Factors</a>. As Opera Mini uses a different approach to the other Opera clients there are a few additional factors that are covered in this document.</p>
+
+<p>Opera Mini uses the same engine as every other Opera product, be it for Desktop, TV, Mobile, or Embedded Devices. Unlike these Opera Mini has two separate components, a Java™ Opera Client thin client on the phone and an Opera Server on the backend doing the pre-processing. Opera Server converts web pages into an efficient code that the Client can understand. Opera Client is designed to be as small as possible and still be able to present web pages usefully.</p>
+
+<p>Opera Mini Client will work on most devices with J2ME support, something most current phones have. Opera Mini Client supports both the older MIDP1.0 profile (&quot;Opera Mini Basic&quot;) and the more advanced MIDP2.0 profile (&quot;Opera Mini Advanced&quot;). The web standards support is the same with both profiles, but the user experience is better with MIDP 2.0.</p>
+
+<p><a href="http://www.opera.com/mini/demo/">The Opera Mini™ Simulator</a> shows how a page could appear on an Opera Mini device. A basic simulation of Opera Mobile or Opera Mini can be achieved by turning on <kbd>View &gt; Small screen (Shift+F11)</kbd> in an Opera desktop browser and resizing the window to the target device size.</p>
+
+<h3>Display limitations</h3>
+<p>There are a few display properties the Opera Mini Client doesn&#39;t currently support:</p>
+<ul><li>Tables</li><li>Underlining, strike-through, and overlining</li><li>Blink and marquee</li></ul>
+
+<h4>Use of Small-Screen Rendering in Opera Mini</h4>
+<p>Opera Mini always runs with Colour Small-Screen Rendering activated to adapt web pages to the small screen. Like with Opera Mobile this can be disabled by using a style sheet with media=handheld, but unless you are using a very fluid design (no tables, frames, or positioning) this is not recommended. There is no horizontal scrolling available and a phone screen can be as little as 100 pixels across.</p>
+
+<h4>Media types and media queries</h4>
+
+<p>Opera supports different media types for different media contexts. Desktop machines use <code>screen</code>, or <code>projection</code>  in fullscreen (allowing for OperaShow presentations),  <code>print</code> for printouts, and <code>handheld</code> for small-screen view (e.g. in panels). Handheld devices use <code>handheld</code>, the largest devices may also support <code>screen</code>. Home media may use <code>tv</code> or <code>screen</code>, and <code>speech</code> is used for text-to-speech. This media support allows for radically different presentations of the same content in different contexts.</p>
+
+<p>Opera also has <a href="http://www.opera.com/docs/specs/">partial support</a> of <a href="http://www.w3.org/TR/css3-mediaqueries/">Media Queries</a>. This can for instance be used to make one design for small handheld devices (e.g. less than 200px wide) and another for larger handheld devices. Opera 8 only supports media queries defined in CSS, not in the HTML media attribute. This will be fixed in future versions of Opera.</p>
+
+<h3>User interface and document windows </h3>
+
+<p>Phones don&#39;t come with an attached mouse, and they usually don&#39;t have a full keyboard either. Navigation and especially text input is more cumbersome than on desktop machines. Together with the small screen and slow processing the limited UI leads to designs that  focus on what is important for the user. Selecting among options is easier than typing preferences, but keep select boxes reasonably small. Picking multiple choices in a select box is much harder to do than a single select. </p>
+
+<p>Depending on memory constraint a web page can be split into multiple pages by Opera Mini.</p>
+
+<p>Opera Mini only shows single window, design with that in mind. Opera Mini supports frames, but frames is not a suitable technique for smaller phones. </p>
+
+<ul><li>Don&#39;t do pop-ups</li><li>Don&#39;t depend on mouse-based interactions, in particular :hover and mouseover</li><li>Avoid dynamic menus</li><li>Don&#39;t force the user to type more than necessary  </li></ul>
+
+<h3>International text and fonts</h3>
+
+<p>Opera Mini supports internationalization, including the full range of character sets supported by Opera in addition to Unicode. However this is dependent on font support in the phone which commonly is limited. Bidirectional text is not supported in Opera Mini.</p>
+
+<h3>JavaScript</h3>
+
+<p>The thin client model also gives strong restrictions on JavaScript interaction. Event based scripts, for instance by triggering a button, can be run while background scripts will fail. Opera Mini only uses one window.</p>
+<h4>Not supported</h4>
+<ul><li>Pop-ups are either blocked or replace the original document.</li><li>Background scripts</li><li>Events handlers using the &#39;this&#39; keyword on other elements than form controls. This fails: <code>&lt;a href=&quot;http://labs.opera.com&quot; onclick=&#39;window.location = this.href&#39;&gt;</code></li></ul><h4>Supported</h4><ul><li>document.write()</li><li>Event based scripts (with the exception above)</li></ul>
+
+<h3>Server Sniffing (User Agent String and Location)</h3>
+
+<h4>The User Agent String</h4>
+
+<p>Opera Mini will give the same UA string as Opera Mobile, but additionally it will identify itself as Opera Mini in a comment. Look for &quot;Mini/N.M&quot; (e.g. &quot;Opera Mini/1.2&quot;) in addition to &quot;Opera/N.M&quot; (as Opera) or &quot;Opera N.M&quot; (spoofing).</p>
+
+<p>Opera Mini/1.0 and 1.1: Limited regional releases for Northern Europe. <br />
+Opera Mini/1.2: Global release of Opera Mini.<br />
+Opera Mini/2.0: First major upgrade of Opera Mini.</p>
+
+<h4>IP-based location sniffing</h4>
+<p>IP-based location sniffing is based on the knowledge of the location where blocks of IP addresses are registered. This is usually enough to give a rough idea of the user&#39;s location, such as country or region. This is far from a fool-proof method, and the user should always have the option to correct the initial assumption. In particular assumptions on preferred language based on IP address should be avoided.</p>
+
+<p>Opera Mini has an additional issue. The IP address of the HTTP connection is the address of the Opera Mini Server, and it can be very distant from, even be in a different country than, the Opera Mini Client. </p>
+
+<p>The <tt>X-Forwarded-For</tt> header contains the more useful IP address of the Opera Mini Client. Services using the IP address to give localized content should first look for an X-Forwarded-For HTTP header, and only if such a header is absent use the remote IP address of the HTTP connection.</p>
+
+<h4>Cookies</h4>
+<p>Cookies are supported.</p>
+
+<h2>References</h2>
+<ul>
+<li><a href="http://my.opera.com/community/dev/device/">Making Small Devices Look Great</a></li>
+<li><a href="http://my.opera.com/community/dev/idopera/">How to Correctly Check for Opera</a></li>
+<li><a href="http://www.opera.com/mini/">Opera Mini</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=165030">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, November 13, 2006
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/coding&#32;tips.html" rel="tag">coding tips</a></li>
+        <li><a href="../../tags/deprecated.html" rel="tag">deprecated</a></li>
+        <li><a href="../../tags/Opera&#32;Mini.html" rel="tag">Opera Mini</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

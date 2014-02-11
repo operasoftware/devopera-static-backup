@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<style type="text/css">
+body {
+  width: 600px;
+  font-family: "Trebuchet MS", "Lucida Grande", "lucida sans unicode", Arial, Helvetica, sans-serif;
+  
+}
+
+pre {
+  max-width:100%;
+  overflow:auto;
+  line-height:1.4;
+  background-color: #ffffee;
+  padding-top: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  border-top-color: #cccc99;
+  border-left-color: #cccc99;
+  border-right-color: #cccc99;
+  border-bottom-color: #cccc99;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: dotted;
+  border-left-style: dotted;
+  border-right-style: dotted;
+  border-bottom-style: dotted;
+}
+</style>
+<title>HTML 5 element basics</title>
+</head>
+<body>
+
+<h2>HTML 5 element basics</h2>
+
+<p>One thing that you'll notice about a few of these showcases is that they are making use of HTML 5 markup for the main example structures. For example, the markup from <a href="../../../dev.opera.com/articles/view/the-opera-10-experience/index.html#html5newspaper">David's newspaper showcase</a> looks like so:</p>
+
+<pre><code>&lt;body&gt;
+&lt;div id="page"&gt;
+  &lt;header&gt;
+    &lt;p&gt;&lt;time datetime="2007-07-25"&gt;&lt;em&gt;Sunday&lt;/em&gt; 25 June 2007&lt;/time&gt;&lt;/p&gt;
+    &lt;p class="price"&gt;25¢&lt;/p&gt;
+    &lt;h1&gt;The Daily Standard&lt;/h1&gt;
+    &lt;p class="issue"&gt;Issue 35, Volume 16&lt;/p&gt;
+    &lt;p class="tagline"&gt;The latest mark-up, style and techniques&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Web Fonts are in town&lt;/h1&gt;
+      &lt;p class="author"&gt;David Storey&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;figure&gt;
+        &lt;img src="images/type.jpg" alt=""/&gt;
+        &lt;legend&gt;Soon you will not be restricted to web safe fonts, such as comic sans&lt;/legend&gt;
+      &lt;/figure&gt;
+      &lt;p&gt;<em>...content goes here...</em>&lt;/p&gt;
+      &lt;aside&gt;&lt;p&gt;Web Fonts allow custom fonts, without Flash or image replacement.&lt;/p&gt;&lt;/aside&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;HTML5 structural markup&lt;/h1&gt;
+      &lt;p class="author"&gt;David Storey&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+        &lt;p&gt;<em>...content goes here...</em>&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Transparency revealed&lt;/h1&gt;
+      &lt;p class="author"&gt;James Dean&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;p&gt;<em>...content goes here...</em>&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/article&gt;
+  &lt;footer&gt;
+    &lt;p&gt;Example by &lt;a href="http://my.opera.com/dstorey" rel="me"&gt;David Storey&lt;/a&gt;, 2008.  Free fonts taken from &lt;a href="http://www.dafont.com/"&gt;Dafonts.com&lt;/a&gt;.  Please check font licence agreement before using them on your site. &lt;a href="http://www.flickr.com/photos/tunruh/110315663/"&gt;Image licence under Creative Common by Tony Unruh&lt;/a&gt;&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+<p>Here we have some brand new elements:</p>
+
+<ul>
+  <li><code>&lt;header&gt;</code>: Denotes the header of a section of the page, whether it is the whole page itself, or just a small subsection of it</li>
+  <li><code>&lt;time&gt;</code>: Allows you to specify a date/time of publication for the page</li>
+  <li><code>&lt;article&gt;</code>: Specifies a subsection of the main page , grouping related content together, such as a header, images, and paragraphs of text</li>
+  <li><code>&lt;section&gt;</code>: Specifies a subsection of an article</li>
+  <li><code>&lt;aside&gt;</code>: Allows you to define a paragraph as an aside, containing supporting information not critical to the main body of text</li>
+  <li><code>&lt;figure&gt;</code>: Specifies an illustrative figure to go along with the text content of your page. This usually groups together an image (or other media) with a caption and/or author attribution</li>
+  <li><code>&lt;footer&gt;</code>: Defines a footer for your page, which can contain any information you deem appropriate</li>
+</ul>
+
+<p>Looking at this you might be thinking <q>does that mean browsers are now supporting HTML 5 structural elements?</q>. Yes and no - the W3C haven't yet gotten far enough in HTML 5 standardization for elements to be fully supported by browsers. For now, many of the HTML 5 elements are seen by browsers as unrecognised elements. However, we are already able to play around with the structural elements, faking their basic behaviour, plus the <a href="http://validator.w3.org">W3C HTML validator</a> is now able to validate code to the HTML 5 doctype. This allows us to learn how to use HTML 5 structural elements early.</p>
+
+<p>In David's <a href="../../../dev.opera.com/articles/view/the-opera-10-experience/index.html#html5newspaper">newspaper showcase</a>, he has included the HTML 5 doctype - <code>&lt;!DOCTYPE html&gt;</code> - this still puts modern browsers in standards mode. He is using the elements defined in the list above as structural blocks on his page, so to make them behave as he wants, he is setting them to <code>display</code> as <code>block</code>. He is also setting <code>time</code> to display as <code>inline</code>, as that is being displayed as an inline text segment.</p>
+
+<pre><code>header, article, section, figure, aside, footer { display: block; }
+time { display: inline;}</code></pre>
+
+<p>This solution seems like a good one, but it is not perfect, so you need to go a bit further if you want to achieve support in older browsers. The problem is that some browsers (such as Firefox 2, Camino 1, and all versions of Internet Explorer) don't see the HTML 5 elements as unrecognised; they don't see them at all! So text marked up with an HTML 5 element can't be styled at all in these browsers, because the elements don't exist in their eyes. There is a workaround for this, and it is explained in the HTML 5 doctor article <a href="http://html5doctor.com/how-to-get-html5-working-in-ie-and-firefox-2/">How to get HTML5 working in IE and Firefox 2</a>.</p>
+
+<p>Another thing to notice is that all the headings in the document are <code>&lt;h1&gt;</code> elements. You might think this is bad practice - normally it is, but in this example David is trying to emulate how headings work in the HTML 5 spec, where all headings are <code>&lt;h1&gt;</code>s, and the heading levels are determined by their position in the structural hierarchy.</p>
+
+</body>
+</html>

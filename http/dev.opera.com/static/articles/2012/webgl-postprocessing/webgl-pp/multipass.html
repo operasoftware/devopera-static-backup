@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>Using framebuffers and multiple post-processing passes</title>
+  <link href='style.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+  <header>
+  <h1>Using framebuffers and multiple post-processing passes</h1>
+  <div class='description'>Using a two-pass gaussian bloom filter and tone mapping. Hover the image to apply the post-processing.</div>
+  </header>
+  <ul class='controls' style='display:none'>
+    <li><label for='useBloomX'>Add x blur</label><input type='checkbox' checked id='useBloomX'/></li>
+    <li><label for='useBloomY'>Add y blur</label><input type='checkbox' checked id='useBloomY'/></li>
+    <li><label for='useBlending'>Add blending</label><input type='checkbox' checked id='useBlending'/></li>
+  </ul>
+  <div class='main'>
+    <div class='arguments'>
+      <img src='assets/image.jpg' style='display:none' alt='a sample image'>
+      <video style='display:none'></video>
+    </div>
+    <canvas id='webgl-canvas' width=512 height=512></canvas>
+  </div>
+  <div id='log'></div>
+  <div class='code'>
+    <script src="https://gist.github.com/3731312.js?file=multipass.js"></script>
+  </div>
+  <script src='js/lib.js'></script>
+  <script src='js/multipass.js'></script>
+</body>
+</html>

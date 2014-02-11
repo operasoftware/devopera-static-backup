@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>Dev.Opera articles</title>
+<link>http://dev.opera.com/</link>
+<copyright>Opera Software ASA</copyright>
+<pubDate>Tue, 02 Jul 2013 07:48:45 GMT</pubDate>
+<description>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</description>
+<item>
+<title>Extension developer interview: coffee with the cottonTracks team</title>
+<link>http://dev.opera.com/articles/view/extension-developer-interviews-cottontracks</link>
+<author>Andreas Bovens</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extension-developer-interviews-cottontracks</guid>
+<pubDate>Tue, 02 Jul 2013 07:48:45 GMT</pubDate>
+<description>We sat down with the developers behind the novel cottonTracks extension, and asked them some questions over a (virtual) coffee. We talked about what the cottonTracks extension is all about, what their development workflow is, what they have learned thus far, and much more. </description>
+</item>
+<item>
+<title>Major changes in Opera&apos;s extensions infrastructure  </title>
+<link>http://dev.opera.com/articles/view/major-changes-in-operas-extensions-infrastructure</link>
+<author>Andreas Bovens</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/major-changes-in-operas-extensions-infrastructure</guid>
+<pubDate>Tue, 28 May 2013 06:13:02 GMT</pubDate>
+<description>With Opera switching from Presto to Chromium and a complete UI remake, our extensions infrastructure has also gotten a major overhaul: from Opera 15 onward, Opera 11 &amp;amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model.</description>
+</item>
+<item>
+<title>MenuEvent.target</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu-target</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu-target</guid>
+<pubDate>Fri, 24 Aug 2012 09:33:13 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>MenuEvent.srcElement</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu-srcelement</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu-srcelement</guid>
+<pubDate>Fri, 24 Aug 2012 08:25:27 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>MenuEvent.source</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu-source</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu-source</guid>
+<pubDate>Fri, 24 Aug 2012 07:56:55 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>MenuEvent.mediaType</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu-mediatype</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu-mediatype</guid>
+<pubDate>Fri, 24 Aug 2012 07:18:52 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>MenuEvent.isEditable</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu-iseditable</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu-iseditable</guid>
+<pubDate>Fri, 24 Aug 2012 07:11:05 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>Context Menu API</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu</guid>
+<pubDate>Fri, 24 Aug 2012 06:57:46 GMT</pubDate>
+<description>The Context Menu API enables an extension to add an item to the context menu, otherwise known as the right-click menu. An extension may only add one item to the context menu, but this item may contain various layers of sub-items, similar to a folder/sub-folder structure. </description>
+</item>
+<item>
+<title>MenuEvent.srcURL</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu-srcurl</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu-srcurl</guid>
+<pubDate>Fri, 24 Aug 2012 06:57:33 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>MenuEvent.selectionText</title>
+<link>http://dev.opera.com/articles/view/extensions-api-contextmenu-selectiontext</link>
+<author>Opera Software</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/extensions-api-contextmenu-selectiontext</guid>
+<pubDate>Fri, 24 Aug 2012 06:57:28 GMT</pubDate>
+<description></description>
+</item>
+</channel>
+</rss>

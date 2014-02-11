@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<style type="text/css">
+body {
+  width: 600px;
+  font-family: "Trebuchet MS", "Lucida Grande", "lucida sans unicode", Arial, Helvetica, sans-serif;
+  
+}
+
+pre {
+  max-width:100%;
+  overflow:auto;
+  line-height:1.4;
+  background-color: #ffffee;
+  padding-top: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  border-top-color: #cccc99;
+  border-left-color: #cccc99;
+  border-right-color: #cccc99;
+  border-bottom-color: #cccc99;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: dotted;
+  border-left-style: dotted;
+  border-right-style: dotted;
+  border-bottom-style: dotted;
+}
+</style>
+<title>CSS 3 Web Fonts basics</title>
+</head>
+<body>
+
+<h2>CSS 3 Web Fonts basics</h2>
+
+<p>Web Fonts allow you to download a specified font file along with a Web site and then make use of it on that Web site, so it doesn't need to be installed on your site visitor's computers. To include the font along with the Web site download, you use the following syntax:</p>
+
+<pre><code>@font-face {
+  font-family: "My font";
+  src: url("http://www.myweb.com/fonts/myfont.ttf") format("truetype");
+}</code></pre>
+
+<p>You declare your custom font inside a <code>@font-face</code> construct (do it at the start of your stylesheet, before you set any fonts), then refer to it in your stylesheet as normal, for example:</p>
+
+<pre><code>p {
+  font-family: "My font gothic";  
+  ...
+}</code></pre>
+
+<p>the above example uses a truetype font, but you can also use opentype fonts in the same kind of manner:</p>
+
+<pre><code>@font-face {
+  font-family: "My opentype font";
+  src: url("http://www.myweb.com/fonts/myopenfont.otf") format("opentype");
+}</code></pre>
+
+<p>As if Web Fonts weren't cool enough already, we've also added support for SVG fonts. This allows you to use SVG font files in your web pages (in both HTML and SVG files in fact) in the same way:</p>
+
+<pre><code>@font-face {
+  font-family: "My SVG font";
+  src: url("http://www.myweb.com/fonts/myfont.svg#myFont") format("svg"); 
+  font-style: normal, italic;
+  font-weight: 500;
+}</code></pre>
+
+<p>SVG fonts are defined in SVG files using <code>font</code> or <code>font-face</code> elements, inside which each individual glyph is mapped out in a <code>glyph</code> element. This may sound complicated, but it's really not — especially given that there is a free program called <a href="http://fontforge.sourceforge.net/">FontForge</a> that can convert between the various font formats. Check out the source code of <a href="../695/UbuntuTitleBold.svg">the UbuntuTitleBold SVG font</a> to get an idea of what SVG fonts look like.</p>
+
+<p>Another very nice thing about SVG fonts is that it's possible to modify the fonts in the client using the DOM or via SMIL — it is after all well-formed XML. Nothing would prevent someone from writing a web application allowing you to edit a font, and then have a construct on the server-side generate a custom TrueType font file from it. You could also animate fonts in this manner, if you so desired.</p>
+
+</body>
+</html>

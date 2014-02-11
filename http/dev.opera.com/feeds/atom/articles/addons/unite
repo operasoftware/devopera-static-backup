@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Dev.Opera articles</title>
+<link rel="alternate" href="http://dev.opera.com/" />
+<content>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</content>
+<rights>Opera Software ASA</rights>
+<updated>2010-01-14T14:54:36Z</updated>
+<entry>
+<title type="text">Gridnite part 3: saving and restoring multiple spreadsheets</title>
+<link href="http://dev.opera.com/articles/view/gridnite-part-3-saving-and-restoring-multiple-spreadsheets" />
+<author>
+<name>Slava Vishnyakov</name>
+</author>
+<content>This article is the third to look at developing Gridnite, an Opera Unite-powered multiuser collaborative spreadsheet application written by Slava Vishnyakov. In this article Slava adds further functionality to the application to allow us to save and restore multiple spreadsheets.</content>
+<id>http://dev.opera.com/articles/view/gridnite-part-3-saving-and-restoring-multiple-spreadsheets</id>
+<updated>2010-01-14T14:54:36Z</updated>
+</entry>
+<entry>
+<title type="text">Rapid application development using the Opera Unite Yusef library</title>
+<link href="http://dev.opera.com/articles/view/rapid-unite-app-development-with-yusef" />
+<author>
+<name>Shwetank Dixit</name>
+</author>
+<content>Yusef is a framework for Opera Unite applications that provides ready-made solutions to problems such as form validation, access control, UI templating, and more. In this article we look at how to use Yusef and its plugins for rapid development of application features such as access control and consistent templates.</content>
+<id>http://dev.opera.com/articles/view/rapid-unite-app-development-with-yusef</id>
+<updated>2009-11-24T10:46:27Z</updated>
+</entry>
+<entry>
+<title type="text">Introducing Opera Unite in Opera 10.10</title>
+<link href="http://dev.opera.com/articles/view/introducing-opera-unite-in-opera-10-10" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>Today sees the final release of Opera 10.10, which includes our sharing and collaboration technology Opera Unite. In this article, Chris Mills walks you through how to install applications, share content and use Opera Unite.</content>
+<id>http://dev.opera.com/articles/view/introducing-opera-unite-in-opera-10-10</id>
+<updated>2009-11-23T07:02:54Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Unite developer’s primer — revisited</title>
+<link href="http://dev.opera.com/articles/view/opera-unite-developer-primer-revisited" />
+<author>
+<name>Hans S. Tømmerholt</name>
+</author>
+<content>Opera Unite puts a Web server inside your Opera browser, allowing you to share files and applications with your friends and colleagues directly off your hard drive! This tutorial shows you how to get started on the road to Opera Unite application development by making a simple Opera Unite blog application.</content>
+<id>http://dev.opera.com/articles/view/opera-unite-developer-primer-revisited</id>
+<updated>2009-10-14T06:01:41Z</updated>
+</entry>
+<entry>
+<title type="text">Yusef: the Unite Server Framework</title>
+<link href="http://dev.opera.com/articles/view/yusef-the-unite-server-framework" />
+<author>
+<name>Zi Bin Cheah</name>
+</author>
+<content>The Opera Unite Server framework, “Yusef”, is the foundation of Opera Unite applications bundled with Opera 10.10. It eases the development of Opera Unite applications by providing a set of core features such as access control, templating, secure administration and actions, image resizing and caching, and more.</content>
+<id>http://dev.opera.com/articles/view/yusef-the-unite-server-framework</id>
+<updated>2009-10-14T06:00:59Z</updated>
+</entry>
+<entry>
+<title type="text">Gridnite part 2: developing the formula engine</title>
+<link href="http://dev.opera.com/articles/view/unite-spreadsheet-part-2-formulas" />
+<author>
+<name>Slava Vishnyakov</name>
+</author>
+<content>This is part two of our &amp;quot;Gridnite&amp;quot; series, covering the creation an Opera Unite-powered spreadsheet. We&#39;ve already covered the basic implementation, and making the updates appear in real time across all connected computers. This second part looks at implementing a formula engine for the spreadsheet.</content>
+<id>http://dev.opera.com/articles/view/unite-spreadsheet-part-2-formulas</id>
+<updated>2009-09-09T13:56:25Z</updated>
+</entry>
+<entry>
+<title type="text">Gridnite - the Unite-powered multiuser spreadsheet application</title>
+<link href="http://dev.opera.com/articles/view/gridnite-unite-powered-spreadsheet" />
+<author>
+<name>Slava Vishnyakov</name>
+</author>
+<content>In this article, Slava Vishnyakov - creator of unitehowto.com - takes you through the creation of a simple unite-powered multiuser spreadsheet application called Gridnite. This article covers the creation of the basic architecture, and more features will be added soon. Enjoy!</content>
+<id>http://dev.opera.com/articles/view/gridnite-unite-powered-spreadsheet</id>
+<updated>2009-07-22T16:52:05Z</updated>
+</entry>
+<entry>
+<title type="text">Saving Opera Unite service data using File I/O</title>
+<link href="http://dev.opera.com/articles/view/saving-opera-unite-service-data-using-file-i-o" />
+<author>
+<name>Keith Johnson</name>
+</author>
+<content>In this article Keith Johnson takes the blog service example from our original Opera Unite developer&#39;s primer, and shows how to modify it so that your blog entries are persisted inside files. This is all done using the magic of the File I/O API.</content>
+<id>http://dev.opera.com/articles/view/saving-opera-unite-service-data-using-file-i-o</id>
+<updated>2009-07-15T12:14:06Z</updated>
+</entry>
+<entry>
+<title type="text">Setting up custom domains for Opera Unite</title>
+<link href="http://dev.opera.com/articles/view/custom-domains-opera-unite" />
+<author>
+<name>Lachlan Hunt</name>
+</author>
+<content>In this article, Lachlan Hunt explains how to configure your connection setup to allow you to access your Opera Unite services from a custom domain.</content>
+<id>http://dev.opera.com/articles/view/custom-domains-opera-unite</id>
+<updated>2009-06-19T12:34:40Z</updated>
+</entry>
+<entry>
+<title type="text">Markuper: The Opera Unite Application template library</title>
+<link href="http://dev.opera.com/articles/view/markuper-unite-template-library" />
+<author>
+<name>António Afonso</name>
+</author>
+<content>This article introduces Markuper, a templating library that allows rapid development of Opera Unite applciations and binding of data from JavaScript straight into the HTML templates.</content>
+<id>http://dev.opera.com/articles/view/markuper-unite-template-library</id>
+<updated>2009-06-16T07:01:59Z</updated>
+</entry>
+</feed>

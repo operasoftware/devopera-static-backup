@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Dev.Opera articles</title>
+<link rel="alternate" href="http://dev.opera.com/" />
+<content>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</content>
+<rights>Opera Software ASA</rights>
+<updated>2013-09-26T12:13:11Z</updated>
+<entry>
+<title type="text">Media Capture in mobile browsers</title>
+<link href="http://dev.opera.com/articles/view/media-capture-in-mobile-browsers" />
+<author>
+<name>Francesco Iovine</name>
+</author>
+<content>Media Capture is one of the most interesting features in web applications, especially for mobile devices. Surprisingly capturing media on the spot is quite a new thing for browsers in general, until recently always being delegated to browser plugins such as Flash or Silverlight. In this article we will explore how to use the Media Capture APIs, their compatibility across mobile browsers and the current state of the W3C specifications that define them.</content>
+<id>http://dev.opera.com/articles/view/media-capture-in-mobile-browsers</id>
+<updated>2013-09-26T12:13:11Z</updated>
+</entry>
+<entry>
+<title type="text">Remotely debugging Opera for Android</title>
+<link href="http://dev.opera.com/articles/view/remotely-debugging-opera-for-android" />
+<author>
+<name>Bruce Lawson</name>
+</author>
+<content>Now that Opera for Android is out, you&#39;ll sometimes need to debug it, as there are differences in Standards support between Opera and Chrome for Android and Chrome on Android 4+. Because current and future Opera for Android releases are based on Chromium, we can&#39;t use the current Opera desktop releases to connect to them (wait for Chromium-based Opera desktop releases for that). So here&#39;s how to connect Opera for Android to another Chromium-based desktop browser for remote debugging.</content>
+<id>http://dev.opera.com/articles/view/remotely-debugging-opera-for-android</id>
+<updated>2013-05-21T06:05:13Z</updated>
+</entry>
+<entry>
+<title type="text">Flexbox — fast track to layout nirvana?</title>
+<link href="http://dev.opera.com/articles/view/flexbox-basics" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>This article provides a basic introduction to Flexbox, the gifted new kid on the block with respect to CSS layouts. Here we&#39;ll show you how the most exciting new features of Flexbox work.</content>
+<id>http://dev.opera.com/articles/view/flexbox-basics</id>
+<updated>2012-10-09T06:00:04Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Mini and JavaScript</title>
+<link href="http://dev.opera.com/articles/view/opera-mini-and-javascript" />
+<author>
+<name>Tiffany Brown</name>
+</author>
+<content>Opera Mini is one of the world&#39;s foremost mobile browsers, which runs on pretty much any device, even low-powered ones. It is a proxy-based browser, which has many advantages, including reducing the size of pages downloaded onto the user&#39;s phone by up to 90%. On the downside, JavaScript can behave in unexpected ways when requested by Opera Mini. In this article we&#39;ll discuss exactly what this means for your development work, in detail.</content>
+<id>http://dev.opera.com/articles/view/opera-mini-and-javascript</id>
+<updated>2012-09-05T09:40:46Z</updated>
+</entry>
+<entry>
+<title type="text">The W3C device orientation API: detecting orientation and acceleration</title>
+<link href="http://dev.opera.com/articles/view/w3c-device-orientation-api" />
+<author>
+<name>Shwetank Dixit</name>
+</author>
+<content>Using the W3C&#39;s device orientation API, we can determine the orientation of the device as well as gather information about its movement. This information is valuable in certain types of applications, such as games that require the user to tilt the device in some way. In this article we&#39;ll look at the basics of how device orientation works, along with some simple examples.</content>
+<id>http://dev.opera.com/articles/view/w3c-device-orientation-api</id>
+<updated>2012-07-11T11:58:46Z</updated>
+</entry>
+<entry>
+<title type="text">Responsive images: what&apos;s the problem, and how do we fix it?</title>
+<link href="http://dev.opera.com/articles/view/responsive-images-problem" />
+<author>
+<name>Matt Wilcox</name>
+</author>
+<content>Responsive images is a surprisingly complicated topic, and one that&#39;s been steadily gaining attention over the last year as more developers discover they need them and then discover there&#39;s no good solution yet. This article aims to give an overview of the problem itself, and show the different proposals in the works to address it.</content>
+<id>http://dev.opera.com/articles/view/responsive-images-problem</id>
+<updated>2012-06-13T11:10:35Z</updated>
+</entry>
+<entry>
+<title type="text">Responsive web design: a project-management perspective</title>
+<link href="http://dev.opera.com/articles/view/responsive-web-design-a-project-management-perspective" />
+<author>
+<name>Rudy Rigot</name>
+</author>
+<content>The challenges of responsive web design go way beyond media queries and screen widths. In this article we look at some of the key issues you need to explore when embarking on a complicated web project, considering if, how and why the project should be made responsive.</content>
+<id>http://dev.opera.com/articles/view/responsive-web-design-a-project-management-perspective</id>
+<updated>2012-04-12T10:53:44Z</updated>
+</entry>
+<entry>
+<title type="text">WordPress goes mobile: responsive design comes to CMSes</title>
+<link href="http://dev.opera.com/articles/view/wordpress-goes-mobile-responsive-design-comes-to-cmses" />
+<author>
+<name>Rachel McCollin</name>
+</author>
+<content>Responsive design is quite easy when you control everything to do with the page, and you&#39;re working on a small and manageable site. But what about a sprawling CMS? In such circumstances, you&#39;ll often have to rely on plugins or extensions. Wordpress developer Rachel McCollin shares some of her wisdom on this very subject.</content>
+<id>http://dev.opera.com/articles/view/wordpress-goes-mobile-responsive-design-comes-to-cmses</id>
+<updated>2012-02-29T10:32:54Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Mobile 12 for Android Ice Cream Sandwich MIPS tablet</title>
+<link href="http://dev.opera.com/articles/view/opera-mobile-12-android-ics-mips" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>Opera is proud to unveil a labs build of Opera Mobile 12, for devices built on MIPS architecture, which has already been run successfully on top of Android Ice Cream Sandwich.</content>
+<id>http://dev.opera.com/articles/view/opera-mobile-12-android-ics-mips</id>
+<updated>2012-02-27T08:25:46Z</updated>
+</entry>
+<entry>
+<title type="text">Opera Mobile 12 for x86 architectures</title>
+<link href="http://dev.opera.com/articles/view/opera-mobile-12-android-ics-x86" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>Opera is proud to unveil a labs build of Opera Mobile 12, for devices built on Intel x86 architectures, which has already been run successfully on top of Android Ice Cream Sandwich.</content>
+<id>http://dev.opera.com/articles/view/opera-mobile-12-android-ics-x86</id>
+<updated>2012-02-27T08:25:43Z</updated>
+</entry>
+</feed>

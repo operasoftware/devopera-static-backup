@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 100 100">
+  <rect width="50" height="50" fill="red" opacity="0">
+    <animate attributeName="opacity" to="1" dur="30s" fill="freeze" />
+  </rect>
+  <rect width="50" height="50" x="50" y="50" fill="blue" stroke="red" stroke-width="1">
+    <animate attributeName="stroke-width" to="7" dur="3s" repeatCount="10" />
+  </rect>
+</svg>

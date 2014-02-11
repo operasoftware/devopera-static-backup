@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Making a move with CSS3 animations - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Making a move with CSS3 animations</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <h2>Introduction</h2>
+	
+<p>Traditionally, the Web was a very static place. Achieving animations was not really possible in any sane way until JavaScript, animated GIFs and Flash came along, at which point we rejoiced and applauded the ensuing slew of skip intros and horrible obtrusive animations.</p>
+
+<p>This was all well and good, but there was still no way for non-developers to create animations using open standards. You can spout all the religious arguments you want about animation belonging in the behaviour layer rather than the presentation layer, but I think animation definitely falls in the realm of design. And now, with CSS3 transitions and animations, we can animate elements of our web documents. Standards-based web design with added fun! And added skip intros, if you&#39;re that way inclined...</p>
+
+<p>Opera has supported transitions now for a long time, and we&#39;ve already written about them in <a href="../css3-transitions-and-2d-transforms/index.html">CSS3 transitions and 2D transforms</a>. This article focuses on the other way to animate things using stylesheets — <strong>CSS3 animations</strong>. Below we&#39;ll give you a concrete introduction including where the specification and browser support is at, how animations differ from transitions, basic syntax, and a list of examples.</p>
+
+<h2>How mature is the technology?</h2>
+
+<p>The <a href="http://www.w3.org/TR/css3-animations/">CSS animations spec</a>, proposed and edited by Apple, is currently in Working Draft status and is labelled as &quot;Outdated&quot; on the <a href="http://www.w3.org/Style/CSS/current-work.en.html">CSS working group current work page</a>, so I think we can expect to see some minor changes before it is completed, but the basic principle should remain the same.</p>
+
+<p>In any case, it has already been implemented experimentally in Firefox (since 5), Chrome (since 4), Safari (since 4), IE (in 10), and Opera since version 12. Note &quot;experimentally&quot; — this means that you need to use appropriate vendor prefixes for each browser.</p>
+
+<h2>Basic syntax</h2>
+
+<p>Animations differ from transitions in that transitions are only triggered when a state change occurs (such as hovering over an element), whereas animations can be triggered independent of a state change, usually a set amount of time after a page loads, or on an event, via JS. Also, a transition animation always occurs on any properties that change their values when a state change occurs, whereas a CSS animation can animate between property values even if those properties are not set on the default state of the element being animated.</p>
+
+<h3>Defining an animation</h3>
+
+<p>To set up an animation, you first have to define some animation keyframes, in a special new at-rule block, which looks like this:</p>
+
+<pre><code>@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}</code></pre>
+
+<p>Here we are saying that this animation is called <q>spin</q>, and what the animation does is smoothly rotates whatever it is applied to through 360 degrees. Nothing else is defined here at all, which may sound lacking, but in actual fact it is very flexible, as you can define an animation once, and then apply it to many different elements with different durations and other behaviour.</p>
+
+<p>You can also use <code>0%</code> and <code>100%</code> in place of <code>from</code> and <code>to</code>. If you like, you can include intermediate keyframes, for more complex animations:</p>
+
+<pre><code>@keyframes spin {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(30deg); }
+  50% { transform: rotate(120deg); }
+  100% { transform: rotate(360deg); }
+}</code></pre>
+
+<p>You can write keyframes that have the same values on one line, like this:</p>
+
+<pre><code>25%, 50% { opacity: 0.9; }</code></pre>
+
+<p class="note">Note: You can set your animation so that the first keyframe doesn&#39;t appear at 0%, e.g. 40%. If you do this, however, nothing will change before that point in the animation. If you don&#39;t set the last keyframe as 100%, e.g. 70%, the animation will reach that point and stay the same up until 100%.</p>
+
+<p>The current main annoyance of using animations is that you have to define a separate keyframes block for each browser, as the at-rule itself uses a prefix, so <code>@-o-keyframes animation1 { }</code>, <code>@-moz-keyframes animation1 { }</code>, etc. And this is in addition to the different prefixed versions of all the animation properties you&#39;ll see later. But at least within each prefixed at-rule, you only need to include the single prefixed properties for that browser, in the case of properties that require prefixes. And there are a couple of JavaScript libraries worth looking at, which detect the rendering engine at runtime and add the appropriate prefixes where needed, saving you having to write all of them out. See <a href="http://leaverou.github.com/prefixfree/">Prefixfree</a> by Lea Verou, and <a href="http://prefixr.com/">Prefixr</a> by Jeffrey Way.</p>
+
+<h3>Applying an animation</h3>
+
+<p>To animate an element using this animation, you apply it to the element using the <code>animation-name</code> property:</p>
+
+<pre><code>#image {
+  animation-name: spin;
+}</code></pre>
+
+<p>To make this do anything, you also need to tell the animation how long it should take to run from start to finish: this is done using <code>animation-duration</code>:</p>
+
+<pre><code>#image {
+  animation-name: spin;
+  animation-duration: 3s;
+}</code></pre>
+
+<p>these are all the properties you need to get an animation to run once on an element. Let&#39;s now look at what other properties we have to control animations.</p>
+
+<h3>How many times do we want it to happen?</h3>
+
+<p>To make our animation run a set number of times, you use <code>animation-iteration-count</code>:</p>
+
+<pre><code>#image {
+  animation-name: spin;
+  animation-duration: 3s;
+  animation-iteration-count: 10;
+}</code></pre>
+
+<p>the value of <code>animation-iteration-count</code> can be any positive whole number, or you can set it to <code>infinite</code> to make it go on forever. The default value is 1.</p>
+
+<p>To see what we have so far in action, check out my <a href="../../../../devfiles.myopera.com/articles/9132/basic-spinner.html">basic spinner</a> example.</p>
+
+<h3>Varying animation rate</h3>
+
+<p>The first example doesn&#39;t look too bad, but you&#39;ll notice that in each iteration of the animation, the sun starts off by spinning fast, then slows down to a stop. You can alter the rate of animation change by setting different values of the <code>animation-timing-function</code> property. The different possible values are:</p>
+
+<ul>
+  <li><code>linear</code> makes the animation happen at the same rate from beginning to end.</li>
+  <li><code>ease</code>, the default value, causes the animation to start quickly and then gradually slow down, as you&#39;ve already seen.</li>
+  <li><code>ease-out</code> makes the animation start quickly, stay quick for longer than <code>ease</code>, and then slow down more abruptly at the end.</li>
+  <li><code>ease-in</code> makes the animation start off slowly, and then speed up toward the end.</li>
+  <li><code>ease-in-out</code> means that the animation starts off by accelerating, is quite fast for most of the duration, and decelerates toward the end.</li>
+  <li><code>steps()</code> is slightly different. Instead of giving a smooth animation throughout, this causes the animation to jump between a set number of steps placed equally along the duration. For example, <code>steps(10)</code> would make the animation jump along in ten equal steps. There&#39;s also an optional second parameter that takes a value of <code>start</code> or <code>end</code>. <code>steps(10, start)</code> would specify that the change in property value should happen at the start of each step, while <code>steps(10, end)</code> means the change would come at the end.</li>
+  <li><code>cubic-bezier()</code> applies your own custom cubic Bézier curve to dictate the change in animation rate. This function takes four arguments: the X and Y coordinates of the beginning control handle, and the X and Y coordinates of the end control handle: for example <code>cubic-bezier(.28, 1.48, .9, .02)</code>.</li>
+</ul>
+
+<p class="note">Don&#39;t understand cubic Bézier curves? Lea Verou has created a fantastic visual tool allowing you to easily visualise what we are on about, see the effects of different timing function values, and even generate your own cubic bezier values. Check out <a href="http://cubic-bezier.com/">cubic-bezier.com</a>.</p>
+
+<p>To make the spinning sun look more consistent, I set <code>animation-timing-function</code> to <code>linear</code> — load up <a href="../../../../devfiles.myopera.com/articles/9132/linear-spinner.html">linear spinner</a> to see the result.</p>
+
+<p class="note">To create a &quot;bounce&quot; effect, you can use a cubic Bézier curve value with drag handle values greater than the lower or upper bounds of the graph, e.g. <code>cubic-bezier(.2,-0.36,.71,1.45)</code></p>
+
+<h3>Animation delays</h3>
+
+<p>You can set a delay before the animation starts, by setting an <code>animation-delay</code> property:</p>
+
+<pre><code>#image {
+  animation-delay: 4s;
+}</code></pre>
+
+<p>This property can take positive and negative values. A positive value will delay when the animation starts, whereas a negative value will make the animation start part way through the specified animation duration. You&#39;ll most commonly use this when you&#39;ve got multiple animations that you want to fire at different times to provide a complete sequence.</p>
+
+<h3>Start to end, or back and forth?</h3>
+
+<p>By default, animations that run multiple times will go from start to end, then flick straight back to the start and go to the end again, and so on. You can instead make the animation go smoothly back and forth, so from start to end, then from end to start, start to end, and so on, by specifying <code>animation-direction: alternate;</code> on the element.</p>
+
+<p>To see the effect of this, check out my <a href="../../../../devfiles.myopera.com/articles/9132/alternate-spinner.html">alternate spinner example</a>. Note that the timing function effect is reversed as well, on the alternate animations.</p>
+
+<h3>animation-fill-mode</h3>
+
+<p>The last property we&#39;ll look at is <code>animation-fill-mode</code>. This allows you to specify how the animated element is displayed after an animation ends or during an <code>animation-delay</code>. The possible values of <code>animation-fill-mode</code> are:</p>
+
+<ul>
+<li><code>none</code> is the default value — by default, when an animation ends the element it is applied to will go back to using its intrinsic styling. In addition, no styling from animation keyframes will be applied to an element during an animation delay.</li>
+<li><code>forwards</code> makes an element with an animation applied to it retain the styles defined by the properties in the final keyframe after the animation ends.</li>
+<li><code>backwards</code> causes styles defined in the first keyframe to be applied to the element the animation is applied to during an <code>animation-delay</code>, rather than the default element styles.</li>
+<li><code>both</code> applies the combined effects of <code>forwards</code> and <code>backwards</code> to an element undergoing an animation.</li>
+</ul>
+
+<p>To experiment with some of these effects, I&#39;ve created another example including an animation that moves the spinning sun, and an animation delay. I&#39;ve then made four versions, each of which has a different value of <code>animation-fill-mode</code>:</p>
+
+<ul>
+  <li><a href="../../../../devfiles.myopera.com/articles/9132/spinner-fill-mode-none.html"><code>animation-fill-mode: none;</code></a> — notice that the sun starts in the middle of the screen as defined in the #image ruleset, then jumps to the position defined in the 0% keyframe when the animation starts. At the end of the animation, it jumps back to the middle of the screen again.</li>
+  <li><a href="../../../../devfiles.myopera.com/articles/9132/spinner-fill-mode-backwards.html"><code>animation-fill-mode: backwards;</code></a> — here the sun starts at the position defined in the 0% keyframe, and stays there until the animation starts. At the end of the animation, it jumps back to the middle of the screen again.</li>
+  <li><a href="../../../../devfiles.myopera.com/articles/9132/spinner-fill-mode-forwards.html"><code>animation-fill-mode: forwards;</code></a> — in this case, the sun starts in the middle of the screen as defined in the #image ruleset, then jumps to the position defined in the 0% keyframe when the animation starts. At the end of the animation, it stays in the position defined in the 100% keyframe.</li>
+  <li><a href="../../../../devfiles.myopera.com/articles/9132/spinner-fill-mode-both.html"><code>animation-fill-mode: both;</code></a> — the sun now starts at the position defined in the 0% keyframe, and stays there until the animation starts. At the end of the animation, it stays in the position defined in the 100% keyframe.</li>
+</ul>
+
+<h2>Animation shorthand</h2>
+
+<p>You need to write a lot of code for CSS animations due to having to write multiple keyframe blocks <em>and</em> multiple properties including all the different prefixes. Fortunately, you can use shorthand to seriously reduce the amount of code needed.</p>
+
+<p>The following properties:</p>
+
+<pre><code>animation-name: spin;
+animation-duration: 3s;
+animation-timing-function: linear;
+animation-delay: 3s;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+animation-fill-mode: both;</code></pre>
+
+<p>can be replaced by this one line:</p>
+
+<pre><code>animation: spin 3s linear 3s infinite alternate both;</code></pre>
+
+<p>The spec is not very specific in defining the exact order of the property values in the shorthand, but it’s best to stick with the order shown above to avoid potential browser bugs. Various sources indicate that this order fulfils the idiosyncrasies different browsers currently have.</p>
+
+<p>You <em>need</em> to include <code>animation-name</code> and <code>animation-duration</code> for the animation to do anything at all. If you don’t explicitly specify the other values, their default values will be applied:</p>
+
+<pre><code>animation-timing-function: ease;
+animation-delay: 0s;
+animation-iteration-count: 1;
+animation-direction: normal;
+animation-fill-mode: none;</code></pre>
+
+<p>You can apply multiple animations in a single rule by including them in the same property, separated by commas. This works for both longhand and shorthand values. Here&#39;s an example:</p>
+
+<pre><code>animation: spin 3s, movement 5s;
+
+animation-name: spin, movement;
+animation-duration: 3s, 5s;</code></pre>
+
+<p>If you’re using longhand properties with different numbers of values, you need to specify all the animation names to be applied. Thereafter, if any of the other properties have less values than the number of animations specified, they will be alternated to fill up the gaps. For example:</p>
+
+<pre><code>animation-name: spin, movement, glow;
+animation-duration: 3s, 5s;
+animation-delay: 2s;</code></pre>
+
+<p>The spin animation will have a duration of 3 seconds, and the zap animation will have a duration of 5 seconds. The glow animation will have a delay of 3 seconds again, because the duration values have run out, so they start from the beginning again. All of the animations will have a delay of 2 seconds.</p>
+
+
+<h2>A More involved example</h2>
+
+<p>To round off the article, I&#39;ve created a slightly more interesting example with some more animations involved — check out my <a href="../../../../devfiles.myopera.com/articles/9132/sun-rise.html">Sunrise example</a> in all its glory. If you dissect the code, you&#39;ll see a number of animations working together to produce the final effect.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/9132/sun-rise.jpg" alt="a sunrise landscape scene, created mostly just using CSS" />
+
+
+
+<h2>Summary</h2>
+
+<p>That&#39;s it for our basic tour of CSS animations — let us know what you think, and have fun.</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-88116232">
+      <a href="../../../author/109th.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e0/a91/f833d7b2e865c65d74bec7d85bf91a4249a.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/109th.html">IllusionMH</a></p>
+      <p class="commentdate">Thursday, April 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><blockquote class="bbquote"><p>Note &quot;experimentally&quot; — this means that you need to use appropriate vendor prefixes for each browser.</p></blockquote><br/>Or just use <a href="http://leaverou.github.com/prefixfree/" target="_blank">-prefix-free</a> (by Lea Verou), it is easier than write all prefixes.</section>
+    </li>
+    <li id="comment-88277822">
+      <a href="../../../author/SpShut.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e1/f4a/41c47d94592a30be8a82bec69869f38ec8d.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/SpShut.html">Spadar Shut</a></p>
+      <p class="commentdate">Saturday, April 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Seems that the final animation lacks double rainbows :)</section>
+    </li>
+    <li id="comment-88628682">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Thursday, May 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is there some smart - CSS only - way to restart an animation? (eg. I want to play an animation every time on :hover). I found this site <a href="http://css-tricks.com/restart-css-animation/" target="_blank">http://css-tricks.com/restart-css-animation/</a> but the proposed solutions did not satisfy me :P</section>
+    </li>
+    <li id="comment-88634432">
+      <a href="../../../author/redfuchs.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/de/d01/4a8525ea87ed002ad88d769b9af33fefa6d.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/redfuchs.html">Marius</a></p>
+      <p class="commentdate">Thursday, May 3, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>The problem with bad animated content could be solved since SVG+SMIL. But all the other browser developer focusing on incomplete standards...<br/></section>
+    </li>
+    <li id="comment-88664062">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Friday, May 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chris Mills: IllusionMH contacted me and we found out that the animations actually restarts itself. So the :hover things should work. But from some reason the animations often stop working in Opera. No problem in other browsers :( They stop working randomly, so it is hard to make TC:<br/><br/>Video of the problem: <a href="http://files.myopera.com/BS-Harou/files/anim_vid.webm" target="_blank">http://files.myopera.com/BS-Harou/files/anim_vid.webm</a><br/>Example used: <a href="http://files.myopera.com/BS-Harou/files/anim_example.html" target="_blank">http://files.myopera.com/BS-Harou/files/anim_example.html</a><br/><br/>Win 7 64x, Opera 12 beta 32x, hw disabled, Atom 1.8GHz</section>
+    </li>
+    <li id="comment-88696292">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, May 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@BS-Harou oh, I&#39;m sorry - I misunderstood what you were saying slightly. Yes, this is the case - we are already aware of this bug, and working on it.<br/><br/>@Marius I am a big fan of SVG/SMIL for this kind of work, but the trouble is that the consensus across other browsers seems to be CSS animations, so we need to go with it really. It is a shame that SVG didn&#39;t catch on as much as we&#39;d hoped, after IE finally started supporting it ;-(</section>
+    </li>
+    <li id="comment-88698292">
+      <a href="../../../author/BS-Harou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c1/46f/df94bcd78dce64f1c98ea96f7b702a39626.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/BS-Harou.html">Martin Kadlec</a></p>
+      <p class="commentdate">Friday, May 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chris Mills - sorry, I probably confused you with the article. Thank you for the info about the bug, I was afraid my computer is the only one who acts that way.</section>
+    </li>
+    <li id="comment-88128952">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, June 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>.@IllusionMH<br/><br/>Good call - I forgot about these. I&#39;ve added a note. Thanks!</section>
+    </li>
+    <li id="comment-97620272">
+      <a href="../../../author/wongesp.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fc/0cb/99e3853eb9dafe0f9c1c0142b5448e77b98.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/wongesp.html">roso wongesp</a></p>
+      <p class="commentdate">Saturday, October 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Add like.,</section>
+    </li>
+    <li id="comment-97896362">
+      <a href="../../../author/Coyotee.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1b/b5f/3249fa859fe2fb9cf005abce77f6aa5bb16.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Coyotee.html">Coyotee</a></p>
+      <p class="commentdate">Thursday, October 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;zap&quot; should be &quot;movement&quot;<br/><br/>... a negative value will make the animation start part way through the specified animation duration.<br/>OR<br/>... a negative value will backup the animation the delay time and start from there.<br/><br/>Thanks! It was fun!</section>
+    </li>
+    <li id="comment-99888282">
+      <a href="../../../author/coreymwamba.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/37/b92/ddc467f7b241caf0a25ea211b1ed109af3b.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/coreymwamba.html">Corey Mwamba</a></p>
+      <p class="commentdate">Wednesday, November 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great tutorial - although worth noting that Opera doesn&#39;t need the vendor prefix [at least in 12.10].</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, April 25, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/animation.html" rel="tag">animation</a></li>
+        <li><a href="../../tags/css3.html" rel="tag">css3</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/opera&#32;12.html" rel="tag">opera 12</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Dev.Opera articles</title>
+<link rel="alternate" href="http://dev.opera.com/" />
+<content>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</content>
+<rights>Opera Software ASA</rights>
+<updated>2013-04-30T15:01:51Z</updated>
+<entry>
+<title type="text">Creating TV store icons, thumbnails and screenshots</title>
+<link href="http://dev.opera.com/articles/view/creating-tv-store-icons-thumbnails-and-screenshots" />
+<author>
+<name>Chris Mills</name>
+</author>
+<content>First impressions are very important for a successful product. It is therefore vital to take your time on graphics that represent your app, and polish them before you publish your work. This short guide provides some tips on making your application’s icon and other graphics the best they can be.</content>
+<id>http://dev.opera.com/articles/view/creating-tv-store-icons-thumbnails-and-screenshots</id>
+<updated>2013-04-30T15:01:51Z</updated>
+</entry>
+<entry>
+<title type="text">Opera TV Emulator user guide</title>
+<link href="http://dev.opera.com/articles/view/opera-tv-emulator" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>The Opera TV Emulator allows web developer to test HTML5 and CE-HTML content for TVs and other appliances running the Opera Devices SDK, as well as HTML-based applications for the Opera TV Store. It comes packaged as an Oracle VirtualBox image and can be run on Windows, Mac and Linux.</content>
+<id>http://dev.opera.com/articles/view/opera-tv-emulator</id>
+<updated>2013-01-23T17:19:29Z</updated>
+</entry>
+<entry>
+<title type="text">Functional key handling in Opera Device SDK based TV browsers</title>
+<link href="http://dev.opera.com/articles/view/functional-key-handling-in-opera-device-sdk-based-tv-browsers" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>Browsers based on the Opera Device SDK are generally designed to use the standard four-way directional keys on a remote control for spatial navigation. Websites specifically aimed at TV browsing can directly handle navigation and the use of functional keys through key events. This article outlines some possible approaches, particularly in light of the new DOM Level 3 Events model introduced in the Opera Device SDK 3.4.</content>
+<id>http://dev.opera.com/articles/view/functional-key-handling-in-opera-device-sdk-based-tv-browsers</id>
+<updated>2012-09-05T14:48:57Z</updated>
+</entry>
+<entry>
+<title type="text">Testing your app inside the Opera TV Store</title>
+<link href="http://dev.opera.com/articles/view/testing-your-app-inside-the-opera-tv-store" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>This article introduces the concept of &amp;quot;Paired devices&amp;quot;, which allows developers to test their applications directly inside the Opera TV Store even before they&#39;ve been submitted.</content>
+<id>http://dev.opera.com/articles/view/testing-your-app-inside-the-opera-tv-store</id>
+<updated>2012-08-20T13:26:28Z</updated>
+</entry>
+<entry>
+<title type="text">Opera TV Store app templates</title>
+<link href="http://dev.opera.com/articles/view/opera-tv-store-app-templates" />
+<author>
+<name>Daniel Davis</name>
+</author>
+<content>Since the launch of the Opera TV Store, we&#39;ve seen a variety of apps published by creators and enjoyed by users. The fact that our TV apps are built using web standards means that web developers can use their existing skills to create content for the TV platform. Developing for TV can still feel unfamiliar, however, so to make it easier we&#39;ve created a couple of templates for common types of apps that content creators can freely use.</content>
+<id>http://dev.opera.com/articles/view/opera-tv-store-app-templates</id>
+<updated>2012-06-20T13:28:32Z</updated>
+</entry>
+<entry>
+<title type="text">Responsive web design: a project-management perspective</title>
+<link href="http://dev.opera.com/articles/view/responsive-web-design-a-project-management-perspective" />
+<author>
+<name>Rudy Rigot</name>
+</author>
+<content>The challenges of responsive web design go way beyond media queries and screen widths. In this article we look at some of the key issues you need to explore when embarking on a complicated web project, considering if, how and why the project should be made responsive.</content>
+<id>http://dev.opera.com/articles/view/responsive-web-design-a-project-management-perspective</id>
+<updated>2012-04-12T10:53:44Z</updated>
+</entry>
+<entry>
+<title type="text">Building applications for the Opera TV Store</title>
+<link href="http://dev.opera.com/articles/view/building-applications-for-the-opera-tv-store" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>The Opera TV Store is a moderated, hosted catalogue of TV-specific web applications. Developers can submit and share their apps through this portal. This article outlines the Opera TV Store architecture and lists the requirements and acceptance criteria for submitting applications.</content>
+<id>http://dev.opera.com/articles/view/building-applications-for-the-opera-tv-store</id>
+<updated>2012-02-10T14:34:08Z</updated>
+</entry>
+<entry>
+<title type="text">HTML5 audio/video support in Opera TV Store applications</title>
+<link href="http://dev.opera.com/articles/view/html5-audio-video-support-in-opera-tv-store-applications" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>The Opera TV Store browser comes with built-in support for the HTML5  and  elements, allowing developers to include multimedia content in their applications without any need for plugin-based solutions.</content>
+<id>http://dev.opera.com/articles/view/html5-audio-video-support-in-opera-tv-store-applications</id>
+<updated>2012-02-10T14:15:07Z</updated>
+</entry>
+<entry>
+<title type="text">Functional key handling in Opera TV Store applications</title>
+<link href="http://dev.opera.com/articles/view/functional-key-handling-in-opera-tv-store-applications" />
+<author>
+<name>Patrick H. Lauke</name>
+</author>
+<content>The Opera TV Store is designed to use the standard four-way directional keys on a remote control for spatial navigation. Authors may also choose to handle the navigation of their application themselves by intercepting key presses from the remote control, using a series of built-in global constants for each functional key.</content>
+<id>http://dev.opera.com/articles/view/functional-key-handling-in-opera-tv-store-applications</id>
+<updated>2012-02-10T13:32:53Z</updated>
+</entry>
+<entry>
+<title type="text">Design considerations for Opera TV Store applications</title>
+<link href="http://dev.opera.com/articles/view/design-considerations-for-opera-tv-store-applications" />
+<author>
+<name>Yenny Otero</name>
+</author>
+<content>Although Opera TV Store applications are, in essence, nothing more than web pages, there are certain design considerations related to the TV context in general, and the Opera TV Store model in particular, that developers need to take into consideration.</content>
+<id>http://dev.opera.com/articles/view/design-considerations-for-opera-tv-store-applications</id>
+<updated>2012-02-09T23:16:47Z</updated>
+</entry>
+</feed>

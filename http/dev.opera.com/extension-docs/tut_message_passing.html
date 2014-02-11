@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Passing messages in extensions - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Passing messages in extensions</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/shwetank/">Shwetank Dixit</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>Communicating and passing messages around is an essential part in developing extensions. Let’s take a look at the different ways to do that using the Opera Extensions API.</p>
+
+<p>The two broad types of communication methods we have are simple short lived messages, and a more long lived communication method. We’ll cover both in this article.</p>
+
+<h2 id="simple_short_lived_communication">Simple short lived communication</h2>
+
+<p>If all you need to do is to send a one-shot message to another part of the extension, and optionally get a callback, then you can use the <code>runtime.sendMessage()</code> or <code>tabs.sendMessage()</code> methods to do so. To receive a message, use the <code>runtime.onMessage()</code> method.</p>
+
+<p>Let’s take an example of an extension which (on click of a button) counts the number of <code>&lt;p&gt;</code> elements in the page and updates the button with a badge showing the number.</p>
+
+<p>In the background script, we initially write:</p>
+<pre class='prettyprint'>
+chrome.browserAction.onClicked.addListener(function() {
+    chrome.tabs.query({currentWindow: true, active: true}, function(tab) { /*Select active tab of the current window*/
+       chrome.tabs.sendMessage(tab\[0].id, {line: 'countparas'}); /*Send a message to the content script*/
+    });
+});
+</pre>
+<p>So in effect, we are selecting the currently active tab of the current window and sending a message the content script associated with it. When the content script receives this message, it will initiate a function, like so:</p>
+<pre class='prettyprint'>
+chrome.runtime.onMessage.addListener(
+	function (request, sender){
+		if (request.line=='countparas'){ /* If we get the request from the Background script */
+			var paras = document.body.querySelectorAll('p'); /* Select all `&lt;p>` elements in the document body */
+			if (paras.length > 0){ /* If the number of `&lt;p>` elements is greater than zero */
+			var theCount = paras.length+''; /* Assigning that number to a variable called 'theCount' and convert it to a string format */
+			chrome.runtime.sendMessage({count:theCount}); /* Send the count back to the background script */
+			} else {
+				alert('There does not seem to be any `&lt;p>` elements in this page!');
+			}
+		}
+});
+</pre>
+<p>Here the content script is listening for the message ‘countparas’, and only once it receives it, it initiates the counting of all the <code>&lt;p&gt;</code>elements in the page. Once it does that, it sends back a message with the count.</p>
+
+<p>The background script once again listens for a message from the content script regarding the count, and once it does, it updates the badge like so:</p>
+<pre class='prettyprint'>
+chrome.runtime.onMessage.addListener(
+	function (request, sender) {
+		if (request.count){ /*If there exists a value named 'count' in the message sent by content script */
+			console.log('Count of paragraphs in the document is: '+request.count + 'and tab id is '+sender.tab.id);
+			var mytext = ""+request.count+"";
+			chrome.browserAction.setBadgeText({text: mytext}); /*Set the badge of the extension to the value of 'mytext'*/
+		}
+	}
+
+);
+</pre>
+<p>Feel free to <a href="samples/MessagePassing.nex">download the extension</a> and examine it further.</p>
+
+<h2 id="crossextension_messaging">Cross-extension messaging</h2>
+
+<p>In addition to sending messages between different components in your extension, you can use the messaging API to communicate with other extensions. This lets you expose a public API that other extensions can take advantage of.</p>
+
+<p>Listening for incoming requests and connections is similar to the internal case, except you use the <a href="runtime.html#event-onMessageExternal">runtime.onMessageExternal</a> or <a href="runtime.html#event-onConnectExternal">runtime.onConnectExternal</a> methods. Here’s an example of each:</p>
+<pre class='prettyprint'>
+// For simple requests:
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) {
+    if (sender.id == blacklistedExtension)
+      return;  // don&#39;t allow this extension access
+    else if (request.getTargetData)
+      sendResponse({targetData: targetData});
+    else if (request.activateLasers) {
+      var success = activateLasers();
+      sendResponse({activateLasers: success});
+    }
+  });
+
+// For long-lived connections:
+chrome.runtime.onConnectExternal.addListener(function(port) {
+  port.onMessage.addListener(function(msg) {
+    // See other examples for sample onMessage handlers.
+  });
+});
+</pre>
+<p>Likewise, sending a message to another extension is similar to sending one within your extension. The only difference is that you must pass the ID of the extension you want to communicate with. For example:</p>
+<pre class='prettyprint'>
+/ The ID of the extension we want to talk to.
+var laserExtensionId = &quot;abcdefghijklmnoabcdefhijklmnoabc&quot;;
+
+// Make a simple request:
+chrome.runtime.sendMessage(laserExtensionId, {getTargetData: true},
+  function(response) {
+    if (targetInRange(response.targetData))
+      chrome.runtime.sendMessage(laserExtensionId, {activateLasers: true});
+  });
+
+// Start a long-running conversation:
+var port = chrome.runtime.connect(laserExtensionId);
+port.postMessage(...);
+</pre>
+<h2 id="sending_messages_from_web_pages">Sending messages from web pages</h2>
+
+<p>Similar to cross-extension messaging, your app or extension can receive and respond to messages from regular web pages. To use this feature, you must first specify in your manifest.json which web sites you want to communicate with. For example:</p>
+<pre class='prettyprint'>
+&quot;externally_connectable&quot;: {
+  &quot;matches&quot;: [&quot;*://*.example.com/*&quot;]
+}
+</pre>
+<p>This will expose the messaging API to any page which matches the URL patterns you specify. The URL pattern must contain at least a second-level domain - that is, hostname patterns like “*”, “*.com”, “*.co.uk”, and “*.appspot.com” are prohibited. From the web page, use the runtime.sendMessage or runtime.connect APIs to send a message to a specific app or extension. For example:</p>
+<pre class='prettyprint'>
+// The ID of the extension we want to talk to.
+var editorExtensionId = &quot;abcdefghijklmnoabcdefhijklmnoabc&quot;;
+
+// Make a simple request:
+chrome.runtime.sendMessage(editorExtensionId, {openUrlInEditor: url},
+  function(response) {
+    if (!response.success)
+      handleError(url);
+  });
+</pre>
+<p>From your app or extension, you may listen to messages from web pages via the runtime.onMessageExternal or runtime.onConnectExternal APIs, similar to cross-extension messaging. Only the web page can initiate a connection. Here is an example:</p>
+<pre class='prettyprint'>
+chrome.runtime.onMessageExternal.addListener(
+  function(request, sender, sendResponse) {
+    if (sender.url == blacklistedWebsite)
+      return;  // don&#39;t allow this web page access
+    if (request.openUrlInEditor)
+      openUrl(request.openUrlInEditor);
+  });
+</pre>
+<h2 id="native_messaging">Native messaging</h2>
+
+<p><strong>Note</strong>: This will be fully available from Opera 20 onwards.</p>
+
+<p>Extensions can exchange messages with native applications. Native applications that support this feature must register a native messaging host that knows how to communicate with the extension. Chrome starts the host in a separate process and communicates with it using standard input and standard output streams.</p>
+
+<h3 id="native_messaging_host">Native messaging host</h3>
+
+<p>In order to register a native messaging host the application must install a manifest file that defines the native messaging host configuration. Below is an example of the manifest file:</p>
+<pre class='prettyprint'>
+{
+  &quot;name&quot;: &quot;com.my_company.my_application&quot;,
+  &quot;description&quot;: &quot;My Application&quot;,
+  &quot;path&quot;: &quot;C:\\Program Files\\My Application\\chrome_native_messaging_host.exe&quot;,
+  &quot;type&quot;: &quot;stdio&quot;,
+  &quot;allowed_origins&quot;: [
+    &quot;chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/&quot;
+  ]
+}
+</pre>
+<p>Native messaging host manifest file contains the following fields:</p>
+<table class='simple'>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>name</code></td>
+    <td>Name of the native messaging host. Clients pass this string to
+    <a href='runtime.html#method-connectNative'>runtime.connectNative</a> or <a href='runtime.html#method-sendNativeMessage'>runtime.sendNativeMessage</a>.</td>
+  </tr>
+  <tr>
+    <td><code>description</code></td>
+    <td>Short application description.</td>
+  </tr>
+  <tr>
+    <td><code>path</code></td>
+    <td>Path to the native messaging host binary. On Linux and OSX the path must
+    be absolute. On Windows it can be relative to the directory in which the
+    manifest file is located.</td>
+  </tr>
+  <tr>
+    <td><code>type</code></td>
+    <td>Type of the interface used to communicate with the native messaging
+    host. Currently there is only one possible value for this parameter:
+    <code>stdio</code>. It indicates that Chrome should use <code>stdin</code>
+    and <code>stdout</code> to communicate with the host.</td>
+  </tr>
+  <tr>
+    <td><code>allowed_origins</code></td>
+    <td>List of extensions that should have access to the native messaging host.</td>
+  </tr>
+</table>
+<p>Location of the manifest file depends on the platform:</p>
+
+<p><strong>Windows</strong>: The manifest file can be located anywhere in the file system. The application installer must create registry key <code>HKEY_LOCAL_MACHINE\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.my_company.my_application</code> and set default value of that key to the full path to the manifest file.</p>
+
+<p><strong>OSX</strong>: The manifest file must be placed at <code>/Library/Google/Chrome/NativeMessagingHosts/com.my_company.my_application.json</code>.</p>
+
+<p>Opera starts each native messaging host in a separate process and communicates with it using standard input (<code>stdin</code>) and standard output (<code>stdout</code>). The same format is used to send messages in both directions: each message is serialized using JSON, UTF-8 encoded and is preceded with 32-bit message length in native byte order.</p>
+
+<h2 id="other_methods_of_communication">Other methods of communication</h2>
+
+<p>In some situations you might want a more <em>persistent</em> form of communication between the different parts of your extension, in which case you can open a message channel between your content script and the extension page using <a href="runtime.html#method-connect"><code>runtime.connect()</code></a> or <a href="tabs.html#method-connect"><code>tabs.connect()</code></a>.</p>
+
+<p>You can communicate between different extensions by using the <a href="runtime.html#event-onMessageExternal"><code>runtime.onMessageExternal()</code></a> and <a href="runtime.html#event-onConnectExternal"><code>runtime.onConnectExternal()</code></a> methods.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			<p>Portions of this page are reproduced from work created and <a href="http://code.google.com/policies.html">shared by Google</a> and used according to terms described in the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0 Attribution License</a>. (<a href="http://developer.chrome.com/extensions/messaging.html">original source</a>)</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

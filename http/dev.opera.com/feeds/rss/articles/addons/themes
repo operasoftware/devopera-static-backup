@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>Dev.Opera articles</title>
+<link>http://dev.opera.com/</link>
+<copyright>Opera Software ASA</copyright>
+<pubDate>Thu, 17 Oct 2013 11:00:32 GMT</pubDate>
+<description>Dev.Opera is a community resource site where developers can share tips, tricks, extensions and more.</description>
+<item>
+<title>Themes in Opera 18+</title>
+<link>http://dev.opera.com/articles/view/themes-in-opera-18-and-higher</link>
+<author>Andreas Bovens</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/themes-in-opera-18-and-higher</guid>
+<pubDate>Thu, 17 Oct 2013 11:00:32 GMT</pubDate>
+<description>Due to the major architectural changes we&#39;ve been going through recently, the first versions of our Chromium/Blink based Opera browser (versions 15, 16 and 17) do not support themes. However, from Opera 18 onward, themes are supported again! This article explains you how to create themes for Opera 18+.</description>
+</item>
+<item>
+<title>Opera&apos;s lightweight themes</title>
+<link>http://dev.opera.com/articles/view/operas-lightweight-themes</link>
+<author>Chris Mills</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/operas-lightweight-themes</guid>
+<pubDate>Thu, 13 Oct 2011 06:59:31 GMT</pubDate>
+<description>Opera 12 brings with it a new lightweight theme system, which sits on top of the default Opera theme/skin and makes simple customisations much easier to achieve. In this article we&#39;ll take a look at how this lightweight system works.</description>
+</item>
+<item>
+<title>Opera Nalakuvara, customized Taiwanese browser — Part 3: Third party components and menus</title>
+<link>http://dev.opera.com/articles/view/building-opera-nalakuvara-part-3</link>
+<author>Jedi Lin</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/building-opera-nalakuvara-part-3</guid>
+<pubDate>Wed, 27 Jan 2010 11:37:05 GMT</pubDate>
+<description>Jedi-Lin&#39;s third article goes into detail about the third party additions he made to Opera during the creation of Nalakuvara, including User CSS, UserJS, Java applets and plugins.</description>
+</item>
+<item>
+<title>Opera Nalakuvara, customized Taiwanese browser — Part 2: Tweaking Opera default settings</title>
+<link>http://dev.opera.com/articles/view/building-opera-nalakuvara-part-2</link>
+<author>Jedi Lin</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/building-opera-nalakuvara-part-2</guid>
+<pubDate>Wed, 27 Jan 2010 11:36:52 GMT</pubDate>
+<description>In the second part of the Nalakuvara article series, Jedi-Lin details all of the customizations he made to the Opera settings such as mail providers, search engines and bookmarks.</description>
+</item>
+<item>
+<title>Opera Nalakuvara, a customized browser for the Taiwanese community — Part 1: planning</title>
+<link>http://dev.opera.com/articles/view/building-opera-nalakuvara-part-1</link>
+<author>Jedi Lin</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/building-opera-nalakuvara-part-1</guid>
+<pubDate>Wed, 27 Jan 2010 11:36:50 GMT</pubDate>
+<description>Nalakuvara is a customized Opera browser, created by developer Jedi-Lin to better serve the needs of the Taiwanese web community, with custom fonts, search engine and mail providers, custom User CSS and UserJS enhancements, and more. In this article series Jedi gives you a detailed tour of how he created the project and implemented all the features. This article in particular discusses project planning, the toolset he used, how he customized the install process, and working out the files to update.</description>
+</item>
+<item>
+<title>Opera Skinning part 4: skin.ini element reference</title>
+<link>http://dev.opera.com/articles/view/opera-skinning-part-4-skin-ini-element</link>
+<author>Lars Kleinschmidt</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-skinning-part-4-skin-ini-element</guid>
+<pubDate>Fri, 20 Jun 2008 14:00:49 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>Opera Skinning part 5: Tips and tricks</title>
+<link>http://dev.opera.com/articles/view/opera-skinning-part-5-tips-and-tricks</link>
+<author>Lars Kleinschmidt</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-skinning-part-5-tips-and-tricks</guid>
+<pubDate>Fri, 20 Jun 2008 13:59:48 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>Opera Skinning part 3: Skin.ini explained</title>
+<link>http://dev.opera.com/articles/view/opera-skinning-part-3-skin-ini-explaine</link>
+<author>Lars Kleinschmidt</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-skinning-part-3-skin-ini-explaine</guid>
+<pubDate>Fri, 20 Jun 2008 13:59:44 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>Opera Skinning part 2: Skinning examples</title>
+<link>http://dev.opera.com/articles/view/opera-skinning-part-2-skinning-examples</link>
+<author>Lars Kleinschmidt</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-skinning-part-2-skinning-examples</guid>
+<pubDate>Fri, 20 Jun 2008 13:59:39 GMT</pubDate>
+<description></description>
+</item>
+<item>
+<title>Opera Skinning part 1: Introduction</title>
+<link>http://dev.opera.com/articles/view/opera-skinning</link>
+<author>Lars Kleinschmidt</author>
+<guid isPermaLink="true">http://dev.opera.com/articles/view/opera-skinning</guid>
+<pubDate>Fri, 20 Jun 2008 13:59:35 GMT</pubDate>
+<description>In this series of articles, Opera skinning expert Lars Kleinschmidt provides the most complete analysis to date of the Opera skinning system. He first looks at the basics including how skins are packaged and how to make simple changes to your default skin, before going deep into how to customize every aspect of your Opera&#39;s look and feel by altering the graphics and contents of the skin.ini file. Every section of skin.ini is explored in detail. This series of articles is updated for Opera 9.5.</description>
+</item>
+</channel>
+</rss>

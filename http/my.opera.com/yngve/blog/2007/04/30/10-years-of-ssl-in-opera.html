@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Yngve Nysæter Pettersen - 10 years of SSL in Opera</title>
+<meta property="og:url" content="http://my.opera.com/yngve/blog/2007/04/30/10-years-of-ssl-in-opera">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/yngve/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/yngve/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/yngve/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/yngve/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/yngve/xml/rss/comments/963661">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/yngve/xml/atom/comments/963661">
+<meta name="viewport" content="width=device-width">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://static.myopera.com/community/css/users/102/main.css" type="text/css">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="Yngve Nysæter Pettersen - 10 years of SSL in Opera">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/tf/++v/7EYs9UW0UGvsLG+ic9bpYw/9165_l.jpg">
+<meta property="og:image" content="http://static.myopera.com/community/graphics/smiley.gif">
+<meta property="og:image" content="http://static.myopera.com/community/graphics/smiley.gif">
+<meta property="og:description" content="April 30th, 1997 (give or take a few days; remembering exact days can be hard) was the first time Opera's SSL implementation completed a full transaction.
+
+The four months prior to this largely unnoticed (but for Opera significant) event, had been very busy. I had to study and learn about SSL and general cryptography, then do intense design and development work, followed by a lot of testing and debugging.
+
+The SSL support in Opera was my first assignment when I started working at Opera.  ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2Fyngve%2Fblog%2Fshow.dml%2F963661&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2">
+<h1><span>Implementer's notes</span></h1>
+<p id="subtitle"><span>What might get caught in the gears under the hood?</span></p>
+</div>
+<div id="menu"><ul>
+<li id="menu_blog"><a href="http://my.opera.com/yngve/blog/" id="selected"><span>Blog</span></a></li>
+<li id="menu_about"><a href="http://my.opera.com/yngve/about/"><span>About</span></a></li>
+</ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title">10 years of SSL in Opera</h2>
+<p class="postdate">Monday, April 30, 2007 11:04:30 AM</p>
+<p class="tags"><a href="http://my.opera.com/yngve/blog/index.dml/tag/TLS" rel="tag">TLS</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Security" rel="tag">Security</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/Opera" rel="tag">Opera</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/browsers" rel="tag">browsers</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/weak%20encryption" rel="tag">weak encryption</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/protocols" rel="tag">protocols</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/SSL" rel="tag">SSL</a>, <a href="http://my.opera.com/yngve/blog/index.dml/tag/browser" rel="tag">browser</a> </p>
+<div class="content">April 30th, 1997 (give or take a few days; remembering exact days can be hard) was the first time Opera's SSL implementation completed a full transaction.<br><br>The four months prior to this largely unnoticed (but for Opera significant) event, had been very busy. I had to study and learn about SSL and general cryptography, then do intense design and development work, followed by a lot of testing and debugging.<br><br>The SSL support in Opera was my first assignment when I started working at Opera. You might say that I was thrown in at the deep end. The benefit, of course, was that my hands weren't tied by a pre-exisiting design.<br><br>Geir<sup><a href="http://en.wikipedia.org/wiki/Geir_Ivars%C3%B8y" rel="nofollow" target="_blank">1</a></sup><sup>,<a href="http://my.opera.com/community/blog/show.dml/182844" rel="nofollow" target="_blank">2</a></sup>, who was then developing the network code, as well as the rendering engine, had been looking at the SSLeay crypto-library (it's now known as <a href="http://www.openssl.org/" rel="nofollow" target="_blank">OpenSSL</a>), which had an SSL implementation, but hadn't gotten much further than starting to look at the specification and download SSLeay by the time I started at Opera.<br><br>After looking at SSLeay's interfaces and code I reached the conclusion that the SSL implementation would not work well with our network code and decided that an independent implementation of the protocol would be better, although I kept SSLeay around for the crypto support, which was independent of the protocol.<br><br>A couple of other decisions were:<br><br><ul class="bullets">
+<li>Avoid implementing the basic crypto functions myself. It is far too easy to get something wrong in that code, both with respect to performance and correctness (and security). Also, it would take far too long to implement all the necessary functionality. So we used SSLeay for the encryption and certificate support.</li>
+<li>Isolate the encryption and certificate handling code from the rest of the protocol implementation so that we could, if necessary, replace the crypto support library without major changes to the rest of the code.</li>
+<li>Isolate atomic structures as much possible, as well, in object oriented classes, because it made coding easier. This is very easy in C++, and I could do this using techniques I learned during my masters thesis work.</li>
+</ul>
+<br><br>I started by implementing SSL v3, since it was then the most recent definition, and also quite well defined. I still hold the SSL v3 and TLS specifications as some of the best written protocol specifications I have seen (with PKCS #7 and S/MIME as some of the worst ones). SSL v2 I postponed until later.<br><br>Implementing something from scratch is hard work, and you often have to backtrack as you find that the current solution design did not work out as expected. But it is, of course, this challenge that is a large part of what attracts many to software development.<br><br>After a couple of months, and having integrated the new protocol with the network code, we were ready to make it work.<br><br>This also involved a lot of work, and some situations can be a little bizarre. One time I got to the point where I had sent the encrypted keymaterial (used to calculate the encryption keys) to the server, and the server slammed the door in my face (which is what it almost always did when I made a mistake).<br><br>All right, that indicated (of course) that something was wrong with the data we sent.<br><br>So, I checked that we encrypted correctly, that we encoded the message correctly according to the specification. Everything checks out. OK, let's take a look at what the competition is doing: Huh, it's *not* following the spec?! I test that "method", and it works to get me to the next stage.<br><br>I send off an email to the specification authors, and ask what is going on? The answer: It looks like Netscape (who wrote the spec) implemented it wrong in their clients and servers, and so it stuck (but they said TLS 1.0 was going to do it right).<br><br>This incident has an amusing follow up story. Almost two years later I was testing against the newest SSLeay development version which was going to support TLS 1.0, and ran into the same problem. I double checked with the TLS spec authors, but the spec had not changed, so I told Eric Young he had made a mistake, and to be sure I had it right he put the question to the TLS work group mailing list, and got the same answer I got.<br><br>Finally though, April 30th the code worked well enough that we could actually get a web page back.<br><br>The implementation was by no means finished, and work would continue for the rest of the year to get the SSL implementation into a shape fit to be shipped in Opera 3.0. But just to "round" that day off, I spent two or three hours implementing the TLS 1.0 version, even though I wasn't able to test it until early 1999, at which time it took just a week to get it working properly and mostly ready for Opera 3.50.<br><br>The SSL implementation wasn't static (and still isn't). Work on improving it continued, and is continuing:<br><br><ul class="bullets">
+<li>In 1999 we added <a href="http://www.ietf.org/rfc/rfc2246.txt" rel="nofollow" target="_blank">TLS 1.0</a> support, as one of the first clients to do so.</li>
+<li>A while ago I started a complete rewrite of the protocol control engine<br>because I was encountering more trouble with adding new functionaliy. Part of what I did was to take the design methods I had used earlier and go even further along that route (I get the impression a few colleagues would say I went too far <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink">, I suspect they just got caught up in the details). This new engine became active in 9.0.</li>
+<li>We have regularly updated the version of SSLeay and later OpenSSL, although the first major upgrade was the worst, due to the major internal changes in the certificate system made in the 0.8.x compared to the 0.6.x version we were using at the time.</li>
+<li>We have added new encryption methods as they became available.</li>
+<li>We have improved the security related information we show users.</li>
+<li>We were among the first (if not the first) to deploy a client supporting <a href="http://www.ietf.org/rfc/rfc4346.txt" rel="nofollow" target="_blank">TLS 1.1</a> and <a href="http://www.ietf.org/rfc/rfc4366.txt" rel="nofollow" target="_blank">TLS Extension</a>s, in fact so early we had to disable it and develop a workaround  before we could enable it by default (I actually got a question from Microsoft <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">, about them having the same problems with TLS Extensions that <a href="http://my.opera.com/yngve/blog/show.dml/319177" rel="nofollow" target="_blank">we had</a>).</li>
+</ul>
+<br><br>What is in the future of Opera's SSL/TLS implementation?<br><br><ul class="bullets">
+<li>We are adding support for <a href="http://labs.opera.com/news/2006/10/09/" rel="nofollow" target="_blank">Extended Validation</a> certificates.</li>
+<li>There are some big changes coming in the certificate management system.</li>
+<li>In Kestrel we are planning to completely remove support for SSL v2 and the weak 40 and 56 bit ciphers.</li>
+</ul>
+<br><br>Some may wonder why we are still using our own implementation of SSL and TLS when there are several implementations around. After all, some of the original reasons for the choice no longer exist.<br><br>Well, while we do use other implementations on some platforms, for technological reasons, one major reason is that it gives us more control of what functionality we support. For example, we implemented TLS 1.1 and TLS Extension 3 years ago, and we are actually still the only major TLS 1.1 client around, and other TLS Extension clients did not show up until second half of 2006 (although that is a chicken and egg situation). We are also more at liberty to integrate the code better with our own processes and techniques.<br><br>Having our own implementation also makes it easier to move the functionality to a new platform, although Open Source implementations have the same benefit.<br><br>Another reason may be a bit more philosophical, as Opera's engine is one of only four major SSL/TLS clients deployed, and at least two of the other three are also developed with the server side. This means that Opera's client may be able to keep the others from implementing mistakes that then get turned into de-facto standards (which is what happened with the above mentioned specification). Diversity is what will keep the net working.<br><br>But, that question is also similar to a few other questions: Why develelop our own HTML parser, webpage rendering engine, our own browser, and so on? In this context, another obvius reason becomes clear, we think we can implement these things better ourselves.<br><br>Although we have hit the occasional troublespot, I think (if I may be so bold) that the design I chose in 1997 has worked out quite well. While there has been some big changes in parts, the basic design and functionality of Opera's SSL implementation are still quite similar to the original implementation.</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2F2007%2F04%2F30%2F10-years-of-ssl-in-opera&amp;title=10%20years%20of%20SSL%20in%20Opera" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=10%20years%20of%20SSL%20in%20Opera,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2F2007%2F04%2F30%2F10-years-of-ssl-in-opera&amp;title=10%20years%20of%20SSL%20in%20Opera" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=10%20years%20of%20SSL%20in%20Opera','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2Fyngve%2Fblog%2F2007%2F04%2F30%2F10-years-of-ssl-in-opera&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/yngve/blog/2007/02/27/introducing-cache-contexts-or-why-the"><span>Introducing Cache Contexts, or: Why the browser does not know you are logged out</span></a></span><span class="nxt"><a href="http://my.opera.com/yngve/blog/2007/05/24/1020-bit-special-number-factored"><span>1020 bit special number factored</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/yngve/xml/rss/comments/963661"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1" id="comment2837448">
+<div class="avatar"><a href="http://my.opera.com/vetler/"><img src="http://my.opera.com/community/users/avatar.pl/39302" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="vetler" href="http://my.opera.com/vetler/">Vetle Roeim<span>vetler</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2837448" class="permalink">#</a> Monday, April 30, 2007 12:24:20 PM</span></p>
+<div class="text">Happy anniversary and good luck with the next 10 years! <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment2" id="comment2839669">
+<div class="avatar"><a href="http://my.opera.com/IceArdor/"><img src="http://my.opera.com/community/users/avatar.pl/84797" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="IceArdor" href="http://my.opera.com/IceArdor/">Ice Ardor<span>IceArdor</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2839669" class="permalink">#</a> Tuesday, May 1, 2007 12:51:43 AM</span></p>
+<div class="text">Happy birthday to your Opera SSL baby.</div>
+</div>
+<div class="comment1" id="comment2842260">
+<div class="avatar"><a href="http://my.opera.com/MTKnight/"><img src="http://my.opera.com/community/users/avatar.pl/19951" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="MTKnight" href="http://my.opera.com/MTKnight/"> J. King<span>MTKnight</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2842260" class="permalink">#</a> Tuesday, May 1, 2007 2:12:04 PM</span></p>
+<div class="text">Very enlightening, Ygnve. <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br>It's always very interesting to hear about the components of Opera that don't otherwise get too much recognition.</div>
+</div>
+<div class="comment2" id="comment2847683">
+<div class="avatar"><a href="http://my.opera.com/dantesoft/"><img src="http://my.opera.com/community/users/avatar.pl/68612" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dantesoft" href="http://my.opera.com/dantesoft/">Dan Alexandru<span>dantesoft</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2847683" class="permalink">#</a> Wednesday, May 2, 2007 11:05:09 PM</span></p>
+<div class="text">Can you tell us a bit more about the SSL implementation for Opera Mini ?<br><br>Also, should the user get a prompt to accept/install/review "suspicious" certificates ? As far as I can see, pages reported secure (Tools &gt; Page Information &gt; Security; I guess that just means it uses e.g TLS v1.0  256 bit AES) can show a crossed, grayed, padlock on the top to signify some certificate problem, but not much else.</div>
+</div>
+<div class="comment1" id="comment2851882">
+<div class="avatar"><a href="http://my.opera.com/tmfo/"><img src="http://my.opera.com/community/users/avatar.pl/169245" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="tmfo" href="http://my.opera.com/tmfo/">Patrick<span>tmfo</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2851882" class="permalink">#</a> Friday, May 4, 2007 1:24:00 AM</span></p>
+<div class="text">Hi there,<br><br>you forgot something..<br><br>What is about the new TLS protocol version 1.2?!?<br><br>I think you will implement this version into an upcoming Opera Version soon, or not?<br><br>TLS 1.2 uses better encryption methods, like ECC (Elliptic curve cryptographie/ciphers), etc. <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br><br>best regards,<br><br>tmfo</div>
+</div>
+<div class="comment2 ownercomment" id="comment2853616">
+<div class="avatar"><a href="http://my.opera.com/yngve/"><img src="http://my.opera.com/community/users/avatar.pl/9165" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="yngve" href="http://my.opera.com/yngve/">Yngve Nysæter Pettersen<span>yngve</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2853616" class="permalink">#</a> Friday, May 4, 2007 9:51:05 AM</span></p>
+<div class="text">TLS 1.2 is still very much in the early stages of development, and will probably not be ready for a while. I expect that there may be some changes as people notice problems with the new features, and the new random number calculation method is still being discussed.<br><br>I know there are a couple of experimental implementations, but have not yet decided if I am going to implement one, but considering how I designed our engine I don't expect major problems with the new ways of doing things in TLS 1.2.<br><br>As far as ECC is concerned that is defined for TLS 1.0 already, see <a href="http://www.ietf.org/rfc/rfc4492.txt" rel="nofollow" target="_blank">http://www.ietf.org/rfc/rfc4492.txt</a> if you are interested.<br><br>I have been considering support, but have not yet studied the ECC method enough to be sure I'd do it right, and I've also not had time to study the patent encumberments (there are quite a few), and what the patentholder have told the IETF about licenses being needed (there was quite a heavy debate about that message at one of the meetings at the Spring-2006 IETF meeting in Dallas, and I am not at all sure what the conclusion was).<br><br>One thing that may be needed for ECC is a lot of new root certificates.</div>
+</div>
+<div class="comment1" id="comment2863155">
+<div class="avatar"><a href="http://my.opera.com/johansch/"><img src="http://my.opera.com/community/users/avatar.pl/180448" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="johansch" href="http://my.opera.com/johansch/">Johan Schön<span>johansch</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2863155" class="permalink">#</a> Sunday, May 6, 2007 2:36:57 PM</span></p>
+<div class="text">Regarding SSL in Opera Mini, see the FAQ on the Opera Mini site:<br><br><a href="http://www.operamini.com/help/faq/#encyption" rel="nofollow" target="_blank">http://www.operamini.com/help/faq/#encyption</a>
+</div>
+</div>
+<div class="comment2" id="comment2865029">
+<div class="avatar"><a href="http://my.opera.com/tmfo/"><img src="http://my.opera.com/community/users/avatar.pl/169245" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="tmfo" href="http://my.opera.com/tmfo/">Patrick<span>tmfo</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment2865029" class="permalink">#</a> Monday, May 7, 2007 12:53:52 AM</span></p>
+<div class="text">Hi there,<br><br>ok thanks for your answer and update <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br><br>But it's a shame to use 256 bit AES symmetric encryption, but only 1024 or 2048 bit asymmetric key..<br><br>For an 256 bit symmetric key you should use at least 4096 or better 8192 bit asymmetric encryption key, or the security of the symmetric part is compromised because the public key part isn't strong enough..!<br><br>And because 8192 bit and bigger keys are not that fast to compute, ECC is a better solution, because you need much fewer key sizes for that and thus computing of these key sizes is faster.<br><br>Here some FAQ of ECC:<br><a href="http://www.certicom.com/index.php?action=ecc,ecc_faq" rel="nofollow" target="_blank">http://www.certicom.com/index.php?action=ecc,ecc_faq</a><br><br>Btw. Certicom own some patents for ECC..<br><br>And on this linked webpage you can see that the NIST guidelines/recommendations are even stronger and recommend higher/bigger key sizes (15,360 bit RSA public key size for 256 bit AES symmetric key size..!).<br><br>Links with more info about ECC:<br><a href="http://www.secg.org/" rel="nofollow" target="_blank">http://www.secg.org/</a><br><a href="http://research.sun.com/projects/crypto/" rel="nofollow" target="_blank">http://research.sun.com/projects/crypto/</a><br><a href="http://www.cacr.math.uwaterloo.ca/" rel="nofollow" target="_blank">http://www.cacr.math.uwaterloo.ca/</a> (ECC Workshops and more)<br><br>best regards,<br><br>tmfo</div>
+</div>
+<div class="comment1" id="comment4666484">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment4666484" class="permalink">#</a> Tuesday, February 12, 2008 12:01:36 PM</span></p>
+<div class="text">I've been using SSL extensively for the past few years but I haven't got the idea that it was already 10 years old. Well, happy anniversary then!</div>
+</div>
+<div class="comment2" id="comment4666819">
+<div class="avatar"><a href="http://my.opera.com/annmacgiff/"><img src="http://my.opera.com/community/users/avatar.pl/1333438" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="annmacgiff" href="http://my.opera.com/annmacgiff/">annmacgiff</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment4666819" class="permalink">#</a> Tuesday, February 12, 2008 1:07:07 PM</span></p>
+<div class="text">Beyond any doubt Opera SSL is a great design and the one I have to use very much in my work. I'm really happy that it exists for so long and it still hasn't been replaced by a newer solution.</div>
+</div>
+<div class="comment1" id="comment6054991">
+<div class="avatar"><a href="http://my.opera.com/sigmaris/"><img src="http://my.opera.com/community/users/avatar.pl/1878453" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="sigmaris" href="http://my.opera.com/sigmaris/">sigmaris</a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment6054991" class="permalink">#</a> Wednesday, September 17, 2008 2:26:24 PM</span></p>
+<div class="text">Is there any plan to support S/MIME in the Opera e-mail client? It would be pretty cool if I could sign and encrypt e-mails in Opera like is possible in Thunderbird and Apple Mail.</div>
+</div>
+<div class="comment2" id="comment24009201">
+<div class="avatar"><a href="http://my.opera.com/Chas4/"><img src="http://my.opera.com/community/users/avatar.pl/961480" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Chas4" href="http://my.opera.com/Chas4/">Charles Schloss<span>Chas4</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment24009201" class="permalink">#</a> Thursday, April 8, 2010 12:40:25 PM</span></p>
+<div class="text">
+<img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-cool" alt="cool"> <br><br>Wasn't Opera also one of the first to be able to use TLS 1.2</div>
+</div>
+<a name="lastcomment"></a><div class="comment1" id="comment36946402">
+<div class="avatar"><a href="http://my.opera.com/asepd2/"><img src="http://my.opera.com/community/users/avatar.pl/39640612" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="asepd2" href="http://my.opera.com/asepd2/">Asep Dadang<span>asepd2</span></a></b> <span class="comment-date"><a href="http://my.opera.com/yngve/blog/show.dml/963661#comment36946402" class="permalink">#</a> Sunday, August 8, 2010 6:21:23 PM</span></p>
+<div class="text">i always use opera mini for SSL connection, because my direct connection cannot browse through the SSL <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-bigsmile" alt="bigsmile">
+</div>
+</div>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<div class="sidebox" id="qp">
+<h2>Yngve Nysæter Pettersen</h2>
+<div id="myphoto"><a href="http://my.opera.com/yngve/"><img src="https://static.myopera.com/upic/pool1/tf/++v/7EYs9UW0UGvsLG+ic9bpYw/9165_l.jpg" width="220" height="165" alt="photo"></a></div>
+</div>
+<div id="blogsearch" class="sidebox">
+<label for="searchbox" class="h2">Blog search</label><form action="http://my.opera.com/yngve/search/?" method="get"><div class="pad">
+<input type="text" name="search" value="" id="searchbox" maxlength="128"><input type="submit" value="search" id="submitsearch">
+</div></form>
+</div>
+<table id="calendar">
+<caption><a href="http://my.opera.com/yngve/archive/monthly/?month=201402" id="calendarmonth">February 2014</a></caption>
+<thead><tr>
+<th scope="col" title="Sunday" abbr="Sunday">S</th>
+<th scope="col" title="Monday" abbr="Monday">M</th>
+<th scope="col" title="Tuesday" abbr="Tuesday">T</th>
+<th scope="col" title="Wednesday" abbr="Wednesday">W</th>
+<th scope="col" title="Thursday" abbr="Thursday">T</th>
+<th scope="col" title="Friday" abbr="Friday">F</th>
+<th scope="col" title="Saturday" abbr="Saturday">S</th>
+</tr></thead>
+<tfoot><tr><td colspan="7">
+<span id="prevmonth" class="left"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/yngve/archive/monthly/?month=201401" title="January 2014">January 2014</a></span><span id="nextmonth" class="right"><a href="http://my.opera.com/yngve/archive/monthly/?month=201403" title="March 2014">March 2014</a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span>
+</td></tr></tfoot>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+</tr>
+<tr>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/browser" rel="tag">browser</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/browsers" rel="tag">browsers</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Certificates" rel="tag">Certificates</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/cookies" rel="tag">cookies</a></li>
+<li class="size1"><a href="http://my.opera.com/yngve/blog/index.dml/tag/CRL" rel="tag">CRL</a></li>
+<li class="size4"><a href="http://my.opera.com/yngve/blog/index.dml/tag/encryption" rel="tag">encryption</a></li>
+<li class="size4"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Extended%20Validation" rel="tag">Extended Validation</a></li>
+<li class="size1"><a href="http://my.opera.com/yngve/blog/index.dml/tag/HTTP" rel="tag">HTTP</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Kestrel" rel="tag">Kestrel</a></li>
+<li class="size3"><a href="http://my.opera.com/yngve/blog/index.dml/tag/OCSP" rel="tag">OCSP</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Opera" rel="tag">Opera</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/protocols" rel="tag">protocols</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/published" rel="tag">published</a></li>
+<li class="size2"><a href="http://my.opera.com/yngve/blog/index.dml/tag/revocation" rel="tag">revocation</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/Security" rel="tag">Security</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/SSL" rel="tag">SSL</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/standards" rel="tag">standards</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/TLS" rel="tag">TLS</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/User%20Interface" rel="tag">User Interface</a></li>
+<li class="size5"><a href="http://my.opera.com/yngve/blog/index.dml/tag/weak%20encryption" rel="tag">weak encryption</a></li>
+</ul></div>
+</div>
+<div class="sidebox" id="visitors">
+<h2>Recent visitors</h2>
+<div class="pad">
+<ul class="nobullets userlist">
+<li><a href="http://my.opera.com/mathiasbynens/"><img src="https://static.myopera.com/upic/pool1/ce/5Z8/EgNoEkFCkDdePgbDr6RQDM/208545_s.jpg" width="68" height="51" alt="mathiasbynens"><span class="block">mathiasbynens</span></a></li>
+<li class="mid"><a href="http://my.opera.com/Frenzie/"><img src="https://static.myopera.com/upic/pool1/Ei/GQW/GYQBKzlBg94wBfVEg6rFCY/16944_s.jpg" width="68" height="51" alt="Frenzie"><span class="block">Frenzie</span></a></li>
+<li><a href="http://my.opera.com/rif/"><img src="https://static.myopera.com/upic/pool1/TM/2qa/c6nJwcuww8PYx8bVfmu9DI/23319_s.jpg" width="68" height="51" alt="rif"><span class="block">rif</span></a></li>
+<li><a href="http://my.opera.com/greench/"><img src="https://static.myopera.com/upic/pool1/Uj/vda/1orrbYcy7y26UlGATvy3Xc/174006_s.jpg" width="68" height="51" alt="greench"><span class="block">greench</span></a></li>
+<li class="mid"><a href="http://my.opera.com/bohwaz/"><img src="https://static.myopera.com/upic/pool1/K7/Gmd/UHY4QDcd_79UXZ9a3ymGjQ/45849_s.jpg" width="68" height="51" alt="bohwaz"><span class="block">bohwaz</span></a></li>
+<li><a href="http://my.opera.com/catgroup/"><img src="https://static.myopera.com/upic/pool1/9i/zkP/uvblDFNI4VfAXg1_hTdwVA/153641222_s.jpg" width="68" height="51" alt="catgroup"><span class="block">catgroup</span></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/yngve/blog/2007/04/30/10-years-of-ssl-in-opera"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392046109.myo.cDoyNzowNTowMA== -->

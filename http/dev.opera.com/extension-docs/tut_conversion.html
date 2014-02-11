@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Converting OEX extensions to CRX/NEX - Opera 15+ extensions documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.3.2/cosmo/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+		<div id="wrap">
+			<nav id="navbar" class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container-fluid">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="brand" href="index.html">Opera 15+ extensions documentation</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="../index.html">&uarr; Dev.Opera</a></li>
+							</ul>
+							<form class="navbar-search pull-right" action="http://dev.opera.com/extension-docs/search.html">
+							  <input name="q" type="text" class="search-query span3" placeholder="Search extension docs">
+							</form>
+						</div><!-- /.nav-collapse -->
+					</div><!-- /.container-fluid -->
+				</div><!-- /.navbar-inner -->
+			</nav>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span8">
+
+						<h1>Converting OEX extensions to CRX/NEX</h1>
+					
+					
+					 
+						<p class="badge pull-right">by <a href="https://github.com/andreasbovens/">Andreas Bovens</a></p>
+					
+    <h2 id="introduction">Introduction</h2>
+
+<p>If you have created extensions for Opera 11 and 12 (OEX format), we recommend you to convert them for our Chromium-based Opera 15 browser (NEX/CRX format). Doing this is a straightforward process, and we’ve built some cool tools that you can use to automate most of the conversion process. This tutorial covers step-by-step how to proceed.</p>
+
+<p>Note: if you have already created a CRX extension by yourself, and you want to use that rather than our conversion tool, start from <a href="tut_conversion.html#publishing_the_upgrade_in_the_catalog">Publishing the upgrade in the catalog</a>.</p>
+
+<h2 id="the_green_convert_button">The green <em>Convert</em> button</h2>
+
+<p>If you have previously submitted an OEX extension to the extensions catalog, and it’s been approved, the developer interface will look like the screenshot below. As a first step of the OEX-to-NEX/CRX conversion process, click the green <em>Convert</em> button.</p>
+
+<p><img alt='screenshot of submitted extensions with Convert button' class='img-polaroid' src='static/images/conv1.jpg' /></p>
+
+<p>Your extension then will be converted on the fly, and you’ll get a download prompt for a ZIP package, which contains your converted extension.</p>
+
+<p><img alt='screenshot of message after conversion' class='img-polaroid' src='static/images/conv2.jpg' /></p>
+
+<p>Unpack this ZIP file, and have a peek inside: you’ll recognize your original folder structure and files, a <em>manifest.json</em> file based on what used to be <em>config.xml</em>, and an <em>oex_shim</em> folder with some spectacular JavaScript in it that maps our old OEX API to the Chromium extension API.</p>
+
+<h2 id="try_out_the_converted_extension">Try out the converted extension</h2>
+
+<p>Start Opera 15, and go to <em>opera:extensions</em> in the address bar. Click on <em>Developer Mode</em>, and then on <em>Load Unpacked Extension</em>. Point the file picker to the folder we’ve unpacked in the previous step.</p>
+
+<p><img alt='screenshot of converted extension after initial installation' class='img-polaroid' src='static/images/conv3.jpg' /></p>
+
+<p>You should then try out the extension and fix what’s broken. As you can see in the screenshot above, the extension icon of my converted Layers extension turned out a little too small, and also the version number needs a change.</p>
+
+<p><img alt='screenshot of finalized extension after fixes' class='img-polaroid' src='static/images/conv4.jpg' /></p>
+
+<p>The screenshot above shows what the extension looks like after changing the extension icon and version number. You can hit the <em>Reload</em> button for reloading, or simply load your edited version as a new extension (which is what I’ve done here).</p>
+
+<h2 id="time_to_pack">Time to pack</h2>
+
+<p>Once you’re happy with the result, click the <em>Pack Extension</em> button and browse to the extension’s root directory. The Private key file field is optional.</p>
+
+<p><img alt='screenshot of pack extension dialog' class='img-polaroid' src='static/images/conv5.jpg' /></p>
+
+<p>When you click <em>Pack Extension</em>, you should see the dialog below. There’s a NEX file generated as well as a PEM key file. You’ll need the PEM key to create new versions in the future, so don’t lose it. Click OK.</p>
+
+<p><img alt='screenshot of message shown after packing' class='img-polaroid' src='static/images/conv6.jpg' /></p>
+
+<h2 id="publishing_the_upgrade_in_the_catalog">Publishing the upgrade in the catalog</h2>
+
+<p>Go to <a href='http://addons.opera.com/developer/'>the extension&#39;s catalog developer interface</a> and click the <em>Upgrade</em> button of the OEX extension you want to upgrade.</p>
+
+<p><img alt='screenshot of submitted extensions and Upgrade button' class='img-polaroid' src='static/images/conv7.jpg' /></p>
+
+<p>Click on Choose File and select the NEX file you’ve created, as shown below. Then, click on <em>Save and continue</em>.</p>
+
+<p><img alt='screenshot of upload dialog' class='img-polaroid' src='static/images/conv8.jpg' /></p>
+
+<p>Fill out the required fields with meta data, upload screenshots and double check if everything is as it should be.</p>
+
+<p><img alt='screenshot of description page' class='img-polaroid' src='static/images/conv9.jpg' title='' /></p>
+
+<p>When you’re done, you submit the extension, and it’s pushed to our review queue. Our extension reviewers will look at it, and once they approve the extension, it will appear in our extensions catalog.</p>
+
+<p><img alt='screenshot of developer interface after approval' class='img-polaroid' src='static/images/conv10.jpg' title='' /></p>
+
+<p>In the developer interface (shown above), you’ll see that two extension “streams” appear: one for OEX (Opera Extension), which is only shown to Opera 11 and 12, and one for NEX/CRX (Navigator Extension), which is shown to Opera 15 and later.</p>
+  					</div><!-- .span8 -->
+				<nav id="sidebar" class="span4 well well-small">
+					<ul class="nav nav-list">
+						<li>
+							<h2 class="nav-header">Tutorials</h2>
+							<ul class="nav nav-list">
+								<li><a href="tut_getting_started.html">Getting started</a></li>
+								<li><a href="tut_architecture_overview.html">Architecture overview</a></li>
+								<li><a href="tut_basics.html">The basics of making an extension</a></li>
+								<li><a href="tut_browser_actions.html">Buttons, popups and badges (browser actions)</a></li>
+								<li><a href="tut_message_passing.html">Passing messages in extensions</a></li>
+								<li><a href="tut_tab_window.html">Working with tabs and windows</a></li>
+								<li><a href="tut_content_scripts.html">Content scripts</a></li>
+								<li><a href="tut_match_patterns.html">Match patterns</a></li>
+								<li><a href="declare_permissions.html">Permissons declarations</a></li>
+								<li><a href="tut_optional_permissions.html">Optional permissions</a>
+								<li><a href="tut_context_menus.html">Working with the context menu</a></li>
+								<li><a href="tut_sd_extensions.html">Speed Dial extensions</a></li>
+								<li><a href="tut_bookmarks.html">Working with bookmarks</a></li>
+								<li><a href="tut_downloads.html">Working with downloads</a></li>
+								<li><a href="tut_hist.html">Working with the browser history</a></li>
+								<li><a href="tut_removing_browsingdata.html">Removing browsing data</a></li>
+								<li><a href="tut_privacy.html">Controlling privacy features</a></li>
+								<li><a href="tut_omnibox.html">Creating address bar extensions</a></li>
+								<li><a href="tut_contentsettings.html">Site-specific customization</a></li>
+								<li><a href="tut_commands.html">Adding keyboard shortcuts</a></li>
+								<li><a href="tut_webnavigation.html">Using webNavigation</a></li>
+								<li><a href="tut_proxy.html">Using the Proxy API</a></li>
+								<li><a href="tut_offroad.html">Working with Off-Road Mode</a></li>
+								<li><a href="tut_internationalization.html">Internationalization</a></li>
+								<li><a href="devtools.html">Extending DevTools</a></li>
+								<li><a href="tut_testing.html">Testing and debugging your extensions</a></li>
+								<li><a href="tut_conversion.html">Converting OEX extensions to CRX/NEX</a></li>
+								<li><a href="tut_icons.html">Creating effective icons</a></li>
+								<li><a href="tut_extension_samples.html">Extension templates and samples</a></li>
+								<li><a href="tut_publishing_guidelines.html">Publishing guidelines</a></li>
+							</ul>
+						</li>
+						<li>
+							<h2 class="nav-header">API Docs</h2>
+							<ul class="nav nav-list">
+								<li><a href="manifest.html">Formats: Manifest Files</a></li>
+								<li><a href="alarms.html">chrome.alarms</a></li>
+								<li><a href="bookmarks.html">chrome.bookmarks</a></li>
+								<li><a href="browserAction.html">chrome.browserAction</a></li>
+								<li><a href="browsingData.html">chrome.browsingData</a></li>
+								<li><a href="commands.html">chrome.commands</a></li>
+								<li><a href="contentSettings.html">chrome.contentSettings</a></li>
+								<li><a href="contextMenus.html">chrome.contextMenus</a></li>
+								<li><a href="cookies.html">chrome.cookies</a></li>
+								<li><a href="devtools.inspectedWindow.html">chrome.devtools.inspectedWindow</a></li>
+								<li><a href="devtools.network.html">chrome.devtools.network</a></li>
+								<li><a href="devtools.panels.html">chrome.devtools.panels</a></li>
+								<li><a href="downloads.html">chrome.downloads</a></li>								
+								<li><a href="events.html">chrome.events</a></li>
+								<li><a href="extension.html">chrome.extension</a></li>
+								<li><a href="fontSettings.html">chrome.fontSettings</a></li>
+								<li><a href="history.html">chrome.history</a></li>
+								<li><a href="i18n.html">chrome.i18n</a></li>
+								<li><a href="identity.html">chrome.identity</a></li>
+								<li><a href="idle.html">chrome.idle</a></li>
+								<li><a href="management.html">chrome.management</a></li>
+								<li><a href="omnibox.html">chrome.omnibox</a></li>
+								<li><a href="pageAction.html">chrome.pageAction</a></li>
+								<li><a href="pageCapture.html">chrome.pageCapture</a></li>
+								<li><a href="permissions.html">chrome.permissions</a></li>
+								<li><a href="power.html">chrome.power</a></li>
+								<li><a href="privacy.html">chrome.privacy</a></li>
+								<li><a href="proxy.html">chrome.proxy</a></li>
+								<li><a href="runtime.html">chrome.runtime</a></li>
+								<li><a href="storage.html">chrome.storage</a></li>
+								<li><a href="tabs.html">chrome.tabs</a></li>
+								<li><a href="types.html">chrome.types</a></li>
+								<li><a href="webNavigation.html">chrome.webNavigation</a></li>
+								<li><a href="webRequest.html">chrome.webRequest</a></li>
+								<li><a href="windows.html">chrome.windows</a></li>
+								<li><a href="speeddial.html">opr.speeddial</a></li>
+								<li><a href="stash.html">opr.stash</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- .row-fluid -->
+				<div id="push"></div><!-- this is for sticky footer: http://twitter.github.com/bootstrap/examples/sticky-footer-navbar.html -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /#wrap -->
+		<footer id="footer">
+			
+			<p>© 2013-2014 Opera Software. This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+			
+		</footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="js/prettify/run_prettify.js"></script>
+		<script>
+		 $(function(){
+						var path = location.pathname.slice(location.pathname.lastIndexOf('/')+1);
+						if ( path )
+								$('#sidebar a[href="' + path + '"]').parent().attr('class', 'active');
+								$('#navbar ul a[href$="' + path + '"]').parent().attr('class', 'active');
+				});
+			// see http://docs.jquery.com/Tutorials:Auto-Selecting_Navigation and Ola's fix
+		</script>
+
+		<script>
+		  (function() {
+		    var cx = '017162326639705525688:re0yffa7zqy';
+		    var gcse = document.createElement('script');
+		    gcse.type = 'text/javascript';
+		    gcse.async = true;
+		    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		        '//www.google.com/cse/cse.js?cx=' + cx;
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+
+		<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+	</body>
+</html>	

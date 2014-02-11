@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera's lightweight themes - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="addons">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Opera's lightweight themes</h1>
+      <p class="print author">By Chris Mills</p>
+
+      <h2>Introduction</h2>
+	
+<p>Opera 12 brings us many improvements, including updates to the Opera skinning system. For a start, the updates are so extensive that we have renamed skins to <strong>themes</strong>. There is a new lightweight system that sits on top of the default Opera theme and makes simple customizations much easier to achieve. In this article we&#39;ll take a look at how this lightweight system works.</p>
+
+<h2>How does it work?</h2>
+
+<p>These new lightweight themes work in the same way as the existing themes system: they are packaged in a ZIP file, and contain two things, assets that you want to use in your theme, and a persona.ini file. The .ini file is how Opera recognises the ZIP file as a theme — when it encounters such a file (eg by following a link to it), it will automatically install the theme: a nice simple process. The theme applies is applied on top of the default Opera skin for your OS.</p>
+
+<p>The persona.ini file contains a number of sections, each begun by a heading contained in square brackets, like so: [Options]. Each of these sections contains information to specify different parts of the theme, such as a custom background image, etc. the key here is simplicity — you can still use the old heavyweight theme system to create a full customization if you want, but a lot of people just want to do something simple, and don&#39;t want to risk breaking the UI. The lightweight system is much easier to use. In <a href="http://www.opera.com/browser/next/">Opera 12</a> we are only allowing you to customize the background image, colorization, and which major parts of the UI the image shows through. More options may be added in the future.</p>
+
+<p>In the next section we will run through a complete theme example to show how this all works.</p>
+
+<h2>Walking through an example</h2>
+
+<p>To try out an example theme, install <a href="http://www.opera.com/browser/next/">Opera 12</a> and point it at our <a href="https://addons.opera.com/themes/">Opera themes page</a>. Try clicking on one of the examples and you&#39;ll notice that your browser changes its style to look something like the following:</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/6362/theme1.jpg" alt="A sample Opera lightweight theme applied to Opera 12" /></p>
+<p class="comment">Figure 1: An example theme in action.</p>
+
+<p class="note">You will find this theme listed along with any other themes you may have installed, in <em>Tools &gt; Appearance</em>. From these you can choose to select between the different ones you&#39;ve previously installed, or delete them. You can also make a theme available from the appearance dialog by placing it in the <em>skin</em> directory of your Opera profile. You can find this in <em>[home folder]/Library/Opera</em> on Mac and Linux, and <em>C:\users\[user]\AppData\Roaming\Opera\Opera</em> on Windows.</p>
+
+<p>I have made an <a href="../../../../devfiles.myopera.com/articles/6362/natural_history_of_norway.zip">Opera theme available for you to play with</a>. If you save the ZIP file to your machine, then unzip it, you&#39;ll find assets, plus the personas.ini file, which contains the following sections:</p>
+
+<pre><code># This file describes a test persona for the Opera browser. Not meant for redistribution.</code></pre>
+
+<p>This is a comment, to give some background information about the theme. You can put comments anywhere you like in the file, as long as they are written on a separate line and started with a hash/pound symbol (#).</p>
+
+<pre><code>[Info]
+Name                          = The Natural History of Norway
+Author                        = Opera Software
+Version                       = 1
+Preview Image                 =</code></pre>
+
+<p>The <code>[Info]</code> section is quite self explanatory. The <code>Name</code> is the name of the theme, as it will appear in the Appearance dialog, on the upcoming Opera themes catalog, etc. The <code>Author</code> is the author of the theme, and <code>Version</code> should always be set as 1 (this means &quot;version 1 of the lightweight theme system&quot;). Preview Image is supposed to provide a preview for catalogs, etc., but is not currently being used.</p>
+
+<pre><code>[Options]
+Tint Color                = #3e6da9</code></pre>
+
+<p>An optional section: if specified, <code>Tint Color</code> overrides the current colorization with a specific color tint — we colorize with the average colour of the image. Some of the themes, when installed, will add a colouration/tint over the top of the theme.</p>
+
+<p class="note"><code>Tint Color</code> has an alias, <code>Colorize Color</code>, which you can use instead, but I think you&#39;ll agree that <code>Tint Color</code> is a bit more intuitive.</p>
+
+<pre><code>[Window Image]
+Type                          = BestFit
+Background                = Kraken.jpg
+Colorize                      = 0</code></pre>
+
+<p>The <code>[Window Image]</code> section controls settings of the whole browser window. The <code>Type</code> is set to <code>BestFit</code> to indicate that Opera will fit a single copy of the image in the best way it can. The other available setting is BoxTile, which tiles the image. The <code>Background</code> line specifies the path to the image that will be used as a custom background image for the theme. <code>Colorize = 0</code> specifies that you don&#39;t want the custom image colorized in the same way as the rest of the UI. Set it to <code>1</code> if you do.</p>
+
+<p class="note">Note: The overall size of the theme should not exceed 1MB, therefore you should be careful with the size of your background image, and try to optimize it down using an application such as <a href="http://imageoptim.com/">ImageOptim</a>.</p>
+
+<pre><code>[Clear elements]
+Speed Dial Widget Blank Skin  = 1
+Speed Dial Widget Skin        = 1</code></pre>
+
+<p>Setting these properties all to <code>1</code> will cause the background image to shine through the speed dial. If they are missing or set to 0, it won&#39;t.</p>
+
+<p>You can&#39;t do much else inside lightweight themes, although we may add more options later. This sounds limiting, you might say, but this is deliberate — themes are for applying small changes. If you want to make more extensive changes, you&#39;ll still use the full theming system. But this new way is a lot simpler to write and apply.</p>
+
+<h2>Installing and sharing a theme</h2>
+
+<p>When you&#39;ve created a theme, you&#39;ll want to share it with others so they can see your handiwork. The best way to do this is to upload it to our Themes repository — to do this, use our <a href="https://addons.opera.com/en/developer/upload/">Opera addons developer upload page.</a> You&#39;ll need a <a href="http://my.opera.com/community/">my.opera</a> user account to do so. Sharing your theme like this means that it will be easily findable by others, and our team will also check it thoroughly for errors before making it public.</p>
+
+<p>Note that if you instead upload it to your own web server, you&#39;ll need to make sure you serve it with the correct mime type, otherwise it won&#39;t install. To do this, put the following inside an <code>.htaccess</code> file in the same directory (for an Apache-based server, of course — other server types will require a different but equivalent fix):</p>
+
+<pre><code>&lt;files *.zip&gt;
+  ForceType application/x-opera-configuration-skin
+&lt;/files&gt;</code></pre>
+
+<h2>Summary</h2>
+
+<p>I hope you found our walkthrough of Opera lightweight themes helpful. Let us know what you think!</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>
+        <a href="../../../author/chrismills.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt=""/></a>
+        <p>Chris Mills is a web technologist, open standards evangelist and education agitator, currently working at Opera Software in the developer relations team. He spends most of his time writing articles about web standards for dev.opera.com and other publications (such as .net mag and A List Apart), giving talks at universities and industry conferences, and lobbying universities to improve their web education courses. He believes that education is the answer to everything, but in particular he is passionate about using education to improve the overall content quality, accessibility, usability and future-viability of the Web. <br/><br/>He is the creator of the Opera Web standards curriculum, contributor to the WaSP InterACT project, and coauthor of InterACT with web standards: A Holistic Approach to Web Design. In August 2011, he also accepted the position of co-chair of the newly-formed Web Education Community Group. <br/><br/>Outside work he is a heavy metal drummer, proud father of three and lover of good beer.</p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=1119592">My Opera</a>.</p>
+  <ul>
+    <li id="comment-77004642">
+      <a href="../../../author/StratCasterJC07.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fd/c89/243a877f642a1ca0af13ced0086ea98d112." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/StratCasterJC07.html">Jorge Campos</a></p>
+      <p class="commentdate">Sunday, December 11, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>When will we be able to upload our themes?</section>
+    </li>
+    <li id="comment-77805222">
+      <a href="../../../author/kuchikisama.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ee/e9b/0ff82b416442b5fd445d79a1f3231002e45.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/kuchikisama.html">Enio San</a></p>
+      <p class="commentdate">Sunday, December 18, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I was looking forward for this feature!<br/>Looking forward to be part of the Opera Theme designer community!</section>
+    </li>
+    <li id="comment-78161602">
+      <a href="../../../author/acong19.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/23/e29/d3e3d1a62870166965650546093cd2acdd0.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/acong19.html">komang acong</a></p>
+      <p class="commentdate">Thursday, December 22, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>so amazing</section>
+    </li>
+    <li id="comment-78844822">
+      <a href="../../../author/Unrealmirakulix.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f0/e18/dd44721caa767b13bb6c6ce668b00784361.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Unrealmirakulix.html">Unrealmirakulix</a></p>
+      <p class="commentdate">Saturday, December 31, 2011</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>please give us a possibility to upload and more themes...</section>
+    </li>
+    <li id="comment-80202442">
+      <a href="../../../author/idice.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/30/575/42d9e4b824872282657a3d44c678190cab8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/idice.html">idice</a></p>
+      <p class="commentdate">Friday, January 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>NONE of TOOLBARS are covered with personas<br/>i nearly feel no change when surfing with the new browser especially when surfing with maximized window<br/></section>
+    </li>
+    <li id="comment-80785722">
+      <a href="../../../author/idice.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/30/575/42d9e4b824872282657a3d44c678190cab8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/idice.html">idice</a></p>
+      <p class="commentdate">Friday, January 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>pls support other toolbars skining like firefox, they are important as as tab bar</section>
+    </li>
+    <li id="comment-82578442">
+      <a href="../../../author/toyotabedzrock.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d2/80b/14f74ba72892bdd5872556afc4ef5b7add3.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/toyotabedzrock.html">Jim</a></p>
+      <p class="commentdate">Friday, February 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>It would be nice if the original themes where integrated into this new system. It seems senseless to separate them completely. <br/><br/>There are many very creative themes people made already, and I know a few people who use Opera just because it is so flexible in that way.</section>
+    </li>
+    <li id="comment-82873572">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Monday, February 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Jim the eventual idea is that you will be able to apply a customized skin, and then put a theme over the top of that, to provide a little more tweaking and customization. For those of us who just want to add a different background image, and don&#39;t want to wade through the skinning process, themes make things easier. I think it adds an extra level of flexibility. Does this help you with the idea?<br/><br/>Please feel free to share your thoughts in more detail - it is always useful to get this kind of feedback. </section>
+    </li>
+    <li id="comment-84179892">
+      <a href="../../../author/toyotabedzrock.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d2/80b/14f74ba72892bdd5872556afc4ef5b7add3.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/toyotabedzrock.html">Jim</a></p>
+      <p class="commentdate">Tuesday, March 6, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Chris<br/><br/>Yes I think I understand. You want to give the option to have a personal image in the background even when using a custom skin.<br/><br/>Do you know what the Radius option does. I notice it is used in one of the themes.</section>
+    </li>
+    <li id="comment-84992732">
+      <a href="../../../author/manish1211.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c6/0fa/ad1101f1c0e0172783cc9360f0c0975c17b." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/manish1211.html">manish1211</a></p>
+      <p class="commentdate">Friday, March 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>sir koi v aps install nhi ho rha ka karo plz helpppppppp meeeeeeeeee</section>
+    </li>
+    <li id="comment-88169172">
+      <a href="../../../author/colddeepocean.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/3c/188/f348f6566192bd9fd9cd9c1b5724de88459.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/colddeepocean.html">cold deep ocean</a></p>
+      <p class="commentdate">Thursday, April 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>its amazing but i guess the last one was a little bit better<br/> </section>
+    </li>
+    <li id="comment-88194392">
+      <a href="../../../author/cethoss.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e4/592/354df5524659d39054acc7f4c5729569cdb." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/cethoss.html">cethoss</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I am afraid this will further kill skinning. Back in the day it was way simpler to edit a skin. Skins were unique. Call me a fossil or compare recent skins with those published 4-5 yrs ago. <br/>It&#39;s like car models aerodynamics made them all look alike. Thanks to windows 7 and its transparency thing, which I never liked, this was the only direction to take I guess. I hope a handful designs that I like keep working with the new versions.</section>
+    </li>
+    <li id="comment-88205902">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, April 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@cethoss the classic opera skinning system is not going to be killed - skins and themes will work side by side. The idea is that eventually you will install a skin, and then you can put a theme over the top of that, to further customise the skin, adding a custom graphic or tint. I&#39;m sorry this was not made clearer, and hope that clarifies things somewhat.</section>
+    </li>
+    <li id="comment-88474152">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Tuesday, May 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>You can now upload your themes to our theme repository using the addons upload form at <a href="https://addons.opera.com/en/developer/upload/" target="_blank">https://addons.opera.com/en/developer/upload/</a></section>
+    </li>
+    <li id="comment-89127252">
+      <a href="../../../author/Pizzapops.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ca/d72/ededd389ac26d5165c1599ac8a23ac4d761.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Pizzapops.html">Richard E. Botbyl</a></p>
+      <p class="commentdate">Thursday, May 10, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Is it currently possible for a theme to adopt the color scheme that the skin has been tinted with? It would be nice for skins and themes to be found under separate tabs (and folders). Presently, a custom skin and a theme can both be loaded but it requires either editing operaperfs.ini or selecting a skin with OK and then highlight a theme and then closing the appearance dialog with the X button. Is an easier method coming?</section>
+    </li>
+    <li id="comment-89146502">
+      <a href="../../../author/pumpki.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fc/8dd/d590fb12d774352260883decb1795345b15." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/pumpki.html">pumpki</a></p>
+      <p class="commentdate">Friday, May 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I&#39;m seeing an issue with how text is displayed with the new themes... <br/><br/>Let&#39;s say you use a really dark photo for the background of the theme then you look at the page title. Its completely unreadable. This is the same with tabs.<br/><br/>Shouldn&#39;t there be a text colour associated with the theme itself? <br/>Rather than using a skin which changes the text colour then applying a theme over that which could have the same problems. (apply dark skin with white text then add a bright coloured theme.) </section>
+    </li>
+    <li id="comment-89160012">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Friday, May 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Richard E. Botbyl, pumpki — thank you for the feedback. I think it makes sense, and I will pass your ideas on to the theme developers.</section>
+    </li>
+    <li id="comment-89578832">
+      <a href="../../../author/idjunior.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/98/db5/cc5e8d6bea9980eec82ca731ecaaae21aac.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/idjunior.html">Enoch 'Robot Boy' Appiah Junior</a></p>
+      <p class="commentdate">Thursday, May 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Chris, how can i upload the themes online.. what file format should i convert them to?</section>
+    </li>
+    <li id="comment-89579812">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, May 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Enoch Hi! The themes should be packages using a standard ZIP file.</section>
+    </li>
+    <li id="comment-89760642">
+      <a href="../../../author/idjunior.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/98/db5/cc5e8d6bea9980eec82ca731ecaaae21aac.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/idjunior.html">Enoch 'Robot Boy' Appiah Junior</a></p>
+      <p class="commentdate">Sunday, May 20, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>What should be the extension?</section>
+    </li>
+    <li id="comment-90273942">
+      <a href="../../../author/SailorMax.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8f/be0/679eb996539c2703d1ad9c6d83627459403.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/SailorMax.html">Maxim</a></p>
+      <p class="commentdate">Wednesday, May 30, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>2developers: What is the minimal size of image should be for this type of theme? I tried image from this post ( <a href="../../../../devfiles.myopera.com/articles/6362/theme1.jpg" target="_blank">http://devfiles.myopera.com/articles/6362/theme1.jpg</a> ) - 620x406 and Opera crashed with it :(<br/>thank you.</section>
+    </li>
+    <li id="comment-90488742">
+      <a href="../../../author/Stahn.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/04/cb8/690632dc8fbf5904fdb25c4c623af8b383d.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Stahn.html">иsᴀɴᴇ</a></p>
+      <p class="commentdate">Monday, June 4, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hi, I need info on how to make a skin exactly like this: <a href="https://addons.opera.com/en/themes/details/opera-stratiform-mod/" target="_blank">https://addons.opera.com/en/themes/details/opera-stratiform-mod/</a><br/><br/>Features: Back button with a trash icon, Fix for the maximized Windows icons (minimize, restore, close), etc., and titles are removed for speed dial.<br/><br/>How can I make all these fixes? Now I also want to add a little transparency to the toolbar... how can I make that, also?</section>
+    </li>
+    <li id="comment-90878042">
+      <a href="../../../author/JanGen.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2e/e84/d153e5ce1cf39b54ace3a35501941ab3e0d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/JanGen.html">JanGen</a></p>
+      <p class="commentdate">Monday, June 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I like the new theme possibility, because it won&#39;t break with an update.<br/>But what I don&#39;t understand: Why not make is a configurable preference?<br/>It&#39;s just a image file with four settings. Why isn&#39;t there a preference for theming, a possibility to drag and drop a image file and play with the colour settings, that&#39;s much easier then wrapping it all up in a zip file. <br/><br/>I wasn&#39;t aware of the appearance  menu option for a long time because I was using a different skin. :)<br/>Why isn&#39;t there any setting for appearance/skin in the preference section. A user should be able to skin/theme everything except the preference dialogues, which should offer access to any setting IMHO, also theming/skinning<br/></section>
+    </li>
+    <li id="comment-79500332">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Thursday, June 14, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>@Unrealmirakulix sorry for the delay on this. I have asked the relevant developer team to see how far away this currently is.<br/><br/>Best regards...</section>
+    </li>
+    <li id="comment-91118682">
+      <a href="../../../author/ozoratsubasa.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a3/8bd/89647c70b6c16c8e06945c6d42f7ad02a62.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ozoratsubasa.html">Tiago Wakabayashi</a></p>
+      <p class="commentdate">Friday, June 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>is it possible to apply that background image effect on tab bar in a skin?</section>
+    </li>
+    <li id="comment-91205582">
+      <a href="../../../author/yurikovals.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e9/7e7/406d6cb3c2c242f2008695c93c3c4d2e8e1.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/yurikovals.html">yurikovals</a></p>
+      <p class="commentdate">Sunday, June 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>how to change button layout of the main window, they are located on the right side, I want to arrange them on the left side like a Mac style, How it can be done? I&#39;m, using linux, and the main gtk theme button allocated on the left side.</section>
+    </li>
+    <li id="comment-91806032">
+      <a href="../../../author/androidify.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/16/ef2/7a10956738b30e23464cb0078235be70737." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/androidify.html">androidify</a></p>
+      <p class="commentdate">Wednesday, June 27, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Its giving same error again and again<br/>&quot;No background image found in the path provided by the persona.ini file. Please fix it and try again.&quot;</section>
+    </li>
+    <li id="comment-92373752">
+      <a href="../../../author/jproz.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c8/2f9/cae4e78befe700688bc25004270e286fb5b.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jproz.html">jproz</a></p>
+      <p class="commentdate">Sunday, July 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>how about allowing transparency in every page browser? this will really make customization really good if my background is little bit shown in the background of the web pages....</section>
+    </li>
+    <li id="comment-92416072">
+      <a href="../../../author/dharma103.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/30/e08/35f3c456f703d2bd72de207eca6b18584f5.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/dharma103.html">Dharma</a></p>
+      <p class="commentdate">Sunday, July 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Can u please tell u guys how to create a transperent theme with out the image in the background<br/></section>
+    </li>
+    <li id="comment-94315512">
+      <a href="../../../author/jesere.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/26/384/dcfcc35201dc0fd20d54d7f71d755870ff0.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/jesere.html">Jeser Enaí Silva Pereira</a></p>
+      <p class="commentdate">Wednesday, August 8, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>excelente la publicacion y el contenido...muy facil de crear temas...pero nesecito saber como cambiar el fondo de &quot;descargas&quot; (downloads)?????</section>
+    </li>
+    <li id="comment-94544402">
+      <a href="../../../author/xweque.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/da/2bf/1a54ee3f2686a838cf4f34554a8385361ec." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/xweque.html">Viktor Wahlberg</a></p>
+      <p class="commentdate">Sunday, August 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Hey! Great article. I have a question that needs a I really need someone to answer. I played with the files you provided and made my own background and all, but now that I&#39;ve tried to upload, it said I haven&#39;t provided any background image. I tried to add the background attribute, but still I get the error message! Thanks in advance.</section>
+    </li>
+    <li id="comment-94776692">
+      <a href="../../../author/Unrealmirakulix.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f0/e18/dd44721caa767b13bb6c6ce668b00784361.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Unrealmirakulix.html">Unrealmirakulix</a></p>
+      <p class="commentdate">Thursday, August 16, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Still no preview image?<br/><br/>Cause my theme is made for 16:10 or 16:9, the 4:3 preview is useless.<br/><br/>Can anyone help?</section>
+    </li>
+    <li id="comment-95540032">
+      <a href="../../../author/ogzhnatc06.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/dc/03a/c3430f36c968ebe684b9cf5b58ee89993fe.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ogzhnatc06.html">Oğuzhan Ataç</a></p>
+      <p class="commentdate">Wednesday, August 29, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Türkçe neden yok kanka ?</section>
+    </li>
+    <li id="comment-99325082">
+      <a href="../../../author/Janghou.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/aa/f2b/3af3b048900a86d7cfb69e1f29b1fcfeeb2." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Janghou.html">Janghou</a></p>
+      <p class="commentdate">Friday, November 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Why not let the skin set the background for extensions page too: CTRl SHFT E<br/>That page is so boring now...</section>
+    </li>
+    <li id="comment-99710692">
+      <a href="../../../author/summerwaytm.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d7/1a4/70c0294e12a48cddd8ef8fc24724a1abd76.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/summerwaytm.html">Dursun Top </a></p>
+      <p class="commentdate">Saturday, November 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Türkçe olmazsa operanın herşeyi eksik olacaktır. Türkçe olsun kullanıcı sayısını 2 milyar yapalım. Mutlu günler  </section>
+    </li>
+    <li id="comment-100585482">
+      <a href="../../../author/virrdaexcellents313.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/22/9d7/da4aa75dd9d4144e339206ec06a9a1777b8.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/virrdaexcellents313.html">virrdaexcellents313</a></p>
+      <p class="commentdate">Wednesday, December 5, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Te ngarti bahasa inggris ey,,,</section>
+    </li>
+    <li id="comment-101067062">
+      <a href="../../../author/touchmyhands.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/67/b8b/8950f734188f9184ab44ad0d5381ada98e3." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/touchmyhands.html">Alessandro Cassarà</a></p>
+      <p class="commentdate">Saturday, December 15, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>A tag system for themes finding could be really useful &#39;n valued.</section>
+    </li>
+    <li id="comment-101840952">
+      <a href="../../../author/groupop.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/96/976/f8008824eaad205186dc14cc58804a85a38.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/groupop.html">Mohamadreza Rezaei</a></p>
+      <p class="commentdate">Monday, December 31, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;SkyDrive&quot; logged into your Facebook account (‎امروز ساعت ‏15:57‏‎). If this wasn&#39;t authorized, check your email for instructions.‎</section>
+    </li>
+    <li id="comment-101840992">
+      <a href="../../../author/groupop.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/96/976/f8008824eaad205186dc14cc58804a85a38.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/groupop.html">Mohamadreza Rezaei</a></p>
+      <p class="commentdate">Monday, December 31, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span><a href="http://maps.sonyericsson.com/?q=36.481186,52.351248" target="_blank">http://maps.sonyericsson.com/?q=36.481186,52.351248</a></section>
+    </li>
+    <li id="comment-101841012">
+      <a href="../../../author/groupop.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/96/976/f8008824eaad205186dc14cc58804a85a38.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/groupop.html">Mohamadreza Rezaei</a></p>
+      <p class="commentdate">Monday, December 31, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>در حاليكه مقابل مانيتورتان نشستيد يا هر جاي ديگه مانند صندلي روي مبل, پاي راستتان را كمي بالا بياوريد و در جهت عقربه هاي ساعت بچرخانيد در همين حال با دست راست شماره 6 را در هوا بنويسيد, خوب مسير چرخش پاي شما تغيير كرد نه!!؟ يعني پاي شما خلاف عقربه هاي ساعت شروع به چرخيدن كرد درسته؟هنوز دانشمندان براي اين عكس العمل مغز جوابي پيدا نكردند.موتور جستجوي سيويل</section>
+    </li>
+    <li id="comment-101841092">
+      <a href="../../../author/groupop.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/96/976/f8008824eaad205186dc14cc58804a85a38.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/groupop.html">Mohamadreza Rezaei</a></p>
+      <p class="commentdate">Monday, December 31, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>مسابقه شعرپیامکیجوایز:10گوشی سونی Xperiaشرکت درقرعه کشی حتی باپاسخ به یک سوال!امتیاز بیشتر=شانس بیشتر*برای عضویت رایگانOZV MSHERرابه8282پیامک کنید.هرسوال75 تومانحامی:سروش همراه</section>
+    </li>
+    <li id="comment-101992652">
+      <a href="../../../author/kaynchi69.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e1/098/997fde5e181d1cadcce806b8149029f114b.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/kaynchi69.html">kayn chi</a></p>
+      <p class="commentdate">Thursday, January 3, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span> ممتاز  و اخاف ان افقدها من الكمبيوتر خاصتي  اجسن ما هو موجود في النت</section>
+    </li>
+    <li id="comment-102626652">
+      <a href="../../../author/groupop.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/96/976/f8008824eaad205186dc14cc58804a85a38.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/groupop.html">Mohamadreza Rezaei</a></p>
+      <p class="commentdate">Thursday, January 17, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Windows Networking Diagnostics unabled?</section>
+    </li>
+    <li id="comment-102960512">
+      <a href="../../../author/konic.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/f6/4f3/1dba78ffa6e9ed8425af9ba754cc9f095ef." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/konic.html">konic</a></p>
+      <p class="commentdate">Thursday, January 24, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>OK,<br/>I tried several &quot;themes&quot; and all of them look really like a &quot;skins&quot;.<br/>I mean, what previously was called &quot;skin&quot; in fact was a theme <br/>because it contained elements to change almost everything.<br/>But now the &quot;themes&quot; I tried change only SpeedDial and menu backgrounds.<br/>And color for panels.<br/>That&#39;s it!?<br/>So I would call them - skins.<br/></section>
+    </li>
+    <li id="comment-102961902">
+      <a href="../../../author/murrzik777.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a6/1e5/fff0ff5447f53703cd2c15f522d3f50906d." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/murrzik777.html">Андрей</a></p>
+      <p class="commentdate">Thursday, January 24, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Русские здесь есть? ))</section>
+    </li>
+    <li id="comment-102990052">
+      <a href="../../../author/ezeyko.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/23/2b2/5196bf7d18651233fb2a4c65fac5a95f577.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ezeyko.html">Евгения</a></p>
+      <p class="commentdate">Friday, January 25, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Походу, нет XD</section>
+    </li>
+    <li id="comment-103133562">
+      <a href="../../../author/richardmanson.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/a0/7cf/d35dbf68ffe4000ea6420e5722ff2b81ddc.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/richardmanson.html">Rich Manson</a></p>
+      <p class="commentdate">Monday, January 28, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Where is there an app or tutorial about how to create skins ....... the old way. I don&#39;t mean the current themes where you change a background picture. How to build a skin where you can use icon or images to change the back button and other buttons, layout and such. <br/><br/>Konic: I think you have it backwards. You should really look up the def of the words skin and theme. Thems are a lot like &#39;Styles&#39; in windows where you can change background pictures of the desktop and font size and color and maybe border widths. Skins are overlays which in essence completely cover an application and change the whole look and you can change the buttons, layout, feel and everything.</section>
+    </li>
+    <li id="comment-103445222">
+      <a href="../../../author/wangtengfei126.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/2b/a84/289265ee63280292bb4f1d7eeae71e1b52e." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/wangtengfei126.html">wangtengfei126</a></p>
+      <p class="commentdate">Tuesday, February 5, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>看不懂，有中文版主题制作教程吗？英文很差。</section>
+    </li>
+    <li id="comment-103772682">
+      <a href="../../../author/hoathienhai.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7c/bf1/673f71c5dfa98ee84cd0fef4517957f2d77.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/hoathienhai.html">hoa thien hai</a></p>
+      <p class="commentdate">Wednesday, February 13, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>hhhhhh</section>
+    </li>
+    <li id="comment-103793002">
+      <a href="../../../author/Pizzapops.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ca/d72/ededd389ac26d5165c1599ac8a23ac4d761.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Pizzapops.html">Richard E. Botbyl</a></p>
+      <p class="commentdate">Wednesday, February 13, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Since 12.10, Opera has ignored my settings for [Speed Dial Widget Blank Skin]. I usually clone [Speed Dial Widget Blank Skin] to [Speed Dial Widget Skin] to avoid having a glaring white screen. Is there any way to add a background to a blank page or is this a new feature?<br/><br/>Couple this with the fact that when Speed Dial is hidden, there no longer is a &quot;show speed dial&quot; button on a blank page.  I can get it to show using a Speed Dial button but this adds an unnecessary click.<br/></section>
+    </li>
+    <li id="comment-114010682">
+      <a href="../../../author/adanhamidu.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c4/f7e/59a2d538120ab52e448b85fc041388b14c1.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/adanhamidu.html">Ahmad Dan-Hamidu</a></p>
+      <p class="commentdate">Saturday, December 14, 2013</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I just wanna quick guide to learn how to create themes so I can upload/share them with the Opera community. Please O-mail (Opera mail) me the relevant info so I can get started a.s.a.p. Thanks.</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrismills.html" rel="author">Chris Mills</a></p>
+      <p>
+        <strong>Date</strong>
+        Thursday, October 13, 2011
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/customise.html" rel="tag">customise</a></li>
+        <li><a href="../../tags/customize.html" rel="tag">customize</a></li>
+        <li><a href="../../tags/opera.html" rel="tag">opera</a></li>
+        <li><a href="../../tags/persona.html" rel="tag">persona</a></li>
+        <li><a href="../../tags/skin.html" rel="tag">skin</a></li>
+        <li><a href="../../tags/theme.html" rel="tag">theme</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../operas-lightweight-themes-zh-tw/index.html">Chinese Traditional</a>,
+        <a href="../operas-lightweight-themes-de/index.html">German</a>,
+        <a href="../lekkie-motywy-opery/index.html">Polish</a>,
+        <a href="../temas-ligeros-opera/index.html">Spanish</a>,
+        <a href="../operanin-hafif-temalari/index.html">Turkish</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

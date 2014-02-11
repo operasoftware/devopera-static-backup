@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="section-user">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>David Storey - Update on CSS support in Kestrel</title>
+<meta property="og:url" content="http://my.opera.com/dstorey/blog/2007/08/27/update-on-css-support-in-kestrel">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://my.opera.com/dstorey/xml/rsd">
+<link rel="shortcut icon" href="http://static.myopera.com/favicon.ico" type="image/x-icon">
+<link rel="meta" type="application/rdf+xml" title="FOAF" href="http://my.opera.com/dstorey/xml/foaf/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed" href="http://my.opera.com/dstorey/xml/rss/blog/">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed" href="http://my.opera.com/dstorey/xml/atom/blog/">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 Feed for comments" href="http://my.opera.com/dstorey/xml/rss/comments/1280978">
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0 Feed for comments" href="http://my.opera.com/dstorey/xml/atom/comments/1280978">
+<link rel="stylesheet" href="http://static.myopera.com/community/css/themes/users-shared.css" type="text/css">
+<style type="text/css">
+		.friendstatus { height:20px; overflow:hidden; }
+		</style>
+<link rel="stylesheet" href="http://files.myopera.com/dstorey/user.css" type="text/css" media="screen,projection,tv,print" charset="utf-8">
+<!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie.css" type="text/css">
+        <script src="http://static.myopera.com/community/js/browsers/ie-5581986f.js"></script>
+        <script defer src="http://static.myopera.com/community/js/browsers/ie-css3-610effed.js"></script>
+    <![endif]--><!--[if IE 6]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie6.css" type="text/css"><![endif]--><!--[if IE 7]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie7.css" type="text/css"><![endif]--><!--[if IE 8]><link rel="stylesheet" href="http://static.myopera.com/community/css/browsers/ie8.css" type="text/css"><![endif]--><meta property="og:type" content="blog">
+<meta property="og:title" content="David Storey - Update on CSS support in Kestrel">
+<meta property="og:image" content="https://static.myopera.com/upic/pool1/Ni/OtM/uE30nUfmr2cbT_6AA6lgAU/241852_l.jpg">
+<meta property="og:description" content="While Kestrel is getting ready to spread its wings, we are currently busy adding new features to Core-2 and deep into the QA process.  I've already mentioned the CSS3 selectors are done and dusted, but what else is new since the last report?  Not forgetting about CSS2.1, we've adding support for whitespace: pre-line;.  This edges us ever closer to full CSS2.1 support. 
+
+CSS3 support is obviously not as advanced but is moving along with every build.  background-size from the backgro ...">
+<meta property="og:site_name" content="My Opera">
+</head>
+<body id="myopera" class="loggedout">
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-Q5SW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-Q5SW');</script><a id="myo-notification" href="http://my.opera.com/chooseopera/blog/2013/10/31/important-announcement-about-your-my-opera-account">My Opera is closing 1st of March</a><!--[if IE 6]><div class="ie6"><![endif]--><!--[if IE 7]><div class="ie7"><![endif]--><!--[if IE 8]><div class="ie8"><![endif]--><!--[if IE 9]><div class="ie9"><![endif]--><div id="wrap0"><div id="wrap1"><div id="wrap2"><div id="wrap3">
+<div id="header">
+<a href="http://my.opera.com/community/" id="logo" tabindex="0"><img src="http://static.myopera.com/community/graphics/dexter/myo-icon.png" alt="" width="32" height="35"><b>My Opera</b></a><div id="nav" role="navigation"><ul role="menubar">
+<li role="menuitem" aria-haspopup="true" class="menu-community">
+<a href="http://my.opera.com/community/explore/" tabindex="0">Community</a><ul role="menu" id="menu-community">
+<li role="menuitem"><a href="http://my.opera.com/community/explore/" tabindex="0">News</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/blogs" tabindex="0">Blogs</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/photos" tabindex="0">Photos</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/members" tabindex="0">Members</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/groups/" tabindex="0">Groups</a></li>
+</ul>
+</li>
+<li role="menuitem" aria-haspopup="true" class="menu-opera">
+<a href="http://my.opera.com/chooseopera/" tabindex="0">Opera</a><ul role="menu" id="menu-opera">
+<li role="menuitem"><a href="http://my.opera.com/chooseopera/">Opera news</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/forums/">Forums</a></li>
+<li role="menuitem"><a href="https://my.opera.com/community/operalink/" tabindex="0">Opera Link</a></li>
+<li role="menuitem"><a href="http://my.opera.com/community/customize/skins/">Themes</a></li>
+</ul>
+</li>
+</ul></div>
+<ul id="loginsignup">
+<li><a href="https://auth.opera.com/account/signup?return_url=http%3A%2F%2Fmy.opera.com%3A80%2Fdstorey%2Fblog%2Fshow.dml%2F1280978&amp;service=myopera">Sign up</a></li>
+<li><a href="https://my.opera.com/community/login/">Log in</a></li>
+</ul>
+</div>
+<div id="wrap4">
+<div id="top" class="top-blog">
+<div id="top2"><h1><span>Slightly ajar</span></h1></div>
+<div id="menu"><ul><li id="menu_blog"><a href="http://my.opera.com/dstorey/blog/" id="selected"><span>Blog</span></a></li></ul></div>
+</div>
+<div id="content" class="blogentry">
+<div id="mainwrap"><div id="main">
+
+
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+
+   
+
+   
+
+
+
+
+   
+
+   
+
+   
+
+   
+   
+
+   
+
+   
+
+   
+   
+
+
+<p class="buttons"></p>
+<div class="post" id="firstpost">
+<h2 class="title">Update on CSS support in Kestrel</h2>
+<p class="postdate">Monday, August 27, 2007 1:29:32 PM</p>
+<p class="tags"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/standards" rel="tag">standards</a>, <a href="http://my.opera.com/dstorey/blog/index.dml/tag/css3" rel="tag">css3</a>, <a href="http://my.opera.com/dstorey/blog/index.dml/tag/CSS" rel="tag">CSS</a> </p>
+<div class="content">
+<p>While Kestrel is getting ready to spread its wings, we are currently busy adding new features to Core-2 and deep into the QA process.  I've already mentioned the CSS3 selectors are done and dusted, but what else is new since the last report?  Not forgetting about CSS2.1, we've adding support for <code>whitespace: pre-line;</code>.  This edges us ever closer to full CSS2.1 support.</p> 
+
+<p>CSS3 support is obviously not as advanced but is moving along with every build.  <a href="http://www.css3.info/preview/background-size.html" rel="nofollow"><code>background-size</code></a> from the <a href="http://www.w3.org/TR/css3-background/" rel="nofollow">backgrounds and borders module</a> is now supported with the <code>-o-</code> prefix. <code>overflow-x</code> and <code>overflow-y</code> from the <a href="http://www.w3.org/TR/css3-box/" rel="nofollow">basic box model module</a> have been supported in builds for a while but not widely reported.  This was one of the CSS3 properties that had started to become widely used, due to it being supported in IE, so it was essential to support for site compatibility reasons.  It pops up many times in Korean web sites for example.  The <code>currentColor</code> keyword has now been added from the <a href="http://www.w3.org/TR/css3-color/" rel="nofollow">colour module</a>.  This was already supported in Opera for SVG.  This specifies a colour to be the same as the value of the <code>color</code> property or inherits the colour from the parent if no colour is specified.    Keeping up Opera's reputation for great keyboard support, <code>nav-index</code>, <code>nav-up</code>, <code>nav-down</code>, <code>nav-left</code> and <code>nav-right</code> have been added from the <a href="http://www.w3.org/TR/css3-ui/#nav-dir" rel="nofollow">basic user interface module</a>.  This allows control of which element will be targeted next when the user presses the corresponding key.  The spec doesn't define what key to use for each, but suggests the direction arrows for keyboard use.    This is especially useful when absolute positioning is used and the elements may not be displayed in source order.  Also from the basic user interface module, <code>outline-offset</code> has been added to round off our <code>outline</code> support.</p>
+
+<p>As well as these properties and the ones already reported, there has been numerous bug fixes to improve our compatibility with major sites.  Hopefully we'll be able to add further CSS3 support as Kestrel matures into a release ready product.  We are taking note of what properties developers want and we are assessing if they are ready to be implemented.</p>
+</div>
+</div>
+<ul id="share">
+<li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fdstorey%2Fblog%2F2007%2F08%2F27%2Fupdate-on-css-support-in-kestrel&amp;title=Update%20on%20CSS%20support%20in%20Kestrel" onclick="window.open('http://www.stumbleupon.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=Update%20on%20CSS%20support%20in%20Kestrel,'stumbleupon','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on StumbleUpon" class="share-stumbleupon">StumbleUpon</a></li>
+<li><a href="http://reddit.com/submit?url=http%3A%2F%2Fmy.opera.com%2Fdstorey%2Fblog%2F2007%2F08%2F27%2Fupdate-on-css-support-in-kestrel&amp;title=Update%20on%20CSS%20support%20in%20Kestrel" onclick="window.open('http://reddit.com/submit?url='+encodeURIComponent(location.href)+'&amp;title=Update%20on%20CSS%20support%20in%20Kestrel','reddit','location=0,menubar=0,scrollbars=1,status=0,titlebar=0,toolbar=0,width=800,height=600'); return false;" title="Share on reddit" class="share-reddit">reddit</a></li>
+<li class="share-plusone">
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script><div class="g-plusone" data-size="small" data-count="true"></div>
+</li>
+<li>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</li>
+<li class="share-facebook"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fmy.opera.com%2Fdstorey%2Fblog%2F2007%2F08%2F27%2Fupdate-on-css-support-in-kestrel&amp;layout=button_count&amp;width=225&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px; margin:6px 0 0 8px" allowTransparency="true"></iframe></li>
+</ul>
+<p class="postnav"><span class="prv"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/dstorey/blog/2007/07/24/opera-on-top-of-africa"><span>Opera on top of Africa</span></a></span><span class="nxt"><a href="http://my.opera.com/dstorey/blog/opera-mini-4-beta-2-and-mobile-web-design"><span>Opera Mini 4 Beta 2 and Mobile Web Design</span></a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span></p>
+<a name="comments"></a><div class="comments">
+<h3>
+<a href="http://my.opera.com/dstorey/xml/rss/comments/1280978"><img src="http://static.myopera.com/community/graphics/feedicon16.gif" width="16" height="16" alt="" class="feedicon"></a> Comments</h3>
+<div id="pagenav-top"></div>
+<div class="comment1" id="comment3466092">
+<div class="avatar"><a href="http://my.opera.com/Fyrd/"><img src="http://my.opera.com/community/users/avatar.pl/303073" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Fyrd" href="http://my.opera.com/Fyrd/">Alexis Deveria<span>Fyrd</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3466092" class="permalink">#</a> Monday, August 27, 2007 2:06:55 PM</span></p>
+<div class="text">Cool stuff!<br><br>I'm sure you've heard the demand for multiple background images...is this coming or are you guys waiting for the spec to mature more first? If so, I'd suggest doing exactly what Safari does but with the -o- prefix. <br><br>Actually I was wondering if it would be possible to emulate multiple backgrounds by creating an SVG file (which could include multiple rasterized images) and setting the background image to that? (I believe it was mentioned that CSS SVG backgrounds will be supported in Kestrel)</div>
+</div>
+<div class="comment2 ownercomment" id="comment3466116">
+<div class="avatar"><a href="http://my.opera.com/dstorey/"><img src="http://my.opera.com/community/users/avatar.pl/241852" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="dstorey" href="http://my.opera.com/dstorey/">David Storey<span>dstorey</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3466116" class="permalink">#</a> Monday, August 27, 2007 2:10:32 PM</span></p>
+<div class="text">It should be possible using SVG as a background image.  I'll leave it as an exercise to the reader to make an example of that (even if you don't yet have a build that supports this <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink">)</div>
+</div>
+<div class="comment1" id="comment3466157">
+<div class="avatar"><a href="http://my.opera.com/Fyrd/"><img src="http://my.opera.com/community/users/avatar.pl/303073" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Fyrd" href="http://my.opera.com/Fyrd/">Alexis Deveria<span>Fyrd</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3466157" class="permalink">#</a> Monday, August 27, 2007 2:17:25 PM</span></p>
+<div class="text">Ooh, I think I'll try that! Hey, would it work on the Wii? (I seem to recall you mentioning it having some Kestrel features)</div>
+</div>
+<div class="comment2" id="comment3466743">
+<div class="avatar"><a href="http://my.opera.com/DjiXas/"><img src="http://my.opera.com/community/users/avatar.pl/293903" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="DjiXas" href="http://my.opera.com/DjiXas/">Fav<span>DjiXas</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3466743" class="permalink">#</a> Monday, August 27, 2007 3:17:37 PM</span></p>
+<div class="text">Does Yahoo Search Marketing and MSN AdCenter already works in 9.5 with no problems at all?</div>
+</div>
+<div class="comment1" id="comment3466807">
+<div class="avatar"><a href="http://my.opera.com/AndrewGregoryScss/"><img src="http://my.opera.com/community/users/avatar.pl/10307" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="AndrewGregoryScss" href="http://my.opera.com/AndrewGregoryScss/">Andrew Gregory<span>AndrewGregoryScss</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3466807" class="permalink">#</a> Monday, August 27, 2007 3:27:31 PM</span></p>
+<div class="text">In terms of CSS, the top of my list would be rgba/hsl/hsla colour support. Quickly followed by border-radius.<br><br>I have to say a peeve of mine is finding sites using overflow-x/y but not specifying just overflow anywhere! <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-mad" alt="mad"> It's very nice to hear o-x/y support confirmed.</div>
+</div>
+<div class="comment2" id="comment3466940">
+<div class="avatar"><a href="http://my.opera.com/Fyrd/"><img src="http://my.opera.com/community/users/avatar.pl/303073" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Fyrd" href="http://my.opera.com/Fyrd/">Alexis Deveria<span>Fyrd</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3466940" class="permalink">#</a> Monday, August 27, 2007 3:46:46 PM</span></p>
+<div class="text">Okay, I've written up a test case. If you wouldn't mind, could you tell me if <a href="http://files.myopera.com/Fyrd/mb/svgmultiple.html" rel="nofollow" target="_blank">this page</a> looks like <a href="http://files.myopera.com/Fyrd/mb/output.png" rel="nofollow" target="_blank">this</a>? <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile">
+</div>
+</div>
+<div class="comment1" id="comment3467175">
+<div class="avatar"><a href="http://my.opera.com/Daedalus/"><img src="http://my.opera.com/community/users/avatar.pl/46607" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="Daedalus" href="http://my.opera.com/Daedalus/">Lars Andersson<span>Daedalus</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3467175" class="permalink">#</a> Monday, August 27, 2007 4:24:10 PM</span></p>
+<div class="text">Very nice to see background-size in there, should be quite fun to play with <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-smile" alt="smile"><br><br>I don't personally care very much about the other new stuff in this post, but it's good to have anyway.<br><br>And I too want border-radius, btw <img src="http://static.myopera.com/community/graphics/smiley.gif" class="smiley s-wink" alt="wink">
+</div>
+</div>
+<div class="comment2" id="comment3468198">
+<div class="avatar"><a href="http://my.opera.com/vithar/"><img src="http://my.opera.com/community/users/avatar.pl/74571" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="vithar" href="http://my.opera.com/vithar/">Vitaly Harisov<span>vithar</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3468198" class="permalink">#</a> Monday, August 27, 2007 6:53:35 PM</span></p>
+<div class="text">Please, please, test Kestrel carefuly and not release it until it will be ready.</div>
+</div>
+<div class="comment1" id="comment3595059">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3595059" class="permalink">#</a> Thursday, September 13, 2007 1:55:42 PM</span></p>
+<div class="text">Peter Gasston writes:
+
+Hi David,
+
+It seems that background-size isn't implemented correctly; it seems to clip itself if the background-size is set to less than its original size, or repeat itself if set to larger - even if no-repeat is also set. Take a look at this page:
+
+http://www.broken-links.com/tests/opera_bg.html
+
+It displays correctly in Safari &amp; Konqueror, but not in Kestrel. Curiously, the example page on CSS3.info:
+
+http://www.css3.info/preview/background-size/
+
+Displays as it should, and yet the code seems the same.</div>
+</div>
+<div class="comment2" id="comment3601808">
+<div class="avatar"><a href="http://my.opera.com/_Grey_/"><img src="http://my.opera.com/community/users/avatar.pl/178430" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="_Grey_" href="http://my.opera.com/_Grey_/">_Grey_</a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3601808" class="permalink">#</a> Friday, September 14, 2007 11:09:19 AM</span></p>
+<div class="text">@Peter Gaston: I tested with Safari 3.0 on XP and Opera 9.5a3 and for me they display them the same, only that Safari uses Anti-Aliasing (looks nicer/smoother), while Opera doesn't.<br><br>I don't think that's what you mean, though, is it?</div>
+</div>
+<div class="comment1" id="comment3603348">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3603348" class="permalink">#</a> Friday, September 14, 2007 4:16:42 PM</span></p>
+<div class="text">Peter Gasston writes:
+
+Problem is fixed in the latest Alpha.</div>
+</div>
+<div class="comment2" id="comment3605516">
+<div class="avatar"><img src="http://static.myopera.com/community/graphics/avatar.gif" alt="" width="50" height="50"></div>
+<p class="comment-by"><b>
+                  Unregistered user
+                </b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3605516" class="permalink">#</a> Friday, September 14, 2007 10:48:42 PM</span></p>
+<div class="text">Peter Gasston writes:
+
+Hmmm... actually, not in the Linux version I'm using; strange, I thought the rendering engine would be identical.</div>
+</div>
+<div class="comment1" id="comment3898511">
+<div class="avatar"><a href="http://my.opera.com/ndluthier/"><img src="http://my.opera.com/community/users/avatar.pl/319966" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="ndluthier" href="http://my.opera.com/ndluthier/">Ben Barber<span>ndluthier</span></a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment3898511" class="permalink">#</a> Sunday, October 28, 2007 9:17:59 PM</span></p>
+<div class="text">Thanks for making CSS3 support a priority.</div>
+</div>
+<div class="comment2" id="comment4666512">
+<div class="avatar"><a href="http://my.opera.com/deborahwebb/"><img src="http://my.opera.com/community/users/avatar.pl/1333432" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="deborahwebb" href="http://my.opera.com/deborahwebb/">deborahwebb</a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment4666512" class="permalink">#</a> Tuesday, February 12, 2008 12:07:12 PM</span></p>
+<div class="text">Yes, don't be hasty and test everything carefully before releasing it. Although I must say that I can't wait to see the new Kestrel in action. Thanks for an interesting article anyway!</div>
+</div>
+<a name="lastcomment"></a><div class="comment1" id="comment4666882">
+<div class="avatar"><a href="http://my.opera.com/annmacgiff/"><img src="http://my.opera.com/community/users/avatar.pl/1333438" alt="" width="50" height="50"></a></div>
+<p class="comment-by"><b><a class="userlink" title="annmacgiff" href="http://my.opera.com/annmacgiff/">annmacgiff</a></b> <span class="comment-date"><a href="http://my.opera.com/dstorey/blog/show.dml/1280978#comment4666882" class="permalink">#</a> Tuesday, February 12, 2008 1:13:57 PM</span></p>
+<div class="text">I keep waiting for the new Kerstrel to be released. It look like worth to be patient and wait until everything is perfect. I'm very interested in how will the CSS3 support look like.</div>
+</div>
+</div>
+<div id="newcomment" class="w100">
+<h3>Write a comment</h3>
+<p>New comments have been disabled for this post.</p>
+</div>
+
+   
+
+   
+
+
+<script type="text/javascript" src="http://static.myopera.com/community/js/image-resize-ie-ee413c43.js"></script>
+</div></div>
+<div id="sidewrap"><div id="side">
+<table id="calendar">
+<caption><a href="http://my.opera.com/dstorey/archive/monthly/?month=201402" id="calendarmonth">February 2014</a></caption>
+<thead><tr>
+<th scope="col" title="Sunday" abbr="Sunday">S</th>
+<th scope="col" title="Monday" abbr="Monday">M</th>
+<th scope="col" title="Tuesday" abbr="Tuesday">T</th>
+<th scope="col" title="Wednesday" abbr="Wednesday">W</th>
+<th scope="col" title="Thursday" abbr="Thursday">T</th>
+<th scope="col" title="Friday" abbr="Friday">F</th>
+<th scope="col" title="Saturday" abbr="Saturday">S</th>
+</tr></thead>
+<tfoot><tr><td colspan="7">
+<span id="prevmonth" class="left"><img src="http://static.myopera.com/community/graphics/prev.gif" width="9" height="8" alt="" class="arrow-prev"><a href="http://my.opera.com/dstorey/archive/monthly/?month=201401" title="January 2014">January 2014</a></span><span id="nextmonth" class="right"><a href="http://my.opera.com/dstorey/archive/monthly/?month=201403" title="March 2014">March 2014</a><img src="http://static.myopera.com/community/graphics/next.gif" width="9" height="8" alt="" class="arrow-next"></span>
+</td></tr></tfoot>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>22</td>
+</tr>
+<tr>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebox" id="tagcloud">
+<h2>Tags</h2>
+<div class="pad"><ul class="nobullets clearfix">
+<li class="size3"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/CSS" rel="tag">CSS</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/css3" rel="tag">css3</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/developer%20tools" rel="tag">developer tools</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/kestrel" rel="tag">kestrel</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/market%20share" rel="tag">market share</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Media%20Queries" rel="tag">Media Queries</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Mini" rel="tag">Mini</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Mobile" rel="tag">Mobile</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Mozilla" rel="tag">Mozilla</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/music" rel="tag">music</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Open%20the%20Web" rel="tag">Open the Web</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/OpentheWeb" rel="tag">OpentheWeb</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Opera" rel="tag">Opera</a></li>
+<li class="size4"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Opera%20Dragonfly" rel="tag">Opera Dragonfly</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Opera%20Mini" rel="tag">Opera Mini</a></li>
+<li class="size1"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Safari" rel="tag">Safari</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/standards" rel="tag">standards</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/SVG" rel="tag">SVG</a></li>
+<li class="size5"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Web%20Standards" rel="tag">Web Standards</a></li>
+<li class="size2"><a href="http://my.opera.com/dstorey/blog/index.dml/tag/Wii" rel="tag">Wii</a></li>
+</ul></div>
+</div>
+</div></div>
+<div id="footer"><div id="footer2">
+<div id="operatxtad"><p><b><a href="http://www.opera.com/browser/?utm_source=myopera&amp;utm_medium=text&amp;utm_campaign=myoperalinks&amp;utm_content=dl_opera_lightning_speed_fastest_browser" class="red">Download Opera</a></b> - 
+Surf the Web with lightning speed, using the fastest browser ever.
+</p></div>
+<p><a href="http://my.opera.com/community/help/">Help/FAQ</a> |
+            <a href="http://my.opera.com/community/terms-of-service/" class="black">Terms</a></p>
+<div class="prefs"><form action="http://my.opera.com/community/change-language" method="POST" name="sitelang" id="sitelang"><fieldset>
+<input type="hidden" name="return_url" value="/dstorey/blog/2007/08/27/update-on-css-support-in-kestrel"><label for="chooselang"><b>Language:</b></label><select name="set_lang" id="chooselang" onchange="this.form.submit()"><option value="de">Deutsch</option>
+<option value="en" selected>English</option>
+<option value="es-LA">Español</option>
+<option value="fr">Français</option>
+<option value="fy">Frysk</option>
+<option value="hu">Magyar</option>
+<option value="it">Italiano</option>
+<option value="pl">Polski</option>
+<option value="pt-BR">Português Brasileiro</option>
+<option value="ru">Русский</option>
+<option value="sk">Slovenčina</option>
+<option value="sq">Shqip</option>
+<option value="sv">svenska</option>
+<option value="tr">Türkçe</option>
+<option value="uk">Українська</option>
+<option value="vn">Tiếng Việt</option>
+<option value="xx-LOL">LOLCATZ</option>
+<option value="zh-TW">正體中文</option>
+<optgroup label="In progress"><option value="sr">Српски</option></optgroup></select><noscript><input type="submit" value="OK"></noscript>
+</fieldset></form></div>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+</div></div></div></div>
+<!--[if IE]></div><![endif]--><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/yuiloader-dom-event/yuiloader-dom-event.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/yui/build/selector/selector.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-68592c43.js"></script><script type="text/javascript" src="http://static.myopera.com/community/js/lib/opera-driver-yui-f3e2272e.js"></script><script type="text/javascript">var O = new Opera({"extension":".js","combine":"0","base_url":"http://static.myopera.com/community/js","path":"/community/js","minified":"-min","suffix":"-min.js","minifier":"closure-compiler","map_file":"/var/www/static.myopera.com/community/js/js-map.json","driver":"yui"});O.set_js_map({"lib/yui-modules/usermessage/usermessage":"lib/yui-modules/usermessage/usermessage-4fbbfc53","site/virus-scan-status":"site/virus-scan-status-249bc0e4","fadeimg":"fadeimg-87a42e1a","xmlviewer":"xmlviewer-8165f4e3","site/mail":"site/mail-f17dabea","topbar-menu":"topbar-menu-2920fbe5","rate":"rate-f65eeeef","competitions/spiderman":"competitions/spiderman-16ea3bdb","refresh":"refresh-faedf2b7","lib/yui-modules/tooltip/tooltip":"lib/yui-modules/tooltip/tooltip-18a910b1","lib/yui-modules/countdown/countdown":"lib/yui-modules/countdown/countdown-df6ae0a3","myopera-hitslink-new-n-stupid":"myopera-hitslink-new-n-stupid-6c9e8c3d","code":"code-65f9fc0d","site/date-utils":"site/date-utils-605c4d64","video":"video-2af781bf","lib/yui-modules/autocomplete/autocomplete":"lib/yui-modules/autocomplete/autocomplete-16c34728","myopera-hitslink-classic":"myopera-hitslink-classic-eea2763d","lib/yui-modules/calendar/calendar":"lib/yui-modules/calendar/calendar-fe82c3b9","toggle":"toggle-aba25ffd","addrow":"addrow-c87c3b98","user-forums-sidebar":"user-forums-sidebar-ac97a9e4","quick-reply":"quick-reply-fa14d9ab","site/albums/tag_bounding_box":"site/albums/tag_bounding_box-0b5f75aa","site/messages/autocomplete-recipients":"site/messages/autocomplete-recipients-bc2b8895","lib/yui-modules/ajax/ajax":"lib/yui-modules/ajax/ajax-8eb94c88","lib/standalone-modules/svg_zoomnpan/svg_zoomnpan":"lib/standalone-modules/svg_zoomnpan/svg_zoomnpan-7964199a","myopera-hitslink":"myopera-hitslink-207ff0b6","wii":"wii-2014ea1a","site/profile-usermedia":"site/profile-usermedia-380ee11e","flash_upload":"flash_upload-c85f08b9","lib/opera":"lib/opera-68592c43","image-resize-ie":"image-resize-ie-ee413c43","seo":"seo-f4dca896","site/quickQuote":"site/quickQuote-8fab13dd","site/blog/autosave":"site/blog/autosave-c0c66ad7","site/clone-input":"site/clone-input-8474cc6e","browsers/mobile-menu":"browsers/mobile-menu-f9c17575","shoutbox":"shoutbox-46fb33f6","site/albums/slideshow-fullscreen":"site/albums/slideshow-fullscreen-586cd529","site/iphone-countup":"site/iphone-countup-03d60227","competitions/zombie":"competitions/zombie-552c6f3a","site/albums/tagging":"site/albums/tagging-f5770337","takeaction":"takeaction-147eb7e3","postform":"postform-a4630151","image-resize-home":"image-resize-home-8f09422e","site/friends-invite-utils":"site/friends-invite-utils-f008f5b2","tags":"tags-30a91276","site/api":"site/api-b63dab5e","user-blog-calendar":"user-blog-calendar-ac9c9115","sortpics2k":"sortpics2k-c03ece95","topbar-status":"topbar-status-aa171844","ticker":"ticker-6905e729","site/messages/broadcast":"site/messages/broadcast-4292aa69","site/help":"site/help-404fa392","site/messages/selection":"site/messages/selection-72e632dc","site/yahoo360-import":"site/yahoo360-import-3f83dde6","browsers/ie":"browsers/ie-5581986f","lib/opera-driver-yui":"lib/opera-driver-yui-f3e2272e","site/members/location":"site/members/location-2930ae6c","competitions/trek":"competitions/trek-6968c435","dropmenu":"dropmenu-1fee5ec4","lib/yui-modules/cookie/cookie":"lib/yui-modules/cookie/cookie-a9bac995","lib/yui-modules/filterlist/filterlist":"lib/yui-modules/filterlist/filterlist-782f9396","hitslink":"hitslink-a047bd06","generic":"generic-682cfe40","stats/ga":"stats/ga-8663400c","checkform":"checkform-495248d2","toggleadv":"toggleadv-bf021494","forum-split-thread":"forum-split-thread-8a9ecdc6","live_counter":"live_counter-b73905ba","setcookie":"setcookie-2e313718","browsers/ie-css3":"browsers/ie-css3-610effed","help":"help-06dea79f","site/virus-scan-status-blog":"site/virus-scan-status-blog-66d20e09","site/usercss-utils":"site/usercss-utils-68672d66","userbar":"userbar-b67a64b0","sortpics":"sortpics-a3a6f826","cookies":"cookies-449b9392","site/social_networks-utils":"site/social_networks-utils-f1149984","site/albums/slideshow-embed":"site/albums/slideshow-embed-7eac64f0","lib/yui-modules/multicheck/multicheck":"lib/yui-modules/multicheck/multicheck-c7f82f17","ban":"ban-8b4c8fed","site/maxlength":"site/maxlength-2fabedaa","menu":"menu-f3677acd","site/signup-utils":"site/signup-utils-1e857cfe","forum-code":"forum-code-0650946a","code_oldbrowser":"code_oldbrowser-bc4c3390","site/admin-campaigns":"site/admin-campaigns-388b0b63","p7_eqCols2_10":"p7_eqCols2_10-f2de659e","lib/yui-modules/animation/animation":"lib/yui-modules/animation/animation-cf0d4480","site/ban_oversight":"site/ban_oversight-aa276ee9"});O.loadScripts(["site/quickQuote"]);</script><script type="text/javascript" src="http://static.myopera.com/community/js/cookies-449b9392.js"></script>
+</body>
+</html>
+<!-- 1392046037.myo.cDoyNzowMzowMA== -->

@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>fps test</title>
+    <style>
+      div { font: 12px Arial;}
+    </style>
+    <script>
+      var svgelm = null;
+      function checkfps()
+      {
+        svgElm = document.getElementById("o").contentDocument.documentElement;
+        setInterval(update, 100); 
+      }
+   
+      function update()
+      {
+        cfps = svgElm.currentFps;
+        tfps = svgElm.targetFps;
+        document.getElementById("f").textContent = "currentFps: " + cfps + " targetFps: " + tfps;
+      }
+      
+      
+      function incFps() {
+        svgElm.targetFps++;
+      }
+
+      
+      function decFps() {
+        svgElm.targetFps--;
+      }
+      
+      
+    </script>
+  </head>
+  <body onload="checkfps()">
+    <div id="f"></div>
+    <object id="o" data="http://devfiles.myopera.com/articles/695/car_01.svg" type="image/svg+xml" width="600" height="600"></object>
+    <div>
+    <button onclick="incFps()">TargetFps++</button>
+    <button onclick="decFps()">TargetFps--</button>
+    
+  </body>
+</html>

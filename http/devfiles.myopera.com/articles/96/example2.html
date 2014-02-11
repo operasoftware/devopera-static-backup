@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+<title>Opera Authoring Guide for Devices: Headline alt-text example</title>
+<link rel="shortcut icon" href="../../../dev.opera.com/favicon.ico" type="image/x-icon" />
+<meta name="keywords" content="ssr, Small-Screen Rendering, alt-text, opera, css, coding tips, testing, devices, phones, web design, browser, Opera Software" />
+<link rel="stylesheet" href="http://dev.opera.com/css/add/articles.css"/>
+</head>
+
+<body>
+<h1>Using alt-text with headlines</h1>
+
+<p>These three headlines below look identical with graphics enabled. The first 
+  one doesn't have an alt-text, and will not be displayed at all without graphics. 
+  The second has put the headline image in an ordinary paragraph, and the headline 
+  will not appear as a headline, the third image has put the headline image in 
+  a headline element (<code>&lt;h3&gt;</code>) and it will be displayed as such 
+  in Opera and newer Netscape, if not in IE.</p>
+
+<h2>Headline image without an alt-text</h2>
+<p>Code: <code>&lt;p&gt;&lt;img /&gt;&lt;/p&gt;</code>:</p>
+<p><img src="http://devfiles.myopera.com/articles/96/headline.png" width="213" height="27" /></p>
+
+<h2>Headline image with an alt-text</h2>
+<p>Code: <code>&lt;p&gt;&lt;img alt="An Image Headline" /&gt;&lt;/p&gt;</code>:</p>
+<p><img src="http://devfiles.myopera.com/articles/96/headline.png" width="213" height="27" alt="An Image Headline" /></p>
+
+<h2>Headline image with an alt-text in a headline tag</h2>
+<p>Code: <code>&lt;h1&gt;&lt;img alt="An Image Headline" /&gt;&lt;/h1	&gt;</code>:</p>
+
+<h1><img src="http://devfiles.myopera.com/articles/96/headline.png" width="213" height="27" alt="An Image Headline" /></h1>
+
+<p class="nextPrevLinks"><a href="http://devfiles.myopera.com/articles/96/example1.html">« Example 1 - Navigation section with and without CSS</a> | <a href="example3.html">Example 3 - Using alt-text with buttons »</a></p></body></html>

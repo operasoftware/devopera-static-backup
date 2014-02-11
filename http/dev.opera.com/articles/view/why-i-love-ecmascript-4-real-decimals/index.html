@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Why I Love ECMAScript 4: Real Decimals - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Why I Love ECMAScript 4: Real Decimals</h1>
+      <p class="print author">By Chris Pine</p>
+
+      <h2>Introduction</h2>
+
+<p>In this article, I explore ECMAScript 4&#39;s ability to use real decimal floating points, in addition to the binary
+floating points traditionally used by most programming languages. Languages based on ECMAScript 3, such as
+ActionScript 2.x and JavaScript 1.x don&#39;t have this ability - to make use of decimal floating points, you&#39;ll need
+a language based on ECMAScript 4, such as ActionScript 3 (available in Adobe Flash 9 and Flex 2/3) or JavaScript 2
+(supported in future versions of Opera, but not right at the moment.)</p>
+
+<h2>What&#39;s the problem with binary floats anyway?</h2>
+
+<p>So, let&#39;s get started with a simple experiment - copy the following line, paste it into your URL field, and hit
+return:</p>
+
+<pre><code>javascript:alert (0.1 + 0.1);</code></pre>
+
+<p>Actually, don&#39;t bother. You don&#39;t need a computer to tell you the answer to this one, right? You figured out that
+it was 0.2 faster than you could copy-n-paste it. For advanced calculations, though, there&#39;s really no way to do it
+in your head. Advanced calculations like this one:</p>
+
+<pre><code>javascript:alert (0.1 + 0.2);</code></pre>
+
+<p>(...drum roll, please...)</p>
+
+<p>Results in 0.30000000000000004</p>
+
+<p>Seriously.</p>
+
+<p>And if we double the numbers we&#39;re adding, we get double the result of the last equation, right?</p>
+
+<pre><code>javascript:alert (0.2 + 0.4);</code></pre>
+
+<p>Yeah, maybe in your antiquated math class, but not here - the above equation oddly gives us 0.6000000000000001</p>
+
+<p>So what&#39;s going on? Well, first off, it&#39;s not a mistake. Your computer is not capable of making mistakes (despite
+mountains of evidence to the contrary). No, your computer is correctly doing binary floating-point arithmetic. The
+problem is that you are typing numbers in decimal, but your computer works in binary, and the two don&#39;t always match
+up very well.</p>
+
+<p>You know how one-third is not 100% accurately represented in decimal? 0.33333... It&#39;s a lot like that, but in this
+case the problem is that one-fifth (and, more to the point, one-tenth) cannot be accurately represented in binary. So you write
+0.1, but ECMAScript 3 doesn&#39;t see that as one-tenth. It converts and rounds it to a binary floating-point number
+that is extremely close to one-tenth. When you add two of these numbers, it&#39;s all done in binary to produce a new
+binary floating-point number. When you actually want to see the answer, though, it has to be converted back into
+decimal. Sometimes the errors introduced by these conversions and the subsequent rounding just happen to work:</p>
+
+<pre><code>javascript:alert (0.6 + 0.2);</code></pre>
+
+<p>Gives us the result 0.8</p>
+
+<p>But other times they don&#39;t:</p>
+
+<pre><code>javascript:alert (0.7 + 0.1);</code></pre>
+
+<p>Gives us 0.7999999999999999</p>
+
+<p>And this isn&#39;t just ECMAScript, of course - you&#39;ll see the same thing in any language using binary floating points.
+To get around these gotchas, ECMAScript 4 gives us the option of using actual decimal floating points.</p>
+
+<h2>Using real decimals in ECMAScript 4</h2>
+
+<p>The easiest way to use the new decimals is simply to write use decimal at the top of your script. This will cause
+all numeric literals to be interpreted as decimal literals. In many cases, this is all you want, and you&#39;re done.</p>
+
+<p>However, if your are doing lots of calculations, you&#39;ll start to notice that decimal floats aren&#39;t as fast as
+binary floats, and eat up twice as much memory. Computers are binary beasts, after all (for the moment, anyway -
+some manufacturers are committing to supporting decimal floats in hardware.) So sometimes you really only want
+certain parts of your code to use decimal (maybe you&#39;re using a library that depends on fast floats or something).
+Fortunately, the use decimal pragma is lexically scoped, so you can limit its effects to a block:</p>
+
+<pre><code>{
+  use decimal;
+  
+  var a = 0.1;    //  a is a decimal
+  var b = 0.2;    //  b is a decimal
+  var c = a + b;  //  c is a decimal (0.3)
+}
+  
+  var d = 0.1 + 0.2;  //  d is a double (0.30000000000000004)</code></pre>
+
+<p>Or you could turn it around, and have your code use decimals everywhere except for the blocks where you need
+speed. For even finer granularity, you can use decimals outside of a use decimal pragma with the decimal literal
+syntax:</p>
+
+<pre><code>var a = 0.1m;   //  a is a decimal
+var b = 0.2m;   //  b is a decimal
+var c = a + b;  //  c == 0.3m</code></pre>
+
+<p><code>m</code> is borrowed from C# (which also has decimal floats) and stands for &quot;money&quot; (another use case where you REALLY want 0.1
+to mean 0.1).</p>
+
+<h2>Summary</h2>
+
+<p>So that&#39;s a wrap - short and sweet and to the point. If you feel you need to, you can read more about the <a href="http://web.archive.org/web/20070113063258/http://developer.mozilla.org/es4/proposals/decimal.html" alt="ECMAScript 4 committee Wiki conversions and rounding specifics">specifics
+of conversions and rounding</a> on the <a href="http://web.archive.org/web/20070216215025/http://developer.mozilla.org/es4/" alt="ECMAScript 4 committee wiki homepage">ECMAScript 4 committee wiki</a>.</p>
+
+<p>Most languages don&#39;t have a built-in decimal type (exceptions are C#, REXX...), and it&#39;s kind of a pain to
+implement, and binary floats are sort of similar (and always faster,) so I can see why language designers don&#39;t
+bother. Sort of. But on the other hand, it&#39;s about time.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=211221">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/chrispi.html" rel="author">Chris Pine</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, October 31, 2007
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/ECMAScript&#32;4&#32;JavaScript&#32;float&#32;decimal&#32;binary.html" rel="tag">ECMAScript 4 JavaScript float decimal binary</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

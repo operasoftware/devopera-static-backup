@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A treat for Nokia N9 users - an official Opera Mobile 11.5 Labs release - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Labs - RSS 2.0 Feed" href="../../../feeds/rss/articles/labs">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Labs - Atom 1.0 Feed" href="../../../feeds/atom/articles/labs">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="labs">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>A treat for Nokia N9 users - an official Opera Mobile 11.5 Labs release</h1>
+      <p class="print author">By Mostyn Bramley-Moore</p>
+
+      <p>Since our previous releases of Opera Mobile for MeeGo, we have noticed that a lot of our users have been hanging out for an official Opera Mobile build for the Nokia N9 and N950 Harmattan phones. Well, today is your lucky day &#x2014; we&#39;re happy to announce that a Labs release of Opera Mobile 11.5 for Harmattan is <a href="http://store.ovi.com/content/255196">available for download</a> now.</p>
+
+<p>Some of the updates since the <a href="../labs-opera-mobile-labs-11-5-for-meego-netbooks-and-tablets/index.html">Opera Mobile 11 MeeGo ARM developer preview</a> build include:
+<ul>
+<li>upgrade to Opera Mobile 11.5</li>
+<li>autorotation support (in all four orientations &#x2014; prepare to get dizzy)</li>
+<li>buttons near the bottom edge of the screen behave properly (those of you who modified the Opera Mobile 11 developer preview build may have noticed some issues with touches on the edges of the screen, since this older build was not designed to work with Nokia&#39;s Swipe UI. Thanks to Gustav &quot;thumbs of death&quot; Tiger for figuring out how to reproduce these problems!)</li>
+<li>the internet connection dialog will be opened if you attempt to browse the web while not connected to the internet</li>
+</ul>
+</p>
+
+<p>You can <a href="http://store.ovi.com/content/255196">download and install Opera Mobile 11.5</a> using your phone&#39;s default browser. However, if you prefer not to use Ovi store, you should enable this setting: Settings → Applications → Installations → Allow installations from non-Store sources, and then download the <a href="http://www.opera.com/download/get.pl?sub=++++&amp;id=34409&amp;location=270&amp;nothanks=yes">deb package from our server</a>.</p>
+
+<p>Known issues:
+<ul>
+<li>this build (like the previous Opera Mobile 11 MeeGo ARM developer preview) is not optimised to conserve power &#x2014; if you load a webpage with animations and leave Opera running, your battery will continue to drain, even when Opera Mobile is running in the background and/or the screen is turned off</li>
+<li>the system on-screen keyboard is not supported</li>
+<li>Adobe Flash and other plugins are not supported</li>
+<li>HTML5 video is not supported</li>
+<li>haptic feedback/vibration is not supported</li>
+</ul>
+</p>
+
+<p>Thanks to Fredrik Öhrn for helping merge some Maemo-specific tricks from our <a href="http://maemo.org/downloads/product/Maemo5/opera-mobile/">N900 builds</a>.</p>
+
+<p>Note: if you have an Intel Atom based MeeGo netbook or tablet, try the <a href="../labs-opera-mobile-labs-11-5-for-meego-netbooks-and-tablets/index.html">Opera Mobile Labs 11.5 for MeeGo netbooks and tablets</a> build instead.</p>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+  <ul>
+    <li id="comment-83004402">
+      <a href="../../../author/maxart.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/dd/ce4/62f37a13fd655c02b4007ecb6ff6c4e023c.png" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/maxart.html">maxart</a></p>
+      <p class="commentdate">Tuesday, February 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This is awesome. Thank you!</section>
+    </li>
+    <li id="comment-83006502">
+      <a href="../../../author/balafi.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/76/bb3/4645004103f987d05d9ff58c54eab8991fb." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/balafi.html">Elias Balafoutis</a></p>
+      <p class="commentdate">Tuesday, February 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>is there also a deb package?  </section>
+    </li>
+    <li id="comment-83008852">
+      <a href="../../../author/andreasbovens.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/c0/c93/83b9a906e6ee77ac0410e7056fbe0013388.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/andreasbovens.html">Andreas Bovens</a></p>
+      <p class="commentdate">Tuesday, February 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Elias, there was a mistake in the earlier URL. I&#39;ve updated the article with a link to the Ovi Store and deb package. Sorry for the confusion!</section>
+    </li>
+    <li id="comment-83013512">
+      <a href="../../../author/Voimis.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1b/b2c/fd22a790be803041515eea73af034b83383." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Voimis.html">Voimis</a></p>
+      <p class="commentdate">Tuesday, February 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>This browser rocks. It&#39;s great in many ways and blazingly fast!<br/><br/>But it needs improvements - as you of course know. It&#39;s still not a stable, final realease.<br/><br/>The first thing in your priority list should be support for the system on-screen keyboard. There&#39;s no way I&#39;d use the Opera keyboard, it sucks so much.</section>
+    </li>
+    <li id="comment-83015622">
+      <a href="../../../author/sugardad.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b9/cfa/dc2fa65e1c37542d9b6afdd139dae266850.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/sugardad.html">SuGaRDaD</a></p>
+      <p class="commentdate">Tuesday, February 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>NICE!<br/>But Still NO Greek keyboard support :&#39;(<br/>Please consider adding Greek Keyboard IME or enable the use of N9 Built in Keyboard .... </section>
+    </li>
+    <li id="comment-83017932">
+      <a href="../../../author/kermit39.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/13/ff4/6d1f1be6a71070211ff1502a19f755652d8." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/kermit39.html">kermit39</a></p>
+      <p class="commentdate">Tuesday, February 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>great, thank you very much. I use opera since the beginning and now I can use opera on my N9 as well.</section>
+    </li>
+    <li id="comment-83034402">
+      <a href="../../../author/tigas.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/be/fb3/b2a9138c2bdce6929edf51a38d78e8acacb.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tigas.html">Tiago Joao Silva</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Yay! Thank you Opera!<br/><br/>Maybe one convincing way to get an Opera manager to sign off on programmer time to integrate Harmattan keyboard and spellchecking on Opera Mobile for the N9, would be to point out that you&#39;ll solve the problem of people with greek and cyrillic alphabets, which are very important markets for Opera.  </section>
+    </li>
+    <li id="comment-83053292">
+      <a href="../../../author/Blackxnew.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/fd/b6b/f2b2ba36abb0d7bfa8bda31ec3d2eb5bf03.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Blackxnew.html">Gianluca Diella</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I create this facebook page <a href="https://www.facebook.com/pages/We-want-opera-for-Windows-Phone/252111818199740" target="_blank">https://www.facebook.com/pages/We-want-opera-for-Windows-Phone/252111818199740</a> for demonstrate how many people want opera on Windows Phone.<br/>WE WANT OPERA FOR WINDOWS PHONE</section>
+    </li>
+    <li id="comment-83055852">
+      <a href="../../../author/chrismills.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/49/546/4272683e28ab456dc962e131580e44990be.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/chrismills.html">Chris Mills</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I appreciate your passion! I&#39;ll check with the team about where we are with Windows phone Opera.</section>
+    </li>
+    <li id="comment-83059052">
+      <a href="../../../author/Maciek.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/00/16b/6055307c06b1930f44537e921dc456de9bc.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/Maciek.html">Maciek</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great news! I&#39;m getting N9 soon.</section>
+    </li>
+    <li id="comment-83078732">
+      <a href="../../../author/MtheF.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/7f/6c0/fb648c3f57901c56c5a48904803d5cdfc21." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/MtheF.html">MtheF</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Great Thanks! Downloading now.</section>
+    </li>
+    <li id="comment-83084942">
+      <a href="../../../author/2ndlife.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/8b/6f4/559cce927c015784238da9e6f31a35bcc37." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/2ndlife.html">2ndlife</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you Opera developers !<br/>Nice work. Definitely worth waiting for.<br/>I hope there will be time and resources available to keep on improving Opera experience for N9.</section>
+    </li>
+    <li id="comment-83091732">
+      <a href="../../../author/royster70.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e2/bbf/4b9ed29883311685be5876e36d92f883125." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/royster70.html">royster70</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Superb stuff - my favourite browser on any device I have ever used including the N9<br/><br/>As mentioned by some others - it would be great to include the N9 keyboard as an option - having said that its very good in English for me<br/><br/>Not sure if this is something addressed by the Opera browser or is part of OS  - but it would be great if it there was a way to allow Opera to have the option to be the default browser for the N9  (like the PC option that prompts when you start the browser for the first time).<br/><br/>And one final thing - any plans to support Flash as well  (as it now looks like Flash will be supported by Fennec on the N9 very very soon....)<br/><br/>Thanks again for getting my favourite browser to work with the N9  :)</section>
+    </li>
+    <li id="comment-83107002">
+      <a href="../../../author/ccc.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/78/87e/4cd9c0afba04150b5e6c71faa4140156356." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ccc.html">ccc</a></p>
+      <p class="commentdate">Wednesday, February 22, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thanks Opera Mobile Team! <br/><br/>Native N9 keyboard support would be good so we can use Swype within Opera.<br/><br/>Keep up the good work and I hope the updates continue!<br/><br/>Thanks again.<br/></section>
+    </li>
+    <li id="comment-83211142">
+      <a href="../../../author/mistrzkrogulec.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/de/bce/9296cdd44c7628d1d1f9607468c62cade08.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mistrzkrogulec.html">Krogulec</a></p>
+      <p class="commentdate">Friday, February 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Good job &amp; many thanks! Opera (Mobile) is my favorite browser :)</section>
+    </li>
+    <li id="comment-83241712">
+      <a href="../../../author/rashm2k.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/db/412/20e99a95c1f98616e6b1f64f6c23e5d4bc4." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/rashm2k.html">rashm2k</a></p>
+      <p class="commentdate">Friday, February 24, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you! Been using opera for years and years now 6+, great to see my favourite browser has made a port for my N9. Thanks guys - thanks why I like opera!</section>
+    </li>
+    <li id="comment-83635382">
+      <a href="../../../author/sparq.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b3/483/93b43391ead37ee0991b6e19ae12a101d57." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/sparq.html">sparq</a></p>
+      <p class="commentdate">Tuesday, February 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you very much! Good work!</section>
+    </li>
+    <li id="comment-83636762">
+      <a href="../../../author/sparq.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/b3/483/93b43391ead37ee0991b6e19ae12a101d57." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/sparq.html">sparq</a></p>
+      <p class="commentdate">Tuesday, February 28, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>&quot;Not sure if this is something addressed by the Opera browser or is part of OS - but it would be great if it there was a way to allow Opera to have the option to be the default browser for the N9&quot;<br/>Thumbs up ;-)<br/><br/>&quot;And one final thing - any plans to support Flash as well&quot;<br/>Flash shifts balance of power over internet, content and technology from the people to corporations and webmasters. I prefer open web standards and HTML5. HTML5 video support would be great.</section>
+    </li>
+    <li id="comment-86328342">
+      <a href="../../../author/aleksandar10.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ae/fb4/531aa81c451231277bf6b0f24dd89f7db75.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/aleksandar10.html">aleksandar10</a></p>
+      <p class="commentdate">Sunday, April 1, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>nice</section>
+    </li>
+    <li id="comment-87047482">
+      <a href="../../../author/edward77055.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/19/ff4/815c6185e7c11c5d0d41b1aa856085a1127.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/edward77055.html">Edward Batten</a></p>
+      <p class="commentdate">Wednesday, April 11, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Opera has great speed and the best text re-flow for the N9. Awesome work! No one has asked, but but for some reason, Opera is not one of the choices on the N9 to be selected as default browser. Could you cool Opera folks make that adjustment?  Right now, only native browser and FF come up as choices, but we want Opera, if possible.<br/><br/>Flash would be awesome, since there is a lot of flash content, like it or not. Right now, FF is our only flash option, and I would love it if you folks might have a plugin available? I bet you could spank FF, if you wanted to.  <br/><br/>I like your keyboard okay, but N9 keyboards would help, THOUGH cut and paste integration with the rest of the device is more valuable to me.<br/><br/>Thanks for the cool product. . .</section>
+    </li>
+    <li id="comment-87633462">
+      <a href="../../../author/et3rnal87.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/90/868/9925abcf7fab835b87077f4e2a0dd4c9ffd." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/et3rnal87.html">et3rnal mind</a></p>
+      <p class="commentdate">Thursday, April 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Please we need custom user agent option :(, No such a thing in opera:config!<br/></section>
+    </li>
+    <li id="comment-91220232">
+      <a href="../../../author/varacity.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/af/901/6ee600800f7f270e547cd62a221c59a00bb." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/varacity.html">varacity</a></p>
+      <p class="commentdate">Sunday, June 17, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Thank you Opera developer team! This browser is fantastic, the text re-flow blows the minds of fennec and the default browser! Opera as usual has very good performance and quite honestly could blow all other browsers out of the water on the N9. <br/><br/>The only thing stopping me from using this browser exclusively is due to the fact that it does not use the N9&#39;s keyboard. The N9&#39;s keyboard is a joy to use, in my opinion, and as such makes it very hard to change.</section>
+    </li>
+    <li id="comment-91448152">
+      <a href="../../../author/hs1967.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/e1/bf5/11833b17a9e5dc981bf44b8a2d80d893cea." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/hs1967.html">hs1967</a></p>
+      <p class="commentdate">Thursday, June 21, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>No update?</section>
+    </li>
+    <li id="comment-92462802">
+      <a href="../../../author/tigas.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/be/fb3/b2a9138c2bdce6929edf51a38d78e8acacb.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/tigas.html">Tiago Joao Silva</a></p>
+      <p class="commentdate">Monday, July 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>My N9 has just notified me of an Opera Mobile Labs update, 12.00.2. Where&#39;s the changelog?<br/><br/>Changes seen so far:<br/>* Presto 2.10.254<br/>* Possible to change User Agent (to S60, Android, MeeGo and Desktop)<br/>* Localization of the interface for Portuguese and possibly other languages<br/>* Setting for using the native harmattan keyboard (Always, For everything but web addresses, Never)  Too many bugs  <br/>I&#39;m willing to report all of them: Keyboard hides active text field - does not push page up; always appears in landscape, even when phone and Opera are in portrait; native keyboard is hard to dismiss; text written by native keyboard appears very very small on Google search field of the address bar; sometimes even the two keyboards appear at the same time.<br/>* Adds new pages to Speed Dial<br/>* Seems to PEG the CPU at 100% (Labs 11.5 did not sleep when idle, but wasn&#39;t always 100%)<br/>* No Mobile Extensions support (still Android-only)</section>
+    </li>
+    <li id="comment-92688892">
+      <a href="../../../author/varacity.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/af/901/6ee600800f7f270e547cd62a221c59a00bb." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/varacity.html">varacity</a></p>
+      <p class="commentdate">Friday, July 13, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>I just tried out Opera 12, it is nice to see the native keyboard, it seems overall it is a major regression from 11.5. I am seeing many of the same issues as Tiago. Sometimes the keyboard does not appear to type anything until the text field is pressed again and refocused for me.</section>
+    </li>
+    <li id="comment-93887692">
+      <a href="../../../author/mymos.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5a/c14/992c01da1dccd23d9530900554439c09d10.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mymos.html">Mostyn Bramley-Moore</a></p>
+      <p class="commentdate">Thursday, August 2, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Here&#39;s the changelog for the Opera Mobile Labs 12 builds that have been released so far.<br/><br/>Changelog for 12.00.2:<br/>* Update to version 12, overview of new features: <a href="http://my.opera.com/mobile/blog/2012/02/27/opera-mobile-12" target="_blank">http://my.opera.com/mobile/blog/2012/02/27/opera-mobile-12</a><br/>* Removed bundled Droid fonts, switched to using Nokia Pure Text.<br/>* Suspend scripts, animations, etc. while in background to save power.<br/><br/>Changelog for 12.00.6:<br/>* Opera can now be set as default in Settings, Applications, Web, Default browser.<br/>* Fixed display of CJK and Indic fonts in title bar and other UI elements.<br/>* Fixed user-agent header to properly indentify as Linux instead of (null).<br/>* Removed broken native on-screen keyboard support.<br/><br/>Changelog for 12.00.8:<br/>* Fixed suspend when in background.<br/>* Fixed MIME types preventing images from opening in the gallery.<br/>* Enabled custom user agent setting in opera:config.<br/>* Fixed user agent to correctly identify as a mobile device.</section>
+    </li>
+    <li id="comment-94514652">
+      <a href="../../../author/ae868186.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/1e/858/5af6d3a09a6752ca65ff52c6f3431bb3c57.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/ae868186.html">ae868186</a></p>
+      <p class="commentdate">Sunday, August 12, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>N9在国内几乎都是女士在用，而且也没几个女士是只有一部N9，她们还有iPhone，或其他手机，Opera N9，可有可无</section>
+    </li>
+    <li id="comment-96134632">
+      <a href="../../../author/yourscreamsareinvain.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/ac/f0c/f0185b9e29100c071fe337bc231a2dbec88.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/yourscreamsareinvain.html">Roby</a></p>
+      <p class="commentdate">Sunday, September 9, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>any news about updates? I love Opera as a browser but the native keyboard sucks compared to the one of the N9</section>
+    </li>
+    <li id="comment-98235282">
+      <a href="../../../author/mpresnitz.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/90/abc/d4acd09f77cf6dbf68ff1b05c7fd90b9f3d.gif" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mpresnitz.html">M.P.</a></p>
+      <p class="commentdate">Thursday, October 18, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Received update to 12.1.1 (identifies as 12.10) over Ovi Store today =&gt; Opera team, thanks a lot!<br/>A new option (I think) is ,Touchscreen feedback&#39; -- sounds promising, but I couldn&#39;t get it to work?!<br/>Unfortunately still the homemade keyboard.<br/><br/>@Mostyn Bramley-Moore: Thanks for posting the changelog.</section>
+    </li>
+    <li id="comment-98276552">
+      <a href="../../../author/mymos.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/5a/c14/992c01da1dccd23d9530900554439c09d10.jpg" alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/mymos.html">Mostyn Bramley-Moore</a></p>
+      <p class="commentdate">Friday, October 19, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>Here&#39;s the Changelog for 12.1.1:<br/>* Fixed Opera Turbo off when on WiFi setting.<br/>* Fixed display of simplified Chinese in in title bar and other UI elements.<br/>* Added Cantonese, Finnish, Kazakh, Malay, Persian, Romanian, Slovene, Thai, Turkish and Vietnamese translations.<br/><br/>See the Android announcement for details on whats new in Opera Mobile 12.1. (As usual not all new features may be present in the N9 version.):<br/><a href="http://my.opera.com/mobile/blog/2012/10/09/opera-mobile-12-1-for-android" target="_blank">http://my.opera.com/mobile/blog/2012/10/09/opera-mobile-12-1-for-android</a></section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/mymos.html" rel="author">Mostyn Bramley-Moore</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, February 21, 2012
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/Harmattan.html" rel="tag">Harmattan</a></li>
+        <li><a href="../../tags/MeeGo.html" rel="tag">MeeGo</a></li>
+        <li><a href="../../tags/N9.html" rel="tag">N9</a></li>
+        <li><a href="../../tags/Nokia.html" rel="tag">Nokia</a></li>
+        <li><a href="../../tags/opera&#32;mobile.html" rel="tag">opera mobile</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Widget modes: docked, widget, and more - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Widgets - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/widgets">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Widgets - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/widgets">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="widgets">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem" >
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Widget modes: docked, widget, and more</h1>
+      <p class="print author">By Opera Software</p>
+
+      <div class="note">
+<h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">24th April 2012: Please note</h2>
+
+<p>Starting with Opera 12, Opera Widgets will <a href="http://my.opera.com/ODIN/blog/2012/04/24/end-unite-apps-and-widgets">be turned off for new users and completely removed in a later release</a>. If you&#39;re interested in building addons for Opera, we recommend going with our extensions platform — check out <a href="../../../addons/extensions/index.html">our extensions documentation</a> to get started.</p>
+</div>
+
+<h2 id="intro">Introduction</h2>
+
+<p>On some platforms, the Opera Widgets runtime supports more than one mode for the widget to run in, for instance a mobile phone may support modes to show widgets one at a time in fullscreen mode, and to show multiple widgets, with each widget displayed in a separate slot on the screen.</p>
+
+<p>The widget runtime will tell the widget what mode it should run in. The runtime has a fallback solution in case the widget does not support the requested mode. The widget may request a default mode.</p>
+
+<h2 id="modes">Widget modes defined</h2>
+
+<p>The Opera Widget runtime is available on many platforms, including mobile phones, game consoles, media players, set top boxes and desktop computers. The widget runtime has been integrated into the device to best support the device’s characteristics. Widgets may be requested by the runtime to display in one of four different modes:</p>
+
+<ul>
+<li><a href="index.html#modes-widget">Widget mode</a></li>
+<li><a href="index.html#modes-docked">Docked mode</a></li>
+<li><a href="index.html#modes-application">Application mode</a></li>
+<li><a href="index.html#modes-fullscreen">Fullscreen mode</a></li>
+</ul>
+
+<p>The default mode of the widget is determined by the <code>defaultmode</code> attribute of the <code>widget</code> element in the widget’s <code>config.xml</code> file. The Widget runtime may request the widget to switch between the modes, eg from docked to widget and back. Docked mode may for instance be used to show widgets on the phone idle screen.</p>
+
+<h3 id="modes-widget">Widget mode</h3>
+
+<p>The widget mode is the default mode and how widgets traditionally have been displayed. Each widget is rendered in its own window, separate from the browser and without any chrome. The size of the widget is determined by <code>config.xml</code>. The widget author needs to supply mechanisms for resizing and moving the widget if this is desired. This is the default mode if nothing else is specified in the widget’s <code>config.xml</code> file.</p>
+
+<h3 id="modes-application">Application mode</h3>
+
+<p>Like the widget mode, widgets in application mode are rendered in their own window. Unlike the widget mode, windows of widgets in application mode have system chrome. This means widgets in this mode look more native to the platform they are running on. The widget can be moved and resized as a normal window. You can set application mode to be the default mode by setting the <code>defaultmode</code> attribute of the <code>widget</code> element to ‘application’ in the widget’s <code>config.xml</code> file.</p>
+
+<p class="note">Application mode is supported on Opera 10.2+ on Desktop. Widget mode is the default mode.</p>
+
+<p class="note">We recommend developers start using application mode as this makes widget look more native to the platform they are running on. As chrome buttons aren’t required for widget mode either, this will reduce the amount of code the developer will have to write and maintain.</p>
+
+<p>Application mode is the default on the T-Mobile Web’n’Walk platform. Widget mode is not supported on this platform.</p>
+
+<img src="../../../../devfiles.myopera.com/articles/397/widget_chrome.png" title="Application widget with chrome" alt="Application widget with chrome" />
+<p class="comment">Figure 1. Application widget with chrome</p>
+
+<h3 id="modes-fullscreen">Fullscreen mode</h3>
+
+<p>Fullscreen mode looks like application mode except that the widget is rendered as an otherwise maximized native application. You can set fullscreen mode to be the default mode by setting the <code>defaultmode</code> attribute of the <code>widget</code> element to ‘fullscreen’ in the widget’s <code>config.xml</code> file.</p>
+
+<p><img width="225" src="../../../../devfiles.myopera.com/articles/397/full_widget.jpg" alt="Fullscreen widget" height="400" /></p>
+<p class="comment">Figure 2: A Widget in fullscreen mode</p>
+
+<h3 id="modes-docked">Docked mode</h3>
+
+<p>The docked mode, also known as <em>micro widget</em> mode, is a minimized version of the widget, typically docked into a panel – it will generally show summary information, a status icon, or similar. An example is a small news ticker where news items move across a small horizontal bar, or a traffic light to signify the health of a monitored device. A widget is not dockable by default – in order to make it dockable you need to set the <code>dockable</code> property of the <code>widget</code> element to ‘yes’ in the widget’s <code>config.xml</code> file.</p>
+
+<p><img src="../../../../devfiles.myopera.com/articles/397/3_docked_widgets.jpg" alt="3 docked widgets" width="240" height="400" /></p>
+<p class="comment">Figure 3: Widgets in docked mode</p>
+
+<p>Docked mode is currently supported on Opera Mobile 9.5 for S60 and Vodafone and the T-Mobile Web’n’Walk platforms.</p>
+
+<h2 id="adapting">Using CSS to adapt to the current widget mode: The -o-widget-mode media query</h2>
+
+<p>You may style a widget differently for each mode by using a new media query property called <code>-o-widget-mode</code>. Possible values for the property is ‘widget’, ‘application’, ‘fullscreen’ and ‘docked’. You can use it as part of a media query like this:</p>
+
+<pre>
+<code>@media all and (-o-widget-mode:application) {
+  /* We don&#39;t need to display our own user chrome controls, since
+     real chrome is provided */
+  .fakeChrome { display: none; }
+}</code>
+</pre>
+
+<p>By doing a query for the <code>-o-widget-mode</code> property without a value, you can determine if the platform supports widget modes at all:</p>
+
+<pre>
+<code>@media all and (-o-widget-mode) {
+  div.friendlyMessage {
+    content: &quot;I will be displayed if I am a modern widget&quot;;
+  }
+}</code>
+</pre>
+
+<h2 id="event-widgetmode">Adapting to different widget modes: WidgetModeChangeEvent</h2>
+
+<p>When the widget mode changes, a <code>WidgetModeChangeEvent</code> is fired on the <code>widget</code> object. By catching these events, you can programatically adapt the widget to its new state. An example is changing the DOM of the widget when it goes in and out of docked mode:</p>
+
+<pre>
+<code>widget.addEventListener( &#39;widgetmodechange&#39;, function (e)
+{
+    //Change the DOM to show minimal status information
+}, false );</code>
+</pre>
+
+<p>This event does not bubble.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li><a href="../opera-widgets-specification-fourth-ed/index.html">Opera Widgets Specification 1.0, fourth edition</a></li>
+</ul>
+
+<ul class="seriesNav">
+<li><a href="../opera-widgets-sdk/index.html" rel="index">Opera Widgets SDK table of contents</a></li>
+</ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=233224">My Opera</a>.</p>
+  <ul>
+    <li id="comment-88134452">
+      <a href="../../../author/originalherbst.html"><img src="../../../../../https/static.myopera.com/avatars/pool1/d1/a6b/1cba4798008c94ba46d21ed32c093b0af5b." alt="photo" class="avatar"/></a>
+      <p class="commenter"><a href="../../../author/originalherbst.html">ALFRED GÜLZOW</a></p>
+      <p class="commentdate">Thursday, April 26, 2012</p>
+      <section class="commentcontent"><span class="bubble-arrow"></span>deutsch</section>
+    </li>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/operadev.html" rel="author">Opera Software</a></p>
+      <p>
+        <strong>Date</strong>
+        Tuesday, February 9, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/application.html" rel="tag">application</a></li>
+        <li><a href="../../tags/docked.html" rel="tag">docked</a></li>
+        <li><a href="../../tags/fullscreen.html" rel="tag">fullscreen</a></li>
+        <li><a href="../../tags/mode.html" rel="tag">mode</a></li>
+        <li><a href="../../tags/modes.html" rel="tag">modes</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+<aside>
+  <section class="collection">
+<h2><a href="http://dev.opera.com/articles/view">Opera Widgets SDK</a></h2>
+
+<ul >
+  <li class="sub-collection parent-collection">
+<span ></span>Getting started<ul >
+  <li class="sub-collection leaf">
+<a href="../creating-your-first-opera-widget/index.html" >Creating your first Opera widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../packing-and-deploying-your-opera-widget/index.html" >Packing and deploying your Opera Widget</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-preference-store/index.html" >Opera Widgets Preference Store</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-and-ajax-connecting-to-mu/index.html" >Opera Widgets and Ajax: connecting to multiple servers</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Mobile<ul >
+  <li class="sub-collection leaf">
+<a href="../mobile-widget-development-process-advice/index.html" >Mobile widget development process advice</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-mobile-emulator/index.html" >The Opera Widgets Mobile Emulator</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../characteristics-of-widgets-on-mobile-pho/index.html" >Characteristics of widgets on mobile phones</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../adding-a-docked-mode-to-your-widgets/index.html" >Adding a docked mode to your widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../remote-debugging-of-widgets-on-mobile-devices/index.html" >Remote debugging of widgets on mobile devices</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Widgets on Desktop<ul >
+  <li class="sub-collection leaf">
+<a href="../the-opera-widgets-runtime-for-desktop/index.html" >The Opera Widgets runtime for Desktop</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 1: Other Resources<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-style-guide/index.html" >Opera Widgets Style Guide</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widget-support-notes/index.html" >Opera Widget support notes</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../cross-device-development-techniques-for/index.html" >Cross-device development techniques for widgets</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="index.html"  class="current">Widget modes: docked, widget, and more</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../optimizing-opera-widget-graphics-for-mob/index.html" >Optimizing widget graphics for mobile and devices</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../custom-opera-widget-icons/index.html" >Widget icon tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../icon-creator-tutorial/index.html" >Icon Creator tutorial</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../html5-audio-radio-player/index.html" >An HTML5 &lt;audio&gt; radio player</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../introduction-to-opera-dragonfly/index.html" >Introduction to Opera Dragonfly</a>
+
+</li>
+</ul>
+</li>
+  <li class="sub-collection parent-collection">
+<span ></span>Appendix 2: APIs and Specifications<ul >
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-core-dom-reference/index.html" >Opera Widgets - core DOM reference</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../opera-widgets-security-model/index.html" >Opera Widgets security model</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../file-i-o-api-for-widgets/index.html" >File I/O API</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../hello-animation/index.html" >Hello Animation!</a>
+
+</li>
+  <li class="sub-collection leaf">
+<a href="../wcl-developer-guide/index.html" >WCL developer guide</a>
+
+</li>
+</ul>
+</li>
+</ul>
+  </section>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add .current to all .sub-collections above the current .current
+    $('.sub-collection:has(.current)').addClass('current');
+
+    // Iterate over all .sub-collections
+    $('.sub-collection').each(function() {
+        var subCollectionUl = $(this).children('ul')
+          , subCollectionExpander = $(this).children('span');
+
+        if (subCollectionUl) {
+            // Add special CSS rules for parent nodes that should be expandable
+            if (!subCollectionUl.hasClass('root') ||
+                subCollectionUl.css('display') === 'none') {
+
+                // If the node has the .current class, it is per definition shown
+                if ($(this).hasClass('current')) {
+                    $(this).addClass('collection-shown');
+                }
+                // Otherwise, show the node as expandable
+                else {
+                    subCollectionExpander.toggleClass('expandable');
+                    subCollectionUl.css('display', 'none');
+                }
+            }
+
+            // Add a onclick hook to the expander
+            subCollectionExpander.click(function() {
+                var currentDisplay = subCollectionUl.css('display');
+
+                // Toggle appropriate classes
+                $(this).toggleClass('descendant');
+                $(this).toggleClass('expandable');
+
+                // Toggle visibility and appropriate class to parent node
+                subCollectionUl.css('display', currentDisplay === 'none' ? 'inherit' : 'none');
+                $(this).parent().toggleClass('collection-shown', currentDisplay === 'none');
+            });
+        }
+    });
+});
+</script>
+</aside>
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

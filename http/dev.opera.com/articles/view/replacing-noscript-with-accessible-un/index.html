@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Replacing &lt;noscript&gt; with accessible, unobtrusive DOM/JavaScript - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Web - RSS 2.0 Feed" href="../../../feeds/rss/articles/web">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Web - Atom 1.0 Feed" href="../../../feeds/atom/articles/web">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="web">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem"  class="selected">
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="en">
+      <h1>Replacing &lt;noscript&gt; with accessible, unobtrusive DOM/JavaScript</h1>
+      <p class="print author">By Frank M. Palinkas</p>
+
+      		
+	<h2>
+		Introduction</h2>
+	<p>
+		In his book <em>&quot;ppk on JavaScript&quot;</em>, <a href="http://quirksmode.org">Peter-Paul Koch</a> points out that the <code>&lt;noscript&gt;</code> element has a limitation. Modern user agents with JavaScript enabled will hide content contained
+		within the <code>&lt;noscript&gt;&lt;/noscript&gt;</code> tags, and reveal it when JavaScript is disabled. User agents that do not support JavaScript will display the content within it. User agents with partial/antiquated JavaScript capabilities however interpret
+		the element correctly and do not show the content, but when JavaScript is disabled <em>also</em> do not show the content — it never gets seen. This has an impact on the accessibility of the content. If your writing is targeted at modern, standards-based,
+		compliant, and fully capable JavaScript user agents, employing the &lt;noscript&gt; element is no problem. If the user agents among your audience are unpredictable, however, replacing the <code>&lt;noscript&gt;</code> element with another mechanism becomes
+		significant. This article looks at one such solution. 
+	</p>
+	
+	<h2>
+		The solution</h2>
+	<p>
+		So, how can the behavior intended by the <code>&lt;noscript&gt;</code> element be enabled in these antiquated/partially-capable JavaScript user agents? The workflow for my solution is as follows:</p>
+	<ul>
+		<li>Insert an unobtrusive JavaScript &quot;hook&quot; via an <code>id</code> attribute value in the parent container&#39;s opening tag.</li>
+		<li>Associate the &quot;hook&quot; with an external JavaScript function, which sets up a parent-to-child relationship between the container and its content.
+			<ul>
+				<li>
+				When JavaScript is enabled, the external function keeps the alternative content hidden.
+				<li>If the user agent cannot interpret the JavaScript expressions, the alternative content in the markup is revealed.</li>
+				<li>When JavaScript is disabled the function no longer works, and the alternative content in the markup is revealed. This ensures graceful degradation of the script.</li>
+			</li></ul>
+		</li>
+	</ul>
+	
+	<p><strong>Important Note:</strong> if the ability to hide the alternative content with JavaScript does not exist, the browser/user agent will be able to render the content ensuring accessibility and graceful degradation.</p>
+	
+	<h3>
+		Building the Markup</h3>
+	<p>
+		In this section you&#39;ll build up the markup portion of the example.</p>
+	<ol>
+		<li>In the <code>&lt;head&gt;&lt;/head&gt;</code> tags of the web page, insert a <code>&lt;script&gt;</code> element containing the path to the external <code>noscript.js</code> JavaScript file: </li>
+		<li>Create a <code>&lt;div&gt;&lt;/div&gt;</code> within the <code>&lt;body&gt;&lt;/body&gt;</code> tags to contain the hidden content.</li>
+		<li>Give the opening tag of the <code>&lt;div&gt;</code> element an <code>id</code> attribute with a value of <code>&quot;noscript&quot;</code>, that is, <code>&lt;div id=&quot;noscript&quot;&gt;</code> — this sets the unobtrusive hook to the external JavaScript function <code>noscript()</code>.
+			
+		</li>
+		<li>Place all elements and content to be hidden while JavaScript is enabled within the <code>&lt;div id=&quot;noscript&quot;&gt;&lt;/div&gt;</code> container.</li>
+	</ol>
+	<p>
+		The following web page markup sample illustrates this:</p>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+&quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;title&gt;noscript_example&lt;/title&gt;
+  &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot;&gt;
+  &lt;script src=&quot;scripts/noscript.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;noscript&quot;&gt;
+    &lt;p&gt;
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    &lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Hyperlink A&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Hyperlink B&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;	
+</pre>
+	<h3>
+		Building the unobtrusive DOM/JavaScript</h3>
+	<p>
+		In this section I&#39;ll take you through building up the two main sections of the JavaScript.</p>
+	<h4>
+		Writing the <code>if()</code> portion of the function</h4>
+	<ol>
+		<li>Between the <code>if</code> parentheses, place the <code>document.removeChild</code> expression — this tests to see if it is supported by the user agent.
+			<ul>
+				<li>If it <em>is</em> supported the function will continue, and the <code>div</code> content will remain hidden.</li>
+				<li>If it is <em>not</em> supported the function progresses to the <code>else if()</code> statement and tests it.</li>
+			</ul>
+		</li>
+		<li>Declare the container <code>div</code> element and identify its <code>id</code> value as the external, unobtrusive &quot;hook&quot; to the markup.</li>
+		<li>Instruct the parent <code>div</code> to remove all child content within it.</li>
+	</ol>
+	<h4>
+		Writing the <code>else if()</code> portion of the function</h4>
+	<ol>
+		<li>Between the <code>else if</code> parentheses, place the <code>document.getElementById</code> expression to test if it is supported by the user agent.
+			<ul>
+				<li>If it <em>is</em> supported the function will continue, and the <code>div</code> content will remain hidden.</li>
+				<li>If it is <em>not</em> supported the function will end, and the <code>div</code> content will be revealed, establishing graceful degradation of the script.</li>
+			</ul>
+		</li>
+		<li>Return the element <code>id</code> where the style will be applied.</li>
+		<li>Set its <code>style.display</code> to &quot;none&quot; to control the presentation aspect of the child content.</li>
+	</ol>
+	<p>
+		The following script is contained in the <code>noscript.js</code> file, which is kept external, and linked to the web page as described in the <strong>&quot;Building the Markup&quot;</strong> section.</p>
+	
+	<pre>/* noscript.js */
+
+ function addLoadEvent(func) {
+    var oldonload = window.onload;
+    if (typeof window.onload !== &quot;function&quot;) {
+        window.onload = func;
+    } else {
+        window.onload = function () {
+            if (oldonload) {
+                oldonload();
+            }
+            func();
+        };
+    }
+ }
+ var noscript = addLoadEvent(noscript);
+ addLoadEvent(function () { 
+ /* more code to run on page load */ 
+ });
+ 
+ function noscript()
+ {
+   if (document.removeChild)
+     {
+       var div = document.getElementById(&quot;noscript&quot;);
+           div.parentNode.removeChild(div);
+     }
+   else if (document.getElementById)
+     {
+       document.getElementById(&quot;noscript&quot;).style.display = &quot;none&quot;;
+     }
+ }
+</pre>
+	<h2>
+		Summary</h2>
+	<p>
+		This article demonstrates a solution that replaces the <code>&lt;noscript&gt;</code> element with an external, unobtrusive JavaScript function. The <code>noscript()</code> function solves the problem that partially-capable/antiquated
+		JavaScript user agents have with not revealing alternative content if JavaScript is disabled. Employing this function, they will reveal the content as intended. This ensures graceful degradation of the script, and full accessibility to the alternative
+		content. Please feel free to comment on anything you think could be improved upon.
+	</p>
+
+      <section id="author-info">
+        <h1><a href="../../../author/fmpalinkas.html" rel="author">Frank M. Palinkas</a></h1>
+        <a href="../../../author/fmpalinkas.html" rel="author"><img src="../../../../../https/static.myopera.com/avatars/pool1/cc/342/f68559d2b151da8da36c6489c31d53d4b4b.jpg" alt=""/></a>
+        <p>Frank is an American working in Sunnyvale, California with Google Motorola Mobility, Inc. as a Senior Technical Writer, Web Standards &amp; Accessibility Designer.<br/><br/>He authors all markup, presentation, behavior code and content using (X)HTML, HTML5, CSS, and Unobtrusive DOM/JavaScript. His technical writing incorporates web standards, accessibility, and semantics. Frank enjoys creating tutorials which are offered free of charge to the Help Authoring and Technical Writing community.<br/><br/>He is happily married to his wife Wanda (Lighterian Reiki Master/Instructor and Hand Embroidery Instructor), and they have two sons, Gregory (MCSD and Computer Animator) and Andre (Sound and Recording Engineer). Frank and Wanda live in Sunnyvale, California, USA.<br/></p>
+        <br class="clear" />
+      </section>
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=225033">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/fmpalinkas.html" rel="author">Frank M. Palinkas</a></p>
+      <p>
+        <strong>Date</strong>
+        Monday, March 29, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/accessibility.html" rel="tag">accessibility</a></li>
+        <li><a href="../../tags/DOM.html" rel="tag">DOM</a></li>
+        <li><a href="../../tags/javascript.html" rel="tag">javascript</a></li>
+        <li><a href="../../tags/noscript.html" rel="tag">noscript</a></li>
+        <li><a href="../../tags/replace.html" rel="tag">replace</a></li>
+      </ul>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

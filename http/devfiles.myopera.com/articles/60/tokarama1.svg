@@ -1,0 +1,556 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"[
+	<!ENTITY aBi "arrowBase.mouseover;">
+	<!ENTITY aNi "arrowN.mouseover;">
+	<!ENTITY aSi "arrowS.mouseover;">
+	<!ENTITY aEi "arrowE.mouseover;">
+	<!ENTITY aWi "arrowW.mouseover;">
+	<!ENTITY aNo "arrowN.mouseout;">
+	<!ENTITY aSo "arrowS.mouseout;">
+	<!ENTITY aEo "arrowE.mouseout;">
+	<!ENTITY aWo "arrowW.mouseout;">
+	<!ENTITY bk1 "#fcb;">
+	<!ENTITY bk2 "#bee;">
+]>
+<svg width="100%" height="100%" zoomAndPan="disable" onload="init(evt)" 
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:toka="http://www.zuccaralloo.de/toka">
+
+<desc>tokarama: click-n-jump game written by Heiko Niemann in 2004</desc>
+
+<title>tokarama</title>
+
+<style type="text/css"><![CDATA[
+@font-face{font-family:'Verdana64';src:url("data:;base64,\
+T1RUTwADACAAAQAQQ0ZGIL26LSMAAAA8AAAT3kdQT1OwNsTVAAAUeAAAAdRjbWFwAPIBlgAAFBwA\
+AABcAQAEAgABAQEIVmVyZGFuYQABAQE1+BsB+BgEJfw7HAuTHAgBBR6gAEiCgSX/i4seoABIgoEl\
+/4uLDAf3Ew/3KRD3KxGTHBPWEgABAQEwVmVyZGFuYSBpcyBhIHRyYWRlbWFyayBvZiBNaWNyb3Nv\
+ZnQgQ29ycG9yYXRpb24AAAEAAQEACQEADgEAEQoAHgAAIAAAQhkAAAAuAgABACEAJABFALABHAEr\
+ATgB8QIjAqkDogPNBHsFegWYBpYHlQeuB8wIUwkoCbkKSQrXC2YLugyNDOUNAQ1kDY8NnQ5HDp4P\
+HQ+uED4QhxFTEbQSDBItEmcSmRK/Et/5/veUFhwGABwGABz6AAcc+oD3FBUcBQAcBQAc+wAGDvxa\
+DvwE+JccBdEVcf7LBfs+Bm/6ywX3ahz6LxX7YPdn92AGDvuI+aP8MBX7eQb7CvcbL/coSvc0CEr3\
+NGr3SPddGvddrPdIzPc0Hsz3NOf3KPcK9xsI93mBBlVaWFNaTFpLXUFhNmM5azFyKAhyKH4j+wEa\
++waXI6QsHqMsrDG0NrM5uUG+Sb5Iv1O+XQgO+4j5gfjQFftdavtISvs0Hkr7NC/7KPsK+xsI+3mV\
+Br65v8O/zr7NudWy3bTgrOWk6gij6pfz9wYa9wF/83LuHnLua+Vi3WHgXtVay1rKV8NVvAiV93kH\
+9wr7G+f7KMz7NAjM+zSs+0j7XRoO+4j5nfjFFf0E90n5BAYO/EH4gBb7g/ex94MGDhwEj/l9Ffuf\
+YftYOPsRHvsRN/sWTPtEG/tH+xbK9xM5Hzj3E2L3VvebGvedtfdX3vcTHvcS3vcWyvdFG/dH9xZL\
++xTeH937FbT7VvuXGvub/FoVosGby5TUCJPUj+LyGvCH44PWHoLWe8pzv3S+a7JjpQilYleYTBtM\
+WH5xYh9icWpkc1Z0WnxKgzwIgjyHNCwaI480kkUekkWbTKNUoVeqY7RwCHCzwH3OG8q/mKW0H7Sl\
+q7KiwAgO+tAW/br3LPfK+nr7yvccBrW4j5K7H7uSr5WkmKqco6CdpZykla6Otgj3Lxz6wvfEBg4c\
+BJEW/oT3ZQbRx9HH0sfRx8zHyMb3FPcQ4+661Ai61KPZ4BrYcshYtx62WEOhMBtOSoB2RB9EdkZq\
+SF8IgfdmBrqiy6Hangie2teV1Rv3LfcLZkLiH+JBtif7EhpShFd9Wh58WnZcb19xYm1iaGNoY2Bf\
+WVpERUFHP0o/SUROSVMI+bUGDvqi+WEVq26lZ6BgCKBglVNGGkd/TXJSHnJSaVpeYVlcUGlIdQh0\
+R0GAOhs4OpWfOx87nkmhWKII92WaB8RmzWzYcghy2NV/0hu1uJKZuh+6mbKgqKaqqKKsmq4Imq6S\
+uMEawIO4eq4eeq5zpm2fbaBnmWCTCJJgXY9aGzH3OtEG8Nygtsgfx7Wpydwar4OrfKYefKZ1oXCc\
+bpxtl2qSCJJqZo5iG0xHgHREH0R0R2tMYgiB92UGuqLLodqfCJ7a15XVG9TLhH7CH8J+vXW4brtr\
+r2SkXgikXpdWTho4bkNRTh5QTUZkPHsIfQerhrCAtHq0eq51qHIIDhwEs/g3Fftx/Df7VPg3/V33\
+egb5ZfncBfdM/iL3cQb8MRb5NAf81f00BQ4cBIX4bRVGfkhyTB5yTGhVX2BbXFJoSXIIckg+fjQb\
+OjyTnUAfQJxLn1ejCPdnmQfCaMtu1HMIctTTf9IburmSmLgft5iyo66sqKiirZqzCJqzkrnAGr6C\
+t3quHnmucqhsoGikYZ1algiVWVOQThtQU4eDVR9Ug1yDZIMI+ZP6FPtD/VP8IAeojqiNqYwIjKml\
+jKEb3NGEfsgfyH3Cc75owGa1XKhRCKhRmkI0Gg4cBKf4dxX7K1n7ECgsHisn+w5b+yUbQkiWok8f\
+T6JWrF24UsJf1WzmCGzme/cC9xUa9xiZ9wmo8R6n8bjmydrG1tbG6LYItej3AKD3DxuyrImIph+m\
+iKaFpoII+1OBB3iVb5VmlAiUZWSPZBv7I/sHXjI2HzYxWfsNffstw63CpcKdCJzBypTSG8rDhYC8\
+H7t/vHO+aMZit1ipTQioTZpAMhr7X4MVyYK+ebQeeLRtrmGpbKBpmWaSCJJmZI5iG1JXhH5aH1p+\
+WXZYb4p8in2KfgiKfYt6dhoiljihTh6gTqlasWiqbqx1r34Ifa6yhLUb7NepxsIfwsan3/cDGg4c\
+BJUcBPIV/TYc+w4F+2oG+WEcBSIF/eT3Q/qPBg4cBJz4MxX7FVkgJzYeNib7EmD7LBv7NfsVtd4s\
+HyveW/b3Fhreo9a7zh67zs/A4rIIkQc7tlC5Zb4IZL54ytca9wS56OfWHtbn9wmw9yIb9yn3CmdE\
+5B/kRLcw+wIaSHZJYUoeYUpNWDpmCIUH6GPTWrxQCLxQpEEwGvuB+WsV0nDEVLYetVREoDYbN0Z3\
+Y1YfVWNwVUcaW5lipmgepmiza8JwpH+ue7p4uXi4e7d+zbe5uaS6CKS6mMLJGqr9fhXIfr1wsB5w\
+sFawPLBsmmiYZphmmFmcTaJPaltfZ1MIZlN5TEQaMapByVAeUMnabuob7NmkvcYfxb2o0OIaDhwE\
+j/nWFfsWfPsKbiEebSFeMU9ATj8/UDBiCGIw+wB2+w8baGuNj2wfbI5wkXOTCPdTlQeegaeCroII\
+gq6zhrYb9yf3CLfk3x/e47z3Dpj3L01mUXBUewh7VFCDShtOU5GXWh9Zl1miWa5QtF++bsoIbcp8\
+1uIa9yy99xDv6h7q7/cOu/ckG9POgHXIH8h0wWq5XsRUtkSqNAiqNJr7BfseGvtethXygN52yh52\
+ym27Zq5sqWmhZ5gImGdkkWEbKz9tT1QfU09vN/sBGkyUV51jHp1jqWi2bal2rH6vhAiEr7OHtxu/\
+wJKZwB/Amb2fuqaMmYyZjJkIjJiLnaAaDvuI+N351BX7g/ex94MG/vEE+4P3sfeDBg74ihwFl/mi\
+FRz7Xvc0HASiBvzYBBz7Xvc0HASiBg5S+oEcBHMVSn9RdFgedFhsXWVkZmVgZ1pqWmpYalRsCPt1\
++0f3xQe2pLqmvqi9qLSpq6myrqmvoLAIoLCWusQa1nLEWLAesFhJnTobQ0eAdEsfSnRYdGZ0CIH3\
+YAa6ncab05oImdLPkssb9yP3BmhG3h/eRbQv+wYa/B8c+40V+2D3Z/dgBg7D+rEW+0/3CwZ6gHV7\
+b3dudnB7cH9sfGd+YoEIgGJchlQbJjaszkUfRc5o4PIa4J3PsMAer7+/tM6pz6ndn+qW6pbyk/cB\
+kAioB7aErnynHnyndaFvm3Caa5ZmkAiQZmSOYhtaVIV+Th9Ofk14SnIIgfdTBrCVwJbQlwiX0NCR\
+zhvaz4V+xh/Ffr10tmy1bKtkoVoIoVqWT0Ma+0/8dxX3ywdSiEeGPoQ9hE2CXn5VfF9zamsIamp6\
+X1IaS55bsmsearLGe9obzceYpcIfwqS9qrqvCA7xHASQ+MsVLn43cUAecEBoTV5YXFZXZFJxCHBS\
+TX5HG0xTkptcH1yaXJ9dpH9XGPtEHAYU91D8wAbAtsOvxqcIpsbOmdUb9xjzWCbYH9cmsfsj+00a\
++1aGFfcZdfFf0B7QX0StKRtUVH90Ux9Tc1dsW2YI/RQHwHO5erKCCIKxtoa8G/PdrdDGH8bPqPb3\
+JhoOIPqH0RVMbVB0U3oIelJPg0wbOkGXo0gfSKJRr1u7WrtmyHDUCHDUfuHtGvdLvfcj8PMe8+/3\
+GL/3ORvLyoJ5yR/IecR1vnEI+2WBB1K4UK1OowijTk+XURsgN2dETh9NQ2wi+x8a+xupJMhDHkLH\
+4Gf3ARuxspCVsh+yla+YqpummaWao5ujmp6ZmZYIlQYO8frXFvtQ9wkGVVxTZ1BxCHFQTH5GG/sZ\
+Ib7yPR888mT3IvdKGuqZ36bVHqbVr8q5v7i+wLHIpgimx8mYzBvGv4V/uB+4frt4vXEI+Hj3UAf7\
+UBz6/xX5FQdYol6aY5QIlGNfj1wbIjlmQlAfUEJuI/sbGvsZoie4Rh5GuNRo7xvAwZejwh/Cor6q\
+urAIDrn69PivFf3LBkaVUKBYHqBYp2Gvaq5rtHO7ewh7usCDxBvX2Jqq2B/YqcGprKgIlfthBkxw\
+SnVJeQh5SUaCQhv7TfslvfAjHyPvV/ci900a90u99yXv9h727vcXwfc3G/cr9whfM90f3DO0+xH7\
+Nhr7S7UViu5z11rBCMFaQKYnGyY7bVBQH09QaUGDMwgO/Fr5phwFXhWBBnaRcJFqkgiRam2Ochs6\
+UXloZx9mZ3lKLhpl9+f7Mvvh/lP7UPpT+xP3MvcTsAf3GazxzdIe0s3qrvcRG7WxiYetH6yHqoan\
+hggO8frX9xMV+1Fg+x81Mh4yNfsYX/tHG1BRj5RTH1KTVJdUmgj3VJUHqn+7fM56CHnOzYLOG8vA\
+k5q1H7WarKGipqKlnKqVsAiVsJC0uBrxB1JeVWlYdQh0V0mAOxv7GSG77D0fPOtk9xz3Qxrrmd6m\
+0R6m0K/Hur62usCwyaYIpcnJmMgbzMGFfrcftn65d7xwl7sY90QG+1D9vhX49QdZol2bYJUIlGBg\
+kGAbJDloRlAfUEZtJvsYGvsRoSy3Sh5Kt9Rr8RvCwpagwh/CoL2nua4IDvcO+vMW+1D5EAa+iLyF\
+uB6FuICue6R6p3OgbJkImGxiklkbWFV+clMfU3JValhkCP3W+1AcBhT3UPzHB8a8x7HKpgimysuZ\
+zRv3DednQsofykKrI/sdGg78+PgXHAUYFfto91f3aAZ/HPolFftQ+vH3UAYO/Gn4qRwFGBX7aPdX\
+92gGfxz6ChX7F2opSEgeSEgyavsEG3BojpBgH1+QZpJukwj3R5UHnoSkgquCCIKqqoapG7uykpio\
+H6iYoZ+appqmlKuQsQiPsI25wRr6GPt99zL4OQcOsRwErxb7jAb8VPh9+w77CAX8CftQHAYU91D+\
+egf4s/jDBfeBBvyb/JgFDvz4+AsW+1AcBhT3UAYO+cYcBxcW+1D5EAa7ibmHuB6GuIKufaZ8qHWg\
+bpoImm5iklUbVld+cVYfVnBXalZijXyNeYx3CIx2jHd3Gv1f+1D5EAe8ibqHuB6Gt4KufaZ8qHWg\
+bpoImW5iklUbWFd+clgfV3JXalhkCP3W+1D68fdQ+xAHxrzFscamCKbFyZnNG9fMe2vAH8Brsl+l\
+UtfL0LnKqAinys6Z0hv3D+VmQcYfxUCoI/sZGg73DvrzFvtQ+RAGvoi8hbgehbiArnukeqdzoGyZ\
+CJhsYpJZG1hVfnJTH1NyVWpYZAj91vtQ+vH3UPsQB8a8x7HKpgimysuZzRv3DednQsofykKrI/sd\
+Gg7QHARx+MIV+0pc+yQuIh4iLvsRVvsxG/sy+xHA9C4fLvRc9yT3Shr3Srr3JOj1HvTo9xHA9zIb\
+9zH3EVYi6B/oIbr7JPtKGvtWFvclb/ZS0h7RUj2uJhslPGhFUx9SRG8g+yUa+yCnIcRDHkLE2mfw\
+G+/ar9PEH8TSp/b3IRoO8RwEkPjQFTB+OXFAHnFAZktcV19aV2VQcAhwT0x9SBtRV5GYXB9cmFue\
+WqYI/Gj7UBwF+fdQ+wkHvbXDrsqoCKfJzZnSG/cb9Fgm1h/WJbD7IftJGvtWhhX3G3TvXc4ezl1E\
+rCwbVVV/dFQfVHRXbFllCP0NB8BzuXuyggiCsbaHvBv03K7Sxh/G0qjz9x8aDvH61/wwFftQ+K4G\
+UVlRZlJzCHJSTX9IG/sZIr7yPB888WP3IfdIGuuZ4KfVHqbUsMm4vbe8v7DGpgimxsqYzRvHwIR+\
+uh+5frp3u3GXuxj3RAb7UP3VFfkMB1eiXZxjlAiUY2CQXBv7ATlmQlIfUkFvJfsVGvsXoie5RR5E\
+uNNo7RvCwZejwh/Cor6qurAIDvvA+gb6JBWBBm+ScJBxjgiOcGyMZxtRU35yVR9VcVdqWWII/a37\
+UPrx91D7OQfWx822xKQIpMTFl8YbrKKKipofmomhiKiGCA4g+mv31hUlYTc3Sh5KNvsHavsmGzhA\
+lZ9GH0aeUaFcogj3Z5UHxl7NaNRxCHDU0H7OG97LmKa6H7qmorXEGrd+rHKiHnKiWp5Dm3CRaZJg\
+k2CTY5RolCmlRrFivghivXbJ1Bq5lbaetB6etKevsquwqrukxZ4IncTMlNIbzs6De9Afz3rEd7h0\
+CPtdgQdbrlGpRqQIo0ZIl0kbRlF+cVwfXHBzZFcaXZloqHQep3S4eMp8roOyg7aDtoOuhKiE4nfP\
+abpaCLpao0k6Gg78A/mRlRVogmSDYoUIhWFmiGob+wY0qshQH1DIbe73Gxr45vsT9zL3E/fV91D7\
+1fgY+zL8GPyRB1CMXo5qHo5qlGybbppwn3ilfwh+pLKFwBuqq5CUrB+slKOSmpEIlQYO9w766xb7\
+UPcQBkxZTmVRcAhwUUt+RRv7CS+v00ofStJq9PcfGvlp91D9EAdSjluQYx6QYpdpnG6dbqJ1qH4I\
+fqi0hMIbvMCYpMUfxKTBrL2yCPnW91AHDrEcBH/68RX8WP7xBftRBvxV+vEF92AG9+7+Dffr+g0F\
+DviKHAY2+vEV+7f+8QX7Qgb7s/nx+7H98QX7QQb7uvrxBfdYBvdh/fX3q/n1BfcvBvey/fX3Vvn1\
+BQ6xHASAFvuBBvvR+EH70/xBBftvBvhI+MH8RPjEBfeBBvfP/Dr30Pg6BfdwBvxL/LoFDrEcBH/6\
+8RX9IBz6BwX7XQb3ZPhm/FH6uwX3YAb36/3Q9+750AUOKfp3Fv4a9x8G+R/5yQX9Efcx+fv7Ggb9\
+Iv3MBfkzBg4cBRYUHASWFQAAAAAAAQAAAAMAAAAMAAQAUAAAABAAEAADAAAAIQApAC4AOgA9AD8A\
+ev//AAAAIAAoAC0AMAA9AD8AYf///+H/2//Y/9f/1f/U/7MAAQAAAAAAAAAAAAAAAAAAAAAAAQAA\
+AAoAHgAsAAFERkxUAAgABAAAAAD//wABAAAAAWtlcm4ACAAAAAEAAAABAAQAAgAAAAEACAABAXIA\
+BAAAABMAMABKAFAAXgBoAG4AhACSAKAArgC8AM4A2ADmAPABBgEUAS4BVAAGABT/7AAp/9gAKv/s\
+ACv/zgAs/9gALf/YAAEABf9gAAMAKf/wACr/9gAs//AAAgAG/+wALP/7AAEABf/sAAUABABkAAX/\
+zgAG/4gAEwBuACz/9gADACn/7AAq//YALP/sAAMABf+cABj/7AAi/+wAAwAp/+wAKv/2ACz/7AAD\
+ACn/7AAq//YALP/sAAQABv/sACn/8QAr/+wALP/xAAIABv/sACz/+wADAAX/7AAG/t4AFP/cAAIA\
+Bf/YACz/9gAFAAX/2AAG/0wAFP/YABj/7gAi/+4AAwAF/+wABv+6ABT/7AAGAAX/zgAW/+wAF//2\
+ABj/6AAa//YAIv/oAAkABf/YAAb/QgAU/9gAFv/uABf/9gAY/+4AGv/2ACL/7gAk//YABwAF/+wA\
+Fv/2ABf/9gAY//QAGv/2ACL/9AAk//YAAQATAAUABgAUABUAFgAZABsAHgAgACEAIgAjACUAJwAp\
+ACoAKwAsAC0=")}
+@font-face{font-family:'VerdanaBold64';src:url("data:;base64,\
+T1RUTwACACAAAQAAQ0ZGIOoyAt8AAAAsAAADyGNtYXAB4AHtAAAD9AAAAFwBAAQCAAEBAQ1WZXJk\
+YW5hLUJvbGQAAQEBNfgbAfgUBPsq/D0cDagcCAEFHqAASIKBJf+Lix6gAEiCgSX/i4sMB/cYD/cn\
+EPcpEZL6VRIAAQEBMFZlcmRhbmEgaXMgYSB0cmFkZW1hcmsgb2YgTWljcm9zb2Z0IENvcnBvcmF0\
+aW9uAAAAAAEAQgBMAE4AUABTAFUAAAAIAgABACEAIgDsARYBuAJuArcDGPjR95QWHAYAHAYAHPoA\
+Bxz6gPcUFRwFABwFABz7AAYODiD55ve5Ffd+B1qHV4ZShFKEYIJugmeAcHp4dgh4dYFuaBp0jXiP\
+fB6PfJV9m36afp6BoIUIhKCtiLgbr7CSmrAfsJqrnqejCPtCBHh8c3pudm52cHtyf2h7Zn9lhAiD\
+ZWGHXhsgMqzNQx9DzWff8hrdnc6wvx6wv7+0zqnOqd2g7pjumPGU9ZEIkQfJcrZYox6iWEGXKBtQ\
+S4F2SB9Idlp6boAIavejBrGVyZfhmQiY4OGS4Rv3YfcobEzmH+ZMuCj7Gxr9kPv5Bw4mHAVSFvw3\
+BvvP+H0p+wsF/Ab7/BwGFPf8/jUH+Bj4hAX4Mwb8KPx4BQ75SBwE9PmwFf2w+/74xQfCirmIsh6I\
+sYSqf6N/o3mdc5YIlnJpkF8baGiEfWofanxtfHB7CP2w+/z69/f8+xAHybzGscSmCKbEyZnQG9XM\
+e2rEH8Rqt1qrS9PI0brPrgiuz86czBv3DehnQsofykKqI/sdGv1v+/74xQfCirqJsR6IsYSqf6OA\
+o3mdcpYIlnJpkF4bbW6GgW4fboBoemJzCA5GHAUm+MUV+01V+yUgIR4g+wD7K1b7Vxv7V/srwPYg\
+H/sA9VX3JfdNGvdOwfcm9wH1HvX3APcrwPdVG/dY9yxWIPYf9iDA+yX7TRr8T/ulFaKona2XtAiW\
+s5HD0hrNhcJ/uB5/uHqudqZ2pnGfbZYIlm1rkWgbaG2GgnAfcIJxeHJvdXF6Z35eCH5ehFJGGk6R\
+VpZeHpZenGahcKBxpXipfwh/qK2FsRusqpGWqR+olqSdoKUIDvxd+mz5oBVrBnyQco9pjgiOaW+M\
+dBtYXYiEZB9khGCAXnsI/YT7/Pr39/z7OQfaz9C4xqIIocbBlrwbmJmLipsfm4qZipeKCA78svoM\
+lRVkgWKDYIYIhWBWiEwb+yAjp8RHH0bEaez3HRr4ofso94j3KPfV9/z71ffl+4j75fwiB2SLaIxu\
+HoxukHCVdJR0nHijfgh9oq6EuBueo4+Tqh+pk6CSl5IIqQYO+VAUHAXDFQAAAAEAAAADAAAADAAE\
+AFAAAAAQABAAAwAAACAAYQBrAG0AbwByAHT//wAAACAAYQBrAG0AbwByAHT////h/6H/mP+X/5b/\
+lP+TAAEAAAAAAAAAAAAAAAAAAAAA")}
+]]></style>
+
+
+<script><![CDATA[
+
+var svgDoc;
+
+var xlinkNS = 'http://www.w3.org/1999/xlink';
+var tokaNS = 'http://www.zuccaralloo.de/toka';
+
+var tokData = 'xxxtttxxxxxxtttxxxxxxtttxxxtttttttttttttotttttttttttttxxxtttxxxxxxtttxxxxxxtttxxx';
+var display = {t:'inline',o:'none',x:'none'};
+
+var stats = {tok:[],n:[],e:[],s:[],w:[]};
+
+var toka = {a:null,b:null,c:null,pos:null};
+
+var animToken,dotts,tokas,board;
+
+var direx = {
+   n:{a:'m0,0 c -5,-25 50,-75 50,-60', b:'m0,0 l 50,-60', c:'.15 .05 .3 .1', d:-9},	
+   s:{a:'m0,0 c-15,-10-50,15 -50,60',  b:'m0,0 l -50,60', c:'.15 .45 .6 .75',d: 9},	
+   e:{a:'m0,0 c 25,-15 80,-10 100,20', b:'m0,0 l 100,20', c:'.15 .45 .6 .75',d: 1},	
+   w:{a:'m0,0 c-35,-40-80,-45-100,-20',b:'m0,0 l-100,-20',c:'.15 .05 .3 .1', d:-1}
+};
+
+var coords = {x:0,y:0};
+
+
+function init(e) 
+{
+	var i,j,tChar,xpos,ypos,disp,tran,newDot,newTok;
+	
+	svgDoc = e.target.ownerDocument;
+	
+	animToken = svgDoc.getElementById('animToken');
+   	
+	dotts = svgDoc.getElementById('dotts');
+	tokas = svgDoc.getElementById('tokas');
+	board = svgDoc.getElementById('board');
+			
+	for (var k=0; k<81; k++) 
+	{
+		i = Math.floor(k/9);
+		j = k%9;
+		
+		tChar = tokData.charAt(k);
+	
+		stats.tok[k] = tChar;
+	
+		if (tChar!='x') 
+		{
+			xpos = 200 + j*50 - 25*i;
+			ypos = 45 + j*10 + 30*i;
+			tran = 'translate(' + xpos + ',' + ypos + ')';
+			disp = display[tChar];
+			
+			newDot = svgDoc.createElementNS(null,'use');
+			setAttr(newDot,null,'transform',tran);
+			setAttr(newDot,xlinkNS,'href','#dot');
+			dotts.appendChild(newDot);
+			
+			newTok = svgDoc.createElementNS(null,'use');
+			setAttr(newTok,null,'id','t'+k);
+			setAttr(newTok,tokaNS,'tid',k);
+			setAttr(newTok,null,'display',disp);
+			setAttr(newTok,null,'transform',tran);
+			setAttr(newTok,xlinkNS,'href','#toka');
+			tokas.appendChild(newTok);
+		}
+	}
+	calculateScore();
+	svgDoc.documentElement.addEventListener('mousemove', getCoords, false);
+}
+
+function getCoords(e) 
+{
+	coords.x = e.clientX;
+	coords.y = e.clientY;
+}
+
+function startGame() 
+{
+	setAttr('introGroup',null,'display','none');
+	setAttr('introHint',null,'display','none');
+	setAttr('resetButton',null,'display','inline');
+}
+
+function resetBoard() 
+{
+	for (var k=0; k<81; k++)
+	{
+		tChar = tokData.charAt(k);
+
+		stats.tok[k] = tChar;
+
+		if(tChar!='x') setAttr('t'+k,null,'display',display[tChar]);
+	}
+	calculateScore();
+}
+
+function overToken(e) 
+{
+   var curToken = e.target; 
+	if(e.target.correspondingUseElement) curToken = e.target.correspondingUseElement; 
+		   
+   toka.pos = curToken.getAttributeNS(null,'transform');
+   setAttr('arrowGroup',null,'transform',toka.pos);      
+
+	toka.a = parseInt(curToken.getAttributeNS(tokaNS,'tid'));
+	
+	setAttr('arrowN',null,'display',stats.n[toka.a]);
+	setAttr('arrowS',null,'display',stats.s[toka.a]);
+	setAttr('arrowE',null,'display',stats.e[toka.a]);
+	setAttr('arrowW',null,'display',stats.w[toka.a]);
+	setAttr('arrowGroup',null,'display','inline');
+}
+
+function overBoard()
+{
+	setAttr('arrowGroup',null,'display','none');
+}
+
+function setAnim(nwse)
+{
+   tokas.removeEventListener('mouseover',overToken,false);
+	board.removeEventListener('mouseover',overBoard,false);
+	setAttr('resetButton',null,'pointer-events','none');
+	
+	setAttr('arrowGroup',null,'display','none');
+					
+	toka.b = toka.a+direx[nwse].d;
+	toka.c = toka.a+direx[nwse].d*2;
+	
+	setAttr('animToken',null,'path',direx[nwse].a);
+   setAttr('animShadow',null,'path',direx[nwse].b);
+   setAttr('animShadow',null,'keySplines',direx[nwse].c);
+	
+	setAttr('hopper',null,'transform',toka.pos);
+	setAttr('hopper',null,'display','inline');
+	setAttr('t'+toka.a,null,'display','none');
+       
+	animToken.beginElement();
+}
+
+
+function tokaLanding(evt) 
+{		
+   setAttr('t'+toka.c,null,'display','inline');
+	setAttr('t'+toka.b,null,'display','none');
+	setAttr('hopper',null,'display','none');
+  	
+	stats.tok[toka.a] = 'o';
+   stats.tok[toka.b] = 'o';
+   stats.tok[toka.c] = 't';
+
+	setTimeout('calculateScore()',50);
+}
+
+function calculateScore() 
+{
+	var nbtok = 0;
+	var nbmov = 0;
+		
+	for (k=0; k<81; k++)
+	{
+		i = Math.floor(k/9);
+		j = k%9;
+		
+		stats.n[k] = 'none';
+		stats.s[k] = 'none';
+		stats.e[k] = 'none';
+		stats.w[k] = 'none';
+		
+		if (stats.tok[k]=='t')
+		{ 
+			nbtok++;
+			if (i>1 && stats.tok[k-9]=='t' && stats.tok[k-18]=='o') 
+			{
+				nbmov++; 
+				stats.n[k] = 'inline';
+			}
+			if (j<7 && stats.tok[k+1]=='t' && stats.tok[k+ 2]=='o')
+			{
+				nbmov++; 
+				stats.e[k] = 'inline';
+			}
+			if (i<7 && stats.tok[k+9]=='t' && stats.tok[k+18]=='o') 
+			{
+				nbmov++; 
+				stats.s[k] = 'inline';
+			}
+			if (j>1 && stats.tok[k-1]=='t' && stats.tok[k- 2]=='o') 
+			{
+				nbmov++; 
+				stats.w[k] = 'inline';
+			}
+		}
+	}
+		
+	if (nbmov==0) 
+	{
+		if(nbtok<=1) {
+			setAttr('winner',null,'display','inline');
+			setAttr('almost',null,'display','none');
+		}
+		else {
+			setAttr('winner',null,'display','none');
+			setAttr('almost',null,'display','inline');
+		}
+		
+		setAttr('intro',null,'display','none');
+		setText('tokleft','tokas left: '+nbtok,null);
+		setAttr('introGroup',null,'display','inline');
+		setAttr('resetButton',null,'display','none');
+				
+		resetBoard();
+	}
+	else 
+	{
+		tokas.addEventListener('mouseover',overToken,false);
+		board.addEventListener('mouseover',overBoard,false);
+		setAttr('resetButton',null,'pointer-events','all');
+		
+		setAttr('shield',null,'cx',coords.x);
+		setAttr('shield',null,'cy',coords.y);
+		setAttr('shield',null,'display','inline');
+		setTimeout("setAttr('shield',null,'display','none')",300);
+	}
+}
+
+function setAttr(elem,ns,attr,val) 
+{
+	var target = (typeof elem == 'string') ? svgDoc.getElementById(elem) : elem;
+	target.setAttributeNS(ns,attr,val);	
+}
+
+function setText(elem,val) 
+{
+	var target = (typeof elem == 'string') ? svgDoc.getElementById(elem) : elem;
+	target.firstChild.data = val;
+}
+
+]]></script>
+
+
+<defs>
+   
+	<!-- gradients -->
+   <linearGradient id="gradTokas" gradientTransform="rotate(55)">
+      <stop offset="20%" stop-color="#885" />
+      <stop offset="90%" stop-color="#331" />
+   </linearGradient>
+
+   <linearGradient id="gradDotts" gradientTransform="rotate(55)">
+      <stop offset="20%" stop-color="#aaaaa0" />
+      <stop offset="90%" stop-color="#bbbbb0" />
+   </linearGradient>
+	
+	<!-- button,dot,toka,arrow --> 
+	<rect id="button" x="0" y="0" width="20" height="20" rx="5" fill="#bdc8d2" fill-opacity="1" stroke="#444" stroke-width="1.5"/>
+
+   <ellipse id="dot" cx="0" cy="0" rx="17" ry="10" fill="url(#gradDotts)" stroke="#999990" stroke-width="1"/>
+
+   <g id="tokaTop" >
+      <ellipse cx="1" cy="0"  rx="17" ry="10" fill="#331"/>
+      <ellipse cx="0" cy="-4" rx="17" ry="10" fill="#eee" opacity=".9"/>
+      <ellipse cx="0" cy="-6" rx="17" ry="10" fill="url(#gradTokas)"/>
+   </g>
+
+	<g id="toka">
+      <ellipse cx="5" cy="3" rx="17" ry="10" fill="#464646" opacity=".7"/>
+      <use xlink:href="#tokaTop" />
+   </g>
+
+   <path id="arrowSymb" d="M0,-3.5 l-3.3,4.7 2.5,0 0,2.3 1.6,0 0,-2.3 2.5,0z" fill="maroon" stroke="maroon" stroke-width="1" stroke-linejoin="round" pointer-events="none"/>
+
+   <ellipse id="arrowBack" cx="0" cy="0" rx="6" ry="6" stroke="#600" stroke-width=".5"/> 
+   
+	<!-- animations -->
+	<set xlink:href="#backN" attributeName="fill" to="&bk2;" begin="&aNi;" end="&aNo;&aSi;&aEi;&aWi;&aBi;"/>
+	<set xlink:href="#backS" attributeName="fill" to="&bk2;" begin="&aSi;" end="&aNi;&aSo;&aEi;&aWi;&aBi;"/>
+	<set xlink:href="#backE" attributeName="fill" to="&bk2;" begin="&aEi;" end="&aNi;&aSi;&aEo;&aWi;&aBi;"/>
+	<set xlink:href="#backW" attributeName="fill" to="&bk2;" begin="&aWi;" end="&aNi;&aSi;&aEi;&aWo;&aBi;"/>
+
+	<animateMotion id="animToken" xlink:href="#hoptop" begin="undefined" dur="1.5s" onend="tokaLanding()"/>
+   <animateMotion id="animShadow" xlink:href="#shadow" begin="animToken.begin" dur="1.5s" calcMode="spline"/>
+	<animateTransform xlink:href="#shadow" begin="animToken.begin" dur="1.5s" attributeName="transform" type="scale" values="1;1.1;1.1;1" />
+	<animate xlink:href="#shadow" begin="animToken.begin" dur="1.5s" attributeName="opacity" values=".7;.5;.5;.4;.4;.7" />
+	
+</defs>
+
+
+<!-- background -->
+<rect x="-1000" y="-1000" height="3000" width="3000" fill="#d3d0c3"/>
+
+<!-- begin viewing area -->
+<svg width="100%" height="100%" viewBox="-30 10 680 450">
+
+<!-- frame -->
+<rect x="10" y="10"  rx="0" width="600" height="400" fill="none" stroke="#111" stroke-width="1" />
+<rect x="11" y="11"  rx="0" width="600" height="400" fill="none" stroke="#eee" stroke-width="1" />
+
+<!-- board -->
+<g id="board">
+
+   <g transform="translate(305,210) rotate(-5)">
+      <ellipse cx="2" cy="16" rx="281" ry="174" fill="#777770" fill-opacity=".2"/>
+      <ellipse cx="0" cy="13" rx="281" ry="174" fill="#777770" fill-opacity=".5"/>
+      <ellipse cx="0" cy="11" rx="280" ry="169" fill="#664" fill-opacity=".9" stroke="#443" stroke-width="1"/>
+      <ellipse cx="0" cy="0"  rx="280" ry="170" fill="#aaaa9d" stroke="#221" stroke-width=".8"/>
+   </g>
+
+   <g id="dotts" />   
+	
+	<g id="resetButton" transform="translate(570 370)" display="none" onclick="resetBoard()">
+		<use xlink:href="#button" />
+		<path d="M6,6 l8,0 0,8 -8,0 z" fill="#444"/>
+	</g>
+
+</g>
+
+<!-- tokas -->
+<g id="tokas"/>
+
+<!-- animated toka -->
+<g id="hopper" display="none">
+ 	<ellipse id="shadow" cx="5" cy="3" rx="17" ry="10" fill="#333" opacity=".8"/>
+   <use id="hoptop" xlink:href="#tokaTop" />
+</g>
+
+<!-- arrows -->
+<g id="arrowGroup" display="none" transform="translate(60,70)">
+
+   <ellipse id="arrowBase" transform="translate(0,-7) rotate(25)" rx="22.5" ry="18" fill="#fff" opacity="0" />
+
+   <g id="arrowN" onclick="setAnim('n')" transform="translate(4,-16) rotate(22)">
+      <use xlink:href="#arrowBack" id="backN" fill="&bk1;"/>
+		<use xlink:href="#arrowSymb" />
+	</g>
+
+   <g id="arrowE" onclick="setAnim('e')" transform="translate(14,-2) rotate(89)">
+      <use xlink:href="#arrowBack" id="backE" fill="&bk1;"/>
+      <use xlink:href="#arrowSymb" />
+   </g>
+
+   <g id="arrowW" onclick="setAnim('w')" transform="translate(-15,-12) rotate(-60)">
+      <use xlink:href="#arrowBack" id="backW" fill="&bk1;"/>
+      <use xlink:href="#arrowSymb" />
+   </g>
+
+   <g id="arrowS" onclick="setAnim('s')" transform="translate(-7,2) rotate(220)">
+      <use xlink:href="#arrowBack" id="backS" fill="&bk1;"/>
+      <use xlink:href="#arrowSymb" />
+   </g>
+
+</g>
+
+<!-- intro, feedback -->
+<g id="introGroup" font-family="Verdana64" font-size="12">
+
+	<ellipse transform="translate(305,210) rotate(-5)" rx="270" ry="160" fill="#aaaa9d" stroke="none"/>
+					
+	<use transform="translate(480,200)" xlink:href="#dot" />
+	<use transform="translate(400,260)" xlink:href="#toka" />
+	<use transform="translate(440,230)" xlink:href="#toka" />
+		
+	<g id="introHint" transform="translate(100,90)" pointer-events="none">
+	
+		<path transform="translate(334,170) rotate(-25)" d="M0,0 l-6,0 0,6z" fill="#443" stroke="none"/>
+		<path transform="translate(341,163) rotate(-50)" d="M0,0 l6,0 0,6z" fill="#443" stroke="none"/>
+		<text x="345" y="178" fill="#443" font-family="Verdana64" font-size="8">tokas</text>
+	
+	</g>
+
+	<g fill="#443" pointer-events="none" font-family="Verdana64" font-size="13">
+
+		<text id="intro" transform="translate(190,90)">
+			<tspan x="0" y="20" font-family="VerdanaBold64" font-size="18">tokarama</tspan>
+			<tspan x="0" y="60">click-n-jump</tspan>
+			<tspan x="0" y="90">tokas: remove all but one</tspan>
+			<tspan x="0" y="120">how: jump over toka</tspan>
+			<tspan x="0" y="170">have fun</tspan>
+		</text>
+			
+		<text id="winner" transform="translate(190,100)" display="none" >
+			<tspan x="0" y="70">you did it!</tspan>
+			<tspan x="0" y="120">feel free to play again</tspan>
+		</text>
+	
+		<text id="almost" transform="translate(190,100)" display="none">
+			<tspan id="tokleft" x="0" y="70">&#32;</tspan>
+			<tspan x="0" y="120">try again</tspan>
+		</text>
+		
+	</g>
+	
+	<g transform="translate(190,300)" onclick="startGame()">
+		<use xlink:href="#button" />
+		<path d="M7,5 l8,5 -8,5 z" fill="#444" />
+	</g>
+	
+</g>
+
+</svg>
+<!-- end viewing area -->
+
+<!-- shield -->
+<circle id="shield" cx="0" cy="0" r="50" fill="#fff" fill-opacity="0" display="none"/>
+
+</svg>

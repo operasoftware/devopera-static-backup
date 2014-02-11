@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>view-mode サンプルデモ [Speed Dial の拡張 サンプルデモ]</title>
+
+	<link rel=stylesheet type="text/css" href="http://devfiles.myopera.com/articles/5472/s.css">
+
+	<style>
+		.minimized{
+			display:none;
+		}
+
+		@media (view-mode: minimized){
+			body{
+				color:#fff;
+				background:#b20000;
+			}
+			a:link,a:visited,a:hover,a:active{
+				color:#fff;
+			}
+			article, header, nav{ display:none; margin:0;}
+
+		   .minimized{display:block; width:100%; margin:0; padding:0;}
+
+			.minimized h1{
+				color:#fff;
+				margin:0 auto;
+				width:90%;
+				line-height: 1.1;
+			}
+
+		}
+	</style>
+</head>
+<body>
+
+<header>
+	<hgroup>
+	<h1>Speed Dial の拡張 サンプルデモ</h1>
+	<h2><code>view-mode</code> メディア機能</h2>
+	</hgroup>
+</header>
+
+
+
+<section class="minimized">
+	<h1>これは独自にカスタマイズした表示です。</h1>
+</section>
+
+
+<nav>
+<ul>
+	<li><a href="http://devfiles.myopera.com/articles/5472/index.html">サンプルデモファイルへ</a></li>
+	<li><a href="../../../dev.opera.com/articles/view/opera-speed-dial-enhancements-ja/index.html">記事に戻る</a></li>
+</ul>
+</nav>
+
+<article>
+
+	<p>このページを Speed Dial のエントリとして保存してみて下さい。背景の色が赤になります。文字の色も変わり、コピーが異なっていることがわかるでしょう。</p>
+
+
+
+</article>
+
+</body>
+</html>

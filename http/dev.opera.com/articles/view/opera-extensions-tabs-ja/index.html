@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Opera エクステンション：タブ - Dev.Opera</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="L7q_7GF5c9d7ZAUYdfaTiRaB6sTAGv_cRz3nq5DsabM">
+    <meta name="description" content="Dev.Opera is the ultimate source of distilled knowledge for web developers, covering the latest open web technologies and techniques including HTML5, CSS3, JavaScript, SVG, optimizing content for mobiles, tablets and TVs, and creating add-ons such as extensions and themes for the Opera browser.">
+    <meta name="keywords" content="Opera, web, HTML5, HTML, CSS3, CSS, JavaScript, SVG, Geolocation, Widgets, Extensions, Unite, Mini, Mobile, web development, design, web design, tutorials, articles, examples, demos, web standards, open standards, open web, video, audio, getusermedia, accessibility, wai-aria, transitions, translations, microformats, microdata, dataset, media queries, viewport, @viewport, transparency, opacity, gradients, box-shadow, text-shadow, web fonts, appcache, websql, local storage, ajax, json, games, userjs, webgl, tv, tablet, emulator, skinning, themes, skins, drasgonfly, mathml, web sockets, operawatir">
+    <link rel="icon" href="../../../../static.myopera.com/dev/img/speed_dial-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../../../static.myopera.com/dev/img/touch-icon.png" type="image/png">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/devopera.css" type="text/css">
+    <!--[if IE 6]><link rel="stylesheet" href="/css/browsers/ie6.css" type="text/css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="/css/browsers/ie7.css" type="text/css"><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" href="/css/browsers/ie8.css" type="text/css"><![endif]-->
+    <!--[if lte IE 8]><script type="text/javascript" src="/js/ie.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/articles.css">
+    <link rel="stylesheet" media="print" href="../../../../static.myopera.com/dev/css/print.css">
+    <link rel="stylesheet" href="../../../../static.myopera.com/dev/css/github.css">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles - RSS 2.0 Feed" href="../../../feeds/rss/articles">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles - Atom 1.0 Feed" href="../../../feeds/atom/articles">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Add-ons - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Add-ons - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons">
+    <link rel="alternate" type="application/rss+xml" title="Recent articles in Opera 11-12 extensions - RSS 2.0 Feed" href="../../../feeds/rss/articles/addons/extensions">
+    <link rel="alternate" type="application/atom+xml" title="Recent articles in Opera 11-12 extensions - Atom 1.0 Feed" href="../../../feeds/atom/articles/addons/extensions">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../../static.myopera.com/dev/js/menu.js"></script>
+    <noscript>
+      <style type="text/css">
+.collection ul li ul {
+    display: inherit !important;
+}
+      </style>
+    </noscript>
+    <script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-4118503-4']);
+_gaq.push(['_gat._anonymizeIp']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+    </script>
+
+  </head>
+  <body class="extensions">
+    <header role="banner"  class="article-view" >
+      <div>
+        <a href="../../../index.html" id="logo">Dev.Opera</a>
+        <form action="http://dev.opera.com/search" role="search">
+          <fieldset>
+            <label class="hidden" for="q">Search</label>
+            <input type="text" name="q" maxlength="256" value="" id="q" required>
+            <input type="submit" id="q-submit" value="Search" title="Search">
+          </fieldset>
+        </form>
+        <p id="login">
+          <a href="../../../../../https/dev.opera.com/login/index.html" accesskey="L" title="Log in">Log in</a>
+        </p>
+        <nav id="nav">
+          <ul role="menu">
+
+            <li role="menuitem" >
+              <a href="../../../web.html">Web</a>
+            </li>
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons.1.html">Add-ons</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../mobile.html">Mobile</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../tv.html">TV</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../labs.html">Labs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <nav id="subnav">
+        <ul role="menu">
+            <li role="menuitem"  class="selected">
+              <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+            </li>
+            <li role="menuitem" >
+              <a href="../../../addons/themes.html">Themes</a>
+            </li>
+        </ul>
+      </nav>
+    </header>
+<section id="content" role="main" class="asideleft">
+  <section class="main">
+    <article lang="ja">
+      <h1>Opera エクステンション：タブ</h1>
+      <p class="print author">By t.ashula</p>
+
+      <h2>
+  はじめに</h2>
+<p>
+  Opera エクステンションは強力で、HTML や JavaScript、CSS といった Web 標準の技術を使ってデスクトップ版 Opera のボタンやデフォルト CSS などの多くの機能を操ることが出来ます。
+  この文書では、タブの操作方法を解説します。</p>
+<p>
+  Opera エクステンションの作成方法を知りたいなら <a href="../opera-extensions-hello-world-ja/index.html">Opera エクステンションで Hello World!</a> から読み始めるといいでしょう。</p>
+<h3>
+  目次</h3>
+<ol>
+  <li><a href="index.html#create">タブを作成する</a></li>
+  <li><a href="index.html#create_url">URL を設定したタブを作成する</a></li>
+  <li><a href="index.html#focus">タブにフォーカスする</a></li>
+  <li><a href="index.html#close">タブを閉じる</a></li>
+  <li><a href="index.html#conclusion">その後は？</a></li>
+  <li><a href="index.html#api">API リファレンス</a></li></ol>
+<h2 id="create">
+  タブを作成する</h2>
+<p>
+  ではタブの作成方法から見ていきましょう。
+  DOM や文書の読込みを待つのに、<code>addEventListener</code> 関数を使っていきます。
+  次のコードでは、文書の読込みを待つのにイベントリスナーを使っています。
+  読込みが終わると関数が実行されます。</p>
+<p>
+  <code>opera.extension.tabs</code> が存在しているかきちんと確認してから、このオブジェクトが持つタブの操作関数を呼びだします。</p>
+<pre><code>
+window.addEventListener( &quot;load&quot;, function(){
+  if( opera.extension.tabs.create ) { // check if function exists
+    opera.extension.tabs.create();  // create tabs
+  } 
+  else {
+    //do nothing 
+  }
+}, false);</code></pre>
+<h2 id="create_url">
+  URL を設定したタブを作成する</h2>
+<p>
+  <code>opera.extensions.tabs.create</code> 関数には、引数としてフォーカスするかどうかの真偽値と URL とを持つ <code>TabProperties</code> オブジェクトを一つ与えることが出来ます。
+  引数として URL を与えられるので、<a href="http://www.opera.com">www.opera.com</a> を読み込ませるタブを作ることが出来ます。</p>
+<pre><code>
+window.addEventListener( &quot;load&quot;, function(){
+  if( opera.extension.tabs.create ) {
+    opera.extension.tabs.create( { url:&quot;http://www.opera.com/&quot; } );
+  } 
+  else {
+    //do nothing
+  }
+}, false );</code></pre>
+<h2 id="focus">
+  タブにフォーカスする</h2>
+<p>
+  イベントリスナーと <code>opera.extension.tabs</code> オブジェクトの存在を確認するコードと同様にして色々なやり方でタブを操作することが出来ます。
+  まず、URL 欄にフォーカスしたタブの作り方は次のようになります。</p>
+<pre><code>
+opera.extension.tabs.create({focused:true})</code></pre>
+<p>
+  URL を設定しフォーカスを当てたタブは次のように作ります。</p>
+<pre><code>
+opera.extension.tabs.create({url:&quot;http://www.opera.com/&quot;,focused:true})</code></pre>
+<h2 id="close">
+  タブを閉じる</h2>
+<p>
+  タブを閉じるのもこれまで同様簡単です。タブを作り、1秒後にそのタブを閉じるコードを書いてみましょう。</p>
+<pre><code>
+window.addEventListener( &quot;load&quot;, function(){
+  if( opera.extension.tabs ) {
+    var tab = opera.extension.tabs.create({url:&quot;http://www.opera.com/&quot;,focused:true});
+    window.setTimeout( function(){
+      opera.extension.tabs.close( tab );
+    }, 1000);
+  } 
+  else {
+    // Couldn&#39;t find an opera.extension.tabs object, to fetch and then update the tab
+  }
+}, false);</code></pre>
+<h2 id="conclusion">
+  その後は？</h2>
+<p>
+  これで、タブの作成方法、操作方法、そして閉じる方法とを覚えました。
+  <a href="http://labs.opera.com/extensions-api/">Opera エクステンション API ドキュメント</a>を参照すれば <code>tabs</code> オブジェクトとその関数の詳細を得られるでしょう。
+  その後は、<a href="../opera-extensions-windows/index.html">Opera エクステンションの <code>Windows</code> オブジェクト</a>に手を出すのも良いでしょう。</p>
+<h2 id="api">
+  API リファレンス</h2>
+<ul>
+  <li><code><a href="http://labs.opera.com/extensions-api/backgroundProcess/Tabs.html">
+	opera.extension.tabs</a></code> オブジェクト</li></ul>
+
+      <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>
+
+    </article>
+<section id="comments">
+  <h2>Comments</h2>
+      <p class="info">The forum archive of this article is still available on <a href="http://my.opera.com/community/forums/topic.dml?id=793152">My Opera</a>.</p>
+  <ul>
+  </ul>
+No new comments accepted.
+</section>
+
+  </section>
+
+  <aside>
+    <section class="info">
+      <p class="author"><strong>Author</strong> <a href="../../../author/zibin.html" rel="author">Zi Bin Cheah</a></p>
+      <p class="author"><strong>Translator</strong> <a href="../../../author/t-ashula.html" rel="author">t.ashula</a></p>
+      <p>
+        <strong>Date</strong>
+        Wednesday, November 3, 2010
+      </p>
+
+      <p class="tags"><strong>Tags</strong></p>
+      <ul class="tags">
+        <li><a href="../../tags/API.html" rel="tag">API</a></li>
+        <li><a href="../../tags/japanese.html" rel="tag">japanese</a></li>
+        <li><a href="../../tags/opera&#32;extensions.html" rel="tag">opera extensions</a></li>
+        <li><a href="../../tags/tabs.html" rel="tag">tabs</a></li>
+      </ul>
+      <p><strong>Languages</strong>
+        <a href="../opera-extensions-tabs/index.html">English</a>
+      </p>
+    </section>
+  </aside>
+
+
+
+
+</section>
+<script type="text/javascript" src="../../../../static.myopera.com/dev/js/highlight.pack.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+    <footer>
+      <section role="contentinfo">
+        <ul>
+          <li><a href="../../../help.html">Help/<abbr>FAQ</abbr></a>
+          <li><a href="http://my.opera.com/community/terms-of-service/?utm_source=devopera&amp;utm_medium=footer&amp;utm_campaign=devlinks">Terms of service</a>
+          <li><a href="../../../privacy.html">Privacy</a>
+        </ul>
+      </section>
+    </footer>
+  </body>
+</html>

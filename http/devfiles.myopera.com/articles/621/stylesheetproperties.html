@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title>Dynamic style: Manipulating CSS with JavaScript Examples - Style Sheet Properties Example </title>
+	<link rel="stylesheet" type="text/css" href="http://devfiles.myopera.com/articles/621/example_styles.css">
+</head>
+<body>
+	<h1>
+		Dynamic style: Manipulating CSS with JavaScript Examples
+	</h1>
+
+	<p>Note: Some of the example code shown below is not the full code being executed. To make things as simple as possible I wanted to just show the critical code pertaining to style manipulation, thus the code that deals with browser differences is not shown.  To see the full code one can view the source code.</p>
+	<hr>
+	<div>
+		<h2>Style Sheet Properties example</h2>
+		<p>
+			This example demonstrates how to access the properties of the style sheets.
+		</p>
+		
+				<div style="clear:both;"></div>
+		<input id="ds" class='button' type='button' value="disableSheet()" />
+		<input id="es" class='button' type='button' value="enableSheet()" />
+		<div class="example">
+			<p class="hidden">
+				This text is not shown if style sheet is on
+			</p>
+			<p class="bigger">
+				This text should be larger
+			</p>
+			<p class="green">
+				This text should be green
+			</p>
+		</div>
+		<div class="code_css">
+			<h4>CSS Code</h4>
+			<pre>
+&lt;style id="disable_example"&gt;
+	.hidden {
+		display: none;
+	}
+	.bigger {
+		font-size: 150%;
+	}
+	.green {
+		color: green;
+	}
+&lt;/style&gt;
+			</pre>
+			<style id="disable_example">
+				.hidden {
+					display: none;
+				}
+				.bigger {
+					font-size: 150%;
+				}
+				.green {
+					color: green;
+				}
+			</style>
+		</div>
+		<div class="code_js">
+			<h4>JavaScript Code</h4>
+			<pre>
+function disableSheet() {
+	document.getElementById('disable_example').disabled=true;
+}
+function enableSheet() {
+	document.getElementById('disable_example').disabled=false;
+}
+			</pre>
+			<script>
+				function disableSheet() {
+					document.getElementById('disable_example').disabled=true;
+				}
+				function enableSheet() {
+					document.getElementById('disable_example').disabled=false;
+				}
+			</script>
+		</div>
+
+	</div>
+	<script>
+		function addOnClick(el, func) {
+			if(el.addEventListener) {
+				el.addEventListener('click', func, false);
+			} else {
+				el.attachEvent('onclick', func);
+			}
+		}
+		addOnClick(document.getElementById('ds'), disableSheet);
+		addOnClick(document.getElementById('es'), enableSheet);
+	</script>
+</body>
+</html>
