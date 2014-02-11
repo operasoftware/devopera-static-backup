@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,11 +103,11 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>目次</h2>
-	
+
 	<ul>
 	  <li><a href="index.html#intro">はじめに</a></li>
 	  <li><a href="index.html#hints-tips">簡単なヒントとワンポイント</a>
@@ -132,11 +132,11 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
             </ul>
           </li>
         </ul>
-	
+
 	<h2 id="intro">はじめに</h2>
-	
+
 	<p>ここでは、拡張機能向けの効果的なアイコンの作成方法に関するチュートリアル、およびヒント・ワンポイントについてご説明します。ヒント・ワンポイントについては、参照しやすいように前半でご説明します。チュートリアルはその後に続きます。</p>
-	
+
 	<div class="note"><h3>アイコンテンプレートをダウンロードして使用する</h3>
 	  <p>チュートリアルに沿って作業をしたい場合、あるいはアイコンの作成をスピードアップしたい場合は、以下のアイコンテンプレートをダウンロードして下さい。</p>
 	  <ul>
@@ -144,10 +144,10 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 	     <li><p><a href="../../../../devfiles.myopera.com/articles/5022/user_icon_template.svg">SVG icon template</a></p></li>
              <li><p>Inkscape のテンプレートの使用方法もカバーした拡張機能アイコンのスクリーンキャストも利用することができます。詳細に関しては、<a href="../../../../devfiles.myopera.com/articles/5022/svg_template_tutorial.webm">Extension icons screencast WebM version</a> | <a href="../../../../devfiles.myopera.com/articles/5022/svg_template_tutorial.mp4">Extension icons screencast MP4 version</a> をご覧下さい。</p></li>
 	  </ul>
-	</div>	
-  
+	</div>
+
   <h2 id="hints-tips">簡単なヒントとワンポイント</h2>
-  
+
   <h3 id="branding">ブランド化と簡素化</h3>
 
   <p>アイコンはシンプルで効果的、また拡張機能のスタイルと目的を反映したものでなければなりません。シンプルな画像やフォントの方が、凝ったものや複雑なものを使用するより効果的です。ゲームには明るくカラフルなアイコンが適していますが、実用的な機能には、どちらかというと落ち着いた機能的なものが適していると言えるでしょう。アイコンは実際の拡張機能のブランドイメージと色に調和していなければなりません。図 1 で良いアイコンの例をいくつかご紹介します。</p>
@@ -171,7 +171,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
   <div class="note" style="margin: 25px;">
     <p>システムアイコンや、他のアプリケーションのアイコンを使用しないで下さい。以下で、その例をご覧下さい。</p>
-    
+
     <p><img src="../../../../devfiles.myopera.com/articles/6392/dontuse.png" alt="システムアイコンや他のソフトウェアベンダーのアイコンは使用できません。" /></p>
     <p class="comment">図 4: システムアイコンや他のソフトウェアベンダーのアイコンは使用できません。</p>
   </div>
@@ -209,15 +209,15 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
     <li>アイコンは完全に白色ではないこと。また、白色の背景や Opera ツールバーのクロムと整合性を保つこと。<br /><img src="../../../../devfiles.myopera.com/articles/6392/do_dont_white.png" alt="Not completely white background" /></li>
     <li>アイコンには背景があること、あるいは割り当てられたスペースが埋まっていること。アイコンが占めるスペースが範囲全体の 85% 未満にならないこと。<br /><img src="../../../../devfiles.myopera.com/articles/6392/do_dont_back.png" alt="Fill space or use background" /></li>
   </ol>
-  
+
   <h2 id="tutorial">Photoshop：アイコンチュートリアル</h2>
-  
+
   <p class="note">このチュートリアルには、Photoshop 以外のグラフィックパッケージを使用する場合でも参考になるヒントが含まれています。</p>
-  
+
   <p>まず最初に、<a href="../../../../devfiles.myopera.com/articles/5022/user_icon_template.psd">Photoshop (PSD) icon template</a> を開き、違うファイル名で保存して下さい。このファイル内で独自のアイコンの作成を行うことができます。このチュートリアルは初心者を念頭に置いて書かれたものですが、Photoshop に慣れている人にとっても役立つ情報が見つかるかもしれません。</p>
-  
+
   <h3 id="selecting-icon">アイコンの選択</h3>
-  
+
   <p>図形の描画ができなくても良いアイコンを作成することはできます。その最善な方法として、Web 上のフリーウェアサイトなどからアイコンの図形を選択して流用したり、図 6 で示すように、ほとんどのコンピュータで利用できる Webdings フォントを利用したりすることが挙げられます。このチュートリアルでは、Webdings フォントの「i」を使用してみましょう。</p>
 
 
@@ -246,79 +246,79 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
   <p><img src="../../../../devfiles.myopera.com/articles/6392/06_shapezoomed.png" alt="ベクター形式の図形に変わった Webding 文字の拡大図" /></p>
   <p class="comment">図 10： ベクター形式の図形に変わった Webding 文字の拡大図</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/06_shapelayer.png" alt="シェイプレイヤーはこのような表示に変わる。文字ツールでコンテンツを編集する必要がなくなり、形を変更することができる。" /></p>
   <p class="comment">図 11： シェイプレイヤーはこのような表示に変わる。文字ツールでコンテンツを編集する必要がなくなり、形を変更することができる。</p>
-  
+
 
   <h3 id="sharpvectors">ピクセルにシャープ処理を適用したベクター画像</h3>
-  
+
   <p>編集を行えるアイコンが準備できたところで、配置、また正確なサイズへの変換に移ります（図 12 を参照）。まず「移動ツール」を使用して 64 px の背面図形の上にドラッグし、 [ 編集 &gt; 自由変形 ] （あるいは Ctrl/Cmd + T）を選択して調整します。必ず拡大して (Ctrl/Cmd -+) 処理を明確に確認できるようにして下さい。選択範囲の角あるいはサイドの四角形をドラッグすることもできますが、ツールバー上の入力欄を使用することをお勧めします。こうすると、整数のピクセル値を入力することができるため、全体的により高いレベルのコントロールを行うことができます。</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/07_place_reference.png" alt="「変形」ツールを使用して背面図形上にアイコン図形を配置する" /></p>
   <p class="comment">図 12： 「変形」ツールを使用して背面図形上にアイコン図形を配置する</p>
-  
+
   <p>まず、アイコン図形の基準点の位置を変更します。四角形が 3 x 3 で並んでおり、中心に黒い四角形があるものを見つけて下さい（図 13 を参照）。その中から左上の四角形をクリックします。この方法で Photoshop が図形を左上の角から位置付けることができるようになり、他の方法より多少簡単に作業を行えます。アイコンは、おそらく x あるいは y 軸で整数のピクセル値上に配置されていない可能性が高いため、「X」（横）および「Y」（縦）の値を調節して下さい。</p>
-  
+
   <p>次の「W」（幅）と「H」（高さ）の欄でも整数のピクセル値を入力して下さい。これらの欄はデフォルトではパーセントに設定されていますので、それぞれを右クリックしてドロップダウンメニューから「ピクセル」を選択して下さい。必要であれば、2 つの欄の間にある鎖の形をした小さなアイコンをクリックしてアイコンの縦横比を固定することができますが、この例ではそれぞれの値を設定する方法をご紹介しています。値を整数、できれば 54 px のような偶数に調整します。個人的には、縦横比を固定してから希望するサイズに対して最大になるよう調整してからリリースし、その後、必要であれば、比率を狭くして微調整する方法を取っています。尖っていたり、曲線のある面は完全に適合していなくても問題ありませんが、直線の場合にはより高い精度が求められます。</p>
-  
+
   <p>問題なくサイズを調整できましたら（図 13 では適切な値の例を示しています）、元に戻り、入力欄を使用してアイコン図形のセンタリングを行って下さい。この時点で、なぜ偶数の方が良いのかを理解できるでしょう。</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/08_place_values.png" alt="値を調整してピクセルグリッド上で適切に配置されるようにする" /></p>
   <p class="comment">図 13： 値を調整してピクセルグリッド上で適切に配置されるようにする</p>
-   
+
   <h3 id="sharpvectors2">ピクセルにシャープ処理を適用したベクター画像　その 2</h3>
-  
+
   <p>さらにもう少し拡大して、今一度アイコン図形を見て下さい。他のベクター図形がグリッドにマッチしていないため、おそらく図 14 に示すように、ぼやけていて見た目がよくないでしょう。これを処理していきます。</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/10_blur.png" alt="アイコンの詳細がピクセルグリッドにマッチしていない" /></p>
   <p class="comment">図 14： アイコンの詳細がピクセルグリッドにマッチしていない</p>
-  
+
   <p>「ダイレクト選択ツール」を選択した状態で、「i」の軸の部分の角のアンカーポイントをクリックします。もし何らかの理由で選択できない場合は、アンダーレイの図形を選択している可能性があるため、「レイヤータブ」で該当する図形を選択して下さい。すべてのコーナーポイントを選択したら、値を入力して自由変形のプロセスを繰り返して下さい。Ctrl/Cmd + T を押し、基準点の左上を選択して整数を入力し、キーボードの Enter/Return キーを押して下さい。</p>
-    
+
   <p>できました！こちらの方が全然いいですね。これで直線の部分が完全にピクセルグリッドに適合し、図形がシャープになりました。曲線の内側（○の内側）に関しては、無視することにします。この部分を微調整しても実際の作業に見合わないでしょう。しかし、「i」の点の部分にも簡単に手を加えてさらにポイントを高めることができるため、同じプロセスを繰り返してみましょう（図 15-16 を参照して下さい）。何はともあれ、これは良い練習だと思って下さい。</p>
-    
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/13_selectdot.png" alt="点の部分のアンカーポイントを選択して..." /></p>
   <p class="comment">図 15： 点の部分のアンカーポイントを選択して...</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/13_transformdot.png" alt="...グリッドに適合するようにする" /></p>
   <p class="comment">図 16： ...グリッドに適合するようにする</p>
-  
+
   <h3 id="smallicons">小さいアイコン</h3>
-  
+
   <p>64 x 64 ピクセルのアイコンに関しては、これからご説明するほど入念にピクセルを取り扱う必要はありません。しかし、以下を理解するにあたっては、アイコンを構成している図形を把握していれば、それほど難しくはないでしょう。まず最初にアイコンのシェイプレイヤーを複製しましょう（「移動ツール」を有効にして、アイコンをドラッグしながら Alt キーを押します）。次に、シェイプレイヤーの自由変形を行い (Ctrl/Cmd + T)、18 x 18 ピクセル に変更します（図 17 参照）。</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/14_copytransform.png" alt="アイコンのシェイプレイヤーを複製して 18 px の背面図形に適合するように調整する" /></p>
   <p class="comment">図 17： アイコンのシェイプレイヤーを複製して 18 px の背面図形に適合するように調整する</p>
-  
+
   <p>変更したアイコン図形を拡大すると、作業が確実に必要になることが確認できるでしょう。気を落とさないで下さい。このように Photoshop でベクター画像の作業を行う上で良い点は、図形が高解像度で表示された時にどのように見えるのかをベジエ曲線で理解することができる一方で、ピクセルモザイクの難しさを再認識できることです。今回の場合、64 x 64 ピクセルのアイコンを見ると「i」の点の部分が軸の部分より若干幅が広いことがわかります。このような特徴を保持するかどうかは、それぞれの図形に応じて決めなければなりませんが、この場合では認識しておくと便利だと言えます。</p>
-  
+
   <p>しかし、その前に [ 編集 &gt; 環境設定 &gt; ガイド・グリッド・スライス ] に移動して下さい。グリッド線と分割数の値を 10 に変更します。ピクセルグリッドにスナップさせるには、グリッドを表示して（ビュー &gt; 表示 &gt; グリッド）、グリッドにスナップするように設定します（ビュー &gt; スナップ先 &gt; グリッド）。このように設定すると大変便利です。この作業をスキップしたい場合、自由変形のプロセスを行っても問題はありません。しかし、より小さくて正確なものを作成する場合は、こちらの方法を適用することをお勧めします。</p>
-  
+
   <p>「ダイレクト選択ツール」（白の矢印）を選択した状態で、角のアンカーポイントを選択してピクセルコーナーに移動させます。このテクニックを使用してほとんどのものを修正することができますが、円の形をした点の部分は歪みが生じる可能性があるため、自由変形のテクニックで処理することをお勧めします。</p>
-    
+
   <p>アイコンの図形を把握することの利点を先に申し上げましたが、この場合、点の部分に関して明白だと言えるでしょう。完全に丸くなるように、また軸部分と幅が同じになるように調整すると、ぼやけてしまいます。オリジナルのデザインに忠実であり、またクオリティーを損なわないようにするには、点部分の両側が、半ピクセル分、幅が広くなるようにすると良いでしょう。極めて鮮明であるとは言えなくとも、この解像度で期待できるだけの良い結果が得られるはずです。</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/20_final.png" alt="完成した小さいアイコン" /></p>
   <p class="comment">図 18： 完成した小さいアイコン</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/20_finalzoomedout.png" alt="微調整されて最終的に仕上がったアイコン図形のセット" /></p>
   <p class="comment">図 19： 微調整されて最終的に仕上がったアイコン図形のセット</p>
-  
+
   <h3 id="palette">パレット</h3>
-  
+
   <p>アイコンを印象深いものにするには、グラデーションを微調整した適切な色が必要です。カラーパレットがテンプレートで用意されていますので、試したいグラデーションをクリックし、そのグラデーションが位置するレイヤーがレイヤーパネルで選択されていることを確認して下さい。レイヤーの青い部分を右 / Ctrl + クリックし、「レイヤースタイルをコピー」を選択して下さい。適用したい背景シェイプレイヤーを選択し、レイヤーの青い部分を右 / Ctrl + クリックして、「レイヤースタイルをペースト」を選択します。複数のレイヤーを選択して、一度に適用することも可能です。</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/21_palettelayer.png" alt="パレットのグラデーションカラーのレイヤースタイルをコピーする" /><img src="../../../../devfiles.myopera.com/articles/6392/22_copyeffect.png" alt="パレットのグラデーションカラーのレイヤースタイルをコピーする" /></p>
   <p class="comment">図 20： パレットのグラデーションカラーのレイヤースタイルをコピーする</p>
-  
+
   <p>この時点でアイコンはこのように見え、エクスポートする準備が整いました。</p>
-  
+
   <p><img src="../../../../devfiles.myopera.com/articles/6392/24_pasteeffect.png" alt="エクスポートが可能となった最終的なアイコン" /></p>
   <p class="comment">図 21： エクスポートが可能となった最終的なアイコン</p>
-  
+
   <h3 id="exporting">アイコンのエクスポート</h3>
-  
+
   <p>どんな感じでしょうか？面倒な作業はすべて終了していますので、最後の部分はとても簡単に行えます。まず最初に背景レイヤーを非表示にするため、横にある「目」のアイコンをクリックして下さい。次に、ファイルのメニューから「Web 用およびデバイス用に保存」を選択し (Ctrl/Cmd + Alt + Shift + S) 、作成した 2 つのアイコンを選択します。選択されたもの・選択されていないものを判断するのは少し困難かもしれませんが、選択されたアイテムには茶色の枠線が表示されます。「保存」をクリックしてアイコンに名前を付けます。適切なフォルダを選択して、「スライス：選択したスライス」をドロップダウンメニューから選びます。「保存」をクリックすれば完了です！</p>
 
       <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported</a> license.</p>

@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -131,9 +131,9 @@ _gaq.push(['_trackPageview']);
 window.addEventListener( &quot;load&quot;, function(){
   if( opera.extension.tabs.create ) { // check if function exists
     opera.extension.tabs.create();  // create tabs
-  } 
+  }
   else {
-    //do nothing 
+    //do nothing
   }
 }, false);</code></pre>
 <h2 id="create_url">
@@ -145,7 +145,7 @@ window.addEventListener( &quot;load&quot;, function(){
 window.addEventListener( &quot;load&quot;, function(){
   if( opera.extension.tabs.create ) {
     opera.extension.tabs.create( { url:&quot;http://www.opera.com/&quot; } );
-  } 
+  }
   else {
     //do nothing
   }
@@ -172,7 +172,7 @@ window.addEventListener( &quot;load&quot;, function(){
     window.setTimeout( function(){
       opera.extension.tabs.close( tab );
     }, 1000);
-  } 
+  }
   else {
     // Couldn&#39;t find an opera.extension.tabs object, to fetch and then update the tab
   }

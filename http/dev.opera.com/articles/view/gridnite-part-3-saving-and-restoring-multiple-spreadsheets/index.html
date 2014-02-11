@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -146,7 +146,7 @@ _gaq.push(['_trackPageview']);
 
 <p>The code is now much cleaner and easier to understand. There are 3 <code>&lt;SCRIPT&gt;</code> calls, which is ok for now, although in the future we would like to create a procedure to join all those files together and have them sent to the client’s browser as a single JavaScript file. This would improve things because each call takes time (latency) and it can become quite annoying to wait for all those scripts to load.</p>
 
-<p>Why didn’t we split the script into smaller parts from beginning? Well, remember the KISS principle —  <q>Keep it simple, stupid</q>. Splitting a file with less than 100 lines of code would have been unnecessarily complicated.</p> 
+<p>Why didn’t we split the script into smaller parts from beginning? Well, remember the KISS principle —  <q>Keep it simple, stupid</q>. Splitting a file with less than 100 lines of code would have been unnecessarily complicated.</p>
 
 <p>The only JavaScript left inside the <code>index.html</code> file is as follows:</p>
 
@@ -307,7 +307,7 @@ $(&#39;#alertName&#39;).focus();</code></pre>
   return true;
 };</code></pre>
 
-<p>This is just basic jQuery stuff — we get a reference to the element with the ID of <code>alertName</code> — <code>&lt;INPUT&gt;</code>. Then we check if it contains a value — if not we put a red border around it and don’t close the dialog (using <code>return false</code>). We check the value for <code>.</code> (dot) symbol and if it has no value we add <code>.json</code> to the end. Then we call <code>switch_page(...)</code> with the filename we just specified as its argument.</p> 
+<p>This is just basic jQuery stuff — we get a reference to the element with the ID of <code>alertName</code> — <code>&lt;INPUT&gt;</code>. Then we check if it contains a value — if not we put a red border around it and don’t close the dialog (using <code>return false</code>). We check the value for <code>.</code> (dot) symbol and if it has no value we add <code>.json</code> to the end. Then we call <code>switch_page(...)</code> with the filename we just specified as its argument.</p>
 
 <pre><code>function switch_page(page) {
   document.location =
@@ -350,7 +350,7 @@ $(&#39;#alertName&#39;).focus();</code></pre>
 <p>The server-side is a little more complicated. To iterate through the spreadsheet files on the server and return them as a JSON object, we do this:</p>
 
 <pre><code>function glob(dir_name) {
-  try { 
+  try {
     var dir =
     opera.io.filesystem.mountSystemDirectory(dir_name);
     var ret = [];
@@ -393,7 +393,7 @@ r.write(JSON.stringify(glob(&#39;storage&#39;)));
 <h2 id="summary">Summary</h2>
 
 <p>This rounds up our tour of the third lot of new functionality to be added to Gridnite — saving and restoring multiple files. We hope you have found it useful and interesting.</p>
-            
+
 
       <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/2.5/" rel="license">Creative Commons Attribution, Non Commercial - Share Alike 2.5</a> license.</p>
 

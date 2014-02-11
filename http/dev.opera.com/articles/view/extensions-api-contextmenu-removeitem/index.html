@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="http://dev.opera.com/addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="http://dev.opera.com/addons/themes.html">Themes</a>
@@ -118,7 +118,7 @@ _gaq.push(['_trackPageview']);
 
 <h2>Example:</h2>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
@@ -126,7 +126,7 @@ _gaq.push(['_trackPageview']);
     ...
     &lt;feature name=&quot;opera:contextmenus&quot;/&gt;
     ...
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
 // The background process (e.g. index.html)
@@ -144,11 +144,11 @@ if (opera.contexts.menu) {
   var item = menu.createItem(itemProps);
   // Add the menu item to the context menu
   menu.addItem(item);
-  
+
   // Add a click event listener that removes the item from the context menu
   menu.onclick = function() {
     menu.removeItem(0);
-  };  
+  };
 }</code></pre>
 
       <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>

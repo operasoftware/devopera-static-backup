@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description:</h2>
@@ -136,14 +136,14 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
 <p>This example shows how we can convert whitelisting in <a href="http://adblockplus.org/">Adblock Plus</a> syntax to the Opera URL Filter syntax. The whitelisting rule will allow scripts from the <code>||ads.cnn.com/js.ng/*&amp;cnn_intl_subsection=download</code> URL and is taken from this list: <a href="https://easylist-downloads.adblockplus.org/easylist.txt">https://easylist-downloads.adblockplus.org/easylist.txt</a></p>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     ...
     &lt;feature name=&quot;opera:urlfilter&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
 // The background process (e.g. index.html)
@@ -153,9 +153,9 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
   // Assign the URLFilter object to a variable for efficiency
   var filter = opera.extension.urlfilter;
-  
+
   filter.block.add(&#39;||ads.*&#39;);
-  
+
   // The following is the same as this Adblock syntax for whitelisting:
   // @@||ads.cnn.com/js.ng/*&amp;cnn_intl_subsection=download$script
   filter.allow.add(&quot;||ads.cnn.com/js.ng/*&amp;cnn_intl_subsection=download&quot;, {resources: filter.RESOURCE_SCRIPT});

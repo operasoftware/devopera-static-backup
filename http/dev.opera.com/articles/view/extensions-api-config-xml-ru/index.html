@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,47 +103,47 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Андрей</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 
 <dl class="apicontents">
    <dt><a href="../extensions-api-config-widget-ru/index.html">Элемент <code>widget</code></a></dt>
    <dd>Элемент-контейнер, который заключает в себе все остальные элементы файла config.xml.</dd>
-   
+
    <dt><a href="../extensions-api-config-name-ru/index.html">Элемент <code>name</code></a></dt>
    <dd>Содержит название расширения.</dd>
-   
+
    <dt><a href="../extensions-api-config-description-ru/index.html">Элемент <code>description</code></a></dt>
    <dd>Содержит описание предназначения расширения.</dd>
-   
+
    <dt><a href="../extensions-api-config-author-ru/index.html">Элемент <code>author</code></a></dt>
    <dd>Содержит информацию об авторе расширения.</dd>
-   
+
    <dt><a href="../extensions-api-config-license-ru/index.html">Элемент <code>license</code></a></dt>
    <dd>Содержит лицензию на использование расширения.</dd>
-   
+
    <dt><a href="../extensions-api-config-icon-ru/index.html">Элемент <code>icon</code></a></dt>
    <dd>Указывает файл иконки расширения.</dd>
-   
+
    <dt><a href="../extensions-api-config-content-ru/index.html">Элемент <code>content</code></a></dt>
    <dd>Определяет <a href="http://www.w3.org/TR/widgets/#custom-start-file">стартовый файл</a> расширения, загружаемый браузером при запуске расширения.</dd>
-   
+
    <dt><a href="../extensions-api-config-feature-ru/index.html">Элемент <code>feature</code></a></dt>
    <dd>Определяет некоторые свойства расширения, такие как, например, возможность отображения в Экспресс-панели.</dd>
-   
+
    <dt><a href="../extensions-api-config-preference-ru/index.html">Элемент <code>preference</code></a></dt>
    <dd>Позволяет разработчику установить настройки. Эти данные хранятся в виде пары имя-значение и доступны в расширении через интерфейс <code>widget.preferences</code>.</dd>
-   
+
    <dt><a href="../extensions-api-config-access-ru/index.html">Элемент <code>access</code></a></dt>
    <dd>Позволяет авторам дать расширению доступ к внешним сетевым ресурсам.</dd>
-   
+
    <dt><a href="../extensions-api-config-span-ru/index.html">Элемент <code>span</code></a></dt>
    <dd>Служит контейнером для какого-либо текста, например в многоязычных расширениях.</dd>
-   
+
    <dt><a href="../extensions-api-config-xml-lang-ru/index.html">Атрибут <code>xml:lang</code></a></dt>
    <dd>Указывает язык текста элемента.</dd>
-   
+
    <dt><a href="../extensions-api-config-dir-ru/index.html">Атрибут <code>dir</code></a></dt>
    <dd>Задает направление текста элемента.</dd>
 </dl>
@@ -155,7 +155,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p>Большая часть сведений (например, название, описание, имя автора расширения), кроме того, может пригодиться пользователю, т.к. она отображается в различных элементах пользовательского интерфейса.</p>
 
 <p>Корректный файл config.xml является обязательным для любого расширения браузера Opera.</p>
-	
+
 <p>Подробную документацию о config.xml смотрите здесь:</p>
 
 <ul>
@@ -164,7 +164,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 </ul>
 
 <h2 id="example">Пример</h2>
-	
+
 <p>Ниже дан пример файла config.xml, содержащего обычные элементы данных: <code>название расширения</code>, <code>имя автора</code> и <code>описание</code>. Среди прочих в файле есть следующие два важных элемента:</p>
 <dl>
     <dt><code>&lt;feature&gt;</code> element</dt>
@@ -187,8 +187,8 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
   &lt;/feature&gt;
 
   &lt;access origin=&quot;http://my.opera.com/&quot; subdomains=&quot;true&quot;/&gt;
- 	
-&lt;/widget&gt;</code></pre>		
+
+&lt;/widget&gt;</code></pre>
 
 <p><img src="../../../../devfiles.myopera.com/articles/10012/config.png" alt="Extension details taken from the config.xml file." /></p>
 <p class="caption">Рисунок 1: Так отображается информация о расширении, находящаяся в файле config.xml.</p>

@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -105,8 +105,8 @@ _gaq.push(['_trackPageview']);
       <div class="note">
 <h2 style="color:red;font-weight:bold;padding-top:0;margin-top:0;">This article is deprecated</h2>
 <p>
-We recently announced that we&#39;re <a href="http://my.opera.com/addons/blog/2012/04/24/sunsetting-unite-and-widgets">discontinuing Widgets and Unite</a> from Opera 12, in favour of <a href="../../../addons/extensions/index.html">Opera Extensions</a>. (Already developed a  Widget? See <a href="../converting-widgets-to-opera-extensions/index.html">converting widgets to Opera extensions</a>.)</p> 
-</div>  
+We recently announced that we&#39;re <a href="http://my.opera.com/addons/blog/2012/04/24/sunsetting-unite-and-widgets">discontinuing Widgets and Unite</a> from Opera 12, in favour of <a href="../../../addons/extensions/index.html">Opera Extensions</a>. (Already developed a  Widget? See <a href="../converting-widgets-to-opera-extensions/index.html">converting widgets to Opera extensions</a>.)</p>
+</div>
 
 
 
@@ -330,7 +330,7 @@ We recently announced that we&#39;re <a href="http://my.opera.com/addons/blog/20
     </ul>
    </li>
   </ul>
- 
+
   <h2 id="intro"><span class="secno">1 </span>Introduction</h2>
   <p>The purpose of this specification is to provide an implementation
    reference for Widgets in the Opera browser. The specification builds on
@@ -431,7 +431,7 @@ We recently announced that we&#39;re <a href="http://my.opera.com/addons/blog/20
   &lt;widgetname&gt;
     Hello World!
   &lt;/widgetname&gt;
-&lt;/widget&gt;</code> 
+&lt;/widget&gt;</code>
 </pre>
   </div>
   <h3 id="xml_whitespace"><span class="secno">3.1 </span>White space</h3>
@@ -1222,7 +1222,7 @@ We recently announced that we&#39;re <a href="http://my.opera.com/addons/blog/20
     readonly attribute DOMString <a href="index.html#identifier">identifier</a>;
     readonly attribute DOMString <a href="index.html#originurl">originURL</a>;
     readonly attribute DOMString <a href="index.html#widgetmode">widgetMode</a>;
-  
+
     void <a href="index.html#openurl">openURL</a>(in DOMString URL);
     String <span>preferenceForKey</span>(in DOMString key);
     void <a href="index.html#wo-setPreferenceForKey">setPreferenceForKey</a>(in DOMString value,
@@ -1235,10 +1235,10 @@ We recently announced that we&#39;re <a href="http://my.opera.com/addons/blog/20
          attribute Function onhide;
     void <a href="index.html#show">show</a>();
     void <a href="index.html#hide">hide</a>();
-    
+
 <!--    /* Inter-widget communication */
     readonly attribute Window widgets; -->
-}</code> 
+}</code>
 </pre>
   <h3 id="wo_identifier"><span class="secno">7.2 </span>The <code><dfn id="identifier">identifier</dfn></code> attribute</h3>
   <p>The <code><a href="index.html#identifier"><span>identifier</span></a></code>
@@ -1479,7 +1479,7 @@ interface <dfn id="resolutionevent">ResolutionEvent</dfn> : Event {
   type=&quot;application/x-opera-widgets&quot; rel=&quot;alternate&quot;
   href=&quot;http://widgets.example.com/example.zip&quot; title=&quot;An Example
   Widget&quot;
-/&gt; </code> 
+/&gt; </code>
 </pre>
   <h3 id="autodisco_html_relation"><span class="secno">8.3
    </span>Relationship to HTML and XHTML</h3>

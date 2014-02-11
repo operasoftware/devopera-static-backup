@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -111,7 +111,7 @@ _gaq.push(['_trackPageview']);
 <p class="comment">Content contributions by Arve, Chris, Zi Bin and Lissy.</p>
 
 <h2>Introduction</h2>
-  
+
   <p>Opera Unite features a Web server running inside the Opera browser, which allows you to do some amazing things. At the touch of a button, you can share images, documents, video, music, games, collaborative applications and all manner of other things with your friends and colleagues. We first released an <a href="http://labs.opera.com/news/2009/06/16/">Opera Labs build</a> containing an early version of the Opera Unite server back in 2009, and now it&#39;s included in the <a href="http://www.opera.com/browser/">latest version of Opera for desktop</a> (although not enabled by default).</p>
 
   <p>This article gets you started on the road to Opera Unite application development — it describes how the Opera Unite server in Opera works and how it can be used. Below I will briefly recap some of the basic concepts related to Opera Unite, show how you can enable the Web server in your browser, and give an example of how to write a simple Opera Unite blog application.</p>
@@ -159,7 +159,7 @@ _gaq.push(['_trackPageview']);
     </li>
     <li><a href="index.html#readmore">Further reading</a></li>
   </ul>
- 
+
 
   <h2 id="concepts">Basic concepts</h2>
 
@@ -201,9 +201,9 @@ _gaq.push(['_trackPageview']);
 
   <p>In this case, a special JavaScript object — <code>opera.io.webserver</code> — becomes available to the application. See the <a href="../../../libraries/unite/index.html">Opera Unite Web Server JavaScript API</a> for more information.</p>
 
-  <p>As the Opera Widgets technology is used, the Opera Unite application can provide the person running the Opera Unite server with a simple way of controlling and configuring it, all using standard HTML, CSS and JavaScript. Opera Unite applications do, however, get access to functionality normally not present in widgets or Web pages, for example a 
+  <p>As the Opera Widgets technology is used, the Opera Unite application can provide the person running the Opera Unite server with a simple way of controlling and configuring it, all using standard HTML, CSS and JavaScript. Opera Unite applications do, however, get access to functionality normally not present in widgets or Web pages, for example a
   <a title="FileI/O JavaScript API" href="../../../libraries/fileio/index.html">sandboxed file system</a>.</p>
-  
+
 <p class="note">For those of you who are interested in learning more about Opera Widgets, you can <a href="../../../addons/widgets/index.html">find more Widgets articles on dev.opera</a>.</p>
 
   <p>Let’s move on, get Opera Unite enabled, and start building up a simple Opera Unite application.</p>
@@ -249,7 +249,7 @@ _gaq.push(['_trackPageview']);
 
   <p>Of these, only <code>config.xml</code> and <code>index.html</code> are required.</p>
 
-  <p>You may include a <code>public_html</code> folder, which is a magic 
+  <p>You may include a <code>public_html</code> folder, which is a magic
   folder in Opera Unite applications. Normally, files and folders inside your application are not available to users requesting your application, so if you want to distribute a separate stylesheet, static images and similar, those files go inside here. These files are mapped to the relative root of your application, so a file named <var>cats.png</var> inside the <code>public_html</code> folder of the <code>helloOperaUnite</code> application will be available at</p>
 
   <pre><code>http://your_device.your_username.operaunite.com/helloOperaUnite/cats.png</code></pre>
@@ -277,7 +277,7 @@ _gaq.push(['_trackPageview']);
 
   <p>You may also add a <code>servicepath</code> element to the <code>config.xml</code> file.
   The content of this element must be a valid part of a URI and defines what the <em>name of your application will be in the URI</em> of the application.
-  If this element is not present, Opera will attempt to use the content of the 
+  If this element is not present, Opera will attempt to use the content of the
   <code>widgetname</code> element as the URI component. If this name is not valid as a URI component, the installation of the application will fail with an error message.</p>
 
   <p>When the application is packaged and run, the above <code>config.xml</code> will make it respond to</p>
@@ -389,7 +389,7 @@ http://your_device.your_username.operaunite.com/blog/form/</code></pre>
 
   <h4 id="scriptentry">Showing a single entry</h4>
 
-  <p>Next, we need to output something when the user clicks a 
+  <p>Next, we need to output something when the user clicks a
   link to an entry:</p>
 
 <pre><code>function showEntry(e)
@@ -415,8 +415,8 @@ http://your_device.your_username.operaunite.com/blog/form/</code></pre>
 
 <pre><code>var request = e.connection.request;</code></pre>
 
-  <p>CGI GET arguments are stored in the <code>queryItems</code> 
-  property of the request. We get the <code>id</code> of the entry to display. 
+  <p>CGI GET arguments are stored in the <code>queryItems</code>
+  property of the request. We get the <code>id</code> of the entry to display.
   Note that the the same CGI argument may have multiple values: </p>
 
 <pre><code>var index = request.queryItems[&#39;id&#39;][0];</code></pre>
@@ -472,7 +472,7 @@ http://your_device.your_username.operaunite.com/blog/form/</code></pre>
   var title = request.bodyItems[&#39;title&#39;][0];
   var text = request.bodyItems[&#39;text&#39;][0];
   entries.push({
-    &#39;title&#39; : title, 
+    &#39;title&#39; : title,
     &#39;text&#39; : text,
     &#39;date&#39; : new Date()
   });
@@ -488,14 +488,14 @@ http://your_device.your_username.operaunite.com/blog/form/</code></pre>
 var text = request.bodyItems[&#39;text&#39;][0];</code></pre>
 
 <p>Submitting the form saves the entry, storing it in an array:</p>
- 	 
+
 <pre><code>entries.push({
   &#39;title&#39; : title,
   &#39;text&#39; : text,
   &#39;date&#39; : new Date()
 });</code></pre>
 
-  <p>Finally, when the entry is saved, we redirect back to the list of 
+  <p>Finally, when the entry is saved, we redirect back to the list of
   entries:</p>
 
 <pre><code>response.setStatusCode(302);
@@ -512,7 +512,7 @@ response.close();</code></pre>
   dialog. If you have not previously started any Opera Unite applications, the Opera Unite configuration dialog will now appear.</p>
 
 <p>Double click <code>My blogging application</code> in the Opera Unite applications pane and you should get a page appearing in the browser window, as seen in Figure 4:</p>
-  
+
    <img src="../../../../devfiles.myopera.com/articles/842/blogmain.jpg" alt="The blog application main screen" />
    <p class="comment">Figure 4: The blog application main screen.</p>
 
@@ -530,13 +530,13 @@ response.close();</code></pre>
 
   <h2 id="viewing">Viewing your Opera Unite application</h2>
 
-  <p>If you followed this guide and started the application in Opera, you 
+  <p>If you followed this guide and started the application in Opera, you
   should now have a functioning web application. Anyone can visit it
   by going to the URL</p>
 
 <pre><code>http://devicename.username.proxyaddress/applicationname</code></pre>
 
-  <p>In this case, if the device is called your_device 
+  <p>In this case, if the device is called your_device
   and it’s running the blog application, the URL becomes:</p>
 
 <pre><code>http://your_device.username.operaunite.com/blog</code></pre>
@@ -598,7 +598,7 @@ response.close();</code></pre>
   <li>The application must not contain or use copyrighted information for which you do not hold the rights.</li>
   <li>The application must not contain or point to adult or hateful content.</li>
   <li>The application should serve standards-compliant HTML pages that are viewable in all modern browsers on a variety of devices.</li>
-</ul>   
+</ul>
 
 
   <h2 id="readmore">Further reading</h2>

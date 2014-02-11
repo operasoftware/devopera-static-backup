@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -113,16 +113,16 @@ _gaq.push(['_trackPageview']);
 <ol class="toc">
     <li><a href="index.html#Introduction">Introduction</a></li>
     <li><a href="index.html#BasicConcepts">Creating a widget with WCL</a></li>
-    <li><a href="index.html#SwitchingSkins">Switching skins</a></li>       
+    <li><a href="index.html#SwitchingSkins">Switching skins</a></li>
     <li><a href="index.html#ApiMethods">WCL API methods and events</a></li>
     <li><a href="index.html#AddingContent">Adding more content</a></li>
-    <li><a href="index.html#WorkChrome">Working with chrome</a></li>       
-    <li><a href="index.html#WCLEvents">Managing WCL button events</a></li>        
+    <li><a href="index.html#WorkChrome">Working with chrome</a></li>
+    <li><a href="index.html#WCLEvents">Managing WCL button events</a></li>
     <li><a href="index.html#WCLResize">Resizing the widget using WCL</a></li>
 </ol>
 
 <a name="Introduction" id="Introduction"></a>
-<h3>Introduction</h3>            
+<h3>Introduction</h3>
 <p>
     Opera provides a library for the simple creation of chrome for widgets.
     This library makes it relatively painless to reuse code for widgets
@@ -131,7 +131,7 @@ _gaq.push(['_trackPageview']);
     on a mobile device and on a desktop computer. The only difference is the
     style sheet that is applied. The library also manages resizing of
     widgets, so authors do not have to implement this themselves in every
-    widget. On mobile devices it’s best to <a href="../cross-device-development-techniques-for/index.html#layoutfullscreen">enable  full-screen 
+    widget. On mobile devices it’s best to <a href="../cross-device-development-techniques-for/index.html#layoutfullscreen">enable  full-screen
     mode</a> to take full advantage of the available screen.
 </p>
 
@@ -210,11 +210,11 @@ _gaq.push(['_trackPageview']);
 <a name="AddingContent" id="AddingContent"></a>
 <h3>Adding more content</h3>
 <p>When you add WCL to your widget, it takes all the content from the body and places it inside the chrome. When you want to add or remove content from the
-elements, there are no special rules that you need to follow. As long as you are using IDs to get the elements, you can add and remove elements as you would 
-normally do without using WCL. For example, if there is a <strong>DIV</strong> with id <em>test</em> you can still use <code>document.getElementById(&quot;test&quot;)</code> 
+elements, there are no special rules that you need to follow. As long as you are using IDs to get the elements, you can add and remove elements as you would
+normally do without using WCL. For example, if there is a <strong>DIV</strong> with id <em>test</em> you can still use <code>document.getElementById(&quot;test&quot;)</code>
  as  normal.</p>
-<p>There are times when you want an element to use all the available area inside the widget. You can use the helper 
-function <code>WidgetChrome.autoResize</code> to help you resize the element to occupy the complete section in the middle and to resize automatically as the widget 
+<p>There are times when you want an element to use all the available area inside the widget. You can use the helper
+function <code>WidgetChrome.autoResize</code> to help you resize the element to occupy the complete section in the middle and to resize automatically as the widget
 is resized. </p>
 <p>
 <strong>Example</strong>: There is a <strong>DIV</strong> with the id <em>pnlConfig</em>. To make sure that it resizes and takes up all the available area
@@ -223,12 +223,12 @@ and resizes automatically, we use the helper function <code>WidgetChrome.autoRes
 <a name="WorkChrome" id="WorkChrome"></a>
 <h3>Working with chrome</h3>
 <p>There are times when you want to customize elements in the chrome. </p>
-<p>Lets start with elements that you don’t want to add. Add the attribute <code>data-not-chrome-content=&quot;true&quot;</code> to those elements. The elements with 
+<p>Lets start with elements that you don’t want to add. Add the attribute <code>data-not-chrome-content=&quot;true&quot;</code> to those elements. The elements with
 this attribute will not be added inside the widget chrome.</p>
 
 <h4>Example</h4>
 <pre><code>&lt;div data-not-chrome-content=&quot;true&quot;&gt; &lt;/div&gt; </code></pre>
-<p>To add extra elements to the chrome, such as  another button, use the 
+<p>To add extra elements to the chrome, such as  another button, use the
 API <code>WidgetChrome.addElementToChrome</code>. </p>
 
 <h4>HTML example</h4>
@@ -244,9 +244,9 @@ chrome. Once you put the button into the chrome, you must still  position it wit
 
 <a name="WCLEvents" id="WCLEvents"></a>
 <h3>Managing WCL button events</h3>
-<p> There is only one event <code>WidgetChrome.ButtonConfig.onclick</code> that you need to handle if you use WidgetChrome. If you want to handle the 
+<p> There is only one event <code>WidgetChrome.ButtonConfig.onclick</code> that you need to handle if you use WidgetChrome. If you want to handle the
 event when a user clicks the close button, you need to load the function <code>WidgetChrome.ButtonClose.onclick</code>.</p>
-    
+
 <pre>WidgetChrome.ButtonConfig.onclick = function(event)
 {
     //Do something when the config button clicked.
@@ -257,12 +257,12 @@ WidgetChrome.ButtonClose.onclick = function(event)
     //Do something when the close button is clicked.
 }</pre>
 
-<p>You can also use <strong>addEventListener</strong>. You can get the reference to the button elements and use addEventListener on them.     
-<strong>WidgetChrome.ButtonConfig</strong> will give the reference to the config button, and <strong>WidgetChrome.ButtonClose</strong> 
+<p>You can also use <strong>addEventListener</strong>. You can get the reference to the button elements and use addEventListener on them.
+<strong>WidgetChrome.ButtonConfig</strong> will give the reference to the config button, and <strong>WidgetChrome.ButtonClose</strong>
 will give the reference to the close button. </p>
 
 <pre>WidgetChrome.ButtonClose.addEventListener(&quot;click&quot;, function() {
-    window.close();    
+    window.close();
 }, false);</pre>
 
 <p>If you don&#39;t need the config button, you can use the following methods to hide the button:</p>
@@ -273,14 +273,14 @@ will give the reference to the close button. </p>
   <dt>Using <em>JavaScript</em></dt>
   <dd><code>WidgetChrome.ButtonConfig.style.display = &quot;none&quot;;</code></dd>
 </dl>
- 
+
 <a name="WCLResize" id="WCLResize"></a>
 <h3>Resizing the widget using WCL</h3>
-<p> To resize a widget, call <strong>window.resizeTo</strong>&#8212; then, call <strong>WidgetChrome.redraw()</strong> so that 
+<p> To resize a widget, call <strong>window.resizeTo</strong>&#8212; then, call <strong>WidgetChrome.redraw()</strong> so that
 the chrome is repainted.</p>
-<p>If you want to make a widget fullscreen, you can use the helper function <strong>WidgetChrome.setFullScreen()</strong>.</p>    
+<p>If you want to make a widget fullscreen, you can use the helper function <strong>WidgetChrome.setFullScreen()</strong>.</p>
 <p>
-    You can set the minimum height and width of the widget using <strong>WidgetChrome.minHeight</strong> and <strong>WidgetChrome.minWidth</strong>. 
+    You can set the minimum height and width of the widget using <strong>WidgetChrome.minHeight</strong> and <strong>WidgetChrome.minWidth</strong>.
     By default, the minimum width is 50px and height is set to 100px, so that a user doesn&#39;t  resize it and make the widget unusable.
 </p>
 none

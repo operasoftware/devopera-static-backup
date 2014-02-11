@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Daniel Davis</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 
@@ -224,7 +224,7 @@ window.addEventListener(&quot;load&quot;, function() {
   var button = opera.contexts.toolbar.createItem(UIItemProperties);
   // Finally, we add the button to the toolbar.
   opera.contexts.toolbar.addItem(button);
-    
+
   // Increase the number on the badge by one
   function updateBadge() {
     button.badge.textContent = parseInt(button.badge.textContent) + 1;
@@ -255,7 +255,7 @@ window.addEventListener(&#39;load&#39;, function() {
   var button = opera.contexts.toolbar.createItem(UIItemProperties);
   // Finally, we add the button to the toolbar.
   opera.contexts.toolbar.addItem(button);
-    
+
   // Listen for messages from the UserJS.
   opera.extension.onmessage = function(event){
     window.opera.postError(&#39;Received message from base.js&#39;);
@@ -296,7 +296,7 @@ window.addEventListener(&quot;load&quot;, function() {
   var button = opera.contexts.toolbar.createItem(UIItemProperties);
   // Finally, we add the button to the toolbar.
   opera.contexts.toolbar.addItem(button);
-    
+
   function enableButton() {
     var tab = opera.extension.tabs.getFocused();
     if (tab) {
@@ -305,7 +305,7 @@ window.addEventListener(&quot;load&quot;, function() {
       button.disabled = true;
     }
   }
-	
+
   // Enable the button when a tab is ready.
   opera.extension.onconnect = enableButton;
   opera.extension.tabs.onfocus = enableButton;

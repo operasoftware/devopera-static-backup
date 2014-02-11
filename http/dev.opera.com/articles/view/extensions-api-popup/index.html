@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,28 +103,28 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
    <dt><a href="../extensions-api-popup-height/index.html">Popup.height</a></dt>
    <dd>The height of the popup window.</dd>
-   
+
    <dt><a href="../extensions-api-popup-href/index.html">Popup.href</a></dt>
    <dd>A URL reference to the page to pop up; this page will pop up when the user clicks on an <code>ExtensionUIItem</code>, e.g. a button.</dd>
-   
+
    <dt><a href="../extensions-api-popup-width/index.html">Popup.width</a></dt>
    <dd>The width of the popup window.</dd>
-   
+
    <dt><a href="../extensions-api-popup-onmessage/index.html">opera.extension.onmessage</a></dt>
    <dd>This event is fired when a message is received from the <code>BackgroundProcess</code>.</dd>
-   
+
    <dt><a href="../extensions-api-popup-postMessage/index.html">opera.extension.postMessage()</a></dt>
    <dd>This method is used to post a message to the <code>BackgroundProcess</code> of the extension.</dd>
-   
+
    <dt><a href="../extensions-api-popup-addEventListener/index.html">opera.extension.addEventListener()</a></dt>
    <dd>Registers a listener for an event specific to the popup window.</dd>
-   
+
    <dt><a href="../extensions-api-popup-removeEventListener/index.html">opera.extension.removeEventListener()</a></dt>
    <dd>Removes an existing listener from an event.</dd>
 </dl>
@@ -137,9 +137,9 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <h2>Example</h2>
 
 <p>Add a button to the toolbar. When the button is clicked, popup.html opens in a popup window and sends a message to the extension&#39;s background script. When the message is received, a badge appears within the toolbar button.</p>
-    
+
 <pre><code>//
-// The background process (e.g. &#39;/background.js&#39;). 
+// The background process (e.g. &#39;/background.js&#39;).
 //
 
 // Set options for the button
@@ -165,10 +165,10 @@ opera.extension.onmessage = function(event) {
 };</code></pre>
 
 <pre><code>//
-// The popup script (e.g. &#39;/popup.js&#39;). 
+// The popup script (e.g. &#39;/popup.js&#39;).
 //
 
-window.addEventListener(&#39;DOMContentLoaded&#39;, function() { 
+window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
   opera.extension.postMessage(&#39;Message from popup.&#39;);
   document.write(&#39;Message sent from popup&#39;);
 }, false);</code></pre>

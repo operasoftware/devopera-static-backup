@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -172,7 +172,7 @@ _gaq.push(['_trackPageview']);
 
 <p>Let&#39;s start with a simple object that will map fields to its values:</p>
 
-<pre><code>db = { 
+<pre><code>db = {
     A1: &#39;First cell&#39;,
     A2: &#39;Second cell&#39;,
 };</code></pre>
@@ -192,7 +192,7 @@ _gaq.push(['_trackPageview']);
 
 <pre><code>db = {
     values:
-    { 
+    {
         A1: &#39;First cell&#39;,
         A2: &#39;Second cell&#39;,
     },
@@ -286,7 +286,7 @@ LOAD_SCRIPT(&#39;main.js&#39;);
     &#39;spreadsheet_update&#39;, spreadsheet_update,
     &#39;spreadsheet_set_cell&#39;, spreadsheet_set_cell,
     // &#39;imgs&#39;: &#39;static&#39;,
-]); 
+]);
 </code></pre>
 
 <p>This allows us to define <code>imgs</code> as <code>static</code>, so that it&#39;s available from visitors&#39; browsers as <code>http://device.login.operaunite.com/gridnite/imgs/</code>. The other option is to create a <code>./public_html</code> directory, the contents of which will be automatically visible at <code>http://device.login.operaunite.com/gridnite/</code>.</p>
@@ -314,7 +314,7 @@ LOAD_SCRIPT(&#39;main.js&#39;);
        base: r.uri(&#39;/&#39;),
        current_time: (new Date()).getTime()/1000,
     });</code></pre>
-    
+
     <p>Here we initialize the Markuper templating library. We won&#39;t be using much of its functionality, but it&#39;s still better to have an external HTML template file to edit, rather than mixing everything into <code>./main.js</code>.</p>
 
 <p>The template called is <code>./templates/index.html</code>, which is pretty much the same file as the <code>static_test.html</code>, except that I&#39;ve replaced the 3x3 table with <code>&lt;div id=&quot;main_table&quot;&gt;&lt;/div&gt;</code>. Using Markuper you can issue</p>
@@ -348,14 +348,14 @@ table += &#39;&lt;/table&gt;&#39;;</code></pre>
 <p>The last step is to write the template into the browser:</p>
 
 <pre><code>r.write(template.parse().html());
-// r.write is Uniteness&#39; shortcut; 
+// r.write is Uniteness&#39; shortcut;
 // Uniteness will also close the connection automatically when function returns
 </code></pre>
 
 <p>At this point we will devise a <code>spreadsheet_set_cell</code> function that will set the contents of a table&#39;s cell, when called via AJAX:</p>
 
 <pre><code>function spreadsheet_set_cell(r) {
-    if(r.GET.cell_id) {  
+    if(r.GET.cell_id) {
         if (r.GET.cell_id.match(/^[A-Z][0-9]+$/)) {
 </code></pre>
 
@@ -363,13 +363,13 @@ table += &#39;&lt;/table&gt;&#39;;</code></pre>
 
 <pre><code> // save the value into the database
  db.store.values[r.GET.cell_id] = r.GET.value;
- 
+
  // push(append) a new update &quot;row&quot; for propagation with UNIX time, cell_id and value
  // as you remember, we will query this to send &quot;updates&quot; to other connected clients
  db.store.updates.push(
    [
-     (new Date()).getTime()/1000, 
-     r.GET.cell_id, 
+     (new Date()).getTime()/1000,
+     r.GET.cell_id,
      r.GET.value
    ]
  );
@@ -382,7 +382,7 @@ table += &#39;&lt;/table&gt;&#39;;</code></pre>
            return i[0]&gt;((new Date()).getTime()/1000)-1800;
       }
  );</code></pre>
- 
+
 <p>Now all we left to do save the database, as follows:</p>
 
 <pre><code>db.save();</code></pre>

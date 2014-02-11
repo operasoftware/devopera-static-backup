@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Shwetank Dixit</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Introduction</h2>
@@ -295,8 +295,8 @@ opera.extension.onmessage = function(event){
 		if( tab ){
 			tab.postMessage( &quot;Send a port&quot;, [event.source] );
 			opera.postError(&#39;sent a message to injected script&#39;);
-		} 
-	} 
+		}
+	}
 }</code></pre>
 
 <p>We first check whether the origin of the connection is the popup file (popup.html) and whether it is the same popup.html that is included in our extension file or not (by checking for &#39;widget://&#39;). If so, then it will send a message to the injected script, together with a reference to the source of the connect (the popup). </p>
@@ -310,10 +310,10 @@ opera.extension.onmessage = function( event ){
 	if( event.data == &quot;Send a port&quot; ){
 		background = event.source; // in case you need to send anything to background, just do background.postMessage()
 		var channel = new MessageChannel();
-		
+
 		event.ports[0].postMessage( &quot;Here is a port to the currently focused tab&quot;, [channel.port2] );
 		opera.postError(&#39;post sent from injected script&#39;);
-		
+
 		channel.port1.onmessage = handlePopupMessage;
 	}
 }</code></pre>
@@ -338,13 +338,13 @@ opera.extension.onmessage = function( event ){
 function handleMessageFromInjectedScript( event ){
 	opera.postMessage( &quot;Message received from the injected script: &quot; + event.data );
 }
- 
+
 opera.extension.onmessage = function ( event ){
 	if( event.data == &quot;Here is a port to the currently focused tab&quot; ){
 		if(event.ports.length &gt; 0 ){
 		theport = event.ports[0];
 			theport.onmessage = handleMessageFromInjectedScript;
-		} 
+		}
 	}
 }
 
@@ -367,7 +367,7 @@ var sendstring = message;
 
 <pre><code>function handlePopupMessage(e){
 			opera.postError( &quot;Message received from the popup: &quot; + event.data );
-			
+
 			if (event.data == &quot;change title&quot;){
 				document.title = &quot;You have clicked &quot; + counter + &quot; times&quot;;
 				counter++;

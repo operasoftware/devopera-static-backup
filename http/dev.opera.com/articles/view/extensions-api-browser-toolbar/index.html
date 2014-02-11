@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
@@ -115,43 +115,43 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
    <dt><a href="../extensions-api-toolbar-removeItem/index.html">opera.contexts.toolbar.removeItem()</a></dt>
    <dd>Removes a given button from the toolbar in the browser.</dd>
-   
+
    <dt><a href="../extensions-api-toolbar-length/index.html">opera.contexts.toolbar.length</a></dt>
    <dd>The number of buttons that exist in the toolbar for this extension (0 or 1).</dd>
-   
+
    <dt><a href="../extensions-api-button-badge/index.html">Button.badge</a></dt>
    <dd>A read-only property representing the badge for a button.</dd>
-   
+
    <dt><a href="../extensions-api-button-disabled/index.html">Button.disabled</a></dt>
    <dd>A read-only property indicating whether a button is disabled. Set to false by default (meaning the item is enabled).</dd>
-   
+
    <dt><a href="../extensions-api-button-icon/index.html">Button.icon</a></dt>
    <dd>A read-only representation of the icon for a button.</dd>
-   
+
    <dt><a href="../extensions-api-button-onclick/index.html">Button.onclick</a></dt>
    <dd>Represents the function executed when the button is clicked.</dd>
-   
+
    <dt><a href="../extensions-api-button-popup/index.html">Button.popup</a></dt>
    <dd>A read-only property representing the popup file path for a button.</dd>
-   
+
    <dt><a href="../extensions-api-button-title/index.html">Button.title</a></dt>
    <dd>The title of a button which is exposed to the user (e.g., as a tooltip when hovering over the item with a mouse).</dd>
-   
+
    <dt><a href="../extensions-api-button-addEventListener/index.html">Button.addEventListener()</a></dt>
    <dd>Listen for events dispatched on a button.</dd>
-   
+
    <dt><a href="../extensions-api-button-removeEventListener/index.html">Button.removeEventListener()</a></dt>
    <dd>Removes a listener from receiving an event.</dd>
-   
+
    <dt><a href="../extensions-api-badge-backgroundColor/index.html">Badge.backgroundColor</a></dt>
    <dd>The background color for a badge.</dd>
-   
+
    <dt><a href="../extensions-api-badge-color/index.html">Badge.color</a></dt>
    <dd>The text color of a badge.</dd>
-   
+
    <dt><a href="../extensions-api-badge-display/index.html">Badge.display</a></dt>
    <dd>Determines whether a badge should be displayed.</dd>
-   
+
    <dt><a href="../extensions-api-badge-textContent/index.html">Badge.textContent</a></dt>
    <dd>The text that will be shown in a badge.</dd>
 </dl>
@@ -174,9 +174,9 @@ var properties = {
   title: &quot;My Extension&quot;,
   icon: &quot;icon.18x18.png&quot;,
   popup: {
-    href: &#39;popup.html&#39;, 
-    width: 100, 
-    height: 100 
+    href: &#39;popup.html&#39;,
+    width: 100,
+    height: 100
   },
   badge: {
     display: &#39;block&#39;,
@@ -184,14 +184,14 @@ var properties = {
     color: &#39;#ffffff&#39;,
     textContent: &#39;0&#39;
   }
-};	
+};
 
 // Create and add the button to the toolbar
 var button = opera.contexts.toolbar.createItem(properties);
 opera.contexts.toolbar.addItem(button);
 
 // Update the button badge on button click
-var i = 1; 
+var i = 1;
 button.addEventListener(&#39;click&#39;, handleClick, false);
 
 function handleClick() {
@@ -202,10 +202,10 @@ function handleClick() {
   button.badge.textContent = badgeText;
 
   // Update the button title
-  button.title = &quot;You&#39;ve clicked the button &quot; + i + &quot; time(s)&quot;; 
+  button.title = &quot;You&#39;ve clicked the button &quot; + i + &quot; time(s)&quot;;
 
 i++;
-}</code></pre>	
+}</code></pre>
 
       <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>
 

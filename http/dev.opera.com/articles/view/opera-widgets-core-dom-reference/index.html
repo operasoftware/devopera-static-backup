@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -130,7 +130,7 @@ _gaq.push(['_trackPageview']);
 <p>Use <code>widget.identifier</code> to get the identifier part. One use of this is loading translation files in the widget:</p>
 
 <h2 id="widgetfile">Use a different start file: The <code>widgetfile</code> element</h2>
- 
+
 <p>By default, the widget runtime will try to load <code>index.html</code> inside the widget package. You can change this to another file by adding a <code>widgetfile</code> element to the <code>config.xml</code> of the widget:</p>
 
 <pre><code>&lt;widget&gt;
@@ -154,7 +154,7 @@ var username = widget.preferenceForKey(&#39;username&#39;);
 <p>If you store <code>null</code> for a given key, any previous value for that key will be unset.</p>
 
 <pre><code><span class="comment">//Store the value &#39;gautamc&#39; for the key &#39;username&#39;</span>
-widget.setPreferenceForKey( &#39;gautamc&#39;, &#39;username&#39; ); 
+widget.setPreferenceForKey( &#39;gautamc&#39;, &#39;username&#39; );
 <span class="comment">//... do some work ...</span>
 if ( logout )
 {
@@ -225,7 +225,7 @@ if ( logout )
 <h2 id="resolution">Handling changes in screen size</h2>
 
  <p>If the resolution of the screen changes, for example when a phone is switched from portrait to landscape mode, a <code>resolution</code> event will be fired on the <code>widget</code> object:</p>
- 
+
  <pre><code>widget.addEventListener(&#39;resolution&#39;, handleResolutionChange, false);</code></pre>
 
 <p>You can now change the appearance of the widget.</p>
@@ -252,8 +252,8 @@ if ( newItems )
 
 <p>You can use <code>window.close()</code> to close a widget too.</p>
 
-<pre><code>closeButton.addEventListener( &#39;click&#39;, function () { 
-  window.close(); 
+<pre><code>closeButton.addEventListener( &#39;click&#39;, function () {
+  window.close();
 }, false );</code></pre>
 
 <p class="note">Hiding and closing widgets programatically is not possible on mobile.</p>

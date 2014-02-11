@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,28 +103,28 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
    <dt><a href="../extensions-api-urlfilter-block-add/index.html">opera.extension.urlfilter.block.add()</a></dt>
    <dd>Adds a rule to the virtual list of blocked URLs.</dd>
-   
+
    <dt><a href="../extensions-api-urlfilter-block-remove/index.html">opera.extension.urlfilter.block.remove()</a></dt>
    <dd>Removes a rule from the virtual list of blocked URLs.</dd>
 
    <dt><a href="../extensions-api-urlfilter-allow-add/index.html">opera.extension.urlfilter.allow.add()</a></dt>
    <dd>Adds a rule to the virtual list of allowed URLs.</dd>
-   
+
    <dt><a href="../extensions-api-ruleOptions-excludeDomains/index.html">RuleOptions.excludeDomains</a></dt>
    <dd>Domains on which to not apply a filter rule.</dd>
-   
+
    <dt><a href="../extensions-api-ruleOptions-includeDomains/index.html">RuleOptions.includeDomains</a></dt>
    <dd>Domains on which to apply a filter rule.</dd>
-   
+
    <dt><a href="../extensions-api-ruleOptions-resources/index.html">RuleOptions.resources</a></dt>
    <dd>Resource types to apply a filter rule to.</dd>
-   
+
    <dt><a href="../extensions-api-ruleOptions-thirdParty/index.html">RuleOptions.thirdParty</a></dt>
    <dd>Specifies whether a filter rule should apply to third-party domains.</dd>
 
@@ -139,18 +139,18 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p>To enable the URL filter, the <code>opera:urlfilter</code> feature needs to be added as a <code>feature</code> element to the extension&#39;s <code>config.xml</code> file.</p>
 
 <p>An in-depth tutorial is available at Dev.Opera: <a href="../site-blocking-with-operas-url-filter-api/index.html">Site blocking with Opera&#39;s URL Filter API</a></p>
-    
+
 <h2>Example</h2>
 
 <p>Block <code>example.com/images</code>, <code>example.com/css</code> and any subdirectories, whatever the protocol. Note that <code>www.example.com</code> and other sub-domains are not affected.</p>
-    
-<pre><code>&lt;!-- 
+
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     &lt;feature name=&quot;opera:urlfilter&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
 // The background process (e.g. index.html)

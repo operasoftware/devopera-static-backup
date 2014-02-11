@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -131,7 +131,7 @@ _gaq.push(['_trackPageview']);
 window.addEventListener( &quot;load&quot;, function(){
   if( opera.extension.windows.create ) {
     opera.extension.windows.create();
-  } 
+  }
   else {
     // Couldn&#39;t find an opera.extension.windows.create object.
   }
@@ -172,7 +172,7 @@ window.addEventListener( &quot;load&quot;, function(){
     }
     opera.extension.windows.onblur = function( event ){
       opera.postError( &quot;windows loses focus&quot; );
-    }    
+    }
   }
   else {
     // couldn&#39;t find an opera.extension.windows object.

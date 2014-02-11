@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -235,7 +235,7 @@ _gaq.push(['_trackPageview']);
 
     //Replace the input field with the select box
     var countryInput = document.getElementById(&#39;countries&#39;);
-    countryInput.parentNode.replaceChild( countrySelect, countryInput ); 
+    countryInput.parentNode.replaceChild( countrySelect, countryInput );
 }</code>
 </pre>
 
@@ -433,12 +433,12 @@ if ( isHandheld )
 xhr.open(&#39;GET&#39;, url, false);
 xhr.onreadystatechange = function () {
     if ( this.readyState==4 )
-    {                    
+    {
         clearTimeout(timeout);
         //Handle the data
     }
 }
-var timeout = setTimeout( 
+var timeout = setTimeout(
     function ()
     {
         xhr.abort();

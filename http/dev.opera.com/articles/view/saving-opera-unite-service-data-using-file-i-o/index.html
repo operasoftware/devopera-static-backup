@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -142,7 +142,7 @@ _gaq.push(['_trackPageview']);
 </p>
 
 <h2 id="servicemodify">Modifying the example blog service</h2>
-We will now begin by modifying the blog service.  If something is unclear or you wish to know more about specific functions the <a href="../../../libraries/fileio/index.html">File I/O API documentation</a> is an excellent resource. 
+We will now begin by modifying the blog service.  If something is unclear or you wish to know more about specific functions the <a href="../../../libraries/fileio/index.html">File I/O API documentation</a> is an excellent resource.
 
 <h3 id="modifyaccess">Enable access to the File I/O API</h3>
 <p>Unite Services do not have access to the filesystem by default; they must explicitly request it. To do this, add the following  <code>&lt;feature&gt;</code> tag to the <code>config.xml</code> file.</p>
@@ -205,7 +205,7 @@ Each blog entry will be stored in a file with an id for the filename, which is s
     var text = request.bodyItems[&#39;text&#39;][0];
 
     entries.push({
-        &#39;title&#39; : title, 
+        &#39;title&#39; : title,
         &#39;text&#39;  : text,
         &#39;date&#39;  : new Date()
     });

@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -104,7 +104,7 @@ _gaq.push(['_trackPageview']);
 
       <h2>Introduction</h2>
 
-<p> 
+<p>
 In the brand new release of <a href="http://www.opera.com/download/get.pl?sub=++++&amp;id=33389&amp;location=270&amp;nothanks=yes">Opera Widgets Runtime for Android</a> there are plenty of new exciting features, including support for the newly available <a href="http://specs.wacapps.net/1.0/dec2010/API.html">Widget Handset APIs</a> from the <a href="http://www.jil.org"><abbr title="Wholesale Applications Community">WAC initiative</abbr></a>. These provide widgets with a greater level of device access previously only available to native applications. Using these new APIs we can take pictures, check GPS location, browse our address books, access accelerometer information, and even send SMS, MMS and E-Mail messages!
 </p>
 
@@ -130,7 +130,7 @@ A widget <code>config.xml</code> that makes use of WAC features looks something 
     &lt;JIL:access localfs=&quot;true&quot; /&gt;
     &lt;name&gt;Demo Widget&lt;/name&gt;
     &lt;icon&gt;icon.png&lt;/icon&gt;
-    
+
     &lt;feature name=&quot;http://jil.org/jil/api/1.1/widget&quot; required=&quot;true&quot;/&gt;
     &lt;feature name=&quot;http://jil.org/jil/api/1.1/multimedia&quot; required=&quot;true&quot;/&gt;
     &lt;feature name=&quot;http://jil.org/jil/api/1.1.2/camera&quot; required=&quot;true&quot;/&gt;
@@ -192,7 +192,7 @@ AudioPlayer
     }
 }
 
-Widget.Multimedia.AudioPlayer.open(&#39;http://.../file.mp3&#39;);</code></pre>				
+Widget.Multimedia.AudioPlayer.open(&#39;http://.../file.mp3&#39;);</code></pre>
 
 <p>
 Apart from opening the audio player and starting playback, you can also stop and pause/resume playback. These are all very similar methods. Just remember that these calls are executed asynchronously so you need to define <code>onStateChange</code> callbacks to handle state changes of the player, when the following states occur:
@@ -246,28 +246,28 @@ Now for some JavaScript to handle the functionality - in the attached <code>came
 
 <pre><code>
 window.addEventListener(&#39;load&#39;,function(){
-    
+
     //set preview window to #preview &lt;object&gt;
     Widget.Multimedia.Camera.setWindow(document.getElementById(&#39;preview&#39;));
-    
+
     //callback function called when taking photo succeeded
     Widget.Multimedia.Camera.onCameraCaptured = function(filename){
         alert(filename);
     }
-    
-    //setting button onclick event 
+
+    //setting button onclick event
     document.getElementById(&#39;shoot&#39;).addEventListener(&#39;click&#39;,function(){
         Widget.Multimedia.Camera.captureImage(null, false);
     }, false);
-    
+
 },false);</code></pre>
 
 <p>
-So, when this widget is run on a supporting device, it gives us a real time camera preview. When the “take photo” button is clicked, it will save the image in the default location (we can specify the desired path using the first parameter of the <code>captureImage</code> method) and call the <code>onCameraCaptured</code> callback function to display an alert containing the image path. We can display it in a widget using this path — we just need to remember to add <code>file://</code> in front of it. 
+So, when this widget is run on a supporting device, it gives us a real time camera preview. When the “take photo” button is clicked, it will save the image in the default location (we can specify the desired path using the first parameter of the <code>captureImage</code> method) and call the <code>onCameraCaptured</code> callback function to display an alert containing the image path. We can display it in a widget using this path — we just need to remember to add <code>file://</code> in front of it.
 </p>
 
 <p>
-<a href="http://widgets.opera.com/widget/21144/">Download a working camera demo, with sources</a>. 
+<a href="http://widgets.opera.com/widget/21144/">Download a working camera demo, with sources</a>.
 </p>
 
 <h3>Position Info</h3>

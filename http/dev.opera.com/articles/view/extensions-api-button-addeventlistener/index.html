@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="http://dev.opera.com/addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="http://dev.opera.com/addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description:</h2>
@@ -117,7 +117,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
     <li><code>eventListener</code>: The function that is executed when the event occurs.</li>
     <li><code>useCapture</code>: Boolean, and should be kept as <code>false</code> for now. <strong>Note:</strong> this value currently has no purpose.</li>
 </ul>
-    
+
 <h2>Syntax:</h2>
 
 <p><code>void addEventListener(&lt;DOMString&gt; type, eventListener, &lt;boolean&gt; useCapture)</code></p>
@@ -133,18 +133,18 @@ var properties = {
   disabled: false,
   title: &quot;My Test Extension&quot;,
   icon: &quot;icon.18x18.png&quot;
-};	
+};
 
 // Add the button to the browser UI
 var button = opera.contexts.toolbar.createItem(properties);
 opera.contexts.toolbar.addItem(button);
 
 // Update the button title each time the button is clicked
-var i = 1; 
+var i = 1;
 button.addEventListener(&#39;click&#39;, handleClick, false);
 
 function handleClick() {
-  button.title = &quot;You&#39;ve clicked the button &quot; + i + &quot; time(s)&quot;; 
+  button.title = &quot;You&#39;ve clicked the button &quot; + i + &quot; time(s)&quot;;
   i++;
 }
 </code></pre>

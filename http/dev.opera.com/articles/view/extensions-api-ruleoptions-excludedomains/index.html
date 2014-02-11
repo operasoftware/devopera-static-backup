@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="http://dev.opera.com/addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="http://dev.opera.com/addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description:</h2>
@@ -120,14 +120,14 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
 <p>The following example blocks any content from facebook.com, but only when accessed from the cnn.com domain, e.g. a &quot;Like&quot; or &quot;Recommend&quot; button.</p>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     ...
     &lt;feature name=&quot;opera:urlfilter&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
 // The background process (e.g. index.html)
@@ -139,10 +139,10 @@ if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
   var ruleOptions = {
     excludeDomains: [&#39;cnn.com&#39;]
   }
-  
+
   // Assign the URLFilter object to a variable for efficiency
   var filter = opera.extension.urlfilter;
-  
+
   filter.allow.add(&#39;||facebook.com/*&#39;, ruleOptions);
   filter.block.add(&#39;||facebook.com/*&#39;);
 }</code></pre>

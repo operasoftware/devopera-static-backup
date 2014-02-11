@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -112,7 +112,7 @@ _gaq.push(['_trackPageview']);
 <p class="comment">Updated on 3rd February 2010.</p>
 <h2>Introduction</h2>
 <p>
-This article gets you started with Opera Unite’s Server Framework: Yusef. After reading this article, you will be able to start harnessing the strength of Yusef. Included is a simple example to get things going. 
+This article gets you started with Opera Unite’s Server Framework: Yusef. After reading this article, you will be able to start harnessing the strength of Yusef. Included is a simple example to get things going.
 </p>
 <p>
 If you have not read the <a href="../opera-unite-developer-primer-revisited/index.html">Opera Unite developer primer</a>, we encourage you to do so before starting with Yusef.
@@ -147,7 +147,7 @@ Think of Yusef as a daemon service that runs in the background, and your script 
 </p>
 <h2 id="Yusef_Core">Yusef Core</h2>
 <p>
-Yusef Core provides the backbone of an  Opera Unite application and deals with mount points, the sharing of static files, section listeners (the root or subpaths of the application), form actions (validated by means of a cryptographic nonce — a secure one-time random number used for authentication) and features some hooks to extend these basic functions and add plugins. 
+Yusef Core provides the backbone of an  Opera Unite application and deals with mount points, the sharing of static files, section listeners (the root or subpaths of the application), form actions (validated by means of a cryptographic nonce — a secure one-time random number used for authentication) and features some hooks to extend these basic functions and add plugins.
 </p>
 <p>
 There are three main parts in the Yusef Core. <i>Section</i> and <i>Actions</i> are ways Yusef listens to events triggered by users in an Opera Unite application page, while <i>Plugins</i> introduce extra features such as access control.</p>
@@ -167,7 +167,7 @@ Yusef Core itself creates a section called <code>static</code> which serves all 
 </p>
 <h3 id="Action">Action</h3>
 <p>
-Unite actions are the way Yusef deals with a form POST. Developers can register an action listener to process the data posted by a form. The function <code>registerUniteActionListener</code> listens to POST requests and registers each of them to a specific function. Each POST request corresponds to a unique function. 
+Unite actions are the way Yusef deals with a form POST. Developers can register an action listener to process the data posted by a form. The function <code>registerUniteActionListener</code> listens to POST requests and registers each of them to a specific function. Each POST request corresponds to a unique function.
 <p>
 For example, a form may submit data to the root of the application - <code>http://device.user.operaunite.com/application/</code>
 </p>
@@ -241,7 +241,7 @@ Including File I/O in the application descriptor might be counter intuitive for 
 The entry point of an Opera Unite application is index.html. Remember that this index.html is used to invoke libraries and Yusef, not to display content.
 </p>
 <p>
-There are two ways to invoke the libraries, one is to do it selectively as shown below. 
+There are two ways to invoke the libraries, one is to do it selectively as shown below.
 </p>
 <pre>
 <code>
@@ -292,7 +292,7 @@ Inside HelloYusef.js, Yusef functions are invoked. Member functions of Yusef are
 </p>
 <p>
 The <code>addSectionListener</code> listens to subpaths in a URI. For example, when accessing <code>device.user.operaunite.com/application/addfile</code>, the listener for <code>addfile</code> is fired.
-Here we have a listener listening to <code>_index</code> — which is fired when the top level URI of an Opera Unite application is accessed. 
+Here we have a listener listening to <code>_index</code> — which is fired when the top level URI of an Opera Unite application is accessed.
 </p>
 <pre>
 <code>
@@ -341,9 +341,9 @@ Finally, we explicitly parse the template in order to proceed with the data bind
 </code>
 </pre>
 <p>
-The Markuper template library outputs the page <code>templates/helloYusef.html</code>, which is the page presented to your users. 
+The Markuper template library outputs the page <code>templates/helloYusef.html</code>, which is the page presented to your users.
 <p>
-A special syntax is used to retrieve the JavaScript value bound to the template. For example <code>{{data.servicePath}}</code> references the <code>servicePath</code> value previously specified in helloYusef.js. 
+A special syntax is used to retrieve the JavaScript value bound to the template. For example <code>{{data.servicePath}}</code> references the <code>servicePath</code> value previously specified in helloYusef.js.
 </p>
 
 <img src="../../../../devfiles.myopera.com/articles/790/helloYusef_screenshot.png" alt="say hello to Yusef" />
@@ -354,18 +354,18 @@ A special syntax is used to retrieve the JavaScript value bound to the template.
 <p>
 
 <p>
-In this article, we have introduced Yusef, Opera Unite’s Server Framework. There are three parts to Yusef, <i>section</i> (which listens to a URL subpath), <i>action</i> (which deals with form POST) and <i>plugin</i>. 
+In this article, we have introduced Yusef, Opera Unite’s Server Framework. There are three parts to Yusef, <i>section</i> (which listens to a URL subpath), <i>action</i> (which deals with form POST) and <i>plugin</i>.
 </p>
 <p>
-You can slowly increase the complexity by adding more plugins. One such interesting plugin is the Yusef UI plugin that ties together Opera Unite’s UI templating engine called <a href="../markuper-unite-template-library/index.html">Markuper</a>. 
+You can slowly increase the complexity by adding more plugins. One such interesting plugin is the Yusef UI plugin that ties together Opera Unite’s UI templating engine called <a href="../markuper-unite-template-library/index.html">Markuper</a>.
 </p>
 <p>
 We will have a closer look at Yusef plugins in a future article.
 </p>
 
 <h2 id="Reference">Reference Materials</h2>
-<p> 
-You might want to take a look at these other Opera Unite articles or libraries.</p> 
+<p>
+You might want to take a look at these other Opera Unite articles or libraries.</p>
 <ul>
 <li>
 <a href="../opera-unite-developer-primer-revisited/index.html">Opera Unite Development primer</a>

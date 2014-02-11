@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
@@ -135,8 +135,8 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <h2>Example</h2>
 
 <p>The following example has an image of a padlock within the extension&#39;s <code>images</code> directory. It displays this within each page that has <code>https://</code> within its URL.</p>
-    
-<pre><code>&lt;!-- 
+
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
@@ -156,21 +156,21 @@ window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
           // Create an image element from the FileReader object
           var badge = document.createElement(&quot;img&quot;);
           badge.src = fr.result;
-          
+
           // Apply styles to the image
           badge.style.position = &#39;fixed&#39;;
           badge.style.top = &#39;2px&#39;;
           badge.style.right = &#39;2px&#39;;
           badge.style.zIndex = &#39;1001&#39;;
           badge.title = &quot;Secured with SSL&quot;;
-          
+
           // Append the image to the current page
           document.body.appendChild(badge);
     }
-    
+
     // Get the image resource
     var imgFile = opera.extension.getFile(&quot;/images/icon_16.png&quot;);
-    
+
     if (imgFile) {
       // Read out the File object as a Data URI
       var fr = new FileReader();

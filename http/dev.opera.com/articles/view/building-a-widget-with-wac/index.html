@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -117,8 +117,8 @@ _gaq.push(['_trackPageview']);
 <p>Our spirit level tool uses the <code>AccelerometerInfo</code> API to obtain information about the phone&#39;s acceleration in three different axes (see also Figure 2):</p>
 
 <ul>
-  <li><strong>x</strong>: The right side of the phone</li> 
-  <li><strong>y</strong>: The top side of the phone</li> 
+  <li><strong>x</strong>: The right side of the phone</li>
+  <li><strong>y</strong>: The top side of the phone</li>
   <li><strong>z</strong>: The front side of the phone</li>
 </ul>
 
@@ -176,7 +176,7 @@ var accelerationZ = Widget.Device.DeviceStateInfo.AccelerometerInfo.zAxis;</code
   move(velocity.x * updateFactor, velocity.y * updateFactor);
 }</code></pre>
 
-<p>First we calculate where the bubble should be now — this is our destination. We assume that the force that makes bubble flow in a specific direction is proportional to the distance between the destination and the current position of a bubble and that there is a water viscosity proportional to speed of the bubble. The bubble won&#39;t move to destination point immediately, because of water viscosity, so we simulate that effect next. The last thing to do in each frame is move the bubble based on it&#39;s current velocity — done by the <code>move</code> function near the bottom of the above code snippet.</p> 
+<p>First we calculate where the bubble should be now — this is our destination. We assume that the force that makes bubble flow in a specific direction is proportional to the distance between the destination and the current position of a bubble and that there is a water viscosity proportional to speed of the bubble. The bubble won&#39;t move to destination point immediately, because of water viscosity, so we simulate that effect next. The last thing to do in each frame is move the bubble based on it&#39;s current velocity — done by the <code>move</code> function near the bottom of the above code snippet.</p>
 
 <p class="note">Note that there is a <code>calibration</code> object referenced above, which helps you correct accelerometer values. It&#39;s set by clicking the calibration button in the UI.</p>
 

@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,97 +103,97 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
     <dt><a href="../extensions-api-contextmenu-createItem/index.html">opera.contexts.menu.createItem()</a></dt>
     <dd>Creates a new MenuItem available for use in the context menu.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-addItem/index.html">opera.contexts.menu.addItem()</a></dt>
     <dd>Add a specified MenuItem to the context menu.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-item/index.html">opera.contexts.menu.item()</a></dt>
     <dd>Returns the specified node in a collection of MenuItem objects.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-removeItem/index.html">opera.contexts.menu.removeItem()</a></dt>
     <dd>Remove a specified MenuItem from the context menu.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-length/index.html">opera.contexts.menu.length</a></dt>
     <dd>A read-only property representing the number of MenuItem objects in a collection.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-onclick/index.html">opera.contexts.menu.onclick</a></dt>
     <dd>A click event handler for the context menu, containing a MenuEvent.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-addItem/index.html">MenuItem.addItem()</a></dt>
     <dd>Add a specified MenuItem to an existing MenuItem.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-item/index.html">MenuItem.item()</a></dt>
     <dd>Returns the specified node in a collection of MenuItem objects.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-removeItem/index.html">MenuItem.removeItem()</a></dt>
     <dd>Remove a specified MenuItem from an existing MenuItem.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-contexts/index.html">MenuItem.contexts</a></dt>
     <dd>An attribute defining the contexts in which a MenuItem should appear, e.g. &quot;page&quot;, &quot;link&quot;, &quot;image&quot;, etc.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-disabled/index.html">MenuItem.disabled</a></dt>
     <dd>An attribute defining whether a button is disabled. Set to false by default (meaning the item is enabled).</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-documentURLPatterns/index.html">MenuItem.documentURLPatterns</a></dt>
     <dd>An attribute defining which domains a MenuItem should be activated for.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-icon/index.html">MenuItem.icon</a></dt>
     <dd>The URL of the MenuItem&#39;s icon.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-id/index.html">MenuItem.id</a></dt>
     <dd>A property representing the id of the MenuItem.</dd>
-    
+
     <!--<dt><a href="/articles/view/extensions-api-contextmenu-">MenuItem.length</a></dt>
     <dd></dd>-->
-    
+
     <dt><a href="../extensions-api-contextmenu-onclick/index.html">MenuItem.onclick</a></dt>
     <dd>A click event handler for a MenuItem, containing a MenuEvent.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-parent/index.html">MenuItem.parent</a></dt>
     <dd>A read-only property representing the parent object of the MenuItem, set to null by default.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-targetURLPatterns/index.html">MenuItem.targetURLPatterns</a></dt>
     <dd>An attribute defining which hyperlink target domains a MenuItem should be activated for.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-title/index.html">MenuItem.title</a></dt>
     <dd>The title of the MenuItem shown to the user.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-type/index.html">MenuItem.type</a></dt>
     <dd>A property representing the type of the MenuItem.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-documentURL/index.html">MenuEvent.documentURL</a></dt>
     <dd>The containing frame URL of the element on which a MenuEvent was activated.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-isEditable/index.html">MenuEvent.isEditable</a></dt>
     <dd>Whether the element on which a MenuEvent was activated is editable or not.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-linkURL/index.html">MenuEvent.linkURL</a></dt>
     <dd>The link URL of the element on which a MenuEvent was activated.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-mediaType/index.html">MenuEvent.mediaType</a></dt>
     <dd>The type of media on which a MenuEvent was activated.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-pageURL/index.html">MenuEvent.pageURL</a></dt>
     <dd>The URL of the top-level document of the current web page.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-selectionText/index.html">MenuEvent.selectionText</a></dt>
     <dd>The run of text selected by the user.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-source/index.html">MenuEvent.source</a></dt>
     <dd>A <code>MessagePort</code> to the tab in which a MenuEvent was fired.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-srcElement/index.html">MenuEvent.srcElement</a></dt>
     <dd>The in-page <code>DOMNode</code> object on which a MenuEvent was fired.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-srcURL/index.html">MenuEvent.srcURL</a></dt>
     <dd>The value of an element&#39;s <code>src</code> attribute on which a MenuEvent was activated.</dd>
-    
+
     <dt><a href="../extensions-api-contextmenu-target/index.html">MenuEvent.target</a></dt>
     <dd>A MenuItemProxy object created from the MenuItem object on which the event was fired.</dd>
 </dl>
@@ -215,7 +215,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
 <p>In this example, a menu item is added to the context menu for any domain. When the menu item is clicked, the current page opens in a new private tab.</p>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
@@ -223,10 +223,10 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
     ...
     &lt;feature name=&quot;opera:contextmenus&quot;/&gt;
     ...
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
-// The background process (e.g. &#39;/background.js&#39;). 
+// The background process (e.g. &#39;/background.js&#39;).
 //
 
 window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
@@ -261,7 +261,7 @@ window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
 
 <p>In this example, a menu item is added to the context menu for editable elements only. When the menu item is clicked, a message is sent to the current tab&#39;s injected script. The message data (an email address) is then inserted into the editable element.</p>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
@@ -269,10 +269,10 @@ window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
     ...
     &lt;feature name=&quot;opera:contextmenus&quot;/&gt;
     ...
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
-// The background process (e.g. &#39;/background.js&#39;). 
+// The background process (e.g. &#39;/background.js&#39;).
 //
 
 window.addEventListener(&#39;DOMContentLoaded&#39;, function() {

@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="http://dev.opera.com/addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="http://dev.opera.com/addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description:</h2>
@@ -113,37 +113,37 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <dl>
     <dt>RESOURCE_DOCUMENT</dt>
     <dd>Top-level documents.</dd>
-    
+
     <dt>RESOURCE_FONT</dt>
     <dd>Font resources referenced in CSS properties or SVG elements</dd>
-    
+
     <dt>RESOURCE_IMAGE</dt>
     <dd>Image resources referenced by <code>&lt;img&gt;</code> elements, the background attribute on various elements, or CSS properties.</dd>
-    
+
     <dt>RESOURCE_MEDIA</dt>
     <dd>Media resources referenced by <code>&lt;audio&gt;</code>, <code>&lt;video&gt;</code> or <code>&lt;source&gt;</code> elements.</dd>
-    
+
     <dt>RESOURCE_OBJECT</dt>
     <dd>Generic object resources referenced by <code>&lt;object&gt;</code> elements.</dd>
-    
+
     <dt>RESOURCE_OBJECT_SUBREQUEST</dt>
     <dd>A request made by a plugin loaded by an HTML <code>&lt;embed&gt;</code> or <code>&lt;object&gt;</code> element.</dd>
-    
+
     <dt>RESOURCE_OTHER</dt>
     <dd>Any resource not covered by the other resource types.</dd>
-    
+
     <dt>RESOURCE_REFRESH</dt>
     <dd>An HTML <code>&lt;meta&gt;</code> element with an <code>http-equiv</code> attribute whose value is &quot;refresh&quot; and a content attribute whose value contains a timeout value and optionally a URL.</dd>
-    
+
     <dt>RESOURCE_SCRIPT</dt>
     <dd>Script resources referenced by <code>&lt;script&gt;</code> elements.</dd>
-    
+
     <dt>RESOURCE_STYLESHEET</dt>
     <dd>Stylesheet resources referenced either by <code>&lt;link&gt;</code> elements or <code>@import</code> directives within a stylesheet.</dd>
-    
+
     <dt>RESOURCE_SUBDOCUMENT</dt>
     <dd>Resources referenced by an <code>&lt;frame&gt;</code> or <code>&lt;iframe&gt;</code> element.</dd>
-    
+
     <dt>RESOURCE_XMLHTTPREQUEST</dt>
     <dd>A request from an <code>XMLHttpRequest</code> object.</dd>
 </dl>
@@ -160,14 +160,14 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
 <p>The following example blocks content from google.com whenever it appears as the source of a frame or iframe, e.g. a Google+ widget.</p>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     ...
     &lt;feature name=&quot;opera:urlfilter&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
 // The background process (e.g. index.html)
@@ -177,12 +177,12 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
   // Assign the URLFilter object to a variable for efficiency
   var filter = opera.extension.urlfilter;
-  
+
   // Set the options for the filter rule
   var ruleOptions = {
       resources: filter.RESOURCE_SUBDOCUMENT
   }
-  
+
   filter.block.add(&#39;||google.com/*&#39;, ruleOptions);
 }</code></pre>
 
@@ -190,14 +190,14 @@ if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
 
 <p>This next example uses a custom function to make it easier to combine multiple resource types. In this case, it blocks all scripts, stylesheets and images from the google.com domain.</p>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     ...
     &lt;feature name=&quot;opera:urlfilter&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
 // The background process (e.g. index.html)
@@ -227,10 +227,10 @@ if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
     for (var i = 0, len = arguments.length; i &lt; len; i++) {
       contentType |= map[arguments[i]];
     }
-    
+
     return contentType;
   }
-  
+
   // Set the options for the filter rule
   ruleOptions = {resources: types(&quot;script&quot;, &quot;stylesheet&quot;, &quot;image&quot;)};
   /*
@@ -241,7 +241,7 @@ if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
    *     opera.extension.urlfilter.RESOURCE_IMAGE
    * };
    */
-  
+
   opera.extension.urlfilter.block.add(&#39;||google.com/*&#39;, ruleOptions);
 }</code></pre>
 

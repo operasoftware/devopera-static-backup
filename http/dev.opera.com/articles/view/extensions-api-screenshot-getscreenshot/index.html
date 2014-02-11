@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="http://dev.opera.com/addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="http://dev.opera.com/addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description:</h2>
@@ -123,28 +123,28 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p><code>void getScreenshot (&lt;Function&gt; callback)</code></p>
 
 <h2>Example:</h2>
-    
-<pre><code>&lt;!-- 
+
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     &lt;feature name=&quot;opera:screenshot&quot; required=&quot;false&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
-// An injected script (e.g. includes/injected.js) 
+// An injected script (e.g. includes/injected.js)
 //
 
-window.addEventListener(&#39;load&#39;, function() { 
+window.addEventListener(&#39;load&#39;, function() {
   // Check the Screenshot API is available
   if (opera.extension.getScreenshot) {
     opera.postError(&#39;Screenshot API found&#39;);
-            
+
     // Callback function to replace page content with the screenshot
     function applyScreenshot(imageData) {
       opera.postError(&#39;Appending screenshot to current page...&#39;);
-      
+
       // Create a blank canvas
       var canvas = document.createElement(&#39;canvas&#39;);
       canvas.width = imageData.width;
@@ -158,17 +158,17 @@ window.addEventListener(&#39;load&#39;, function() {
       var body = document.body;
       body.innerHTML = &#39;&#39;;
       body.appendChild(canvas);
-      
+
       opera.postError(&#39;Snapshot appended to current page.&#39;);
     }
-    
+
     // Use the API&#39;s method to execute the callback function
-    opera.extension.getScreenshot(applyScreenshot);        
+    opera.extension.getScreenshot(applyScreenshot);
   } else {
     opera.postError(&#39;No Screenshot API found&#39;);
-  }    
+  }
 }, false);</code></pre>
-    
+
 
 
       <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>

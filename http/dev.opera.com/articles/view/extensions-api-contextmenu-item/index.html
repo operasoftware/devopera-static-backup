@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description</h2>
@@ -122,7 +122,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
 <h2>Example:</h2>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
@@ -130,7 +130,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
     ...
     &lt;feature name=&quot;opera:contextmenus&quot;/&gt;
     ...
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
 // The background process (e.g. index.html)
@@ -138,7 +138,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
 if (opera.contexts.menu) {
   var menu = opera.contexts.menu;
-  
+
   // Create a menu item properties object
   var itemProps = {
     title: &#39;Context Menu Example&#39;
@@ -148,7 +148,7 @@ if (opera.contexts.menu) {
   var item = menu.createItem(itemProps);
   // Add the menu item to the context menu
   menu.addItem(item);
-  
+
   item.onclick = function(event) {
     // Show the title of the item with index 0
     console.log(menu.item(0).title);

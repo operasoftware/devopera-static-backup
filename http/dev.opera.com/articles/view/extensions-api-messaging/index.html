@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,28 +103,28 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
    <dt><a href="../extensions-api-messaging-bgProcess/index.html">opera.extension.bgProcess</a></dt>
    <dd>A reference to the <code>window</code> object of the background process.</dd>
-   
+
    <dt><a href="../extensions-api-messaging-onconnect/index.html">opera.extension.onconnect</a></dt>
    <dd>An event listener invoked when an injected script, popup, or options environment is created that enables communication.</dd>
-   
+
    <dt><a href="../extensions-api-messaging-ondisconnect/index.html">opera.extension.ondisconnect</a></dt>
    <dd>An event listener invoked when an injected script, popup or options environment is destroyed and communication is disabled.</dd>
-   
+
    <dt><a href="../extensions-api-messaging-onmessage/index.html">opera.extension.onmessage</a></dt>
    <dd>An event listener invoked when a message is received from an injected script, popup or preference page.</dd>
-   
+
    <dt><a href="../extensions-api-messaging-addEventListener/index.html">opera.extension.addEventListener()</a></dt>
    <dd>A method for listening for events being dispatched.</dd>
-   
+
    <dt><a href="../extensions-api-messaging-removeEventListener/index.html">opera.extension.removeEventListener()</a></dt>
    <dd>A method that removes a listener from receiving an event.</dd>
-   
+
    <dt><a href="../extensions-api-messaging-broadcastMessage/index.html">opera.extension.broadcastMessage()</a></dt>
    <dd>A method used to broadcast data to all connected injected script and popup environments associated with the extension.</dd>
 </dl>
@@ -140,30 +140,30 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p>The background process, as the name suggests, is a process constantly running in the background for the lifetime of an extension. It is responsible for browser UI elements (for example the <a href="index.html#none">toolbar button</a> and <a href="index.html#none">popup windows</a>) and browser actions (opening and closing a tab, etc.).</p>
 
 <h2>Examples</h2>
-    
+
 <p>The two code snippets below send a message, in this case a URL, between an injected script and the background process</p>
 
 <pre><code>//
 // The injected script (&#39;/includes/injectedScript.js&#39;)
 //
 
-window.addEventListener(&#39;DOMContentLoaded&#39;, function() {    	
+window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
   // send message to background script telling it what URL we are visiting
   opera.extension.postMessage(document.URL);
 }, false);</code></pre>
 
 <p>The injected script (above) sends its message using <code>opera.extension.postMessage(message)</code> which is received by the background process using the event handler <code>opera.extension.onmessage</code></p>
-    
+
 <pre><code>//
-// The background process (&#39;/background.js&#39;). 
+// The background process (&#39;/background.js&#39;).
 //
 
 // Listen for injected script messages (i.e. for image tags)
 opera.extension.onmessage = function(event) {
   // got the URL from the injected script
-  url = event.data;	
+  url = event.data;
 };</code></pre>
-	    
+
 
 
       <p id="license" class="info">This article is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported</a> license.</p>

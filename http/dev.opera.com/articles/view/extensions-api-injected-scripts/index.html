@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,22 +103,22 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
    <dt><a href="../extensions-api-opera-addEventListener/index.html">opera.addEventListener()</a></dt>
    <dd>Registers a listener for an event specific to the injected script side.</dd>
-   
+
    <dt><a href="../extensions-api-opera-removeEventListener/index.html">opera.removeEventListener()</a></dt>
    <dd>Removes an existing listener from an event.</dd>
-   
+
    <dt><a href="../extensions-api-opera-defineMagicFunction/index.html">opera.defineMagicFunction()</a></dt>
    <dd>This method can be used to override global functions defined by regular scripts in a page.</dd>
-   
+
    <dt><a href="../extensions-api-opera-defineMagicVariable/index.html">opera.defineMagicVariable()</a></dt>
    <dd>This method can be used by to override global variables defined by regular scripts in a page.</dd>
-   
+
    <dt><a href="../extensions-api-opera-postError/index.html">opera.postError()</a></dt>
    <dd>Makes a given text string appear in the Error Console. Helpful for debugging.</dd>
 </dl>
@@ -129,7 +129,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p>You can add JavaScript to a website using &quot;injected scripts&quot;. These are normal JavaScript files located inside the &quot;includes&quot; folder in the extension. Opera will execute the given scripts on either all pages, or certain sites and domains they have been targeted for.</p>
 
 <p>You can, for example, create injected scripts that hide comments on YouTube that are written in upper case, or show all text links on all web pages in pink.</p>
-    
+
 <p class="clear separator">Note that injected scripts are essentially User JavaScript, which Opera has supported for a while, and for which we have existing <a href="http://www.opera.com/docs/userjs/">UserJS documentation</a> which includes tutorials, examples and API specification.</p>
 
 <h2>Examples</h2>
@@ -143,13 +143,13 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 // ==/UserScript==
 
 window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
-  
+
   // Loop through all  elements (links) in the page
   var links = document.querySelectorAll(&#39;a&#39;);
   for (var i = 0, len = links.length; i &lt; len; i++) {
     // For each link, show the URL as a title attribute (tooltip)
     links[i].title = links[i].href;
-  }    
+  }
 }, false);</code></pre>
 
 <p>Below is another example, this time showing how the injected script can send messages to the backgrond process. For more information on how to send messages between injected scripts and other parts of an extension take a look at the <a href="../extensions-api-messaging/index.html">messaging</a> guide.</p>
@@ -171,7 +171,7 @@ opera.extension.postMessage(&quot;He&#39;s on facebook again!&quot;);</code></pr
 // Get the current Facebook visit count, or zero if it doesn&#39;t exist
 var facebookCount = (widget.preferences[&#39;facebookCount&#39;]) ? widget.preferences[&#39;facebookCount&#39;] : 0;
 
-// Listen for injected script messages 
+// Listen for injected script messages
 opera.extension.onmessage = function(event) {
   // User has been on facebook again
   if (event.data === &quot;He&#39;s on facebook again!&quot;) {

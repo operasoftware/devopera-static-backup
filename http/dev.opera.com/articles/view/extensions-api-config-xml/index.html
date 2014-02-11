@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,46 +103,46 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <dl class="apicontents">
    <dt><a href="../extensions-api-config-widget/index.html"><code>widget</code> element</a></dt>
    <dd>The container element under which the rest of the elements of the config.xml file go.</dd>
-   
+
    <dt><a href="../extensions-api-config-name/index.html"><code>name</code> element</a></dt>
    <dd>Provides the name of the extension.</dd>
-   
+
    <dt><a href="../extensions-api-config-description/index.html"><code>description</code> element</a></dt>
    <dd>Provides a description of what the extension is supposed to do.</dd>
-   
+
    <dt><a href="../extensions-api-config-author/index.html"><code>author</code> element</a></dt>
    <dd>Provides details of the author of the extension.</dd>
-   
+
    <dt><a href="../extensions-api-config-license/index.html"><code>license</code> element</a></dt>
    <dd>Provides the software license of the extensions.</dd>
-   
+
    <dt><a href="../extensions-api-config-icon/index.html"><code>icon</code> element</a></dt>
    <dd>Specifies a custom icon file for the extension.</dd>
-   
+
    <dt><a href="../extensions-api-config-content/index.html"><code>content</code> element</a></dt>
    <dd>Defines a <a href="http://www.w3.org/TR/widgets/#custom-start-file">custom start file</a> for the extension.</dd>
-   
+
    <dt><a href="../extensions-api-config-feature/index.html"><code>feature</code> element</a></dt>
    <dd>Declares the use of certain features by the extension, such as being able to display content in speed dial.</dd>
-   
+
    <dt><a href="../extensions-api-config-preference/index.html"><code>preference</code> element</a></dt>
    <dd>Allows for preferences to be declared by the developer. They are stored as key-value pairs and accessible from within the extension using <code>widget.preferences</code>.</dd>
-   
+
    <dt><a href="../extensions-api-config-access/index.html"><code>access</code> element</a></dt>
    <dd>Allows authors to give their extension permission to access external web resources.</dd>
-   
+
    <dt><a href="../extensions-api-config-span/index.html"><code>span</code> element</a></dt>
    <dd>Serves as a wrapper for text content, usually for the purpose of internationalization.</dd>
-   
+
    <dt><a href="../extensions-api-config-xml-lang/index.html"><code>xml:lang</code> attribute</a></dt>
    <dd>Specifies the language of the contained text in the element.</dd>
-   
+
    <dt><a href="../extensions-api-config-dir/index.html"><code>dir</code> attribute</a></dt>
    <dd>Defines the direction of the language used by an element with the following values:</dd>
 </dl>
@@ -154,7 +154,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p>Most of the information in this file (information such as the name, description, author name of the extension, etc.) is also useful to the end user as it is shown in various places in Opera&#39;s user interface.</p>
 
 <p>A well-formed config.xml file is mandatory for every Opera extension.</p>
-	
+
 <p>For full documentation on config.xml, see the:</p>
 
 <ul>
@@ -163,7 +163,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 </ul>
 
 <h2 id="example">Example</h2>
-	
+
 <p>Below is an example config.xml file including the usual meta elements like <code>name</code>, <code>author</code> and <code>description</code>. It also contains the following two useful elements:</p>
 <dl>
     <dt><code>&lt;feature&gt;</code> element</dt>
@@ -186,8 +186,8 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
   &lt;/feature&gt;
 
   &lt;access origin=&quot;http://my.opera.com/&quot; subdomains=&quot;true&quot;/&gt;
- 	
-&lt;/widget&gt;</code></pre>		
+
+&lt;/widget&gt;</code></pre>
 
 <p><img src="../../../../devfiles.myopera.com/articles/7782/config.png" alt="Extension details taken from the config.xml file." /></p>
 <p class="caption">Figure 1: Extension details taken from the config.xml file.</p>

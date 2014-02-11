@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By karlcow, Daniel Davis</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
     <p>The web has radically changed our way to access information in space, time and shape. Before the web, our information user experience was often constrained by the solidification of information in physical form factors. The digitization of content and its separation from style has given us a unique opportunity to choose the way we want to read and interact with content, and that&#39;s an excellent thing.</p>
@@ -181,7 +181,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
     <div class="figure"><img width="640" src="../../../../devfiles.myopera.com/articles/4572/opera-red-outline.jpg" alt="Opera Red Outline" />
     <p class="comment">Figure 3: Left image before the extension has been applied, right image after the extension has been applied.</p></div>
 
-    <p>The CSS code is very simple: it is just three properties attached to the <code>div</code> element.</p> 
+    <p>The CSS code is very simple: it is just three properties attached to the <code>div</code> element.</p>
 
     <pre class="code">div {
         border-radius:2px;
@@ -248,7 +248,7 @@ div[id]:before {
 
     <p>For doing so, we need to tell the extension which websites we are targeting. In addition to the modifications of the <code>styles/style.css</code> file, the JavaScript file <code>injected.js</code> in the folder <code>includes</code> needs to be modified for setting the scope of the extension. At the very top of the file a list of domain name is included.</p>
 
-    <pre class="code">// The following comments apply this script to bbc.co.uk 
+    <pre class="code">// The following comments apply this script to bbc.co.uk
 // and all its subdomains, itv.com and guardian.co.uk.
 // ==UserScript==
 // @include http://*.bbc.co.uk/*
@@ -256,7 +256,7 @@ div[id]:before {
 // @include http://www.guardian.co.uk/*
 // ==/UserScript==</pre>
 
-    <p>The character <code>*</code> is used as a wildcard for matching more domain names and subdomains. For example, the rules will apply to these domains and more: 
+    <p>The character <code>*</code> is used as a wildcard for matching more domain names and subdomains. For example, the rules will apply to these domains and more:
 	<ul>
 		<li><b>http://</b>www<b>.bbc.co.uk/</b></li>
 		<li><b>http://</b>news<b>.bbc.co.uk/</b>weather/</li>

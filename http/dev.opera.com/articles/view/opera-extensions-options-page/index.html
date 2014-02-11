@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,13 +103,13 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Chris Mills</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
-	
+
 	<h2>Introduction</h2>
-	 
+
 	<p>This article details how to use a new feature of Opera extensions called the options page. This is a page in the extension containing preferences the user can set, defined in an <code>options.html</code> file in the root of the extension directory.</p>
-    
+
     <p>The way it works is quite simple&#x2014;when you install an extension, if Opera finds an <code>options.html</code> file in the extension, it makes a &quot;Preferences&quot; option available for that extension in the Extension Manager (Tools &gt; Extensions &gt; Manage Extensions)&#x2014;see Figure 1.</p>
 
 <p><img src="../../../../devfiles.myopera.com/articles/4382/image1.png" alt="The new Opera extensions options page functionality, reachable through the Extension Manager." /></p>
@@ -117,7 +117,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 
 <p>Exactly what is put on the options page is entirely up to you as the extension author, but in general you should include form elements that allow the end user to choose different options and then save the changes to <code>window.localStorage</code>, or preferably <code>widget.preferences</code>, so they can then be easily applied to the extension.</p>
 
-<p>In this article we will take you through the basics of creating your own options page, and then present a sample extension containing an options page template that you are free to use in your own extensions.</p> 
+<p>In this article we will take you through the basics of creating your own options page, and then present a sample extension containing an options page template that you are free to use in your own extensions.</p>
 
 <h2>Building a basic options page</h2>
 
@@ -137,19 +137,19 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 &lt;html&gt;
  &lt;head&gt;
   &lt;title&gt;Hello world options page&lt;/title&gt;
-  
+
   &lt;style&gt;
-  
+
   &lt;!-- CSS omitted for brevity --&gt;
-      
+
   &lt;/style&gt;
  &lt;/head&gt;
  &lt;body&gt;
- 
- &lt;div id=&quot;wrapper&quot;&gt; 
- &lt;h1&gt;Sample options page for hello world example&lt;/h1&gt; 
+
+ &lt;div id=&quot;wrapper&quot;&gt;
+ &lt;h1&gt;Sample options page for hello world example&lt;/h1&gt;
  &lt;form&gt;
- 
+
  &lt;ul&gt;
    &lt;li&gt;&lt;label for=&quot;colour&quot;&gt;Select background colour:&lt;/label&gt;
    &lt;select name=&quot;colour&quot; id=&quot;colour&quot; /&gt;
@@ -168,8 +168,8 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
    &lt;/select&gt;
    &lt;/li&gt;
  &lt;/ul&gt;
- 
- &lt;/form&gt; 
+
+ &lt;/form&gt;
  &lt;/div&gt;
  &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -180,7 +180,7 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p class="comment">Figure 2: Our sample options page.</p>
 
 <p>The trouble is ... it won&#39;t do anything right now! Now we need to add some JavaScript to communicate the changes back to the extension and put them in to effect. This is what the next section will deal with.</p>
-   
+
 <h2>Wiring it up with JavaScript</h2>
 
 <p>As a next step, we will add the following script into <code>options.html</code> to allows us to store the preferences for the background colour and font for our Hello world extension.</p>
@@ -191,7 +191,7 @@ var bgColor = document.getElementById( &#39;colour&#39; ),
     font = document.getElementById( &#39;font&#39; );
 
 bgColor.addEventListener( &#39;change&#39;, function() {
-	widget.preferences.backgroundColor = this.value;	
+	widget.preferences.backgroundColor = this.value;
 }, false );
 
 font.addEventListener( &#39;change&#39;, function() {
@@ -254,7 +254,7 @@ window.addEventListener( &#39;DOMContentLoaded&#39;, function() {
 <h2>Explaining the template</h2>
 
 <p>When you open the options page for the extension, the script goes through any <code>&lt;select&gt;</code> and <code>&lt;input&gt;</code> elements with a <code>name</code> attribute and sets their value to that of the corresponding item in <code>widget.preferences</code>. You can therefore feel free to remove or add form elements from the markup of the <code>options.html</code> page, and it will continue to work just fine.</p>
-	
+
 <p>In addition, the script automatically populates the title of the page and the name and author of the extension. It picks these up from the <code>widget</code> object, <code>window.widget</code>, which gets them from the <code>config.xml</code> file.</p>
 
 <p>By default, the preference values are hardcoded into the markup of the <code>options.html</code> file. When the user changes the value of any of the form elements, the preference values are stored immediately in the <code>widget.preferences</code> object.</p>
@@ -266,8 +266,8 @@ window.addEventListener( &#39;DOMContentLoaded&#39;, function() {
 <h2>Summary</h2>
 
 <p>This concludes our tour of the Opera extensions options page functionality. Feel free to grab our template and use it in your own projects.</p>
-	
-This article details how to use a new feature of Opera extensions called the options page. This is a page in the extension containing preferences the user can set, defined in an 
+
+This article details how to use a new feature of Opera extensions called the options page. This is a page in the extension containing preferences the user can set, defined in an
 
       <section id="author-info">
         <h1><a href="../../../author/chrismills.html" rel="author">Chris Mills</a></h1>

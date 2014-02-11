@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description:</h2>
@@ -123,17 +123,17 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 <p><code>void add (&lt;DOMString&gt; rule)</code></p>
 
 <h2>Example:</h2>
-    
-<pre><code>&lt;!-- 
+
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     &lt;feature name=&quot;opera:urlfilter&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
-// The background process (e.g. index.html) 
+// The background process (e.g. index.html)
 //
 
 // Store and retrieve a list of URLs in the extension&#39;s preferences
@@ -167,17 +167,17 @@ for (var i = 0, len = blacklist.length; i &lt; len; i++) {
 
 <p>The following example blocks all content from the google.com but only when it appears in a third-party domain (i.e. not google.com).</p>
 
-<pre><code>&lt;!-- 
+<pre><code>&lt;!--
   The configuration file (&#39;config.xml&#39;).
 --&gt;
 &lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;
 &lt;widget xmlns=&quot;http://www.w3.org/ns/widgets&quot;&gt;
     ...
     &lt;feature name=&quot;opera:urlfilter&quot;/&gt;
-&lt;/widget&gt;</code></pre>    
+&lt;/widget&gt;</code></pre>
 
 <pre><code>//
-// The background process (e.g. index.html) 
+// The background process (e.g. index.html)
 //
 
 if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
@@ -185,7 +185,7 @@ if (typeof opera.extension.urlfilter != &#39;undefined&#39;) {
   var ruleOptions = {
       thirdParty: true
   }
-  
+
   opera.extension.urlfilter.block.add(&#39;||google.com/*&#39;, ruleOptions);
 }</code></pre>
 

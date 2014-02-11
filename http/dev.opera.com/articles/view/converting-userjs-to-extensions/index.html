@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,15 +103,15 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Chris Mills, Daniel Davis</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 	<h2>Introduction</h2>
-	
+
 	<p>This is a quickfire guide to converting a <a href="http://www.opera.com/docs/userjs/">UserJS</a> over to an Opera extension. This is a very straightforward process, although there are a few caveats to be aware of, which will be discussed below. We round off the article with a practical example.</p>
-	
+
 	<h2>The process</h2>
-	
+
 	<ol>
 	  <li>First of all, create an empty directory to act as the root directory of the extension.</li>
 	  <li>Place your UserJS into an <code>includes</code> folder, inside the root directory — this effectively uses it as an injected script.</li>
@@ -121,13 +121,13 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
 	  <li>Select all the contents of the root directory, zip them up, and give the file an <code>.oex</code> extension.</li>
 	  <li>You now have an extension that should work fine, although you should test and debug it before you upload it to the Opera extensions site.</li>
 	</ol>
- 
+
 <h2>Caveats</h2>
- 
+
 <p>Sometimes the UserJS doesn&#39;t work as an extension, for various reasons. Often it&#39;s because an object is accessed directly — <code>location</code> or <code>opera</code>, for example — although this is simple to fix by accessing them from the <code>window</code> object instead (<code>window.location</code>, <code>window.opera</code>, etc.)
- 
+
 <h2>A real world example</h2>
- 
+
 <p>To prove how easy it is to convert a UserJS into an Opera extension, here&#39;s an example that will turn you into an extension developer in a matter of minutes. Start the stopwatch!
 
 <h3>Step 1: Find a UserJS</h3>

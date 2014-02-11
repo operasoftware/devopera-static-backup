@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By matti141</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Wprowadzenie</h2>
@@ -183,10 +183,10 @@ From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer suppor
   function formatTime(time) {
     return (time &lt; 10) ? &#39;0&#39; + time : time;
   }
-    
+
   var output = document.querySelector(&#39;output&#39;);
   var date, hours, mins, secs;
-    
+
   // Get and display the current time every 500 milliseconds
   var timer = window.setInterval(function() {
     date = new Date();
@@ -243,9 +243,9 @@ output {
 <p>Po zainstalowaniu naszego rozszerzenia możemy dynamicznie sterować okienkiem Szybkiego wybierania, dzięki <code>SpeedDialContext</code> API. Jest to bardzo proste API z dwoma zapisywalnymi wartościami: <code>title</code> and <code>url</code>. Są one dostępne z poziomu JavaScript w pliku <code>background.js</code> i w obiekcie <code>opera.contexts.speeddial</code> co wygląda tak:</p>
 
 <pre><code>if (opera.contexts.speeddial) {
-  var sd = opera.contexts.speeddial; 
+  var sd = opera.contexts.speeddial;
   sd.title = &quot;My title&quot;;
-  sd.url = &quot;mypage.html&quot;; 
+  sd.url = &quot;mypage.html&quot;;
 }</code></pre>
 
 <p>Możemy użyć tej funkcji, by zwiększyć funkcjonalność naszego rozszerzenia o jakiś przyjazny komunikat w zależności od pory dnia. Trzeb tylko wyedytować plik <code>background.js</code>:</p>
@@ -255,7 +255,7 @@ output {
   function formatTime(time) {
     return (time &lt; 10) ? &#39;0&#39; + time : time;
   }
-    
+
   var output = document.querySelector(&#39;output&#39;);
   var date, hours, mins, secs, tmp_hours, timeofday;
   var messages = {
@@ -264,7 +264,7 @@ output {
     &quot;evening&quot;: &quot;Good evening!&quot;,
     &quot;night&quot;: &quot;Shouldn&#39;t you be in bed?&quot;
   };
-    
+
   // Get and display the current time every 500 milliseconds
   var timer = window.setInterval(function() {
     date = new Date();
@@ -272,7 +272,7 @@ output {
     mins = date.getMinutes();
     secs = date.getSeconds();
     output.innerHTML = formatTime(hours) + &#39;:&#39; + formatTime(mins) + &#39;:&#39; + formatTime(secs);
-        
+
     // Make the Speed Dial title display time-related message
     if (hours !== tmp_hours) {
       if (hours &gt; 15) {
@@ -284,7 +284,7 @@ output {
       } else {
         timeofday = &#39;night&#39;;
       }
-            
+
       if (opera.contexts.speeddial) {
         opera.contexts.speeddial.title = messages[timeofday];
       }

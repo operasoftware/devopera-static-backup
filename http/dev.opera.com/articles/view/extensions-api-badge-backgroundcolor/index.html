@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="http://dev.opera.com/addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="http://dev.opera.com/addons/themes.html">Themes</a>
@@ -103,7 +103,7 @@ _gaq.push(['_trackPageview']);
       <p class="print author">By Opera Software</p>
 
       <p class="note">
-From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="../../../extension-docs/index.html">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
+From Opera 15 onward, Opera 11 &amp; 12’s extension format is no longer supported, and instead, we’ve switched to Chromium’s extension model. <strong>Check out <a href="http://dev.opera.com/extension-docs/">our new documentation for developing extensions for Opera 15 and higher</a></strong> and start building your own extensions.
 </p>
 
 <h2>Description:</h2>
@@ -126,19 +126,19 @@ var properties = {
     color: &#39;#ffffff&#39;,
     textContent: &#39;42&#39;
   }
-};	
+};
 
 // Add the button to the browser UI
 var button = opera.contexts.toolbar.createItem(properties);
 opera.contexts.toolbar.addItem(button);
 
 // Change the background color of the badge with each button click
-var i = 1; 
+var i = 1;
 button.addEventListener(&#39;click&#39;, handleClick, false);
 
 function handleClick() {
   var badgeColor = (i % 2) ? &#39;#5566ff&#39; : &#39;#cc5555&#39;;
-  button.badge.backgroundColor = badgeColor;	
+  button.badge.backgroundColor = badgeColor;
   i++;
 }</code></pre>
 

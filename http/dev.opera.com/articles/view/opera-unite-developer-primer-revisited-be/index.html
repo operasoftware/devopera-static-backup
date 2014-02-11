@@ -88,7 +88,7 @@ _gaq.push(['_trackPageview']);
               <a href="../../../addons/extensions/index.html">Opera 11-12 extensions</a>
             </li>
             <li role="menuitem" >
-              <a href="../../../extension-docs/index.html">Opera 15+ extensions</a>
+              <a href="http://dev.opera.com/extension-docs/">Opera 15+ extensions</a>
             </li>
             <li role="menuitem" >
               <a href="../../../addons/themes.html">Themes</a>
@@ -184,9 +184,9 @@ http://your_device.your_username.operaunite.com/blog/form/</code></pre>
   );
   response.close();
 }</code></pre>
-  
+
   <p>Крок за крокам, функцыя робіць наступнае:</p><p>Перш за ўсё ствараецца зменная, якая змяшчае аб&#39;ект <code>response</code>. Гэты аб&#39;ект утрымоўвае ўсе неабходныя метады для адпраўкі дадзеных кліенту:</p><pre><code>var response = e.connection.response;</code></pre><p>Далей ідзе метад <code>write</code>, які запісвае дадзеныя ў дакумент для браўзара, які запытаў старонку. Для пачатку створым простую HTML-абгортку:</p><pre><code>response.write(&#39;&lt;!DOCTYPE html&gt;&#39;  + &#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Entries&lt;/title&gt;&lt;/head&gt;&#39;  + &#39;&lt;body&gt;&lt;ul&gt;&#39;);</code></pre><p>Існыя запісы мы аформім спісам спасылак:</p>
-  
+
 <pre><code>for ( var i = 0, entry; entry = entries[i]; i++  {
   response.write(&#39;&lt;li&gt;&#39;+entry.date+&#39;: &lt;a href=&quot;entry?id=&#39;+i+&#39;&quot;&gt;&#39;+entry.title+&#39;&lt;/a&gt;&lt;/li&gt;&#39;);
 }</code></pre>
@@ -325,10 +325,10 @@ No new comments accepted.
       <p class="tags"><strong>Tags</strong></p>
       <ul class="tags">
         <li><a href="../../tags/unite.html" rel="tag">unite</a></li>
-        <li><a href="../../tags/кан�%2584�%2596г�%2583�%2580а�%2586�%258B�%258F.html" rel="tag">канфігурацыя</a></li>
-        <li><a href="../../tags/п�%2580�%258Bкладанне.html" rel="tag">прыкладанне</a></li>
-        <li><a href="../../tags/�%2580а�%2581п�%2580а�%2586о�%259Eка.html" rel="tag">распрацоўка</a></li>
-        <li><a href="../../tags/�%2580а�%2581п�%2580а�%2586о�%259E�%2588�%2587�%258Bк.html" rel="tag">распрацоўшчык</a></li>
+        <li><a href="../../tags/кан?2584?2596г?2583?2580а?2586?258B?258F.html" rel="tag">канфігурацыя</a></li>
+        <li><a href="../../tags/п?2580?258Bкладанне.html" rel="tag">прыкладанне</a></li>
+        <li><a href="../../tags/?2580а?2581п?2580а?2586о?259Eка.html" rel="tag">распрацоўка</a></li>
+        <li><a href="../../tags/?2580а?2581п?2580а?2586о?259E?2588?2587?258Bк.html" rel="tag">распрацоўшчык</a></li>
       </ul>
       <p><strong>Languages</strong>
         <a href="../opera-unite-developer-primer-revisited/index.html">English</a>,
