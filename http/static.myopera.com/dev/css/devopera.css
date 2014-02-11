@@ -183,7 +183,7 @@ form[role=search] input[type=search]:focus {
 
 /* LOGIN AND USERINFO */
 
-#login, #userinfo {
+/*#login, */#userinfo {
 	float:right;
 	position:relative;
 	font-size:11px;
@@ -193,12 +193,12 @@ form[role=search] input[type=search]:focus {
 	padding: 27px 15px 28px 15px;
 	}
 
-#login a {
+/*#login a {
 	color:#fff;
 	padding: 0;
 	}
-
-#login > a:after, #userinfo-name:after {
+*/
+/*#login > a:after, */#userinfo-name:after {
 	content: '';
 	display: block;
 	width:21px;
@@ -1597,6 +1597,11 @@ footer ul li:last-child {
 #change-language {
 	float: right;
 }
+
+#login {
+	display: none;
+}
+
 @media all and (max-width: 1152px) {
 	.campaign > div > h1 {
 		position: absolute;
@@ -1690,11 +1695,11 @@ h1 {
 
 /* HEADER */
 
-#userinfo a, #login a, #userinfo-name {
+#userinfo a, /*#login a, */#userinfo-name {
 	font-size: 11px;
 }
 
-#login, #login > a {
+/*#login, #login > a {
 	text-align: left;
 	height: 30px;
 }
@@ -1706,11 +1711,7 @@ h1 {
 #login > a{
 	padding: 0;
 }
-
-#login {
-	display: none;
-}
-
+*/
 #userinfo ul {
 	margin: 0;
 	width: 100%;
@@ -1849,8 +1850,8 @@ header div fieldset {
 	width:100%;
 }
 
-#userinfo-name:after,
-#login a:after {
+#userinfo-name:after/*,
+#login a:after*/ {
 	margin: 0 0 7px 0;
 	float: left;
 }
@@ -1869,7 +1870,7 @@ header div ul {
 	}
 
 #nav a,
-#login > a,
+/*#login > a,*/
 #userinfo-name {
 	display:block;
 	box-sizing: border-box;
@@ -1885,7 +1886,7 @@ header div ul {
 	margin: 0;
 }
 
-#login, #userinfo {
+/*#login, */#userinfo {
 	clear:both;
 	box-sizing: border-box;
 	width:50%;
@@ -1901,7 +1902,7 @@ header div ul {
 	top: 0;
 	}
 
-#login > a:after, #userinfo > a:after {
+/*#login > a:after, */#userinfo > a:after {
 	margin-top: -2px;
 	padding-right: 5px;
 }
@@ -1997,7 +1998,7 @@ section .sp2 li {
 }
 
 @media all and (max-width: 440px) {
-#nav li, #login, #userinfo {
+#nav li, /*#login, */#userinfo {
 	width:100%;
 	height: auto;
 	max-height: 28px;
@@ -2015,7 +2016,7 @@ form[role=search] fieldset {
 	margin: 0 0 0 -10px !important;
 }
 
-#login a, #userinfo-name {
+/*#login a,*/ #userinfo-name {
 	border:1px solid #000;
 	border-width:1px 0 1px 0;
 	}
@@ -2217,7 +2218,7 @@ article dl {
 		margin: 0 0 0 -5px !important;
 	}
 
-	#login a,
+	/*#login a,*/
 	#userinfo-name,
 	#userinfo li button.logout,
 	#userinfo li a,
