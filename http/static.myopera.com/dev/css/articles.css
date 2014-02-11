@@ -70,11 +70,11 @@ ul {
 }
 
 .seriesNav > .prev a:before {
-	content: 'Â«';
+	content: '«';
 }
 
 .seriesNav > .next a:before {
-	content: 'Â»';
+	content: '»';
 }
 
 .seriesNav > li:last-child a:before {
@@ -203,7 +203,7 @@ article blockquote {
 }
 
 article blockquote:before {
-	content: "â€œ";
+	content: "“";
 	position: absolute;
 	font-style: normal;
 	font-size: 70px;
@@ -666,7 +666,7 @@ article dd {
 }
 
 article dd:before {
-	content: 'Â» ';
+	content: '» ';
 }
 
 article dd code {
